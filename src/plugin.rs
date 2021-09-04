@@ -26,16 +26,24 @@ interfaces!(BasePluginImpl: dyn Plugin);
 impl BasePlugin for BasePluginImpl {}
 
 impl Plugin for BasePluginImpl {
-    fn init(&self) {
+    fn init(&self) -> Result<(), PluginError> {
         debug!("BasePluginModuleImpl::init()");
+        Ok(())
     }
 
-    fn post_init(&self) {
+    fn post_init(&self) -> Result<(), PluginError> {
         debug!("BasePluginModuleImpl::post_init()");
+        Ok(())
     }
 
-    fn shutdown(&self) {
+    fn pre_shutdown(&self) -> Result<(), PluginError> {
         debug!("BasePluginModuleImpl::shutdown()");
+        Ok(())
+    }
+
+    fn shutdown(&self) -> Result<(), PluginError> {
+        debug!("BasePluginModuleImpl::shutdown()");
+        Ok(())
     }
 
     fn get_component_provider(&self) -> Result<Arc<dyn ComponentProvider>, PluginError> {
