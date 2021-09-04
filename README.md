@@ -7,7 +7,7 @@
 ### About Inexor
 
 <a href="https://inexor.org/">
-<img align="right" width="200" height="200" src="https://raw.githubusercontent.com/aschaeffer/inexor-rgf-core-plugins/main/docs/images/inexor_2.png">
+<img align="right" width="200" height="200" src="https://raw.githubusercontent.com/aschaeffer/inexor-rgf-plugin-base/main/docs/images/inexor_2.png">
 </a>
 
 * Inexor will be a new first person shooter game which is based on a new octree-based game engine.
