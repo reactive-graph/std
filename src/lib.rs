@@ -2,6 +2,7 @@ use crate::plugin::BasePlugin;
 use crate::plugins::{Plugin, PluginError};
 use inexor_rgf_core_model as model;
 use inexor_rgf_core_plugins as plugins;
+use log::error;
 use std::sync::Arc;
 use waiter_di::{profiles, Container, Provider};
 
@@ -23,6 +24,7 @@ pub fn construct_plugin() -> Result<Arc<dyn Plugin>, PluginError> {
     let plugin: Result<Arc<dyn Plugin>, _> =
         <dyn query_interface::Object>::query_arc(plugin.clone());
     if plugin.is_err() {
+        error!("Failed to construct plugin");
         return Err(PluginError::PluginCreationError);
     }
     Ok(plugin.unwrap())
