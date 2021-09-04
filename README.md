@@ -32,12 +32,12 @@ The Inexor Reactive Graph Flow (RGF) manages reactive flows based on a graph dat
 
 This plugin provides some essential entity types and relation types.
 
-[<img src="https://img.shields.io/badge/Language-Rust-brightgreen">]()
+[<img src="https://img.shields.io/badge/Language-Rust-brightgreen">](https://www.rust-lang.org/)
 [<img src="https://img.shields.io/badge/Platforms-Linux%20%26%20Windows-brightgreen">]()
 [<img src="https://img.shields.io/github/workflow/status/aschaeffer/inexor-rgf-plugin-base/Rust">](https://github.com/aschaeffer/inexor-rgf-plugin-base/actions?query=workflow%3ARust)
 [<img src="https://img.shields.io/github/last-commit/aschaeffer/inexor-rgf-plugin-base">]()
 [<img src="https://img.shields.io/github/languages/code-size/aschaeffer/inexor-rgf-plugin-base">]()
-[<img src="https://img.shields.io/codecov/c/github/aschaeffer/inexor-rgf-plugin-base">]()
+[<img src="https://img.shields.io/codecov/c/github/aschaeffer/inexor-rgf-plugin-base">](https://app.codecov.io/gh/aschaeffer/inexor-rgf-plugin-base)
 
 [<img src="https://img.shields.io/github/license/aschaeffer/inexor-rgf-plugin-base">](https://github.com/aschaeffer/inexor-rgf-plugin-base/blob/main/LICENSE)
 [<img src="https://img.shields.io/discord/698219248954376256?logo=discord">](https://discord.com/invite/acUW8k7)
