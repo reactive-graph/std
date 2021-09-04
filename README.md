@@ -2,7 +2,7 @@
 
 | Project | Module | Sub-Module | Functionality | Tests |
 | --- | --- | --- | --- | --- |
-| Reactive Graph Flow | Plugin | Base | In Progress | --- |
+| Reactive Graph Flow | Plugin | Base | Experiment | --- |
 
 ### About Inexor
 
