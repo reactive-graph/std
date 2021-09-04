@@ -42,13 +42,21 @@ This plugin provides some essential entity types and relation types.
 [<img src="https://img.shields.io/github/license/aschaeffer/inexor-rgf-plugin-base">](https://github.com/aschaeffer/inexor-rgf-plugin-base/blob/main/LICENSE)
 [<img src="https://img.shields.io/discord/698219248954376256?logo=discord">](https://discord.com/invite/acUW8k7)
 
+#### Components
+
+* Named
+* Describable
+* Flow 2D
+* Flow 3D
+
 #### Entity Types
 
-* A
+* Generic Flow
+* Comment
 
 #### Relation Types
 
-* B
+* ---
 
 ### Thanks to
 
