@@ -1,0 +1,29 @@
+{
+  "name": "flow_2d",
+  "properties": [
+    {
+      "name": "f2dx",
+      "description": "The X position in a 2D flow",
+      "data_type": "number",
+      "socket_type": "none"
+    },
+    {
+      "name": "f2dy",
+      "description": "The Y position in a 2D flow",
+      "data_type": "number",
+      "socket_type": "none"
+    },
+    {
+      "name": "f2dw",
+      "description": "The width in a 2D flow",
+      "data_type": "number",
+      "socket_type": "none"
+    },
+    {
+      "name": "f2dh",
+      "description": "The height in a 2D flow",
+      "data_type": "number",
+      "socket_type": "none"
+    }
+  ]
+}

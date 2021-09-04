@@ -1,0 +1,10 @@
+{
+  "name": "describable",
+  "properties": [
+    {
+      "name": "description",
+      "description": "The description of an entity or a relation",
+      "data_type": "string"
+    }
+  ]
+}
