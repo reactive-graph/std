@@ -46,7 +46,8 @@ extern "C" fn register(registrar: &mut dyn plugins::PluginRegistrar) {
     let plugin = construct_plugin();
     match plugin {
         Ok(plugin) => {
-            registrar.register_plugin("base", Box::new(plugin));
+            const PKG_NAME: &'static str = env!("CARGO_PKG_NAME");
+            registrar.register_plugin(PKG_NAME, Box::new(plugin));
         }
         Err(_) => {}
     }
