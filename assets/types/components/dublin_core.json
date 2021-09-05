@@ -1,0 +1,66 @@
+{
+  "name": "dublin_core",
+  "properties": [
+    {
+      "name": "dc_language",
+      "data_type": "string"
+    },
+    {
+      "name": "dc_title",
+      "data_type": "string"
+    },
+    {
+      "name": "dc_subject",
+      "data_type": "string"
+    },
+    {
+      "name": "dc_coverage",
+      "data_type": "string"
+    },
+    {
+      "name": "dc_description",
+      "data_type": "string"
+    },
+    {
+      "name": "dc_identifier",
+      "data_type": "string"
+    },
+    {
+      "name": "dc_format",
+      "data_type": "string"
+    },
+    {
+      "name": "dc_type",
+      "data_type": "string"
+    },
+    {
+      "name": "dc_creator",
+      "data_type": "string"
+    },
+    {
+      "name": "dc_contributor",
+      "description": "An entity responsible for making contributions to the resource.",
+      "data_type": "string"
+    },
+    {
+      "name": "dc_date",
+      "data_type": "string"
+    },
+    {
+      "name": "dc_publisher",
+      "data_type": "string"
+    },
+    {
+      "name": "dc_relation",
+      "data_type": "string"
+    },
+    {
+      "name": "dc_rights",
+      "data_type": "string"
+    },
+    {
+      "name": "dc_source",
+      "data_type": "string"
+    }
+  ]
+}
