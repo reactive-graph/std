@@ -1,16 +1,18 @@
-use crate::plugin::BasePlugin;
-use crate::plugins::{Plugin, PluginError};
+#[macro_use]
+extern crate query_interface;
+
+use std::sync::Arc;
+
 use inexor_rgf_core_model as model;
 use inexor_rgf_core_plugins as plugins;
 use log::error;
-use std::sync::Arc;
 use waiter_di::{profiles, Container, Provider};
+
+use crate::plugin::BasePlugin;
+use crate::plugins::{Plugin, PluginError};
 
 pub mod plugin;
 pub mod provider;
-
-#[macro_use]
-extern crate query_interface;
 
 pub fn get<T>() -> Container<T> {
     Container::<T>::new()
@@ -33,6 +35,14 @@ pub fn construct_plugin() -> Result<Arc<dyn Plugin>, PluginError> {
 plugins::export_plugin!(register);
 
 extern "C" fn register(registrar: &mut dyn plugins::PluginRegistrar) {
+    let logger_result = log4rs::init_file("config/logging.yml", Default::default());
+    match logger_result {
+        Err(error) => {
+            println!("Failed to configure logger: {}", error);
+        }
+        _ => {}
+    }
+
     let plugin = construct_plugin();
     match plugin {
         Ok(plugin) => {
