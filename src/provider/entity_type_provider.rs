@@ -37,7 +37,7 @@ impl EntityTypeProvider for BaseEntityTypeProviderImpl {
             let filename = file.as_ref();
             debug!("Loading entity_type from resource {}", filename);
             let asset = BaseEntityTypeAsset::get(filename).unwrap();
-            let json_str = std::str::from_utf8(asset.as_ref());
+            let json_str = std::str::from_utf8(asset.data.as_ref());
             if json_str.is_err() {
                 error!("Could not decode UTF-8 {}", filename);
                 continue;

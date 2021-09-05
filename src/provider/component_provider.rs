@@ -38,7 +38,7 @@ impl ComponentProvider for BaseComponentProviderImpl {
             let filename = file.as_ref();
             debug!("Loading component from resource {}", filename);
             let asset = BaseComponentAsset::get(filename).unwrap();
-            let json_str = std::str::from_utf8(asset.as_ref());
+            let json_str = std::str::from_utf8(asset.data.as_ref());
             if json_str.is_err() {
                 error!("Could not decode UTF-8 {}", filename);
                 continue;
