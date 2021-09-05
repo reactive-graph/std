@@ -62,3 +62,11 @@ This plugin provides some essential entity types and relation types.
 
 * https://github.com/xd009642/tarpaulin
 * https://codecov.io/
+
+### Sponsors
+
+<a href="https://www.jetbrains.com/?from=github.com/inexorgame">
+<img align="right" width="200" height="200" src="https://raw.githubusercontent.com/aschaeffer/inexor-rgf-plugin-base/main/docs/images/icon_CLion.svg">
+</a>
+
+Special thanks to `JetBrains <https://www.jetbrains.com/?from=github.com/inexorgame>`__ for providing us with CLion licenses!
