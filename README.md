@@ -2,7 +2,7 @@
 
 | Project | Module | Sub-Module | Functionality | Test Coverage |
 | --- | --- | --- | --- | --- |
-| Reactive Graph Flow | Core | Plugins | TODO | 0% |
+| Reactive Graph Flow | Plugin | MetaData | Experiment | --- |
 
 ### About Inexor
 
@@ -46,6 +46,7 @@ information about the creator, the contributors, the source.
 #### Supported data formats
 
 * [Dublin Core](https://en.wikipedia.org/wiki/Dublin_Core) - Documents
+  * https://www.dublincore.org/specifications/dublin-core/dces/ 
 * [EXIF](https://en.wikipedia.org/wiki/Exif) - Photos
 * [ID3](https://en.wikipedia.org/wiki/ID3) - MP3
 * ICY - IceCast Streaming Server
