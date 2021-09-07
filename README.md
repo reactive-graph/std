@@ -2,7 +2,7 @@
 
 | Project | Module | Sub-Module | Functionality | Tests |
 | --- | --- | --- | --- | --- |
-| Reactive Graph Flow | Plugin | Numeric | Draft | --- |
+| Reactive Graph Flow | Plugin | Numeric | <img src="https://img.shields.io/badge/state-completed-brightgreen"> | [<img src="https://img.shields.io/codecov/c/github/aschaeffer/inexor-rgf-plugin-numeric">](https://app.codecov.io/gh/aschaeffer/inexor-rgf-plugin-numeric) |
 
 ### About Inexor
 
@@ -30,7 +30,7 @@ The Inexor Reactive Graph Flow (RGF) manages reactive flows based on a graph dat
 
 ### About this plugin
 
-This plugin provides the type system, interfaces and services for numeric operations.
+This plugin provides the type system and behaviour for numeric operations.
 
 [<img src="https://img.shields.io/badge/Language-Rust-brightgreen">](https://www.rust-lang.org/)
 [<img src="https://img.shields.io/badge/Platforms-Linux%20%26%20Windows-brightgreen">]()
