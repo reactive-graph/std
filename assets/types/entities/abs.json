@@ -1,0 +1,25 @@
+{
+  "name": "abs",
+  "group": "math",
+  "description": "Computes the absolute value",
+  "components": [
+    "numeric_operation",
+    "flow_2d",
+    "flow_3d"
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "palette",
+      "extension": {
+        "content": "abs",
+        "styles": {
+          "font-family": "Fira Code",
+          "font-size": "12px",
+          "padding": "5px"
+        }
+      }
+    }
+  ]
+}

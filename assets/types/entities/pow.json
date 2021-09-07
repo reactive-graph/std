@@ -1,0 +1,25 @@
+{
+  "name": "pow",
+  "group": "math",
+  "description": "Raises a number to a power",
+  "components": [
+    "numeric_gate",
+    "flow_2d",
+    "flow_3d"
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "palette",
+      "extension": {
+        "content": "pow",
+        "styles": {
+          "font-family": "Fira Code",
+          "font-size": "12px",
+          "padding": "5px"
+        }
+      }
+    }
+  ]
+}

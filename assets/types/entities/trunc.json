@@ -1,0 +1,25 @@
+{
+  "name": "trunc",
+  "group": "math",
+  "description": "Returns the integer part of a number",
+  "components": [
+    "numeric_operation",
+    "flow_2d",
+    "flow_3d"
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "palette",
+      "extension": {
+        "content": "trunc",
+        "styles": {
+          "font-family": "Fira Code",
+          "font-size": "12px",
+          "padding": "5px"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "ln",
+  "group": "math",
+  "description": "Returns the natural logarithm of the number",
+  "components": [
+    "numeric_operation",
+    "flow_2d",
+    "flow_3d"
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "palette",
+      "extension": {
+        "content": "ln",
+        "styles": {
+          "font-family": "Fira Code",
+          "font-size": "12px",
+          "padding": "5px"
+        }
+      }
+    }
+  ]
+}

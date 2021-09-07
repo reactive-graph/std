@@ -1,0 +1,25 @@
+{
+  "name": "exp",
+  "group": "math",
+  "description": "Returns e^(input), (the exponential function)",
+  "components": [
+    "numeric_operation",
+    "flow_2d",
+    "flow_3d"
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "palette",
+      "extension": {
+        "content": "exp",
+        "styles": {
+          "font-family": "Fira Code",
+          "font-size": "12px",
+          "padding": "5px"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "round",
+  "group": "math",
+  "description": "Returns the nearest integer to a number. Round half-way cases away from 0.0",
+  "components": [
+    "numeric_operation",
+    "flow_2d",
+    "flow_3d"
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "palette",
+      "extension": {
+        "content": "round",
+        "styles": {
+          "font-family": "Fira Code",
+          "font-size": "12px",
+          "padding": "5px"
+        }
+      }
+    }
+  ]
+}
