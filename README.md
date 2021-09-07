@@ -54,15 +54,32 @@ This plugin provides the type system, interfaces and services for numeric operat
 | Name | Description | Components |
 | --- | --- | --- |
 | abs |  | numeric_operation |
+| acos |  | numeric_operation |
+| asin |  | numeric_operation |
+| atan |  | numeric_operation |
+| atan2 |  | numeric_gate |
+| cbrt |  | numeric_operation |
 | ceil |  | numeric_operation |
+| cos |  | numeric_operation |
+| cosh |  | numeric_operation |
 | exp |  | numeric_operation |
+| exp2 |  | numeric_operation |
 | floor |  | numeric_operation |
 | fract |  | numeric_operation |
+| hypot |  | numeric_gate |
 | ln |  | numeric_operation |
+| log |  | numeric_gate |
+| log2 |  | numeric_operation |
+| log10 |  | numeric_operation |
 | pow |  | numeric_gate |
+| recip |  | numeric_operation |
 | round |  | numeric_operation |
 | signum |  | numeric_operation |
+| sin |  | numeric_operation |
+| sinh |  | numeric_operation |
 | sqrt |  | numeric_operation |
+| tan |  | numeric_operation |
+| tanh |  | numeric_operation |
 | to_degrees |  | numeric_operation |
 | to_radians |  | numeric_operation |
 | trunc |  | numeric_operation |
