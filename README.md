@@ -47,13 +47,18 @@ This plugin provides the type system and behaviour for arithmetic operations.
 | Name | Description | Input Properties | Output Properties |
 | --- | --- | --- | --- |
 | arithmetic_gate | | lhs<br>rhs | result |
-| arithmetic_operation | | lhs | result |
 
 #### Entity Types
 
 | Name | Components | Description |
 | --- | --- | --- |
-| TODO | arithmetic_operation | TODO |
+| add | arithmetic_gate | Addition |
+| div | arithmetic_gate | Division |
+| max | arithmetic_gate | Max value |
+| min | arithmetic_gate | Min value |
+| mod | arithmetic_gate | Modulo |
+| mul | arithmetic_gate | Multiplication |
+| sub | arithmetic_gate | Subtraction |
 
 ### Thanks to
 
