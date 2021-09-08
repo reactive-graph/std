@@ -1,7 +1,7 @@
 {
   "name": "exp2",
   "group": "math",
-  "description": "TODO",
+  "description": "Returns 2^(input)",
   "components": [
     "numeric_operation",
     "flow_2d",

@@ -1,7 +1,7 @@
 {
   "name": "sin",
   "group": "math",
-  "description": "TODO",
+  "description": "Computes the sine of a number (in radians)",
   "components": [
     "numeric_operation",
     "flow_2d",

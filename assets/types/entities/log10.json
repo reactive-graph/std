@@ -1,7 +1,7 @@
 {
   "name": "log10",
   "group": "math",
-  "description": "TODO",
+  "description": "Returns the base 10 logarithm of the number",
   "components": [
     "numeric_operation",
     "flow_2d",

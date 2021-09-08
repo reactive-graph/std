@@ -1,7 +1,7 @@
 {
   "name": "cbrt",
   "group": "math",
-  "description": "TODO",
+  "description": "Returns the cube root of a number",
   "components": [
     "numeric_operation",
     "flow_2d",

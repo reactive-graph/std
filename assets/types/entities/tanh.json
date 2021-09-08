@@ -1,7 +1,7 @@
 {
   "name": "tanh",
   "group": "math",
-  "description": "TODO",
+  "description": "Hyperbolic tangent function",
   "components": [
     "numeric_operation",
     "flow_2d",

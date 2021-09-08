@@ -1,7 +1,7 @@
 {
   "name": "log",
   "group": "math",
-  "description": "TODO",
+  "description": "Returns the logarithm of the number with respect to an arbitrary base",
   "components": [
     "numeric_gate",
     "flow_2d",

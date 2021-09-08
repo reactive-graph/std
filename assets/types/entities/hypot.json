@@ -1,7 +1,7 @@
 {
   "name": "hypot",
   "group": "math",
-  "description": "TODO",
+  "description": "Calculates the length of the hypotenuse of a right-angle triangle given legs of length x and y",
   "components": [
     "numeric_gate",
     "flow_2d",

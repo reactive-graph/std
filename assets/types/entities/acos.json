@@ -1,7 +1,7 @@
 {
   "name": "acos",
   "group": "math",
-  "description": "TODO",
+  "description": "Computes the arccosine of a number",
   "components": [
     "numeric_operation",
     "flow_2d",

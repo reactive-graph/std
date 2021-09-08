@@ -1,7 +1,7 @@
 {
   "name": "atan",
   "group": "math",
-  "description": "TODO",
+  "description": "Computes the arctangent of a number",
   "components": [
     "numeric_operation",
     "flow_2d",

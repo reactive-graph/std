@@ -1,7 +1,7 @@
 {
   "name": "atan2",
   "group": "math",
-  "description": "TODO",
+  "description": "Computes the four quadrant arctangent in radians",
   "components": [
     "numeric_gate",
     "flow_2d",

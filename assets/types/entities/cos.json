@@ -1,7 +1,7 @@
 {
   "name": "cos",
   "group": "math",
-  "description": "TODO",
+  "description": "Computes the cosine of a number (in radians)",
   "components": [
     "numeric_operation",
     "flow_2d",
