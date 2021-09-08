@@ -1,0 +1,24 @@
+{
+  "name": "modulo",
+  "group": "math",
+  "description": "Modulo",
+  "components": [
+    "arithmetic_gate",
+    "flow_2d",
+    "flow_3d"
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "palette",
+      "extension": {
+        "content": "mod",
+        "styles": {
+          "font-family": "Fira Code",
+          "font-size": "20px"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "name": "min",
+  "group": "math",
+  "description": "Returns the minimum value of two inputs",
+  "components": [
+    "arithmetic_gate",
+    "flow_2d",
+    "flow_3d"
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "palette",
+      "extension": {
+        "content": "min",
+        "styles": {
+          "font-family": "Fira Code",
+          "font-size": "20px"
+        }
+      }
+    }
+  ]
+}

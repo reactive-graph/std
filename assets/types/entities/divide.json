@@ -1,0 +1,24 @@
+{
+  "name": "divide",
+  "group": "math",
+  "description": "Divides two integer numbers",
+  "components": [
+    "arithmetic_gate",
+    "flow_2d",
+    "flow_3d"
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "palette",
+      "extension": {
+        "content": "÷",
+        "styles": {
+          "font-family": "Fira Code",
+          "font-size": "40px"
+        }
+      }
+    }
+  ]
+}
