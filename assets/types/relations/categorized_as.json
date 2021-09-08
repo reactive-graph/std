@@ -1,0 +1,9 @@
+{
+  "name": "categorized_as",
+  "outbound_type": "*",
+  "inbound_type": "category",
+  "components": [
+  ],
+  "properties": [
+  ]
+}

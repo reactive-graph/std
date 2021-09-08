@@ -1,0 +1,9 @@
+{
+  "name": "has_subcategory",
+  "outbound_type": "category",
+  "inbound_type": "category",
+  "components": [
+  ],
+  "properties": [
+  ]
+}
