@@ -7,9 +7,12 @@ fn entity_types_should_exist() {
     let expected_entity_types = vec![
         "abs",
         "acos",
+        "acosh",
         "asin",
+        "asinh",
         "atan",
         "atan2",
+        "atanh",
         "cbrt",
         "ceil",
         "cos",
