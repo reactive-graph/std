@@ -1,7 +1,7 @@
 {
-  "name": "divide",
+  "name": "mul",
   "group": "math",
-  "description": "Divides two integer numbers",
+  "description": "Multiply two integer numbers",
   "components": [
     "arithmetic_gate",
     "flow_2d",
@@ -13,7 +13,7 @@
     {
       "name": "palette",
       "extension": {
-        "content": "÷",
+        "content": "×",
         "styles": {
           "font-family": "Fira Code",
           "font-size": "40px"

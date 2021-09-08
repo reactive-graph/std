@@ -1,5 +1,5 @@
 {
-  "name": "subtract",
+  "name": "sub",
   "group": "math",
   "description": "Subtract an integer number from another number",
   "components": [
