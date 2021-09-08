@@ -14,6 +14,7 @@ Cargo.lock
 
 # Prevent test coverage results to be commited
 cobertura.xml
+tarpaulin-report.html
 
 # Exclude CLIon / IntelliJ project files
 .idea
