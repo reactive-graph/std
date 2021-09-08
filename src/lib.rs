@@ -1,3 +1,6 @@
+#![feature(register_tool)]
+#![register_tool(tarpaulin)]
+
 #[macro_use]
 extern crate query_interface;
 
@@ -60,3 +63,7 @@ extern "C" fn register(registrar: &mut dyn plugins::PluginRegistrar) {
         Err(_) => {}
     }
 }
+
+#[cfg(test)]
+#[tarpaulin::ignore]
+pub mod tests;

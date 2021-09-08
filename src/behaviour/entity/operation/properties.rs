@@ -36,3 +36,9 @@ impl From<NumericOperationProperties> for NamedProperty {
         }
     }
 }
+
+impl From<NumericOperationProperties> for String {
+    fn from(p: NumericOperationProperties) -> Self {
+        p.to_string()
+    }
+}
