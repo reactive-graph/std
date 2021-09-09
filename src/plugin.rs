@@ -37,7 +37,7 @@ impl Plugin for BasePluginImpl {
     }
 
     fn pre_shutdown(&self) -> Result<(), PluginError> {
-        debug!("BasePluginModuleImpl::shutdown()");
+        debug!("BasePluginModuleImpl::pre_shutdown()");
         Ok(())
     }
 
