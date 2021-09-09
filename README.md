@@ -2,7 +2,7 @@
 
 | Project | Module | Sub-Module | Functionality | Tests |
 | --- | --- | --- | --- | --- |
-| Reactive Graph Flow | Plugin | Base | Experiment | --- |
+| Reactive Graph Flow | Plugin | Base | <img src="https://img.shields.io/badge/state-completed-brightgreen"> | [<img src="https://img.shields.io/codecov/c/github/aschaeffer/inexor-rgf-plugin-base">](https://app.codecov.io/gh/aschaeffer/inexor-rgf-plugin-base) |
 
 ### About Inexor
 
@@ -10,7 +10,7 @@
 <img align="right" width="200" height="200" src="https://raw.githubusercontent.com/aschaeffer/inexor-rgf-plugin-base/main/docs/images/inexor_2.png">
 </a>
 
-* Inexor will be a new first person shooter game which is based on a new octree-based game engine.
+* Inexor will be a new first-person shooter game which is based on a new octree-based game engine.
 * Inexor focuses on classic gameplay as we've seen in Cube2 or the Quake series.
 * Inexor will be written from ground up new in C++17 and Rust.
 * You can contribute anything you want: code, content, ideas..
@@ -30,7 +30,7 @@ The Inexor Reactive Graph Flow (RGF) manages reactive flows based on a graph dat
 
 ### About this plugin
 
-This plugin provides some essential entity types and relation types.
+This plugin provides some essential components, entity types and relation types.
 
 [<img src="https://img.shields.io/badge/Language-Rust-brightgreen">](https://www.rust-lang.org/)
 [<img src="https://img.shields.io/badge/Platforms-Linux%20%26%20Windows-brightgreen">]()
@@ -44,10 +44,12 @@ This plugin provides some essential entity types and relation types.
 
 #### Components
 
-* Named
-* Describable
-* Flow 2D
-* Flow 3D
+| Name | Description | Properties |
+| --- | --- | --- |
+| named | | name |
+| describable | | description |
+| flow_2d | | f2dx<br>f2dy<br>f2dw<br>f2dh |
+| flow_3d | | f3dx<br>f3dy<br>f3dz<br>f3dw<br>f3dh<br>f3dd |
 
 #### Entity Types
 
@@ -65,8 +67,6 @@ This plugin provides some essential entity types and relation types.
 
 ### Sponsors
 
-<a href="https://www.jetbrains.com/?from=github.com/inexorgame">
-<img align="right" width="200" height="200" src="https://raw.githubusercontent.com/aschaeffer/inexor-rgf-plugin-base/main/docs/images/icon_CLion.svg">
-</a>
-
-Special thanks to `JetBrains <https://www.jetbrains.com/?from=github.com/inexorgame>`__ for providing us with CLion licenses!
+| | | |
+| --- | --- | --- |
+| <a href="https://www.jetbrains.com/?from=github.com/inexorgame"><img align="right" width="100" height="100" src="https://raw.githubusercontent.com/aschaeffer/inexor-rgf-plugin-logical/main/docs/images/icon_CLion.svg"></a> | JetBrains | Special thanks to JetBrains for providing us with CLion licenses! |
