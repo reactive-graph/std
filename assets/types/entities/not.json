@@ -1,0 +1,93 @@
+{
+  "name": "not",
+  "group": "logical_operation",
+  "description": "NOT",
+  "components": [
+    "logical_gate",
+    "flow_2d",
+    "flow_3d"
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "palette",
+      "extension": {
+        "content": "!",
+        "styles":  {
+          "font-size": "20px",
+          "font-family": "Fira Code",
+          "padding": "5px"
+        }
+      }
+    },
+    {
+      "name": "shape",
+      "extension": {
+        "width": 200,
+        "socket": {
+          "width": 60,
+          "height": 30,
+          "offset": 5
+        },
+        "offset": {
+          "top": "socket.height",
+          "bottom": "socket.height"
+        },
+        "elements": {
+          "title": {
+            "show": true,
+            "content": "element.description",
+            "position": {
+              "left": 0,
+              "top": 0,
+              "width": "shape.width",
+              "height": "socket.height"
+            },
+            "styles": {
+              "font-size": "12px",
+              "fill": "black"
+            }
+          },
+          "symbol": {
+            "show": true,
+            "content": "!",
+            "position": {
+              "left": 0,
+              "top": 0,
+              "width": "shape.width",
+              "height": "shape.height"
+            },
+            "styles": {
+              "fill": "fuchsia",
+              "font-size": "40px",
+              "font-family": "Fira Code"
+            }
+          },
+          "id": {
+            "show": true,
+            "content": "shape.id",
+            "position": {
+              "left": 0,
+              "top": "shape.height-socket.height",
+              "width": "shape.width",
+              "height": "socket.height"
+            },
+            "styles": {
+              "font-size": "9px",
+              "fill": "black"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "dublin-core",
+      "extension":{
+        "title": "NOT",
+        "subject": "Logical Gate NOT",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}
