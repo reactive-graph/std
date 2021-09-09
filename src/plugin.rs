@@ -8,13 +8,16 @@ use crate::plugins::{
     ComponentProvider, EntityBehaviourProvider, EntityTypeProvider, FlowProvider, Plugin,
     PluginError, RelationBehaviourProvider, RelationTypeProvider,
 };
-use crate::provider::{TaxonomyEntityTypeProviderImpl, TaxonomyRelationTypeProviderImpl};
+use crate::provider::{
+    TaxonomyComponentProviderImpl, TaxonomyEntityTypeProviderImpl, TaxonomyRelationTypeProviderImpl,
+};
 
 #[async_trait]
 pub trait TaxonomyPlugin: Plugin + Send + Sync {}
 
 #[module]
 pub struct TaxonomyPluginImpl {
+    component_provider: Wrc<TaxonomyComponentProviderImpl>,
     entity_type_provider: Wrc<TaxonomyEntityTypeProviderImpl>,
     relation_type_provider: Wrc<TaxonomyRelationTypeProviderImpl>,
 }
@@ -47,7 +50,13 @@ impl Plugin for TaxonomyPluginImpl {
     }
 
     fn get_component_provider(&self) -> Result<Arc<dyn ComponentProvider>, PluginError> {
-        Err(PluginError::NoComponentProvider)
+        let component_provider = self.component_provider.clone();
+        let component_provider: Result<Arc<dyn ComponentProvider>, _> =
+            <dyn query_interface::Object>::query_arc(component_provider);
+        if component_provider.is_err() {
+            return Err(PluginError::NoComponentProvider);
+        }
+        Ok(component_provider.unwrap())
     }
 
     fn get_entity_type_provider(&self) -> Result<Arc<dyn EntityTypeProvider>, PluginError> {
