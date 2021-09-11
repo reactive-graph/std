@@ -139,14 +139,16 @@ impl Connector {
     //     format!("{}--{}--{}", type_name, outbound_property_name.as_str(), inbound_property_name.as_str())
     // }
 
-    pub fn type_name(
-        type_name: &str,
-        outbound_property_name: &str,
-        inbound_property_name: &str,
+    pub fn type_name<S: Into<String>>(
+        type_name: S,
+        outbound_property_name: S,
+        inbound_property_name: S,
     ) -> String {
         format!(
             "{}--{}--{}",
-            type_name, outbound_property_name, inbound_property_name
+            type_name.into(),
+            outbound_property_name.into(),
+            inbound_property_name.into()
         )
     }
 }
