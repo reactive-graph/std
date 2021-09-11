@@ -40,3 +40,9 @@ impl From<LogicalGateProperties> for NamedProperty {
         }
     }
 }
+
+impl From<LogicalGateProperties> for String {
+    fn from(p: LogicalGateProperties) -> Self {
+        p.to_string()
+    }
+}

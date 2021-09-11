@@ -62,6 +62,6 @@ extern "C" fn register(registrar: &mut dyn plugins::PluginRegistrar) {
     }
 }
 
-// #[cfg(test)]
-// #[tarpaulin::ignore]
-// pub mod tests;
+#[cfg(test)]
+#[tarpaulin::ignore]
+pub mod tests;
