@@ -9,6 +9,7 @@ use crate::model::{
     DataType, EntityInstance, EntityType, PropertyType, ReactiveEntityInstance, SocketType,
 };
 use crate::model::{PropertyInstanceGetter, PropertyInstanceSetter};
+use inexor_rgf_core_reactive::{Gate, Operation};
 use std::collections::HashMap;
 use uuid::Uuid;
 
@@ -50,7 +51,8 @@ fn and_gate_test() {
     let and_behaviour = LogicalGate::new(and_reactive_entity.clone(), *and_function);
     assert_eq!(TYPE_NAME_AND, and_behaviour.type_name().as_str());
 
-    // Set both inputs
+    // === Reactive Entity API ===
+
     and_reactive_entity.set(LHS, json!(true));
     and_reactive_entity.set(RHS, json!(true));
     // Expect the correct output value -> behaviour has modified the output
@@ -61,4 +63,20 @@ fn and_gate_test() {
     assert_eq!(false, and_reactive_entity.as_bool(RESULT).unwrap());
     and_reactive_entity.set(LHS, json!(true));
     assert_eq!(false, and_reactive_entity.as_bool(RESULT).unwrap());
+    and_reactive_entity.set(RHS, json!(true));
+    assert_eq!(true, and_reactive_entity.as_bool(RESULT).unwrap());
+
+    // === Behaviour API ===
+
+    and_behaviour.lhs(json!(true));
+    and_behaviour.rhs(json!(true));
+    assert_eq!(true, and_behaviour.result().as_bool().unwrap());
+    and_behaviour.lhs(json!(false));
+    assert_eq!(false, and_behaviour.result().as_bool().unwrap());
+    and_behaviour.rhs(json!(false));
+    assert_eq!(false, and_behaviour.result().as_bool().unwrap());
+    and_behaviour.lhs(json!(true));
+    assert_eq!(false, and_behaviour.result().as_bool().unwrap());
+    and_behaviour.rhs(json!(true));
+    assert_eq!(true, and_behaviour.result().as_bool().unwrap());
 }
