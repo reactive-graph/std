@@ -27,6 +27,18 @@ fn propagation_function_test() {
     );
 }
 
+// Necessary because the type_name of an edge in the graph database between two vertexes must
+// be unique.
+#[test]
+fn test_type_name_construction() {
+    let type_name = "default_connector";
+    let outbound_property_name = "lhs";
+    let inbound_property_name = "result";
+    let full_type_name =
+        Connector::type_name(type_name, outbound_property_name, inbound_property_name);
+    assert_eq!("default_connector--lhs--result", full_type_name);
+}
+
 #[test]
 fn default_connector_test() {
     let outbound_property_name = r_string();
