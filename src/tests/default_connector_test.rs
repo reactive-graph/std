@@ -56,7 +56,7 @@ fn default_connector_test() {
         inbound_property_name.as_str(),
     ));
     let propagation_function = CONNECTORS.get(type_name);
-    let connector = Connector::from_relation(r.clone(), *propagation_function.unwrap());
+    let mut connector = Connector::from_relation(r.clone(), *propagation_function.unwrap());
     connector
         .relation
         .outbound
@@ -118,6 +118,35 @@ fn default_connector_test() {
         .set(outbound_property_name.clone(), json!(s.clone()));
     assert_eq!(
         s,
+        connector
+            .relation
+            .inbound
+            .as_string(inbound_property_name.clone())
+            .unwrap()
+    );
+    // Disconnect, no more propagation
+    connector.disconnect();
+    connector.relation.outbound.set(
+        outbound_property_name.clone(),
+        json!("MUST NOT PROPAGATED ANYMORE"),
+    );
+    assert_eq!(
+        s,
+        connector
+            .relation
+            .inbound
+            .as_string(inbound_property_name.clone())
+            .unwrap()
+    );
+    // Reconnect, should propagate again
+    connector.connect();
+    let s2 = r_string();
+    connector
+        .relation
+        .outbound
+        .set(outbound_property_name.clone(), json!(s2.clone()));
+    assert_eq!(
+        s2,
         connector
             .relation
             .inbound
