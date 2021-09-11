@@ -9,6 +9,7 @@ use crate::model::{
     DataType, EntityInstance, EntityType, PropertyType, ReactiveEntityInstance, SocketType,
 };
 use crate::model::{PropertyInstanceGetter, PropertyInstanceSetter};
+use inexor_rgf_core_reactive::Operation;
 use std::collections::HashMap;
 use uuid::Uuid;
 
@@ -47,8 +48,17 @@ fn not_operation_test() {
     let not_behaviour = LogicalOperation::new(not_reactive_entity.clone(), *not_function);
     assert_eq!(TYPE_NAME_NOT, not_behaviour.type_name().as_str());
 
+    // === Reactive Entity API ===
+
     not_reactive_entity.set(LHS, json!(true));
     assert_eq!(false, not_reactive_entity.as_bool(RESULT).unwrap());
     not_reactive_entity.set(LHS, json!(false));
     assert_eq!(true, not_reactive_entity.as_bool(RESULT).unwrap());
+
+    // === Behaviour API ===
+
+    not_behaviour.lhs(json!(true));
+    assert_eq!(false, not_behaviour.result().as_bool().unwrap());
+    not_behaviour.lhs(json!(false));
+    assert_eq!(true, not_behaviour.result().as_bool().unwrap());
 }
