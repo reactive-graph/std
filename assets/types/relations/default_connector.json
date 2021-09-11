@@ -1,0 +1,10 @@
+{
+  "name": "default_connector",
+  "outbound_type": "*",
+  "inbound_type": "*",
+  "components": [
+    "connector"
+  ],
+  "properties": [
+  ]
+}

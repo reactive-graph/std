@@ -1,0 +1,13 @@
+{
+  "name": "connector",
+  "properties": [
+    {
+      "name": "outbound_property_name",
+      "data_type": "string"
+    },
+    {
+      "name": "inbound_property_name",
+      "data_type": "string"
+    }
+  ]
+}
