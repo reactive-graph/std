@@ -2,7 +2,7 @@
 
 | Project | Module | Sub-Module | Functionality | Tests |
 | --- | --- | --- | --- | --- |
-| Reactive Graph Flow | Plugin | Logical | <img src="https://img.shields.io/badge/state-wip-yellow"> | [<img src="https://img.shields.io/codecov/c/github/aschaeffer/inexor-rgf-plugin-comparison">](https://app.codecov.io/gh/aschaeffer/inexor-rgf-plugin-comparison) |
+| Reactive Graph Flow | Plugin | Logical | <img src="https://img.shields.io/badge/state-completed-brightgreen"> | [<img src="https://img.shields.io/codecov/c/github/aschaeffer/inexor-rgf-plugin-comparison">](https://app.codecov.io/gh/aschaeffer/inexor-rgf-plugin-comparison) |
 
 ### About Inexor
 
@@ -53,6 +53,10 @@ This plugin provides the type system and behaviour for comparisons of two inputs
 | Name | Components | Description |
 | --- | --- | --- |
 | equals | comparison_gate | Returns true, if lhs and rhs are equal|
+| greater_than | comparison_gate | Returns true, if lhs is greater than rhs|
+| greater_than_or_equals | comparison_gate | Returns true, if lhs is greater than or equal to rhs|
+| lower_than | comparison_gate | Returns true, if lhs is lower than rhs|
+| lower_than_or_equals | comparison_gate | Returns true, if lhs is lower than or equal to rhs|
 | not_equals | comparison_gate | Returns true, if lhs and rhs are not equal|
 
 ### Thanks to
