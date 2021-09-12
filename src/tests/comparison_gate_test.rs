@@ -19,6 +19,7 @@ const RESULT: ComparisonGateProperties = ComparisonGateProperties::RESULT;
 
 const COMPONENT_NAME_COMPARISON_GATE: &'static str = "comparison_gate";
 const TYPE_NAME_EQUALS: &str = "equals";
+const TYPE_NAME_GREATER_THAN_OR_EQUALS: &str = "greater_than_or_equals";
 
 #[test]
 fn behaviour_function_should_exist() {
@@ -27,13 +28,13 @@ fn behaviour_function_should_exist() {
 }
 
 #[test]
-fn and_gate_test() {
+fn equals_gate_test() {
     let property_types = vec![
         PropertyType::new_with_socket(LHS, DataType::Number, SocketType::Input),
         PropertyType::new_with_socket(RHS, DataType::Number, SocketType::Input),
         PropertyType::new_with_socket(RESULT, DataType::Number, SocketType::Output),
     ];
-    let and_type = EntityType::new(
+    let equals_type = EntityType::new(
         TYPE_NAME_EQUALS,
         "",
         vec![String::from(COMPONENT_NAME_COMPARISON_GATE)],
@@ -46,7 +47,7 @@ fn and_gate_test() {
     properties.insert(LHS.into(), json!(LHS.default_value()));
     properties.insert(RHS.into(), json!(LHS.default_value()));
     properties.insert(RESULT.into(), json!(RESULT.default_value()));
-    let equals_entity = EntityInstance::new(and_type.name.clone(), Uuid::new_v4(), properties);
+    let equals_entity = EntityInstance::new(equals_type.name.clone(), Uuid::new_v4(), properties);
     let equals_reactive_entity = Arc::new(ReactiveEntityInstance::from(equals_entity));
     let equals_behaviour = ComparisonGate::new(equals_reactive_entity.clone(), *equals_function);
     assert_eq!(TYPE_NAME_EQUALS, equals_behaviour.type_name().as_str());
@@ -75,4 +76,59 @@ fn and_gate_test() {
     assert_eq!(false, equals_behaviour.result().as_bool().unwrap());
     equals_behaviour.lhs(json!(3));
     assert_eq!(true, equals_behaviour.result().as_bool().unwrap());
+}
+
+#[test]
+fn greater_than_or_equals_gate_test() {
+    let property_types = vec![
+        PropertyType::new_with_socket(LHS, DataType::Number, SocketType::Input),
+        PropertyType::new_with_socket(RHS, DataType::Number, SocketType::Input),
+        PropertyType::new_with_socket(RESULT, DataType::Number, SocketType::Output),
+    ];
+    let gte_type = EntityType::new(
+        TYPE_NAME_GREATER_THAN_OR_EQUALS,
+        "",
+        vec![String::from(COMPONENT_NAME_COMPARISON_GATE)],
+        Vec::new(),
+        property_types,
+        Vec::new(),
+    );
+    let gte_function = COMPARISON_GATES
+        .get(TYPE_NAME_GREATER_THAN_OR_EQUALS)
+        .unwrap();
+    let mut properties = HashMap::new();
+    properties.insert(LHS.into(), json!(LHS.default_value()));
+    properties.insert(RHS.into(), json!(LHS.default_value()));
+    properties.insert(RESULT.into(), json!(RESULT.default_value()));
+    let gte_entity = EntityInstance::new(gte_type.name.clone(), Uuid::new_v4(), properties);
+    let gte_reactive_entity = Arc::new(ReactiveEntityInstance::from(gte_entity));
+    let gte_behaviour = ComparisonGate::new(gte_reactive_entity.clone(), *gte_function);
+    assert_eq!(
+        TYPE_NAME_GREATER_THAN_OR_EQUALS,
+        gte_behaviour.type_name().as_str()
+    );
+
+    // === Reactive Entity API ===
+
+    gte_reactive_entity.set(LHS, json!(5));
+    gte_reactive_entity.set(RHS, json!(5));
+    assert_eq!(true, gte_reactive_entity.as_bool(RESULT).unwrap());
+    gte_reactive_entity.set(LHS, json!(6));
+    assert_eq!(true, gte_reactive_entity.as_bool(RESULT).unwrap());
+    gte_reactive_entity.set(RHS, json!(7));
+    assert_eq!(false, gte_reactive_entity.as_bool(RESULT).unwrap());
+    gte_reactive_entity.set(LHS, json!(7));
+    assert_eq!(true, gte_reactive_entity.as_bool(RESULT).unwrap());
+
+    // === Behaviour API ===
+
+    gte_behaviour.lhs(json!(1));
+    gte_behaviour.rhs(json!(2));
+    assert_eq!(false, gte_behaviour.result().as_bool().unwrap());
+    gte_behaviour.lhs(json!(2));
+    assert_eq!(true, gte_behaviour.result().as_bool().unwrap());
+    gte_behaviour.lhs(json!(3));
+    assert_eq!(true, gte_behaviour.result().as_bool().unwrap());
+    gte_behaviour.rhs(json!(4));
+    assert_eq!(false, gte_behaviour.result().as_bool().unwrap());
 }

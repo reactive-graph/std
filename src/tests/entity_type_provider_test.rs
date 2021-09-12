@@ -3,7 +3,14 @@ use crate::provider::ComparisonEntityTypeProviderImpl;
 
 #[test]
 fn entity_types_should_exist() {
-    let expected_entity_types = vec!["equals", "not_equals"];
+    let expected_entity_types = vec![
+        "equals",
+        "greater_than",
+        "greater_than_or_equals",
+        "lower_than",
+        "lower_than_or_equals",
+        "not_equals",
+    ];
     let entity_type_provider = ComparisonEntityTypeProviderImpl {};
     let entity_types = entity_type_provider.get_entity_types();
     assert_eq!(expected_entity_types.len(), entity_types.len());
