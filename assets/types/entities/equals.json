@@ -1,7 +1,7 @@
 {
   "name": "equals",
   "group": "comparison_gates",
-  "description": "Checks for equality",
+  "description": "Checks if lhs is equal to rhs",
   "components": [
     "comparison_gate",
     "flow_2d",

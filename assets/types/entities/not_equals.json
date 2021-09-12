@@ -1,7 +1,7 @@
 {
   "name": "not_equals",
   "group": "comparison_gates",
-  "description": "Checks for inverse equality",
+  "description": "Checks if lhs not equal to rhs",
   "components": [
     "comparison_gate",
     "flow_2d",
@@ -87,8 +87,8 @@
     {
       "name": "dublin-core",
       "extension":{
-        "title": "EQ",
-        "subject": "Comparison Gate EQ",
+        "title": "NE",
+        "subject": "Comparison Gate NE",
         "creator": "Hanack"
       }
     }
