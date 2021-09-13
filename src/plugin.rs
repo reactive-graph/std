@@ -4,9 +4,11 @@ use async_trait::async_trait;
 use log::debug;
 use waiter_di::*;
 
+use crate::plugins::plugin::PluginMetadata;
 use crate::plugins::{
-    ComponentProvider, EntityBehaviourProvider, EntityTypeProvider, FlowProvider, Plugin,
-    PluginError, RelationBehaviourProvider, RelationTypeProvider, WebResourceProvider,
+    ComponentBehaviourProvider, ComponentProvider, EntityBehaviourProvider, EntityTypeProvider,
+    FlowProvider, Plugin, PluginError, RelationBehaviourProvider, RelationTypeProvider,
+    WebResourceProvider,
 };
 use crate::provider::{BaseComponentProviderImpl, BaseEntityTypeProviderImpl};
 
@@ -26,6 +28,14 @@ interfaces!(BasePluginImpl: dyn Plugin);
 impl BasePlugin for BasePluginImpl {}
 
 impl Plugin for BasePluginImpl {
+    fn metadata(&self) -> Result<PluginMetadata, PluginError> {
+        Ok(PluginMetadata {
+            name: env!("CARGO_PKG_NAME").into(),
+            description: env!("CARGO_PKG_DESCRIPTION").into(),
+            version: env!("CARGO_PKG_VERSION").into(),
+        })
+    }
+
     fn init(&self) -> Result<(), PluginError> {
         debug!("BasePluginModuleImpl::init()");
         Ok(())
@@ -68,6 +78,12 @@ impl Plugin for BasePluginImpl {
 
     fn get_relation_type_provider(&self) -> Result<Arc<dyn RelationTypeProvider>, PluginError> {
         Err(PluginError::NoRelationTypeProvider)
+    }
+
+    fn get_component_behaviour_provider(
+        &self,
+    ) -> Result<Arc<dyn ComponentBehaviourProvider>, PluginError> {
+        Err(PluginError::NoComponentBehaviourProvider)
     }
 
     fn get_entity_behaviour_provider(
