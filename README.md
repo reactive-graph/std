@@ -42,6 +42,12 @@ This plugin provides connectors.
 [<img src="https://img.shields.io/github/license/aschaeffer/inexor-rgf-plugin-connector">](https://github.com/aschaeffer/inexor-rgf-plugin-connector/blob/main/LICENSE)
 [<img src="https://img.shields.io/discord/698219248954376256?logo=discord">](https://discord.com/invite/acUW8k7)
 
+#### User Stories
+
+* As a developer or a flow editor I can connect and disconnect an inbound property of an entity instance with an
+  outbound property of another entity instance
+* Changes on the inbound property results on changes of the outbound property
+
 #### What is a connector?
 
 A connector connects a property of the outbound entity instance with a property of the inbound entity
