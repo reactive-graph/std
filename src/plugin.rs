@@ -7,7 +7,7 @@ use waiter_di::*;
 use crate::behaviour::relation::relation_behaviour_provider::ConnectorRelationBehaviourProviderImpl;
 use crate::plugins::{
     ComponentProvider, EntityBehaviourProvider, EntityTypeProvider, FlowProvider, Plugin,
-    PluginError, RelationBehaviourProvider, RelationTypeProvider,
+    PluginError, RelationBehaviourProvider, RelationTypeProvider, WebResourceProvider,
 };
 use crate::provider::{ConnectorComponentProviderImpl, ConnectorRelationTypeProviderImpl};
 
@@ -92,5 +92,9 @@ impl Plugin for ConnectorPluginImpl {
 
     fn get_flow_provider(&self) -> Result<Arc<dyn FlowProvider>, PluginError> {
         Err(PluginError::NoFlowProvider)
+    }
+
+    fn get_web_resource_provider(&self) -> Result<Arc<dyn WebResourceProvider>, PluginError> {
+        Err(PluginError::NoWebResourceProvider)
     }
 }
