@@ -2,7 +2,7 @@
 
 | Project | Module | Sub-Module | Functionality | Tests |
 | --- | --- | --- | --- | --- |
-| Reactive Graph Flow | Plugin | Logical | <img src="https://img.shields.io/badge/state-completed-brightgreen"> | [<img src="https://img.shields.io/codecov/c/github/aschaeffer/inexor-rgf-plugin-value">](https://app.codecov.io/gh/aschaeffer/inexor-rgf-plugin-value) |
+| Reactive Graph Flow | Plugin | Value | <img src="https://img.shields.io/badge/state-completed-brightgreen"> | [<img src="https://img.shields.io/codecov/c/github/aschaeffer/inexor-rgf-plugin-value">](https://app.codecov.io/gh/aschaeffer/inexor-rgf-plugin-value) |
 
 ### About Inexor
 
@@ -30,7 +30,8 @@ The Inexor Reactive Graph Flow (RGF) manages reactive flows based on a graph dat
 
 ### About this plugin
 
-This plugin provides the type system and behaviour for value operations.
+This plugin provides the type system for value entities. These are entities which stores one single value.
+There are entity types for each data type.
 
 [<img src="https://img.shields.io/badge/Language-Rust-brightgreen">](https://www.rust-lang.org/)
 [<img src="https://img.shields.io/badge/Platforms-Linux%20%26%20Windows-brightgreen">]()
@@ -44,11 +45,11 @@ This plugin provides the type system and behaviour for value operations.
 
 #### Entity Types
 
-| Name | Components | Description |
+| Name | Description | Output Properties |
 | --- | --- | --- |
-| value |  | |
-| string_value |  | |
-| numeric_value |  | |
+| value | Value of any type | value |
+| string_value | Value of type string | value |
+| numeric_value | Value of type numeric | value |
 
 ### Thanks to
 
