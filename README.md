@@ -2,7 +2,7 @@
 
 | Project | Module | Sub-Module | Functionality | Test Coverage |
 | --- | --- | --- | --- | --- |
-| Reactive Graph Flow | Plugin | MetaData | Experiment | --- |
+| Reactive Graph Flow | Plugin | MetaData | <img src="https://img.shields.io/badge/state-completed-brightgreen"> | [<img src="https://img.shields.io/codecov/c/github/aschaeffer/inexor-rgf-plugin-metadata">](https://app.codecov.io/gh/aschaeffer/inexor-rgf-plugin-metadata) |
 
 ### About Inexor
 
@@ -31,7 +31,8 @@ The Inexor Reactive Graph Flow (RGF) manages reactive flows based on a graph dat
 ### About this module
 
 This plugin provides components for support of metadata. Textures, sounds, maps and other content usually has some
-information about the creator, the contributors, the source.
+information about the creator, the contributors, the source. The metadata definitions are provided as components.
+Therefore, any entity type can add metadata by adding the metadata component.
 
 [<img src="https://img.shields.io/badge/Language-Rust-brightgreen">](https://www.rust-lang.org/)
 [<img src="https://img.shields.io/badge/Platforms-Linux%20%26%20Windows-brightgreen">]()
@@ -58,8 +59,6 @@ information about the creator, the contributors, the source.
 
 ### Sponsors
 
-<a href="https://www.jetbrains.com/?from=github.com/inexorgame">
-<img align="right" width="200" height="200" src="https://raw.githubusercontent.com/aschaeffer/inexor-rgf-plugin-metadata/main/docs/images/icon_CLion.svg">
-</a>
-
-Special thanks to `JetBrains <https://www.jetbrains.com/?from=github.com/inexorgame>`__ for providing us with CLion licenses!
+| | | |
+| --- | --- | --- |
+| <a href="https://www.jetbrains.com/?from=github.com/inexorgame"><img align="right" width="100" height="100" src="https://raw.githubusercontent.com/aschaeffer/inexor-rgf-plugin-numeric/main/docs/images/icon_CLion.svg"></a> | JetBrains | Special thanks to JetBrains for providing us with CLion licenses! |
