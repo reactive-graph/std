@@ -1,16 +1,25 @@
-use std::sync::Arc;
+use std::sync::{Arc, RwLock};
 
 use async_trait::async_trait;
 use log::debug;
 use waiter_di::*;
 
 use crate::plugins::plugin::PluginMetadata;
+use crate::plugins::plugin_context::PluginContext;
 use crate::plugins::{
     ComponentBehaviourProvider, ComponentProvider, EntityBehaviourProvider, EntityTypeProvider,
     FlowProvider, Plugin, PluginError, RelationBehaviourProvider, RelationTypeProvider,
     WebResourceProvider,
 };
 use crate::provider::{BaseComponentProviderImpl, BaseEntityTypeProviderImpl};
+
+#[wrapper]
+pub struct PluginContextContainer(RwLock<Option<std::sync::Arc<dyn PluginContext>>>);
+
+#[provides]
+fn create_empty_plugin_context_container() -> PluginContextContainer {
+    return PluginContextContainer(RwLock::new(None));
+}
 
 #[async_trait]
 pub trait BasePlugin: Plugin + Send + Sync {}
@@ -19,6 +28,8 @@ pub trait BasePlugin: Plugin + Send + Sync {}
 pub struct BasePluginImpl {
     component_provider: Wrc<BaseComponentProviderImpl>,
     entity_type_provider: Wrc<BaseEntityTypeProviderImpl>,
+
+    context: PluginContextContainer,
 }
 
 interfaces!(BasePluginImpl: dyn Plugin);
@@ -53,6 +64,11 @@ impl Plugin for BasePluginImpl {
 
     fn shutdown(&self) -> Result<(), PluginError> {
         debug!("BasePluginModuleImpl::shutdown()");
+        Ok(())
+    }
+
+    fn set_context(&self, context: Arc<dyn PluginContext>) -> Result<(), PluginError> {
+        self.context.0.write().unwrap().replace(context);
         Ok(())
     }
 
