@@ -1,10 +1,12 @@
 use std::sync::{Arc, RwLock};
 
 use async_trait::async_trait;
-use log::debug;
+use log::{debug, error};
 use waiter_di::*;
 
 use crate::behaviour::entity::entity_behaviour_provider::NumericEntityBehaviourProviderImpl;
+use crate::builder::EntityInstanceBuilder;
+use crate::constants::{NAMESPACE_NUMERIC, NUMERIC_CONSTANTS};
 use crate::plugins::plugin::PluginMetadata;
 use crate::plugins::plugin_context::PluginContext;
 use crate::plugins::{
@@ -13,6 +15,8 @@ use crate::plugins::{
     WebResourceProvider,
 };
 use crate::provider::{NumericComponentProviderImpl, NumericEntityTypeProviderImpl};
+use serde_json::json;
+use uuid::Uuid;
 
 #[wrapper]
 pub struct PluginContextContainer(RwLock<Option<std::sync::Arc<dyn PluginContext>>>);
@@ -56,6 +60,7 @@ impl Plugin for NumericPluginImpl {
 
     fn post_init(&self) -> Result<(), PluginError> {
         debug!("NumericPluginModuleImpl::post_init()");
+        self.create_numeric_constants();
         Ok(())
     }
 
@@ -128,5 +133,38 @@ impl Plugin for NumericPluginImpl {
 
     fn get_web_resource_provider(&self) -> Result<Arc<dyn WebResourceProvider>, PluginError> {
         Err(PluginError::NoWebResourceProvider)
+    }
+}
+
+impl NumericPluginImpl {
+    fn create_numeric_constants(&self) {
+        let reader = self.context.0.read().unwrap();
+        let entity_instance_manager = reader
+            .as_ref()
+            .unwrap()
+            .get_entity_instance_manager()
+            .clone();
+        for (name, value) in NUMERIC_CONSTANTS.iter() {
+            let entity_instance = EntityInstanceBuilder::new("numeric_value")
+                .id(Uuid::new_v5(&NAMESPACE_NUMERIC, name.as_bytes()))
+                .property("value", json!(value))
+                .property("name", json!(name))
+                .get();
+            let reactive_entity_instance = entity_instance_manager.create(entity_instance);
+            match reactive_entity_instance {
+                Ok(reactive_entity_instance) => {
+                    debug!(
+                        "Created numeric constant {} {} as entity instance {}",
+                        name, value, reactive_entity_instance.id
+                    );
+                }
+                Err(_) => {
+                    error!(
+                        "Failed to create entity instance for constant {} {}!",
+                        name, value
+                    );
+                }
+            }
+        }
     }
 }

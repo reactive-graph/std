@@ -9,6 +9,7 @@ extern crate lazy_static;
 
 use std::sync::Arc;
 
+use inexor_rgf_core_builder as builder;
 use inexor_rgf_core_frp as frp;
 use inexor_rgf_core_model as model;
 use inexor_rgf_core_plugins as plugins;
@@ -22,6 +23,7 @@ use crate::plugin::NumericPlugin;
 use crate::plugins::{Plugin, PluginError};
 
 pub mod behaviour;
+pub mod constants;
 pub mod plugin;
 pub mod provider;
 
