@@ -1,0 +1,9 @@
+query getAllConfigs {
+  instances {
+    entities(entityType: "config_file") {
+      id
+      description
+      properties
+    }
+  }
+}

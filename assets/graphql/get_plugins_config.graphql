@@ -1,0 +1,9 @@
+query getPluginsConfig {
+  instances {
+    entities(id: "f3c6927a-378c-4dc3-ad71-eb9303eb9911") {
+      id
+      description
+      properties
+    }
+  }
+}
