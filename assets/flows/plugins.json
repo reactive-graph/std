@@ -1,0 +1,26 @@
+{
+  "id": "c280eb07-36fc-4056-96de-10b7c9e13c4f",
+  "type": "generic_flow",
+  "name": "Plugins",
+  "description": "The plugins configuration",
+  "entities": [
+    {
+      "type": "generic_flow",
+      "id": "c280eb07-36fc-4056-96de-10b7c9e13c4f",
+      "properties": {
+      }
+    },
+    {
+      "type": "config_file",
+      "id": "f3c6927a-378c-4dc3-ad71-eb9303eb9911",
+      "description": "Plugins",
+      "properties": {
+        "filename": "./config/plugins.toml",
+        "configuration": {
+        }
+      }
+    }
+  ],
+  "relations": [
+  ]
+}
