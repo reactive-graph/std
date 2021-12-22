@@ -16,7 +16,7 @@ serde_json = "1.0"
 waiter_di = { version = "1.6", features = [ "async" ], git = "https://github.com/aschaeffer/waiter.git" }
 
 inexor-rgf-core-model = { git = "https://github.com/aschaeffer/inexor-rgf-core-model.git" }
-inexor-rgf-core-plugins = { git = "https://github.com/aschaeffer/inexor-rgf-core-plugins.git", branch = "feature/plugin-context" }
+inexor-rgf-core-plugins = { git = "https://github.com/aschaeffer/inexor-rgf-core-plugins.git" }
 
 [lib]
 # Plugins use crate-type cdylib
