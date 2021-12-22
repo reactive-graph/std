@@ -1,4 +1,4 @@
-use std::sync::Arc;
+use std::sync::{Arc, RwLock};
 
 use async_trait::async_trait;
 use log::debug;
@@ -6,12 +6,21 @@ use waiter_di::*;
 
 use crate::behaviour::relation::relation_behaviour_provider::ConnectorRelationBehaviourProviderImpl;
 use crate::plugins::plugin::PluginMetadata;
+use crate::plugins::plugin_context::PluginContext;
 use crate::plugins::{
     ComponentBehaviourProvider, ComponentProvider, EntityBehaviourProvider, EntityTypeProvider,
     FlowProvider, Plugin, PluginError, RelationBehaviourProvider, RelationTypeProvider,
     WebResourceProvider,
 };
 use crate::provider::{ConnectorComponentProviderImpl, ConnectorRelationTypeProviderImpl};
+
+#[wrapper]
+pub struct PluginContextContainer(RwLock<Option<std::sync::Arc<dyn PluginContext>>>);
+
+#[provides]
+fn create_empty_plugin_context_container() -> PluginContextContainer {
+    return PluginContextContainer(RwLock::new(None));
+}
 
 #[async_trait]
 pub trait ConnectorPlugin: Plugin + Send + Sync {}
@@ -21,6 +30,8 @@ pub struct ConnectorPluginImpl {
     component_provider: Wrc<ConnectorComponentProviderImpl>,
     relation_type_provider: Wrc<ConnectorRelationTypeProviderImpl>,
     relation_behaviour_provider: Wrc<ConnectorRelationBehaviourProviderImpl>,
+
+    context: PluginContextContainer,
 }
 
 interfaces!(ConnectorPluginImpl: dyn Plugin);
@@ -55,6 +66,11 @@ impl Plugin for ConnectorPluginImpl {
 
     fn shutdown(&self) -> Result<(), PluginError> {
         debug!("ConnectorPluginModuleImpl::shutdown()");
+        Ok(())
+    }
+
+    fn set_context(&self, context: Arc<dyn PluginContext>) -> Result<(), PluginError> {
+        self.context.0.write().unwrap().replace(context);
         Ok(())
     }
 
