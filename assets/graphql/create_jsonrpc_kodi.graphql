@@ -1,0 +1,49 @@
+mutation {
+  instances {
+    entities {
+      create(
+        typeName: "jsonrpc",
+        id: "854161a4-b3e0-4267-9415-7dd9f1bcb5d0",
+        properties: [
+          {
+            name: "url",
+            value: "http://kodi:8080/jsonrpc"
+          },
+          {
+            name: "jsonrpc_version",
+            value: "2.0"
+          },
+          {
+            name: "method",
+            value: ""
+          },
+          {
+            name: "params",
+            value: {}
+          },
+          {
+            name: "result",
+            value: {}
+          },
+          {
+            name: "error",
+            value: {}
+          }
+        ]
+      ) {
+        id,
+        type {name},
+        properties(
+          names: [
+            "url",
+            "jsonrpc_version",
+            "method",
+            "params",
+            "result",
+            "error"
+          ]
+        )
+      }
+    }
+  }
+}

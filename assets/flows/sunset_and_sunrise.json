@@ -1,0 +1,29 @@
+{
+  "id": "d51302ad-376e-492e-acfe-783fe0948e8b",
+  "type": "generic_flow",
+  "name": "Sunset and sunrise times API",
+  "description": "This flow uses the sunset and sunrise times API (https://sunrise-sunset.org/api)",
+  "entities": [
+    {
+      "type": "generic_flow",
+      "id": "f1e1edb9-39b0-4afd-8e7d-edecbcb59b7d",
+      "properties": {
+      }
+    },
+    {
+      "type": "http",
+      "id": "a3370278-b05c-4d1a-ad57-cabd575c37e4",
+      "properties": {
+        "url": "https://api.sunrise-sunset.org/json?lat=47.557400&lng=9.707209&formatted=0",
+        "method": "GET",
+        "request_headers": {},
+        "payload": {},
+        "response_headers": {},
+        "result": {},
+        "status": 500
+      }
+    }
+  ],
+  "relations": [
+  ]
+}

@@ -1,0 +1,32 @@
+mutation {
+  instances {
+    entities {
+      update(
+        id: "854161a4-b3e0-4267-9415-7dd9f1bcb5d0",
+        properties: [
+          {
+            name: "method",
+            value: "Input.Home"
+          },
+          {
+            name: "params",
+            value: {}
+          }
+        ]
+      ) {
+        id,
+        type {name},
+        properties(
+          names: [
+            "url",
+            "jsonrpc_version",
+            "method",
+            "params",
+            "result",
+            "error"
+          ]
+        )
+      }
+    }
+  }
+}
