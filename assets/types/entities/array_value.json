@@ -1,0 +1,98 @@
+{
+  "name": "array_value",
+  "group": "value",
+  "description": "Value of type array",
+  "components": [
+    "named",
+    "flow_2d",
+    "flow_3d"
+  ],
+  "behaviours": [
+  ],
+  "properties": [
+    {
+      "name": "value",
+      "data_type": "array",
+      "socket_type": "output"
+    }
+  ],
+  "extensions": [
+    {
+      "name": "palette",
+      "extension": {
+        "content": ":=A",
+        "styles":  {
+          "font-size": "20px",
+          "font-family": "Fira Code"
+        }
+      }
+    },
+    {
+      "name": "shape",
+      "extension": {
+        "width": 200,
+        "socket": {
+          "width": 60,
+          "height": 30,
+          "offset": 5
+        },
+        "offset": {
+          "top": "socket.height",
+          "bottom": "socket.height"
+        },
+        "elements": {
+          "title": {
+            "show": true,
+            "type": "text",
+            "content": "element.description",
+            "position": {
+              "left": 0,
+              "top": 0,
+              "width": "shape.width",
+              "height": "socket.height"
+            },
+            "styles": {
+              "font-size": "12px",
+              "fill": "black"
+            }
+          },
+          "symbol": {
+            "show": true,
+            "type": "property",
+            "property": "value",
+            "position": {
+              "left": 0,
+              "top": 0,
+              "width": "shape.width",
+              "height": "shape.height"
+            },
+            "styles": {
+              "fill": "black",
+              "font-family": "Fira Code",
+              "font-size": "40px"
+            }
+          },
+          "id": {
+            "show": true,
+            "type": "text",
+            "content": "shape.id",
+            "position": {
+              "left": 0,
+              "top": "shape.height-socket.height",
+              "width": "shape.width",
+              "height": "socket.height"
+            },
+            "styles": {
+              "font-size": "9px",
+              "fill": "black"
+            }
+          }
+        },
+        "directEditing": {
+          "type": "property",
+          "property": "value"
+        }
+      }
+    }
+  ]
+}

@@ -1,8 +1,8 @@
 # Inexor Reactive Graph Flow
 
-| Project | Module | Sub-Module | Functionality | Tests |
-| --- | --- | --- | --- | --- |
-| Reactive Graph Flow | Plugin | Value | <img src="https://img.shields.io/badge/state-completed-brightgreen"> | [<img src="https://img.shields.io/codecov/c/github/aschaeffer/inexor-rgf-plugin-value">](https://app.codecov.io/gh/aschaeffer/inexor-rgf-plugin-value) |
+| Project             | Module | Sub-Module | Functionality                                                        | Tests                                                                                                                                                  |
+|---------------------|--------|------------|----------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Reactive Graph Flow | Plugin | Value      | <img src="https://img.shields.io/badge/state-completed-brightgreen"> | [<img src="https://img.shields.io/codecov/c/github/aschaeffer/inexor-rgf-plugin-value">](https://app.codecov.io/gh/aschaeffer/inexor-rgf-plugin-value) |
 
 ### About Inexor
 
@@ -45,11 +45,13 @@ There are entity types for each data type.
 
 #### Entity Types
 
-| Name | Description | Output Properties |
-| --- | --- | --- |
-| value | Value of any type | value |
-| string_value | Value of type string | value |
-| numeric_value | Value of type numeric | value |
+| Name          | Description           | Output Properties |
+|---------------|-----------------------|-------------------|
+| value         | Value of any type     | value             |
+| string_value  | Value of type string  | value             |
+| numeric_value | Value of type numeric | value             |
+| array_value   | Value of type array   | value             |
+| object_value  | Value of type object  | value             |
 
 ### Thanks to
 
@@ -58,6 +60,6 @@ There are entity types for each data type.
 
 ### Sponsors
 
-| | | |
-| --- | --- | --- |
+|                                                                                                                                                                                                                             |           |                                                                   |
+|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|-------------------------------------------------------------------|
 | <a href="https://www.jetbrains.com/?from=github.com/inexorgame"><img align="right" width="100" height="100" src="https://raw.githubusercontent.com/aschaeffer/inexor-rgf-plugin-value/main/docs/images/icon_CLion.svg"></a> | JetBrains | Special thanks to JetBrains for providing us with CLion licenses! |
