@@ -5,9 +5,7 @@ use serde_json::{json, Value};
 use crate::behaviour::entity::gate::ComparisonGate;
 use crate::behaviour::entity::gate::ComparisonGateProperties;
 use crate::behaviour::entity::gate::COMPARISON_GATES;
-use crate::model::{
-    DataType, EntityInstance, EntityType, PropertyType, ReactiveEntityInstance, SocketType,
-};
+use crate::model::{DataType, EntityInstance, EntityType, PropertyType, ReactiveEntityInstance, SocketType};
 use crate::model::{PropertyInstanceGetter, PropertyInstanceSetter};
 use inexor_rgf_core_reactive::{Gate, Operation};
 use std::collections::HashMap;
@@ -93,9 +91,7 @@ fn greater_than_or_equals_gate_test() {
         property_types,
         Vec::new(),
     );
-    let gte_function = COMPARISON_GATES
-        .get(TYPE_NAME_GREATER_THAN_OR_EQUALS)
-        .unwrap();
+    let gte_function = COMPARISON_GATES.get(TYPE_NAME_GREATER_THAN_OR_EQUALS).unwrap();
     let mut properties = HashMap::new();
     properties.insert(LHS.into(), json!(LHS.default_value()));
     properties.insert(RHS.into(), json!(LHS.default_value()));
@@ -103,10 +99,7 @@ fn greater_than_or_equals_gate_test() {
     let gte_entity = EntityInstance::new(gte_type.name.clone(), Uuid::new_v4(), properties);
     let gte_reactive_entity = Arc::new(ReactiveEntityInstance::from(gte_entity));
     let gte_behaviour = ComparisonGate::new(gte_reactive_entity.clone(), *gte_function);
-    assert_eq!(
-        TYPE_NAME_GREATER_THAN_OR_EQUALS,
-        gte_behaviour.type_name().as_str()
-    );
+    assert_eq!(TYPE_NAME_GREATER_THAN_OR_EQUALS, gte_behaviour.type_name().as_str());
 
     // === Reactive Entity API ===
 

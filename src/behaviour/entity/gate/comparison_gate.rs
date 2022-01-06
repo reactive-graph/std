@@ -32,10 +32,7 @@ pub struct ComparisonGate<'a> {
 }
 
 impl ComparisonGate<'_> {
-    pub fn new<'a>(
-        e: Arc<ReactiveEntityInstance>,
-        f: ComparisonGateFunction,
-    ) -> ComparisonGate<'static> {
+    pub fn new<'a>(e: Arc<ReactiveEntityInstance>, f: ComparisonGateFunction) -> ComparisonGate<'static> {
         let lhs = e
             .properties
             .get(ComparisonGateProperties::LHS.as_ref())
@@ -54,10 +51,7 @@ impl ComparisonGate<'_> {
             .map(|v| -> ComparisonExpressionValue { (OperatorPosition::RHS, v.clone()) });
 
         let expression = lhs.merge(&rhs).fold(
-            Expression::new(
-                ComparisonGateProperties::LHS.default_value(),
-                ComparisonGateProperties::RHS.default_value(),
-            ),
+            Expression::new(ComparisonGateProperties::LHS.default_value(), ComparisonGateProperties::RHS.default_value()),
             |old_state, (o, value)| match *o {
                 OperatorPosition::LHS => old_state.lhs(value.clone()),
                 OperatorPosition::RHS => old_state.rhs(value.clone()),
@@ -68,12 +62,7 @@ impl ComparisonGate<'_> {
         let internal_result = expression.map(move |e| f(e.lhs.clone(), e.rhs.clone()));
 
         // TODO: handle result based on outbound property id and inbound property id
-        let handle_id = e
-            .properties
-            .get(ComparisonGateProperties::RESULT.as_ref())
-            .unwrap()
-            .id
-            .as_u128();
+        let handle_id = e.properties.get(ComparisonGateProperties::RESULT.as_ref()).unwrap().id.as_u128();
 
         let comparison_gate = ComparisonGate {
             lhs: RwLock::new(lhs),
@@ -85,17 +74,13 @@ impl ComparisonGate<'_> {
         };
 
         // Connect the internal result with the stream of the result property
-        comparison_gate
-            .internal_result
-            .read()
-            .unwrap()
-            .observe_with_handle(
-                move |v| {
-                    debug!("Setting result of comparison gate: {}", v);
-                    e.set(ComparisonGateProperties::RESULT.to_string(), json!(*v));
-                },
-                handle_id,
-            );
+        comparison_gate.internal_result.read().unwrap().observe_with_handle(
+            move |v| {
+                debug!("Setting result of comparison gate: {}", v);
+                e.set(ComparisonGateProperties::RESULT.to_string(), json!(*v));
+            },
+            handle_id,
+        );
 
         comparison_gate
     }
@@ -110,33 +95,24 @@ impl ComparisonGate<'_> {
 impl Disconnectable for ComparisonGate<'_> {
     /// TODO: Add guard: disconnect only if actually connected
     fn disconnect(&self) {
-        debug!(
-            "Disconnect comparison gate {} {}",
-            self.type_name(),
-            self.handle_id
-        );
+        debug!("Disconnect comparison gate {} {}", self.type_name(), self.handle_id);
         self.internal_result.read().unwrap().remove(self.handle_id);
     }
 }
 
 impl Operation for ComparisonGate<'_> {
     fn lhs(&self, value: Value) {
-        self.entity
-            .set(ComparisonGateProperties::LHS.as_ref(), value);
+        self.entity.set(ComparisonGateProperties::LHS.as_ref(), value);
     }
 
     fn result(&self) -> Value {
-        self.entity
-            .get(ComparisonGateProperties::RESULT.as_ref())
-            .unwrap()
-            .clone()
+        self.entity.get(ComparisonGateProperties::RESULT.as_ref()).unwrap().clone()
     }
 }
 
 impl Gate for ComparisonGate<'_> {
     fn rhs(&self, value: Value) {
-        self.entity
-            .set(ComparisonGateProperties::RHS.as_ref(), value);
+        self.entity.set(ComparisonGateProperties::RHS.as_ref(), value);
     }
 }
 

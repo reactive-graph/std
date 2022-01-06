@@ -9,25 +9,25 @@ pub const FN_GREATER_THAN: ComparisonGateFunction = |lhs, rhs| {
     if lhs.is_number() && rhs.is_number() {
         return lhs.as_f64().unwrap() > rhs.as_f64().unwrap();
     }
-    return false;
+    false
 };
 pub const FN_GREATER_THAN_OR_EQUALS: ComparisonGateFunction = |lhs, rhs| {
     if lhs.is_number() && rhs.is_number() {
         return lhs.as_f64().unwrap() >= rhs.as_f64().unwrap();
     }
-    return false;
+    false
 };
 pub const FN_LOWER_THAN: ComparisonGateFunction = |lhs, rhs| {
     if lhs.is_number() && rhs.is_number() {
         return lhs.as_f64().unwrap() < rhs.as_f64().unwrap();
     }
-    return false;
+    false
 };
 pub const FN_LOWER_THAN_OR_EQUALS: ComparisonGateFunction = |lhs, rhs| {
     if lhs.is_number() && rhs.is_number() {
         return lhs.as_f64().unwrap() <= rhs.as_f64().unwrap();
     }
-    return false;
+    false
 };
 
 lazy_static! {

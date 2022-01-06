@@ -11,9 +11,7 @@ use crate::model::ReactiveEntityInstance;
 use crate::plugins::EntityBehaviourProvider;
 
 #[wrapper]
-pub struct ComparisonGateStorage(
-    std::sync::RwLock<std::collections::HashMap<Uuid, std::sync::Arc<ComparisonGate<'static>>>>,
-);
+pub struct ComparisonGateStorage(std::sync::RwLock<std::collections::HashMap<Uuid, std::sync::Arc<ComparisonGate<'static>>>>);
 
 #[waiter_di::provides]
 fn create_comparison_gate_storage() -> ComparisonGateStorage {
@@ -53,41 +51,24 @@ impl ComparisonEntityBehaviourProvider for ComparisonEntityBehaviourProviderImpl
         let id = entity_instance.id;
         let function = COMPARISON_GATES.get(entity_instance.type_name.as_str());
         let comparison_gate = match function {
-            Some(function) => Some(Arc::new(ComparisonGate::new(
-                entity_instance.clone(),
-                *function,
-            ))),
+            Some(function) => Some(Arc::new(ComparisonGate::new(entity_instance.clone(), *function))),
             None => None,
         };
         if comparison_gate.is_some() {
-            self.comparison_gates
-                .0
-                .write()
-                .unwrap()
-                .insert(id, comparison_gate.unwrap());
+            self.comparison_gates.0.write().unwrap().insert(id, comparison_gate.unwrap());
             debug!("Added behaviour comparison_gate to entity instance {}", id);
         }
     }
 
     fn remove_comparison_gate(&self, entity_instance: Arc<ReactiveEntityInstance>) {
-        self.comparison_gates
-            .0
-            .write()
-            .unwrap()
-            .remove(&entity_instance.id);
-        debug!(
-            "Removed behaviour comparison_gates from entity instance {}",
-            entity_instance.id
-        );
+        self.comparison_gates.0.write().unwrap().remove(&entity_instance.id);
+        debug!("Removed behaviour comparison_gates from entity instance {}", entity_instance.id);
     }
 
     fn remove_by_id(&self, id: Uuid) {
         if self.comparison_gates.0.write().unwrap().contains_key(&id) {
             self.comparison_gates.0.write().unwrap().remove(&id);
-            debug!(
-                "Removed behaviour comparison_gates from entity instance {}",
-                id
-            );
+            debug!("Removed behaviour comparison_gates from entity instance {}", id);
         }
     }
 }
