@@ -1,0 +1,52 @@
+cargo-features = ["strip"]
+
+[package]
+name = "inexor-rgf-plugin-string"
+description = "Inexor - Reactive Graph Flow - Plugin - String"
+version = "0.3.0"
+authors = ["Andreas Schaeffer <hanack@nooblounge.net>"]
+edition = "2021"
+license = "MIT"
+
+[dependencies]
+async-trait = "0.1"
+async-std = { version = "1.10", features = ["tokio1"] }
+crossbeam = "0.8"
+futures = "0.3"
+futures-timer = "3.0"
+indradb-lib = "1"
+lazy_static = "1.4"
+log = { version = "0.4", features = ["std", "serde"] }
+log4rs = { version = "1.0", features = ["console_appender", "file_appender"]}
+query_interface = "0.3"
+rust-embed = { version = "6.2", features = ["debug-embed", "compression"] }
+serde = { version = "1.0", features = [ "derive" ] }
+serde_json = "1.0"
+strum = { version = "0.23", features = ["derive"] }
+strum_macros = "0.23"
+toml = "0.5"
+uuid = { version = "0.8", features = ["serde", "v4", "v5"] }
+waiter_di = { version = "1.6.4", features = [ "async" ], git = "https://github.com/aschaeffer/waiter.git" }
+
+inexor-rgf-core-frp = { git = "https://github.com/aschaeffer/inexor-rgf-core-frp.git" }
+inexor-rgf-core-model = { git = "https://github.com/aschaeffer/inexor-rgf-core-model.git" }
+inexor-rgf-core-reactive = { git = "https://github.com/aschaeffer/inexor-rgf-core-reactive.git" }
+inexor-rgf-core-plugins = { git = "https://github.com/aschaeffer/inexor-rgf-core-plugins.git" }
+
+[lib]
+# Plugins use crate-type cdylib
+# https://doc.rust-lang.org/reference/linkage.html
+# https://users.rust-lang.org/t/what-is-the-difference-between-dylib-and-cdylib/28847/3
+crate-type = ["cdylib"]
+
+[profile.dev]
+opt-level = 0
+
+[profile.release]
+opt-level = 3
+# 12MB -> 7.8MB
+lto = true
+# 7.8MB -> 4.5MB
+strip = "symbols"
+# 4.5MB -> 3.7MB
+# opt-level = "z"

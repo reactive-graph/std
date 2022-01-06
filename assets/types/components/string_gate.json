@@ -1,0 +1,20 @@
+{
+  "name": "string_gate",
+  "properties": [
+    {
+      "name": "lhs",
+      "data_type": "string",
+      "socket_type": "input"
+    },
+    {
+      "name": "rhs",
+      "data_type": "string",
+      "socket_type": "input"
+    },
+    {
+      "name": "result",
+      "data_type": "string",
+      "socket_type": "output"
+    }
+  ]
+}
