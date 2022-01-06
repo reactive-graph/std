@@ -1,0 +1,26 @@
+mutation {
+  instances {
+    entities {
+      create(
+        typeName: "array_get_by_index",
+        id: "d47068ff-b97d-4982-a06c-4c12d68caa96",
+        properties: [
+          {
+            name: "array",
+            value: [ 10, 20, 30, 40, 50 ]
+          }
+        ]
+      ) {
+        id,
+        type {name},
+        properties(
+          names: [
+            "array",
+            "index",
+            "result"
+          ]
+        )
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+mutation {
+  instances {
+    entities {
+      create(
+        typeName: "array_push",
+        id: "3c2042dc-c614-4746-8ae0-78911e9574bb",
+        properties: [
+          {
+            name: "array",
+            value: [ 10, 20, 30]
+          }
+        ]
+      ) {
+        id,
+        type {name},
+        properties(
+          names: [
+            "array",
+            "value",
+            "result"
+          ]
+        )
+      }
+    }
+  }
+}
