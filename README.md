@@ -59,6 +59,9 @@ Handling arrays and objects
 |                      | index             | number    | output      |
 |                      | result            | any       | output      |
 |                      |
+| ArrayLength          | array             | array     | input       |
+|                      | length            | number    | output      |
+|                      |
 | ObjectSetProperty    | object            | object    | input       |
 |                      | property_name     | string    | input       |
 |                      | property_value    | any       | input       |
@@ -72,6 +75,9 @@ Handling arrays and objects
 | ObjectGetProperty    | object            | object    | input       |
 |                      | property_name     | string    | input       |
 |                      | result            | any       | output      |
+|                      |
+| ObjectKeys           | object            | object    | input       |
+|                      | keys              | array     | output      |
 
 ### Thanks to
 
