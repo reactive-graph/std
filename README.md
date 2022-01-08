@@ -62,6 +62,9 @@ Handling arrays and objects
 | ArrayLength          | array             | array     | input       |
 |                      | length            | number    | output      |
 |                      |
+| ArrayReverse         | array             | array     | input       |
+|                      | result            | array     | output      |
+|                      |
 | ObjectSetProperty    | object            | object    | input       |
 |                      | property_name     | string    | input       |
 |                      | property_value    | any       | input       |

@@ -13,6 +13,8 @@ use crate::behaviour::entity::array_pop::ArrayPop;
 use crate::behaviour::entity::array_pop::ARRAY_POP;
 use crate::behaviour::entity::array_push::ArrayPush;
 use crate::behaviour::entity::array_push::ARRAY_PUSH;
+use crate::behaviour::entity::array_reverse::ArrayReverse;
+use crate::behaviour::entity::array_reverse::ARRAY_REVERSE;
 use crate::behaviour::entity::object_get_property::ObjectGetProperty;
 use crate::behaviour::entity::object_get_property::OBJECT_GET_PROPERTY;
 use crate::behaviour::entity::object_keys::ObjectKeys;
@@ -35,6 +37,9 @@ pub struct ArrayGetByIndexStorage(std::sync::RwLock<std::collections::HashMap<Uu
 
 #[wrapper]
 pub struct ArrayLengthStorage(std::sync::RwLock<std::collections::HashMap<Uuid, std::sync::Arc<ArrayLength>>>);
+
+#[wrapper]
+pub struct ArrayReverseStorage(std::sync::RwLock<std::collections::HashMap<Uuid, std::sync::Arc<ArrayReverse>>>);
 
 #[wrapper]
 pub struct ObjectGetPropertyStorage(std::sync::RwLock<std::collections::HashMap<Uuid, std::sync::Arc<ObjectGetProperty>>>);
@@ -69,6 +74,11 @@ fn create_array_length_storage() -> ArrayLengthStorage {
 }
 
 #[waiter_di::provides]
+fn create_array_reverse_storage() -> ArrayReverseStorage {
+    ArrayReverseStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
+}
+
+#[waiter_di::provides]
 fn create_object_get_property_storage() -> ObjectGetPropertyStorage {
     ObjectGetPropertyStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
 }
@@ -98,6 +108,8 @@ pub trait JsonEntityBehaviourProvider: EntityBehaviourProvider + Send + Sync {
 
     fn create_array_length(&self, entity_instance: Arc<ReactiveEntityInstance>);
 
+    fn create_array_reverse(&self, entity_instance: Arc<ReactiveEntityInstance>);
+
     fn create_object_get_property(&self, entity_instance: Arc<ReactiveEntityInstance>);
 
     fn create_object_set_property(&self, entity_instance: Arc<ReactiveEntityInstance>);
@@ -113,6 +125,8 @@ pub trait JsonEntityBehaviourProvider: EntityBehaviourProvider + Send + Sync {
     fn remove_array_get_by_index(&self, entity_instance: Arc<ReactiveEntityInstance>);
 
     fn remove_array_length(&self, entity_instance: Arc<ReactiveEntityInstance>);
+
+    fn remove_array_reverse(&self, entity_instance: Arc<ReactiveEntityInstance>);
 
     fn remove_object_get_property(&self, entity_instance: Arc<ReactiveEntityInstance>);
 
@@ -130,6 +144,7 @@ pub struct JsonEntityBehaviourProviderImpl {
     array_pop: ArrayPopStorage,
     array_get_by_index: ArrayGetByIndexStorage,
     array_length: ArrayLengthStorage,
+    array_reverse: ArrayReverseStorage,
     object_get_property: ObjectGetPropertyStorage,
     object_set_property: ObjectSetPropertyStorage,
     object_remove_property: ObjectRemovePropertyStorage,
@@ -147,6 +162,7 @@ impl JsonEntityBehaviourProviderImpl {
             array_pop: create_array_pop_storage(),
             array_get_by_index: create_array_get_by_index_storage(),
             array_length: create_array_length_storage(),
+            array_reverse: create_array_reverse_storage(),
             object_get_property: create_object_get_property_storage(),
             object_set_property: create_object_set_property_storage(),
             object_remove_property: create_object_remove_property_storage(),
@@ -197,6 +213,17 @@ impl JsonEntityBehaviourProvider for JsonEntityBehaviourProviderImpl {
             Ok(array_length) => {
                 self.array_length.0.write().unwrap().insert(id, Arc::new(array_length));
                 debug!("Added behaviour {} to entity instance {}", ARRAY_LENGTH, id);
+            }
+            _ => {}
+        }
+    }
+
+    fn create_array_reverse(&self, entity_instance: Arc<ReactiveEntityInstance>) {
+        let id = entity_instance.id;
+        match ArrayReverse::new(entity_instance) {
+            Ok(array_reverse) => {
+                self.array_reverse.0.write().unwrap().insert(id, Arc::new(array_reverse));
+                debug!("Added behaviour {} to entity instance {}", ARRAY_REVERSE, id);
             }
             _ => {}
         }
@@ -266,6 +293,11 @@ impl JsonEntityBehaviourProvider for JsonEntityBehaviourProviderImpl {
         debug!("Removed behaviour {} from entity instance {}", ARRAY_LENGTH, entity_instance.id);
     }
 
+    fn remove_array_reverse(&self, entity_instance: Arc<ReactiveEntityInstance>) {
+        self.array_reverse.0.write().unwrap().remove(&entity_instance.id);
+        debug!("Removed behaviour {} from entity instance {}", ARRAY_REVERSE, entity_instance.id);
+    }
+
     fn remove_object_get_property(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         self.object_get_property.0.write().unwrap().remove(&entity_instance.id);
         debug!("Removed behaviour {} from entity instance {}", OBJECT_GET_PROPERTY, entity_instance.id);
@@ -303,6 +335,10 @@ impl JsonEntityBehaviourProvider for JsonEntityBehaviourProviderImpl {
             self.array_length.0.write().unwrap().remove(&id);
             debug!("Removed behaviour {} from entity instance {}", ARRAY_LENGTH, id);
         }
+        if self.array_reverse.0.write().unwrap().contains_key(&id) {
+            self.array_reverse.0.write().unwrap().remove(&id);
+            debug!("Removed behaviour {} from entity instance {}", ARRAY_REVERSE, id);
+        }
         if self.object_get_property.0.write().unwrap().contains_key(&id) {
             self.object_get_property.0.write().unwrap().remove(&id);
             debug!("Removed behaviour {} from entity instance {}", OBJECT_GET_PROPERTY, id);
@@ -329,6 +365,7 @@ impl EntityBehaviourProvider for JsonEntityBehaviourProviderImpl {
             ARRAY_POP => self.create_array_pop(entity_instance),
             ARRAY_GET_BY_INDEX => self.create_array_get_by_index(entity_instance),
             ARRAY_LENGTH => self.create_array_length(entity_instance),
+            ARRAY_REVERSE => self.create_array_reverse(entity_instance),
             OBJECT_GET_PROPERTY => self.create_object_get_property(entity_instance),
             OBJECT_SET_PROPERTY => self.create_object_set_property(entity_instance),
             OBJECT_REMOVE_PROPERTY => self.create_object_remove_property(entity_instance),
@@ -343,6 +380,7 @@ impl EntityBehaviourProvider for JsonEntityBehaviourProviderImpl {
             ARRAY_POP => self.remove_array_pop(entity_instance),
             ARRAY_GET_BY_INDEX => self.remove_array_get_by_index(entity_instance),
             ARRAY_LENGTH => self.remove_array_length(entity_instance),
+            ARRAY_REVERSE => self.remove_array_reverse(entity_instance),
             OBJECT_GET_PROPERTY => self.remove_object_get_property(entity_instance),
             OBJECT_SET_PROPERTY => self.remove_object_set_property(entity_instance),
             OBJECT_REMOVE_PROPERTY => self.remove_object_remove_property(entity_instance),
