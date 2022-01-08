@@ -1,5 +1,5 @@
+use crate::reactive::NamedProperties;
 use indradb::NamedProperty;
-use inexor_rgf_core_reactive::NamedProperties;
 use serde_json::{json, Value};
 use strum_macros::{AsRefStr, Display, IntoStaticStr};
 
