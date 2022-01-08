@@ -46,7 +46,7 @@ String Handling
 
 <img src="https://raw.githubusercontent.com/aschaeffer/inexor-rgf-plugin-string/main/docs/images/type_system.png">
 
-#### Entity Types
+#### Components
 
 | Name             | Property | Data Type | Socket Type |
 |------------------|----------|-----------|-------------|
