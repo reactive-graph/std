@@ -1,0 +1,35 @@
+mutation {
+  instances {
+    entities {
+      create(
+        typeName: "object_keys",
+        id: "607284e5-9c5a-4918-a255-eba797cdd84c",
+        properties: [
+          {
+            name: "object",
+            value: {
+              hello: "World",
+              good: "Morning"
+            }
+          },
+          {
+            name: "keys",
+            value: [
+              "hello",
+              "good"
+            ]
+          }
+        ]
+      ) {
+        id,
+        type {name},
+        properties(
+          names: [
+            "object",
+            "keys"
+          ]
+        )
+      }
+    }
+  }
+}
