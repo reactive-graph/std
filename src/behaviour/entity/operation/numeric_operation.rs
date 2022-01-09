@@ -11,6 +11,8 @@ use crate::reactive::entity::operation::Operation;
 use crate::reactive::entity::Disconnectable;
 use crate::NumericOperationProperties;
 
+pub const NUMERIC_OPERATION: &'static str = "numeric_operation";
+
 /// Generic implementation of numeric operations with one input and one result.
 ///
 /// The implementation is realized using reactive streams.
@@ -25,16 +27,8 @@ pub struct NumericOperation<'a> {
 }
 
 impl NumericOperation<'_> {
-    pub fn new<'a>(
-        e: Arc<ReactiveEntityInstance>,
-        f: NumericOperationFunction<f64>,
-    ) -> NumericOperation<'static> {
-        let handle_id = e
-            .properties
-            .get(NumericOperationProperties::RESULT.as_ref())
-            .unwrap()
-            .id
-            .as_u128();
+    pub fn new<'a>(e: Arc<ReactiveEntityInstance>, f: NumericOperationFunction<f64>) -> NumericOperation<'static> {
+        let handle_id = e.properties.get(NumericOperationProperties::RESULT.as_ref()).unwrap().id.as_u128();
 
         let internal_result = e
             .properties
@@ -52,17 +46,13 @@ impl NumericOperation<'_> {
         };
 
         // Connect the internal result with the stream of the result property
-        numeric_operation
-            .internal_result
-            .read()
-            .unwrap()
-            .observe_with_handle(
-                move |v| {
-                    debug!("Setting result of numeric gate: {}", v);
-                    e.set(NumericOperationProperties::RESULT.to_string(), json!(*v));
-                },
-                handle_id,
-            );
+        numeric_operation.internal_result.read().unwrap().observe_with_handle(
+            move |v| {
+                debug!("Setting result of {}: {}", NUMERIC_OPERATION, v);
+                e.set(NumericOperationProperties::RESULT.to_string(), json!(*v));
+            },
+            handle_id,
+        );
 
         numeric_operation
     }
@@ -77,29 +67,24 @@ impl NumericOperation<'_> {
 impl Disconnectable for NumericOperation<'_> {
     /// TODO: Add guard: disconnect only if actually connected
     fn disconnect(&self) {
-        debug!("Disconnect numeric operation {}", self.handle_id);
+        debug!("Disconnect {} {} with handle {}", NUMERIC_OPERATION, self.type_name(), self.handle_id);
         self.internal_result.read().unwrap().remove(self.handle_id);
     }
 }
 
 impl Operation for NumericOperation<'_> {
     fn lhs(&self, value: Value) {
-        self.entity
-            .set(NumericOperationProperties::LHS.as_ref(), value);
+        self.entity.set(NumericOperationProperties::LHS.as_ref(), value);
     }
 
     fn result(&self) -> Value {
-        self.entity
-            .get(NumericOperationProperties::RESULT.as_ref())
-            .unwrap()
-            .clone()
+        self.entity.get(NumericOperationProperties::RESULT.as_ref()).unwrap().clone()
     }
 }
 
 /// Automatically disconnect streams on destruction
 impl Drop for NumericOperation<'_> {
     fn drop(&mut self) {
-        debug!("Drop numeric operation");
         self.disconnect();
     }
 }

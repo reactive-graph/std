@@ -12,6 +12,8 @@ use crate::reactive::entity::gate::Gate;
 use crate::reactive::entity::operation::Operation;
 use crate::reactive::entity::Disconnectable;
 
+pub const NUMERIC_GATE: &'static str = "numeric_gate";
+
 pub type NumericExpressionValue = ExpressionValue<f64>;
 
 /// Generic implementation of numeric_gates operations with two inputs (LHS,RHS) and one result.
@@ -32,10 +34,7 @@ pub struct NumericGate<'a> {
 }
 
 impl NumericGate<'_> {
-    pub fn new<'a>(
-        e: Arc<ReactiveEntityInstance>,
-        f: NumericGateFunction<f64>,
-    ) -> NumericGate<'static> {
+    pub fn new<'a>(e: Arc<ReactiveEntityInstance>, f: NumericGateFunction<f64>) -> NumericGate<'static> {
         let lhs = e
             .properties
             .get(NumericGateProperties::LHS.as_ref())
@@ -45,10 +44,7 @@ impl NumericGate<'_> {
             .unwrap()
             .map(|v| match v.as_f64() {
                 Some(b) => (OperatorPosition::LHS, b),
-                None => (
-                    OperatorPosition::LHS,
-                    NumericGateProperties::LHS.default_value(),
-                ),
+                None => (OperatorPosition::LHS, NumericGateProperties::LHS.default_value()),
             });
         let rhs = e
             .properties
@@ -60,18 +56,12 @@ impl NumericGate<'_> {
             .map(|v| -> NumericExpressionValue {
                 match v.as_f64() {
                     Some(b) => (OperatorPosition::RHS, b),
-                    None => (
-                        OperatorPosition::RHS,
-                        NumericGateProperties::RHS.default_value(),
-                    ),
+                    None => (OperatorPosition::RHS, NumericGateProperties::RHS.default_value()),
                 }
             });
 
         let expression = lhs.merge(&rhs).fold(
-            Expression::new(
-                NumericGateProperties::LHS.default_value(),
-                NumericGateProperties::RHS.default_value(),
-            ),
+            Expression::new(NumericGateProperties::LHS.default_value(), NumericGateProperties::RHS.default_value()),
             |old_state, (o, value)| match *o {
                 OperatorPosition::LHS => old_state.lhs(*value),
                 OperatorPosition::RHS => old_state.rhs(*value),
@@ -82,12 +72,7 @@ impl NumericGate<'_> {
         let internal_result = expression.map(move |e| f(e.lhs, e.rhs));
 
         // TODO: handle result based on outbound property id and inbound property id
-        let handle_id = e
-            .properties
-            .get(NumericGateProperties::RESULT.as_ref())
-            .unwrap()
-            .id
-            .as_u128();
+        let handle_id = e.properties.get(NumericGateProperties::RESULT.as_ref()).unwrap().id.as_u128();
 
         let numeric_gate = NumericGate {
             lhs: RwLock::new(lhs),
@@ -99,17 +84,13 @@ impl NumericGate<'_> {
         };
 
         // Connect the internal result with the stream of the result property
-        numeric_gate
-            .internal_result
-            .read()
-            .unwrap()
-            .observe_with_handle(
-                move |v| {
-                    debug!("Setting result of numeric gate: {}", v);
-                    e.set(NumericGateProperties::RESULT.to_string(), json!(*v));
-                },
-                handle_id,
-            );
+        numeric_gate.internal_result.read().unwrap().observe_with_handle(
+            move |v| {
+                debug!("Setting result of {}: {}", NUMERIC_GATE, v);
+                e.set(NumericGateProperties::RESULT.to_string(), json!(*v));
+            },
+            handle_id,
+        );
 
         numeric_gate
     }
@@ -124,11 +105,7 @@ impl NumericGate<'_> {
 impl Disconnectable for NumericGate<'_> {
     /// TODO: Add guard: disconnect only if actually connected
     fn disconnect(&self) {
-        debug!(
-            "Disconnect numeric gate {} {}",
-            self.type_name(),
-            self.handle_id
-        );
+        debug!("Disconnect {} {} with handle {}", NUMERIC_GATE, self.type_name(), self.handle_id);
         self.internal_result.read().unwrap().remove(self.handle_id);
     }
 }
@@ -139,10 +116,7 @@ impl Operation for NumericGate<'_> {
     }
 
     fn result(&self) -> Value {
-        self.entity
-            .get(NumericGateProperties::RESULT.as_ref())
-            .unwrap()
-            .clone()
+        self.entity.get(NumericGateProperties::RESULT.as_ref()).unwrap().clone()
     }
 }
 
@@ -155,7 +129,6 @@ impl Gate for NumericGate<'_> {
 /// Automatically disconnect streams on destruction
 impl Drop for NumericGate<'_> {
     fn drop(&mut self) {
-        debug!("Drop numeric gate");
         self.disconnect();
     }
 }

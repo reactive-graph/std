@@ -2,10 +2,7 @@ use std::f64::consts::PI;
 
 use serde_json::json;
 
-use crate::model::{
-    DataType, EntityInstance, EntityType, PropertyInstanceGetter, PropertyInstanceSetter,
-    PropertyType, ReactiveEntityInstance, SocketType,
-};
+use crate::model::{DataType, EntityInstance, EntityType, PropertyInstanceGetter, PropertyInstanceSetter, PropertyType, ReactiveEntityInstance, SocketType};
 
 use crate::behaviour::entity::operation::function::NUMERIC_OPERATIONS;
 use crate::behaviour::entity::operation::properties::NumericOperationProperties;
@@ -29,16 +26,8 @@ fn behaviour_function_should_exist() {
 #[test]
 fn numeric_operation_sin_type_test() {
     let property_types = vec![
-        PropertyType::new_with_socket(
-            NumericOperationProperties::LHS,
-            DataType::Number,
-            SocketType::Input,
-        ),
-        PropertyType::new_with_socket(
-            NumericOperationProperties::RESULT,
-            DataType::Number,
-            SocketType::Output,
-        ),
+        PropertyType::new_with_socket(NumericOperationProperties::LHS, DataType::Number, SocketType::Input),
+        PropertyType::new_with_socket(NumericOperationProperties::RESULT, DataType::Number, SocketType::Output),
     ];
     let sin_type = EntityType::new(
         TYPE_NAME_SIN,
@@ -50,14 +39,8 @@ fn numeric_operation_sin_type_test() {
     );
     let sin_function = NUMERIC_OPERATIONS.get(TYPE_NAME_SIN).unwrap();
     let mut properties = HashMap::new();
-    properties.insert(
-        NumericOperationProperties::LHS.into(),
-        json!(NumericOperationProperties::LHS.default_value()),
-    );
-    properties.insert(
-        NumericOperationProperties::RESULT.into(),
-        json!(NumericOperationProperties::RESULT.default_value()),
-    );
+    properties.insert(NumericOperationProperties::LHS.into(), json!(NumericOperationProperties::LHS.default_value()));
+    properties.insert(NumericOperationProperties::RESULT.into(), json!(NumericOperationProperties::RESULT.default_value()));
     let sin_entity = EntityInstance::new(sin_type.name.clone(), Uuid::new_v4(), properties);
     let sin_reactive_entity = Arc::new(ReactiveEntityInstance::from(sin_entity));
     let sin_behaviour = NumericOperation::new(sin_reactive_entity.clone(), *sin_function);
@@ -66,20 +49,10 @@ fn numeric_operation_sin_type_test() {
     // Set the input value
     sin_reactive_entity.set(NumericOperationProperties::LHS, json!(0.0));
     // Expect the correct output value -> behaviour has modified the output
-    assert_eq!(
-        0.0,
-        sin_reactive_entity
-            .as_f64(NumericOperationProperties::RESULT)
-            .unwrap()
-    );
+    assert_eq!(0.0, sin_reactive_entity.as_f64(NumericOperationProperties::RESULT).unwrap());
 
     // Set the input value
     sin_reactive_entity.set(NumericOperationProperties::LHS, json!(PI / 2.0));
     // Expect the correct output value -> behaviour has modified the output
-    assert_eq!(
-        1.0,
-        sin_reactive_entity
-            .as_f64(NumericOperationProperties::RESULT)
-            .unwrap()
-    );
+    assert_eq!(1.0, sin_reactive_entity.as_f64(NumericOperationProperties::RESULT).unwrap());
 }

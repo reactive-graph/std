@@ -10,9 +10,8 @@ use crate::constants::{NAMESPACE_NUMERIC, NUMERIC_CONSTANTS};
 use crate::plugins::plugin::PluginMetadata;
 use crate::plugins::plugin_context::PluginContext;
 use crate::plugins::{
-    ComponentBehaviourProvider, ComponentProvider, EntityBehaviourProvider, EntityTypeProvider,
-    FlowProvider, Plugin, PluginError, RelationBehaviourProvider, RelationTypeProvider,
-    WebResourceProvider,
+    ComponentBehaviourProvider, ComponentProvider, EntityBehaviourProvider, EntityTypeProvider, FlowProvider, Plugin, PluginError, RelationBehaviourProvider,
+    RelationTypeProvider, WebResourceProvider,
 };
 use crate::provider::{NumericComponentProviderImpl, NumericEntityTypeProviderImpl};
 use serde_json::json;
@@ -81,8 +80,7 @@ impl Plugin for NumericPluginImpl {
 
     fn get_component_provider(&self) -> Result<Arc<dyn ComponentProvider>, PluginError> {
         let component_provider = self.component_provider.clone();
-        let component_provider: Result<Arc<dyn ComponentProvider>, _> =
-            <dyn query_interface::Object>::query_arc(component_provider);
+        let component_provider: Result<Arc<dyn ComponentProvider>, _> = <dyn query_interface::Object>::query_arc(component_provider);
         if component_provider.is_err() {
             return Err(PluginError::NoComponentProvider);
         }
@@ -91,8 +89,7 @@ impl Plugin for NumericPluginImpl {
 
     fn get_entity_type_provider(&self) -> Result<Arc<dyn EntityTypeProvider>, PluginError> {
         let entity_type_provider = self.entity_type_provider.clone();
-        let entity_type_provider: Result<Arc<dyn EntityTypeProvider>, _> =
-            <dyn query_interface::Object>::query_arc(entity_type_provider);
+        let entity_type_provider: Result<Arc<dyn EntityTypeProvider>, _> = <dyn query_interface::Object>::query_arc(entity_type_provider);
         if entity_type_provider.is_err() {
             return Err(PluginError::NoEntityTypeProvider);
         }
@@ -103,27 +100,20 @@ impl Plugin for NumericPluginImpl {
         Err(PluginError::NoRelationTypeProvider)
     }
 
-    fn get_component_behaviour_provider(
-        &self,
-    ) -> Result<Arc<dyn ComponentBehaviourProvider>, PluginError> {
+    fn get_component_behaviour_provider(&self) -> Result<Arc<dyn ComponentBehaviourProvider>, PluginError> {
         Err(PluginError::NoComponentBehaviourProvider)
     }
 
-    fn get_entity_behaviour_provider(
-        &self,
-    ) -> Result<Arc<dyn EntityBehaviourProvider>, PluginError> {
+    fn get_entity_behaviour_provider(&self) -> Result<Arc<dyn EntityBehaviourProvider>, PluginError> {
         let entity_behaviour_provider = self.entity_behaviour_provider.clone();
-        let entity_behaviour_provider: Result<Arc<dyn EntityBehaviourProvider>, _> =
-            <dyn query_interface::Object>::query_arc(entity_behaviour_provider);
+        let entity_behaviour_provider: Result<Arc<dyn EntityBehaviourProvider>, _> = <dyn query_interface::Object>::query_arc(entity_behaviour_provider);
         if entity_behaviour_provider.is_err() {
             return Err(PluginError::NoEntityBehaviourProvider);
         }
         Ok(entity_behaviour_provider.unwrap())
     }
 
-    fn get_relation_behaviour_provider(
-        &self,
-    ) -> Result<Arc<dyn RelationBehaviourProvider>, PluginError> {
+    fn get_relation_behaviour_provider(&self) -> Result<Arc<dyn RelationBehaviourProvider>, PluginError> {
         Err(PluginError::NoRelationBehaviourProvider)
     }
 
@@ -139,11 +129,7 @@ impl Plugin for NumericPluginImpl {
 impl NumericPluginImpl {
     fn create_numeric_constants(&self) {
         let reader = self.context.0.read().unwrap();
-        let entity_instance_manager = reader
-            .as_ref()
-            .unwrap()
-            .get_entity_instance_manager()
-            .clone();
+        let entity_instance_manager = reader.as_ref().unwrap().get_entity_instance_manager().clone();
         for (name, value) in NUMERIC_CONSTANTS.iter() {
             let entity_instance = EntityInstanceBuilder::new("numeric_value")
                 .id(Uuid::new_v5(&NAMESPACE_NUMERIC, name.as_bytes()))
@@ -153,16 +139,10 @@ impl NumericPluginImpl {
             let reactive_entity_instance = entity_instance_manager.create(entity_instance);
             match reactive_entity_instance {
                 Ok(reactive_entity_instance) => {
-                    debug!(
-                        "Created numeric constant {} {} as entity instance {}",
-                        name, value, reactive_entity_instance.id
-                    );
+                    debug!("Created numeric constant {} {} as entity instance {}", name, value, reactive_entity_instance.id);
                 }
                 Err(_) => {
-                    error!(
-                        "Failed to create entity instance for constant {} {}!",
-                        name, value
-                    );
+                    error!("Failed to create entity instance for constant {} {}!", name, value);
                 }
             }
         }
