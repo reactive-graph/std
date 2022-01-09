@@ -20,7 +20,6 @@ pub struct RandomNumber {
 
 impl RandomNumber {
     pub fn new<'a>(e: Arc<ReactiveEntityInstance>) -> Result<RandomNumber, BehaviourCreationError> {
-        // TODO: handle result based on outbound property id and inbound property id
         let entity = e.clone();
         let handle_id = e.properties.get(RandomNumberProperties::TRIGGER.as_ref()).unwrap().id.as_u128();
         let mut rng = rand::thread_rng();
