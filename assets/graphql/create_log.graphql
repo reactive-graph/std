@@ -1,0 +1,34 @@
+mutation {
+  instances {
+    entities {
+      create(
+        typeName: "log",
+        id: "f62bdf89-7832-469f-8e68-5f89fd3648c2",
+        properties: [
+          {
+            name: "lhs",
+            value: 10
+          },
+          {
+            name: "rhs",
+            value: 3
+          },
+          {
+            name: "result",
+            value: 100
+          }
+        ]
+      ) {
+        id,
+        type {name},
+        properties(
+          names: [
+            "lhs",
+            "rhs",
+            "result"
+          ]
+        )
+      }
+    }
+  }
+}
