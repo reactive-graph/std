@@ -1,0 +1,25 @@
+{
+  "name": "color",
+  "properties": [
+    {
+      "name": "color_r",
+      "description": "Red",
+      "data_type": "number"
+    },
+    {
+      "name": "color_g",
+      "description": "Green Channel",
+      "data_type": "number"
+    },
+    {
+      "name": "color_b",
+      "description": "Blue Channel",
+      "data_type": "number"
+    },
+    {
+      "name": "color_a",
+      "description": "Alpha-Channel",
+      "data_type": "number"
+    }
+  ]
+}
