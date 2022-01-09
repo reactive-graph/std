@@ -1,0 +1,20 @@
+mutation {
+  instances {
+    entities {
+      create(
+        typeName: "random_uuid",
+        id: "7d23151f-f2a4-4eb5-9bd3-5598f9820311",
+        properties: [
+        ]
+      ) {
+        id,
+        type {name},
+        properties(
+          names: [
+            "result"
+          ]
+        )
+      }
+    }
+  }
+}
