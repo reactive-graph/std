@@ -1,8 +1,8 @@
 # Inexor Reactive Graph Flow
 
-| Project             | Module | Sub-Module | Functionality                                                        | Tests                                                                                                                                                                |
-|---------------------|--------|------------|----------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Reactive Graph Flow | Plugin | JSON       | <img src="https://img.shields.io/badge/state-completed-brightgreen"> | [<img src="https://img.shields.io/codecov/c/github/aschaeffer/inexor-rgf-plugin-json">](https://app.codecov.io/gh/aschaeffer/inexor-rgf-plugin-json) |
+| Project             | Module | Sub-Module | Functionality                                                        | Tests                                                                                                                                                  |
+|---------------------|--------|------------|----------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Reactive Graph Flow | Plugin | JSON       | <img src="https://img.shields.io/badge/state-completed-brightgreen"> | [<img src="https://img.shields.io/codecov/c/github/aschaeffer/inexor-rgf-plugin-json">](https://app.codecov.io/gh/aschaeffer/inexor-rgf-plugin-json)   |
 
 ### About Inexor
 
@@ -64,6 +64,10 @@ Handling arrays and objects
 |                      |
 | ArrayReverse         | array             | array     | input       |
 |                      | result            | array     | output      |
+|                      |
+| ArrayContains        | array             | array     | input       |
+|                      | search            | any       | input       |
+|                      | result            | bool      | output      |
 |                      |
 | ObjectSetProperty    | object            | object    | input       |
 |                      | property_name     | string    | input       |

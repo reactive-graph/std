@@ -1,3 +1,4 @@
+pub use array_contains_properties::*;
 pub use array_get_by_index_properties::*;
 pub use array_length_properties::*;
 pub use array_pop_properties::*;
@@ -7,6 +8,9 @@ pub use object_get_property_properties::*;
 pub use object_keys_properties::*;
 pub use object_remove_property_properties::*;
 pub use object_set_property_properties::*;
+
+pub mod array_contains;
+pub mod array_contains_properties;
 
 pub mod array_get_by_index;
 pub mod array_get_by_index_properties;
