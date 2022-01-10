@@ -25,16 +25,8 @@ pub struct LogicalOperation<'a> {
 }
 
 impl LogicalOperation<'_> {
-    pub fn new<'a>(
-        e: Arc<ReactiveEntityInstance>,
-        f: LogicalOperationFunction,
-    ) -> LogicalOperation<'static> {
-        let handle_id = e
-            .properties
-            .get(LogicalOperationProperties::RESULT.as_ref())
-            .unwrap()
-            .id
-            .as_u128();
+    pub fn new<'a>(e: Arc<ReactiveEntityInstance>, f: LogicalOperationFunction) -> LogicalOperation<'static> {
+        let handle_id = e.properties.get(LogicalOperationProperties::RESULT.as_ref()).unwrap().id.as_u128();
 
         let internal_result = e
             .properties
@@ -52,17 +44,13 @@ impl LogicalOperation<'_> {
         };
 
         // Connect the internal result with the stream of the result property
-        logical_operation
-            .internal_result
-            .read()
-            .unwrap()
-            .observe_with_handle(
-                move |v| {
-                    debug!("Setting result of logical gate: {}", v);
-                    e.set(LogicalOperationProperties::RESULT.to_string(), json!(*v));
-                },
-                handle_id,
-            );
+        logical_operation.internal_result.read().unwrap().observe_with_handle(
+            move |v| {
+                debug!("Setting result of logical gate: {}", v);
+                e.set(LogicalOperationProperties::RESULT.to_string(), json!(*v));
+            },
+            handle_id,
+        );
 
         logical_operation
     }
@@ -84,15 +72,11 @@ impl Disconnectable for LogicalOperation<'_> {
 
 impl Operation for LogicalOperation<'_> {
     fn lhs(&self, value: Value) {
-        self.entity
-            .set(LogicalOperationProperties::LHS.as_ref(), value);
+        self.entity.set(LogicalOperationProperties::LHS.as_ref(), value);
     }
 
     fn result(&self) -> Value {
-        self.entity
-            .get(LogicalOperationProperties::RESULT.as_ref())
-            .unwrap()
-            .clone()
+        self.entity.get(LogicalOperationProperties::RESULT.as_ref()).unwrap().clone()
     }
 }
 

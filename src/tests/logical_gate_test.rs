@@ -5,9 +5,7 @@ use serde_json::{json, Value};
 use crate::behaviour::entity::gate::LogicalGate;
 use crate::behaviour::entity::gate::LogicalGateProperties;
 use crate::behaviour::entity::gate::LOGICAL_GATES;
-use crate::model::{
-    DataType, EntityInstance, EntityType, PropertyType, ReactiveEntityInstance, SocketType,
-};
+use crate::model::{DataType, EntityInstance, EntityType, PropertyType, ReactiveEntityInstance, SocketType};
 use crate::model::{PropertyInstanceGetter, PropertyInstanceSetter};
 use inexor_rgf_core_reactive::{Gate, Operation};
 use std::collections::HashMap;
@@ -33,14 +31,7 @@ fn and_gate_test() {
         PropertyType::new_with_socket(RHS, DataType::Number, SocketType::Input),
         PropertyType::new_with_socket(RESULT, DataType::Number, SocketType::Output),
     ];
-    let and_type = EntityType::new(
-        TYPE_NAME_AND,
-        "",
-        vec![String::from(COMPONENT_NAME_LOGICAL_GATE)],
-        Vec::new(),
-        property_types,
-        Vec::new(),
-    );
+    let and_type = EntityType::new(TYPE_NAME_AND, "", vec![String::from(COMPONENT_NAME_LOGICAL_GATE)], Vec::new(), property_types, Vec::new());
     let and_function = LOGICAL_GATES.get(TYPE_NAME_AND).unwrap();
     let mut properties = HashMap::new();
     properties.insert(LHS.into(), json!(LHS.default_value()));

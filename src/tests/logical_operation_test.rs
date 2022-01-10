@@ -5,9 +5,7 @@ use serde_json::{json, Value};
 use crate::behaviour::entity::operation::LogicalOperation;
 use crate::behaviour::entity::operation::LogicalOperationProperties;
 use crate::behaviour::entity::operation::LOGICAL_OPERATIONS;
-use crate::model::{
-    DataType, EntityInstance, EntityType, PropertyType, ReactiveEntityInstance, SocketType,
-};
+use crate::model::{DataType, EntityInstance, EntityType, PropertyType, ReactiveEntityInstance, SocketType};
 use crate::model::{PropertyInstanceGetter, PropertyInstanceSetter};
 use inexor_rgf_core_reactive::Operation;
 use std::collections::HashMap;

@@ -8,9 +8,8 @@ use crate::behaviour::entity::entity_behaviour_provider::LogicalEntityBehaviourP
 use crate::plugins::plugin::PluginMetadata;
 use crate::plugins::plugin_context::PluginContext;
 use crate::plugins::{
-    ComponentBehaviourProvider, ComponentProvider, EntityBehaviourProvider, EntityTypeProvider,
-    FlowProvider, Plugin, PluginError, RelationBehaviourProvider, RelationTypeProvider,
-    WebResourceProvider,
+    ComponentBehaviourProvider, ComponentProvider, EntityBehaviourProvider, EntityTypeProvider, FlowProvider, Plugin, PluginError, RelationBehaviourProvider,
+    RelationTypeProvider, WebResourceProvider,
 };
 use crate::provider::{LogicalComponentProviderImpl, LogicalEntityTypeProviderImpl};
 
@@ -76,8 +75,7 @@ impl Plugin for LogicalPluginImpl {
 
     fn get_component_provider(&self) -> Result<Arc<dyn ComponentProvider>, PluginError> {
         let component_provider = self.component_provider.clone();
-        let component_provider: Result<Arc<dyn ComponentProvider>, _> =
-            <dyn query_interface::Object>::query_arc(component_provider);
+        let component_provider: Result<Arc<dyn ComponentProvider>, _> = <dyn query_interface::Object>::query_arc(component_provider);
         if component_provider.is_err() {
             return Err(PluginError::NoComponentProvider);
         }
@@ -86,8 +84,7 @@ impl Plugin for LogicalPluginImpl {
 
     fn get_entity_type_provider(&self) -> Result<Arc<dyn EntityTypeProvider>, PluginError> {
         let entity_type_provider = self.entity_type_provider.clone();
-        let entity_type_provider: Result<Arc<dyn EntityTypeProvider>, _> =
-            <dyn query_interface::Object>::query_arc(entity_type_provider);
+        let entity_type_provider: Result<Arc<dyn EntityTypeProvider>, _> = <dyn query_interface::Object>::query_arc(entity_type_provider);
         if entity_type_provider.is_err() {
             return Err(PluginError::NoEntityTypeProvider);
         }
@@ -98,27 +95,20 @@ impl Plugin for LogicalPluginImpl {
         Err(PluginError::NoRelationTypeProvider)
     }
 
-    fn get_component_behaviour_provider(
-        &self,
-    ) -> Result<Arc<dyn ComponentBehaviourProvider>, PluginError> {
+    fn get_component_behaviour_provider(&self) -> Result<Arc<dyn ComponentBehaviourProvider>, PluginError> {
         Err(PluginError::NoComponentBehaviourProvider)
     }
 
-    fn get_entity_behaviour_provider(
-        &self,
-    ) -> Result<Arc<dyn EntityBehaviourProvider>, PluginError> {
+    fn get_entity_behaviour_provider(&self) -> Result<Arc<dyn EntityBehaviourProvider>, PluginError> {
         let entity_behaviour_provider = self.entity_behaviour_provider.clone();
-        let entity_behaviour_provider: Result<Arc<dyn EntityBehaviourProvider>, _> =
-            <dyn query_interface::Object>::query_arc(entity_behaviour_provider);
+        let entity_behaviour_provider: Result<Arc<dyn EntityBehaviourProvider>, _> = <dyn query_interface::Object>::query_arc(entity_behaviour_provider);
         if entity_behaviour_provider.is_err() {
             return Err(PluginError::NoEntityBehaviourProvider);
         }
         Ok(entity_behaviour_provider.unwrap())
     }
 
-    fn get_relation_behaviour_provider(
-        &self,
-    ) -> Result<Arc<dyn RelationBehaviourProvider>, PluginError> {
+    fn get_relation_behaviour_provider(&self) -> Result<Arc<dyn RelationBehaviourProvider>, PluginError> {
         Err(PluginError::NoRelationBehaviourProvider)
     }
 

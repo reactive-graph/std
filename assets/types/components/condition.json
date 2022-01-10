@@ -1,14 +1,14 @@
 {
-  "name": "logical_operation",
+  "name": "condition",
   "properties": [
     {
-      "name": "lhs",
+      "name": "condition",
       "data_type": "bool",
       "socket_type": "input"
     },
     {
       "name": "result",
-      "data_type": "bool",
+      "data_type": "any",
       "socket_type": "output"
     }
   ]

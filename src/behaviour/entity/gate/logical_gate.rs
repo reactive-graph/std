@@ -42,10 +42,7 @@ impl LogicalGate<'_> {
             .unwrap()
             .map(|v| match v.as_bool() {
                 Some(b) => (OperatorPosition::LHS, b),
-                None => (
-                    OperatorPosition::LHS,
-                    LogicalGateProperties::LHS.default_value(),
-                ),
+                None => (OperatorPosition::LHS, LogicalGateProperties::LHS.default_value()),
             });
         let rhs = e
             .properties
@@ -57,18 +54,12 @@ impl LogicalGate<'_> {
             .map(|v| -> LogicalExpressionValue {
                 match v.as_bool() {
                     Some(b) => (OperatorPosition::RHS, b),
-                    None => (
-                        OperatorPosition::RHS,
-                        LogicalGateProperties::RHS.default_value(),
-                    ),
+                    None => (OperatorPosition::RHS, LogicalGateProperties::RHS.default_value()),
                 }
             });
 
         let expression = lhs.merge(&rhs).fold(
-            Expression::new(
-                LogicalGateProperties::LHS.default_value(),
-                LogicalGateProperties::RHS.default_value(),
-            ),
+            Expression::new(LogicalGateProperties::LHS.default_value(), LogicalGateProperties::RHS.default_value()),
             |old_state, (o, value)| match *o {
                 OperatorPosition::LHS => old_state.lhs(*value),
                 OperatorPosition::RHS => old_state.rhs(*value),
@@ -79,12 +70,7 @@ impl LogicalGate<'_> {
         let internal_result = expression.map(move |e| f(e.lhs, e.rhs));
 
         // TODO: handle result based on outbound property id and inbound property id
-        let handle_id = e
-            .properties
-            .get(LogicalGateProperties::RESULT.as_ref())
-            .unwrap()
-            .id
-            .as_u128();
+        let handle_id = e.properties.get(LogicalGateProperties::RESULT.as_ref()).unwrap().id.as_u128();
 
         let logical_gate = LogicalGate {
             lhs: RwLock::new(lhs),
@@ -96,17 +82,13 @@ impl LogicalGate<'_> {
         };
 
         // Connect the internal result with the stream of the result property
-        logical_gate
-            .internal_result
-            .read()
-            .unwrap()
-            .observe_with_handle(
-                move |v| {
-                    debug!("Setting result of logical gate: {}", v);
-                    e.set(LogicalGateProperties::RESULT.to_string(), json!(*v));
-                },
-                handle_id,
-            );
+        logical_gate.internal_result.read().unwrap().observe_with_handle(
+            move |v| {
+                debug!("Setting result of logical gate: {}", v);
+                e.set(LogicalGateProperties::RESULT.to_string(), json!(*v));
+            },
+            handle_id,
+        );
 
         logical_gate
     }
@@ -121,11 +103,7 @@ impl LogicalGate<'_> {
 impl Disconnectable for LogicalGate<'_> {
     /// TODO: Add guard: disconnect only if actually connected
     fn disconnect(&self) {
-        debug!(
-            "Disconnect logical gate {} {}",
-            self.type_name(),
-            self.handle_id
-        );
+        debug!("Disconnect logical gate {} {}", self.type_name(), self.handle_id);
         self.internal_result.read().unwrap().remove(self.handle_id);
     }
 }
@@ -136,10 +114,7 @@ impl Operation for LogicalGate<'_> {
     }
 
     fn result(&self) -> Value {
-        self.entity
-            .get(LogicalGateProperties::RESULT.as_ref())
-            .unwrap()
-            .clone()
+        self.entity.get(LogicalGateProperties::RESULT.as_ref()).unwrap().clone()
     }
 }
 

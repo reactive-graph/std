@@ -8,14 +8,7 @@ fn entity_types_should_exist() {
     let entity_types = entity_type_provider.get_entity_types();
     assert_eq!(expected_entity_types.len(), entity_types.len());
     println!("{}", expected_entity_types.join(", "));
-    println!(
-        "{}",
-        entity_types
-            .clone()
-            .into_iter()
-            .map(|entity_type| entity_type.name)
-            .collect::<String>()
-    );
+    println!("{}", entity_types.clone().into_iter().map(|entity_type| entity_type.name).collect::<String>());
     assert_eq!(
         expected_entity_types.len(),
         entity_types
