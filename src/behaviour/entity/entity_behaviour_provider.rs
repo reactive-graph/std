@@ -1,4 +1,5 @@
-use std::sync::Arc;
+use std::collections::HashMap;
+use std::sync::{Arc, RwLock};
 
 use async_trait::async_trait;
 use log::debug;
@@ -15,19 +16,19 @@ use crate::model::ReactiveEntityInstance;
 use crate::plugins::EntityBehaviourProvider;
 
 #[wrapper]
-pub struct NumericOperationStorage(std::sync::RwLock<std::collections::HashMap<Uuid, std::sync::Arc<NumericOperation<'static>>>>);
+pub struct NumericOperationStorage(RwLock<HashMap<Uuid, Arc<NumericOperation<'static>>>>);
 
 #[wrapper]
-pub struct NumericGateStorage(std::sync::RwLock<std::collections::HashMap<Uuid, std::sync::Arc<NumericGate<'static>>>>);
+pub struct NumericGateStorage(RwLock<HashMap<Uuid, Arc<NumericGate<'static>>>>);
 
 #[waiter_di::provides]
 fn create_numeric_operation_storage() -> NumericOperationStorage {
-    NumericOperationStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
+    NumericOperationStorage(RwLock::new(HashMap::new()))
 }
 
 #[waiter_di::provides]
 fn create_numeric_gate_storage() -> NumericGateStorage {
-    NumericGateStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
+    NumericGateStorage(RwLock::new(HashMap::new()))
 }
 
 #[async_trait]
