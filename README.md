@@ -1,8 +1,8 @@
 # Inexor Reactive Graph Flow
 
-| Project | Module | Sub-Module | Functionality | Tests |
-| --- | --- | --- | --- | --- |
-| Reactive Graph Flow | Plugin | Logical | <img src="https://img.shields.io/badge/state-completed-brightgreen"> | [<img src="https://img.shields.io/codecov/c/github/aschaeffer/inexor-rgf-plugin-logical">](https://app.codecov.io/gh/aschaeffer/inexor-rgf-plugin-logical) |
+| Project             | Module | Sub-Module | Functionality                                                        | Tests                                                                                                                                                      |
+|---------------------|--------|------------|----------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Reactive Graph Flow | Plugin | Logical    | <img src="https://img.shields.io/badge/state-completed-brightgreen"> | [<img src="https://img.shields.io/codecov/c/github/aschaeffer/inexor-rgf-plugin-logical">](https://app.codecov.io/gh/aschaeffer/inexor-rgf-plugin-logical) |
 
 ### About Inexor
 
@@ -44,22 +44,25 @@ This plugin provides the type system and behaviour for logical operations.
 
 #### Components
 
-| Name | Description | Input Properties | Output Properties |
-| --- | --- | --- | --- |
-| logical_gate | | lhs<br>rhs | result |
-| logical_operation | | lhs | result |
+| Name              | Description | Input Properties | Output Properties |
+|-------------------|-------------|------------------|-------------------|
+| logical_gate      |             | lhs<br>rhs       | result            |
+| logical_operation |             | lhs              | result            |
+| condition         |             | condition        | result            |
 
 #### Entity Types
 
-| Name | Components | Description |
-| --- | --- | --- |
-| and | logical_gate | |
-| nand | logical_gate | |
-| nor | logical_gate | |
-| not | logical_operation | |
-| or | logical_gate | |
-| xnor | logical_gate | |
-| xor | logical_gate | |
+| Name         | Components        | Description                                                                                                                              |
+|--------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------------|
+| and          | logical_gate      |                                                                                                                                          |
+| nand         | logical_gate      |                                                                                                                                          |
+| nor          | logical_gate      |                                                                                                                                          |
+| not          | logical_operation |                                                                                                                                          |
+| or           | logical_gate      |                                                                                                                                          |
+| xnor         | logical_gate      |                                                                                                                                          |
+| xor          | logical_gate      |                                                                                                                                          |
+| trigger      | condition         | <ul><li>If condition is true, propagate payload to result</li></ul>                                                                      |
+| if_then_else | condition         | <ul><li>If condition is true, propagate then_payload to result</li><li>If condition is false, propagate else_payload to result</li></ul> |
 
 ### Thanks to
 
@@ -68,6 +71,6 @@ This plugin provides the type system and behaviour for logical operations.
 
 ### Sponsors
 
-| | | |
-| --- | --- | --- |
+|                                                                                                                                                                                                                               |           |                                                                   |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|-------------------------------------------------------------------|
 | <a href="https://www.jetbrains.com/?from=github.com/inexorgame"><img align="right" width="100" height="100" src="https://raw.githubusercontent.com/aschaeffer/inexor-rgf-plugin-logical/main/docs/images/icon_CLion.svg"></a> | JetBrains | Special thanks to JetBrains for providing us with CLion licenses! |
