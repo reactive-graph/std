@@ -1,4 +1,4 @@
-use std::collections::HashMap;
+use std::collections::BTreeMap;
 use std::sync::{Arc, RwLock};
 
 use async_trait::async_trait;
@@ -16,19 +16,19 @@ use crate::model::ReactiveEntityInstance;
 use crate::plugins::EntityBehaviourProvider;
 
 #[wrapper]
-pub struct NumericOperationStorage(RwLock<HashMap<Uuid, Arc<NumericOperation<'static>>>>);
+pub struct NumericOperationStorage(RwLock<BTreeMap<Uuid, Arc<NumericOperation<'static>>>>);
 
 #[wrapper]
-pub struct NumericGateStorage(RwLock<HashMap<Uuid, Arc<NumericGate<'static>>>>);
+pub struct NumericGateStorage(RwLock<BTreeMap<Uuid, Arc<NumericGate<'static>>>>);
 
 #[waiter_di::provides]
 fn create_numeric_operation_storage() -> NumericOperationStorage {
-    NumericOperationStorage(RwLock::new(HashMap::new()))
+    NumericOperationStorage(RwLock::new(BTreeMap::new()))
 }
 
 #[waiter_di::provides]
 fn create_numeric_gate_storage() -> NumericGateStorage {
-    NumericGateStorage(RwLock::new(HashMap::new()))
+    NumericGateStorage(RwLock::new(BTreeMap::new()))
 }
 
 #[async_trait]
