@@ -12,10 +12,6 @@ license = "MIT"
 async-trait = "0.1"
 async-std = { version = "1.10", features = ["tokio1"] }
 base64 = "0.13"
-crossbeam = "0.8"
-evdev = { version = "0.11", features = ["tokio"] }
-futures = "0.3"
-futures-timer = "3.0"
 indradb-lib = "1"
 infer = "0.6"
 log = { version = "0.4", features = ["std", "serde"] }
