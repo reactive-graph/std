@@ -1,0 +1,24 @@
+mutation {
+  instances {
+    entities {
+      update(
+        id: "dce4bd25-7b25-4a6a-8567-5429a2b3a101",
+        properties: [
+          {
+            name: "filename",
+            value: "docs/images/inexor_2.png"
+          }
+        ]
+      ) {
+        id,
+        type {name},
+        properties(
+          names: [
+            "filename",
+            "data_url"
+          ]
+        )
+      }
+    }
+  }
+}
