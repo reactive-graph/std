@@ -1,0 +1,11 @@
+{
+  "name": "versioned",
+  "properties": [
+    {
+      "name": "version",
+      "description": "The version number. Use semantic versioning. See: https://semver.org/",
+      "data_type": "string",
+      "socket_type": "none"
+    }
+  ]
+}
