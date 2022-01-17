@@ -4,7 +4,8 @@
     {
       "name": "name",
       "description": "The name of an entity or a relation",
-      "data_type": "string"
+      "data_type": "string",
+      "socket_type": "none"
     }
   ]
 }
