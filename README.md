@@ -1,7 +1,7 @@
 # Inexor Reactive Graph Flow
 
-| Project | Module | Sub-Module | Functionality | Tests |
-| --- | --- | --- | --- | --- |
+| Project             | Module | Sub-Module | Functionality                                                        | Tests                                                                                                                                                            |
+|---------------------|--------|------------|----------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Reactive Graph Flow | Plugin | Arithmetic | <img src="https://img.shields.io/badge/state-completed-brightgreen"> | [<img src="https://img.shields.io/codecov/c/github/aschaeffer/inexor-rgf-plugin-arithmetic">](https://app.codecov.io/gh/aschaeffer/inexor-rgf-plugin-arithmetic) |
 
 ### About Inexor
@@ -44,21 +44,21 @@ This plugin provides the type system and behaviour for arithmetic operations.
 
 #### Components
 
-| Name | Description | Input Properties | Output Properties |
-| --- | --- | --- | --- |
-| arithmetic_gate | | lhs<br>rhs | result |
+| Name            | Description | Input Properties | Output Properties |
+|-----------------|-------------|------------------|-------------------|
+| arithmetic_gate |             | lhs<br>rhs       | result            |
 
 #### Entity Types
 
-| Name | Components | Description |
-| --- | --- | --- |
-| add | arithmetic_gate | Addition |
-| div | arithmetic_gate | Division |
-| max | arithmetic_gate | Max value |
-| min | arithmetic_gate | Min value |
-| mod | arithmetic_gate | Modulo |
-| mul | arithmetic_gate | Multiplication |
-| sub | arithmetic_gate | Subtraction |
+| Name | Components      | Description    |
+|------|-----------------|----------------|
+| add  | arithmetic_gate | Addition       |
+| div  | arithmetic_gate | Division       |
+| max  | arithmetic_gate | Max value      |
+| min  | arithmetic_gate | Min value      |
+| mod  | arithmetic_gate | Modulo         |
+| mul  | arithmetic_gate | Multiplication |
+| sub  | arithmetic_gate | Subtraction    |
 
 ### Thanks to
 
@@ -67,6 +67,6 @@ This plugin provides the type system and behaviour for arithmetic operations.
 
 ### Sponsors
 
-| | | |
-| --- | --- | --- |
+|                                                                                                                                                                                                                                  |           |                                                                   |
+|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|-------------------------------------------------------------------|
 | <a href="https://www.jetbrains.com/?from=github.com/inexorgame"><img align="right" width="100" height="100" src="https://raw.githubusercontent.com/aschaeffer/inexor-rgf-plugin-arithmetic/main/docs/images/icon_CLion.svg"></a> | JetBrains | Special thanks to JetBrains for providing us with CLion licenses! |
