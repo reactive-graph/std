@@ -1,4 +1,5 @@
 use std::convert::AsRef;
+use std::path::Path;
 use std::sync::Arc;
 
 use crate::reactive::BehaviourCreationError;
@@ -38,13 +39,15 @@ impl ConfigFile {
                     debug!("filename is empty");
                     return;
                 }
+                let filename = shellexpand::tilde(filename);
+                let path = Path::new(filename.as_ref());
 
                 debug!(
-                    "Reading config file {} into entity instance {}",
-                    filename, config_file.id
+                    "Reading config file {:?} into entity instance {}",
+                    path, config_file.id
                 );
 
-                let toml_config = std::fs::read_to_string(filename);
+                let toml_config = std::fs::read_to_string(path);
                 match toml_config {
                     Ok(toml_config) => {
                         let data = toml::from_str::<Value>(toml_config.as_str());
