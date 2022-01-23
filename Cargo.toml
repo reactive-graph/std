@@ -11,7 +11,6 @@ license = "MIT"
 [dependencies]
 async-std = { version = "1.8", features = ["attributes"] }
 async-trait = "0.1"
-crossbeam = "0.8"
 indradb-lib = "1"
 lazy_static = "1.4"
 log = { version = "0.4", features = ["std", "serde"] }
