@@ -1,8 +1,8 @@
 # Inexor Reactive Graph Flow
 
-| Project | Module | Sub-Module | Functionality | Tests |
-| --- | --- | --- | --- | --- |
-| Reactive Graph Flow | Plugin | Config | <img src="https://img.shields.io/badge/state-completed-brightgreen"> | [<img src="https://img.shields.io/codecov/c/github/aschaeffer/inexor-rgf-plugin-config">](https://app.codecov.io/gh/aschaeffer/inexor-rgf-plugin-config) |
+| Project             | Module | Sub-Module | Functionality                                                        | Tests                                                                                                                                                    |
+|---------------------|--------|------------|----------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Reactive Graph Flow | Plugin | Config     | <img src="https://img.shields.io/badge/state-completed-brightgreen"> | [<img src="https://img.shields.io/codecov/c/github/aschaeffer/inexor-rgf-plugin-config">](https://app.codecov.io/gh/aschaeffer/inexor-rgf-plugin-config) |
 
 ### About Inexor
 
@@ -44,10 +44,10 @@ This plugin provides a configuration file reader.
 
 #### Entity Types
 
-| Name | Properties | Data Type | Socket Type |
-| --- | --- | --- | --- |
-| config_file | filename | string | none |
-| | configuration | object | output |
+| Name        | Properties    | Data Type | Socket Type |
+|-------------|---------------|-----------|-------------|
+| config_file | filename      | string    | none        |
+|             | configuration | object    | output      |
 
 ### Thanks to
 
@@ -56,6 +56,6 @@ This plugin provides a configuration file reader.
 
 ### Sponsors
 
-| | | |
-| --- | --- | --- |
+|                                                                                                                                                                                                                               |           |                                                                   |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|-------------------------------------------------------------------|
 | <a href="https://www.jetbrains.com/?from=github.com/inexorgame"><img align="right" width="100" height="100" src="https://raw.githubusercontent.com/aschaeffer/inexor-rgf-plugin-logical/main/docs/images/icon_CLion.svg"></a> | JetBrains | Special thanks to JetBrains for providing us with CLion licenses! |
