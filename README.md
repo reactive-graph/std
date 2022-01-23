@@ -81,6 +81,14 @@ On destruction of the connector, the stream will be removed.
 
 ---
 
+#### Platform Compatibility
+
+| Platform | Compatibility |
+|----------|---------------|
+| Linux    | ✓             |
+| MacOS    | ✓             |
+| Windows  | ✓             |
+
 #### Components
 
 | Name      | Description             | Properties                                      |
