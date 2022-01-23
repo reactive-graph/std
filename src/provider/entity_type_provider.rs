@@ -3,7 +3,7 @@ use log::{debug, error};
 use rust_embed::RustEmbed;
 use waiter_di::*;
 
-use crate::model::entity_type::EntityType;
+use crate::model::EntityType;
 use crate::plugins::EntityTypeProvider;
 
 #[derive(RustEmbed)]

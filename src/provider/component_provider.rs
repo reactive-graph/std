@@ -3,7 +3,7 @@ use log::{debug, error};
 use rust_embed::RustEmbed;
 use waiter_di::*;
 
-use crate::model::component::Component;
+use crate::model::Component;
 use crate::plugins::ComponentProvider;
 
 #[derive(RustEmbed)]
