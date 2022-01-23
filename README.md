@@ -1,8 +1,8 @@
 # Inexor Reactive Graph Flow
 
-| Project | Module | Sub-Module | Functionality | Tests |
-| --- | --- | --- | --- | --- |
-| Reactive Graph Flow | Plugin | Connector | <img src="https://img.shields.io/badge/state-completed-brightgreen"> | [<img src="https://img.shields.io/codecov/c/github/aschaeffer/inexor-rgf-plugin-connector">](https://app.codecov.io/gh/aschaeffer/inexor-rgf-plugin-connector) |
+| Project             | Module | Sub-Module | Functionality                                                        | Tests                                                                                                                                                          |
+|---------------------|--------|------------|----------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Reactive Graph Flow | Plugin | Connector  | <img src="https://img.shields.io/badge/state-completed-brightgreen"> | [<img src="https://img.shields.io/codecov/c/github/aschaeffer/inexor-rgf-plugin-connector">](https://app.codecov.io/gh/aschaeffer/inexor-rgf-plugin-connector) |
 
 ### About Inexor
 
@@ -83,29 +83,29 @@ On destruction of the connector, the stream will be removed.
 
 #### Components
 
-| Name | Description | Properties |
-| --- | --- | --- |
+| Name      | Description             | Properties                                      |
+|-----------|-------------------------|-------------------------------------------------|
 | connector | Connects two properties | outbound_property_name<br>inbound_property_name |
 
 #### Relation Types
 
-| Name | Components | Description |
-| --- | --- | --- |
-| debug_connector | connector | This connector logs the value before propagation (log level debug) |
-| default_connector | connector | This is the default connector type, which simply does nothing than propagate the value |
-| parse_float_connector | connector | This connector parses a string value and propagates a float value |
-| parse_int_connector | connector | This connector parses a string value and propagates a int value |
-| to_string_connector | connector | This connector converts the value of any type to string before propagation |
-| trace_connector | connector | This connector logs the value before propagation (log level trace) |
+| Name                  | Components | Description                                                                            |
+|-----------------------|------------|----------------------------------------------------------------------------------------|
+| debug_connector       | connector  | This connector logs the value before propagation (log level debug)                     |
+| default_connector     | connector  | This is the default connector type, which simply does nothing than propagate the value |
+| parse_float_connector | connector  | This connector parses a string value and propagates a float value                      |
+| parse_int_connector   | connector  | This connector parses a string value and propagates a int value                        |
+| to_string_connector   | connector  | This connector converts the value of any type to string before propagation             |
+| trace_connector       | connector  | This connector logs the value before propagation (log level trace)                     |
 
 ##### Future: More (useful) connectors
 
-| Name | Components | Description |
-| --- | --- | --- |
-| str_split_connector | connector | A string is split into tokens. Propagates an JSON array of string tokens |
-| str_join_connector | connector | Joins an array of strings and propagates the resulting string |
-| increment_connector | connector | Propagates the incremented number |
-| decrement_connector | connector | Propagates the decremented number |
+| Name                | Components | Description                                                              |
+|---------------------|------------|--------------------------------------------------------------------------|
+| str_split_connector | connector  | A string is split into tokens. Propagates an JSON array of string tokens |
+| str_join_connector  | connector  | Joins an array of strings and propagates the resulting string            |
+| increment_connector | connector  | Propagates the incremented number                                        |
+| decrement_connector | connector  | Propagates the decremented number                                        |
 
 ### Thanks to
 
@@ -114,6 +114,6 @@ On destruction of the connector, the stream will be removed.
 
 ### Sponsors
 
-| | | |
-| --- | --- | --- |
+|                                                                                                                                                                                                                                 |           |                                                                   |
+|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|-------------------------------------------------------------------|
 | <a href="https://www.jetbrains.com/?from=github.com/inexorgame"><img align="right" width="100" height="100" src="https://raw.githubusercontent.com/aschaeffer/inexor-rgf-plugin-connector/main/docs/images/icon_CLion.svg"></a> | JetBrains | Special thanks to JetBrains for providing us with CLion licenses! |
