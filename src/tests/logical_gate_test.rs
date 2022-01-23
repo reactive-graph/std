@@ -1,6 +1,6 @@
 use std::sync::Arc;
 
-use serde_json::{json, Value};
+use serde_json::json;
 
 use crate::behaviour::entity::gate::LogicalGate;
 use crate::behaviour::entity::gate::LogicalGateProperties;
