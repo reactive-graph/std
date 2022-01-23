@@ -1,0 +1,72 @@
+mutation {
+  instances {
+    entities {
+      createOutbound: create(
+        typeName: "value",
+        id: "dc82735e-28ec-4c24-aedb-d968b73b288f",
+        properties: [
+          {
+            name: "value",
+            value: "Test"
+          }
+        ]
+      ) {
+        id,
+        type {name},
+        properties(
+          names: [
+            "value"
+          ]
+        )
+      }
+      createInbound: create(
+        typeName: "value",
+        id: "4cf8e6d8-f92e-4ffa-9610-ec0635f55e08",
+        properties: [
+          {
+            name: "value",
+            value: "Test"
+          }
+        ]
+      ) {
+        id,
+        type {name},
+        properties(
+          names: [
+            "value"
+          ]
+        )
+      }
+    }
+    relations {
+      createConnector: create(
+        edgeKey: {
+          outboundId: "dc82735e-28ec-4c24-aedb-d968b73b288f",
+          typeName: "default_connector--value--value"
+          inboundId: "4cf8e6d8-f92e-4ffa-9610-ec0635f55e08",
+        },
+        properties: [
+          {
+            name: "outbound_property_name",
+            value: "value"
+          },
+          {
+            name: "inbound_property_name",
+            value: "value"
+          }
+        ]
+      ) {
+        type {
+          name,
+          fullName
+        },
+        properties(
+          names: [
+            "outbound_property_name",
+            "inbound_property_name"
+          ]
+        )
+      }
+    }
+  }
+}

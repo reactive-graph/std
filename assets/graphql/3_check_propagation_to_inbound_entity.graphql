@@ -1,0 +1,13 @@
+query {
+  instances {
+    entities(id: "4cf8e6d8-f92e-4ffa-9610-ec0635f55e08") {
+      id,
+      type {name},
+      properties(
+        names: [
+          "value"
+        ]
+      )
+    }
+  }
+}
