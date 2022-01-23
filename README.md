@@ -42,6 +42,14 @@ This plugin provides a configuration file reader.
 [<img src="https://img.shields.io/github/license/aschaeffer/inexor-rgf-plugin-config">](https://github.com/aschaeffer/inexor-rgf-plugin-config/blob/main/LICENSE)
 [<img src="https://img.shields.io/discord/698219248954376256?logo=discord">](https://discord.com/invite/acUW8k7)
 
+#### Platform Compatibility
+
+| Platform | Compatibility |
+|----------|---------------|
+| Linux    | ✓             |
+| MacOS    | ✓             |
+| Windows  | ✓             |
+
 #### Entity Types
 
 | Name        | Properties    | Data Type | Socket Type |
