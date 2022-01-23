@@ -1,11 +1,11 @@
 use indradb::NamedProperty;
 use serde_json::json;
-use strum_macros::{AsRefStr, IntoStaticStr, ToString};
+use strum_macros::{AsRefStr, Display, IntoStaticStr};
 
 use crate::reactive::property::NamedProperties;
 
 #[allow(non_camel_case_types)]
-#[derive(AsRefStr, IntoStaticStr, ToString)]
+#[derive(AsRefStr, IntoStaticStr, Display)]
 pub enum ArithmeticGateProperties {
     #[strum(serialize = "lhs")]
     LHS,
