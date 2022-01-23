@@ -43,6 +43,14 @@ There are entity types for each data type.
 [<img src="https://img.shields.io/github/license/aschaeffer/inexor-rgf-plugin-value">](https://github.com/aschaeffer/inexor-rgf-plugin-value/blob/main/LICENSE)
 [<img src="https://img.shields.io/discord/698219248954376256?logo=discord">](https://discord.com/invite/acUW8k7)
 
+#### Platform Compatibility
+
+| Platform | Compatibility |
+|----------|---------------|
+| Linux    | ✓             |
+| MacOS    | ✓             |
+| Windows  | ✓             |
+
 #### Entity Types
 
 | Name          | Description           | Output Properties |
