@@ -95,23 +95,19 @@ impl Plugin for SystemEnvironmentPluginImpl {
     }
 
     fn init(&self) -> Result<(), PluginError> {
-        debug!("SystemEnvironmentPluginModuleImpl::init()");
         Ok(())
     }
 
     fn post_init(&self) -> Result<(), PluginError> {
-        debug!("SystemEnvironmentPluginModuleImpl::post_init()");
         self.create_system_environment_variables();
         Ok(())
     }
 
     fn pre_shutdown(&self) -> Result<(), PluginError> {
-        debug!("SystemEnvironmentPluginModuleImpl::pre_shutdown()");
         Ok(())
     }
 
     fn shutdown(&self) -> Result<(), PluginError> {
-        debug!("SystemEnvironmentPluginModuleImpl::shutdown()");
         Ok(())
     }
 
