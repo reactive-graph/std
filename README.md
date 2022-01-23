@@ -42,6 +42,14 @@ This plugin provides the type system and behaviour for arithmetic operations.
 [<img src="https://img.shields.io/github/license/aschaeffer/inexor-rgf-plugin-arithmetic">](https://github.com/aschaeffer/inexor-rgf-plugin-arithmetic/blob/main/LICENSE)
 [<img src="https://img.shields.io/discord/698219248954376256?logo=discord">](https://discord.com/invite/acUW8k7)
 
+#### Platform Compatibility
+
+| Platform | Compatibility |
+|----------|---------------|
+| Linux    | ✓             |
+| MacOS    | ✓             |
+| Windows  | ✓             |
+
 #### Components
 
 | Name            | Description | Input Properties | Output Properties |
