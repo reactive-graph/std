@@ -44,6 +44,14 @@ With this plugin it's possible to integrate external services into your home aut
 [<img src="https://img.shields.io/github/license/aschaeffer/inexor-rgf-plugin-http">](https://github.com/aschaeffer/inexor-rgf-plugin-http/blob/main/LICENSE)
 [<img src="https://img.shields.io/discord/698219248954376256?logo=discord">](https://discord.com/invite/acUW8k7)
 
+#### Platform Compatibility
+
+| Platform | Compatibility |
+|----------|---------------|
+| Linux    | ✓             |
+| MacOS    | ✓             |
+| Windows  | ✓             |
+
 #### Type System
 
 <img src="https://raw.githubusercontent.com/aschaeffer/inexor-rgf-plugin-http/main/docs/images/type_system.png">
