@@ -3,7 +3,17 @@ use crate::provider::ArithmeticEntityTypeProviderImpl;
 
 #[test]
 fn entity_types_should_exist() {
-    let expected_entity_types = vec!["add", "div", "max", "min", "mod", "mul", "sub"];
+    let expected_entity_types = vec![
+        "add",
+        "decrement",
+        "div",
+        "increment",
+        "max",
+        "min",
+        "mod",
+        "mul",
+        "sub",
+    ];
     let entity_type_provider = ArithmeticEntityTypeProviderImpl {};
     let entity_types = entity_type_provider.get_entity_types();
     assert_eq!(expected_entity_types.len(), entity_types.len());
