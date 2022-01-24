@@ -4,15 +4,10 @@
 #[macro_use]
 extern crate query_interface;
 
-#[macro_use]
-extern crate lazy_static;
-
 use std::sync::Arc;
 
-use inexor_rgf_core_frp as frp;
 use inexor_rgf_core_model as model;
 use inexor_rgf_core_plugins as plugins;
-use inexor_rgf_core_reactive as reactive;
 use log::error;
 use waiter_di::{profiles, Container, Provider};
 

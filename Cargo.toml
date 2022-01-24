@@ -11,7 +11,6 @@ license = "MIT"
 [dependencies]
 async-trait = "0.1"
 indradb-lib = "1"
-lazy_static = "1.4"
 log = { version = "0.4", features = ["std", "serde"] }
 log4rs = { version = "1.0", features = ["console_appender", "file_appender"]}
 query_interface = "0.3"
@@ -23,9 +22,7 @@ strum_macros = "0.23"
 uuid = { version = "0.8", features = ["serde", "v4"] }
 waiter_di = { version = "1.6.4", features = [ "async" ], git = "https://github.com/aschaeffer/waiter.git" }
 
-inexor-rgf-core-frp = { git = "https://github.com/aschaeffer/inexor-rgf-core-frp.git" }
 inexor-rgf-core-model = { git = "https://github.com/aschaeffer/inexor-rgf-core-model.git" }
-inexor-rgf-core-reactive = { git = "https://github.com/aschaeffer/inexor-rgf-core-reactive.git" }
 inexor-rgf-core-plugins = { git = "https://github.com/aschaeffer/inexor-rgf-core-plugins.git" }
 
 [lib]
