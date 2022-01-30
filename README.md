@@ -42,6 +42,14 @@ This plugin provides the type system and behaviour for logical operations.
 [<img src="https://img.shields.io/github/license/aschaeffer/inexor-rgf-plugin-logical">](https://github.com/aschaeffer/inexor-rgf-plugin-logical/blob/main/LICENSE)
 [<img src="https://img.shields.io/discord/698219248954376256?logo=discord">](https://discord.com/invite/acUW8k7)
 
+#### Platform Compatibility
+
+| Platform | Compatibility |
+|----------|---------------|
+| Linux    | ✓             |
+| MacOS    | ✓             |
+| Windows  | ✓             |
+
 #### Components
 
 | Name              | Description | Input Properties | Output Properties |
