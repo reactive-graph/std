@@ -1,0 +1,15 @@
+query findSystemEnvCargo {
+  instances {
+    entities(label: "/org/inexor/system/config/plugins") {
+      id
+      type {
+        name
+      }
+      properties(names: [
+        "label"
+        "filename"
+        "configuration"
+      ])
+    }
+  }
+}
