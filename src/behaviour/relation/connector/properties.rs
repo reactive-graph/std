@@ -1,4 +1,4 @@
-use indradb::NamedProperty;
+use indradb::{Identifier, NamedProperty};
 use serde_json::json;
 use strum_macros::{AsRefStr, Display, IntoStaticStr};
 
@@ -31,7 +31,7 @@ impl ConnectorProperties {
 impl From<ConnectorProperties> for NamedProperty {
     fn from(p: ConnectorProperties) -> Self {
         NamedProperty {
-            name: p.to_string(),
+            name: Identifier::new(p.to_string()).unwrap(),
             value: json!(p.default_value()),
         }
     }
