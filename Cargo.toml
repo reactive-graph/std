@@ -3,7 +3,7 @@ cargo-features = ["strip"]
 [package]
 name = "inexor-rgf-plugin-random"
 description = "Inexor - Reactive Graph Flow - Plugin - Random"
-version = "0.4.0"
+version = "0.5.0"
 authors = ["Andreas Schaeffer <hanack@nooblounge.net>"]
 edition = "2021"
 license = "MIT"
@@ -11,7 +11,7 @@ license = "MIT"
 [dependencies]
 async-trait = "0.1"
 async-std = { version = "1.10", features = ["tokio1"] }
-indradb-lib = "1"
+indradb-lib = "3"
 log = { version = "0.4", features = ["std", "serde"] }
 log4rs = { version = "1.0", features = ["console_appender", "file_appender"]}
 query_interface = "0.3"

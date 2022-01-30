@@ -1,5 +1,5 @@
 use crate::reactive::NamedProperties;
-use indradb::NamedProperty;
+use indradb::{Identifier, NamedProperty};
 use serde_json::{json, Value};
 use strum_macros::{AsRefStr, Display, IntoStaticStr};
 
@@ -38,7 +38,7 @@ impl RandomIntegerWithinRangeProperties {
 impl From<RandomIntegerWithinRangeProperties> for NamedProperty {
     fn from(p: RandomIntegerWithinRangeProperties) -> Self {
         NamedProperty {
-            name: p.to_string(),
+            name: Identifier::new(p.to_string()).unwrap(),
             value: p.default_value(),
         }
     }
