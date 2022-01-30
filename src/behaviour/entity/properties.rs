@@ -1,4 +1,4 @@
-use indradb::NamedProperty;
+use indradb::{Identifier, NamedProperty};
 use inexor_rgf_core_reactive::NamedProperties;
 use serde_json::json;
 use strum_macros::{AsRefStr, Display, IntoStaticStr};
@@ -30,7 +30,7 @@ impl ConfigFileProperties {
 impl From<ConfigFileProperties> for NamedProperty {
     fn from(p: ConfigFileProperties) -> Self {
         NamedProperty {
-            name: p.to_string(),
+            name: Identifier::new(p.to_string()).unwrap(),
             value: json!(p.default_value()),
         }
     }
