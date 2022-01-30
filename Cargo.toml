@@ -3,7 +3,7 @@ cargo-features = ["strip"]
 [package]
 name = "inexor-rgf-plugin-logical"
 description = "Inexor - Reactive Graph Flow - Plugin - Logical"
-version = "0.4.0"
+version = "0.5.0"
 authors = ["Andreas Schaeffer <hanack@nooblounge.net"]
 edition = "2021"
 license = "MIT"
@@ -12,7 +12,7 @@ license = "MIT"
 async-std = { version = "1.8", features = ["attributes"] }
 async-trait = "0.1"
 crossbeam = "0.8"
-indradb-lib = "1"
+indradb-lib = "3"
 lazy_static = "1.4"
 log = { version = "0.4", features = ["std", "serde"] }
 log4rs = { version = "1.0", features = ["console_appender", "file_appender"]}
