@@ -1,4 +1,4 @@
-use indradb::NamedProperty;
+use indradb::{Identifier, NamedProperty};
 use serde_json::json;
 use strum_macros::{AsRefStr, Display, IntoStaticStr};
 
@@ -35,7 +35,7 @@ impl ArithmeticGateProperties {
 impl From<ArithmeticGateProperties> for NamedProperty {
     fn from(p: ArithmeticGateProperties) -> Self {
         NamedProperty {
-            name: p.to_string(),
+            name: Identifier::new(p.to_string()).unwrap(),
             value: json!(p.default_value()),
         }
     }
