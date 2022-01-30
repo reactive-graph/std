@@ -1,4 +1,4 @@
-use indradb::NamedProperty;
+use indradb::{Identifier, NamedProperty};
 use inexor_rgf_core_reactive::NamedProperties;
 use serde_json::{json, Value};
 use strum_macros::{AsRefStr, Display, IntoStaticStr};
@@ -50,7 +50,7 @@ impl HttpProperties {
 impl From<HttpProperties> for NamedProperty {
     fn from(p: HttpProperties) -> Self {
         NamedProperty {
-            name: p.to_string(),
+            name: Identifier::new(p.to_string()).unwrap(),
             value: p.default_value(),
         }
     }
