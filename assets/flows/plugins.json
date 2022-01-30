@@ -15,6 +15,7 @@
       "id": "f3c6927a-378c-4dc3-ad71-eb9303eb9911",
       "description": "Plugins",
       "properties": {
+        "label": "/org/inexor/system/config/plugins",
         "filename": "./config/plugins.toml",
         "configuration": {
         }
