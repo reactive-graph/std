@@ -1,0 +1,15 @@
+query findSystemEnvXdgCurrentDesktop {
+  instances {
+    entities(label: "/org/inexor/system/env/xdg_current_desktop") {
+      id
+      type {
+        name
+      }
+      properties(names: [
+        "label"
+        "name"
+        "value"
+      ])
+    }
+  }
+}

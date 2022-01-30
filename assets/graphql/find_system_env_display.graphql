@@ -1,0 +1,15 @@
+query findSystemEnvDisplay {
+  instances {
+    entities(label: "/org/inexor/system/env/display") {
+      id
+      type {
+        name
+      }
+      properties(names: [
+        "label"
+        "name"
+        "value"
+      ])
+    }
+  }
+}

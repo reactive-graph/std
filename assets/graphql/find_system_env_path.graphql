@@ -1,0 +1,15 @@
+query findSystemEnvPath {
+  instances {
+    entities(label: "/org/inexor/system/env/path") {
+      id
+      type {
+        name
+      }
+      properties(names: [
+        "label"
+        "name"
+        "value"
+      ])
+    }
+  }
+}

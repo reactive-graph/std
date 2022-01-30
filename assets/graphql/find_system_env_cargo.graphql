@@ -1,0 +1,15 @@
+query findSystemEnvCargo {
+  instances {
+    entities(label: "/org/inexor/system/env/cargo") {
+      id
+      type {
+        name
+      }
+      properties(names: [
+        "label"
+        "name"
+        "value"
+      ])
+    }
+  }
+}

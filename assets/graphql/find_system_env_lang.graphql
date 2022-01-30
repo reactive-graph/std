@@ -1,0 +1,15 @@
+query findSystemEnvLang {
+  instances {
+    entities(label: "/org/inexor/system/env/lang") {
+      id
+      type {
+        name
+      }
+      properties(names: [
+        "label"
+        "name"
+        "value"
+      ])
+    }
+  }
+}
