@@ -57,6 +57,13 @@ impl SystemEnvironmentPluginImpl {
             .id(Uuid::new_v5(&NAMESPACE_SYSTEM_ENVIRONMENT, name.as_bytes()))
             .property("name", json!(name.clone()))
             .property("value", json!(value.clone()))
+            .property(
+                "label",
+                json!(format!(
+                    "/org/inexor/system/env/{}",
+                    name.clone().to_lowercase()
+                )),
+            )
             .get();
         let reactive_entity_instance = entity_instance_manager.create(entity_instance);
         match reactive_entity_instance {
