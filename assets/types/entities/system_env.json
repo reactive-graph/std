@@ -3,6 +3,7 @@
   "group": "system",
   "description": "System Environment Variable",
   "components": [
+    "labeled",
     "named",
     "flow_2d",
     "flow_3d"
