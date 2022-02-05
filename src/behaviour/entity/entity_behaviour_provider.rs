@@ -1,9 +1,9 @@
 use std::sync::Arc;
 
+use crate::di::*;
 use async_trait::async_trait;
 use log::debug;
 use uuid::Uuid;
-use waiter_di::*;
 
 use crate::behaviour::entity::config_file::ConfigFile;
 use crate::model::ReactiveEntityInstance;
@@ -16,7 +16,7 @@ pub struct ConfigFileStorage(
     std::sync::RwLock<std::collections::HashMap<Uuid, std::sync::Arc<ConfigFile>>>,
 );
 
-#[waiter_di::provides]
+#[provides]
 fn create_config_file_behaviours_storage() -> ConfigFileStorage {
     ConfigFileStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
 }
