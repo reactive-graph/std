@@ -1,9 +1,9 @@
 use std::sync::Arc;
 
+use crate::di::*;
 use async_trait::async_trait;
 use log::debug;
 use uuid::Uuid;
-use waiter_di::*;
 
 use crate::behaviour::entity::gate::ArithmeticGate;
 use crate::behaviour::entity::gate::ARITHMETIC_GATES;
@@ -24,12 +24,12 @@ pub struct ArithmeticGateStorage(
     std::sync::RwLock<std::collections::HashMap<Uuid, std::sync::Arc<ArithmeticGate<'static>>>>,
 );
 
-#[waiter_di::provides]
+#[provides]
 fn create_arithmetic_operation_storage() -> ArithmeticOperationStorage {
     ArithmeticOperationStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
 }
 
-#[waiter_di::provides]
+#[provides]
 fn create_arithmetic_gate_storage() -> ArithmeticGateStorage {
     ArithmeticGateStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
 }
