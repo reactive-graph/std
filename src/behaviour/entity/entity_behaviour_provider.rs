@@ -1,9 +1,9 @@
 use std::sync::Arc;
 
+use crate::di::*;
 use async_trait::async_trait;
 use log::debug;
 use uuid::Uuid;
-use waiter_di::*;
 
 use crate::behaviour::entity::gate::LogicalGate;
 use crate::behaviour::entity::gate::LOGICAL_GATES;
@@ -28,22 +28,22 @@ pub struct TriggerStorage(std::sync::RwLock<std::collections::HashMap<Uuid, std:
 #[wrapper]
 pub struct IfThenElseStorage(std::sync::RwLock<std::collections::HashMap<Uuid, std::sync::Arc<IfThenElse>>>);
 
-#[waiter_di::provides]
+#[provides]
 fn create_logical_operation_storage() -> LogicalOperationStorage {
     LogicalOperationStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
 }
 
-#[waiter_di::provides]
+#[provides]
 fn create_logical_gate_storage() -> LogicalGateStorage {
     LogicalGateStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
 }
 
-#[waiter_di::provides]
+#[provides]
 fn create_trigger_storage() -> TriggerStorage {
     TriggerStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
 }
 
-#[waiter_di::provides]
+#[provides]
 fn create_if_then_else_storage() -> IfThenElseStorage {
     IfThenElseStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
 }
