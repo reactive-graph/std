@@ -1,9 +1,9 @@
 use std::sync::Arc;
 
+use crate::di::*;
 use async_trait::async_trait;
 use log::debug;
 use uuid::Uuid;
-use waiter_di::*;
 
 use crate::behaviour::entity::comparison::{StringComparison, STRING_COMPARISONS};
 use crate::behaviour::entity::gate::{StringGate, STRING_GATES};
@@ -20,17 +20,17 @@ pub struct StringGateStorage(std::sync::RwLock<std::collections::HashMap<Uuid, s
 #[wrapper]
 pub struct StringComparisonStorage(std::sync::RwLock<std::collections::HashMap<Uuid, std::sync::Arc<StringComparison<'static>>>>);
 
-#[waiter_di::provides]
+#[provides]
 fn create_string_operation_storage() -> StringOperationStorage {
     StringOperationStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
 }
 
-#[waiter_di::provides]
+#[provides]
 fn create_string_gate_storage() -> StringGateStorage {
     StringGateStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
 }
 
-#[waiter_di::provides]
+#[provides]
 fn create_string_comparison_storage() -> StringComparisonStorage {
     StringComparisonStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
 }
