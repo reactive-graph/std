@@ -1,9 +1,9 @@
 use std::sync::Arc;
 
+use crate::di::*;
 use async_trait::async_trait;
 use log::debug;
 use uuid::Uuid;
-use waiter_di::*;
 
 use crate::behaviour::entity::load_binary_data::LoadBinaryData;
 use crate::behaviour::entity::load_binary_data::LOAD_BINARY_DATA;
@@ -18,12 +18,12 @@ pub struct LoadBinaryDataStorage(std::sync::RwLock<std::collections::HashMap<Uui
 #[wrapper]
 pub struct SaveBinaryDataStorage(std::sync::RwLock<std::collections::HashMap<Uuid, std::sync::Arc<SaveBinaryData>>>);
 
-#[waiter_di::provides]
+#[provides]
 fn create_load_binary_data_storage() -> LoadBinaryDataStorage {
     LoadBinaryDataStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
 }
 
-#[waiter_di::provides]
+#[provides]
 fn create_save_binary_data_storage() -> SaveBinaryDataStorage {
     SaveBinaryDataStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
 }
