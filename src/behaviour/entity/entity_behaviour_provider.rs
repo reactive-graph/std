@@ -1,9 +1,9 @@
 use std::sync::Arc;
 
+use crate::di::*;
 use async_trait::async_trait;
 use log::debug;
 use uuid::Uuid;
-use waiter_di::*;
 
 use crate::behaviour::entity::random_integer_within_range::RandomIntegerWithinRange;
 use crate::behaviour::entity::random_integer_within_range::RANDOM_INTEGER_WITHIN_RANGE;
@@ -23,17 +23,17 @@ pub struct RandomNumberStorage(std::sync::RwLock<std::collections::HashMap<Uuid,
 #[wrapper]
 pub struct RandomUuidStorage(std::sync::RwLock<std::collections::HashMap<Uuid, std::sync::Arc<RandomUuid>>>);
 
-#[waiter_di::provides]
+#[provides]
 fn create_random_integer_within_range_storage() -> RandomIntegerWithinRangeStorage {
     RandomIntegerWithinRangeStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
 }
 
-#[waiter_di::provides]
+#[provides]
 fn create_random_number_storage() -> RandomNumberStorage {
     RandomNumberStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
 }
 
-#[waiter_di::provides]
+#[provides]
 fn create_random_uuid_storage() -> RandomUuidStorage {
     RandomUuidStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
 }
