@@ -1,10 +1,10 @@
 use std::collections::BTreeMap;
 use std::sync::{Arc, RwLock};
 
+use crate::di::*;
 use async_trait::async_trait;
 use log::debug;
 use uuid::Uuid;
-use waiter_di::*;
 
 use crate::behaviour::entity::gate::NumericGate;
 use crate::behaviour::entity::gate::NUMERIC_GATE;
@@ -21,12 +21,12 @@ pub struct NumericOperationStorage(RwLock<BTreeMap<Uuid, Arc<NumericOperation<'s
 #[wrapper]
 pub struct NumericGateStorage(RwLock<BTreeMap<Uuid, Arc<NumericGate<'static>>>>);
 
-#[waiter_di::provides]
+#[provides]
 fn create_numeric_operation_storage() -> NumericOperationStorage {
     NumericOperationStorage(RwLock::new(BTreeMap::new()))
 }
 
-#[waiter_di::provides]
+#[provides]
 fn create_numeric_gate_storage() -> NumericGateStorage {
     NumericGateStorage(RwLock::new(BTreeMap::new()))
 }
