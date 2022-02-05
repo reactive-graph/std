@@ -1,9 +1,9 @@
 use std::sync::Arc;
 
+use crate::di::*;
 use async_trait::async_trait;
 use log::debug;
 use uuid::Uuid;
-use waiter_di::*;
 
 use crate::behaviour::entity::http::{Http, HTTP};
 use crate::behaviour::entity::jsonrpc::{JsonRpc, JSONRPC};
@@ -16,12 +16,12 @@ pub struct HttpStorage(std::sync::RwLock<std::collections::HashMap<Uuid, std::sy
 #[wrapper]
 pub struct JsonRpcStorage(std::sync::RwLock<std::collections::HashMap<Uuid, std::sync::Arc<JsonRpc>>>);
 
-#[waiter_di::provides]
+#[provides]
 fn create_http_storage() -> HttpStorage {
     HttpStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
 }
 
-#[waiter_di::provides]
+#[provides]
 fn create_json_rpc_storage() -> JsonRpcStorage {
     JsonRpcStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
 }
