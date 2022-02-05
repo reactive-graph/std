@@ -1,9 +1,9 @@
 use std::sync::Arc;
 
+use crate::di::*;
 use async_trait::async_trait;
 use log::debug;
 use uuid::Uuid;
-use waiter_di::*;
 
 use crate::behaviour::entity::gate::ComparisonGate;
 use crate::behaviour::entity::gate::COMPARISON_GATES;
@@ -13,7 +13,7 @@ use crate::plugins::EntityBehaviourProvider;
 #[wrapper]
 pub struct ComparisonGateStorage(std::sync::RwLock<std::collections::HashMap<Uuid, std::sync::Arc<ComparisonGate<'static>>>>);
 
-#[waiter_di::provides]
+#[provides]
 fn create_comparison_gate_storage() -> ComparisonGateStorage {
     ComparisonGateStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
 }
