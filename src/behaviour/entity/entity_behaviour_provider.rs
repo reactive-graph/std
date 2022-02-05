@@ -20,12 +20,12 @@ use crate::behaviour::entity::object_remove_property::ObjectRemoveProperty;
 use crate::behaviour::entity::object_remove_property::OBJECT_REMOVE_PROPERTY;
 use crate::behaviour::entity::object_set_property::ObjectSetProperty;
 use crate::behaviour::entity::object_set_property::OBJECT_SET_PROPERTY;
+use crate::di::*;
 use crate::model::ReactiveEntityInstance;
 use crate::plugins::EntityBehaviourProvider;
 use async_trait::async_trait;
 use log::debug;
 use uuid::Uuid;
-use waiter_di::*;
 
 #[wrapper]
 pub struct ArrayContainsStorage(std::sync::RwLock<std::collections::HashMap<Uuid, std::sync::Arc<ArrayContains>>>);
@@ -57,52 +57,52 @@ pub struct ObjectRemovePropertyStorage(std::sync::RwLock<std::collections::HashM
 #[wrapper]
 pub struct ObjectSetPropertyStorage(std::sync::RwLock<std::collections::HashMap<Uuid, std::sync::Arc<ObjectSetProperty>>>);
 
-#[waiter_di::provides]
+#[provides]
 fn create_array_contains_storage() -> ArrayContainsStorage {
     ArrayContainsStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
 }
 
-#[waiter_di::provides]
+#[provides]
 fn create_array_get_by_index_storage() -> ArrayGetByIndexStorage {
     ArrayGetByIndexStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
 }
 
-#[waiter_di::provides]
+#[provides]
 fn create_array_length_storage() -> ArrayLengthStorage {
     ArrayLengthStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
 }
 
-#[waiter_di::provides]
+#[provides]
 fn create_array_pop_storage() -> ArrayPopStorage {
     ArrayPopStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
 }
 
-#[waiter_di::provides]
+#[provides]
 fn create_array_push_storage() -> ArrayPushStorage {
     ArrayPushStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
 }
 
-#[waiter_di::provides]
+#[provides]
 fn create_array_reverse_storage() -> ArrayReverseStorage {
     ArrayReverseStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
 }
 
-#[waiter_di::provides]
+#[provides]
 fn create_object_get_property_storage() -> ObjectGetPropertyStorage {
     ObjectGetPropertyStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
 }
 
-#[waiter_di::provides]
+#[provides]
 fn create_object_keys_storage() -> ObjectKeysStorage {
     ObjectKeysStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
 }
 
-#[waiter_di::provides]
+#[provides]
 fn create_object_remove_property_storage() -> ObjectRemovePropertyStorage {
     ObjectRemovePropertyStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
 }
 
-#[waiter_di::provides]
+#[provides]
 fn create_object_set_property_storage() -> ObjectSetPropertyStorage {
     ObjectSetPropertyStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
 }
