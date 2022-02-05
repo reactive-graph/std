@@ -469,7 +469,9 @@ type RelationType {
 type Subscription {
   entity(
     "The uuid of the entity instance"
-    id: UUID!,
+    id: UUID,
+    "The label of the entity instance"
+    label: String,
     "The name of the property"
     propertyName: String!
   ): JSON!
