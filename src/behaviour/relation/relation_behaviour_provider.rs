@@ -1,9 +1,9 @@
 use std::sync::Arc;
 
+use crate::di::*;
 use async_trait::async_trait;
 use indradb::EdgeKey;
 use log::debug;
-use waiter_di::*;
 
 use crate::behaviour::relation::connector::Connector;
 use crate::behaviour::relation::connector::CONNECTORS;
@@ -15,7 +15,7 @@ pub struct ConnectorStorage(
     std::sync::RwLock<std::collections::HashMap<EdgeKey, std::sync::Arc<Connector>>>,
 );
 
-#[waiter_di::provides]
+#[provides]
 fn create_connector_storage() -> ConnectorStorage {
     ConnectorStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
 }
