@@ -1,8 +1,8 @@
 # Inexor Reactive Graph Flow
 
-| Project | Module | Sub-Module | Functionality | Tests |
-| --- | --- | --- | --- | --- |
-| Reactive Graph Flow | Plugin | Base | <img src="https://img.shields.io/badge/state-completed-brightgreen"> | [<img src="https://img.shields.io/codecov/c/github/aschaeffer/inexor-rgf-plugin-base">](https://app.codecov.io/gh/aschaeffer/inexor-rgf-plugin-base) |
+| Project             | Module | Sub-Module | Functionality                                                        | Tests                                                                                                                                                |
+|---------------------|--------|------------|----------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Reactive Graph Flow | Plugin | Base       | <img src="https://img.shields.io/badge/state-completed-brightgreen"> | [<img src="https://img.shields.io/codecov/c/github/aschaeffer/inexor-rgf-plugin-base">](https://app.codecov.io/gh/aschaeffer/inexor-rgf-plugin-base) |
 
 ### About Inexor
 
@@ -44,12 +44,23 @@ This plugin provides some essential components, entity types and relation types.
 
 #### Components
 
-| Name | Description | Properties |
-| --- | --- | --- |
-| named | | name |
-| describable | | description |
-| flow_2d | | f2dx<br>f2dy<br>f2dw<br>f2dh |
-| flow_3d | | f3dx<br>f3dy<br>f3dz<br>f3dw<br>f3dh<br>f3dd |
+| Name        | Properties   | DataType | SocketType | Description                                                                                                                             |
+|-------------|--------------|----------|------------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| named       | name         | string   | None       |                                                                                                                                         |
+| describable | description  | string   | None       |                                                                                                                                         |
+| flow_2d     | f2dx         | number   | None       |                                                                                                                                         |
+|             | f2dy         | number   | None       |                                                                                                                                         |
+|             | f2dw         | number   | None       |                                                                                                                                         |
+|             | f2dh         | number   | None       |                                                                                                                                         |
+| flow_3d     | f3dx         | number   | None       |                                                                                                                                         |
+|             | f3dy         | number   | None       |                                                                                                                                         |
+|             | f3dz         | number   | None       |                                                                                                                                         |
+|             | f3dw         | number   | None       |                                                                                                                                         |
+|             | f3dh         | number   | None       |                                                                                                                                         |
+|             | f3dd         | number   | None       |                                                                                                                                         |
+| licensed    | license      | string   | None       | The SPDX license identifier. See: https://spdx.org/licenses/                                                                            |
+|             | attribution  | string   | None       | Title, author, source and license. Best practices for attribution: https://wiki.creativecommons.org/wiki/best_practices_for_attribution |
+| versioned   | version      | string   | None       | The version number. Use semantic versioning. See: https://semver.org/                                                                   |
 
 #### Entity Types
 
