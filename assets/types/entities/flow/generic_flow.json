@@ -3,6 +3,7 @@
   "group": "flow",
   "description": "Generic Flow",
   "components": [
+    "label",
     "named"
   ],
   "properties": [
