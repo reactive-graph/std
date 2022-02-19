@@ -6,17 +6,22 @@ mutation {
         properties: [
           {
             name: "value",
-            value: "Hello World"
+            value: "Hello World!"
           }
         ]
       ) {
-        id,
-        type {name},
+        id
+        type {
+          name
+        }
         properties(
           names: [
             "value"
           ]
-        )
+        ) {
+          name
+          value
+        }
       }
     }
   }

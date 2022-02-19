@@ -2,7 +2,7 @@ mutation {
   instances {
     entities {
       createOutbound: create(
-        typeName: "value",
+        type: "value",
         id: "dc82735e-28ec-4c24-aedb-d968b73b288f",
         properties: [
           {
@@ -11,16 +11,21 @@ mutation {
           }
         ]
       ) {
-        id,
-        type {name},
+        id
+        type {
+          name
+        }
         properties(
           names: [
             "value"
           ]
-        )
+        ) {
+          name
+          value
+        }
       }
       createInbound: create(
-        typeName: "value",
+        type: "value",
         id: "4cf8e6d8-f92e-4ffa-9610-ec0635f55e08",
         properties: [
           {
@@ -29,13 +34,18 @@ mutation {
           }
         ]
       ) {
-        id,
-        type {name},
+        id
+        type {
+          name
+        }
         properties(
           names: [
             "value"
           ]
-        )
+        ) {
+          name
+          value
+        }
       }
     }
     relations {
@@ -57,7 +67,7 @@ mutation {
         ]
       ) {
         type {
-          name,
+          name
           fullName
         },
         properties(
@@ -65,7 +75,10 @@ mutation {
             "outbound_property_name",
             "inbound_property_name"
           ]
-        )
+        ) {
+          name
+          value
+        }
       }
     }
   }
