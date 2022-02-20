@@ -35,6 +35,7 @@ pub fn construct_plugin() -> Result<Arc<dyn Plugin>, PluginError> {
 
 plugins::export_plugin!(register);
 
+#[allow(improper_ctypes_definitions)]
 extern "C" fn register(registrar: &mut dyn plugins::PluginRegistrar) {
     let plugin = construct_plugin();
     match plugin {
