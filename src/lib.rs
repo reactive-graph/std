@@ -42,11 +42,11 @@ plugins::export_plugin!(register);
 
 #[allow(improper_ctypes_definitions)]
 extern "C" fn register(registrar: &mut dyn plugins::PluginRegistrar) {
+    const PKG_NAME: &str = env!("CARGO_PKG_NAME");
     if let Err(error) = log4rs::init_file("config/logging.toml", Default::default()) {
-        println!("Failed to configure logger: {}", error);
+        println!("Failed to configure logger in {}: {}", PKG_NAME, error);
     }
     if let Ok(plugin) = construct_plugin() {
-        const PKG_NAME: &str = env!("CARGO_PKG_NAME");
         registrar.register_plugin(PKG_NAME, Box::new(plugin));
     }
 }
