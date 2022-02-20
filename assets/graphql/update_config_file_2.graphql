@@ -2,22 +2,27 @@ mutation {
   instances {
     entities {
       update(
-        id: "aed6c9b0-e495-4423-baeb-5597b66416f4",
+        id: "aed6c9b0-e495-4423-baeb-5597b66416f4"
         properties: [
           {
-            name: "filename",
+            name: "filename"
             value: "~/CLionProjects/inexor-rgf/config/graphql.toml"
           }
         ]
       ) {
-        id,
-        type {name},
+        id
+        type {
+          name
+        }
         properties(
           names: [
-            "filename",
+            "filename"
             "configuration"
           ]
-        )
+        ) {
+          name
+          value
+        }
       }
     }
   }

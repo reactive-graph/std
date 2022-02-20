@@ -2,23 +2,28 @@ mutation {
   instances {
     entities {
       create(
-        typeName: "config_file",
-        id: "aed6c9b0-e495-4423-baeb-5597b66416f4",
+        type: "config_file"
+        id: "aed6c9b0-e495-4423-baeb-5597b66416f4"
         properties: [
           {
-            name: "filename",
+            name: "filename"
             value: "config/plugins.toml"
           }
         ]
       ) {
-        id,
-        type {name},
+        id
+        type {
+          name
+        }
         properties(
           names: [
-            "filename",
+            "filename"
             "configuration"
           ]
-        )
+        ) {
+          name
+          value
+        }
       }
     }
   }

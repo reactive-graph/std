@@ -1,9 +1,13 @@
 query getAllConfigs {
   instances {
-    entities(entityType: "config_file") {
+    entities(type: "config_file") {
       id
+      label
       description
-      properties
+      properties {
+        name
+        value
+      }
     }
   }
 }

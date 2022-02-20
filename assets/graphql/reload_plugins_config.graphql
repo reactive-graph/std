@@ -14,7 +14,10 @@ mutation reloadPluginsConfig {
         type {
           name
         }
-        properties
+        properties {
+          name
+          value
+        }
       }
     }
   }
