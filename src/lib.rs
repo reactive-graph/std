@@ -37,7 +37,7 @@ pub fn construct_plugin() -> Result<Arc<dyn Plugin>, PluginError> {
 plugins::export_plugin!(register);
 
 extern "C" fn register(registrar: &mut dyn plugins::PluginRegistrar) {
-    let logger_result = log4rs::init_file("config/logging.yml", Default::default());
+    let logger_result = log4rs::init_file("config/logging.toml", Default::default());
     match logger_result {
         Err(error) => {
             println!("Failed to configure logger: {}", error);
