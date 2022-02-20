@@ -27,7 +27,10 @@ mutation {
             "result",
             "error"
           ]
-        )
+        ) {
+          name
+          value
+        }
       }
     }
   }

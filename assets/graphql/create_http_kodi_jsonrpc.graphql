@@ -2,7 +2,7 @@ mutation {
   instances {
     entities {
       create(
-        typeName: "http",
+        type: "http",
         id: "123f0859-47cb-4cf4-817e-02d77c382697",
         properties: [
           {
@@ -49,7 +49,10 @@ mutation {
             "result",
             "status"
           ]
-        )
+        ) {
+          name
+          value
+        }
       }
     }
   }

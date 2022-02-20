@@ -2,7 +2,7 @@ mutation {
   instances {
     entities {
       create(
-        typeName: "jsonrpc",
+        type: "jsonrpc",
         id: "854161a4-b3e0-4267-9415-7dd9f1bcb5d0",
         properties: [
           {
@@ -42,7 +42,10 @@ mutation {
             "result",
             "error"
           ]
-        )
+        ) {
+          name
+          value
+        }
       }
     }
   }
