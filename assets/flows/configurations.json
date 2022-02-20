@@ -1,13 +1,14 @@
 {
   "id": "c280eb07-36fc-4056-96de-10b7c9e13c4f",
   "type": "generic_flow",
-  "name": "Plugins",
-  "description": "The plugins configuration",
+  "name": "Configurations",
+  "description": "The configurations",
   "entities": [
     {
       "type": "generic_flow",
       "id": "c280eb07-36fc-4056-96de-10b7c9e13c4f",
       "properties": {
+        "label": "/org/inexor/system/config"
       }
     },
     {
