@@ -28,30 +28,24 @@ pub fn construct_plugin() -> Result<Arc<dyn Plugin>, PluginError> {
     let plugin = Arc::new(plugin);
     let plugin: Result<Arc<dyn Plugin>, _> =
         <dyn query_interface::Object>::query_arc(plugin.clone());
-    if plugin.is_err() {
-        error!("Failed to construct plugin");
-        return Err(PluginError::PluginCreationError);
+    match plugin {
+        Ok(plugin) => Ok(plugin),
+        Err(_) => {
+            const PKG_NAME: &str = env!("CARGO_PKG_NAME");
+            error!("Failed to construct plugin {}", PKG_NAME);
+            return Err(PluginError::PluginCreationError);
+        }
     }
-    Ok(plugin.unwrap())
 }
 
 plugins::export_plugin!(register);
 
 extern "C" fn register(registrar: &mut dyn plugins::PluginRegistrar) {
-    let logger_result = log4rs::init_file("config/logging.yml", Default::default());
-    match logger_result {
-        Err(error) => {
-            println!("Failed to configure logger: {}", error);
-        }
-        _ => {}
+    if let Err(error) = log4rs::init_file("config/logging.toml", Default::default()) {
+        println!("Failed to configure logger: {}", error);
     }
-
-    let plugin = construct_plugin();
-    match plugin {
-        Ok(plugin) => {
-            const PKG_NAME: &'static str = env!("CARGO_PKG_NAME");
-            registrar.register_plugin(PKG_NAME, Box::new(plugin));
-        }
-        Err(_) => {}
+    if let Ok(plugin) = construct_plugin() {
+        const PKG_NAME: &str = env!("CARGO_PKG_NAME");
+        registrar.register_plugin(PKG_NAME, Box::new(plugin));
     }
 }

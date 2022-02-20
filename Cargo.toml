@@ -3,7 +3,7 @@ cargo-features = ["strip"]
 [package]
 name = "inexor-rgf-plugin-config"
 description = "Inexor - Reactive Graph Flow - Plugin - Config"
-version = "0.5.1"
+version = "0.6.0"
 authors = ["Andreas Schaeffer <hanack@nooblounge.net"]
 edition = "2021"
 license = "MIT"
@@ -12,7 +12,7 @@ license = "MIT"
 async-trait = "0.1"
 indradb-lib = "3"
 log = { version = "0.4", features = ["std", "serde"] }
-log4rs = { version = "1.0", features = ["console_appender", "file_appender"] }
+log4rs = { version = "1.0", features = ["console_appender", "file_appender", "toml_format"] }
 query_interface = "0.3"
 rust-embed = { version = "6.2", features = ["debug-embed", "compression"] }
 serde = { version = "1.0", features = [ "derive" ] }
