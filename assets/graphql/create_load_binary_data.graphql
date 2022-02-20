@@ -2,7 +2,7 @@ mutation {
   instances {
     entities {
       create(
-        typeName: "load_binary_data",
+        type: "load_binary_data",
         id: "dce4bd25-7b25-4a6a-8567-5429a2b3a101",
         properties: [
           {
@@ -18,7 +18,10 @@ mutation {
             "filename",
             "data_url"
           ]
-        )
+        ) {
+          name
+          value
+        }
       }
     }
   }

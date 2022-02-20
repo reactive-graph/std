@@ -17,7 +17,10 @@ mutation {
             "filename",
             "data_url"
           ]
-        )
+        ) {
+          name
+          value
+        }
       }
     }
   }
