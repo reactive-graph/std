@@ -10,8 +10,11 @@ mutation {
           }
         ]
       ) {
-        id,
-        type {name},
+        id
+        label
+        type {
+          name
+        },
         properties(
           names: [
             "filename",

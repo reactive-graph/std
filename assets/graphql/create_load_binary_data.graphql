@@ -6,13 +6,20 @@ mutation {
         id: "dce4bd25-7b25-4a6a-8567-5429a2b3a101",
         properties: [
           {
+            name: "label",
+            value: "/org/inexor/logo"
+          },
+          {
             name: "filename",
             value: ""
           }
         ]
       ) {
-        id,
-        type {name},
+        id
+        label
+        type {
+          name
+        }
         properties(
           names: [
             "filename",
