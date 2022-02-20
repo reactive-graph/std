@@ -9,7 +9,10 @@ query findSystemEnvDesktopSession {
         "label"
         "name"
         "value"
-      ])
+      ]) {
+        name
+        value
+      }
     }
   }
 }

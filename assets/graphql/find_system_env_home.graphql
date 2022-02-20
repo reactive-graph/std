@@ -2,14 +2,17 @@ query findSystemEnvHome {
   instances {
     entities(label: "/org/inexor/system/env/home") {
       id
+      label
       type {
         name
       }
       properties(names: [
-        "label"
         "name"
         "value"
-      ])
+      ]) {
+        name
+        value
+      }
     }
   }
 }

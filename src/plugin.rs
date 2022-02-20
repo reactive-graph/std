@@ -53,6 +53,7 @@ impl SystemEnvironmentPluginImpl {
             .unwrap()
             .get_entity_instance_manager()
             .clone();
+        // TODO: Extract constants for properties (name, value, label) and the LABEL_BASE_PATH
         let entity_instance = EntityInstanceBuilder::new(SYSTEM_ENV)
             .id(Uuid::new_v5(&NAMESPACE_SYSTEM_ENVIRONMENT, name.as_bytes()))
             .property("name", json!(name.clone()))

@@ -9,7 +9,10 @@ query findSystemEnvXdgDataDirs {
         "label"
         "name"
         "value"
-      ])
+      ]) {
+        name
+        value
+      }
     }
   }
 }

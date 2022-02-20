@@ -9,7 +9,10 @@ query findSystemEnvLang {
         "label"
         "name"
         "value"
-      ])
+      ]) {
+        name
+        value
+      }
     }
   }
 }

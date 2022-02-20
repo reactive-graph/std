@@ -9,7 +9,10 @@ query findSystemEnvCargo {
         "label"
         "name"
         "value"
-      ])
+      ]) {
+        name
+        value
+      }
     }
   }
 }

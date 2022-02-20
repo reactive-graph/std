@@ -1,7 +1,7 @@
 # Inexor Reactive Graph Flow
 
-| Project | Module | Sub-Module | Functionality | Tests |
-| --- | --- | --- | --- | --- |
+| Project             | Module | Sub-Module         | Functionality                                                        | Tests                                                                                                                                                                            |
+|---------------------|--------|--------------------|----------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Reactive Graph Flow | Plugin | System Environment | <img src="https://img.shields.io/badge/state-completed-brightgreen"> | [<img src="https://img.shields.io/codecov/c/github/aschaeffer/inexor-rgf-plugin-system-environment">](https://app.codecov.io/gh/aschaeffer/inexor-rgf-plugin-system-environment) |
 
 ### About Inexor

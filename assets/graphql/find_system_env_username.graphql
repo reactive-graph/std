@@ -9,7 +9,10 @@ query findSystemEnvUsername {
         "label"
         "name"
         "value"
-      ])
+      ]) {
+        name
+        value
+      }
     }
   }
 }

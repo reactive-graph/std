@@ -9,7 +9,10 @@ query findSystemEnvPath {
         "label"
         "name"
         "value"
-      ])
+      ]) {
+        name
+        value
+      }
     }
   }
 }
