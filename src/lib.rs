@@ -37,6 +37,7 @@ pub fn construct_plugin() -> Result<Arc<dyn Plugin>, PluginError> {
 
 plugins::export_plugin!(register);
 
+#[allow(improper_ctypes_definitions)]
 extern "C" fn register(registrar: &mut dyn plugins::PluginRegistrar) {
     let logger_result = log4rs::init_file("config/logging.yml", Default::default());
     match logger_result {
