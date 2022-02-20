@@ -12,6 +12,8 @@ type Component {
   description: String!
   "Query which entity types are using this component"
   entityTypes: [EntityType!]!
+  "The extensions which are defined by the component."
+  extensions(name: String): [Extension!]!
   "The name of the component."
   name: String!
   "The properties which are applied on entity or relation instances."
@@ -36,15 +38,15 @@ type EntityInstance {
   id: UUID!
   "List of relation instances which ends at this entity instance."
   inbound(
-    "Unimplemented"
-    typeName: String
+    "The inbound relation type"
+    type: String
   ): [RelationInstance!]!
   "The label of the entity instance if available."
   label: String
   "List of relation instances which starts at this entity instance."
   outbound(
-    "Unimplemented"
-    typeName: String
+    "The outbound relation type"
+    type: String
   ): [RelationInstance!]!
   """
 
@@ -162,6 +164,8 @@ type Instances {
     id: UUID,
     "Returns the entity instance with the given label."
     label: String,
+    "Query by properties."
+    properties: [PropertyInstanceDefinition!],
     "Filters the entity instances by type."
     type: String
   ): [EntityInstance!]!
@@ -183,6 +187,8 @@ type Instances {
     outboundId: UUID,
     "Filters the relation instances by the entity type of the outbound entity instance"
     outboundType: String,
+    "Query by properties."
+    properties: [PropertyInstanceDefinition!],
     "Filters the relation instances by relation type"
     type: String
   ): [RelationInstance!]!
@@ -450,6 +456,8 @@ type Query {
   flows(
     "Filters by the id of the flow"
     id: UUID,
+    "Filters by the label of the flow"
+    label: String,
     "Filters by the flow type"
     type: String
   ): [Flow!]!
