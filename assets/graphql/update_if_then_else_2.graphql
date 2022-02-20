@@ -19,7 +19,10 @@ mutation {
             "else_payload",
             "result"
           ]
-        )
+        ) {
+          name
+          value
+        }
       }
     }
   }

@@ -22,7 +22,10 @@ mutation {
             "rhs",
             "result"
           ]
-        )
+        ) {
+          name
+          value
+        }
       }
     }
   }

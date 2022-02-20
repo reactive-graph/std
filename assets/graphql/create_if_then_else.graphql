@@ -2,7 +2,7 @@ mutation {
   instances {
     entities {
       create(
-        typeName: "if_then_else",
+        type: "if_then_else",
         id: "d70f222b-f9e0-4172-a086-b30c310b412a",
         properties: [
           {
@@ -24,7 +24,9 @@ mutation {
         ]
       ) {
         id,
-        type {name},
+        type {
+          name
+        },
         properties(
           names: [
             "condition",
@@ -32,7 +34,10 @@ mutation {
             "else_payload",
             "result"
           ]
-        )
+        ) {
+          name
+          value
+        }
       }
     }
   }
