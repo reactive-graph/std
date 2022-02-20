@@ -18,7 +18,10 @@ mutation {
             "high",
             "result"
           ]
-        )
+        ) {
+          name
+          value
+        }
       }
     }
   }

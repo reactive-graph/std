@@ -16,7 +16,10 @@ mutation {
           names: [
             "result"
           ]
-        )
+        ) {
+          name
+          value
+        }
       }
     }
   }

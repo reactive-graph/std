@@ -2,7 +2,7 @@ mutation {
   instances {
     entities {
       create(
-        typeName: "random_integer_within_range",
+        type: "random_integer_within_range",
         id: "1488d3cc-e542-4568-9891-0f31e56d9be3",
         properties: [
           {
@@ -21,7 +21,10 @@ mutation {
           names: [
             "result"
           ]
-        )
+        ) {
+          name
+          value
+        }
       }
     }
   }
