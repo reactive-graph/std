@@ -7,8 +7,10 @@ mutation {
         properties: [
         ]
       ) {
-        id,
-        type {name},
+        id
+        type {
+          name
+        }
         properties(
           names: [
             "result"
