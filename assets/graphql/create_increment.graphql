@@ -2,7 +2,7 @@ mutation {
   instances {
     entities {
       create(
-        typeName: "increment",
+        type: "increment",
         id: "5289c9df-2cc9-408b-8d6a-476b43bad50d",
         properties: [
           {
@@ -15,14 +15,19 @@ mutation {
           }
         ]
       ) {
-        id,
-        type {name},
+        id
+        type {
+          name
+        }
         properties(
           names: [
             "lhs",
             "result"
           ]
-        )
+        ) {
+          name
+          value
+        }
       }
     }
   }

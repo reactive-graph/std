@@ -2,7 +2,7 @@ mutation {
   instances {
     entities {
       create(
-        typeName: "min",
+        type: "min",
         id: "6b1fab87-ecc8-49e7-ac1b-bf9b7d8b9073",
         properties: [
           {
@@ -19,15 +19,20 @@ mutation {
           }
         ]
       ) {
-        id,
-        type {name},
+        id
+        type {
+          name
+        }
         properties(
           names: [
             "lhs",
             "rhs",
             "result"
           ]
-        )
+        ) {
+          name
+          value
+        }
       }
     }
   }
