@@ -14,7 +14,9 @@ mutation {
         label
         type {
           name
-        },
+        }
+        components
+        behaviours
         properties(
           names: [
             "filename",

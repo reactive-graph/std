@@ -11,8 +11,12 @@ mutation {
           }
         ]
       ) {
-        id,
-        type {name},
+        id
+        type {
+          name
+        }
+        components
+        behaviours
         properties(
           names: [
             "filename",
