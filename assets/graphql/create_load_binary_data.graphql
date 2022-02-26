@@ -7,7 +7,7 @@ mutation {
         properties: [
           {
             name: "label",
-            value: "/org/inexor/logo"
+            value: "/org/inexor/logo/:property"
           },
           {
             name: "filename",

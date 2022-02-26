@@ -9,10 +9,12 @@ license = "MIT"
 [dependencies]
 async-trait = "0.1"
 base64 = "0.13"
+http = "0.2"
 indradb-lib = "3"
 infer = "0.6"
 log = { version = "0.4", features = ["std", "serde"] }
 log4rs = { version = "1.0", features = ["console_appender", "file_appender", "toml_format"]}
+matchit = "0.4"
 query_interface = "0.3"
 rust-embed = { version = "6.2", features = ["debug-embed", "compression"] }
 serde = { version = "1.0", features = [ "derive" ] }

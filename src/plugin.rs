@@ -11,6 +11,8 @@ use crate::plugins::{
     RelationTypeProvider, WebResourceProvider,
 };
 use crate::provider::BinaryEntityTypeProviderImpl;
+use crate::provider::BinaryWebResourceProvider;
+use crate::provider::BinaryWebResourceProviderImpl;
 use std::env;
 
 #[wrapper]
@@ -28,6 +30,7 @@ pub trait BinaryPlugin: Plugin + Send + Sync {}
 pub struct BinaryPluginImpl {
     entity_type_provider: Wrc<BinaryEntityTypeProviderImpl>,
     entity_behaviour_provider: Wrc<BinaryEntityBehaviourProviderImpl>,
+    web_resource_provider: Wrc<BinaryWebResourceProviderImpl>,
 
     context: PluginContextContainer,
 }
@@ -67,6 +70,7 @@ impl Plugin for BinaryPluginImpl {
 
     fn set_context(&self, context: Arc<dyn PluginContext>) -> Result<(), PluginError> {
         self.context.0.write().unwrap().replace(context.clone());
+        self.web_resource_provider.set_context(context.clone());
         Ok(())
     }
 
@@ -109,6 +113,11 @@ impl Plugin for BinaryPluginImpl {
     }
 
     fn get_web_resource_provider(&self) -> Result<Arc<dyn WebResourceProvider>, PluginError> {
-        Err(PluginError::NoWebResourceProvider)
+        let web_resource_provider = self.web_resource_provider.clone();
+        let web_resource_provider: Result<Arc<dyn WebResourceProvider>, _> = <dyn query_interface::Object>::query_arc(web_resource_provider);
+        if web_resource_provider.is_err() {
+            return Err(PluginError::NoWebResourceProvider);
+        }
+        Ok(web_resource_provider.unwrap())
     }
 }
