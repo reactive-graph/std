@@ -64,31 +64,35 @@ impl BinaryEntityBehaviourProviderImpl {
 impl BinaryEntityBehaviourProvider for BinaryEntityBehaviourProviderImpl {
     fn create_load_binary_data(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let id = entity_instance.id;
-        let load_binary_data = LoadBinaryData::new(entity_instance);
+        let load_binary_data = LoadBinaryData::new(entity_instance.clone());
         if load_binary_data.is_ok() {
             let load_binary_data = Arc::new(load_binary_data.unwrap());
             self.load_binary_data.0.write().unwrap().insert(id, load_binary_data);
+            entity_instance.add_behaviour(LOAD_BINARY_DATA);
             debug!("Added behaviour {} to entity instance {}", LOAD_BINARY_DATA, id);
         }
     }
 
     fn create_save_binary_data(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let id = entity_instance.id;
-        let save_binary_data = SaveBinaryData::new(entity_instance);
+        let save_binary_data = SaveBinaryData::new(entity_instance.clone());
         if save_binary_data.is_ok() {
             let save_binary_data = Arc::new(save_binary_data.unwrap());
             self.save_binary_data.0.write().unwrap().insert(id, save_binary_data);
+            entity_instance.add_behaviour(SAVE_BINARY_DATA);
             debug!("Added behaviour {} to entity instance {}", SAVE_BINARY_DATA, id);
         }
     }
 
     fn remove_load_binary_data(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         self.load_binary_data.0.write().unwrap().remove(&entity_instance.id);
+        entity_instance.remove_behaviour(LOAD_BINARY_DATA);
         debug!("Removed behaviour {} from entity instance {}", LOAD_BINARY_DATA, entity_instance.id);
     }
 
     fn remove_save_binary_data(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         self.save_binary_data.0.write().unwrap().remove(&entity_instance.id);
+        entity_instance.remove_behaviour(SAVE_BINARY_DATA);
         debug!("Removed behaviour {} from entity instance {}", SAVE_BINARY_DATA, entity_instance.id);
     }
 
