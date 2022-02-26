@@ -1,0 +1,10 @@
+{
+  "name": "binary_data",
+  "properties": [
+    {
+      "name": "data_url",
+      "data_type": "string",
+      "socket_type": "none"
+    }
+  ]
+}

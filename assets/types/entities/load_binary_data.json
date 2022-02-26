@@ -4,6 +4,7 @@
   "description": "Loads binary data",
   "components": [
     "named",
+    "binary_data",
     "flow_2d",
     "flow_3d"
   ],

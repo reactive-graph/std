@@ -10,6 +10,7 @@ use crate::plugins::{
     ComponentBehaviourProvider, ComponentProvider, EntityBehaviourProvider, EntityTypeProvider, FlowProvider, Plugin, PluginError, RelationBehaviourProvider,
     RelationTypeProvider, WebResourceProvider,
 };
+use crate::provider::BinaryComponentProviderImpl;
 use crate::provider::BinaryEntityTypeProviderImpl;
 use crate::provider::BinaryWebResourceProvider;
 use crate::provider::BinaryWebResourceProviderImpl;
@@ -28,6 +29,7 @@ pub trait BinaryPlugin: Plugin + Send + Sync {}
 
 #[module]
 pub struct BinaryPluginImpl {
+    component_provider: Wrc<BinaryComponentProviderImpl>,
     entity_type_provider: Wrc<BinaryEntityTypeProviderImpl>,
     entity_behaviour_provider: Wrc<BinaryEntityBehaviourProviderImpl>,
     web_resource_provider: Wrc<BinaryWebResourceProviderImpl>,
@@ -75,7 +77,12 @@ impl Plugin for BinaryPluginImpl {
     }
 
     fn get_component_provider(&self) -> Result<Arc<dyn ComponentProvider>, PluginError> {
-        Err(PluginError::NoComponentProvider)
+        let component_provider = self.component_provider.clone();
+        let component_provider: Result<Arc<dyn ComponentProvider>, _> = <dyn query_interface::Object>::query_arc(component_provider);
+        if component_provider.is_err() {
+            return Err(PluginError::NoComponentProvider);
+        }
+        Ok(component_provider.unwrap())
     }
 
     fn get_entity_type_provider(&self) -> Result<Arc<dyn EntityTypeProvider>, PluginError> {

@@ -1,0 +1,26 @@
+query {
+  instances {
+    entities(
+      components: [
+        "binary_data"
+      ]
+    ) {
+      id
+      label
+      type {
+        name
+      }
+      components
+      behaviours
+      properties(
+        names: [
+          "filename",
+          "data_url"
+        ]
+      ) {
+        name
+        value
+      }
+    }
+  }
+}

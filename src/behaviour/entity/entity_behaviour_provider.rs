@@ -68,6 +68,7 @@ impl BinaryEntityBehaviourProvider for BinaryEntityBehaviourProviderImpl {
         if load_binary_data.is_ok() {
             let load_binary_data = Arc::new(load_binary_data.unwrap());
             self.load_binary_data.0.write().unwrap().insert(id, load_binary_data);
+            entity_instance.add_component("binary_data");
             entity_instance.add_behaviour(LOAD_BINARY_DATA);
             debug!("Added behaviour {} to entity instance {}", LOAD_BINARY_DATA, id);
         }
@@ -79,6 +80,7 @@ impl BinaryEntityBehaviourProvider for BinaryEntityBehaviourProviderImpl {
         if save_binary_data.is_ok() {
             let save_binary_data = Arc::new(save_binary_data.unwrap());
             self.save_binary_data.0.write().unwrap().insert(id, save_binary_data);
+            entity_instance.add_component("binary_data");
             entity_instance.add_behaviour(SAVE_BINARY_DATA);
             debug!("Added behaviour {} to entity instance {}", SAVE_BINARY_DATA, id);
         }
