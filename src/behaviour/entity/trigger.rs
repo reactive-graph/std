@@ -11,7 +11,7 @@ use crate::model::ReactiveEntityInstance;
 use crate::reactive::entity::Disconnectable;
 use crate::reactive::BehaviourCreationError;
 
-pub const TRIGGER: &'static str = "trigger";
+pub const TRIGGER: &str = "trigger";
 
 pub struct Trigger {
     pub entity: Arc<ReactiveEntityInstance>,
@@ -24,12 +24,12 @@ impl Trigger {
         let condition = e.properties.get(TriggerProperties::CONDITION.as_ref());
         if condition.is_none() {
             error!("Missing property condition");
-            return Err(BehaviourCreationError.into());
+            return Err(BehaviourCreationError);
         }
         let result = e.properties.get(TriggerProperties::RESULT.as_ref());
         if result.is_none() {
             error!("Missing property result");
-            return Err(BehaviourCreationError.into());
+            return Err(BehaviourCreationError);
         }
 
         let entity_instance = e.clone();
@@ -70,9 +70,8 @@ impl Trigger {
 
 impl Disconnectable for Trigger {
     fn disconnect(&self) {
-        let property = self.entity.properties.get(TriggerProperties::CONDITION.as_ref());
-        if property.is_some() {
-            property.unwrap().stream.read().unwrap().remove(self.handle_id);
+        if let Some(property) = self.entity.properties.get(TriggerProperties::CONDITION.as_ref()) {
+            property.stream.read().unwrap().remove(self.handle_id);
         }
     }
 }
