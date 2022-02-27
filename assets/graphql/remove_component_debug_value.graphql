@@ -1,0 +1,24 @@
+mutation {
+  instances {
+    entities {
+      update(
+        id: "c4bc7ab7-f166-4710-96e0-7defb3a73207",
+        removeComponents: [
+          "debug_value",
+          "labeled"
+        ]
+      ) {
+        id
+        type {
+          name
+        }
+        components
+        behaviours
+        properties(name: "value") {
+          name
+          value
+        }
+      }
+    }
+  }
+}

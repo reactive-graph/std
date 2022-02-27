@@ -10,11 +10,13 @@ use crate::di::{profiles, Container, Provider};
 use inexor_rgf_core_di as di;
 use inexor_rgf_core_model as model;
 use inexor_rgf_core_plugins as plugins;
+use inexor_rgf_core_reactive as reactive;
 use log::error;
 
 use crate::plugin::ValuePlugin;
 use crate::plugins::{Plugin, PluginError};
 
+pub mod behaviour;
 pub mod plugin;
 pub mod provider;
 

@@ -1,5 +1,6 @@
 use std::sync::{Arc, RwLock};
 
+use crate::behaviour::component::component_behaviour_provider::ValueComponentBehaviourProviderImpl;
 use crate::di::*;
 use async_trait::async_trait;
 use log::debug;
@@ -11,7 +12,7 @@ use crate::plugins::{
     FlowProvider, Plugin, PluginError, RelationBehaviourProvider, RelationTypeProvider,
     WebResourceProvider,
 };
-use crate::provider::ValueEntityTypeProviderImpl;
+use crate::provider::{ValueComponentProviderImpl, ValueEntityTypeProviderImpl};
 
 #[wrapper]
 pub struct PluginContextContainer(RwLock<Option<std::sync::Arc<dyn PluginContext>>>);
@@ -26,7 +27,9 @@ pub trait ValuePlugin: Plugin + Send + Sync {}
 
 #[module]
 pub struct ValuePluginImpl {
+    component_provider: Wrc<ValueComponentProviderImpl>,
     entity_type_provider: Wrc<ValueEntityTypeProviderImpl>,
+    component_behaviour_provider: Wrc<ValueComponentBehaviourProviderImpl>,
 
     context: PluginContextContainer,
 }
@@ -72,7 +75,13 @@ impl Plugin for ValuePluginImpl {
     }
 
     fn get_component_provider(&self) -> Result<Arc<dyn ComponentProvider>, PluginError> {
-        Err(PluginError::NoComponentProvider)
+        let component_provider = self.component_provider.clone();
+        let component_provider: Result<Arc<dyn ComponentProvider>, _> =
+            <dyn query_interface::Object>::query_arc(component_provider);
+        if component_provider.is_err() {
+            return Err(PluginError::NoComponentProvider);
+        }
+        Ok(component_provider.unwrap())
     }
 
     fn get_entity_type_provider(&self) -> Result<Arc<dyn EntityTypeProvider>, PluginError> {
@@ -92,7 +101,13 @@ impl Plugin for ValuePluginImpl {
     fn get_component_behaviour_provider(
         &self,
     ) -> Result<Arc<dyn ComponentBehaviourProvider>, PluginError> {
-        Err(PluginError::NoComponentBehaviourProvider)
+        let component_behaviour_provider = self.component_behaviour_provider.clone();
+        let component_behaviour_provider: Result<Arc<dyn ComponentBehaviourProvider>, _> =
+            <dyn query_interface::Object>::query_arc(component_behaviour_provider);
+        if component_behaviour_provider.is_err() {
+            return Err(PluginError::NoComponentBehaviourProvider);
+        }
+        Ok(component_behaviour_provider.unwrap())
     }
 
     fn get_entity_behaviour_provider(
