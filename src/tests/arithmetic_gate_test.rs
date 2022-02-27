@@ -1,5 +1,3 @@
-use std::f64::consts::PI;
-
 use serde_json::json;
 
 use crate::model::{
