@@ -6,7 +6,7 @@ mutation {
         properties: [
           {
             name: "method",
-            value: "Player.GetItem"
+            value: "Player.PlayPause"
           },
           {
             name: "params",
@@ -16,8 +16,10 @@ mutation {
           }
         ]
       ) {
-        id,
-        type {name},
+        id
+        type {
+          name
+        }
         properties(
           names: [
             "url",
