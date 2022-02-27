@@ -76,7 +76,7 @@ impl Operation for LogicalOperation<'_> {
     }
 
     fn result(&self) -> Value {
-        self.entity.get(LogicalOperationProperties::RESULT.as_ref()).unwrap().clone()
+        self.entity.get(LogicalOperationProperties::RESULT.as_ref()).unwrap()
     }
 }
 
