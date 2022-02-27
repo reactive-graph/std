@@ -87,12 +87,8 @@ impl Connector {
                 .relation
                 .outbound
                 .properties
-                .get(&outbound_property_name.clone());
-            let inbound_property = self
-                .relation
-                .inbound
-                .properties
-                .get(&inbound_property_name.clone());
+                .get(&outbound_property_name);
+            let inbound_property = self.relation.inbound.properties.get(&inbound_property_name);
             if outbound_property.is_some() && inbound_property.is_some() {
                 let inbound = self.relation.inbound.clone();
                 self.handle_id = inbound_property.unwrap().id.as_u128();
@@ -123,7 +119,7 @@ impl Connector {
                 .relation
                 .outbound
                 .properties
-                .get(&outbound_property_name.unwrap().clone());
+                .get(&outbound_property_name.unwrap());
             if outbound_property.is_some() {
                 outbound_property
                     .unwrap()
