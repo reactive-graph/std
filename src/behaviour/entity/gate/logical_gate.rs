@@ -114,7 +114,7 @@ impl Operation for LogicalGate<'_> {
     }
 
     fn result(&self) -> Value {
-        self.entity.get(LogicalGateProperties::RESULT.as_ref()).unwrap().clone()
+        self.entity.get(LogicalGateProperties::RESULT.as_ref()).unwrap()
     }
 }
 

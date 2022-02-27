@@ -98,13 +98,11 @@ impl LogicalEntityBehaviourProvider for LogicalEntityBehaviourProviderImpl {
     fn create_logical_operation(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let type_name = entity_instance.type_name.as_str();
         let id = entity_instance.id;
-        let function = LOGICAL_OPERATIONS.get(type_name);
-        let logical_operation = match function {
-            Some(function) => Some(Arc::new(LogicalOperation::new(entity_instance.clone(), *function))),
-            None => None,
-        };
-        if logical_operation.is_some() {
-            self.logical_operations.0.write().unwrap().insert(id, logical_operation.unwrap());
+        if let Some(logical_operation) = LOGICAL_OPERATIONS
+            .get(type_name)
+            .map(|function| Arc::new(LogicalOperation::new(entity_instance.clone(), *function)))
+        {
+            self.logical_operations.0.write().unwrap().insert(id, logical_operation);
             entity_instance.add_behaviour(type_name);
             debug!("Added behaviour {} to entity instance {}", type_name, id);
         }
@@ -113,13 +111,11 @@ impl LogicalEntityBehaviourProvider for LogicalEntityBehaviourProviderImpl {
     fn create_logical_gate(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let type_name = entity_instance.type_name.as_str();
         let id = entity_instance.id;
-        let function = LOGICAL_GATES.get(type_name);
-        let logical_gate = match function {
-            Some(function) => Some(Arc::new(LogicalGate::new(entity_instance.clone(), *function))),
-            None => None,
-        };
-        if logical_gate.is_some() {
-            self.logical_gates.0.write().unwrap().insert(id, logical_gate.unwrap());
+        if let Some(logical_gate) = LOGICAL_GATES
+            .get(type_name)
+            .map(|function| Arc::new(LogicalGate::new(entity_instance.clone(), *function)))
+        {
+            self.logical_gates.0.write().unwrap().insert(id, logical_gate);
             entity_instance.add_behaviour(type_name);
             debug!("Added behaviour {} to entity instance {}", type_name, id);
         }
@@ -127,9 +123,8 @@ impl LogicalEntityBehaviourProvider for LogicalEntityBehaviourProviderImpl {
 
     fn create_trigger(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let id = entity_instance.id;
-        let trigger = Trigger::new(entity_instance.clone());
-        if trigger.is_ok() {
-            let trigger = Arc::new(trigger.unwrap());
+        if let Ok(trigger) = Trigger::new(entity_instance.clone()) {
+            let trigger = Arc::new(trigger);
             self.triggers.0.write().unwrap().insert(id, trigger);
             entity_instance.add_behaviour(TRIGGER);
             debug!("Added behaviour {} to entity instance {}", TRIGGER, id);
@@ -138,9 +133,8 @@ impl LogicalEntityBehaviourProvider for LogicalEntityBehaviourProviderImpl {
 
     fn create_if_then_else(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let id = entity_instance.id;
-        let if_then_else = IfThenElse::new(entity_instance.clone());
-        if if_then_else.is_ok() {
-            let if_then_else = Arc::new(if_then_else.unwrap());
+        if let Ok(if_then_else) = IfThenElse::new(entity_instance.clone()) {
+            let if_then_else = Arc::new(if_then_else);
             self.if_then_else_behaviours.0.write().unwrap().insert(id, if_then_else);
             entity_instance.add_behaviour(IF_THEN_ELSE);
             debug!("Added behaviour {} to entity instance {}", IF_THEN_ELSE, id);
