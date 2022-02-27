@@ -106,7 +106,7 @@ impl Operation for ComparisonGate<'_> {
     }
 
     fn result(&self) -> Value {
-        self.entity.get(ComparisonGateProperties::RESULT.as_ref()).unwrap().clone()
+        self.entity.get(ComparisonGateProperties::RESULT.as_ref()).unwrap()
     }
 }
 

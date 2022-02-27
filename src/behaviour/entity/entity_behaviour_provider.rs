@@ -75,11 +75,11 @@ impl ComparisonEntityBehaviourProvider for ComparisonEntityBehaviourProviderImpl
 
 impl EntityBehaviourProvider for ComparisonEntityBehaviourProviderImpl {
     fn add_behaviours(&self, entity_instance: Arc<ReactiveEntityInstance>) {
-        self.create_comparison_gate(entity_instance.clone());
+        self.create_comparison_gate(entity_instance);
     }
 
     fn remove_behaviours(&self, entity_instance: Arc<ReactiveEntityInstance>) {
-        self.remove_comparison_gate(entity_instance.clone());
+        self.remove_comparison_gate(entity_instance);
     }
 
     fn remove_behaviours_by_id(&self, id: Uuid) {
