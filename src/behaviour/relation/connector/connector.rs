@@ -1,14 +1,14 @@
 use crate::behaviour::relation::connector::properties::ConnectorProperties;
-// use crate::behaviour::relation::connector::ConnectorProperties;
-use crate::model::{
-    PropertyInstanceGetter, PropertyInstanceSetter, ReactiveEntityInstance,
-    ReactiveRelationInstance,
-};
-use serde_json::{json, Value};
+use crate::model::PropertyInstanceGetter;
+use crate::model::PropertyInstanceSetter;
+use crate::model::ReactiveEntityInstance;
+use crate::model::ReactiveRelationInstance;
+use serde_json::json;
+use serde_json::Value;
 use std::collections::HashMap;
 use std::sync::Arc;
+use uuid::Uuid;
 
-// TODO: move into ConnectorProperties
 pub static TYPE_NAME_CONNECTOR: &str = "connector";
 
 pub type ConnectorFunction = fn(Value) -> Value;
@@ -30,8 +30,6 @@ pub struct Connector {
     pub f: ConnectorFunction,
 
     /// The handle id is the numeric representation (u128) of the UUID of the inbound property
-    // TODO: make it a tuple (outbound_id, inbound_id) or use two handle_ids.
-    // TODO: This would result in a unique handle_id
     pub handle_id: u128,
 }
 
@@ -67,62 +65,59 @@ impl Connector {
             inbound,
             properties,
         ));
-        Connector::from_relation(relation, |v| v.clone())
+        Connector::from_relation(relation, |v| v)
     }
 
-    /// TODO: Add guard: disconnect only if connected
-    /// TODO: Fail fast
-    /// TODO: Return Result
     pub fn connect(&mut self) {
-        let outbound_property_name = self
+        if let Some(outbound_property_name) = self
             .relation
-            .as_string(ConnectorProperties::OUTBOUND_PROPERTY_NAME.to_string());
-        let inbound_property_name = self
-            .relation
-            .as_string(ConnectorProperties::INBOUND_PROPERTY_NAME.to_string());
-        if outbound_property_name.is_some() && inbound_property_name.is_some() {
-            let outbound_property_name = outbound_property_name.unwrap();
-            let inbound_property_name = inbound_property_name.unwrap();
-            let outbound_property = self
+            .as_string(ConnectorProperties::OUTBOUND_PROPERTY_NAME.to_string())
+        {
+            if let Some(inbound_property_name) = self
                 .relation
-                .outbound
-                .properties
-                .get(&outbound_property_name);
-            let inbound_property = self.relation.inbound.properties.get(&inbound_property_name);
-            if outbound_property.is_some() && inbound_property.is_some() {
-                let inbound = self.relation.inbound.clone();
-                self.handle_id = inbound_property.unwrap().id.as_u128();
-                // println!("connecting {} {} --> {} {}", self.relation.outbound.id, outbound_property_name.clone(), self.relation.inbound.id, inbound_property_name.clone());
-                let f = self.f;
-                outbound_property
-                    .unwrap()
-                    .stream
-                    .read()
-                    .unwrap()
-                    .observe_with_handle(
-                        move |value: &Value| {
-                            inbound.set(inbound_property_name.clone(), f(value.clone()));
-                        },
-                        self.handle_id,
-                    );
+                .as_string(ConnectorProperties::INBOUND_PROPERTY_NAME.to_string())
+            {
+                if let Some(outbound_property) = self
+                    .relation
+                    .outbound
+                    .properties
+                    .get(&outbound_property_name)
+                {
+                    if let Some(_inbound_property) =
+                        self.relation.inbound.properties.get(&inbound_property_name)
+                    {
+                        let inbound = self.relation.inbound.clone();
+                        // Create random handle id
+                        self.handle_id = Uuid::new_v4().as_u128();
+                        let f = self.f;
+                        outbound_property
+                            .stream
+                            .read()
+                            .unwrap()
+                            .observe_with_handle(
+                                move |value: &Value| {
+                                    inbound.set(inbound_property_name.clone(), f(value.clone()));
+                                },
+                                self.handle_id,
+                            );
+                    }
+                }
             }
         }
     }
 
-    /// TODO: Add guard: disconnect only if connected
     pub fn disconnect(&self) {
-        let outbound_property_name = self
+        if let Some(outbound_property_name) = self
             .relation
-            .as_string(ConnectorProperties::OUTBOUND_PROPERTY_NAME.to_string());
-        if outbound_property_name.is_some() {
-            let outbound_property = self
+            .as_string(ConnectorProperties::OUTBOUND_PROPERTY_NAME.to_string())
+        {
+            if let Some(outbound_property) = self
                 .relation
                 .outbound
                 .properties
-                .get(&outbound_property_name.unwrap());
-            if outbound_property.is_some() {
+                .get(&outbound_property_name)
+            {
                 outbound_property
-                    .unwrap()
                     .stream
                     .read()
                     .unwrap()
@@ -130,10 +125,6 @@ impl Connector {
             }
         }
     }
-
-    // pub fn type_name(type_name: String, outbound_property_name: String, inbound_property_name: String) -> String {
-    //     format!("{}--{}--{}", type_name, outbound_property_name.as_str(), inbound_property_name.as_str())
-    // }
 
     pub fn type_name<S: Into<String>>(
         type_name: S,

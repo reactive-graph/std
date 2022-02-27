@@ -45,6 +45,8 @@ impl ConnectorRelationBehaviourProviderImpl {
     }
 }
 
+impl ConnectorRelationBehaviourProviderImpl {}
+
 #[async_trait]
 #[provides]
 impl ConnectorRelationBehaviourProvider for ConnectorRelationBehaviourProviderImpl {
@@ -57,38 +59,32 @@ impl ConnectorRelationBehaviourProvider for ConnectorRelationBehaviourProviderIm
         let mut type_name = relation_instance.type_name.clone();
         let mut function = CONNECTORS.get(type_name.as_str());
         if function.is_none() {
-            let connector_type_name = CONNECTORS
+            if let Some(connector_type_name) = CONNECTORS
                 .keys()
                 .into_iter()
-                .find(|connector_type_name| type_name.starts_with(*connector_type_name));
-            if connector_type_name.is_some() {
-                // TODO: remove
-                debug!(
-                    "Detected relation type name starts with {}",
-                    connector_type_name.unwrap()
-                );
-                function = CONNECTORS.get(connector_type_name.unwrap());
-                type_name = String::from(*connector_type_name.unwrap());
+                .find(|connector_type_name| type_name.starts_with(*connector_type_name))
+            {
+                function = CONNECTORS.get(connector_type_name);
+                type_name = String::from(*connector_type_name);
             }
         }
-        let connector = match function {
-            Some(function) => Some(Arc::new(Connector::from_relation(
-                relation_instance,
+        if let Some(connector) = function.map(|function| {
+            Arc::new(Connector::from_relation(
+                relation_instance.clone(),
                 *function,
-            ))),
-            None => None,
-        };
-        if connector.is_some() {
+            ))
+        }) {
             self.connectors
                 .0
                 .write()
                 .unwrap()
-                .insert(edge_key.clone(), connector.unwrap());
+                .insert(edge_key.clone(), connector);
+            relation_instance.add_behaviour(type_name.clone());
             debug!(
                 "Added behaviour {} to relation instance {:?}",
                 type_name, edge_key
             );
-        }
+        };
     }
 
     fn remove_connector(&self, relation_instance: Arc<ReactiveRelationInstance>) {
@@ -98,6 +94,17 @@ impl ConnectorRelationBehaviourProvider for ConnectorRelationBehaviourProviderIm
         }
         let edge_key = edge_key.unwrap();
         self.connectors.0.write().unwrap().remove(&edge_key);
+        let mut type_name = relation_instance.type_name.clone();
+        if CONNECTORS.get(type_name.as_str()).is_none() {
+            if let Some(connector_type_name) = CONNECTORS
+                .keys()
+                .into_iter()
+                .find(|connector_type_name| type_name.starts_with(*connector_type_name))
+            {
+                type_name = String::from(*connector_type_name);
+            }
+        }
+        relation_instance.remove_behaviour(type_name);
         debug!(
             "Removed behaviour connector to relation instance {:?}",
             edge_key
