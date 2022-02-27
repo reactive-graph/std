@@ -62,9 +62,8 @@ impl HttpEntityBehaviourProviderImpl {
 impl HttpEntityBehaviourProvider for HttpEntityBehaviourProviderImpl {
     fn create_http(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let id = entity_instance.id;
-        let http = Http::new(entity_instance.clone());
-        if http.is_ok() {
-            let http = Arc::new(http.unwrap());
+        if let Ok(http) = Http::new(entity_instance.clone()) {
+            let http = Arc::new(http);
             self.http.0.write().unwrap().insert(id, http);
             entity_instance.add_behaviour(HTTP);
             debug!("Added behaviour {} to entity instance {}", HTTP, id);
@@ -73,9 +72,8 @@ impl HttpEntityBehaviourProvider for HttpEntityBehaviourProviderImpl {
 
     fn create_json_rpc(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let id = entity_instance.id;
-        let jsonrpc = JsonRpc::new(entity_instance.clone());
-        if jsonrpc.is_ok() {
-            let jsonrpc = Arc::new(jsonrpc.unwrap());
+        if let Ok(jsonrpc) = JsonRpc::new(entity_instance.clone()) {
+            let jsonrpc = Arc::new(jsonrpc);
             self.jsonrpc.0.write().unwrap().insert(id, jsonrpc);
             entity_instance.add_behaviour(JSONRPC);
             debug!("Added behaviour {} to entity instance {}", JSONRPC, id);
