@@ -1,18 +1,21 @@
+use std::collections::HashMap;
 use std::f64::consts::PI;
+use std::sync::Arc;
 
 use serde_json::json;
-
-use crate::model::{DataType, EntityInstance, EntityType, PropertyInstanceGetter, PropertyInstanceSetter, PropertyType, ReactiveEntityInstance, SocketType};
+use uuid::Uuid;
 
 use crate::behaviour::entity::operation::function::NUMERIC_OPERATIONS;
 use crate::behaviour::entity::operation::properties::NumericOperationProperties;
 use crate::behaviour::entity::operation::NumericOperation;
-use std::collections::HashMap;
-use std::sync::Arc;
-use uuid::Uuid;
-
-const LHS: NumericOperationProperties = NumericOperationProperties::LHS;
-const RESULT: NumericOperationProperties = NumericOperationProperties::RESULT;
+use crate::model::DataType;
+use crate::model::EntityInstance;
+use crate::model::EntityType;
+use crate::model::PropertyInstanceGetter;
+use crate::model::PropertyInstanceSetter;
+use crate::model::PropertyType;
+use crate::model::ReactiveEntityInstance;
+use crate::model::SocketType;
 
 const COMPONENT_NAME_NUMERIC_OPERATION: &'static str = "numeric_operation";
 const TYPE_NAME_SIN: &'static str = "sin";
@@ -29,14 +32,7 @@ fn numeric_operation_sin_type_test() {
         PropertyType::new_with_socket(NumericOperationProperties::LHS, DataType::Number, SocketType::Input),
         PropertyType::new_with_socket(NumericOperationProperties::RESULT, DataType::Number, SocketType::Output),
     ];
-    let sin_type = EntityType::new(
-        TYPE_NAME_SIN,
-        "",
-        vec![String::from(COMPONENT_NAME_NUMERIC_OPERATION)],
-        Vec::new(),
-        property_types,
-        Vec::new(),
-    );
+    let sin_type = EntityType::new(TYPE_NAME_SIN, "", "", vec![String::from(COMPONENT_NAME_NUMERIC_OPERATION)], property_types, Vec::new());
     let sin_function = NUMERIC_OPERATIONS.get(TYPE_NAME_SIN).unwrap();
     let mut properties = HashMap::new();
     properties.insert(NumericOperationProperties::LHS.into(), json!(NumericOperationProperties::LHS.default_value()));

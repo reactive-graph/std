@@ -1,4 +1,3 @@
-use crate::model::Component;
 use crate::plugins::ComponentProvider;
 use crate::provider::NumericComponentProviderImpl;
 

@@ -1,4 +1,3 @@
-use crate::model::EntityType;
 use crate::plugins::EntityTypeProvider;
 use crate::provider::NumericEntityTypeProviderImpl;
 
