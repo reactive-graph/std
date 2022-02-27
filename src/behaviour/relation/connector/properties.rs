@@ -16,8 +16,8 @@ pub enum ConnectorProperties {
 impl ConnectorProperties {
     pub fn default_value(&self) -> String {
         match self {
-            ConnectorProperties::OUTBOUND_PROPERTY_NAME => String::from(""),
-            ConnectorProperties::INBOUND_PROPERTY_NAME => String::from(""),
+            ConnectorProperties::OUTBOUND_PROPERTY_NAME => String::new(),
+            ConnectorProperties::INBOUND_PROPERTY_NAME => String::new(),
         }
     }
     pub fn properties() -> NamedProperties {
