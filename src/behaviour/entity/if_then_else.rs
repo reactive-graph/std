@@ -11,7 +11,7 @@ use crate::model::ReactiveEntityInstance;
 use crate::reactive::entity::Disconnectable;
 use crate::reactive::BehaviourCreationError;
 
-pub const IF_THEN_ELSE: &'static str = "if_then_else";
+pub const IF_THEN_ELSE: &str = "if_then_else";
 
 pub struct IfThenElse {
     pub entity: Arc<ReactiveEntityInstance>,
@@ -24,12 +24,12 @@ impl IfThenElse {
         let condition = e.properties.get(IfThenElseProperties::CONDITION.as_ref());
         if condition.is_none() {
             error!("Missing property condition");
-            return Err(BehaviourCreationError.into());
+            return Err(BehaviourCreationError);
         }
         let result = e.properties.get(IfThenElseProperties::RESULT.as_ref());
         if result.is_none() {
             error!("Missing property result");
-            return Err(BehaviourCreationError.into());
+            return Err(BehaviourCreationError);
         }
 
         let entity_instance = e.clone();
@@ -71,11 +71,8 @@ impl IfThenElse {
 
 impl Disconnectable for IfThenElse {
     fn disconnect(&self) {
-        match self.entity.properties.get(IfThenElseProperties::CONDITION.as_ref()) {
-            Some(property) => {
-                property.stream.read().unwrap().remove(self.handle_id);
-            }
-            _ => {}
+        if let Some(property) = self.entity.properties.get(IfThenElseProperties::CONDITION.as_ref()) {
+            property.stream.read().unwrap().remove(self.handle_id);
         }
     }
 }
