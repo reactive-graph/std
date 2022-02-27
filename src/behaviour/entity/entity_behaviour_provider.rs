@@ -73,9 +73,9 @@ impl NumericEntityBehaviourProvider for NumericEntityBehaviourProviderImpl {
             None => None,
         };
         if numeric_operation.is_some() {
-            // let numeric_operation = Arc::new(numeric_operation.unwrap());
             self.numeric_operations.0.write().unwrap().insert(id, numeric_operation.unwrap());
-            debug!("Added behaviour {} to entity instance {}", NUMERIC_OPERATION, id);
+            entity_instance.add_behaviour(entity_instance.type_name.as_str());
+            debug!("Added behaviour {} {} to entity instance {}", NUMERIC_OPERATION, entity_instance.type_name.as_str(), id);
         }
     }
 
@@ -87,20 +87,32 @@ impl NumericEntityBehaviourProvider for NumericEntityBehaviourProviderImpl {
             None => None,
         };
         if numeric_gate.is_some() {
-            // let numeric_operation = Arc::new(numeric_operation.unwrap());
             self.numeric_gates.0.write().unwrap().insert(id, numeric_gate.unwrap());
-            debug!("Added behaviour {} to entity instance {}", NUMERIC_GATE, id);
+            entity_instance.add_behaviour(entity_instance.type_name.as_str());
+            debug!("Added behaviour {} {} to entity instance {}", NUMERIC_GATE, entity_instance.type_name.as_str(), id);
         }
     }
 
     fn remove_numeric_operation(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         self.numeric_operations.0.write().unwrap().remove(&entity_instance.id);
-        debug!("Removed behaviour {} from entity instance {}", NUMERIC_OPERATION, entity_instance.id);
+        entity_instance.remove_behaviour(entity_instance.type_name.as_str());
+        debug!(
+            "Removed behaviour {} {} from entity instance {}",
+            NUMERIC_OPERATION,
+            entity_instance.type_name.as_str(),
+            entity_instance.id
+        );
     }
 
     fn remove_numeric_gate(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         self.numeric_gates.0.write().unwrap().remove(&entity_instance.id);
-        debug!("Removed behaviour {} from entity instance {}", NUMERIC_GATE, entity_instance.id);
+        entity_instance.remove_behaviour(entity_instance.type_name.as_str());
+        debug!(
+            "Removed behaviour {} {} from entity instance {}",
+            NUMERIC_GATE,
+            entity_instance.type_name.as_str(),
+            entity_instance.id
+        );
     }
 
     fn remove_by_id(&self, id: Uuid) {
