@@ -37,8 +37,8 @@ fn arithmetic_gate_add_type_test() {
     let add_type = EntityType::new(
         TYPE_NAME_ADD,
         "",
+        "",
         vec![String::from(COMPONENT_NAME_ARITHMETIC_GATE)],
-        Vec::new(),
         property_types,
         Vec::new(),
     );
