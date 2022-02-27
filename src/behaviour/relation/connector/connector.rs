@@ -9,7 +9,7 @@ use std::collections::HashMap;
 use std::sync::Arc;
 
 // TODO: move into ConnectorProperties
-pub static TYPE_NAME_CONNECTOR: &'static str = "connector";
+pub static TYPE_NAME_CONNECTOR: &str = "connector";
 
 pub type ConnectorFunction = fn(Value) -> Value;
 
@@ -41,7 +41,7 @@ impl Connector {
         f: ConnectorFunction,
     ) -> Connector {
         let mut connector = Connector {
-            relation: relation.clone(),
+            relation,
             f,
             handle_id: 0,
         };
@@ -62,9 +62,9 @@ impl Connector {
         let properties =
             get_connector_relation_properties(outbound_property_name, inbound_property_name);
         let relation = Arc::new(ReactiveRelationInstance::create_with_properties(
-            outbound.clone(),
+            outbound,
             TYPE_NAME_CONNECTOR.to_string(),
-            inbound.clone(),
+            inbound,
             properties,
         ));
         Connector::from_relation(relation, |v| v.clone())

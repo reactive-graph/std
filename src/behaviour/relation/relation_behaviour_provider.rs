@@ -73,7 +73,7 @@ impl ConnectorRelationBehaviourProvider for ConnectorRelationBehaviourProviderIm
         }
         let connector = match function {
             Some(function) => Some(Arc::new(Connector::from_relation(
-                relation_instance.clone(),
+                relation_instance,
                 *function,
             ))),
             None => None,
@@ -117,11 +117,11 @@ impl ConnectorRelationBehaviourProvider for ConnectorRelationBehaviourProviderIm
 
 impl RelationBehaviourProvider for ConnectorRelationBehaviourProviderImpl {
     fn add_behaviours(&self, relation_instance: Arc<ReactiveRelationInstance>) {
-        self.create_connector(relation_instance.clone());
+        self.create_connector(relation_instance);
     }
 
     fn remove_behaviours(&self, relation_instance: Arc<ReactiveRelationInstance>) {
-        self.remove_connector(relation_instance.clone());
+        self.remove_connector(relation_instance);
     }
 
     fn remove_behaviours_by_key(&self, edge_key: EdgeKey) {
