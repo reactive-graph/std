@@ -1,5 +1,3 @@
-cargo-features = ["strip"]
-
 [package]
 name = "inexor-rgf-plugin-system-environment"
 description = "Inexor - Reactive Graph Flow - Plugin - System Environment"
