@@ -30,7 +30,6 @@ pub trait ConfigEntityBehaviourProvider: EntityBehaviourProvider + Send + Sync {
     fn remove_by_id(&self, id: Uuid);
 }
 
-// #[derive(Clone)]
 pub struct ConfigEntityBehaviourProviderImpl {
     config_file_behaviours: ConfigFileStorage,
 }
@@ -60,6 +59,7 @@ impl ConfigEntityBehaviourProvider for ConfigEntityBehaviourProviderImpl {
                 .write()
                 .unwrap()
                 .insert(id, config_file);
+            entity_instance.add_behaviour(CONFIG_FILE);
             debug!("Added behaviour {} to entity instance {}", CONFIG_FILE, id);
             // The initial tick is necessary for reading the config file the first time
             entity_instance.tick();
@@ -72,6 +72,7 @@ impl ConfigEntityBehaviourProvider for ConfigEntityBehaviourProviderImpl {
             .write()
             .unwrap()
             .remove(&entity_instance.id);
+        entity_instance.remove_behaviour(CONFIG_FILE);
         debug!(
             "Removed behaviour {} from entity instance {}",
             CONFIG_FILE, entity_instance.id
