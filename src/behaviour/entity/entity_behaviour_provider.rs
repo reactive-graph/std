@@ -48,21 +48,23 @@ impl ComparisonEntityBehaviourProviderImpl {
 #[provides]
 impl ComparisonEntityBehaviourProvider for ComparisonEntityBehaviourProviderImpl {
     fn create_comparison_gate(&self, entity_instance: Arc<ReactiveEntityInstance>) {
+        let type_name = entity_instance.type_name.as_str();
         let id = entity_instance.id;
-        let function = COMPARISON_GATES.get(entity_instance.type_name.as_str());
-        let comparison_gate = match function {
-            Some(function) => Some(Arc::new(ComparisonGate::new(entity_instance.clone(), *function))),
-            None => None,
-        };
-        if comparison_gate.is_some() {
-            self.comparison_gates.0.write().unwrap().insert(id, comparison_gate.unwrap());
-            debug!("Added behaviour comparison_gate to entity instance {}", id);
+        if let Some(comparison_gate) = COMPARISON_GATES
+            .get(type_name)
+            .map(|function| Arc::new(ComparisonGate::new(entity_instance.clone(), *function)))
+        {
+            self.comparison_gates.0.write().unwrap().insert(id, comparison_gate);
+            entity_instance.add_behaviour(type_name);
+            debug!("Added behaviour {} to entity instance {}", type_name, id);
         }
     }
 
     fn remove_comparison_gate(&self, entity_instance: Arc<ReactiveEntityInstance>) {
+        let type_name = entity_instance.type_name.as_str();
         self.comparison_gates.0.write().unwrap().remove(&entity_instance.id);
-        debug!("Removed behaviour comparison_gates from entity instance {}", entity_instance.id);
+        entity_instance.remove_behaviour(type_name);
+        debug!("Removed behaviour comparison_gates {} from entity instance {}", type_name, entity_instance.id);
     }
 
     fn remove_by_id(&self, id: Uuid) {
