@@ -23,10 +23,10 @@ mutation {
           }
         ]
       ) {
-        id,
+        id
         type {
           name
-        },
+        }
         properties(
           names: [
             "condition",
