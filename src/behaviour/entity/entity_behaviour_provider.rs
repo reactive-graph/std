@@ -62,31 +62,35 @@ impl HttpEntityBehaviourProviderImpl {
 impl HttpEntityBehaviourProvider for HttpEntityBehaviourProviderImpl {
     fn create_http(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let id = entity_instance.id;
-        let http = Http::new(entity_instance);
+        let http = Http::new(entity_instance.clone());
         if http.is_ok() {
             let http = Arc::new(http.unwrap());
             self.http.0.write().unwrap().insert(id, http);
+            entity_instance.add_behaviour(HTTP);
             debug!("Added behaviour {} to entity instance {}", HTTP, id);
         }
     }
 
     fn create_json_rpc(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let id = entity_instance.id;
-        let jsonrpc = JsonRpc::new(entity_instance);
+        let jsonrpc = JsonRpc::new(entity_instance.clone());
         if jsonrpc.is_ok() {
             let jsonrpc = Arc::new(jsonrpc.unwrap());
             self.jsonrpc.0.write().unwrap().insert(id, jsonrpc);
+            entity_instance.add_behaviour(JSONRPC);
             debug!("Added behaviour {} to entity instance {}", JSONRPC, id);
         }
     }
 
     fn remove_http(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         self.http.0.write().unwrap().remove(&entity_instance.id);
+        entity_instance.remove_behaviour(HTTP);
         debug!("Removed behaviour {} from entity instance {}", HTTP, entity_instance.id);
     }
 
     fn remove_json_rpc(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         self.jsonrpc.0.write().unwrap().remove(&entity_instance.id);
+        entity_instance.remove_behaviour(JSONRPC);
         debug!("Removed behaviour {} from entity instance {}", JSONRPC, entity_instance.id);
     }
 
