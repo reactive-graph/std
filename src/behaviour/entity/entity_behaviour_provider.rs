@@ -85,6 +85,7 @@ impl ArithmeticEntityBehaviourProvider for ArithmeticEntityBehaviourProviderImpl
                 .write()
                 .unwrap()
                 .insert(id, arithmetic_operation.unwrap());
+            entity_instance.add_behaviour(entity_instance.type_name.as_str());
             debug!(
                 "Added behaviour arithmetic_operation to entity instance {}",
                 id
@@ -108,6 +109,7 @@ impl ArithmeticEntityBehaviourProvider for ArithmeticEntityBehaviourProviderImpl
                 .write()
                 .unwrap()
                 .insert(id, arithmetic_gate.unwrap());
+            entity_instance.add_behaviour(entity_instance.type_name.as_str());
             debug!("Added behaviour arithmetic_gate to entity instance {}", id);
         }
     }
@@ -118,6 +120,7 @@ impl ArithmeticEntityBehaviourProvider for ArithmeticEntityBehaviourProviderImpl
             .write()
             .unwrap()
             .remove(&entity_instance.id);
+        entity_instance.remove_behaviour(entity_instance.type_name.as_str());
         debug!(
             "Removed behaviour arithmetic_operation from entity instance {}",
             entity_instance.id
@@ -130,6 +133,7 @@ impl ArithmeticEntityBehaviourProvider for ArithmeticEntityBehaviourProviderImpl
             .write()
             .unwrap()
             .remove(&entity_instance.id);
+        entity_instance.remove_behaviour(entity_instance.type_name.as_str());
         debug!(
             "Removed behaviour arithmetic_gates from entity instance {}",
             entity_instance.id
