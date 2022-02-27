@@ -29,7 +29,6 @@ pub trait ConnectorRelationBehaviourProvider: RelationBehaviourProvider + Send +
     fn remove_by_key(&self, edge_key: EdgeKey);
 }
 
-// #[derive(Clone)]
 pub struct ConnectorRelationBehaviourProviderImpl {
     connectors: ConnectorStorage,
 }
@@ -56,8 +55,6 @@ impl ConnectorRelationBehaviourProvider for ConnectorRelationBehaviourProviderIm
         }
         let edge_key = edge_key.unwrap();
         let mut type_name = relation_instance.type_name.clone();
-        // TODO: remove
-        debug!("relation type name {}", relation_instance.type_name.clone());
         let mut function = CONNECTORS.get(type_name.as_str());
         if function.is_none() {
             let connector_type_name = CONNECTORS
