@@ -105,6 +105,7 @@ impl LogicalEntityBehaviourProvider for LogicalEntityBehaviourProviderImpl {
         };
         if logical_operation.is_some() {
             self.logical_operations.0.write().unwrap().insert(id, logical_operation.unwrap());
+            entity_instance.add_behaviour(type_name);
             debug!("Added behaviour {} to entity instance {}", type_name, id);
         }
     }
@@ -119,47 +120,54 @@ impl LogicalEntityBehaviourProvider for LogicalEntityBehaviourProviderImpl {
         };
         if logical_gate.is_some() {
             self.logical_gates.0.write().unwrap().insert(id, logical_gate.unwrap());
+            entity_instance.add_behaviour(type_name);
             debug!("Added behaviour {} to entity instance {}", type_name, id);
         }
     }
 
     fn create_trigger(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let id = entity_instance.id;
-        let trigger = Trigger::new(entity_instance);
+        let trigger = Trigger::new(entity_instance.clone());
         if trigger.is_ok() {
             let trigger = Arc::new(trigger.unwrap());
             self.triggers.0.write().unwrap().insert(id, trigger);
+            entity_instance.add_behaviour(TRIGGER);
             debug!("Added behaviour {} to entity instance {}", TRIGGER, id);
         }
     }
 
     fn create_if_then_else(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let id = entity_instance.id;
-        let if_then_else = IfThenElse::new(entity_instance);
+        let if_then_else = IfThenElse::new(entity_instance.clone());
         if if_then_else.is_ok() {
             let if_then_else = Arc::new(if_then_else.unwrap());
             self.if_then_else_behaviours.0.write().unwrap().insert(id, if_then_else);
+            entity_instance.add_behaviour(IF_THEN_ELSE);
             debug!("Added behaviour {} to entity instance {}", IF_THEN_ELSE, id);
         }
     }
 
     fn remove_logical_operation(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         self.logical_operations.0.write().unwrap().remove(&entity_instance.id);
+        entity_instance.remove_behaviour(entity_instance.type_name.as_str());
         debug!("Removed behaviour logical_operation from entity instance {}", entity_instance.id);
     }
 
     fn remove_logical_gate(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         self.logical_gates.0.write().unwrap().remove(&entity_instance.id);
+        entity_instance.remove_behaviour(entity_instance.type_name.as_str());
         debug!("Removed behaviour logical_gates from entity instance {}", entity_instance.id);
     }
 
     fn remove_trigger(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         self.triggers.0.write().unwrap().remove(&entity_instance.id);
+        entity_instance.remove_behaviour(TRIGGER);
         debug!("Removed behaviour {} from entity instance {}", TRIGGER, entity_instance.id);
     }
 
     fn remove_if_then_else(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         self.if_then_else_behaviours.0.write().unwrap().remove(&entity_instance.id);
+        entity_instance.remove_behaviour(IF_THEN_ELSE);
         debug!("Removed behaviour {} from entity instance {}", IF_THEN_ELSE, entity_instance.id);
     }
 
