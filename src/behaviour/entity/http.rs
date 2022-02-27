@@ -10,7 +10,7 @@ use crate::behaviour::entity::HttpProperties;
 use crate::model::ReactiveEntityInstance;
 use crate::reactive::entity::Disconnectable;
 
-pub const HTTP: &'static str = "http";
+pub const HTTP: &str = "http";
 
 pub struct Http {
     pub entity: Arc<ReactiveEntityInstance>,
@@ -23,19 +23,19 @@ impl Http {
         let url = e.properties.get(HttpProperties::URL.as_ref());
         if url.is_none() {
             error!("Missing property {}", HttpProperties::URL.as_ref());
-            return Err(BehaviourCreationError.into());
+            return Err(BehaviourCreationError);
         }
 
         let method = e.properties.get(HttpProperties::METHOD.as_ref());
         if method.is_none() {
             error!("Missing property {}", HttpProperties::METHOD.as_ref());
-            return Err(BehaviourCreationError.into());
+            return Err(BehaviourCreationError);
         }
 
         let payload = e.properties.get(HttpProperties::PAYLOAD.as_ref());
         if payload.is_none() {
             error!("Missing property {}", HttpProperties::PAYLOAD.as_ref());
-            return Err(BehaviourCreationError.into());
+            return Err(BehaviourCreationError);
         }
 
         let entity = e.clone();
@@ -58,7 +58,7 @@ impl Http {
                         .get(HttpProperties::URL.as_ref())
                         .unwrap()
                         .as_string()
-                        .unwrap_or(HttpProperties::URL.default_value().to_string());
+                        .unwrap_or_else(|| HttpProperties::URL.default_value().to_string());
                     if url.is_empty() {
                         // Invalid URL
                         return;
@@ -69,11 +69,11 @@ impl Http {
                         .get(HttpProperties::METHOD.as_ref())
                         .unwrap()
                         .as_string()
-                        .unwrap_or(HttpProperties::METHOD.default_value().to_string());
+                        .unwrap_or_else(|| HttpProperties::METHOD.default_value().to_string());
 
                     let empty_map = json!({});
                     let request_headers = entity.properties.get(HttpProperties::REQUEST_HEADERS.as_ref()).unwrap().get();
-                    let request_headers = request_headers.as_object().unwrap_or(empty_map.as_object().unwrap());
+                    let request_headers = request_headers.as_object().unwrap_or_else(|| empty_map.as_object().unwrap());
 
                     let payload = entity.properties.get(HttpProperties::PAYLOAD.as_ref()).unwrap().get();
 
@@ -121,11 +121,8 @@ impl Http {
 
 impl Disconnectable for Http {
     fn disconnect(&self) {
-        match self.entity.properties.get(HttpProperties::PAYLOAD.as_ref()) {
-            Some(property) => {
-                property.stream.read().unwrap().remove(self.handle_id);
-            }
-            _ => {}
+        if let Some(property) = self.entity.properties.get(HttpProperties::PAYLOAD.as_ref()) {
+            property.stream.read().unwrap().remove(self.handle_id);
         }
     }
 }
