@@ -1,15 +1,22 @@
+use std::collections::HashMap;
 use std::sync::Arc;
 
 use serde_json::json;
+use uuid::Uuid;
 
 use crate::behaviour::entity::gate::LogicalGate;
 use crate::behaviour::entity::gate::LogicalGateProperties;
 use crate::behaviour::entity::gate::LOGICAL_GATES;
-use crate::model::{DataType, EntityInstance, EntityType, PropertyType, ReactiveEntityInstance, SocketType};
-use crate::model::{PropertyInstanceGetter, PropertyInstanceSetter};
-use inexor_rgf_core_reactive::{Gate, Operation};
-use std::collections::HashMap;
-use uuid::Uuid;
+use crate::model::DataType;
+use crate::model::EntityInstance;
+use crate::model::EntityType;
+use crate::model::PropertyInstanceGetter;
+use crate::model::PropertyInstanceSetter;
+use crate::model::PropertyType;
+use crate::model::ReactiveEntityInstance;
+use crate::model::SocketType;
+use crate::reactive::Gate;
+use crate::reactive::Operation;
 
 const LHS: LogicalGateProperties = LogicalGateProperties::LHS;
 const RHS: LogicalGateProperties = LogicalGateProperties::RHS;
@@ -31,7 +38,7 @@ fn and_gate_test() {
         PropertyType::new_with_socket(RHS, DataType::Number, SocketType::Input),
         PropertyType::new_with_socket(RESULT, DataType::Number, SocketType::Output),
     ];
-    let and_type = EntityType::new(TYPE_NAME_AND, "", vec![String::from(COMPONENT_NAME_LOGICAL_GATE)], Vec::new(), property_types, Vec::new());
+    let and_type = EntityType::new(TYPE_NAME_AND, "", "", vec![String::from(COMPONENT_NAME_LOGICAL_GATE)], property_types, Vec::new());
     let and_function = LOGICAL_GATES.get(TYPE_NAME_AND).unwrap();
     let mut properties = HashMap::new();
     properties.insert(LHS.into(), json!(LHS.default_value()));
