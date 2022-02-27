@@ -118,12 +118,12 @@ impl NumericEntityBehaviourProvider for NumericEntityBehaviourProviderImpl {
 impl EntityBehaviourProvider for NumericEntityBehaviourProviderImpl {
     fn add_behaviours(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         self.create_numeric_operation(entity_instance.clone());
-        self.create_numeric_gate(entity_instance.clone());
+        self.create_numeric_gate(entity_instance);
     }
 
     fn remove_behaviours(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         self.remove_numeric_operation(entity_instance.clone());
-        self.remove_numeric_gate(entity_instance.clone());
+        self.remove_numeric_gate(entity_instance);
     }
 
     fn remove_behaviours_by_id(&self, id: Uuid) {
