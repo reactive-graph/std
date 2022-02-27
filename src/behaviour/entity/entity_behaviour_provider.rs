@@ -191,9 +191,10 @@ impl JsonEntityBehaviourProviderImpl {
 impl JsonEntityBehaviourProvider for JsonEntityBehaviourProviderImpl {
     fn create_array_contains(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let id = entity_instance.id;
-        match ArrayContains::new(entity_instance) {
+        match ArrayContains::new(entity_instance.clone()) {
             Ok(array_contains) => {
                 self.array_contains.0.write().unwrap().insert(id, Arc::new(array_contains));
+                entity_instance.add_behaviour(ARRAY_CONTAINS);
                 debug!("Added behaviour {} to entity instance {}", ARRAY_CONTAINS, id);
             }
             _ => {}
@@ -202,9 +203,10 @@ impl JsonEntityBehaviourProvider for JsonEntityBehaviourProviderImpl {
 
     fn create_array_get_by_index(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let id = entity_instance.id;
-        match ArrayGetByIndex::new(entity_instance) {
+        match ArrayGetByIndex::new(entity_instance.clone()) {
             Ok(array_get_by_index) => {
                 self.array_get_by_index.0.write().unwrap().insert(id, Arc::new(array_get_by_index));
+                entity_instance.add_behaviour(ARRAY_GET_BY_INDEX);
                 debug!("Added behaviour {} to entity instance {}", ARRAY_GET_BY_INDEX, id);
             }
             _ => {}
@@ -213,9 +215,10 @@ impl JsonEntityBehaviourProvider for JsonEntityBehaviourProviderImpl {
 
     fn create_array_length(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let id = entity_instance.id;
-        match ArrayLength::new(entity_instance) {
+        match ArrayLength::new(entity_instance.clone()) {
             Ok(array_length) => {
                 self.array_length.0.write().unwrap().insert(id, Arc::new(array_length));
+                entity_instance.add_behaviour(ARRAY_LENGTH);
                 debug!("Added behaviour {} to entity instance {}", ARRAY_LENGTH, id);
             }
             _ => {}
@@ -224,9 +227,10 @@ impl JsonEntityBehaviourProvider for JsonEntityBehaviourProviderImpl {
 
     fn create_array_pop(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let id = entity_instance.id;
-        match ArrayPop::new(entity_instance) {
+        match ArrayPop::new(entity_instance.clone()) {
             Ok(array_pop) => {
                 self.array_pop.0.write().unwrap().insert(id, Arc::new(array_pop));
+                entity_instance.add_behaviour(ARRAY_POP);
                 debug!("Added behaviour {} to entity instance {}", ARRAY_POP, id);
             }
             _ => {}
@@ -235,9 +239,10 @@ impl JsonEntityBehaviourProvider for JsonEntityBehaviourProviderImpl {
 
     fn create_array_push(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let id = entity_instance.id;
-        match ArrayPush::new(entity_instance) {
+        match ArrayPush::new(entity_instance.clone()) {
             Ok(array_push) => {
                 self.array_push.0.write().unwrap().insert(id, Arc::new(array_push));
+                entity_instance.add_behaviour(ARRAY_PUSH);
                 debug!("Added behaviour {} to entity instance {}", ARRAY_PUSH, id);
             }
             _ => {}
@@ -246,9 +251,10 @@ impl JsonEntityBehaviourProvider for JsonEntityBehaviourProviderImpl {
 
     fn create_array_reverse(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let id = entity_instance.id;
-        match ArrayReverse::new(entity_instance) {
+        match ArrayReverse::new(entity_instance.clone()) {
             Ok(array_reverse) => {
                 self.array_reverse.0.write().unwrap().insert(id, Arc::new(array_reverse));
+                entity_instance.add_behaviour(ARRAY_REVERSE);
                 debug!("Added behaviour {} to entity instance {}", ARRAY_REVERSE, id);
             }
             _ => {}
@@ -257,9 +263,10 @@ impl JsonEntityBehaviourProvider for JsonEntityBehaviourProviderImpl {
 
     fn create_object_get_property(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let id = entity_instance.id;
-        match ObjectGetProperty::new(entity_instance) {
+        match ObjectGetProperty::new(entity_instance.clone()) {
             Ok(object_get_property) => {
                 self.object_get_property.0.write().unwrap().insert(id, Arc::new(object_get_property));
+                entity_instance.add_behaviour(OBJECT_GET_PROPERTY);
                 debug!("Added behaviour {} to entity instance {}", OBJECT_GET_PROPERTY, id);
             }
             _ => {}
@@ -268,9 +275,10 @@ impl JsonEntityBehaviourProvider for JsonEntityBehaviourProviderImpl {
 
     fn create_object_keys(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let id = entity_instance.id;
-        match ObjectKeys::new(entity_instance) {
+        match ObjectKeys::new(entity_instance.clone()) {
             Ok(object_keys) => {
                 self.object_keys.0.write().unwrap().insert(id, Arc::new(object_keys));
+                entity_instance.add_behaviour(OBJECT_KEYS);
                 debug!("Added behaviour {} to entity instance {}", OBJECT_KEYS, id);
             }
             _ => {}
@@ -279,9 +287,10 @@ impl JsonEntityBehaviourProvider for JsonEntityBehaviourProviderImpl {
 
     fn create_object_remove_property(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let id = entity_instance.id;
-        match ObjectRemoveProperty::new(entity_instance) {
+        match ObjectRemoveProperty::new(entity_instance.clone()) {
             Ok(object_remove_property) => {
                 self.object_remove_property.0.write().unwrap().insert(id, Arc::new(object_remove_property));
+                entity_instance.add_behaviour(OBJECT_REMOVE_PROPERTY);
                 debug!("Added behaviour {} to entity instance {}", OBJECT_REMOVE_PROPERTY, id);
             }
             _ => {}
@@ -290,9 +299,10 @@ impl JsonEntityBehaviourProvider for JsonEntityBehaviourProviderImpl {
 
     fn create_object_set_property(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let id = entity_instance.id;
-        match ObjectSetProperty::new(entity_instance) {
+        match ObjectSetProperty::new(entity_instance.clone()) {
             Ok(object_set_property) => {
                 self.object_set_property.0.write().unwrap().insert(id, Arc::new(object_set_property));
+                entity_instance.add_behaviour(OBJECT_SET_PROPERTY);
                 debug!("Added behaviour {} to entity instance {}", OBJECT_SET_PROPERTY, id);
             }
             _ => {}
@@ -301,51 +311,61 @@ impl JsonEntityBehaviourProvider for JsonEntityBehaviourProviderImpl {
 
     fn remove_array_contains(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         self.array_contains.0.write().unwrap().remove(&entity_instance.id);
+        entity_instance.remove_behaviour(ARRAY_CONTAINS);
         debug!("Removed behaviour {} from entity instance {}", ARRAY_CONTAINS, entity_instance.id);
     }
 
     fn remove_array_get_by_index(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         self.array_get_by_index.0.write().unwrap().remove(&entity_instance.id);
+        entity_instance.remove_behaviour(ARRAY_GET_BY_INDEX);
         debug!("Removed behaviour {} from entity instance {}", ARRAY_GET_BY_INDEX, entity_instance.id);
     }
 
     fn remove_array_length(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         self.array_length.0.write().unwrap().remove(&entity_instance.id);
+        entity_instance.remove_behaviour(ARRAY_LENGTH);
         debug!("Removed behaviour {} from entity instance {}", ARRAY_LENGTH, entity_instance.id);
     }
 
     fn remove_array_pop(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         self.array_pop.0.write().unwrap().remove(&entity_instance.id);
+        entity_instance.remove_behaviour(ARRAY_POP);
         debug!("Removed behaviour {} from entity instance {}", ARRAY_POP, entity_instance.id);
     }
 
     fn remove_array_push(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         self.array_push.0.write().unwrap().remove(&entity_instance.id);
+        entity_instance.remove_behaviour(ARRAY_PUSH);
         debug!("Removed behaviour {} from entity instance {}", ARRAY_PUSH, entity_instance.id);
     }
 
     fn remove_array_reverse(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         self.array_reverse.0.write().unwrap().remove(&entity_instance.id);
+        entity_instance.remove_behaviour(ARRAY_REVERSE);
         debug!("Removed behaviour {} from entity instance {}", ARRAY_REVERSE, entity_instance.id);
     }
 
     fn remove_object_get_property(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         self.object_get_property.0.write().unwrap().remove(&entity_instance.id);
+        entity_instance.remove_behaviour(OBJECT_GET_PROPERTY);
         debug!("Removed behaviour {} from entity instance {}", OBJECT_GET_PROPERTY, entity_instance.id);
     }
 
     fn remove_object_keys(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         self.object_keys.0.write().unwrap().remove(&entity_instance.id);
+        entity_instance.remove_behaviour(OBJECT_KEYS);
         debug!("Removed behaviour {} from entity instance {}", OBJECT_KEYS, entity_instance.id);
     }
 
     fn remove_object_remove_property(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         self.object_remove_property.0.write().unwrap().remove(&entity_instance.id);
+        entity_instance.remove_behaviour(OBJECT_REMOVE_PROPERTY);
         debug!("Removed behaviour {} from entity instance {}", OBJECT_REMOVE_PROPERTY, entity_instance.id);
     }
 
     fn remove_object_set_property(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         self.object_set_property.0.write().unwrap().remove(&entity_instance.id);
+        entity_instance.remove_behaviour(OBJECT_SET_PROPERTY);
         debug!("Removed behaviour {} from entity instance {}", OBJECT_SET_PROPERTY, entity_instance.id);
     }
 
