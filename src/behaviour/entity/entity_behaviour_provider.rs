@@ -80,13 +80,14 @@ impl RandomEntityBehaviourProviderImpl {
 impl RandomEntityBehaviourProvider for RandomEntityBehaviourProviderImpl {
     fn create_random_integer_within_range(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let id = entity_instance.id;
-        match RandomIntegerWithinRange::new(entity_instance) {
+        match RandomIntegerWithinRange::new(entity_instance.clone()) {
             Ok(random_integer_within_range) => {
                 self.random_integer_within_range
                     .0
                     .write()
                     .unwrap()
                     .insert(id, Arc::new(random_integer_within_range));
+                entity_instance.add_behaviour(RANDOM_INTEGER_WITHIN_RANGE);
                 debug!("Added behaviour {} to entity instance {}", RANDOM_INTEGER_WITHIN_RANGE, id);
             }
             _ => {}
@@ -95,9 +96,10 @@ impl RandomEntityBehaviourProvider for RandomEntityBehaviourProviderImpl {
 
     fn create_random_number(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let id = entity_instance.id;
-        match RandomNumber::new(entity_instance) {
+        match RandomNumber::new(entity_instance.clone()) {
             Ok(random_number) => {
                 self.random_number.0.write().unwrap().insert(id, Arc::new(random_number));
+                entity_instance.add_behaviour(RANDOM_NUMBER);
                 debug!("Added behaviour {} to entity instance {}", RANDOM_NUMBER, id);
             }
             _ => {}
@@ -106,9 +108,10 @@ impl RandomEntityBehaviourProvider for RandomEntityBehaviourProviderImpl {
 
     fn create_random_uuid(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let id = entity_instance.id;
-        match RandomUuid::new(entity_instance) {
+        match RandomUuid::new(entity_instance.clone()) {
             Ok(random_uuid) => {
                 self.random_uuid.0.write().unwrap().insert(id, Arc::new(random_uuid));
+                entity_instance.add_behaviour(RANDOM_UUID);
                 debug!("Added behaviour {} to entity instance {}", RANDOM_UUID, id);
             }
             _ => {}
@@ -117,16 +120,19 @@ impl RandomEntityBehaviourProvider for RandomEntityBehaviourProviderImpl {
 
     fn remove_random_integer_within_range(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         self.random_integer_within_range.0.write().unwrap().remove(&entity_instance.id);
+        entity_instance.remove_behaviour(RANDOM_INTEGER_WITHIN_RANGE);
         debug!("Removed behaviour {} from entity instance {}", RANDOM_INTEGER_WITHIN_RANGE, entity_instance.id);
     }
 
     fn remove_random_number(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         self.random_number.0.write().unwrap().remove(&entity_instance.id);
+        entity_instance.remove_behaviour(RANDOM_NUMBER);
         debug!("Removed behaviour {} from entity instance {}", RANDOM_NUMBER, entity_instance.id);
     }
 
     fn remove_random_uuid(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         self.random_uuid.0.write().unwrap().remove(&entity_instance.id);
+        entity_instance.remove_behaviour(RANDOM_UUID);
         debug!("Removed behaviour {} from entity instance {}", RANDOM_UUID, entity_instance.id);
     }
 
