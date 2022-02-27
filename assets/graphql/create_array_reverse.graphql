@@ -2,16 +2,16 @@ mutation {
   instances {
     entities {
       create(
-        typeName: "array_reverse",
+        type: "array_reverse",
         id: "013bd4c8-1bd1-4263-a696-e3af57385c1d",
         properties: [
           {
             name: "array",
-            value: [ 10, 20, 30]
+            value: [ 10, 20, 30 ]
           },
           {
             name: "result",
-            value: [ 30, 20, 10]
+            value: [ 30, 20, 10 ]
           }
         ]
       ) {
@@ -22,7 +22,10 @@ mutation {
             "array",
             "result"
           ]
-        )
+        ) {
+          name
+          value
+        }
       }
     }
   }

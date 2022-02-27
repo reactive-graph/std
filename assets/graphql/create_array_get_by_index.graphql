@@ -2,7 +2,7 @@ mutation {
   instances {
     entities {
       create(
-        typeName: "array_get_by_index",
+        type: "array_get_by_index",
         id: "d47068ff-b97d-4982-a06c-4c12d68caa96",
         properties: [
           {
@@ -19,7 +19,10 @@ mutation {
             "index",
             "result"
           ]
-        )
+        ) {
+          name
+          value
+        }
       }
     }
   }

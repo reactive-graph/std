@@ -2,12 +2,12 @@ mutation {
   instances {
     entities {
       create(
-        typeName: "array_contains",
+        type: "array_contains",
         id: "66e9d33b-02d5-4d3c-bdf5-70bdbfcfb2ad",
         properties: [
           {
             name: "array",
-            value: [ 10, 20, 30]
+            value: [ 10, 20, 30 ]
           },
           {
             name: "search",
@@ -27,7 +27,10 @@ mutation {
             "search",
             "result"
           ]
-        )
+        ) {
+          name
+          value
+        }
       }
     }
   }

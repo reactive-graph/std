@@ -6,7 +6,7 @@ mutation {
         properties: [
           {
             name: "array",
-            value: [ 30, 20, 10]
+            value: [ 30, 20, 10 ]
           }
         ]
       ) {
@@ -17,7 +17,10 @@ mutation {
             "array",
             "result"
           ]
-        )
+        ) {
+          name
+          value
+        }
       }
     }
   }

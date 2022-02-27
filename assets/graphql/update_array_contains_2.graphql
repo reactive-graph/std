@@ -18,7 +18,10 @@ mutation {
             "search",
             "result"
           ]
-        )
+        ) {
+          name
+          value
+        }
       }
     }
   }

@@ -2,7 +2,7 @@ mutation {
   instances {
     entities {
       create(
-        typeName: "object_remove_property",
+        type: "object_remove_property",
         id: "65d97e1e-e309-4bd7-93cb-d59f1d55970f",
         properties: [
           {
@@ -23,7 +23,10 @@ mutation {
             "property_name",
             "result"
           ]
-        )
+        ) {
+          name
+          value
+        }
       }
     }
   }

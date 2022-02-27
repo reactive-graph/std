@@ -6,7 +6,7 @@ mutation {
         properties: [
           {
             name: "array",
-            value: [ 10, 30]
+            value: [ 10, 30 ]
           }
         ]
       ) {
@@ -18,7 +18,10 @@ mutation {
             "search",
             "result"
           ]
-        )
+        ) {
+          name
+          value
+        }
       }
     }
   }

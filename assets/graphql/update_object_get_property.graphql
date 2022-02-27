@@ -18,7 +18,10 @@ mutation {
             "property_name",
             "result"
           ]
-        )
+        ) {
+          name
+          value
+        }
       }
     }
   }

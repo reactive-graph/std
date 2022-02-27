@@ -2,7 +2,7 @@ mutation {
   instances {
     entities {
       create(
-        typeName: "object_set_property",
+        type: "object_set_property",
         id: "34ff6218-e0df-4294-a04f-22f691665d50",
         properties: [
           {
@@ -23,7 +23,10 @@ mutation {
             "value",
             "result"
           ]
-        )
+        ) {
+          name
+          value
+        }
       }
     }
   }
