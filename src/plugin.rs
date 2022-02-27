@@ -19,14 +19,14 @@ use uuid::Uuid;
 
 pub static NAMESPACE_SYSTEM_ENVIRONMENT: Uuid = Uuid::from_u128(0x6ba7b8109dad11d180b400c04fd430c7);
 
-const SYSTEM_ENV: &'static str = "system_env";
+const SYSTEM_ENV: &str = "system_env";
 
 #[wrapper]
 pub struct PluginContextContainer(RwLock<Option<std::sync::Arc<dyn PluginContext>>>);
 
 #[provides]
 fn create_empty_plugin_context_container() -> PluginContextContainer {
-    return PluginContextContainer(RwLock::new(None));
+    PluginContextContainer(RwLock::new(None))
 }
 
 #[async_trait]
@@ -57,7 +57,7 @@ impl SystemEnvironmentPluginImpl {
         let entity_instance = EntityInstanceBuilder::new(SYSTEM_ENV)
             .id(Uuid::new_v5(&NAMESPACE_SYSTEM_ENVIRONMENT, name.as_bytes()))
             .property("name", json!(name.clone()))
-            .property("value", json!(value.clone()))
+            .property("value", json!(value))
             .property(
                 "label",
                 json!(format!(
@@ -71,16 +71,13 @@ impl SystemEnvironmentPluginImpl {
             Ok(reactive_entity_instance) => {
                 debug!(
                     "Created system environment variable {} = {} as entity instance {}",
-                    name.clone(),
-                    value.clone(),
-                    reactive_entity_instance.id
+                    name, value, reactive_entity_instance.id
                 );
             }
             Err(_) => {
                 error!(
                     "Failed to create entity instance for system environment variable {} {}!",
-                    name.clone(),
-                    value.clone()
+                    name, value
                 );
             }
         }
