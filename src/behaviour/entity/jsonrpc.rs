@@ -10,7 +10,7 @@ use serde_json::{json, Value};
 use crate::model::ReactiveEntityInstance;
 use crate::reactive::entity::Disconnectable;
 
-pub const JSONRPC: &'static str = "jsonrpc";
+pub const JSONRPC: &str = "jsonrpc";
 
 pub struct JsonRpc {
     pub entity: Arc<ReactiveEntityInstance>,
@@ -23,31 +23,31 @@ impl JsonRpc {
         let url = e.properties.get(JsonRpcProperties::URL.as_ref());
         if url.is_none() {
             error!("Missing property {}", JsonRpcProperties::URL.as_ref());
-            return Err(BehaviourCreationError.into());
+            return Err(BehaviourCreationError);
         }
 
         let method = e.properties.get(JsonRpcProperties::METHOD.as_ref());
         if method.is_none() {
             error!("Missing property {}", JsonRpcProperties::METHOD.as_ref());
-            return Err(BehaviourCreationError.into());
+            return Err(BehaviourCreationError);
         }
 
         let params = e.properties.get(JsonRpcProperties::PARAMS.as_ref());
         if params.is_none() {
             error!("Missing property {}", JsonRpcProperties::PARAMS.as_ref());
-            return Err(BehaviourCreationError.into());
+            return Err(BehaviourCreationError);
         }
 
         let result = e.properties.get(JsonRpcProperties::RESULT.as_ref());
         if result.is_none() {
             error!("Missing property {}", JsonRpcProperties::RESULT.as_ref());
-            return Err(BehaviourCreationError.into());
+            return Err(BehaviourCreationError);
         }
 
         let error = e.properties.get(JsonRpcProperties::ERROR.as_ref());
         if error.is_none() {
             error!("Missing property {}", JsonRpcProperties::ERROR.as_ref());
-            return Err(BehaviourCreationError.into());
+            return Err(BehaviourCreationError);
         }
 
         let entity = e.clone();
@@ -70,7 +70,7 @@ impl JsonRpc {
                         .get(JsonRpcProperties::URL.as_ref())
                         .unwrap()
                         .as_string()
-                        .unwrap_or(JsonRpcProperties::URL.default_value().to_string());
+                        .unwrap_or_else(|| JsonRpcProperties::URL.default_value().to_string());
                     if url.is_empty() {
                         // Invalid URL
                         return;
@@ -81,7 +81,7 @@ impl JsonRpc {
                         .get(JsonRpcProperties::METHOD.as_ref())
                         .unwrap()
                         .as_string()
-                        .unwrap_or(JsonRpcProperties::METHOD.default_value().to_string());
+                        .unwrap_or_else(|| JsonRpcProperties::METHOD.default_value().to_string());
                     if method.is_empty() {
                         // Invalid JSON RPC method
                         return;
@@ -98,7 +98,7 @@ impl JsonRpc {
                         .get(JsonRpcProperties::JSONRPC_VERSION.as_ref())
                         .unwrap()
                         .as_string()
-                        .unwrap_or(JsonRpcProperties::JSONRPC_VERSION.default_value().to_string());
+                        .unwrap_or_else(|| JsonRpcProperties::JSONRPC_VERSION.default_value().to_string());
 
                     let payload = json!({
                         "jsonrpc": jsonrpc_version,
@@ -121,15 +121,12 @@ impl JsonRpc {
                                             entity.set(JsonRpcProperties::RESULT.as_ref(), result.clone());
                                             entity.set(JsonRpcProperties::ERROR.as_ref(), json!({}));
                                         }
-                                        None => match json_rpc_response.get(JsonRpcProperties::ERROR.as_ref()) {
-                                            Some(error) => {
+                                        None => {
+                                            if let Some(error) = json_rpc_response.get(JsonRpcProperties::ERROR.as_ref()) {
                                                 entity.set(JsonRpcProperties::ERROR.as_ref(), error.clone());
                                                 entity.set(JsonRpcProperties::RESULT.as_ref(), json!({}));
                                             }
-                                            _ => {
-                                                // Invalid JSON-RPC response: The payload missing both: result and error
-                                            }
-                                        },
+                                        }
                                     }
                                 }
                                 Err(e) => error!("Failed to parse response as JSON: {}", e.to_string()),
@@ -153,11 +150,8 @@ impl JsonRpc {
 
 impl Disconnectable for JsonRpc {
     fn disconnect(&self) {
-        match self.entity.properties.get(JsonRpcProperties::PARAMS.as_ref()) {
-            Some(property) => {
-                property.stream.read().unwrap().remove(self.handle_id);
-            }
-            _ => {}
+        if let Some(property) = self.entity.properties.get(JsonRpcProperties::PARAMS.as_ref()) {
+            property.stream.read().unwrap().remove(self.handle_id);
         }
     }
 }
