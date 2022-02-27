@@ -11,7 +11,7 @@ use crate::reactive::entity::operation::Operation;
 use crate::reactive::entity::Disconnectable;
 use crate::NumericOperationProperties;
 
-pub const NUMERIC_OPERATION: &'static str = "numeric_operation";
+pub const NUMERIC_OPERATION: &str = "numeric_operation";
 
 /// Generic implementation of numeric operations with one input and one result.
 ///

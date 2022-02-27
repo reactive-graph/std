@@ -12,7 +12,7 @@ use crate::reactive::entity::gate::Gate;
 use crate::reactive::entity::operation::Operation;
 use crate::reactive::entity::Disconnectable;
 
-pub const NUMERIC_GATE: &'static str = "numeric_gate";
+pub const NUMERIC_GATE: &str = "numeric_gate";
 
 pub type NumericExpressionValue = ExpressionValue<f64>;
 
