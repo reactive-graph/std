@@ -116,7 +116,7 @@ impl Operation for NumericGate<'_> {
     }
 
     fn result(&self) -> Value {
-        self.entity.get(NumericGateProperties::RESULT.as_ref()).unwrap().clone()
+        self.entity.get(NumericGateProperties::RESULT.as_ref()).unwrap()
     }
 }
 

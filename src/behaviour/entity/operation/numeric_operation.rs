@@ -78,7 +78,7 @@ impl Operation for NumericOperation<'_> {
     }
 
     fn result(&self) -> Value {
-        self.entity.get(NumericOperationProperties::RESULT.as_ref()).unwrap().clone()
+        self.entity.get(NumericOperationProperties::RESULT.as_ref()).unwrap()
     }
 }
 
