@@ -8,7 +8,7 @@ use crate::behaviour::component::DebugValueProperties;
 use crate::model::ReactiveEntityInstance;
 use crate::reactive::entity::Disconnectable;
 
-pub const DEBUG_VALUE: &'static str = "debug_value";
+pub const DEBUG_VALUE: &str = "debug_value";
 
 pub struct DebugValue {
     pub entity: Arc<ReactiveEntityInstance>,
@@ -42,7 +42,7 @@ impl DebugValue {
             e.id, DEBUG_VALUE
         );
         Ok(DebugValue {
-            entity: e.clone(),
+            entity: e,
             handle_id,
         })
     }

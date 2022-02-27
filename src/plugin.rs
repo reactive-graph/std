@@ -19,7 +19,7 @@ pub struct PluginContextContainer(RwLock<Option<std::sync::Arc<dyn PluginContext
 
 #[provides]
 fn create_empty_plugin_context_container() -> PluginContextContainer {
-    return PluginContextContainer(RwLock::new(None));
+    PluginContextContainer(RwLock::new(None))
 }
 
 #[async_trait]

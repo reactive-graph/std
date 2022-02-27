@@ -29,8 +29,7 @@ pub fn construct_plugin() -> Result<Arc<dyn Plugin>, PluginError> {
     let container = &mut container;
     let plugin = Provider::<dyn ValuePlugin>::create(container);
     let plugin = Arc::new(plugin);
-    let plugin: Result<Arc<dyn Plugin>, _> =
-        <dyn query_interface::Object>::query_arc(plugin.clone());
+    let plugin: Result<Arc<dyn Plugin>, _> = <dyn query_interface::Object>::query_arc(plugin);
     if plugin.is_err() {
         error!("Failed to construct plugin");
         return Err(PluginError::PluginCreationError);
@@ -42,7 +41,7 @@ plugins::export_plugin!(register);
 
 #[allow(improper_ctypes_definitions)]
 extern "C" fn register(registrar: &mut dyn plugins::PluginRegistrar) {
-    const PKG_NAME: &'static str = env!("CARGO_PKG_NAME");
+    const PKG_NAME: &str = env!("CARGO_PKG_NAME");
     if let Err(error) = log4rs::init_file("config/logging.toml", Default::default()) {
         println!("Failed to configure logger in {}: {}", PKG_NAME, error);
     }
