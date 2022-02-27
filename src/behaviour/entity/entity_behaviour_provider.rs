@@ -84,6 +84,7 @@ impl StringEntityBehaviourProvider for StringEntityBehaviourProviderImpl {
         };
         if string_operation.is_some() {
             self.string_operations.0.write().unwrap().insert(id, string_operation.unwrap());
+            entity_instance.add_behaviour(entity_instance.type_name.as_str());
             debug!("Added behaviour string_operation to entity instance {}", id);
         }
     }
@@ -97,6 +98,7 @@ impl StringEntityBehaviourProvider for StringEntityBehaviourProviderImpl {
         };
         if string_gate.is_some() {
             self.string_gates.0.write().unwrap().insert(id, string_gate.unwrap());
+            entity_instance.add_behaviour(entity_instance.type_name.as_str());
             debug!("Added behaviour string_gate to entity instance {}", id);
         }
     }
@@ -110,22 +112,26 @@ impl StringEntityBehaviourProvider for StringEntityBehaviourProviderImpl {
         };
         if string_comparison.is_some() {
             self.string_comparisons.0.write().unwrap().insert(id, string_comparison.unwrap());
+            entity_instance.add_behaviour(entity_instance.type_name.as_str());
             debug!("Added behaviour string_comparison to entity instance {}", id);
         }
     }
 
     fn remove_string_operation(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         self.string_operations.0.write().unwrap().remove(&entity_instance.id);
+        entity_instance.remove_behaviour(entity_instance.type_name.as_str());
         debug!("Removed behaviour string_operation from entity instance {}", entity_instance.id);
     }
 
     fn remove_string_gate(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         self.string_gates.0.write().unwrap().remove(&entity_instance.id);
+        entity_instance.remove_behaviour(entity_instance.type_name.as_str());
         debug!("Removed behaviour string_gate from entity instance {}", entity_instance.id);
     }
 
     fn remove_string_comparison(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         self.string_comparisons.0.write().unwrap().remove(&entity_instance.id);
+        entity_instance.remove_behaviour(entity_instance.type_name.as_str());
         debug!("Removed behaviour string_comparison from entity instance {}", entity_instance.id);
     }
 
