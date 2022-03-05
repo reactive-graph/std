@@ -30,10 +30,7 @@ impl GraphQlClientWebResourceProviderImpl {
 
 #[async_trait]
 #[provides]
-impl GraphQlClientWebResourceProvider
-    for GraphQlClientWebResourceProviderImpl
-{
-}
+impl GraphQlClientWebResourceProvider for GraphQlClientWebResourceProviderImpl {}
 
 impl WebResourceProvider for GraphQlClientWebResourceProviderImpl {
     fn get_base_path(&self) -> String {
