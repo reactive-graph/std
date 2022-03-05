@@ -50,6 +50,10 @@ jobs:
       - uses: hecrj/setup-rust-action@v1
         with:
           rust-version: nightly
+      - name: Install Yarn
+        uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: --cwd web install
       - uses: actions-rs/tarpaulin@v0.1
         with:
           args: --all-features
