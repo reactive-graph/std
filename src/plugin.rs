@@ -1,16 +1,22 @@
-use std::sync::{Arc, RwLock};
+use std::sync::Arc;
+use std::sync::RwLock;
 
-use crate::di::*;
 use async_trait::async_trait;
 use log::debug;
 
+use crate::di::*;
 use crate::plugins::plugin::PluginMetadata;
 use crate::plugins::plugin_context::PluginContext;
-use crate::plugins::{
-    ComponentBehaviourProvider, ComponentProvider, EntityBehaviourProvider, EntityTypeProvider,
-    FlowProvider, Plugin, PluginError, RelationBehaviourProvider, RelationTypeProvider,
-    WebResourceProvider,
-};
+use crate::plugins::ComponentBehaviourProvider;
+use crate::plugins::ComponentProvider;
+use crate::plugins::EntityBehaviourProvider;
+use crate::plugins::EntityTypeProvider;
+use crate::plugins::FlowProvider;
+use crate::plugins::Plugin;
+use crate::plugins::PluginError;
+use crate::plugins::RelationBehaviourProvider;
+use crate::plugins::RelationTypeProvider;
+use crate::plugins::WebResourceProvider;
 use crate::provider::GraphQlClientWebResourceProviderImpl;
 
 #[wrapper]
@@ -83,21 +89,15 @@ impl Plugin for GraphQlClientPluginImpl {
         Err(PluginError::NoRelationTypeProvider)
     }
 
-    fn get_component_behaviour_provider(
-        &self,
-    ) -> Result<Arc<dyn ComponentBehaviourProvider>, PluginError> {
+    fn get_component_behaviour_provider(&self) -> Result<Arc<dyn ComponentBehaviourProvider>, PluginError> {
         Err(PluginError::NoComponentBehaviourProvider)
     }
 
-    fn get_entity_behaviour_provider(
-        &self,
-    ) -> Result<Arc<dyn EntityBehaviourProvider>, PluginError> {
+    fn get_entity_behaviour_provider(&self) -> Result<Arc<dyn EntityBehaviourProvider>, PluginError> {
         Err(PluginError::NoEntityBehaviourProvider)
     }
 
-    fn get_relation_behaviour_provider(
-        &self,
-    ) -> Result<Arc<dyn RelationBehaviourProvider>, PluginError> {
+    fn get_relation_behaviour_provider(&self) -> Result<Arc<dyn RelationBehaviourProvider>, PluginError> {
         Err(PluginError::NoRelationBehaviourProvider)
     }
 
@@ -107,8 +107,7 @@ impl Plugin for GraphQlClientPluginImpl {
 
     fn get_web_resource_provider(&self) -> Result<Arc<dyn WebResourceProvider>, PluginError> {
         let web_resource_provider = self.web_resource_provider.clone();
-        let web_resource_provider: Result<Arc<dyn WebResourceProvider>, _> =
-            <dyn query_interface::Object>::query_arc(web_resource_provider);
+        let web_resource_provider: Result<Arc<dyn WebResourceProvider>, _> = <dyn query_interface::Object>::query_arc(web_resource_provider);
         if web_resource_provider.is_err() {
             return Err(PluginError::NoWebResourceProvider);
         }

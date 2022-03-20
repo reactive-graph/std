@@ -37,11 +37,7 @@ impl WebResourceProvider for GraphQlClientWebResourceProviderImpl {
         String::from("graphql-client")
     }
 
-    fn handle_web_resource(
-        &self,
-        path: String,
-        _request: Request<HttpBody>,
-    ) -> Result<Response<HttpBody>> {
+    fn handle_web_resource(&self, path: String, _request: Request<HttpBody>) -> Result<Response<HttpBody>> {
         let path = match path.as_str() {
             "" => String::from("query.html"),
             "query" => format!("{}.html", path),
@@ -66,9 +62,7 @@ impl WebResourceProvider for GraphQlClientWebResourceProviderImpl {
                     .header(CONTENT_TYPE, mime_type.to_string())
                     .body(body)
             }
-            None => Response::builder()
-                .status(StatusCode::NOT_FOUND)
-                .body(HttpBody::None),
+            None => Response::builder().status(StatusCode::NOT_FOUND).body(HttpBody::None),
         }
     }
 }
