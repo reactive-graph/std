@@ -1,0 +1,15 @@
+{
+  "name": "action",
+  "properties": [
+    {
+      "name": "trigger",
+      "data_type": "bool",
+      "socket_type": "input"
+    },
+    {
+      "name": "result",
+      "data_type": "any",
+      "socket_type": "output"
+    }
+  ]
+}

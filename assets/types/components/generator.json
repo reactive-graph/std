@@ -1,0 +1,10 @@
+{
+  "name": "generator",
+  "properties": [
+    {
+      "name": "trigger",
+      "data_type": "bool",
+      "socket_type": "output"
+    }
+  ]
+}

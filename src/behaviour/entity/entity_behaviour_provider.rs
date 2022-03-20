@@ -1,6 +1,7 @@
+use std::collections::HashMap;
 use std::sync::Arc;
+use std::sync::RwLock;
 
-use crate::di::*;
 use async_trait::async_trait;
 use log::debug;
 use uuid::Uuid;
@@ -11,41 +12,52 @@ use crate::behaviour::entity::if_then_else::IfThenElse;
 use crate::behaviour::entity::if_then_else::IF_THEN_ELSE;
 use crate::behaviour::entity::operation::LogicalOperation;
 use crate::behaviour::entity::operation::LOGICAL_OPERATIONS;
+use crate::behaviour::entity::toggle::Toggle;
+use crate::behaviour::entity::toggle::TOGGLE;
 use crate::behaviour::entity::trigger::Trigger;
 use crate::behaviour::entity::trigger::TRIGGER;
+use crate::di::*;
 use crate::model::ReactiveEntityInstance;
 use crate::plugins::EntityBehaviourProvider;
 
 #[wrapper]
-pub struct LogicalOperationStorage(std::sync::RwLock<std::collections::HashMap<Uuid, std::sync::Arc<LogicalOperation<'static>>>>);
+pub struct LogicalOperationStorage(RwLock<HashMap<Uuid, Arc<LogicalOperation<'static>>>>);
 
 #[wrapper]
-pub struct LogicalGateStorage(std::sync::RwLock<std::collections::HashMap<Uuid, std::sync::Arc<LogicalGate<'static>>>>);
+pub struct LogicalGateStorage(RwLock<HashMap<Uuid, Arc<LogicalGate<'static>>>>);
 
 #[wrapper]
-pub struct TriggerStorage(std::sync::RwLock<std::collections::HashMap<Uuid, std::sync::Arc<Trigger>>>);
+pub struct ToggleStorage(RwLock<HashMap<Uuid, Arc<Toggle>>>);
 
 #[wrapper]
-pub struct IfThenElseStorage(std::sync::RwLock<std::collections::HashMap<Uuid, std::sync::Arc<IfThenElse>>>);
+pub struct TriggerStorage(RwLock<HashMap<Uuid, Arc<Trigger>>>);
+
+#[wrapper]
+pub struct IfThenElseStorage(RwLock<HashMap<Uuid, Arc<IfThenElse>>>);
 
 #[provides]
 fn create_logical_operation_storage() -> LogicalOperationStorage {
-    LogicalOperationStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
+    LogicalOperationStorage(RwLock::new(HashMap::new()))
 }
 
 #[provides]
 fn create_logical_gate_storage() -> LogicalGateStorage {
-    LogicalGateStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
+    LogicalGateStorage(RwLock::new(HashMap::new()))
+}
+
+#[provides]
+fn create_toggle_storage() -> ToggleStorage {
+    ToggleStorage(RwLock::new(HashMap::new()))
 }
 
 #[provides]
 fn create_trigger_storage() -> TriggerStorage {
-    TriggerStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
+    TriggerStorage(RwLock::new(HashMap::new()))
 }
 
 #[provides]
 fn create_if_then_else_storage() -> IfThenElseStorage {
-    IfThenElseStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
+    IfThenElseStorage(RwLock::new(HashMap::new()))
 }
 
 #[async_trait]
@@ -53,6 +65,8 @@ pub trait LogicalEntityBehaviourProvider: EntityBehaviourProvider + Send + Sync 
     fn create_logical_operation(&self, entity_instance: Arc<ReactiveEntityInstance>);
 
     fn create_logical_gate(&self, entity_instance: Arc<ReactiveEntityInstance>);
+
+    fn create_toggle(&self, entity_instance: Arc<ReactiveEntityInstance>);
 
     fn create_trigger(&self, entity_instance: Arc<ReactiveEntityInstance>);
 
@@ -62,6 +76,8 @@ pub trait LogicalEntityBehaviourProvider: EntityBehaviourProvider + Send + Sync 
 
     fn remove_logical_gate(&self, entity_instance: Arc<ReactiveEntityInstance>);
 
+    fn remove_toggle(&self, entity_instance: Arc<ReactiveEntityInstance>);
+
     fn remove_trigger(&self, entity_instance: Arc<ReactiveEntityInstance>);
 
     fn remove_if_then_else(&self, entity_instance: Arc<ReactiveEntityInstance>);
@@ -69,10 +85,10 @@ pub trait LogicalEntityBehaviourProvider: EntityBehaviourProvider + Send + Sync 
     fn remove_by_id(&self, id: Uuid);
 }
 
-// #[derive(Clone)]
 pub struct LogicalEntityBehaviourProviderImpl {
     logical_operations: LogicalOperationStorage,
     logical_gates: LogicalGateStorage,
+    toggles: ToggleStorage,
     triggers: TriggerStorage,
     if_then_else_behaviours: IfThenElseStorage,
 }
@@ -86,6 +102,7 @@ impl LogicalEntityBehaviourProviderImpl {
         Self {
             logical_operations: create_logical_operation_storage(),
             logical_gates: create_logical_gate_storage(),
+            toggles: create_toggle_storage(),
             triggers: create_trigger_storage(),
             if_then_else_behaviours: create_if_then_else_storage(),
         }
@@ -121,6 +138,16 @@ impl LogicalEntityBehaviourProvider for LogicalEntityBehaviourProviderImpl {
         }
     }
 
+    fn create_toggle(&self, entity_instance: Arc<ReactiveEntityInstance>) {
+        let id = entity_instance.id;
+        if let Ok(toggle) = Toggle::new(entity_instance.clone()) {
+            let toggle = Arc::new(toggle);
+            self.toggles.0.write().unwrap().insert(id, toggle);
+            entity_instance.add_behaviour(TOGGLE);
+            debug!("Added behaviour {} to entity instance {}", TOGGLE, id);
+        }
+    }
+
     fn create_trigger(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let id = entity_instance.id;
         if let Ok(trigger) = Trigger::new(entity_instance.clone()) {
@@ -153,6 +180,12 @@ impl LogicalEntityBehaviourProvider for LogicalEntityBehaviourProviderImpl {
         debug!("Removed behaviour logical_gates from entity instance {}", entity_instance.id);
     }
 
+    fn remove_toggle(&self, entity_instance: Arc<ReactiveEntityInstance>) {
+        self.toggles.0.write().unwrap().remove(&entity_instance.id);
+        entity_instance.remove_behaviour(TOGGLE);
+        debug!("Removed behaviour {} from entity instance {}", TOGGLE, entity_instance.id);
+    }
+
     fn remove_trigger(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         self.triggers.0.write().unwrap().remove(&entity_instance.id);
         entity_instance.remove_behaviour(TRIGGER);
@@ -174,6 +207,10 @@ impl LogicalEntityBehaviourProvider for LogicalEntityBehaviourProviderImpl {
             self.logical_gates.0.write().unwrap().remove(&id);
             debug!("Removed behaviour logical_gates from entity instance {}", id);
         }
+        if self.toggles.0.write().unwrap().contains_key(&id) {
+            self.toggles.0.write().unwrap().remove(&id);
+            debug!("Removed behaviour {} from entity instance {}", TOGGLE, id);
+        }
         if self.triggers.0.write().unwrap().contains_key(&id) {
             self.triggers.0.write().unwrap().remove(&id);
             debug!("Removed behaviour {} from entity instance {}", TRIGGER, id);
@@ -190,6 +227,7 @@ impl EntityBehaviourProvider for LogicalEntityBehaviourProviderImpl {
         self.create_logical_operation(entity_instance.clone());
         self.create_logical_gate(entity_instance.clone());
         match entity_instance.type_name.as_str() {
+            TOGGLE => self.create_toggle(entity_instance),
             TRIGGER => self.create_trigger(entity_instance),
             IF_THEN_ELSE => self.create_if_then_else(entity_instance),
             _ => {}
@@ -200,6 +238,7 @@ impl EntityBehaviourProvider for LogicalEntityBehaviourProviderImpl {
         self.remove_logical_operation(entity_instance.clone());
         self.remove_logical_gate(entity_instance.clone());
         match entity_instance.type_name.as_str() {
+            TOGGLE => self.remove_toggle(entity_instance),
             TRIGGER => self.remove_trigger(entity_instance),
             IF_THEN_ELSE => self.remove_if_then_else(entity_instance),
             _ => {}

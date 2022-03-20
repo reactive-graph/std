@@ -1,13 +1,13 @@
+use crate::reactive::NamedProperties;
 use indradb::{Identifier, NamedProperty};
-use inexor_rgf_core_reactive::NamedProperties;
 use serde_json::{json, Value};
 use strum_macros::{AsRefStr, Display, IntoStaticStr};
 
 #[allow(non_camel_case_types)]
 #[derive(AsRefStr, IntoStaticStr, Display)]
 pub enum TriggerProperties {
-    #[strum(serialize = "condition")]
-    CONDITION,
+    #[strum(serialize = "trigger")]
+    TRIGGER,
     #[strum(serialize = "payload")]
     PAYLOAD,
     #[strum(serialize = "result")]
@@ -17,14 +17,14 @@ pub enum TriggerProperties {
 impl TriggerProperties {
     pub fn default_value(&self) -> Value {
         match self {
-            TriggerProperties::CONDITION => json!(false),
-            TriggerProperties::PAYLOAD => json!(0),
-            TriggerProperties::RESULT => json!(0),
+            TriggerProperties::TRIGGER => json!(false),
+            TriggerProperties::PAYLOAD => json!(false),
+            TriggerProperties::RESULT => json!(false),
         }
     }
     pub fn properties() -> NamedProperties {
         vec![
-            NamedProperty::from(TriggerProperties::CONDITION),
+            NamedProperty::from(TriggerProperties::TRIGGER),
             NamedProperty::from(TriggerProperties::PAYLOAD),
             NamedProperty::from(TriggerProperties::RESULT),
         ]

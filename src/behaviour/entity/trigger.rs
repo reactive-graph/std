@@ -1,12 +1,12 @@
 use std::convert::AsRef;
 use std::sync::Arc;
 
-use inexor_rgf_core_model::PropertyInstanceSetter;
 use log::error;
 use serde_json::Value;
 
 use crate::behaviour::entity::trigger_properties::TriggerProperties;
 use crate::model::PropertyInstanceGetter;
+use crate::model::PropertyInstanceSetter;
 use crate::model::ReactiveEntityInstance;
 use crate::reactive::entity::Disconnectable;
 use crate::reactive::BehaviourCreationError;
@@ -21,21 +21,21 @@ pub struct Trigger {
 
 impl Trigger {
     pub fn new<'a>(e: Arc<ReactiveEntityInstance>) -> Result<Trigger, BehaviourCreationError> {
-        let condition = e.properties.get(TriggerProperties::CONDITION.as_ref());
-        if condition.is_none() {
-            error!("Missing property condition");
+        let trigger = e.properties.get(TriggerProperties::TRIGGER.as_ref());
+        if trigger.is_none() {
+            error!("Missing property {}", TriggerProperties::TRIGGER.as_ref());
             return Err(BehaviourCreationError);
         }
         let result = e.properties.get(TriggerProperties::RESULT.as_ref());
         if result.is_none() {
-            error!("Missing property result");
+            error!("Missing property {}", TriggerProperties::RESULT.as_ref());
             return Err(BehaviourCreationError);
         }
 
         let entity_instance = e.clone();
-        let handle_id = e.properties.get(TriggerProperties::CONDITION.as_ref()).unwrap().id.as_u128();
+        let handle_id = e.properties.get(TriggerProperties::TRIGGER.as_ref()).unwrap().id.as_u128();
         e.properties
-            .get(TriggerProperties::CONDITION.as_ref())
+            .get(TriggerProperties::TRIGGER.as_ref())
             .unwrap()
             .stream
             .read()
@@ -70,13 +70,12 @@ impl Trigger {
 
 impl Disconnectable for Trigger {
     fn disconnect(&self) {
-        if let Some(property) = self.entity.properties.get(TriggerProperties::CONDITION.as_ref()) {
+        if let Some(property) = self.entity.properties.get(TriggerProperties::TRIGGER.as_ref()) {
             property.stream.read().unwrap().remove(self.handle_id);
         }
     }
 }
 
-/// Automatically disconnect streams on destruction
 impl Drop for Trigger {
     fn drop(&mut self) {
         self.disconnect();

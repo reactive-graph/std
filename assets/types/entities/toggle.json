@@ -1,7 +1,7 @@
 {
-  "name": "trigger",
+  "name": "toggle",
   "group": "logical_gates",
-  "description": "If triggered the payload will be copied to the output",
+  "description": "If triggered the state will toggled",
   "components": [
     "action",
     "flow_2d",
@@ -9,16 +9,16 @@
   ],
   "properties": [
     {
-      "name": "payload",
-      "data_type": "any",
-      "socket_type": "input"
+      "name": "result",
+      "data_type": "bool",
+      "socket_type": "output"
     }
   ],
   "extensions": [
     {
       "name": "palette",
       "extension": {
-        "content": "Trigger",
+        "content": "Toggle",
         "styles":  {
           "font-size": "20px",
           "font-family": "Fira Code",
@@ -58,7 +58,7 @@
           "symbol": {
             "show": true,
             "type": "text",
-            "content": "Trigger",
+            "content": "Toggle",
             "position": {
               "left": 0,
               "top": 0,
@@ -92,8 +92,8 @@
     {
       "name": "dublin-core",
       "extension":{
-        "title": "Trigger",
-        "subject": "If triggered the payload will be copied to the output",
+        "title": "Toggle",
+        "subject": "If triggered the state will toggled",
         "creator": "Hanack"
       }
     }
