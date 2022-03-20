@@ -1,21 +1,10 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import {Voyager} from 'graphql-voyager'
-import fetch from 'isomorphic-fetch'
-import 'graphql-voyager/dist/voyager.css'
+import introspectionProvider from './IntrospectionProvider'
 
-function introspectionProvider(query) {
-  return fetch(
-    window.location.origin + '/graphql',
-    {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({query: query}),
-    }
-  ).then(response => response.json())
-}
+import 'graphql-voyager/dist/voyager.css'
+import './assets/css/graphql-schema-visualization.css'
 
 const displayOptions = {
   rootType: "Mutation"

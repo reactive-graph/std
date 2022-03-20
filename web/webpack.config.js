@@ -59,6 +59,10 @@ module.exports = {
         {
           from: './node_modules/graphql-voyager/dist/voyager.worker.js',
         },
+        {
+          from: './assets',
+          to: 'assets/'
+        },
       ]
     }),
     new HtmlWebpackPlugin({
