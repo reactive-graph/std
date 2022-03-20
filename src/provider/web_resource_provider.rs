@@ -39,13 +39,7 @@ impl WebResourceProvider for GraphQlClientWebResourceProviderImpl {
 
     fn handle_web_resource(&self, path: String, _request: Request<HttpBody>) -> Result<Response<HttpBody>> {
         let path = match path.as_str() {
-            "" => String::from("query.html"),
-            "query" => format!("{}.html", path),
-            "query/" => String::from("query.html"),
-            "mutation" => format!("{}.html", path),
-            "mutation/" => String::from("mutation.html"),
-            "subscription" => format!("{}.html", path),
-            "subscription/" => String::from("subscription.html"),
+            "" => String::from("index.html"),
             _ => path,
         };
         let asset = GraphQlClientWebResourceAsset::get(path.as_ref());
