@@ -2,8 +2,6 @@ import * as React from 'react'
 
 import 'altair-static/build/dist/styles.css'
 
-import { renderAltair } from 'altair-static'
-
 const initialQuery = `
 query {
   types {
@@ -37,20 +35,3 @@ const renderOptions = {
 }
 
 window.AltairGraphQL.init(renderOptions)
-
-// document.getElementById('altair').innerHTML = renderAltair(renderOptions)
-//
-// window.AltairGraphQL.init({
-//     baseURL: '/flow-editor/altair',
-//     endpointURL: '/graphql',
-//     initialQuery: `
-// query {
-//   instances {
-//     status: entities(id: "d5f6e205-ccc6-4b63-9675-014831ecbf3f") {
-//       id,
-//       type {name},
-//       properties
-//     }
-//   }
-// }`
-// });
