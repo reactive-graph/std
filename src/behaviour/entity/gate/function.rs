@@ -4,12 +4,10 @@ use std::collections::HashMap;
 pub type ArithmeticGateFunction<T> = fn(T, T) -> T;
 
 pub const FN_ADD_F64: ArithmeticGateFunction<f64> = |lhs, rhs| lhs + rhs;
-pub const FN_DIV_F64: ArithmeticGateFunction<f64> =
-    |lhs, rhs| if rhs != 0.0 { lhs / rhs } else { 0.0 };
+pub const FN_DIV_F64: ArithmeticGateFunction<f64> = |lhs, rhs| if rhs != 0.0 { lhs / rhs } else { 0.0 };
 pub const FN_MAX_F64: ArithmeticGateFunction<f64> = |lhs, rhs| lhs.max(rhs);
 pub const FN_MIN_F64: ArithmeticGateFunction<f64> = |lhs, rhs| lhs.min(rhs);
-pub const FN_MOD_F64: ArithmeticGateFunction<f64> =
-    |lhs, rhs| if rhs != 0.0 { lhs % rhs } else { 0.0 };
+pub const FN_MOD_F64: ArithmeticGateFunction<f64> = |lhs, rhs| if rhs != 0.0 { lhs % rhs } else { 0.0 };
 pub const FN_MUL_F64: ArithmeticGateFunction<f64> = |lhs, rhs| lhs * rhs;
 pub const FN_SUB_F64: ArithmeticGateFunction<f64> = |lhs, rhs| lhs - rhs;
 

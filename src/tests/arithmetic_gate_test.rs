@@ -1,9 +1,6 @@
 use serde_json::json;
 
-use crate::model::{
-    DataType, EntityInstance, EntityType, PropertyInstanceGetter, PropertyInstanceSetter,
-    PropertyType, ReactiveEntityInstance, SocketType,
-};
+use crate::model::{DataType, EntityInstance, EntityType, PropertyInstanceGetter, PropertyInstanceSetter, PropertyType, ReactiveEntityInstance, SocketType};
 
 use crate::behaviour::entity::gate::function::ARITHMETIC_GATES;
 use crate::behaviour::entity::gate::properties::ArithmeticGateProperties;
@@ -32,14 +29,7 @@ fn arithmetic_gate_add_type_test() {
         PropertyType::new_with_socket(RHS, DataType::Number, SocketType::Input),
         PropertyType::new_with_socket(RESULT, DataType::Number, SocketType::Output),
     ];
-    let add_type = EntityType::new(
-        TYPE_NAME_ADD,
-        "",
-        "",
-        vec![String::from(COMPONENT_NAME_ARITHMETIC_GATE)],
-        property_types,
-        Vec::new(),
-    );
+    let add_type = EntityType::new(TYPE_NAME_ADD, "", "", vec![String::from(COMPONENT_NAME_ARITHMETIC_GATE)], property_types, Vec::new());
     let add_function = ARITHMETIC_GATES.get(TYPE_NAME_ADD).unwrap();
     let mut properties = HashMap::new();
     properties.insert(LHS.into(), json!(LHS.default_value()));

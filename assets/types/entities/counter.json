@@ -1,30 +1,28 @@
 {
-  "name": "add",
+  "name": "counter",
   "group": "math",
-  "description": "Adds two integer numbers",
+  "description": "If triggered the counter will be increased",
   "components": [
-    "arithmetic_gate",
+    "action",
     "flow_2d",
     "flow_3d"
   ],
   "properties": [
+    {
+      "name": "result",
+      "data_type": "number",
+      "socket_type": "output"
+    }
   ],
   "extensions": [
     {
-      "name": "plugin",
-      "extension": "arithmetic"
-    },
-    {
-      "name": "icon",
-      "extension": "fa/FaPlus"
-    },
-    {
       "name": "palette",
       "extension": {
-        "content": "+",
-        "styles": {
+        "content": "Counter",
+        "styles":  {
+          "font-size": "20px",
           "font-family": "Fira Code",
-          "font-size": "40px"
+          "padding": "5px"
         }
       }
     },
@@ -54,13 +52,13 @@
             },
             "styles": {
               "font-size": "12px",
-              "color": "black"
+              "fill": "black"
             }
           },
           "symbol": {
             "show": true,
             "type": "text",
-            "content": "+",
+            "content": "Counter",
             "position": {
               "left": 0,
               "top": 0,
@@ -68,9 +66,9 @@
               "height": "shape.height"
             },
             "styles": {
-              "fill": "steelblue",
-              "font-size": "80px",
-              "font-family": "Fira Code"
+              "font-family": "Fira Code",
+              "font-size": "40px",
+              "fill": "fuchsia"
             }
           },
           "id": {
@@ -85,7 +83,7 @@
             },
             "styles": {
               "font-size": "9px",
-              "color": "black"
+              "fill": "black"
             }
           }
         }
@@ -94,8 +92,8 @@
     {
       "name": "dublin-core",
       "extension":{
-        "title": "Add Gate",
-        "subject": "Arithmetic Gate for Integer Additions",
+        "title": "Counter",
+        "subject": "If triggered the counter will be increased",
         "creator": "Hanack"
       }
     }

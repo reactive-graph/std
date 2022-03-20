@@ -32,10 +32,7 @@ pub struct ArithmeticGate<'a> {
 }
 
 impl ArithmeticGate<'_> {
-    pub fn new<'a>(
-        e: Arc<ReactiveEntityInstance>,
-        f: ArithmeticGateFunction<f64>,
-    ) -> ArithmeticGate<'static> {
+    pub fn new(e: Arc<ReactiveEntityInstance>, f: ArithmeticGateFunction<f64>) -> ArithmeticGate<'static> {
         let lhs = e
             .properties
             .get(ArithmeticGateProperties::LHS.as_ref())
@@ -45,10 +42,7 @@ impl ArithmeticGate<'_> {
             .unwrap()
             .map(|v| match v.as_f64() {
                 Some(b) => (OperatorPosition::LHS, b),
-                None => (
-                    OperatorPosition::LHS,
-                    ArithmeticGateProperties::LHS.default_value(),
-                ),
+                None => (OperatorPosition::LHS, ArithmeticGateProperties::LHS.default_value()),
             });
         let rhs = e
             .properties
@@ -60,18 +54,12 @@ impl ArithmeticGate<'_> {
             .map(|v| -> ArithmeticExpressionValue {
                 match v.as_f64() {
                     Some(b) => (OperatorPosition::RHS, b),
-                    None => (
-                        OperatorPosition::RHS,
-                        ArithmeticGateProperties::RHS.default_value(),
-                    ),
+                    None => (OperatorPosition::RHS, ArithmeticGateProperties::RHS.default_value()),
                 }
             });
 
         let expression = lhs.merge(&rhs).fold(
-            Expression::new(
-                ArithmeticGateProperties::LHS.default_value(),
-                ArithmeticGateProperties::RHS.default_value(),
-            ),
+            Expression::new(ArithmeticGateProperties::LHS.default_value(), ArithmeticGateProperties::RHS.default_value()),
             |old_state, (o, value)| match *o {
                 OperatorPosition::LHS => old_state.lhs(*value),
                 OperatorPosition::RHS => old_state.rhs(*value),
@@ -82,12 +70,7 @@ impl ArithmeticGate<'_> {
         let internal_result = expression.map(move |e| f(e.lhs, e.rhs));
 
         // TODO: handle result based on outbound property id and inbound property id
-        let handle_id = e
-            .properties
-            .get(ArithmeticGateProperties::RESULT.as_ref())
-            .unwrap()
-            .id
-            .as_u128();
+        let handle_id = e.properties.get(ArithmeticGateProperties::RESULT.as_ref()).unwrap().id.as_u128();
 
         let arithmetic_gate = ArithmeticGate {
             lhs: RwLock::new(lhs),
@@ -99,17 +82,13 @@ impl ArithmeticGate<'_> {
         };
 
         // Connect the internal result with the stream of the result property
-        arithmetic_gate
-            .internal_result
-            .read()
-            .unwrap()
-            .observe_with_handle(
-                move |v| {
-                    debug!("Setting result of arithmetic gate: {}", v);
-                    e.set(ArithmeticGateProperties::RESULT.to_string(), json!(*v));
-                },
-                handle_id,
-            );
+        arithmetic_gate.internal_result.read().unwrap().observe_with_handle(
+            move |v| {
+                debug!("Setting result of arithmetic gate: {}", v);
+                e.set(ArithmeticGateProperties::RESULT.to_string(), json!(*v));
+            },
+            handle_id,
+        );
 
         arithmetic_gate
     }
@@ -124,33 +103,24 @@ impl ArithmeticGate<'_> {
 impl Disconnectable for ArithmeticGate<'_> {
     /// TODO: Add guard: disconnect only if actually connected
     fn disconnect(&self) {
-        debug!(
-            "Disconnect arithmetic gate {} {}",
-            self.type_name(),
-            self.handle_id
-        );
+        debug!("Disconnect arithmetic gate {} {}", self.type_name(), self.handle_id);
         self.internal_result.read().unwrap().remove(self.handle_id);
     }
 }
 
 impl Operation for ArithmeticGate<'_> {
     fn lhs(&self, value: Value) {
-        self.entity
-            .set(ArithmeticGateProperties::LHS.as_ref(), value);
+        self.entity.set(ArithmeticGateProperties::LHS.as_ref(), value);
     }
 
     fn result(&self) -> Value {
-        self.entity
-            .get(ArithmeticGateProperties::RESULT.as_ref())
-            .unwrap()
-            .clone()
+        self.entity.get(ArithmeticGateProperties::RESULT.as_ref()).unwrap()
     }
 }
 
 impl Gate for ArithmeticGate<'_> {
     fn rhs(&self, value: Value) {
-        self.entity
-            .set(ArithmeticGateProperties::RHS.as_ref(), value);
+        self.entity.set(ArithmeticGateProperties::RHS.as_ref(), value);
     }
 }
 

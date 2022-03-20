@@ -33,8 +33,7 @@ pub fn construct_plugin() -> Result<Arc<dyn Plugin>, PluginError> {
     let container = &mut container;
     let plugin = Provider::<dyn ArithmeticPlugin>::create(container);
     let plugin = Arc::new(plugin);
-    let plugin: Result<Arc<dyn Plugin>, _> =
-        <dyn query_interface::Object>::query_arc(plugin.clone());
+    let plugin: Result<Arc<dyn Plugin>, _> = <dyn query_interface::Object>::query_arc(plugin);
     if plugin.is_err() {
         error!("Failed to construct plugin");
         return Err(PluginError::PluginCreationError);

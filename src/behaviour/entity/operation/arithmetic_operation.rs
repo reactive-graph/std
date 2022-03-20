@@ -11,7 +11,7 @@ use crate::model::{PropertyInstanceGetter, PropertyInstanceSetter, ReactiveEntit
 use crate::reactive::entity::operation::Operation;
 use crate::reactive::entity::Disconnectable;
 
-pub const ARITHMETIC_OPERATION: &'static str = "arithmetic_operation";
+pub const ARITHMETIC_OPERATION: &str = "arithmetic_operation";
 
 /// Generic implementation of arithmetic operations with one input and one result.
 ///
@@ -27,16 +27,8 @@ pub struct ArithmeticOperation<'a> {
 }
 
 impl ArithmeticOperation<'_> {
-    pub fn new<'a>(
-        e: Arc<ReactiveEntityInstance>,
-        f: ArithmeticOperationFunction<f64>,
-    ) -> ArithmeticOperation<'static> {
-        let handle_id = e
-            .properties
-            .get(ArithmeticOperationProperties::RESULT.as_ref())
-            .unwrap()
-            .id
-            .as_u128();
+    pub fn new(e: Arc<ReactiveEntityInstance>, f: ArithmeticOperationFunction<f64>) -> ArithmeticOperation<'static> {
+        let handle_id = e.properties.get(ArithmeticOperationProperties::RESULT.as_ref()).unwrap().id.as_u128();
 
         let internal_result = e
             .properties
@@ -54,17 +46,13 @@ impl ArithmeticOperation<'_> {
         };
 
         // Connect the internal result with the stream of the result property
-        arithmetic_operation
-            .internal_result
-            .read()
-            .unwrap()
-            .observe_with_handle(
-                move |v| {
-                    debug!("Setting result of {}: {}", ARITHMETIC_OPERATION, v);
-                    e.set(ArithmeticOperationProperties::RESULT.to_string(), json!(*v));
-                },
-                handle_id,
-            );
+        arithmetic_operation.internal_result.read().unwrap().observe_with_handle(
+            move |v| {
+                debug!("Setting result of {}: {}", ARITHMETIC_OPERATION, v);
+                e.set(ArithmeticOperationProperties::RESULT.to_string(), json!(*v));
+            },
+            handle_id,
+        );
 
         arithmetic_operation
     }
@@ -79,27 +67,18 @@ impl ArithmeticOperation<'_> {
 impl Disconnectable for ArithmeticOperation<'_> {
     /// TODO: Add guard: disconnect only if actually connected
     fn disconnect(&self) {
-        debug!(
-            "Disconnect {} {} with handle {}",
-            ARITHMETIC_OPERATION,
-            self.type_name(),
-            self.handle_id
-        );
+        debug!("Disconnect {} {} with handle {}", ARITHMETIC_OPERATION, self.type_name(), self.handle_id);
         self.internal_result.read().unwrap().remove(self.handle_id);
     }
 }
 
 impl Operation for ArithmeticOperation<'_> {
     fn lhs(&self, value: Value) {
-        self.entity
-            .set(ArithmeticOperationProperties::LHS.as_ref(), value);
+        self.entity.set(ArithmeticOperationProperties::LHS.as_ref(), value);
     }
 
     fn result(&self) -> Value {
-        self.entity
-            .get(ArithmeticOperationProperties::RESULT.as_ref())
-            .unwrap()
-            .clone()
+        self.entity.get(ArithmeticOperationProperties::RESULT.as_ref()).unwrap()
     }
 }
 

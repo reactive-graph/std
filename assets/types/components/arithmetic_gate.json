@@ -1,20 +1,63 @@
 {
   "name": "arithmetic_gate",
+  "description": "Arithmetic operation with two inputs and one result",
   "properties": [
     {
       "name": "lhs",
       "data_type": "number",
-      "socket_type": "input"
+      "socket_type": "input",
+      "extensions": [
+        {
+          "name": "widgetType",
+          "extension": "NumberInput"
+        },
+        {
+          "name": "socket",
+          "extension": {
+            "width": 60,
+            "height": 30,
+            "offset": 5
+          }
+        }
+      ]
     },
     {
       "name": "rhs",
       "data_type": "number",
-      "socket_type": "input"
+      "socket_type": "input",
+      "extensions": [
+        {
+          "name": "widgetType",
+          "extension": "NumberInput"
+        },
+        {
+          "name": "socket",
+          "extension": {
+            "width": 60,
+            "height": 30,
+            "offset": 5
+          }
+        }
+      ]
     },
     {
       "name": "result",
       "data_type": "number",
-      "socket_type": "output"
+      "socket_type": "output",
+      "extensions": [
+        {
+          "name": "widgetType",
+          "extension": "NumberInput"
+        },
+        {
+          "name": "socket",
+          "extension": {
+            "width": 60,
+            "height": 30,
+            "offset": 5
+          }
+        }
+      ]
     }
   ]
 }
