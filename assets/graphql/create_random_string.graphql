@@ -1,0 +1,29 @@
+mutation {
+  instances {
+    entities {
+      create(
+        type: "random_string",
+        id: "c7ace165-0464-4aeb-9ec0-66a0f0c955bb",
+        properties: [
+          {
+            name: "length",
+            value: 30
+          }
+        ]
+      ) {
+        id
+        type {
+          name
+        }
+        properties(
+          names: [
+            "result"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}

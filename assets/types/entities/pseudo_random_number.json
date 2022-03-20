@@ -1,7 +1,7 @@
 {
-  "name": "random_integer_within_range",
+  "name": "pseudo_random_number",
   "group": "json",
-  "description": "Random Integer Within Range",
+  "description": "Pseudo Random Number",
   "components": [
     "action",
     "flow_2d",
@@ -9,12 +9,7 @@
   ],
   "properties": [
     {
-      "name": "low",
-      "data_type": "number",
-      "socket_type": "input"
-    },
-    {
-      "name": "high",
+      "name": "seed",
       "data_type": "number",
       "socket_type": "input"
     },
@@ -28,7 +23,7 @@
     {
       "name": "palette",
       "extension": {
-        "content": "Random Integer Within Range",
+        "content": "Pseudo Random Number",
         "styles":  {
           "font-size": "12px",
           "font-family": "Fira Code",
@@ -68,7 +63,7 @@
           "symbol": {
             "show": true,
             "type": "text",
-            "content": "Random Integer Within Range",
+            "content": "Pseudo Random Number",
             "position": {
               "left": 0,
               "top": 0,
@@ -102,8 +97,8 @@
     {
       "name": "dublin-core",
       "extension":{
-        "title": "Random Integer Within Range",
-        "subject": "Random Integer Within Range",
+        "title": "Pseudo Random Number",
+        "subject": "Pseudo Random Number",
         "creator": "Hanack"
       }
     }

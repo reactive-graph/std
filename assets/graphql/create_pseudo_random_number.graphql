@@ -1,0 +1,30 @@
+mutation {
+  instances {
+    entities {
+      create(
+        type: "pseudo_random_number",
+        id: "d497bc6d-e7cf-4719-9e6b-57b9f033fa36",
+        properties: [
+          {
+            name: "seed",
+            value: 85494
+          }
+        ]
+      ) {
+        id
+        type {
+          name
+        }
+        properties(
+          names: [
+            "seed",
+            "result"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}

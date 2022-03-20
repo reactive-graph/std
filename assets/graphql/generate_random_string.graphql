@@ -1,0 +1,28 @@
+mutation {
+  instances {
+    entities {
+      update(
+        id: "c7ace165-0464-4aeb-9ec0-66a0f0c955bb",
+        properties: [
+          {
+            name: "trigger",
+            value: true
+          }
+        ]
+      ) {
+        id
+        type {
+          name
+        }
+        properties(
+          names: [
+            "result"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}
