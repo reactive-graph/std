@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 import 'altair-static/build/dist/styles.css'
+import './assets/css/graphql-client.css'
 
 const initialQuery = `
 query {

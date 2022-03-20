@@ -67,6 +67,10 @@ module.exports = {
           from: './node_modules/altair-static/build/dist/assets',
           to: 'assets/'
         },
+        {
+          from: './assets',
+          to: 'assets/'
+        },
       ]
     }),
     new HtmlWebpackPlugin({
