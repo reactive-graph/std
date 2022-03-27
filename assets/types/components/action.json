@@ -4,7 +4,21 @@
     {
       "name": "trigger",
       "data_type": "bool",
-      "socket_type": "input"
+      "socket_type": "input",
+      "extensions": [
+        {
+          "name": "widgetType",
+          "extension": "Trigger"
+        },
+        {
+          "name": "socket",
+          "extension": {
+            "width": 60,
+            "height": 30,
+            "offset": 5
+          }
+        }
+      ]
     },
     {
       "name": "result",
