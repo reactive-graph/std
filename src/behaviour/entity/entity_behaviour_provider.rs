@@ -169,55 +169,66 @@ impl LogicalEntityBehaviourProvider for LogicalEntityBehaviourProviderImpl {
     }
 
     fn remove_logical_operation(&self, entity_instance: Arc<ReactiveEntityInstance>) {
-        self.logical_operations.0.write().unwrap().remove(&entity_instance.id);
-        entity_instance.remove_behaviour(entity_instance.type_name.as_str());
-        debug!("Removed behaviour logical_operation from entity instance {}", entity_instance.id);
+        if let Some(_) = self.logical_operations.0.write().unwrap().remove(&entity_instance.id) {
+            entity_instance.remove_behaviour(entity_instance.type_name.as_str());
+            debug!("Removed behaviour logical_operation from entity instance {}", entity_instance.id);
+        }
     }
 
     fn remove_logical_gate(&self, entity_instance: Arc<ReactiveEntityInstance>) {
-        self.logical_gates.0.write().unwrap().remove(&entity_instance.id);
-        entity_instance.remove_behaviour(entity_instance.type_name.as_str());
-        debug!("Removed behaviour logical_gates from entity instance {}", entity_instance.id);
+        if let Some(_) = self.logical_gates.0.write().unwrap().remove(&entity_instance.id) {
+            entity_instance.remove_behaviour(entity_instance.type_name.as_str());
+            debug!("Removed behaviour logical_gates from entity instance {}", entity_instance.id);
+        }
     }
 
     fn remove_toggle(&self, entity_instance: Arc<ReactiveEntityInstance>) {
-        self.toggles.0.write().unwrap().remove(&entity_instance.id);
-        entity_instance.remove_behaviour(TOGGLE);
-        debug!("Removed behaviour {} from entity instance {}", TOGGLE, entity_instance.id);
+        if let Some(_) = self.toggles.0.write().unwrap().remove(&entity_instance.id) {
+            entity_instance.remove_behaviour(TOGGLE);
+            debug!("Removed behaviour {} from entity instance {}", TOGGLE, entity_instance.id);
+        }
     }
 
     fn remove_trigger(&self, entity_instance: Arc<ReactiveEntityInstance>) {
-        self.triggers.0.write().unwrap().remove(&entity_instance.id);
-        entity_instance.remove_behaviour(TRIGGER);
-        debug!("Removed behaviour {} from entity instance {}", TRIGGER, entity_instance.id);
+        if let Some(_) = self.triggers.0.write().unwrap().remove(&entity_instance.id) {
+            entity_instance.remove_behaviour(TRIGGER);
+            debug!("Removed behaviour {} from entity instance {}", TRIGGER, entity_instance.id);
+        }
     }
 
     fn remove_if_then_else(&self, entity_instance: Arc<ReactiveEntityInstance>) {
-        self.if_then_else_behaviours.0.write().unwrap().remove(&entity_instance.id);
-        entity_instance.remove_behaviour(IF_THEN_ELSE);
-        debug!("Removed behaviour {} from entity instance {}", IF_THEN_ELSE, entity_instance.id);
+        if let Some(_) = self.if_then_else_behaviours.0.write().unwrap().remove(&entity_instance.id) {
+            entity_instance.remove_behaviour(IF_THEN_ELSE);
+            debug!("Removed behaviour {} from entity instance {}", IF_THEN_ELSE, entity_instance.id);
+        }
     }
 
     fn remove_by_id(&self, id: Uuid) {
         if self.logical_operations.0.write().unwrap().contains_key(&id) {
-            self.logical_operations.0.write().unwrap().remove(&id);
-            debug!("Removed behaviour logical_operation from entity instance {}", id);
+            if let Some(_) = self.logical_operations.0.write().unwrap().remove(&id) {
+                debug!("Removed behaviour logical_operation from entity instance {}", id);
+            }
         }
         if self.logical_gates.0.write().unwrap().contains_key(&id) {
-            self.logical_gates.0.write().unwrap().remove(&id);
-            debug!("Removed behaviour logical_gates from entity instance {}", id);
+            if let Some(_) = self.logical_gates.0.write().unwrap().remove(&id) {
+                debug!("Removed behaviour logical_gates from entity instance {}", id);
+            }
         }
         if self.toggles.0.write().unwrap().contains_key(&id) {
-            self.toggles.0.write().unwrap().remove(&id);
-            debug!("Removed behaviour {} from entity instance {}", TOGGLE, id);
+            if let Some(_) = self.toggles.0.write().unwrap().remove(&id) {
+                debug!("Removed behaviour {} from entity instance {}", TOGGLE, id);
+            }
         }
         if self.triggers.0.write().unwrap().contains_key(&id) {
-            self.triggers.0.write().unwrap().remove(&id);
-            debug!("Removed behaviour {} from entity instance {}", TRIGGER, id);
+            if let Some(_) = self.triggers.0.write().unwrap().remove(&id) {
+                debug!("Removed behaviour {} from entity instance {}", TRIGGER, id);
+            }
         }
         if self.if_then_else_behaviours.0.write().unwrap().contains_key(&id) {
-            self.if_then_else_behaviours.0.write().unwrap().remove(&id);
-            debug!("Removed behaviour {} from entity instance {}", IF_THEN_ELSE, id);
+            if let Some(_behaviour) = self.if_then_else_behaviours.0.write().unwrap().remove(&id) {
+                // TODO: _behaviour.entity.remove_behaviour(IF_THEN_ELSE);
+                debug!("Removed behaviour {} from entity instance {}", IF_THEN_ELSE, id);
+            }
         }
     }
 }
