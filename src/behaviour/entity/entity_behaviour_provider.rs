@@ -82,11 +82,6 @@ impl ArithmeticEntityBehaviourProviderImpl {
 impl ArithmeticEntityBehaviourProvider for ArithmeticEntityBehaviourProviderImpl {
     fn create_operation(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let id = entity_instance.id;
-        // let function = ARITHMETIC_OPERATIONS.get(entity_instance.type_name.as_str());
-        // let arithmetic_operation = match function {
-        //     Some(function) => Some(Arc::new(ArithmeticOperation::new(entity_instance.clone(), *function))),
-        //     None => None,
-        // };
         if let Some(arithmetic_operation) = ARITHMETIC_OPERATIONS
             .get(entity_instance.type_name.as_str())
             .map(|function| Arc::new(ArithmeticOperation::new(entity_instance.clone(), *function)))
@@ -95,21 +90,10 @@ impl ArithmeticEntityBehaviourProvider for ArithmeticEntityBehaviourProviderImpl
             entity_instance.add_behaviour(entity_instance.type_name.as_str());
             debug!("Added behaviour arithmetic_operation to entity instance {}", id);
         }
-        // if arithmetic_operation.is_some() {
-        //     // let arithmetic_operation = Arc::new(arithmetic_operation.unwrap());
-        //     self.arithmetic_operations.0.write().unwrap().insert(id, arithmetic_operation.unwrap());
-        //     entity_instance.add_behaviour(entity_instance.type_name.as_str());
-        //     debug!("Added behaviour arithmetic_operation to entity instance {}", id);
-        // }
     }
 
     fn create_gate(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let id = entity_instance.id;
-        // let function = ARITHMETIC_GATES.get(entity_instance.type_name.as_str());
-        // let arithmetic_gate = match function {
-        //     Some(function) => Some(Arc::new(ArithmeticGate::new(entity_instance.clone(), *function))),
-        //     None => None,
-        // };
         if let Some(arithmetic_gate) = ARITHMETIC_GATES
             .get(entity_instance.type_name.as_str())
             .map(|function| Arc::new(ArithmeticGate::new(entity_instance.clone(), *function)))
@@ -118,11 +102,6 @@ impl ArithmeticEntityBehaviourProvider for ArithmeticEntityBehaviourProviderImpl
             entity_instance.add_behaviour(entity_instance.type_name.as_str());
             debug!("Added behaviour arithmetic_gate to entity instance {}", id);
         }
-        // if arithmetic_gate.is_some() {
-        //     self.arithmetic_gates.0.write().unwrap().insert(id, arithmetic_gate.unwrap());
-        //     entity_instance.add_behaviour(entity_instance.type_name.as_str());
-        //     debug!("Added behaviour arithmetic_gate to entity instance {}", id);
-        // }
     }
 
     fn create_counter(&self, entity_instance: Arc<ReactiveEntityInstance>) {
