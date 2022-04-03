@@ -115,35 +115,41 @@ impl ArithmeticEntityBehaviourProvider for ArithmeticEntityBehaviourProviderImpl
     }
 
     fn remove_operation(&self, entity_instance: Arc<ReactiveEntityInstance>) {
-        self.arithmetic_operations.0.write().unwrap().remove(&entity_instance.id);
-        entity_instance.remove_behaviour(entity_instance.type_name.as_str());
-        debug!("Removed behaviour arithmetic_operation from entity instance {}", entity_instance.id);
+        if let Some(_) = self.arithmetic_operations.0.write().unwrap().remove(&entity_instance.id) {
+            entity_instance.remove_behaviour(entity_instance.type_name.as_str());
+            debug!("Removed behaviour arithmetic_operation from entity instance {}", entity_instance.id);
+        }
     }
 
     fn remove_gate(&self, entity_instance: Arc<ReactiveEntityInstance>) {
-        self.arithmetic_gates.0.write().unwrap().remove(&entity_instance.id);
-        entity_instance.remove_behaviour(entity_instance.type_name.as_str());
-        debug!("Removed behaviour arithmetic_gates from entity instance {}", entity_instance.id);
+        if let Some(_) = self.arithmetic_gates.0.write().unwrap().remove(&entity_instance.id) {
+            entity_instance.remove_behaviour(entity_instance.type_name.as_str());
+            debug!("Removed behaviour arithmetic_gates from entity instance {}", entity_instance.id);
+        }
     }
 
     fn remove_counter(&self, entity_instance: Arc<ReactiveEntityInstance>) {
-        self.counters.0.write().unwrap().remove(&entity_instance.id);
-        entity_instance.remove_behaviour(COUNTER);
-        debug!("Removed behaviour {} from entity instance {}", COUNTER, entity_instance.id);
+        if let Some(_) = self.counters.0.write().unwrap().remove(&entity_instance.id) {
+            entity_instance.remove_behaviour(COUNTER);
+            debug!("Removed behaviour {} from entity instance {}", COUNTER, entity_instance.id);
+        }
     }
 
     fn remove_by_id(&self, id: Uuid) {
         if self.arithmetic_operations.0.write().unwrap().contains_key(&id) {
-            self.arithmetic_operations.0.write().unwrap().remove(&id);
-            debug!("Removed behaviour arithmetic_operation from entity instance {}", id);
+            if let Some(_) = self.arithmetic_operations.0.write().unwrap().remove(&id) {
+                debug!("Removed behaviour arithmetic_operation from entity instance {}", id);
+            }
         }
         if self.arithmetic_gates.0.write().unwrap().contains_key(&id) {
-            self.arithmetic_gates.0.write().unwrap().remove(&id);
-            debug!("Removed behaviour arithmetic_gates from entity instance {}", id);
+            if let Some(_) = self.arithmetic_gates.0.write().unwrap().remove(&id) {
+                debug!("Removed behaviour arithmetic_gates from entity instance {}", id);
+            }
         }
         if self.counters.0.write().unwrap().contains_key(&id) {
-            self.counters.0.write().unwrap().remove(&id);
-            debug!("Removed behaviour {} from entity instance {}", COUNTER, id);
+            if let Some(_) = self.counters.0.write().unwrap().remove(&id) {
+                debug!("Removed behaviour {} from entity instance {}", COUNTER, id);
+            }
         }
     }
 }
