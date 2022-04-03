@@ -94,35 +94,39 @@ impl NumericEntityBehaviourProvider for NumericEntityBehaviourProviderImpl {
     }
 
     fn remove_numeric_operation(&self, entity_instance: Arc<ReactiveEntityInstance>) {
-        self.numeric_operations.0.write().unwrap().remove(&entity_instance.id);
-        entity_instance.remove_behaviour(entity_instance.type_name.as_str());
-        debug!(
-            "Removed behaviour {} {} from entity instance {}",
-            NUMERIC_OPERATION,
-            entity_instance.type_name.as_str(),
-            entity_instance.id
-        );
+        if let Some(_) = self.numeric_operations.0.write().unwrap().remove(&entity_instance.id) {
+            entity_instance.remove_behaviour(entity_instance.type_name.as_str());
+            debug!(
+                "Removed behaviour {} {} from entity instance {}",
+                NUMERIC_OPERATION,
+                entity_instance.type_name.as_str(),
+                entity_instance.id
+            );
+        }
     }
 
     fn remove_numeric_gate(&self, entity_instance: Arc<ReactiveEntityInstance>) {
-        self.numeric_gates.0.write().unwrap().remove(&entity_instance.id);
-        entity_instance.remove_behaviour(entity_instance.type_name.as_str());
-        debug!(
-            "Removed behaviour {} {} from entity instance {}",
-            NUMERIC_GATE,
-            entity_instance.type_name.as_str(),
-            entity_instance.id
-        );
+        if let Some(_) = self.numeric_gates.0.write().unwrap().remove(&entity_instance.id) {
+            entity_instance.remove_behaviour(entity_instance.type_name.as_str());
+            debug!(
+                "Removed behaviour {} {} from entity instance {}",
+                NUMERIC_GATE,
+                entity_instance.type_name.as_str(),
+                entity_instance.id
+            );
+        }
     }
 
     fn remove_by_id(&self, id: Uuid) {
         if self.numeric_operations.0.write().unwrap().contains_key(&id) {
-            self.numeric_operations.0.write().unwrap().remove(&id);
-            debug!("Removed behaviour {} from entity instance {}", NUMERIC_OPERATION, id);
+            if let Some(_) = self.numeric_operations.0.write().unwrap().remove(&id) {
+                debug!("Removed behaviour {} from entity instance {}", NUMERIC_OPERATION, id);
+            }
         }
         if self.numeric_gates.0.write().unwrap().contains_key(&id) {
-            self.numeric_gates.0.write().unwrap().remove(&id);
-            debug!("Removed behaviour {} from entity instance {}", NUMERIC_GATE, id);
+            if let Some(_) = self.numeric_gates.0.write().unwrap().remove(&id) {
+                debug!("Removed behaviour {} from entity instance {}", NUMERIC_GATE, id);
+            }
         }
     }
 }
