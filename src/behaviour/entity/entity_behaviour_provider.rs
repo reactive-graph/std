@@ -1,13 +1,16 @@
 use std::sync::Arc;
 
-use crate::di::*;
 use async_trait::async_trait;
 use log::debug;
 use uuid::Uuid;
 
-use crate::behaviour::entity::comparison::{StringComparison, STRING_COMPARISONS};
-use crate::behaviour::entity::gate::{StringGate, STRING_GATES};
-use crate::behaviour::entity::operation::{StringOperation, STRING_OPERATIONS};
+use crate::behaviour::entity::comparison::StringComparison;
+use crate::behaviour::entity::comparison::STRING_COMPARISONS;
+use crate::behaviour::entity::gate::StringGate;
+use crate::behaviour::entity::gate::STRING_GATES;
+use crate::behaviour::entity::operation::StringOperation;
+use crate::behaviour::entity::operation::STRING_OPERATIONS;
+use crate::di::*;
 use crate::model::ReactiveEntityInstance;
 use crate::plugins::EntityBehaviourProvider;
 
@@ -118,31 +121,36 @@ impl StringEntityBehaviourProvider for StringEntityBehaviourProviderImpl {
     }
 
     fn remove_string_operation(&self, entity_instance: Arc<ReactiveEntityInstance>) {
-        self.string_operations.0.write().unwrap().remove(&entity_instance.id);
-        entity_instance.remove_behaviour(entity_instance.type_name.as_str());
-        debug!("Removed behaviour string_operation from entity instance {}", entity_instance.id);
+        if let Some(_) = self.string_operations.0.write().unwrap().remove(&entity_instance.id) {
+            entity_instance.remove_behaviour(entity_instance.type_name.as_str());
+            debug!("Removed behaviour string_operation from entity instance {}", entity_instance.id);
+        }
     }
 
     fn remove_string_gate(&self, entity_instance: Arc<ReactiveEntityInstance>) {
-        self.string_gates.0.write().unwrap().remove(&entity_instance.id);
-        entity_instance.remove_behaviour(entity_instance.type_name.as_str());
-        debug!("Removed behaviour string_gate from entity instance {}", entity_instance.id);
+        if let Some(_) = self.string_gates.0.write().unwrap().remove(&entity_instance.id) {
+            entity_instance.remove_behaviour(entity_instance.type_name.as_str());
+            debug!("Removed behaviour string_gate from entity instance {}", entity_instance.id);
+        }
     }
 
     fn remove_string_comparison(&self, entity_instance: Arc<ReactiveEntityInstance>) {
-        self.string_comparisons.0.write().unwrap().remove(&entity_instance.id);
-        entity_instance.remove_behaviour(entity_instance.type_name.as_str());
-        debug!("Removed behaviour string_comparison from entity instance {}", entity_instance.id);
+        if let Some(_) = self.string_comparisons.0.write().unwrap().remove(&entity_instance.id) {
+            entity_instance.remove_behaviour(entity_instance.type_name.as_str());
+            debug!("Removed behaviour string_comparison from entity instance {}", entity_instance.id);
+        }
     }
 
     fn remove_by_id(&self, id: Uuid) {
         if self.string_operations.0.write().unwrap().contains_key(&id) {
-            self.string_operations.0.write().unwrap().remove(&id);
-            debug!("Removed behaviour string_operation from entity instance {}", id);
+            if let Some(_) = self.string_operations.0.write().unwrap().remove(&id) {
+                debug!("Removed behaviour string_operation from entity instance {}", id);
+            }
         }
         if self.string_gates.0.write().unwrap().contains_key(&id) {
-            self.string_gates.0.write().unwrap().remove(&id);
-            debug!("Removed behaviour string_gate from entity instance {}", id);
+            if let Some(_) = self.string_gates.0.write().unwrap().remove(&id) {
+                debug!("Removed behaviour string_gate from entity instance {}", id);
+            }
         }
     }
 }
