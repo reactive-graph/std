@@ -1,0 +1,11 @@
+{
+  "name": "file",
+  "properties": [
+    {
+      "name": "filename",
+      "description": "The filename",
+      "data_type": "string",
+      "socket_type": "input"
+    }
+  ]
+}
