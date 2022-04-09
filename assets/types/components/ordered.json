@@ -1,0 +1,11 @@
+{
+  "name": "ordered",
+  "properties": [
+    {
+      "name": "order",
+      "description": "The relation ordinal number associated with sibling relations",
+      "data_type": "number",
+      "socket_type": "input"
+    }
+  ]
+}
