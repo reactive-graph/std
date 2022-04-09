@@ -1,0 +1,31 @@
+mutation {
+  instances {
+    entities {
+      create(
+        type: "save_json",
+        id: "418c575a-3fb3-4b84-abe4-829c8b6763c9",
+        properties: [
+          {
+            name: "filename",
+            value: "assets/test.json"
+          }
+        ]
+      ) {
+        id
+        type {
+          name
+        }
+        properties(
+          names: [
+            "trigger",
+            "filename",
+            "payload"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}

@@ -1,4 +1,10 @@
+use std::collections::HashMap;
 use std::sync::Arc;
+use std::sync::RwLock;
+
+use async_trait::async_trait;
+use log::debug;
+use uuid::Uuid;
 
 use crate::behaviour::entity::array_contains::ArrayContains;
 use crate::behaviour::entity::array_contains::ARRAY_CONTAINS;
@@ -12,6 +18,8 @@ use crate::behaviour::entity::array_push::ArrayPush;
 use crate::behaviour::entity::array_push::ARRAY_PUSH;
 use crate::behaviour::entity::array_reverse::ArrayReverse;
 use crate::behaviour::entity::array_reverse::ARRAY_REVERSE;
+use crate::behaviour::entity::load_json::LoadJson;
+use crate::behaviour::entity::load_json::LOAD_JSON;
 use crate::behaviour::entity::object_get_property::ObjectGetProperty;
 use crate::behaviour::entity::object_get_property::OBJECT_GET_PROPERTY;
 use crate::behaviour::entity::object_keys::ObjectKeys;
@@ -20,91 +28,106 @@ use crate::behaviour::entity::object_remove_property::ObjectRemoveProperty;
 use crate::behaviour::entity::object_remove_property::OBJECT_REMOVE_PROPERTY;
 use crate::behaviour::entity::object_set_property::ObjectSetProperty;
 use crate::behaviour::entity::object_set_property::OBJECT_SET_PROPERTY;
+use crate::behaviour::entity::save_json::SaveJson;
+use crate::behaviour::entity::save_json::SAVE_JSON;
 use crate::di::*;
 use crate::model::ReactiveEntityInstance;
 use crate::plugins::EntityBehaviourProvider;
-use async_trait::async_trait;
-use log::debug;
-use uuid::Uuid;
 
 #[wrapper]
-pub struct ArrayContainsStorage(std::sync::RwLock<std::collections::HashMap<Uuid, std::sync::Arc<ArrayContains>>>);
+pub struct ArrayContainsStorage(RwLock<HashMap<Uuid, Arc<ArrayContains>>>);
 
 #[wrapper]
-pub struct ArrayGetByIndexStorage(std::sync::RwLock<std::collections::HashMap<Uuid, std::sync::Arc<ArrayGetByIndex>>>);
+pub struct ArrayGetByIndexStorage(RwLock<HashMap<Uuid, Arc<ArrayGetByIndex>>>);
 
 #[wrapper]
-pub struct ArrayLengthStorage(std::sync::RwLock<std::collections::HashMap<Uuid, std::sync::Arc<ArrayLength>>>);
+pub struct ArrayLengthStorage(RwLock<HashMap<Uuid, Arc<ArrayLength>>>);
 
 #[wrapper]
-pub struct ArrayPopStorage(std::sync::RwLock<std::collections::HashMap<Uuid, std::sync::Arc<ArrayPop>>>);
+pub struct ArrayPopStorage(RwLock<HashMap<Uuid, Arc<ArrayPop>>>);
 
 #[wrapper]
-pub struct ArrayPushStorage(std::sync::RwLock<std::collections::HashMap<Uuid, std::sync::Arc<ArrayPush<'static>>>>);
+pub struct ArrayPushStorage(RwLock<HashMap<Uuid, Arc<ArrayPush<'static>>>>);
 
 #[wrapper]
-pub struct ArrayReverseStorage(std::sync::RwLock<std::collections::HashMap<Uuid, std::sync::Arc<ArrayReverse>>>);
+pub struct ArrayReverseStorage(RwLock<HashMap<Uuid, Arc<ArrayReverse>>>);
 
 #[wrapper]
-pub struct ObjectGetPropertyStorage(std::sync::RwLock<std::collections::HashMap<Uuid, std::sync::Arc<ObjectGetProperty>>>);
+pub struct ObjectGetPropertyStorage(RwLock<HashMap<Uuid, Arc<ObjectGetProperty>>>);
 
 #[wrapper]
-pub struct ObjectKeysStorage(std::sync::RwLock<std::collections::HashMap<Uuid, std::sync::Arc<ObjectKeys>>>);
+pub struct ObjectKeysStorage(RwLock<HashMap<Uuid, Arc<ObjectKeys>>>);
 
 #[wrapper]
-pub struct ObjectRemovePropertyStorage(std::sync::RwLock<std::collections::HashMap<Uuid, std::sync::Arc<ObjectRemoveProperty>>>);
+pub struct ObjectRemovePropertyStorage(RwLock<HashMap<Uuid, Arc<ObjectRemoveProperty>>>);
 
 #[wrapper]
-pub struct ObjectSetPropertyStorage(std::sync::RwLock<std::collections::HashMap<Uuid, std::sync::Arc<ObjectSetProperty>>>);
+pub struct ObjectSetPropertyStorage(RwLock<HashMap<Uuid, Arc<ObjectSetProperty>>>);
+
+#[wrapper]
+pub struct LoadJsonStorage(RwLock<HashMap<Uuid, Arc<LoadJson>>>);
+
+#[wrapper]
+pub struct SaveJsonStorage(RwLock<HashMap<Uuid, Arc<SaveJson>>>);
 
 #[provides]
 fn create_array_contains_storage() -> ArrayContainsStorage {
-    ArrayContainsStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
+    ArrayContainsStorage(RwLock::new(HashMap::new()))
 }
 
 #[provides]
 fn create_array_get_by_index_storage() -> ArrayGetByIndexStorage {
-    ArrayGetByIndexStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
+    ArrayGetByIndexStorage(RwLock::new(HashMap::new()))
 }
 
 #[provides]
 fn create_array_length_storage() -> ArrayLengthStorage {
-    ArrayLengthStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
+    ArrayLengthStorage(RwLock::new(HashMap::new()))
 }
 
 #[provides]
 fn create_array_pop_storage() -> ArrayPopStorage {
-    ArrayPopStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
+    ArrayPopStorage(RwLock::new(HashMap::new()))
 }
 
 #[provides]
 fn create_array_push_storage() -> ArrayPushStorage {
-    ArrayPushStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
+    ArrayPushStorage(RwLock::new(HashMap::new()))
 }
 
 #[provides]
 fn create_array_reverse_storage() -> ArrayReverseStorage {
-    ArrayReverseStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
+    ArrayReverseStorage(RwLock::new(HashMap::new()))
 }
 
 #[provides]
 fn create_object_get_property_storage() -> ObjectGetPropertyStorage {
-    ObjectGetPropertyStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
+    ObjectGetPropertyStorage(RwLock::new(HashMap::new()))
 }
 
 #[provides]
 fn create_object_keys_storage() -> ObjectKeysStorage {
-    ObjectKeysStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
+    ObjectKeysStorage(RwLock::new(HashMap::new()))
 }
 
 #[provides]
 fn create_object_remove_property_storage() -> ObjectRemovePropertyStorage {
-    ObjectRemovePropertyStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
+    ObjectRemovePropertyStorage(RwLock::new(HashMap::new()))
 }
 
 #[provides]
 fn create_object_set_property_storage() -> ObjectSetPropertyStorage {
-    ObjectSetPropertyStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
+    ObjectSetPropertyStorage(RwLock::new(HashMap::new()))
+}
+
+#[provides]
+fn create_load_json_storage() -> LoadJsonStorage {
+    LoadJsonStorage(RwLock::new(HashMap::new()))
+}
+
+#[provides]
+fn create_save_json_storage() -> SaveJsonStorage {
+    SaveJsonStorage(RwLock::new(HashMap::new()))
 }
 
 #[async_trait]
@@ -129,6 +152,10 @@ pub trait JsonEntityBehaviourProvider: EntityBehaviourProvider + Send + Sync {
 
     fn create_object_set_property(&self, entity_instance: Arc<ReactiveEntityInstance>);
 
+    fn create_load_json(&self, entity_instance: Arc<ReactiveEntityInstance>);
+
+    fn create_save_json(&self, entity_instance: Arc<ReactiveEntityInstance>);
+
     fn remove_array_contains(&self, entity_instance: Arc<ReactiveEntityInstance>);
 
     fn remove_array_get_by_index(&self, entity_instance: Arc<ReactiveEntityInstance>);
@@ -149,6 +176,10 @@ pub trait JsonEntityBehaviourProvider: EntityBehaviourProvider + Send + Sync {
 
     fn remove_object_set_property(&self, entity_instance: Arc<ReactiveEntityInstance>);
 
+    fn remove_load_json(&self, entity_instance: Arc<ReactiveEntityInstance>);
+
+    fn remove_save_json(&self, entity_instance: Arc<ReactiveEntityInstance>);
+
     fn remove_by_id(&self, id: Uuid);
 }
 
@@ -163,6 +194,8 @@ pub struct JsonEntityBehaviourProviderImpl {
     object_keys: ObjectKeysStorage,
     object_remove_property: ObjectRemovePropertyStorage,
     object_set_property: ObjectSetPropertyStorage,
+    load_json: LoadJsonStorage,
+    save_json: SaveJsonStorage,
 }
 
 interfaces!(JsonEntityBehaviourProviderImpl: dyn EntityBehaviourProvider);
@@ -182,6 +215,8 @@ impl JsonEntityBehaviourProviderImpl {
             object_keys: create_object_keys_storage(),
             object_remove_property: create_object_remove_property_storage(),
             object_set_property: create_object_set_property_storage(),
+            load_json: create_load_json_storage(),
+            save_json: create_save_json_storage(),
         }
     }
 }
@@ -309,6 +344,30 @@ impl JsonEntityBehaviourProvider for JsonEntityBehaviourProviderImpl {
         }
     }
 
+    fn create_load_json(&self, entity_instance: Arc<ReactiveEntityInstance>) {
+        let id = entity_instance.id;
+        match LoadJson::new(entity_instance.clone()) {
+            Ok(load_json) => {
+                self.load_json.0.write().unwrap().insert(id, Arc::new(load_json));
+                entity_instance.add_behaviour(LOAD_JSON);
+                debug!("Added behaviour {} to entity instance {}", LOAD_JSON, id);
+            }
+            _ => {}
+        }
+    }
+
+    fn create_save_json(&self, entity_instance: Arc<ReactiveEntityInstance>) {
+        let id = entity_instance.id;
+        match SaveJson::new(entity_instance.clone()) {
+            Ok(save_json) => {
+                self.save_json.0.write().unwrap().insert(id, Arc::new(save_json));
+                entity_instance.add_behaviour(SAVE_JSON);
+                debug!("Added behaviour {} to entity instance {}", SAVE_JSON, id);
+            }
+            _ => {}
+        }
+    }
+
     fn remove_array_contains(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         self.array_contains.0.write().unwrap().remove(&entity_instance.id);
         entity_instance.remove_behaviour(ARRAY_CONTAINS);
@@ -369,6 +428,18 @@ impl JsonEntityBehaviourProvider for JsonEntityBehaviourProviderImpl {
         debug!("Removed behaviour {} from entity instance {}", OBJECT_SET_PROPERTY, entity_instance.id);
     }
 
+    fn remove_load_json(&self, entity_instance: Arc<ReactiveEntityInstance>) {
+        self.load_json.0.write().unwrap().remove(&entity_instance.id);
+        entity_instance.remove_behaviour(LOAD_JSON);
+        debug!("Removed behaviour {} from entity instance {}", LOAD_JSON, entity_instance.id);
+    }
+
+    fn remove_save_json(&self, entity_instance: Arc<ReactiveEntityInstance>) {
+        self.save_json.0.write().unwrap().remove(&entity_instance.id);
+        entity_instance.remove_behaviour(SAVE_JSON);
+        debug!("Removed behaviour {} from entity instance {}", SAVE_JSON, entity_instance.id);
+    }
+
     fn remove_by_id(&self, id: Uuid) {
         if self.array_contains.0.write().unwrap().contains_key(&id) {
             self.array_contains.0.write().unwrap().remove(&id);
@@ -410,6 +481,14 @@ impl JsonEntityBehaviourProvider for JsonEntityBehaviourProviderImpl {
             self.object_set_property.0.write().unwrap().remove(&id);
             debug!("Removed behaviour {} from entity instance {}", OBJECT_SET_PROPERTY, id);
         }
+        if self.load_json.0.write().unwrap().contains_key(&id) {
+            self.load_json.0.write().unwrap().remove(&id);
+            debug!("Removed behaviour {} from entity instance {}", LOAD_JSON, id);
+        }
+        if self.save_json.0.write().unwrap().contains_key(&id) {
+            self.save_json.0.write().unwrap().remove(&id);
+            debug!("Removed behaviour {} from entity instance {}", SAVE_JSON, id);
+        }
     }
 }
 
@@ -426,6 +505,8 @@ impl EntityBehaviourProvider for JsonEntityBehaviourProviderImpl {
             OBJECT_KEYS => self.create_object_keys(entity_instance),
             OBJECT_REMOVE_PROPERTY => self.create_object_remove_property(entity_instance),
             OBJECT_SET_PROPERTY => self.create_object_set_property(entity_instance),
+            LOAD_JSON => self.create_load_json(entity_instance),
+            SAVE_JSON => self.create_save_json(entity_instance),
             _ => {}
         }
     }
@@ -442,6 +523,8 @@ impl EntityBehaviourProvider for JsonEntityBehaviourProviderImpl {
             OBJECT_KEYS => self.remove_object_keys(entity_instance),
             OBJECT_REMOVE_PROPERTY => self.remove_object_remove_property(entity_instance),
             OBJECT_SET_PROPERTY => self.remove_object_set_property(entity_instance),
+            LOAD_JSON => self.remove_load_json(entity_instance),
+            SAVE_JSON => self.remove_save_json(entity_instance),
             _ => {}
         }
     }
