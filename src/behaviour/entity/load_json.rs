@@ -11,7 +11,7 @@ use crate::model::ReactiveEntityInstance;
 use crate::reactive::entity::Disconnectable;
 use crate::reactive::BehaviourCreationError;
 
-pub const LOAD_JSON: &'static str = "load_json";
+pub const LOAD_JSON: &str = "load_json";
 
 pub struct LoadJson {
     pub entity: Arc<ReactiveEntityInstance>,
