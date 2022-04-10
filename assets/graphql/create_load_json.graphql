@@ -8,6 +8,7 @@ mutation {
           {
             name: "filename",
             value: "assets/graphql/.graphqlconfig"
+            # value: "~/.inexor/test.json"
           },
           {
             name: "trigger",

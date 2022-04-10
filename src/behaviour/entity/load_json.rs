@@ -24,34 +24,27 @@ impl LoadJson {
     pub fn new<'a>(e: Arc<ReactiveEntityInstance>) -> Result<LoadJson, BehaviourCreationError> {
         let entity = e.clone();
         let handle_id = e.id.as_u128();
-        e.properties
-            .get(LoadJsonProperties::TRIGGER.as_ref())
-            .unwrap()
-            .stream
-            .read()
-            .unwrap()
-            .observe_with_handle(
-                move |trigger| {
-                    if !trigger.is_boolean() || !trigger.as_bool().unwrap_or(false) {
-                        return;
-                    }
-                    if let Some(filename) = entity.get(LoadJsonProperties::FILENAME).and_then(|v| v.as_str().map(String::from)) {
-                        let filename = shellexpand::tilde(&filename);
-                        let path = Path::new(filename.as_ref());
-                        if let Ok(file) = File::open(path) {
-                            if let Ok(value) = serde_json::from_reader(file) {
-                                entity.set(LoadJsonProperties::RESULT, value);
-                            }
+        let trigger = e.properties.get(LoadJsonProperties::TRIGGER.as_ref()).ok_or(BehaviourCreationError)?;
+        trigger.stream.read().unwrap().observe_with_handle(
+            move |trigger| {
+                if !trigger.is_boolean() || !trigger.as_bool().unwrap_or(false) {
+                    return;
+                }
+                if let Some(filename) = entity.get(LoadJsonProperties::FILENAME).and_then(|v| v.as_str().map(String::from)) {
+                    let filename = shellexpand::tilde(&filename);
+                    let path = Path::new(filename.as_ref());
+                    if let Ok(file) = File::open(path) {
+                        if let Ok(value) = serde_json::from_reader(file) {
+                            entity.set(LoadJsonProperties::RESULT, value);
                         }
                     }
-                },
-                handle_id,
-            );
+                }
+            },
+            handle_id,
+        );
         // Initially load JSON file if trigger is initially true
-        if let Some(trigger) = e.properties.get(LoadJsonProperties::TRIGGER.as_ref()) {
-            if trigger.get().as_bool().unwrap_or(false) {
-                trigger.tick();
-            }
+        if trigger.get().as_bool().unwrap_or(false) {
+            trigger.tick();
         }
         Ok(LoadJson { entity: e.clone(), handle_id })
     }

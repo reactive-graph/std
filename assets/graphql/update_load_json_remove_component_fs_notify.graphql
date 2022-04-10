@@ -11,6 +11,8 @@ mutation {
         type {
           name
         }
+        components
+        behaviours
         properties(
           names: [
             "trigger",
