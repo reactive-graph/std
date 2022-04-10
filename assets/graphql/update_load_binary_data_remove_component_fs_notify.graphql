@@ -3,19 +3,11 @@ mutation {
     entities {
       update(
         id: "dce4bd25-7b25-4a6a-8567-5429a2b3a101",
-        properties: [
-          {
-            name: "filename",
-            value: "/tmp/d715b2e8-da53-47eb-a217-fbe715292e60.png"
-          }
-          {
-            name: "trigger",
-            value: true
-          }
+        removeComponents: [
+          "fs_notify"
         ]
       ) {
         id
-        label
         type {
           name
         }

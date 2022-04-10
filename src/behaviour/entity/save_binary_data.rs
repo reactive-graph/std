@@ -1,17 +1,17 @@
 use std::fs::OpenOptions;
 use std::io::Write;
+use std::path::Path;
 use std::sync::Arc;
 
 use crate::reactive::BehaviourCreationError;
 use log::trace;
-use serde_json::Value;
 
 use crate::behaviour::entity::{LoadBinaryDataProperties, SaveBinaryDataProperties};
 use crate::model::PropertyInstanceGetter;
 use crate::model::ReactiveEntityInstance;
 use crate::reactive::entity::Disconnectable;
 
-pub const SAVE_BINARY_DATA: &'static str = "save_binary_data";
+pub const SAVE_BINARY_DATA: &str = "save_binary_data";
 
 pub struct SaveBinaryData {
     pub entity: Arc<ReactiveEntityInstance>,
@@ -21,63 +21,48 @@ pub struct SaveBinaryData {
 
 impl SaveBinaryData {
     pub fn new<'a>(e: Arc<ReactiveEntityInstance>) -> Result<SaveBinaryData, BehaviourCreationError> {
-        let handle_id = e.properties.get(LoadBinaryDataProperties::DATA_URL.as_ref()).unwrap().id.as_u128();
         let entity = e.clone();
-        e.properties
-            .get(LoadBinaryDataProperties::DATA_URL.as_ref())
-            .unwrap()
-            .stream
-            .read()
-            .unwrap()
-            .observe_with_handle(
-                move |data_url: &Value| {
-                    if !data_url.is_string() {
-                        return;
-                    }
+        let handle_id = e.id.as_u128();
+        let trigger = e.properties.get(SaveBinaryDataProperties::TRIGGER.as_ref()).ok_or(BehaviourCreationError)?;
+        trigger.stream.read().unwrap().observe_with_handle(
+            move |trigger| {
+                if !trigger.is_boolean() || !trigger.as_bool().unwrap_or(false) {
+                    return;
+                }
+                if let Some(data_url) = entity.get(SaveBinaryDataProperties::DATA_URL).and_then(|v| v.as_str().map(String::from)) {
+                    if let Some(filename) = entity.get(SaveBinaryDataProperties::FILENAME).and_then(|v| v.as_str().map(String::from)) {
+                        let filename = shellexpand::tilde(&filename);
+                        let path = Path::new(filename.as_ref());
 
-                    // Resolve the filename
-                    let filename = match entity.get(SaveBinaryDataProperties::FILENAME.as_ref()) {
-                        Some(filename) => {
-                            if filename.is_string() {
-                                Some(String::from(shellexpand::tilde(filename.as_str().unwrap())))
-                            } else {
-                                None
+                        // The next operations may be performance intensive
+
+                        // Decode DataURL with BASE64 encoding to byte array
+                        let mut parts = data_url.splitn(2, ',');
+                        let _part_data_url_prefix = parts.next();
+                        let bytes = match parts.next() {
+                            Some(part_base64_encoded_data) => match base64::decode(part_base64_encoded_data) {
+                                Ok(bytes) => Some(bytes),
+                                Err(_) => None,
+                            },
+                            None => None,
+                        };
+                        if bytes.is_none() {
+                            return;
+                        }
+
+                        // Write byte array to file
+                        let file = OpenOptions::new().write(true).create(true).open(&path);
+                        match file {
+                            Ok(mut file) => {
+                                let _success = file.write_all(bytes.unwrap().as_slice());
                             }
+                            Err(_) => {}
                         }
-                        None => None,
-                    };
-                    if filename.is_none() {
-                        return;
                     }
-
-                    // The next operations may be performance intensive
-
-                    // Decode DataURL with BASE64 encoding to byte array
-                    let data_url = data_url.as_str().unwrap();
-                    let mut parts = data_url.splitn(2, ',');
-                    let _part_data_url_prefix = parts.next();
-                    let bytes = match parts.next() {
-                        Some(part_base64_encoded_data) => match base64::decode(part_base64_encoded_data) {
-                            Ok(bytes) => Some(bytes),
-                            Err(_) => None,
-                        },
-                        None => None,
-                    };
-                    if bytes.is_none() {
-                        return;
-                    }
-
-                    // Write byte array to file
-                    let file = OpenOptions::new().write(true).create(true).open(filename.unwrap());
-                    match file {
-                        Ok(mut file) => {
-                            let _success = file.write_all(bytes.unwrap().as_slice());
-                        }
-                        Err(_) => {}
-                    }
-                },
-                handle_id,
-            );
+                }
+            },
+            handle_id,
+        );
         Ok(SaveBinaryData { entity: e.clone(), handle_id })
     }
 
@@ -89,14 +74,12 @@ impl SaveBinaryData {
 impl Disconnectable for SaveBinaryData {
     fn disconnect(&self) {
         trace!("Disconnecting {} with id {}", SAVE_BINARY_DATA, self.entity.id);
-        let property = self.entity.properties.get(LoadBinaryDataProperties::DATA_URL.as_ref());
-        if property.is_some() {
-            property.unwrap().stream.read().unwrap().remove(self.handle_id);
+        if let Some(property) = self.entity.properties.get(LoadBinaryDataProperties::TRIGGER.as_ref()) {
+            property.stream.read().unwrap().remove(self.handle_id);
         }
     }
 }
 
-/// Automatically disconnect streams on destruction
 impl Drop for SaveBinaryData {
     fn drop(&mut self) {
         self.disconnect();

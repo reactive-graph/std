@@ -11,7 +11,11 @@ mutation {
           },
           {
             name: "filename",
-            value: ""
+            value: "docs/images/inexor_2.png"
+          },
+          {
+            name: "trigger",
+            value: true
           }
         ]
       ) {
@@ -24,6 +28,7 @@ mutation {
         behaviours
         properties(
           names: [
+            "trigger",
             "filename",
             "data_url"
           ]

@@ -19,6 +19,7 @@ mutation {
         behaviours
         properties(
           names: [
+            "trigger",
             "filename",
             "data_url"
           ]

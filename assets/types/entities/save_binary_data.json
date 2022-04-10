@@ -5,15 +5,10 @@
   "components": [
     "named",
     "binary_data",
-    "flow_2d",
-    "flow_3d"
+    "action",
+    "file"
   ],
   "properties": [
-    {
-      "name": "filename",
-      "data_type": "string",
-      "socket_type": "input"
-    },
     {
       "name": "data_url",
       "data_type": "string",
