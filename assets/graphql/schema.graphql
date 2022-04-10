@@ -14,8 +14,12 @@ type Component {
   entityTypes: [EntityType!]!
   "The extensions which are defined by the component."
   extensions(name: String): [Extension!]!
+  "Query which relation types are using this component as inbound type"
+  inboundOf: [RelationType!]!
   "The name of the component."
   name: String!
+  "Query which relation types are using this component as outbound type"
+  outboundOf: [RelationType!]!
   "The properties which are applied on entity or relation instances."
   properties(name: String): [PropertyType!]!
   "Query which relation types are using this component"
@@ -245,6 +249,8 @@ type MutationEntityInstances {
   of the property.
   """
   create(
+    "Creates the entity instance with the given components."
+    components: [String!],
     "The id of the entity instance. If none is given a random uuid will be generated."
     id: UUID,
     properties: [PropertyInstanceDefinition!],
@@ -380,7 +386,12 @@ type MutationRelationInstances {
   If properties are not provided, default values will be used depending on the data type
   of the property.
   """
-  create(edgeKey: EdgeKeyDefinition!, properties: [PropertyInstanceDefinition!]): RelationInstance!
+  create(
+    "Creates the relation instance with the given components."
+    components: [String!],
+    edgeKey: EdgeKeyDefinition!,
+    properties: [PropertyInstanceDefinition!]
+  ): RelationInstance!
   "Deletes an relation instance."
   delete(edgeKey: EdgeKeyDefinition!): Boolean!
   """
@@ -582,7 +593,9 @@ type RelationType {
   fullName: String!
   "The relation type belongs to the given group of relation types."
   group: String!
-  "The inbound entity type."
+  "The inbound components."
+  inboundComponents: [Component!]!
+  "The inbound entity type(s)."
   inboundTypes: [EntityType!]!
   """
 
@@ -594,7 +607,9 @@ type RelationType {
   (without type suffix).
   """
   name: String!
-  "The outbound entity type."
+  "The outbound components."
+  outboundComponents: [Component!]!
+  "The outbound entity type(s)."
   outboundTypes: [EntityType!]!
   """
 
