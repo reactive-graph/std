@@ -1,18 +1,25 @@
 use std::sync::Arc;
 use std::sync::RwLock;
 
+use crate::api::RuntimeManager;
 use async_trait::async_trait;
-use log::debug;
 
+use crate::behaviour::component::component_behaviour_provider::FileComponentBehaviourProviderImpl;
 use crate::di::*;
 use crate::plugins::plugin::PluginMetadata;
 use crate::plugins::plugin_context::PluginContext;
-use crate::plugins::{
-    ComponentBehaviourProvider, ComponentProvider, EntityBehaviourProvider, EntityTypeProvider,
-    FlowProvider, Plugin, PluginError, RelationBehaviourProvider, RelationTypeProvider,
-    WebResourceProvider,
-};
-use crate::provider::{FileComponentProviderImpl, FileEntityTypeProviderImpl};
+use crate::plugins::ComponentBehaviourProvider;
+use crate::plugins::ComponentProvider;
+use crate::plugins::EntityBehaviourProvider;
+use crate::plugins::EntityTypeProvider;
+use crate::plugins::FlowProvider;
+use crate::plugins::Plugin;
+use crate::plugins::PluginError;
+use crate::plugins::RelationBehaviourProvider;
+use crate::plugins::RelationTypeProvider;
+use crate::plugins::WebResourceProvider;
+use crate::provider::FileComponentProviderImpl;
+use crate::provider::FileEntityTypeProviderImpl;
 
 #[wrapper]
 pub struct PluginContextContainer(RwLock<Option<std::sync::Arc<dyn PluginContext>>>);
@@ -28,7 +35,10 @@ pub trait FilePlugin: Plugin + Send + Sync {}
 #[module]
 pub struct FilePluginImpl {
     component_provider: Wrc<FileComponentProviderImpl>,
+    component_behaviour_provider: Wrc<FileComponentBehaviourProviderImpl>,
     entity_type_provider: Wrc<FileEntityTypeProviderImpl>,
+
+    runtime_manager: Wrc<dyn RuntimeManager>,
 
     context: PluginContextContainer,
 }
@@ -49,6 +59,7 @@ impl Plugin for FilePluginImpl {
     }
 
     fn init(&self) -> Result<(), PluginError> {
+        self.runtime_manager.init();
         Ok(())
     }
 
@@ -61,6 +72,7 @@ impl Plugin for FilePluginImpl {
     }
 
     fn shutdown(&self) -> Result<(), PluginError> {
+        self.runtime_manager.shutdown();
         Ok(())
     }
 
@@ -71,8 +83,7 @@ impl Plugin for FilePluginImpl {
 
     fn get_component_provider(&self) -> Result<Arc<dyn ComponentProvider>, PluginError> {
         let component_provider = self.component_provider.clone();
-        let component_provider: Result<Arc<dyn ComponentProvider>, _> =
-            <dyn query_interface::Object>::query_arc(component_provider);
+        let component_provider: Result<Arc<dyn ComponentProvider>, _> = <dyn query_interface::Object>::query_arc(component_provider);
         if component_provider.is_err() {
             return Err(PluginError::NoComponentProvider);
         }
@@ -81,8 +92,7 @@ impl Plugin for FilePluginImpl {
 
     fn get_entity_type_provider(&self) -> Result<Arc<dyn EntityTypeProvider>, PluginError> {
         let entity_type_provider = self.entity_type_provider.clone();
-        let entity_type_provider: Result<Arc<dyn EntityTypeProvider>, _> =
-            <dyn query_interface::Object>::query_arc(entity_type_provider);
+        let entity_type_provider: Result<Arc<dyn EntityTypeProvider>, _> = <dyn query_interface::Object>::query_arc(entity_type_provider);
         if entity_type_provider.is_err() {
             return Err(PluginError::NoEntityTypeProvider);
         }
@@ -93,21 +103,21 @@ impl Plugin for FilePluginImpl {
         Err(PluginError::NoRelationTypeProvider)
     }
 
-    fn get_component_behaviour_provider(
-        &self,
-    ) -> Result<Arc<dyn ComponentBehaviourProvider>, PluginError> {
-        Err(PluginError::NoComponentBehaviourProvider)
+    fn get_component_behaviour_provider(&self) -> Result<Arc<dyn ComponentBehaviourProvider>, PluginError> {
+        let component_behaviour_provider = self.component_behaviour_provider.clone();
+        let component_behaviour_provider: Result<Arc<dyn ComponentBehaviourProvider>, _> =
+            <dyn query_interface::Object>::query_arc(component_behaviour_provider);
+        if component_behaviour_provider.is_err() {
+            return Err(PluginError::NoComponentBehaviourProvider);
+        }
+        Ok(component_behaviour_provider.unwrap())
     }
 
-    fn get_entity_behaviour_provider(
-        &self,
-    ) -> Result<Arc<dyn EntityBehaviourProvider>, PluginError> {
+    fn get_entity_behaviour_provider(&self) -> Result<Arc<dyn EntityBehaviourProvider>, PluginError> {
         Err(PluginError::NoEntityBehaviourProvider)
     }
 
-    fn get_relation_behaviour_provider(
-        &self,
-    ) -> Result<Arc<dyn RelationBehaviourProvider>, PluginError> {
+    fn get_relation_behaviour_provider(&self) -> Result<Arc<dyn RelationBehaviourProvider>, PluginError> {
         Err(PluginError::NoRelationBehaviourProvider)
     }
 

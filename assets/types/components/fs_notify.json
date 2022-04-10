@@ -1,0 +1,15 @@
+{
+  "name": "fs_notify",
+  "properties": [
+    {
+      "name": "filename",
+      "data_type": "string",
+      "socket_type": "input"
+    },
+    {
+      "name": "trigger",
+      "data_type": "bool",
+      "socket_type": "input"
+    }
+  ]
+}

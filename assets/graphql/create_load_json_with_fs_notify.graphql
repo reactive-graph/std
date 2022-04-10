@@ -1,0 +1,40 @@
+mutation {
+  instances {
+    entities {
+      create(
+        type: "load_json",
+        id: "dfc2db31-8dbf-4ab4-9b66-c378fb8a3e41",
+        components: [
+          # This component watches for changes on the file system
+          # and automatically triggers
+          "fs_notify"
+        ],
+        properties: [
+          {
+            name: "filename",
+            value: "assets/test/hello_world.json"
+          },
+          {
+            name: "trigger",
+            value: true
+          }
+        ]
+      ) {
+        id
+        type {
+          name
+        }
+        properties(
+          names: [
+            "trigger",
+            "filename",
+            "result"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}
