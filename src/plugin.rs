@@ -1,4 +1,5 @@
-use std::sync::{Arc, RwLock};
+use std::sync::Arc;
+use std::sync::RwLock;
 
 use crate::di::*;
 use async_trait::async_trait;
@@ -6,10 +7,16 @@ use async_trait::async_trait;
 use crate::behaviour::entity::entity_behaviour_provider::JsonEntityBehaviourProviderImpl;
 use crate::plugins::plugin::PluginMetadata;
 use crate::plugins::plugin_context::PluginContext;
-use crate::plugins::{
-    ComponentBehaviourProvider, ComponentProvider, EntityBehaviourProvider, EntityTypeProvider, FlowProvider, Plugin, PluginError, RelationBehaviourProvider,
-    RelationTypeProvider, WebResourceProvider,
-};
+use crate::plugins::ComponentBehaviourProvider;
+use crate::plugins::ComponentProvider;
+use crate::plugins::EntityBehaviourProvider;
+use crate::plugins::EntityTypeProvider;
+use crate::plugins::FlowProvider;
+use crate::plugins::Plugin;
+use crate::plugins::PluginError;
+use crate::plugins::RelationBehaviourProvider;
+use crate::plugins::RelationTypeProvider;
+use crate::plugins::WebResourceProvider;
 use crate::provider::JsonEntityTypeProviderImpl;
 use std::env;
 
