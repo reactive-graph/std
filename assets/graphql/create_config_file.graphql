@@ -8,6 +8,11 @@ mutation {
           {
             name: "filename"
             value: "config/plugins.toml"
+          },
+          {
+            # Initially load config file
+            name: "trigger",
+            value: true
           }
         ]
       ) {
@@ -17,8 +22,9 @@ mutation {
         }
         properties(
           names: [
-            "filename"
-            "configuration"
+            "trigger",
+            "filename",
+            "result"
           ]
         ) {
           name

@@ -2,23 +2,17 @@ mutation {
   instances {
     entities {
       update(
-        id: "aed6c9b0-e495-4423-baeb-5597b66416f4"
-        properties: [
-          {
-            # Relative to the current directory
-            name: "filename"
-            value: "config/graphql.toml"
-          },
-          {
-            name: "trigger",
-            value: true
-          }
+        id: "aed6c9b0-e495-4423-baeb-5597b66416f4",
+        addComponents: [
+          "fs_notify"
         ]
       ) {
         id
         type {
           name
         }
+        components
+        behaviours
         properties(
           names: [
             "trigger",

@@ -1,24 +1,23 @@
+use std::collections::HashMap;
 use std::sync::Arc;
+use std::sync::RwLock;
 
-use crate::di::*;
 use async_trait::async_trait;
 use log::debug;
 use uuid::Uuid;
 
 use crate::behaviour::entity::config_file::ConfigFile;
+use crate::behaviour::entity::config_file::CONFIG_FILE;
+use crate::di::*;
 use crate::model::ReactiveEntityInstance;
 use crate::plugins::EntityBehaviourProvider;
 
-const CONFIG_FILE: &'static str = "config_file";
-
 #[wrapper]
-pub struct ConfigFileStorage(
-    std::sync::RwLock<std::collections::HashMap<Uuid, std::sync::Arc<ConfigFile>>>,
-);
+pub struct ConfigFileStorage(RwLock<HashMap<Uuid, Arc<ConfigFile>>>);
 
 #[provides]
 fn create_config_file_behaviours_storage() -> ConfigFileStorage {
-    ConfigFileStorage(std::sync::RwLock::new(std::collections::HashMap::new()))
+    ConfigFileStorage(RwLock::new(HashMap::new()))
 }
 
 #[async_trait]
@@ -30,39 +29,28 @@ pub trait ConfigEntityBehaviourProvider: EntityBehaviourProvider + Send + Sync {
     fn remove_by_id(&self, id: Uuid);
 }
 
+#[component]
 pub struct ConfigEntityBehaviourProviderImpl {
     config_file_behaviours: ConfigFileStorage,
 }
 
 interfaces!(ConfigEntityBehaviourProviderImpl: dyn EntityBehaviourProvider);
 
-#[component]
-impl ConfigEntityBehaviourProviderImpl {
-    #[provides]
-    fn new() -> Self {
-        Self {
-            config_file_behaviours: create_config_file_behaviours_storage(),
-        }
-    }
-}
+impl ConfigEntityBehaviourProviderImpl {}
 
 #[async_trait]
 #[provides]
 impl ConfigEntityBehaviourProvider for ConfigEntityBehaviourProviderImpl {
     fn create_config_file_behaviour(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let id = entity_instance.id;
-        let config_file = ConfigFile::new(entity_instance.clone());
-        if config_file.is_ok() {
-            let config_file = Arc::new(config_file.unwrap());
+        if let Ok(config_file) = ConfigFile::new(entity_instance.clone()) {
             self.config_file_behaviours
                 .0
                 .write()
                 .unwrap()
-                .insert(id, config_file);
+                .insert(id, Arc::new(config_file));
             entity_instance.add_behaviour(CONFIG_FILE);
             debug!("Added behaviour {} to entity instance {}", CONFIG_FILE, id);
-            // The initial tick is necessary for reading the config file the first time
-            entity_instance.tick();
         }
     }
 

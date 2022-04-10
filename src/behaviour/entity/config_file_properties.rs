@@ -1,28 +1,35 @@
-use indradb::{Identifier, NamedProperty};
-use inexor_rgf_core_reactive::NamedProperties;
+use indradb::Identifier;
+use indradb::NamedProperty;
 use serde_json::json;
+use serde_json::Value;
 use strum_macros::{AsRefStr, Display, IntoStaticStr};
+
+use crate::reactive::NamedProperties;
 
 #[allow(non_camel_case_types)]
 #[derive(AsRefStr, IntoStaticStr, Display)]
 pub enum ConfigFileProperties {
+    #[strum(serialize = "trigger")]
+    TRIGGER,
     #[strum(serialize = "filename")]
     FILENAME,
-    #[strum(serialize = "configuration")]
-    CONFIGURATION,
+    #[strum(serialize = "result")]
+    RESULT,
 }
 
 impl ConfigFileProperties {
-    pub fn default_value(&self) -> String {
+    pub fn default_value(&self) -> Value {
         match self {
-            ConfigFileProperties::FILENAME => String::new(),
-            ConfigFileProperties::CONFIGURATION => String::new(),
+            ConfigFileProperties::TRIGGER => json!(false),
+            ConfigFileProperties::FILENAME => json!(""),
+            ConfigFileProperties::RESULT => json!({}),
         }
     }
     pub fn properties() -> NamedProperties {
         vec![
+            NamedProperty::from(ConfigFileProperties::TRIGGER),
             NamedProperty::from(ConfigFileProperties::FILENAME),
-            NamedProperty::from(ConfigFileProperties::CONFIGURATION),
+            NamedProperty::from(ConfigFileProperties::RESULT),
         ]
     }
 }

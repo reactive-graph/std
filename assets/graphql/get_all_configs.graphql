@@ -4,7 +4,13 @@ query getAllConfigs {
       id
       label
       description
-      properties {
+      properties(
+        names: [
+          "trigger",
+          "filename",
+          "result"
+        ]
+      ) {
         name
         value
       }

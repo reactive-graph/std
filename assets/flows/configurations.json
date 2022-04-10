@@ -18,7 +18,18 @@
       "properties": {
         "label": "/org/inexor/system/config/plugins",
         "filename": "./config/plugins.toml",
-        "configuration": {
+        "result": {
+        }
+      }
+    },
+    {
+      "type": "config_file",
+      "id": "79721a12-9592-4061-acba-7ce542043648",
+      "description": "Input Devices",
+      "properties": {
+        "label": "/org/inexor/system/config/input_devices",
+        "filename": "./config/input_devices.toml",
+        "result": {
         }
       }
     }

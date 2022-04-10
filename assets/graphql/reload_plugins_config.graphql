@@ -5,8 +5,8 @@ mutation reloadPluginsConfig {
         id: "f3c6927a-378c-4dc3-ad71-eb9303eb9911",
         properties: [
           {
-            name: "filename",
-            value: "config/plugins.toml"
+            name: "trigger",
+            value: true
           }
         ]
       ) {
@@ -14,7 +14,13 @@ mutation reloadPluginsConfig {
         type {
           name
         }
-        properties {
+        properties(
+          names: [
+            "trigger",
+            "filename",
+            "result"
+          ]
+        ) {
           name
           value
         }
