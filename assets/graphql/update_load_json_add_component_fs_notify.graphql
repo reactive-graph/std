@@ -1,18 +1,10 @@
 mutation {
   instances {
     entities {
-      create(
-        type: "load_json",
+      update(
         id: "8400d16f-1e08-4ec1-a071-f36f7e365a35",
-        properties: [
-          {
-            name: "filename",
-            value: "assets/graphql/.graphqlconfig"
-          },
-          {
-            name: "trigger",
-            value: true
-          }
+        addComponents: [
+          "fs_notify"
         ]
       ) {
         id
