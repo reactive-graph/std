@@ -1,5 +1,6 @@
 use std::convert::AsRef;
 use std::fs::File;
+use std::path::Path;
 use std::sync::Arc;
 
 use log::trace;
@@ -35,7 +36,9 @@ impl LoadJson {
                         return;
                     }
                     if let Some(filename) = entity.get(LoadJsonProperties::FILENAME).and_then(|v| v.as_str().map(String::from)) {
-                        if let Ok(file) = File::open(filename) {
+                        let filename = shellexpand::tilde(&filename);
+                        let path = Path::new(filename.as_ref());
+                        if let Ok(file) = File::open(path) {
                             if let Ok(value) = serde_json::from_reader(file) {
                                 entity.set(LoadJsonProperties::RESULT, value);
                             }
