@@ -1,3 +1,4 @@
+use std::path::Path;
 use std::sync::Arc;
 use std::time::Duration;
 
@@ -33,6 +34,8 @@ impl FsNotify {
             .ok_or(BehaviourCreationError)?
             .as_string()
             .ok_or(BehaviourCreationError)?;
+        let filename = shellexpand::tilde(&filename);
+        let path = Path::new(filename.as_ref()).to_owned();
         let _ = e.properties.get(FsNotifyProperties::TRIGGER.as_ref()).ok_or(BehaviourCreationError)?;
 
         let (stopper_tx, stopper_rx) = unbounded();
@@ -42,9 +45,7 @@ impl FsNotify {
             let _ = notify_tx.send(result);
         })
         .map_err(|_| BehaviourCreationError)?;
-        watcher
-            .watch(filename.as_ref(), RecursiveMode::NonRecursive)
-            .map_err(|_| BehaviourCreationError)?;
+        watcher.watch(&path, RecursiveMode::NonRecursive).map_err(|_| BehaviourCreationError)?;
 
         let entity = e.clone();
         runtime.spawn(async move {
@@ -60,7 +61,7 @@ impl FsNotify {
                     Err(_) => std::thread::sleep(Duration::from_millis(1000)),
                 }
             }
-            watcher.unwatch(filename.as_ref());
+            watcher.unwatch(&path);
         });
         Ok(FsNotify {
             entity: e.clone(),
