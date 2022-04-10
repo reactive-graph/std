@@ -1,16 +1,17 @@
 use std::convert::AsRef;
 use std::sync::Arc;
 
-use crate::model::PropertyInstanceSetter;
-use crate::reactive::BehaviourCreationError;
-use log::{error, trace};
+use log::error;
+use log::trace;
 use serde_json::json;
 
 use crate::behaviour::entity::ObjectKeysProperties;
+use crate::model::PropertyInstanceSetter;
 use crate::model::ReactiveEntityInstance;
 use crate::reactive::entity::Disconnectable;
+use crate::reactive::BehaviourCreationError;
 
-pub const OBJECT_KEYS: &'static str = "object_keys";
+pub const OBJECT_KEYS: &str = "object_keys";
 
 pub struct ObjectKeys {
     pub entity: Arc<ReactiveEntityInstance>,
