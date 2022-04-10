@@ -44,6 +44,12 @@ impl LoadJson {
                 },
                 handle_id,
             );
+        // Initially load JSON file if trigger is initially true
+        if let Some(trigger) = e.properties.get(LoadJsonProperties::TRIGGER.as_ref()) {
+            if trigger.get().as_bool().unwrap_or(false) {
+                trigger.tick();
+            }
+        }
         Ok(LoadJson { entity: e.clone(), handle_id })
     }
 
