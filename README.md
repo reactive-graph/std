@@ -68,7 +68,7 @@ With this plugin it's possible to integrate external services into your home aut
 |         | result           | object    | output      |
 |         | status           | number    | output      |
 | JsonRpc | url              | string    | input       |
-|         | jsonrpc_version  | string    | input       |
+|         | json_rpc_version | string    | input       |
 |         | method           | string    | none        |
 |         | params           | object    | input       |
 |         | result           | object    | output      |
