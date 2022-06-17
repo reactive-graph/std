@@ -22,7 +22,7 @@ pub struct LoadBinaryData {
 }
 
 impl LoadBinaryData {
-    pub fn new<'a>(e: Arc<ReactiveEntityInstance>) -> Result<LoadBinaryData, BehaviourCreationError> {
+    pub fn new(e: Arc<ReactiveEntityInstance>) -> Result<LoadBinaryData, BehaviourCreationError> {
         let entity = e.clone();
         let handle_id = e.id.as_u128();
         let trigger = e.properties.get(LoadBinaryDataProperties::TRIGGER.as_ref()).ok_or(BehaviourCreationError)?;

@@ -20,7 +20,7 @@ pub struct SaveBinaryData {
 }
 
 impl SaveBinaryData {
-    pub fn new<'a>(e: Arc<ReactiveEntityInstance>) -> Result<SaveBinaryData, BehaviourCreationError> {
+    pub fn new(e: Arc<ReactiveEntityInstance>) -> Result<SaveBinaryData, BehaviourCreationError> {
         let entity = e.clone();
         let handle_id = e.id.as_u128();
         let trigger = e.properties.get(SaveBinaryDataProperties::TRIGGER.as_ref()).ok_or(BehaviourCreationError)?;
