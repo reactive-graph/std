@@ -110,7 +110,7 @@ impl ComponentBehaviourProvider for BinaryComponentBehaviourProviderImpl {
             self.create_load_binary_data(entity_instance.clone());
         }
         if entity_instance.is_a(SAVE_BINARY_DATA) {
-            self.create_save_binary_data(entity_instance.clone());
+            self.create_save_binary_data(entity_instance);
         }
     }
 
@@ -127,7 +127,7 @@ impl ComponentBehaviourProvider for BinaryComponentBehaviourProviderImpl {
             self.remove_load_binary_data(entity_instance.clone());
         }
         if entity_instance.behaves_as(SAVE_BINARY_DATA) {
-            self.remove_save_binary_data(entity_instance.clone());
+            self.remove_save_binary_data(entity_instance);
         }
     }
 
