@@ -3,45 +3,10 @@
   "group": "network",
   "description": "Sends HTTP request to a given URL",
   "components": [
-    "flow_2d",
-    "flow_3d"
+    "action",
+    "http"
   ],
   "properties": [
-    {
-      "name": "url",
-      "data_type": "string",
-      "socket_type": "input"
-    },
-    {
-      "name": "method",
-      "data_type": "string",
-      "socket_type": "input"
-    },
-    {
-      "name": "request_headers",
-      "data_type": "object",
-      "socket_type": "input"
-    },
-    {
-      "name": "payload",
-      "data_type": "object",
-      "socket_type": "input"
-    },
-    {
-      "name": "response_headers",
-      "data_type": "object",
-      "socket_type": "output"
-    },
-    {
-      "name": "result",
-      "data_type": "object",
-      "socket_type": "output"
-    },
-    {
-      "name": "status",
-      "data_type": "number",
-      "socket_type": "output"
-    }
   ],
   "extensions": [
     {

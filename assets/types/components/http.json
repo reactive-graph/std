@@ -1,0 +1,57 @@
+{
+  "name": "http",
+  "description": "Sends HTTP request to a given URL",
+  "properties": [
+    {
+      "name": "method",
+      "data_type": "string",
+      "socket_type": "input"
+    },
+    {
+      "name": "url",
+      "data_type": "string",
+      "socket_type": "input"
+    },
+    {
+      "name": "request_headers",
+      "data_type": "object",
+      "socket_type": "input"
+    },
+    {
+      "name": "payload",
+      "data_type": "object",
+      "socket_type": "input",
+      "extensions":[
+        {
+          "name": "auto_trigger",
+          "extension": true
+        }
+      ]
+    },
+    {
+      "name": "response_headers",
+      "data_type": "object",
+      "socket_type": "output"
+    },
+    {
+      "name": "result",
+      "data_type": "object",
+      "socket_type": "output"
+    },
+    {
+      "name": "status",
+      "data_type": "number",
+      "socket_type": "output"
+    }
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension":{
+        "title": "HTTP",
+        "subject": "Sends HTTP request to a given URL",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

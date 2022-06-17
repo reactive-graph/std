@@ -1,15 +1,20 @@
-use indradb::{Identifier, NamedProperty};
-use inexor_rgf_core_reactive::NamedProperties;
-use serde_json::{json, Value};
+use indradb::Identifier;
+use indradb::NamedProperty;
+use serde_json::json;
+use serde_json::Value;
 use strum_macros::{AsRefStr, Display, IntoStaticStr};
+
+use crate::reactive::NamedProperties;
 
 #[allow(non_camel_case_types)]
 #[derive(AsRefStr, IntoStaticStr, Display)]
 pub enum JsonRpcProperties {
+    #[strum(serialize = "trigger")]
+    TRIGGER,
     #[strum(serialize = "url")]
     URL,
-    #[strum(serialize = "jsonrpc_version")]
-    JSONRPC_VERSION,
+    #[strum(serialize = "json_rpc_version")]
+    JSON_RPC_VERSION,
     #[strum(serialize = "method")]
     METHOD,
     #[strum(serialize = "params")]
@@ -23,8 +28,9 @@ pub enum JsonRpcProperties {
 impl JsonRpcProperties {
     pub fn default_value(&self) -> Value {
         match self {
+            JsonRpcProperties::TRIGGER => json!(false),
             JsonRpcProperties::URL => json!(""),
-            JsonRpcProperties::JSONRPC_VERSION => json!("2.0"),
+            JsonRpcProperties::JSON_RPC_VERSION => json!("2.0"),
             JsonRpcProperties::METHOD => json!(""),
             JsonRpcProperties::PARAMS => json!({}),
             JsonRpcProperties::RESULT => json!({}),
@@ -33,8 +39,9 @@ impl JsonRpcProperties {
     }
     pub fn properties() -> NamedProperties {
         vec![
+            NamedProperty::from(JsonRpcProperties::TRIGGER),
             NamedProperty::from(JsonRpcProperties::URL),
-            NamedProperty::from(JsonRpcProperties::JSONRPC_VERSION),
+            NamedProperty::from(JsonRpcProperties::JSON_RPC_VERSION),
             NamedProperty::from(JsonRpcProperties::METHOD),
             NamedProperty::from(JsonRpcProperties::PARAMS),
             NamedProperty::from(JsonRpcProperties::RESULT),

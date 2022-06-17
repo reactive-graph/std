@@ -32,6 +32,10 @@ mutation {
           {
             name: "status",
             value: 500
+          },
+          {
+            name: "trigger",
+            value: true
           }
         ]
       ) {
@@ -41,6 +45,7 @@ mutation {
         }
         properties(
           names: [
+            "trigger",
             "url",
             "method",
             "request_headers",

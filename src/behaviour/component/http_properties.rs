@@ -1,11 +1,16 @@
-use indradb::{Identifier, NamedProperty};
-use inexor_rgf_core_reactive::NamedProperties;
-use serde_json::{json, Value};
+use indradb::Identifier;
+use indradb::NamedProperty;
+use serde_json::json;
+use serde_json::Value;
 use strum_macros::{AsRefStr, Display, IntoStaticStr};
+
+use crate::reactive::NamedProperties;
 
 #[allow(non_camel_case_types)]
 #[derive(AsRefStr, IntoStaticStr, Display)]
 pub enum HttpProperties {
+    #[strum(serialize = "trigger")]
+    TRIGGER,
     #[strum(serialize = "url")]
     URL,
     #[strum(serialize = "method")]
@@ -25,6 +30,7 @@ pub enum HttpProperties {
 impl HttpProperties {
     pub fn default_value(&self) -> Value {
         match self {
+            HttpProperties::TRIGGER => json!(false),
             HttpProperties::URL => json!(""),
             HttpProperties::METHOD => json!("GET"),
             HttpProperties::REQUEST_HEADERS => json!({}),
@@ -36,6 +42,7 @@ impl HttpProperties {
     }
     pub fn properties() -> NamedProperties {
         vec![
+            NamedProperty::from(HttpProperties::TRIGGER),
             NamedProperty::from(HttpProperties::URL),
             NamedProperty::from(HttpProperties::METHOD),
             NamedProperty::from(HttpProperties::REQUEST_HEADERS),

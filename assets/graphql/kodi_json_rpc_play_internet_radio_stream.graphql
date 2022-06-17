@@ -15,6 +15,10 @@ mutation {
                 file: "https://hirschmilch.de/psytrance/listen.pls"
               }
             }
+          },
+          {
+            name: "trigger",
+            value: true
           }
         ]
       ) {
@@ -24,8 +28,9 @@ mutation {
         }
         properties(
           names: [
+            "trigger",
             "url",
-            "jsonrpc_version",
+            "json_rpc_version",
             "method",
             "params",
             "result",

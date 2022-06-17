@@ -2,15 +2,21 @@ mutation {
   instances {
     entities {
       update(
-        id: "123f0859-47cb-4cf4-817e-02d77c382697",
+        id: "854161a4-b3e0-4267-9415-7dd9f1bcb5d0",
         properties: [
           {
-            name: "payload",
+            name: "method",
+            value: "Player.PlayPause"
+          },
+          {
+            name: "params",
             value: {
-              jsonrpc: "2.0",
-              method: "Input.Home",
-              id: 1
+              playerid: 1
             }
+          },
+          {
+            name: "trigger",
+            value: true
           }
         ]
       ) {
@@ -20,13 +26,13 @@ mutation {
         }
         properties(
           names: [
+            "trigger",
             "url",
+            "json_rpc_version",
             "method",
-            "request_headers",
-            "payload",
-            "response_headers",
+            "params",
             "result",
-            "status"
+            "error"
           ]
         ) {
           name

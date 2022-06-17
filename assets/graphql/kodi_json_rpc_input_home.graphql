@@ -6,13 +6,15 @@ mutation {
         properties: [
           {
             name: "method",
-            value: "Player.PlayPause"
+            value: "Input.Home"
           },
           {
             name: "params",
-            value: {
-              playerid: 1
-            }
+            value: {}
+          },
+          {
+            name: "trigger",
+            value: true
           }
         ]
       ) {
@@ -22,8 +24,9 @@ mutation {
         }
         properties(
           names: [
+            "trigger",
             "url",
-            "jsonrpc_version",
+            "json_rpc_version",
             "method",
             "params",
             "result",
