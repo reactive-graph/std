@@ -77,29 +77,25 @@ impl BinaryComponentBehaviourProvider for BinaryComponentBehaviourProviderImpl {
     }
 
     fn remove_load_binary_data(&self, entity_instance: Arc<ReactiveEntityInstance>) {
-        if let Some(_) = self.load_binary_data.0.write().unwrap().remove(&entity_instance.id) {
+        if self.load_binary_data.0.write().unwrap().remove(&entity_instance.id).is_some() {
             entity_instance.remove_behaviour(LOAD_BINARY_DATA);
             debug!("Removed behaviour {} from entity instance {}", LOAD_BINARY_DATA, entity_instance.id);
         }
     }
 
     fn remove_save_binary_data(&self, entity_instance: Arc<ReactiveEntityInstance>) {
-        if let Some(_) = self.save_binary_data.0.write().unwrap().remove(&entity_instance.id) {
+        if self.save_binary_data.0.write().unwrap().remove(&entity_instance.id).is_some() {
             entity_instance.remove_behaviour(SAVE_BINARY_DATA);
             debug!("Removed behaviour {} from entity instance {}", SAVE_BINARY_DATA, entity_instance.id);
         }
     }
 
     fn remove_by_id(&self, id: Uuid) {
-        if self.load_binary_data.0.write().unwrap().contains_key(&id) {
-            if let Some(_) = self.load_binary_data.0.write().unwrap().remove(&id) {
-                debug!("Removed behaviour {} from entity instance {}", LOAD_BINARY_DATA, id);
-            }
+        if self.load_binary_data.0.write().unwrap().contains_key(&id) && self.load_binary_data.0.write().unwrap().remove(&id).is_some() {
+            debug!("Removed behaviour {} from entity instance {}", LOAD_BINARY_DATA, id);
         }
-        if self.save_binary_data.0.write().unwrap().contains_key(&id) {
-            if let Some(_) = self.save_binary_data.0.write().unwrap().remove(&id) {
-                debug!("Removed behaviour {} from entity instance {}", SAVE_BINARY_DATA, id);
-            }
+        if self.save_binary_data.0.write().unwrap().contains_key(&id) && self.save_binary_data.0.write().unwrap().remove(&id).is_some() {
+            debug!("Removed behaviour {} from entity instance {}", SAVE_BINARY_DATA, id);
         }
     }
 }
