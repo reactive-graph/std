@@ -34,7 +34,7 @@ pub struct NumericGate<'a> {
 }
 
 impl NumericGate<'_> {
-    pub fn new<'a>(e: Arc<ReactiveEntityInstance>, f: NumericGateFunction<f64>) -> NumericGate<'static> {
+    pub fn new(e: Arc<ReactiveEntityInstance>, f: NumericGateFunction<f64>) -> NumericGate<'static> {
         let lhs = e
             .properties
             .get(NumericGateProperties::LHS.as_ref())

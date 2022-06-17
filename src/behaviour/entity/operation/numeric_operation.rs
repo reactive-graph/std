@@ -27,7 +27,7 @@ pub struct NumericOperation<'a> {
 }
 
 impl NumericOperation<'_> {
-    pub fn new<'a>(e: Arc<ReactiveEntityInstance>, f: NumericOperationFunction<f64>) -> NumericOperation<'static> {
+    pub fn new(e: Arc<ReactiveEntityInstance>, f: NumericOperationFunction<f64>) -> NumericOperation<'static> {
         let handle_id = e.properties.get(NumericOperationProperties::RESULT.as_ref()).unwrap().id.as_u128();
 
         let internal_result = e
