@@ -4,7 +4,7 @@ use std::sync::Arc;
 
 use log::trace;
 
-use crate::behaviour::entity::SaveJsonProperties;
+use crate::behaviour::component::SaveJsonProperties;
 use crate::model::PropertyInstanceGetter;
 use crate::model::ReactiveEntityInstance;
 use crate::reactive::entity::Disconnectable;

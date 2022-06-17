@@ -5,7 +5,7 @@ use std::sync::Arc;
 
 use log::trace;
 
-use crate::behaviour::entity::LoadJsonProperties;
+use crate::behaviour::component::LoadJsonProperties;
 use crate::model::PropertyInstanceGetter;
 use crate::model::PropertyInstanceSetter;
 use crate::model::ReactiveEntityInstance;

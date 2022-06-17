@@ -2,13 +2,12 @@
   "name": "load_json",
   "group": "json",
   "description": "Loads a JSON file",
-  "components": [
-    "named",
-    "action",
-    "file",
-    "load_json"
-  ],
   "properties": [
+    {
+      "name": "result",
+      "data_type": "object",
+      "socket_type": "output"
+    }
   ],
   "extensions": [
     {
