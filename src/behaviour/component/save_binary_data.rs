@@ -51,12 +51,8 @@ impl SaveBinaryData {
                         }
 
                         // Write byte array to file
-                        let file = OpenOptions::new().write(true).create(true).open(&path);
-                        match file {
-                            Ok(mut file) => {
-                                let _success = file.write_all(bytes.unwrap().as_slice());
-                            }
-                            Err(_) => {}
+                        if let Ok(mut file) = OpenOptions::new().write(true).create(true).open(&path) {
+                            let _success = file.write_all(bytes.unwrap().as_slice());
                         }
                     }
                 }
