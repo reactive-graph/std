@@ -67,24 +67,18 @@ impl BinaryWebResourceProviderImpl {
             Ok(matched) => match matched.value {
                 BinaryRequestType::Uuid => match matched.params.get("uuid") {
                     Some(uuid) => match Uuid::from_str(uuid) {
-                        Ok(uuid) => match matched.params.get("property_name") {
-                            Some(property_name) => Some(PropertyReference {
-                                entity_instance: EntityInstanceReference::Id(uuid),
-                                property_name: String::from(property_name),
-                            }),
-                            None => None,
-                        },
+                        Ok(uuid) => matched.params.get("property_name").map(|property_name| PropertyReference {
+                            entity_instance: EntityInstanceReference::Id(uuid),
+                            property_name: String::from(property_name),
+                        }),
                         Err(_) => None,
                     },
                     None => None,
                 },
-                BinaryRequestType::Label => match matched.params.get("label") {
-                    Some(label) => Some(PropertyReference {
-                        entity_instance: EntityInstanceReference::Label(String::from(label)),
-                        property_name: String::new(),
-                    }),
-                    None => None,
-                },
+                BinaryRequestType::Label => matched.params.get("label").map(|label| PropertyReference {
+                    entity_instance: EntityInstanceReference::Label(String::from(label)),
+                    property_name: String::new(),
+                }),
             },
             Err(_) => None,
         }
@@ -115,7 +109,7 @@ impl BinaryWebResourceProviderImpl {
         let entity_instance_manager = reader.as_ref().unwrap().get_entity_instance_manager().clone();
         match property_reference.entity_instance {
             EntityInstanceReference::Id(id) => match entity_instance_manager.get(id) {
-                Some(entity_instance) => match infer::get(&bytes) {
+                Some(entity_instance) => match infer::get(bytes) {
                     Some(mime_type) => {
                         let data_as_base64 = base64::encode(&bytes);
                         let data_url = json!(format!("data:{};base64,{}", mime_type, data_as_base64));
