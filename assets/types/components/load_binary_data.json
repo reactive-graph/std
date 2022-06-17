@@ -1,0 +1,22 @@
+{
+  "name": "load_binary_data",
+  "group": "os",
+  "description": "Loads binary data",
+  "properties": [
+    {
+      "name": "data_url",
+      "data_type": "string",
+      "socket_type": "output"
+    }
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension":{
+        "title": "Load Binary Data",
+        "subject": "Loads binary data",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

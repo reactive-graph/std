@@ -4,9 +4,10 @@
   "description": "Loads binary data",
   "components": [
     "named",
-    "binary_data",
     "action",
-    "file"
+    "file",
+    "binary_data",
+    "load_binary_data"
   ],
   "properties": [
     {

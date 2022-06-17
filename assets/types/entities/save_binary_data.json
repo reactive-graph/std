@@ -4,9 +4,10 @@
   "description": "Saves binary data",
   "components": [
     "named",
-    "binary_data",
     "action",
-    "file"
+    "file",
+    "binary_data",
+    "save_binary_data"
   ],
   "properties": [
     {

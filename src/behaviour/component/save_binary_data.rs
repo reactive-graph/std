@@ -3,13 +3,13 @@ use std::io::Write;
 use std::path::Path;
 use std::sync::Arc;
 
-use crate::reactive::BehaviourCreationError;
 use log::trace;
 
-use crate::behaviour::entity::{LoadBinaryDataProperties, SaveBinaryDataProperties};
+use crate::behaviour::component::SaveBinaryDataProperties;
 use crate::model::PropertyInstanceGetter;
 use crate::model::ReactiveEntityInstance;
 use crate::reactive::entity::Disconnectable;
+use crate::reactive::BehaviourCreationError;
 
 pub const SAVE_BINARY_DATA: &str = "save_binary_data";
 
@@ -74,7 +74,7 @@ impl SaveBinaryData {
 impl Disconnectable for SaveBinaryData {
     fn disconnect(&self) {
         trace!("Disconnecting {} with id {}", SAVE_BINARY_DATA, self.entity.id);
-        if let Some(property) = self.entity.properties.get(LoadBinaryDataProperties::TRIGGER.as_ref()) {
+        if let Some(property) = self.entity.properties.get(SaveBinaryDataProperties::TRIGGER.as_ref()) {
             property.stream.read().unwrap().remove(self.handle_id);
         }
     }

@@ -7,7 +7,7 @@ use inexor_rgf_core_model::PropertyInstanceGetter;
 use log::trace;
 use serde_json::json;
 
-use crate::behaviour::entity::LoadBinaryDataProperties;
+use crate::behaviour::component::LoadBinaryDataProperties;
 use crate::model::PropertyInstanceSetter;
 use crate::model::ReactiveEntityInstance;
 use crate::reactive::entity::Disconnectable;

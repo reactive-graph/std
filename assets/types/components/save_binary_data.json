@@ -1,0 +1,22 @@
+{
+  "name": "save_binary_data",
+  "group": "os",
+  "description": "Saves binary data",
+  "properties": [
+    {
+      "name": "data_url",
+      "data_type": "string",
+      "socket_type": "input"
+    }
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension":{
+        "title": "Save Binary Data",
+        "subject": "Saves binary data",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

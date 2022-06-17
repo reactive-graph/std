@@ -1,20 +1,27 @@
-use std::sync::{Arc, RwLock};
+use std::env;
+use std::sync::Arc;
+use std::sync::RwLock;
 
-use crate::di::*;
 use async_trait::async_trait;
 
-use crate::behaviour::entity::entity_behaviour_provider::BinaryEntityBehaviourProviderImpl;
+use crate::behaviour::component::component_behaviour_provider::BinaryComponentBehaviourProviderImpl;
+use crate::di::*;
 use crate::plugins::plugin::PluginMetadata;
 use crate::plugins::plugin_context::PluginContext;
-use crate::plugins::{
-    ComponentBehaviourProvider, ComponentProvider, EntityBehaviourProvider, EntityTypeProvider, FlowProvider, Plugin, PluginError, RelationBehaviourProvider,
-    RelationTypeProvider, WebResourceProvider,
-};
+use crate::plugins::ComponentBehaviourProvider;
+use crate::plugins::ComponentProvider;
+use crate::plugins::EntityBehaviourProvider;
+use crate::plugins::EntityTypeProvider;
+use crate::plugins::FlowProvider;
+use crate::plugins::Plugin;
+use crate::plugins::PluginError;
+use crate::plugins::RelationBehaviourProvider;
+use crate::plugins::RelationTypeProvider;
+use crate::plugins::WebResourceProvider;
 use crate::provider::BinaryComponentProviderImpl;
 use crate::provider::BinaryEntityTypeProviderImpl;
 use crate::provider::BinaryWebResourceProvider;
 use crate::provider::BinaryWebResourceProviderImpl;
-use std::env;
 
 #[wrapper]
 pub struct PluginContextContainer(RwLock<Option<std::sync::Arc<dyn PluginContext>>>);
@@ -31,7 +38,7 @@ pub trait BinaryPlugin: Plugin + Send + Sync {}
 pub struct BinaryPluginImpl {
     component_provider: Wrc<BinaryComponentProviderImpl>,
     entity_type_provider: Wrc<BinaryEntityTypeProviderImpl>,
-    entity_behaviour_provider: Wrc<BinaryEntityBehaviourProviderImpl>,
+    component_behaviour_provider: Wrc<BinaryComponentBehaviourProviderImpl>,
     web_resource_provider: Wrc<BinaryWebResourceProviderImpl>,
 
     context: PluginContextContainer,
@@ -99,16 +106,17 @@ impl Plugin for BinaryPluginImpl {
     }
 
     fn get_component_behaviour_provider(&self) -> Result<Arc<dyn ComponentBehaviourProvider>, PluginError> {
-        Err(PluginError::NoComponentBehaviourProvider)
+        let component_behaviour_provider = self.component_behaviour_provider.clone();
+        let component_behaviour_provider: Result<Arc<dyn ComponentBehaviourProvider>, _> =
+            <dyn query_interface::Object>::query_arc(component_behaviour_provider);
+        if component_behaviour_provider.is_err() {
+            return Err(PluginError::NoComponentBehaviourProvider);
+        }
+        Ok(component_behaviour_provider.unwrap())
     }
 
     fn get_entity_behaviour_provider(&self) -> Result<Arc<dyn EntityBehaviourProvider>, PluginError> {
-        let entity_behaviour_provider = self.entity_behaviour_provider.clone();
-        let entity_behaviour_provider: Result<Arc<dyn EntityBehaviourProvider>, _> = <dyn query_interface::Object>::query_arc(entity_behaviour_provider);
-        if entity_behaviour_provider.is_err() {
-            return Err(PluginError::NoEntityBehaviourProvider);
-        }
-        Ok(entity_behaviour_provider.unwrap())
+        Err(PluginError::NoEntityBehaviourProvider)
     }
 
     fn get_relation_behaviour_provider(&self) -> Result<Arc<dyn RelationBehaviourProvider>, PluginError> {
