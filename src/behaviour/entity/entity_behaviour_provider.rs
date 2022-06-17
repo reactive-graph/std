@@ -62,17 +62,15 @@ impl ComparisonEntityBehaviourProvider for ComparisonEntityBehaviourProviderImpl
 
     fn remove_comparison_gate(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let type_name = entity_instance.type_name.as_str();
-        if let Some(_) = self.comparison_gates.0.write().unwrap().remove(&entity_instance.id) {
+        if self.comparison_gates.0.write().unwrap().remove(&entity_instance.id).is_some() {
             entity_instance.remove_behaviour(type_name);
             debug!("Removed behaviour comparison_gates {} from entity instance {}", type_name, entity_instance.id);
         }
     }
 
     fn remove_by_id(&self, id: Uuid) {
-        if self.comparison_gates.0.write().unwrap().contains_key(&id) {
-            if let Some(_) = self.comparison_gates.0.write().unwrap().remove(&id) {
-                debug!("Removed behaviour comparison_gates from entity instance {}", id);
-            }
+        if self.comparison_gates.0.write().unwrap().contains_key(&id) && self.comparison_gates.0.write().unwrap().remove(&id).is_some() {
+            debug!("Removed behaviour comparison_gates from entity instance {}", id);
         }
     }
 }
