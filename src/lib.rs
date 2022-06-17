@@ -36,7 +36,7 @@ plugins::export_plugin!(register);
 
 #[allow(improper_ctypes_definitions)]
 extern "C" fn register(registrar: &mut dyn plugins::PluginRegistrar) {
-    const PKG_NAME: &'static str = env!("CARGO_PKG_NAME");
+    const PKG_NAME: &str = env!("CARGO_PKG_NAME");
     if let Err(error) = log4rs::init_file("config/logging.toml", Default::default()) {
         println!("Failed to configure logger in {}: {}", PKG_NAME, error);
     }
