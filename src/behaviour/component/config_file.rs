@@ -7,7 +7,7 @@ use log::error;
 use log::trace;
 use serde_json::Value;
 
-use crate::behaviour::entity::ConfigFileProperties;
+use crate::behaviour::component::ConfigFileProperties;
 use crate::model::PropertyInstanceSetter;
 use crate::model::ReactiveEntityInstance;
 use crate::reactive::entity::Disconnectable;

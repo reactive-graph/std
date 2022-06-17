@@ -1,18 +1,14 @@
 {
   "name": "config_file",
   "group": "config",
-  "description": "Reads data from a configuration file",
+  "description": "Loads a configuration file",
   "components": [
     "named",
     "action",
-    "file"
+    "file",
+    "config_file"
   ],
   "properties": [
-    {
-      "name": "result",
-      "data_type": "object",
-      "socket_type": "output"
-    }
   ],
   "extensions": [
     {
@@ -93,7 +89,7 @@
       "name": "dublin-core",
       "extension":{
         "title": "Config File",
-        "subject": "Config File",
+        "subject": "Loads a configuration file",
         "creator": "Hanack"
       }
     }
