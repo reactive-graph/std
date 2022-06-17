@@ -25,7 +25,7 @@ pub struct LogicalOperation<'a> {
 }
 
 impl LogicalOperation<'_> {
-    pub fn new<'a>(e: Arc<ReactiveEntityInstance>, f: LogicalOperationFunction) -> LogicalOperation<'static> {
+    pub fn new(e: Arc<ReactiveEntityInstance>, f: LogicalOperationFunction) -> LogicalOperation<'static> {
         let handle_id = e.properties.get(LogicalOperationProperties::RESULT.as_ref()).unwrap().id.as_u128();
 
         let internal_result = e

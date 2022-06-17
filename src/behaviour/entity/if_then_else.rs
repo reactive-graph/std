@@ -20,7 +20,7 @@ pub struct IfThenElse {
 }
 
 impl IfThenElse {
-    pub fn new<'a>(e: Arc<ReactiveEntityInstance>) -> Result<IfThenElse, BehaviourCreationError> {
+    pub fn new(e: Arc<ReactiveEntityInstance>) -> Result<IfThenElse, BehaviourCreationError> {
         let condition = e.properties.get(IfThenElseProperties::CONDITION.as_ref());
         if condition.is_none() {
             error!("Missing property condition");

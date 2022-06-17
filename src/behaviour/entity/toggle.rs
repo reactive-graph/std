@@ -20,7 +20,7 @@ pub struct Toggle {
 }
 
 impl Toggle {
-    pub fn new<'a>(e: Arc<ReactiveEntityInstance>) -> Result<Toggle, BehaviourCreationError> {
+    pub fn new(e: Arc<ReactiveEntityInstance>) -> Result<Toggle, BehaviourCreationError> {
         let condition = e.properties.get(ToggleProperties::TRIGGER.as_ref());
         if condition.is_none() {
             error!("Missing property {}", ToggleProperties::TRIGGER.as_ref());

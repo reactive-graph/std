@@ -20,7 +20,7 @@ pub struct Trigger {
 }
 
 impl Trigger {
-    pub fn new<'a>(e: Arc<ReactiveEntityInstance>) -> Result<Trigger, BehaviourCreationError> {
+    pub fn new(e: Arc<ReactiveEntityInstance>) -> Result<Trigger, BehaviourCreationError> {
         let trigger = e.properties.get(TriggerProperties::TRIGGER.as_ref());
         if trigger.is_none() {
             error!("Missing property {}", TriggerProperties::TRIGGER.as_ref());

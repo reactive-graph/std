@@ -32,7 +32,7 @@ pub struct LogicalGate<'a> {
 }
 
 impl LogicalGate<'_> {
-    pub fn new<'a>(e: Arc<ReactiveEntityInstance>, f: LogicalGateFunction) -> LogicalGate<'static> {
+    pub fn new(e: Arc<ReactiveEntityInstance>, f: LogicalGateFunction) -> LogicalGate<'static> {
         let lhs = e
             .properties
             .get(LogicalGateProperties::LHS.as_ref())
