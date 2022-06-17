@@ -67,13 +67,11 @@ impl NumericEntityBehaviourProviderImpl {
 impl NumericEntityBehaviourProvider for NumericEntityBehaviourProviderImpl {
     fn create_numeric_operation(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let id = entity_instance.id;
-        let function = NUMERIC_OPERATIONS.get(entity_instance.type_name.as_str());
-        let numeric_operation = match function {
-            Some(function) => Some(Arc::new(NumericOperation::new(entity_instance.clone(), *function))),
-            None => None,
-        };
-        if numeric_operation.is_some() {
-            self.numeric_operations.0.write().unwrap().insert(id, numeric_operation.unwrap());
+        let numeric_operation = NUMERIC_OPERATIONS
+            .get(entity_instance.type_name.as_str())
+            .map(|function| Arc::new(NumericOperation::new(entity_instance.clone(), *function)));
+        if let Some(numeric_operation) = numeric_operation {
+            self.numeric_operations.0.write().unwrap().insert(id, numeric_operation);
             entity_instance.add_behaviour(entity_instance.type_name.as_str());
             debug!("Added behaviour {} {} to entity instance {}", NUMERIC_OPERATION, entity_instance.type_name.as_str(), id);
         }
@@ -81,20 +79,18 @@ impl NumericEntityBehaviourProvider for NumericEntityBehaviourProviderImpl {
 
     fn create_numeric_gate(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let id = entity_instance.id;
-        let function = NUMERIC_GATES.get(entity_instance.type_name.as_str());
-        let numeric_gate = match function {
-            Some(function) => Some(Arc::new(NumericGate::new(entity_instance.clone(), *function))),
-            None => None,
-        };
-        if numeric_gate.is_some() {
-            self.numeric_gates.0.write().unwrap().insert(id, numeric_gate.unwrap());
+        let numeric_gate = NUMERIC_GATES
+            .get(entity_instance.type_name.as_str())
+            .map(|function| Arc::new(NumericGate::new(entity_instance.clone(), *function)));
+        if let Some(numeric_gate) = numeric_gate {
+            self.numeric_gates.0.write().unwrap().insert(id, numeric_gate);
             entity_instance.add_behaviour(entity_instance.type_name.as_str());
             debug!("Added behaviour {} {} to entity instance {}", NUMERIC_GATE, entity_instance.type_name.as_str(), id);
         }
     }
 
     fn remove_numeric_operation(&self, entity_instance: Arc<ReactiveEntityInstance>) {
-        if let Some(_) = self.numeric_operations.0.write().unwrap().remove(&entity_instance.id) {
+        if self.numeric_operations.0.write().unwrap().remove(&entity_instance.id).is_some() {
             entity_instance.remove_behaviour(entity_instance.type_name.as_str());
             debug!(
                 "Removed behaviour {} {} from entity instance {}",
@@ -106,7 +102,7 @@ impl NumericEntityBehaviourProvider for NumericEntityBehaviourProviderImpl {
     }
 
     fn remove_numeric_gate(&self, entity_instance: Arc<ReactiveEntityInstance>) {
-        if let Some(_) = self.numeric_gates.0.write().unwrap().remove(&entity_instance.id) {
+        if self.numeric_gates.0.write().unwrap().remove(&entity_instance.id).is_some() {
             entity_instance.remove_behaviour(entity_instance.type_name.as_str());
             debug!(
                 "Removed behaviour {} {} from entity instance {}",
@@ -118,15 +114,11 @@ impl NumericEntityBehaviourProvider for NumericEntityBehaviourProviderImpl {
     }
 
     fn remove_by_id(&self, id: Uuid) {
-        if self.numeric_operations.0.write().unwrap().contains_key(&id) {
-            if let Some(_) = self.numeric_operations.0.write().unwrap().remove(&id) {
-                debug!("Removed behaviour {} from entity instance {}", NUMERIC_OPERATION, id);
-            }
+        if self.numeric_operations.0.write().unwrap().contains_key(&id) && self.numeric_operations.0.write().unwrap().remove(&id).is_some() {
+            debug!("Removed behaviour {} from entity instance {}", NUMERIC_OPERATION, id);
         }
-        if self.numeric_gates.0.write().unwrap().contains_key(&id) {
-            if let Some(_) = self.numeric_gates.0.write().unwrap().remove(&id) {
-                debug!("Removed behaviour {} from entity instance {}", NUMERIC_GATE, id);
-            }
+        if self.numeric_gates.0.write().unwrap().contains_key(&id) && self.numeric_gates.0.write().unwrap().remove(&id).is_some() {
+            debug!("Removed behaviour {} from entity instance {}", NUMERIC_GATE, id);
         }
     }
 }
