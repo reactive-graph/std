@@ -14,8 +14,12 @@ type Component {
   entityTypes: [EntityType!]!
   "The extensions which are defined by the component."
   extensions(name: String): [Extension!]!
+  "Query which relation types are using this component as inbound type"
+  inboundOf: [RelationType!]!
   "The name of the component."
   name: String!
+  "Query which relation types are using this component as outbound type"
+  outboundOf: [RelationType!]!
   "The properties which are applied on entity or relation instances."
   properties(name: String): [PropertyType!]!
   "Query which relation types are using this component"
@@ -589,7 +593,9 @@ type RelationType {
   fullName: String!
   "The relation type belongs to the given group of relation types."
   group: String!
-  "The inbound entity type."
+  "The inbound components."
+  inboundComponents: [Component!]!
+  "The inbound entity type(s)."
   inboundTypes: [EntityType!]!
   """
 
@@ -601,7 +607,9 @@ type RelationType {
   (without type suffix).
   """
   name: String!
-  "The outbound entity type."
+  "The outbound components."
+  outboundComponents: [Component!]!
+  "The outbound entity type(s)."
   outboundTypes: [EntityType!]!
   """
 
