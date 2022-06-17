@@ -32,7 +32,7 @@ pub struct ComparisonGate<'a> {
 }
 
 impl ComparisonGate<'_> {
-    pub fn new<'a>(e: Arc<ReactiveEntityInstance>, f: ComparisonGateFunction) -> ComparisonGate<'static> {
+    pub fn new(e: Arc<ReactiveEntityInstance>, f: ComparisonGateFunction) -> ComparisonGate<'static> {
         let lhs = e
             .properties
             .get(ComparisonGateProperties::LHS.as_ref())
