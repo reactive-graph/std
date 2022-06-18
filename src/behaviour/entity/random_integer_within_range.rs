@@ -65,9 +65,8 @@ impl RandomIntegerWithinRange {
 impl Disconnectable for RandomIntegerWithinRange {
     fn disconnect(&self) {
         trace!("Disconnecting {} with id {}", RANDOM_INTEGER_WITHIN_RANGE, self.entity.id);
-        let property = self.entity.properties.get(RandomIntegerWithinRangeProperties::TRIGGER.as_ref());
-        if property.is_some() {
-            property.unwrap().stream.read().unwrap().remove(self.handle_id);
+        if let Some(property) = self.entity.properties.get(RandomIntegerWithinRangeProperties::TRIGGER.as_ref()) {
+            property.stream.read().unwrap().remove(self.handle_id);
         }
     }
 }

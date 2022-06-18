@@ -49,9 +49,8 @@ impl RandomNumber {
 impl Disconnectable for RandomNumber {
     fn disconnect(&self) {
         trace!("Disconnecting {} with id {}", RANDOM_NUMBER, self.entity.id);
-        let property = self.entity.properties.get(RandomNumberProperties::TRIGGER.as_ref());
-        if property.is_some() {
-            property.unwrap().stream.read().unwrap().remove(self.handle_id);
+        if let Some(property) = self.entity.properties.get(RandomNumberProperties::TRIGGER.as_ref()) {
+            property.stream.read().unwrap().remove(self.handle_id);
         }
     }
 }
