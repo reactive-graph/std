@@ -11,7 +11,7 @@ use log::trace;
 use rand::Rng;
 use serde_json::json;
 
-pub const RANDOM_INTEGER_WITHIN_RANGE: &'static str = "random_integer_within_range";
+pub const RANDOM_INTEGER_WITHIN_RANGE: &str = "random_integer_within_range";
 
 pub struct RandomIntegerWithinRange {
     pub entity: Arc<ReactiveEntityInstance>,

@@ -10,7 +10,7 @@ use log::trace;
 use rand::Rng;
 use serde_json::json;
 
-pub const RANDOM_NUMBER: &'static str = "random_number";
+pub const RANDOM_NUMBER: &str = "random_number";
 
 pub struct RandomNumber {
     pub entity: Arc<ReactiveEntityInstance>,
