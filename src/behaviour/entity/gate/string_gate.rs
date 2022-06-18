@@ -113,7 +113,7 @@ impl Operation for StringGate<'_> {
     }
 
     fn result(&self) -> Value {
-        self.entity.get(StringGateProperties::RESULT.as_ref()).unwrap().clone()
+        self.entity.get(StringGateProperties::RESULT.as_ref()).unwrap()
     }
 }
 

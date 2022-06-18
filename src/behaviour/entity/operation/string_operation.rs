@@ -76,7 +76,7 @@ impl Operation for StringOperation<'_> {
     }
 
     fn result(&self) -> Value {
-        self.entity.get(StringOperationProperties::RESULT.as_ref()).unwrap().clone()
+        self.entity.get(StringOperationProperties::RESULT.as_ref()).unwrap()
     }
 }
 
