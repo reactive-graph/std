@@ -38,7 +38,7 @@ impl RandomBool {
                 },
                 handle_id,
             );
-        Ok(RandomBool { entity: e.clone(), handle_id })
+        Ok(RandomBool { entity: e, handle_id })
     }
 }
 

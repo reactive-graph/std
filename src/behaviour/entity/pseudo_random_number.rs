@@ -47,7 +47,7 @@ impl PseudoRandomNumber {
                 },
                 handle_id,
             );
-        Ok(PseudoRandomNumber { entity: e.clone(), handle_id })
+        Ok(PseudoRandomNumber { entity: e, handle_id })
     }
 }
 

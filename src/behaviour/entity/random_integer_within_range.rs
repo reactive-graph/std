@@ -54,7 +54,7 @@ impl RandomIntegerWithinRange {
                 },
                 handle_id,
             );
-        Ok(RandomIntegerWithinRange { entity: e.clone(), handle_id })
+        Ok(RandomIntegerWithinRange { entity: e, handle_id })
     }
 
     pub fn type_name(&self) -> String {

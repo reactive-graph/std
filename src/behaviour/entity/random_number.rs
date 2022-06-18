@@ -38,7 +38,7 @@ impl RandomNumber {
                 },
                 handle_id,
             );
-        Ok(RandomNumber { entity: e.clone(), handle_id })
+        Ok(RandomNumber { entity: e, handle_id })
     }
 
     pub fn type_name(&self) -> String {
