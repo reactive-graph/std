@@ -48,9 +48,8 @@ impl RandomUuid {
 impl Disconnectable for RandomUuid {
     fn disconnect(&self) {
         trace!("Disconnecting {} with id {}", RANDOM_UUID, self.entity.id);
-        let property = self.entity.properties.get(RandomUuidProperties::TRIGGER.as_ref());
-        if property.is_some() {
-            property.unwrap().stream.read().unwrap().remove(self.handle_id);
+        if let Some(property) = self.entity.properties.get(RandomUuidProperties::TRIGGER.as_ref()) {
+            property.stream.read().unwrap().remove(self.handle_id);
         }
     }
 }
