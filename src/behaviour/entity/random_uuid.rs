@@ -19,7 +19,7 @@ pub struct RandomUuid {
 }
 
 impl RandomUuid {
-    pub fn new<'a>(e: Arc<ReactiveEntityInstance>) -> Result<RandomUuid, BehaviourCreationError> {
+    pub fn new(e: Arc<ReactiveEntityInstance>) -> Result<RandomUuid, BehaviourCreationError> {
         let entity = e.clone();
         let handle_id = e.properties.get(RandomUuidProperties::TRIGGER.as_ref()).unwrap().id.as_u128();
         e.properties
