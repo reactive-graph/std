@@ -113,7 +113,7 @@ impl Operation for StringComparison<'_> {
     }
 
     fn result(&self) -> Value {
-        self.entity.get(StringComparisonProperties::RESULT.as_ref()).unwrap().clone()
+        self.entity.get(StringComparisonProperties::RESULT.as_ref()).unwrap()
     }
 }
 
