@@ -10,7 +10,7 @@ use log::trace;
 use serde_json::json;
 use uuid::Uuid;
 
-pub const RANDOM_UUID: &'static str = "random_uuid";
+pub const RANDOM_UUID: &str = "random_uuid";
 
 pub struct RandomUuid {
     pub entity: Arc<ReactiveEntityInstance>,
