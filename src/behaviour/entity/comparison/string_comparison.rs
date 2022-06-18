@@ -32,7 +32,7 @@ pub struct StringComparison<'a> {
 }
 
 impl StringComparison<'_> {
-    pub fn new<'a>(e: Arc<ReactiveEntityInstance>, f: StringComparisonFunction) -> StringComparison<'static> {
+    pub fn new(e: Arc<ReactiveEntityInstance>, f: StringComparisonFunction) -> StringComparison<'static> {
         let lhs = e
             .properties
             .get(StringComparisonProperties::LHS.as_ref())

@@ -25,7 +25,7 @@ pub struct StringOperation<'a> {
 }
 
 impl StringOperation<'_> {
-    pub fn new<'a>(e: Arc<ReactiveEntityInstance>, f: StringOperationFunction) -> StringOperation<'static> {
+    pub fn new(e: Arc<ReactiveEntityInstance>, f: StringOperationFunction) -> StringOperation<'static> {
         let handle_id = e.properties.get(StringOperationProperties::RESULT.as_ref()).unwrap().id.as_u128();
 
         let internal_result = e

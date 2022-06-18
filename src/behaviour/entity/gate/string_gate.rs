@@ -32,7 +32,7 @@ pub struct StringGate<'a> {
 }
 
 impl StringGate<'_> {
-    pub fn new<'a>(e: Arc<ReactiveEntityInstance>, f: StringGateFunction) -> StringGate<'static> {
+    pub fn new(e: Arc<ReactiveEntityInstance>, f: StringGateFunction) -> StringGate<'static> {
         let lhs = e
             .properties
             .get(StringGateProperties::LHS.as_ref())
