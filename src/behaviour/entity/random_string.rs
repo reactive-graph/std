@@ -21,7 +21,7 @@ pub struct RandomString {
 }
 
 impl RandomString {
-    pub fn new<'a>(e: Arc<ReactiveEntityInstance>) -> Result<RandomString, BehaviourCreationError> {
+    pub fn new(e: Arc<ReactiveEntityInstance>) -> Result<RandomString, BehaviourCreationError> {
         let entity = e.clone();
         let handle_id = e.properties.get(RandomStringProperties::TRIGGER.as_ref()).unwrap().id.as_u128();
         e.properties
