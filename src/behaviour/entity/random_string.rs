@@ -45,7 +45,7 @@ impl RandomString {
                 },
                 handle_id,
             );
-        Ok(RandomString { entity: e.clone(), handle_id })
+        Ok(RandomString { entity: e, handle_id })
     }
 }
 
