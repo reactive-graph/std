@@ -20,7 +20,7 @@ pub struct RandomIntegerWithinRange {
 }
 
 impl RandomIntegerWithinRange {
-    pub fn new<'a>(e: Arc<ReactiveEntityInstance>) -> Result<RandomIntegerWithinRange, BehaviourCreationError> {
+    pub fn new(e: Arc<ReactiveEntityInstance>) -> Result<RandomIntegerWithinRange, BehaviourCreationError> {
         let entity = e.clone();
         let handle_id = e.properties.get(RandomIntegerWithinRangeProperties::TRIGGER.as_ref()).unwrap().id.as_u128();
         let mut rng = rand::thread_rng();

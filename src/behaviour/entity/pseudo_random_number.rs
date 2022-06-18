@@ -21,7 +21,7 @@ pub struct PseudoRandomNumber {
 }
 
 impl PseudoRandomNumber {
-    pub fn new<'a>(e: Arc<ReactiveEntityInstance>) -> Result<PseudoRandomNumber, BehaviourCreationError> {
+    pub fn new(e: Arc<ReactiveEntityInstance>) -> Result<PseudoRandomNumber, BehaviourCreationError> {
         let entity = e.clone();
         let handle_id = e.properties.get(PseudoRandomNumberProperties::TRIGGER.as_ref()).unwrap().id.as_u128();
 

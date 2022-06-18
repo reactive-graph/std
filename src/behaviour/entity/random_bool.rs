@@ -19,7 +19,7 @@ pub struct RandomBool {
 }
 
 impl RandomBool {
-    pub fn new<'a>(e: Arc<ReactiveEntityInstance>) -> Result<RandomBool, BehaviourCreationError> {
+    pub fn new(e: Arc<ReactiveEntityInstance>) -> Result<RandomBool, BehaviourCreationError> {
         let entity = e.clone();
         let handle_id = e.properties.get(RandomBoolProperties::TRIGGER.as_ref()).unwrap().id.as_u128();
         let mut rng = rand::thread_rng();
