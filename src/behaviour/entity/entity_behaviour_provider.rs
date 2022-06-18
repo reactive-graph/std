@@ -128,77 +128,59 @@ impl RandomEntityBehaviourProviderImpl {
 impl RandomEntityBehaviourProvider for RandomEntityBehaviourProviderImpl {
     fn create_pseudo_random_number(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let id = entity_instance.id;
-        match PseudoRandomNumber::new(entity_instance.clone()) {
-            Ok(pseudo_random_number) => {
-                self.pseudo_random_number.0.write().unwrap().insert(id, Arc::new(pseudo_random_number));
-                entity_instance.add_behaviour(PSEUDO_RANDOM_NUMBER);
-                debug!("Added behaviour {} to entity instance {}", PSEUDO_RANDOM_NUMBER, id);
-            }
-            _ => {}
+        if let Ok(pseudo_random_number) = PseudoRandomNumber::new(entity_instance.clone()) {
+            self.pseudo_random_number.0.write().unwrap().insert(id, Arc::new(pseudo_random_number));
+            entity_instance.add_behaviour(PSEUDO_RANDOM_NUMBER);
+            debug!("Added behaviour {} to entity instance {}", PSEUDO_RANDOM_NUMBER, id);
         }
     }
 
     fn create_random_bool(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let id = entity_instance.id;
-        match RandomBool::new(entity_instance.clone()) {
-            Ok(random_bool) => {
-                self.random_bool.0.write().unwrap().insert(id, Arc::new(random_bool));
-                entity_instance.add_behaviour(RANDOM_BOOL);
-                debug!("Added behaviour {} to entity instance {}", RANDOM_BOOL, id);
-            }
-            _ => {}
+        if let Ok(random_bool) = RandomBool::new(entity_instance.clone()) {
+            self.random_bool.0.write().unwrap().insert(id, Arc::new(random_bool));
+            entity_instance.add_behaviour(RANDOM_BOOL);
+            debug!("Added behaviour {} to entity instance {}", RANDOM_BOOL, id);
         }
     }
 
     fn create_random_integer_within_range(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let id = entity_instance.id;
-        match RandomIntegerWithinRange::new(entity_instance.clone()) {
-            Ok(random_integer_within_range) => {
-                self.random_integer_within_range
-                    .0
-                    .write()
-                    .unwrap()
-                    .insert(id, Arc::new(random_integer_within_range));
-                entity_instance.add_behaviour(RANDOM_INTEGER_WITHIN_RANGE);
-                debug!("Added behaviour {} to entity instance {}", RANDOM_INTEGER_WITHIN_RANGE, id);
-            }
-            _ => {}
+        if let Ok(random_integer_within_range) = RandomIntegerWithinRange::new(entity_instance.clone()) {
+            self.random_integer_within_range
+                .0
+                .write()
+                .unwrap()
+                .insert(id, Arc::new(random_integer_within_range));
+            entity_instance.add_behaviour(RANDOM_INTEGER_WITHIN_RANGE);
+            debug!("Added behaviour {} to entity instance {}", RANDOM_INTEGER_WITHIN_RANGE, id);
         }
     }
 
     fn create_random_number(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let id = entity_instance.id;
-        match RandomNumber::new(entity_instance.clone()) {
-            Ok(random_number) => {
-                self.random_number.0.write().unwrap().insert(id, Arc::new(random_number));
-                entity_instance.add_behaviour(RANDOM_NUMBER);
-                debug!("Added behaviour {} to entity instance {}", RANDOM_NUMBER, id);
-            }
-            _ => {}
+        if let Ok(random_number) = RandomNumber::new(entity_instance.clone()) {
+            self.random_number.0.write().unwrap().insert(id, Arc::new(random_number));
+            entity_instance.add_behaviour(RANDOM_NUMBER);
+            debug!("Added behaviour {} to entity instance {}", RANDOM_NUMBER, id);
         }
     }
 
     fn create_random_string(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let id = entity_instance.id;
-        match RandomString::new(entity_instance.clone()) {
-            Ok(random_string) => {
-                self.random_string.0.write().unwrap().insert(id, Arc::new(random_string));
-                entity_instance.add_behaviour(RANDOM_STRING);
-                debug!("Added behaviour {} to entity instance {}", RANDOM_STRING, id);
-            }
-            _ => {}
+        if let Ok(random_string) = RandomString::new(entity_instance.clone()) {
+            self.random_string.0.write().unwrap().insert(id, Arc::new(random_string));
+            entity_instance.add_behaviour(RANDOM_STRING);
+            debug!("Added behaviour {} to entity instance {}", RANDOM_STRING, id);
         }
     }
 
     fn create_random_uuid(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let id = entity_instance.id;
-        match RandomUuid::new(entity_instance.clone()) {
-            Ok(random_uuid) => {
-                self.random_uuid.0.write().unwrap().insert(id, Arc::new(random_uuid));
-                entity_instance.add_behaviour(RANDOM_UUID);
-                debug!("Added behaviour {} to entity instance {}", RANDOM_UUID, id);
-            }
-            _ => {}
+        if let Ok(random_uuid) = RandomUuid::new(entity_instance.clone()) {
+            self.random_uuid.0.write().unwrap().insert(id, Arc::new(random_uuid));
+            entity_instance.add_behaviour(RANDOM_UUID);
+            debug!("Added behaviour {} to entity instance {}", RANDOM_UUID, id);
         }
     }
 
