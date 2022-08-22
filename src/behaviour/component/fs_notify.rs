@@ -4,11 +4,12 @@ use std::time::Duration;
 
 use crossbeam::channel::unbounded;
 use crossbeam::channel::Sender;
+use log::error;
 use log::trace;
-use notify::Event;
 use notify::RecommendedWatcher;
 use notify::RecursiveMode;
 use notify::Watcher;
+use notify::{Config, Event};
 use serde_json::json;
 use tokio::runtime::Handle;
 
@@ -41,9 +42,12 @@ impl FsNotify {
         let (stopper_tx, stopper_rx) = unbounded();
         let (notify_tx, notify_rx) = unbounded();
 
-        let mut watcher: RecommendedWatcher = RecommendedWatcher::new(move |result: std::result::Result<Event, notify::Error>| {
-            let _ = notify_tx.send(result);
-        })
+        let mut watcher: RecommendedWatcher = RecommendedWatcher::new(
+            move |result: std::result::Result<Event, notify::Error>| {
+                let _ = notify_tx.send(result);
+            },
+            Config::default(),
+        )
         .map_err(|_| BehaviourCreationError)?;
         watcher.watch(&path, RecursiveMode::NonRecursive).map_err(|_| BehaviourCreationError)?;
 
@@ -52,6 +56,7 @@ impl FsNotify {
             loop {
                 if let Ok(notify_result) = notify_rx.try_recv() {
                     if let Ok(_notify_event) = notify_result {
+                        trace!("{:?} has changed", &path);
                         entity.set(FsNotifyProperties::TRIGGER, json!(true));
                     }
                 }
@@ -61,7 +66,9 @@ impl FsNotify {
                     Err(_) => std::thread::sleep(Duration::from_millis(1000)),
                 }
             }
-            watcher.unwatch(&path);
+            if let Err(err) = watcher.unwatch(&path) {
+                error!("Failed to unwatch {:?}: {:?}", &path, err);
+            }
         });
         Ok(FsNotify {
             entity: e.clone(),
