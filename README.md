@@ -30,7 +30,7 @@ The Inexor Reactive Graph Flow (RGF) manages reactive flows based on a graph dat
 
 ### About this plugin
 
-This plugin provides the type system for value entities. These are entities which stores one single value.
+This plugin provides the type system for pure-value entities. These are entities which stores one single value.
 There are entity types for each data type.
 
 [<img src="https://img.shields.io/badge/Language-Rust-brightgreen">](https://www.rust-lang.org/)
@@ -50,6 +50,12 @@ There are entity types for each data type.
 | Linux    | ✓             |
 | MacOS    | ✓             |
 | Windows  | ✓             |
+
+#### Components
+
+| Name        | Description                                                                                     |
+|-------------|-------------------------------------------------------------------------------------------------|
+| debug_value | With this component applied an entity type with a property value will be logged on every change |
 
 #### Entity Types
 
