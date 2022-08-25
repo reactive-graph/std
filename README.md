@@ -1,13 +1,13 @@
 # Inexor Reactive Graph Flow
 
-| Project | Module | Sub-Module | Functionality | Test Coverage |
-| --- | --- | --- | --- | --- |
-| Reactive Graph Flow | Plugin | Taxonomy | <img src="https://img.shields.io/badge/state-completed-brightgreen"> | [<img src="https://img.shields.io/codecov/c/github/aschaeffer/inexor-rgf-plugin-taxonomy">](https://app.codecov.io/gh/aschaeffer/inexor-rgf-plugin-taxonomy) |
+| Project             | Module   | Sub-Module   | Functionality                                                        | Test Coverage                                                                                                                                                |
+|---------------------|----------|--------------|----------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Reactive Graph Flow | Plugin   | Taxonomy     | <img src="https://img.shields.io/badge/state-completed-brightgreen"> | [<img src="https://img.shields.io/codecov/c/github/inexorgame/inexor-rgf-plugin-taxonomy">](https://app.codecov.io/gh/inexorgame/inexor-rgf-plugin-taxonomy) |
 
 ### About Inexor
 
 <a href="https://inexor.org/">
-<img align="right" width="200" height="200" src="https://raw.githubusercontent.com/aschaeffer/inexor-rgf-plugin-taxonomy/main/docs/images/inexor_2.png">
+<img align="right" width="200" height="200" src="https://raw.githubusercontent.com/inexorgame/inexor-rgf-plugin-taxonomy/main/docs/images/inexor_2.png">
 </a>
 
 * Inexor will be a new first-person shooter game which is based on a new octree-based game engine.
@@ -35,12 +35,12 @@ semantic operations on the graph like graph queries and graph navigation.
 
 [<img src="https://img.shields.io/badge/Language-Rust-brightgreen">](https://www.rust-lang.org/)
 [<img src="https://img.shields.io/badge/Platforms-Linux%20%26%20Windows-brightgreen">]()
-[<img src="https://img.shields.io/github/workflow/status/aschaeffer/inexor-rgf-plugin-taxonomy/Rust">](https://github.com/aschaeffer/inexor-rgf-plugin-taxonomy/actions?query=workflow%3ARust)
-[<img src="https://img.shields.io/github/last-commit/aschaeffer/inexor-rgf-plugin-taxonomy">]()
-[<img src="https://img.shields.io/github/languages/code-size/aschaeffer/inexor-rgf-plugin-taxonomy">]()
-[<img src="https://img.shields.io/codecov/c/github/aschaeffer/inexor-rgf-plugin-taxonomy">](https://app.codecov.io/gh/aschaeffer/inexor-rgf-plugin-taxonomy)
+[<img src="https://img.shields.io/github/workflow/status/inexorgame/inexor-rgf-plugin-taxonomy/Rust">](https://github.com/inexorgame/inexor-rgf-plugin-taxonomy/actions?query=workflow%3ARust)
+[<img src="https://img.shields.io/github/last-commit/inexorgame/inexor-rgf-plugin-taxonomy">]()
+[<img src="https://img.shields.io/github/languages/code-size/inexorgame/inexor-rgf-plugin-taxonomy">]()
+[<img src="https://img.shields.io/codecov/c/github/inexorgame/inexor-rgf-plugin-taxonomy">](https://app.codecov.io/gh/inexorgame/inexor-rgf-plugin-taxonomy)
 
-[<img src="https://img.shields.io/github/license/aschaeffer/inexor-rgf-plugin-taxonomy">](https://github.com/aschaeffer/inexor-rgf-plugin-taxonomy/blob/main/LICENSE)
+[<img src="https://img.shields.io/github/license/inexorgame/inexor-rgf-plugin-taxonomy">](https://github.com/inexorgame/inexor-rgf-plugin-taxonomy/blob/main/LICENSE)
 [<img src="https://img.shields.io/discord/698219248954376256?logo=discord">](https://discord.com/invite/acUW8k7)
 
 #### Entity Types
@@ -61,6 +61,6 @@ semantic operations on the graph like graph queries and graph navigation.
 
 ### Sponsors
 
-| | | |
-| --- | --- | --- |
-| <a href="https://www.jetbrains.com/?from=github.com/inexorgame"><img align="right" width="100" height="100" src="https://raw.githubusercontent.com/aschaeffer/inexor-rgf-plugin-numeric/main/docs/images/icon_CLion.svg"></a> | JetBrains | Special thanks to JetBrains for providing us with CLion licenses! |
+|                                                                                                                                                                                                                                |           |                                                                   |
+|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|-------------------------------------------------------------------|
+| <a href="https://www.jetbrains.com/?from=github.com/inexorgame"><img align="right" width="100" height="100" src="https://raw.githubusercontent.com/inexorgame/inexor-rgf-plugin-taxonomy/main/docs/images/icon_CLion.svg"></a> | JetBrains | Special thanks to JetBrains for providing us with CLion licenses! |
