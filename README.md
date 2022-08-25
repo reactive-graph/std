@@ -91,9 +91,10 @@ On destruction of the connector, the stream will be removed.
 
 #### Components
 
-| Name      | Description             | Properties                                      |
-|-----------|-------------------------|-------------------------------------------------|
-| connector | Connects two properties | outbound_property_name<br>inbound_property_name |
+| Name      | Description             | Properties             |
+|-----------|-------------------------|------------------------|
+| connector | Connects two properties | outbound_property_name |
+|           |                         | inbound_property_name  |
 
 #### Relation Types
 
