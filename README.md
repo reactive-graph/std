@@ -32,7 +32,8 @@ The Inexor Reactive Graph Flow (RGF) manages reactive flows based on a graph dat
 
 This plugin provides components for support of metadata. Textures, sounds, maps and other content usually has some
 information about the creator, the contributors, the source. The metadata definitions are provided as components.
-Therefore, any entity type can add metadata by adding the metadata component.
+Therefore, any entity type can add metadata by adding the metadata component. It can be combined with the file
+component for example.
 
 [<img src="https://img.shields.io/badge/Language-Rust-brightgreen">](https://www.rust-lang.org/)
 [<img src="https://img.shields.io/badge/Platforms-Linux%20%26%20Windows-brightgreen">]()
