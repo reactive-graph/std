@@ -3,7 +3,7 @@ use crate::provider::LogicalEntityTypeProviderImpl;
 
 #[test]
 fn entity_types_should_exist() {
-    let expected_entity_types = vec!["and", "if_then_else", "nand", "nor", "not", "or", "trigger", "xnor", "xor"];
+    let expected_entity_types = vec!["and", "if_then_else", "nand", "nor", "not", "or", "toggle", "trigger", "xnor", "xor"];
     let entity_type_provider = LogicalEntityTypeProviderImpl {};
     let entity_types = entity_type_provider.get_entity_types();
     assert_eq!(expected_entity_types.len(), entity_types.len());
