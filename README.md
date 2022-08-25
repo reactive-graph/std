@@ -2,7 +2,7 @@
 
 | Project             | Module | Sub-Module | Functionality                                                        | Test Coverage                                                                                                                                                |
 |---------------------|--------|------------|----------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Reactive Graph Flow | Plugin | MetaData   | <img src="https://img.shields.io/badge/state-completed-brightgreen"> | [<img src="https://img.shields.io/codecov/c/github/aschaeffer/inexor-rgf-plugin-metadata">](https://app.codecov.io/gh/aschaeffer/inexor-rgf-plugin-metadata) |
+| Reactive Graph Flow | Plugin | MetaData   | <img src="https://img.shields.io/badge/state-completed-brightgreen"> | [<img src="https://img.shields.io/codecov/c/github/inexorgame/inexor-rgf-plugin-metadata">](https://app.codecov.io/gh/inexorgame/inexor-rgf-plugin-metadata) |
 
 ### About Inexor
 
@@ -40,7 +40,7 @@ component for example.
 [<img src="https://img.shields.io/github/workflow/status/inexorgame/inexor-rgf-plugin-metadata/Rust">](https://github.com/inexorgame/inexor-rgf-plugin-metadata/actions?query=workflow%3ARust)
 [<img src="https://img.shields.io/github/last-commit/inexorgame/inexor-rgf-plugin-metadata">]()
 [<img src="https://img.shields.io/github/languages/code-size/inexorgame/inexor-rgf-plugin-metadata">]()
-[<img src="https://img.shields.io/codecov/c/github/aschaeffer/inexor-rgf-plugin-metadata">](https://app.codecov.io/gh/aschaeffer/inexor-rgf-plugin-metadata)
+[<img src="https://img.shields.io/codecov/c/github/inexorgame/inexor-rgf-plugin-metadata">](https://app.codecov.io/gh/inexorgame/inexor-rgf-plugin-metadata)
 
 [<img src="https://img.shields.io/github/license/inexorgame/inexor-rgf-plugin-metadata">](https://github.com/inexorgame/inexor-rgf-plugin-metadata/blob/main/LICENSE)
 [<img src="https://img.shields.io/discord/698219248954376256?logo=discord">](https://discord.com/invite/acUW8k7)
