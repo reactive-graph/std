@@ -52,11 +52,15 @@ This plugin provides the type system and behaviour for logical operations.
 
 #### Components
 
-| Name              | Description | Input Properties | Output Properties |
-|-------------------|-------------|------------------|-------------------|
-| logical_gate      |             | lhs<br>rhs       | result            |
-| logical_operation |             | lhs              | result            |
-| condition         |             | condition        | result            |
+| Name              | Description | Properties | Data Type | Socket Type |
+|-------------------|-------------|------------|-----------|-------------|
+| logical_gate      |             | lhs        | bool      | input       |
+|                   |             | rhs        | bool      | input       |
+|                   |             | result     | bool      | output      |
+| logical_operation |             | lhs        | bool      | input       |
+|                   |             | result     | bool      | output      |
+| condition         |             | condition  | bool      | input       |
+|                   |             | result     | any       | output      |
 
 #### Entity Types
 
