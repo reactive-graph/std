@@ -30,7 +30,7 @@ The Inexor Reactive Graph Flow (RGF) manages reactive flows based on a graph dat
 
 ### About this plugin
 
-This plugin provides the type system and behaviour for logical operations.
+This plugin provides the type system and behaviours for logical operations.
 
 [<img src="https://img.shields.io/badge/Language-Rust-brightgreen">](https://www.rust-lang.org/)
 [<img src="https://img.shields.io/badge/Platforms-Linux%20%26%20Windows-brightgreen">]()
