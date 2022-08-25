@@ -2,7 +2,7 @@
 
 | Project             | Module | Sub-Module | Functionality                                                        | Tests                                                                                                                                                          |
 |---------------------|--------|------------|----------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Reactive Graph Flow | Plugin | Connector  | <img src="https://img.shields.io/badge/state-completed-brightgreen"> | [<img src="https://img.shields.io/codecov/c/github/aschaeffer/inexor-rgf-plugin-connector">](https://app.codecov.io/gh/aschaeffer/inexor-rgf-plugin-connector) |
+| Reactive Graph Flow | Plugin | Connector  | <img src="https://img.shields.io/badge/state-completed-brightgreen"> | [<img src="https://img.shields.io/codecov/c/github/inexorgame/inexor-rgf-plugin-connector">](https://app.codecov.io/gh/inexorgame/inexor-rgf-plugin-connector) |
 
 ### About Inexor
 
@@ -37,7 +37,7 @@ This plugin provides connectors.
 [<img src="https://img.shields.io/github/workflow/status/inexorgame/inexor-rgf-plugin-connector/Rust">](https://github.com/inexorgame/inexor-rgf-plugin-connector/actions?query=workflow%3ARust)
 [<img src="https://img.shields.io/github/last-commit/inexorgame/inexor-rgf-plugin-connector">]()
 [<img src="https://img.shields.io/github/languages/code-size/inexorgame/inexor-rgf-plugin-connector">]()
-[<img src="https://img.shields.io/codecov/c/github/aschaeffer/inexor-rgf-plugin-connector">](https://app.codecov.io/gh/aschaeffer/inexor-rgf-plugin-connector)
+[<img src="https://img.shields.io/codecov/c/github/inexorgame/inexor-rgf-plugin-connector">](https://app.codecov.io/gh/inexorgame/inexor-rgf-plugin-connector)
 
 [<img src="https://img.shields.io/github/license/inexorgame/inexor-rgf-plugin-connector">](https://github.com/inexorgame/inexor-rgf-plugin-connector/blob/main/LICENSE)
 [<img src="https://img.shields.io/discord/698219248954376256?logo=discord">](https://discord.com/invite/acUW8k7)
