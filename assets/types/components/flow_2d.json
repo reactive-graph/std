@@ -1,5 +1,6 @@
 {
   "name": "flow_2d",
+  "description": "The position of the entity or relation on a two dimensional flow.",
   "properties": [
     {
       "name": "f2dx",

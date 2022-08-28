@@ -1,5 +1,6 @@
 {
   "name": "licensed",
+  "description": "The entity is licensed.",
   "properties": [
     {
       "name": "license",

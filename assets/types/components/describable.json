@@ -1,5 +1,6 @@
 {
   "name": "describable",
+  "description": "The entity or relation has a description.",
   "properties": [
     {
       "name": "description",
