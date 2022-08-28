@@ -3,38 +3,47 @@
   "properties": [
     {
       "name": "dc_language",
+      "description": "A language of the resource",
       "data_type": "string"
     },
     {
       "name": "dc_title",
+      "description": "A name given to the resource",
       "data_type": "string"
     },
     {
       "name": "dc_subject",
+      "description": "The topic of the resource",
       "data_type": "string"
     },
     {
       "name": "dc_coverage",
+      "description": "The spatial or temporal topic of the resource, the spatial applicability of the resource, or the jurisdiction under which the resource is relevant",
       "data_type": "string"
     },
     {
       "name": "dc_description",
+      "description": "An account of the resource",
       "data_type": "string"
     },
     {
       "name": "dc_identifier",
+      "description": "An unambiguous reference to the resource within a given context",
       "data_type": "string"
     },
     {
       "name": "dc_format",
+      "description": "The file format, physical medium, or dimensions of the resource",
       "data_type": "string"
     },
     {
       "name": "dc_type",
+      "description": "The nature or genre of the resource",
       "data_type": "string"
     },
     {
       "name": "dc_creator",
+      "description": "An entity primarily responsible for making the resource",
       "data_type": "string"
     },
     {
@@ -44,22 +53,27 @@
     },
     {
       "name": "dc_date",
+      "description": "A point or period of time associated with an event in the lifecycle of the resource",
       "data_type": "string"
     },
     {
       "name": "dc_publisher",
+      "description": "An entity responsible for making the resource available",
       "data_type": "string"
     },
     {
       "name": "dc_relation",
+      "description": "A related resource",
       "data_type": "string"
     },
     {
       "name": "dc_rights",
+      "description": "Information about rights held in and over the resource",
       "data_type": "string"
     },
     {
       "name": "dc_source",
+      "description": "A related resource from which the described resource is derived",
       "data_type": "string"
     }
   ],
