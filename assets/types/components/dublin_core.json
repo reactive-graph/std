@@ -62,5 +62,11 @@
       "name": "dc_source",
       "data_type": "string"
     }
+  ],
+  "extensions": [
+    {
+      "name": "component_category",
+      "extension": "metadata"
+    }
   ]
 }
