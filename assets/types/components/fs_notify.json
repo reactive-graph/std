@@ -11,5 +11,11 @@
       "data_type": "bool",
       "socket_type": "input"
     }
+  ],
+  "extensions": [
+    {
+      "name": "component_category",
+      "extension": "file"
+    }
   ]
 }
