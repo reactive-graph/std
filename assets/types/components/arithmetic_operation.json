@@ -12,5 +12,11 @@
       "data_type": "number",
       "socket_type": "output"
     }
+  ],
+  "extensions": [
+    {
+      "name": "component_category",
+      "extension": "math"
+    }
   ]
 }

@@ -59,5 +59,11 @@
         }
       ]
     }
+  ],
+  "extensions": [
+    {
+      "name": "component_category",
+      "extension": "math"
+    }
   ]
 }
