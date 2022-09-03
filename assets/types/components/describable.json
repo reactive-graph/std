@@ -8,5 +8,11 @@
       "data_type": "string",
       "socket_type": "none"
     }
+  ],
+  "extensions": [
+    {
+      "name": "component_category",
+      "extension": "base"
+    }
   ]
 }

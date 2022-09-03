@@ -1,6 +1,6 @@
 {
   "name": "flow_3d",
-  "description": "The position of the entity or relation on a two dimensional flow.",
+  "description": "The position (x,y,z) of the entity or relation on a three dimensional flow (in-game visual scripting).",
   "properties": [
     {
       "name": "f3dx",
@@ -37,6 +37,12 @@
       "description": "The depth (z-axis) in a 3D flow",
       "data_type": "number",
       "socket_type": "none"
+    }
+  ],
+  "extensions": [
+    {
+      "name": "component_category",
+      "extension": "flow"
     }
   ]
 }
