@@ -11,8 +11,12 @@
   ],
   "extensions": [
     {
+      "name": "component_category",
+      "extension": "filesystem"
+    },
+    {
       "name": "dublin-core",
-      "extension":{
+      "extension": {
         "title": "Config File",
         "subject": "Loads a configuration file",
         "creator": "Hanack"
