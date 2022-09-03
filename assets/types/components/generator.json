@@ -6,5 +6,11 @@
       "data_type": "bool",
       "socket_type": "output"
     }
+  ],
+  "extensions": [
+    {
+      "name": "component_category",
+      "extension": "trigger"
+    }
   ]
 }
