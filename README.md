@@ -44,6 +44,7 @@ Visualizes the GraphQL schema.
 
 ### Thanks to
 
+* https://github.com/IvanGoncharov/graphql-voyager
 * https://github.com/xd009642/tarpaulin
 * https://codecov.io/
 
