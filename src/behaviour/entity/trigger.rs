@@ -50,11 +50,8 @@ impl Trigger {
                         // Trigger only on true (= high)
                         return;
                     }
-                    match entity_instance.get(TriggerProperties::PAYLOAD) {
-                        Some(payload) => {
-                            entity_instance.set(TriggerProperties::RESULT, payload);
-                        }
-                        None => {}
+                    if let Some(payload) = entity_instance.get(TriggerProperties::PAYLOAD) {
+                        entity_instance.set(TriggerProperties::RESULT, payload);
                     }
                 },
                 handle_id,

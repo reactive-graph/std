@@ -51,11 +51,8 @@ impl IfThenElse {
                     } else {
                         IfThenElseProperties::ELSE_PAYLOAD
                     };
-                    match entity_instance.get(payload_property) {
-                        Some(payload) => {
-                            entity_instance.set(IfThenElseProperties::RESULT, payload);
-                        }
-                        None => {}
+                    if let Some(payload) = entity_instance.get(payload_property) {
+                        entity_instance.set(IfThenElseProperties::RESULT, payload);
                     }
                 },
                 handle_id,
