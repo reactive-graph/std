@@ -23,7 +23,7 @@ jobs:
         toolchain: nightly
         override: true
     - name: Install Yarn
-      uses: borales/actions-yarn@v2.3.0
+      uses: borales/actions-yarn@v3.0.0
       with:
         cmd: --cwd web install
     - name: Build
@@ -51,7 +51,7 @@ jobs:
         with:
           rust-version: nightly
       - name: Install Yarn
-        uses: borales/actions-yarn@v2.3.0
+        uses: borales/actions-yarn@v3.0.0
         with:
           cmd: --cwd web install
       - uses: actions-rs/tarpaulin@v0.1
