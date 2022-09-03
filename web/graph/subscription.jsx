@@ -4,13 +4,15 @@ import {Voyager} from 'graphql-voyager'
 import introspectionProvider from './IntrospectionProvider'
 
 import 'graphql-voyager/dist/voyager.css'
-import './assets/css/graphql-schema-visualization.css'
+import '../assets/css/graphql-schema-visualization.css'
 
 const displayOptions = {
-  rootType: "Query"
+  rootType: "Subscription"
 }
 
+const workerURI = "../voyager.worker.js"
+
 ReactDOM.render(
-  <Voyager introspection = {introspectionProvider} displayOptions = {displayOptions} />,
+  <Voyager introspection = {introspectionProvider} displayOptions = {displayOptions} workerURI = {workerURI} />,
   document.getElementById('voyager'),
 )

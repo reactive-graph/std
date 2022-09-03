@@ -8,8 +8,11 @@ module.exports = {
   devServer: {
     port: 31416,
     proxy: {
-      "/graphql": {
-        target: "http://localhost:31415"
+      '/graphql': {
+        target: 'http://localhost:31415'
+      },
+      '/dynamic_graph': {
+        target: 'http://localhost:31415'
       }
     }
   },
@@ -21,9 +24,12 @@ module.exports = {
     },
   },
   entry: {
-    query: [path.resolve(__dirname, "query.jsx")],
-    mutation: [path.resolve(__dirname, "mutation.jsx")],
-    subscription: [path.resolve(__dirname, "subscription.jsx")],
+    'graph/query': [path.resolve(__dirname, 'graph', 'query.jsx')],
+    'graph/mutation': [path.resolve(__dirname, 'graph', 'mutation.jsx')],
+    'graph/subscription': [path.resolve(__dirname, 'graph', 'subscription.jsx')],
+    'dynamic-graph/query': [path.resolve(__dirname, 'dynamic-graph', 'query.jsx')],
+    'dynamic-graph/mutation': [path.resolve(__dirname, 'dynamic-graph', 'mutation.jsx')],
+    'dynamic-graph/subscription': [path.resolve(__dirname, 'dynamic-graph', 'subscription.jsx')],
   },
   output: {
     filename: '[name].js',
@@ -43,8 +49,8 @@ module.exports = {
       {
         test: /\.css$/i,
         use: [
-          "style-loader",
-          "css-loader",
+          'style-loader',
+          'css-loader',
         ],
       },
     ],
@@ -66,19 +72,34 @@ module.exports = {
       ]
     }),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'query.html'),
-      filename: 'query.html',
-      chunks: ['query'],
+      template: path.resolve(__dirname, 'graph', 'query.html'),
+      filename: 'graph/query.html',
+      chunks: ['graph/query'],
     }),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'mutation.html'),
-      filename: 'mutation.html',
-      chunks: ['mutation'],
+      template: path.resolve(__dirname, 'graph', 'mutation.html'),
+      filename: 'graph/mutation.html',
+      chunks: ['graph/mutation'],
     }),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'subscription.html'),
-      filename: 'subscription.html',
-      chunks: ['subscription'],
+      template: path.resolve(__dirname, 'graph', 'subscription.html'),
+      filename: 'graph/subscription.html',
+      chunks: ['graph/subscription'],
+    }),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, 'dynamic-graph', 'query.html'),
+      filename: 'dynamic-graph/query.html',
+      chunks: ['dynamic-graph/query'],
+    }),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, 'dynamic-graph', 'mutation.html'),
+      filename: 'dynamic-graph/mutation.html',
+      chunks: ['dynamic-graph/mutation'],
+    }),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, 'dynamic-graph', 'subscription.html'),
+      filename: 'dynamic-graph/subscription.html',
+      chunks: ['dynamic-graph/subscription'],
     }),
   ],
 }

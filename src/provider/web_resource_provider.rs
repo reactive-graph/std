@@ -1,9 +1,12 @@
 use crate::di::*;
+use crate::plugins::HttpBody;
+use crate::plugins::WebResourceProvider;
 use async_trait::async_trait;
 use http::header::CONTENT_TYPE;
-use http::{Request, Response, Result, StatusCode};
-use inexor_rgf_core_plugins::HttpBody;
-use inexor_rgf_core_plugins::WebResourceProvider;
+use http::Request;
+use http::Response;
+use http::Result;
+use http::StatusCode;
 use mime_guess::from_path;
 use rust_embed::RustEmbed;
 use std::borrow::Cow;
@@ -46,19 +49,39 @@ impl WebResourceProvider for GraphQlSchemaVisualizationWebResourceProviderImpl {
         _request: Request<HttpBody>,
     ) -> Result<Response<HttpBody>> {
         let path = match path.as_str() {
-            "" => String::from("query.html"),
-            "query" => format!("{}.html", path),
-            "query/" => String::from("query.html"),
-            "mutation" => format!("{}.html", path),
-            "mutation/" => String::from("mutation.html"),
-            "subscription" => format!("{}.html", path),
-            "subscription/" => String::from("subscription.html"),
+            ""
+            | "index.html"
+            | "graph/query"
+            | "graph/query/"
+            | "graph/query.html"
+            | "graph/query/index.html" => String::from("graph/query.html"),
+            "graph/mutation"
+            | "graph/mutation/"
+            | "graph/mutation.html"
+            | "graph/mutation/index.html" => String::from("graph/mutation.html"),
+            "graph/subscription"
+            | "graph/subscription/"
+            | "graph/subscription.html"
+            | "graph/subscription/index.html" => String::from("graph/subscription.html"),
+            "dynamic-graph/query"
+            | "dynamic-graph/query/"
+            | "dynamic-graph/query.html"
+            | "dynamic-graph/query/index.html" => String::from("dynamic-graph/query.html"),
+            "dynamic-graph/mutation"
+            | "dynamic-graph/mutation/"
+            | "dynamic-graph/mutation.html"
+            | "dynamic-graph/mutation/index.html" => String::from("dynamic-graph/mutation.html"),
+            "dynamic-graph/subscription"
+            | "dynamic-graph/subscription/"
+            | "dynamic-graph/subscription.html"
+            | "dynamic-graph/subscription/index.html" => {
+                String::from("dynamic-graph/subscription.html")
+            }
             _ => path,
         };
         let asset = GraphQlSchemaVisualizationWebResourceAsset::get(path.as_ref());
         match asset {
             Some(asset) => {
-                // let x = asset.data;
                 let body: HttpBody = match asset.data {
                     Cow::Borrowed(bytes) => HttpBody::Binary(bytes.to_vec()),
                     Cow::Owned(bytes) => HttpBody::Binary(bytes.to_vec()),
