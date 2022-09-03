@@ -1,5 +1,6 @@
 {
   "name": "file",
+  "description": "Represents a file in the file system",
   "properties": [
     {
       "name": "filename",
