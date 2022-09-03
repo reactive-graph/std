@@ -39,7 +39,8 @@ impl WebResourceProvider for GraphQlClientWebResourceProviderImpl {
 
     fn handle_web_resource(&self, path: String, _request: Request<HttpBody>) -> Result<Response<HttpBody>> {
         let path = match path.as_str() {
-            "" => String::from("index.html"),
+            "" | "index.html" | "graph.html" | "graph" => String::from("graph.html"),
+            "dynamic-graph.html" | "dynamic-graph" => String::from("dynamic-graph.html"),
             _ => path,
         };
         let asset = GraphQlClientWebResourceAsset::get(path.as_ref());

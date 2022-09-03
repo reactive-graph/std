@@ -8,25 +8,29 @@ module.exports = {
   devServer: {
     port: 31416,
     proxy: {
-      "/graphql": {
-        target: "http://localhost:31415"
-      }
+      '/graphql': {
+        target: 'http://localhost:31415'
+      },
+      '/dynamic_graph': {
+        target: 'http://localhost:31415'
+      },
     }
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.mjs', '.js', '.json', '.css', '.svg'],
     alias: {
-      // fix "duplicated react" issue when using npm link
+      // fix 'duplicated react' issue when using npm link
       react: require.resolve('react'),
-      path: require.resolve("path-browserify"),
+      path: require.resolve('path-browserify'),
     },
     fallback: {
       fs: false,
-      path: require.resolve("path-browserify")
+      path: require.resolve('path-browserify')
     },
   },
   entry: {
-    index: [path.resolve(__dirname, "index.jsx")],
+    'graph': [path.resolve(__dirname, 'graph.tsx')],
+    'dynamic-graph': [path.resolve(__dirname, 'dynamic-graph.tsx')],
   },
   output: {
     filename: '[name].js',
@@ -44,10 +48,15 @@ module.exports = {
         },
       },
       {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
+      {
         test: /\.css$/i,
         use: [
-          "style-loader",
-          "css-loader",
+          'style-loader',
+          'css-loader',
         ],
       },
     ],
@@ -74,9 +83,14 @@ module.exports = {
       ]
     }),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'index.html'),
-      filename: 'index.html',
-      chunks: ['index'],
+      template: path.resolve(__dirname, 'graph.html'),
+      filename: 'graph.html',
+      chunks: ['graph'],
+    }),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, 'dynamic-graph.html'),
+      filename: 'dynamic-graph.html',
+      chunks: ['dynamic-graph'],
     }),
   ],
 }

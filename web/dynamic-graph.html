@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inexor - Reactive Graph Flow - Dynamic Graph - GraphQL Client</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script rel="preload" as="script" type="text/javascript" src="runtime.js"></script>
+    <script rel="preload" as="script" type="text/javascript" src="polyfills.js"></script>
+    <script rel="preload" as="script" type="text/javascript" src="main.js"></script>
+</head>
+<body style="background-color: black;">
+    <app-root>
+        <style>
+            .loading-screen {
+                /*Prevents the loading screen from showing until CSS is downloaded*/
+                display: none;
+            }
+
+        </style>
+        <div class="loading-screen styled">
+            <div class="loading-screen-inner">
+                <div class="loading-screen-logo-container loading-screen-logo-container-inexor">
+                    <img src="assets/image/inexor.svg" class="inexor-logo" alt="Inexor">
+                </div>
+                <div class="loading-screen-loading-indicator">
+                    <span class="loading-indicator-dot"></span>
+                    <span class="loading-indicator-dot"></span>
+                    <span class="loading-indicator-dot"></span>
+                </div>
+            </div>
+        </div>
+    </app-root>
+</body>
+</html>
