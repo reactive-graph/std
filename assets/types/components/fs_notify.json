@@ -12,7 +12,7 @@
       "name": "trigger",
       "description": "Triggers if the file with the given filename has been changed",
       "data_type": "bool",
-      "socket_type": "input"
+      "socket_type": "output"
     }
   ],
   "extensions": [
