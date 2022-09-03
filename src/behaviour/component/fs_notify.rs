@@ -28,7 +28,7 @@ pub struct FsNotify {
 }
 
 impl FsNotify {
-    pub fn new<'a>(e: Arc<ReactiveEntityInstance>, runtime: &Handle) -> Result<FsNotify, BehaviourCreationError> {
+    pub fn new(e: Arc<ReactiveEntityInstance>, runtime: &Handle) -> Result<FsNotify, BehaviourCreationError> {
         let filename = e
             .properties
             .get(FsNotifyProperties::FILENAME.as_ref())
@@ -54,11 +54,9 @@ impl FsNotify {
         let entity = e.clone();
         runtime.spawn(async move {
             loop {
-                if let Ok(notify_result) = notify_rx.try_recv() {
-                    if let Ok(_notify_event) = notify_result {
-                        trace!("{:?} has changed", &path);
-                        entity.set(FsNotifyProperties::TRIGGER, json!(true));
-                    }
+                if let Ok(Ok(_notify_event)) = notify_rx.try_recv() {
+                    trace!("{:?} has changed", &path);
+                    entity.set(FsNotifyProperties::TRIGGER, json!(true));
                 }
                 match stopper_rx.try_recv() {
                     // Stop thread
@@ -70,10 +68,7 @@ impl FsNotify {
                 error!("Failed to unwatch {:?}: {:?}", &path, err);
             }
         });
-        Ok(FsNotify {
-            entity: e.clone(),
-            stopper_tx: stopper_tx.clone(),
-        })
+        Ok(FsNotify { entity: e, stopper_tx })
     }
 
     pub fn unwatch(&self) {
