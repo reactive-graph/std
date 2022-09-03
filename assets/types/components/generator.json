@@ -1,8 +1,10 @@
 {
   "name": "generator",
+  "description": "A generator sends a trigger",
   "properties": [
     {
       "name": "trigger",
+      "description": "Sends a boolean trigger",
       "data_type": "bool",
       "socket_type": "output"
     }

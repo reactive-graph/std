@@ -1,5 +1,6 @@
 {
   "name": "logical_operation",
+  "description": "Executes a logical operation on the input lhs and outputs the result",
   "properties": [
     {
       "name": "lhs",

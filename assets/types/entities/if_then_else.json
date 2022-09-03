@@ -10,11 +10,13 @@
   "properties": [
     {
       "name": "then_payload",
+      "description": "If the condition is true, the then_payload gets propagated",
       "data_type": "any",
       "socket_type": "input"
     },
     {
       "name": "else_payload",
+      "description": "If the condition is false, the else_payload gets propagated",
       "data_type": "any",
       "socket_type": "input"
     }
