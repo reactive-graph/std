@@ -12,6 +12,10 @@
   ],
   "extensions": [
     {
+      "name": "entity_category",
+      "extension": "taxonomy"
+    },
+    {
       "name": "palette",
       "extension": {
 
