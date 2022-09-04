@@ -1,12 +1,15 @@
 {
   "name": "connector",
+  "description": "Connects a property of an entity instance with a other property of another entity instance",
   "properties": [
     {
       "name": "outbound_property_name",
+      "description": "The name of the outbound property",
       "data_type": "string"
     },
     {
       "name": "inbound_property_name",
+      "description": "The name of the inbound property",
       "data_type": "string"
     }
   ],

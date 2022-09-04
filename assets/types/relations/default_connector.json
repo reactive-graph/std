@@ -1,5 +1,6 @@
 {
   "name": "default_connector",
+  "description": "Connects a property of an entity instance with a other property of another entity instance",
   "outbound_type": "*",
   "inbound_type": "*",
   "components": [

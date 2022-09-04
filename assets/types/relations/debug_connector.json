@@ -1,5 +1,6 @@
 {
   "name": "debug_connector",
+  "description": "Connects a property with a other property and logs changes to the debug logger",
   "outbound_type": "*",
   "inbound_type": "*",
   "components": [

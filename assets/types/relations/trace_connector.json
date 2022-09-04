@@ -1,5 +1,6 @@
 {
   "name": "trace_connector",
+  "description": "Connects a property with a other property and logs changes to the trace logger",
   "outbound_type": "*",
   "inbound_type": "*",
   "components": [
