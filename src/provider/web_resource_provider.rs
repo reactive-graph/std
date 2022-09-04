@@ -1,9 +1,12 @@
 use crate::di::*;
+use crate::plugins::HttpBody;
+use crate::plugins::WebResourceProvider;
 use async_trait::async_trait;
 use http::header::CONTENT_TYPE;
-use http::{Request, Response, Result, StatusCode};
-use inexor_rgf_core_plugins::HttpBody;
-use inexor_rgf_core_plugins::WebResourceProvider;
+use http::Request;
+use http::Response;
+use http::Result;
+use http::StatusCode;
 use mime_guess::from_path;
 use rust_embed::RustEmbed;
 use std::borrow::Cow;
@@ -46,7 +49,6 @@ impl WebResourceProvider for GraphQlClientWebResourceProviderImpl {
         let asset = GraphQlClientWebResourceAsset::get(path.as_ref());
         match asset {
             Some(asset) => {
-                // let x = asset.data;
                 let body: HttpBody = match asset.data {
                     Cow::Borrowed(bytes) => HttpBody::Binary(bytes.to_vec()),
                     Cow::Owned(bytes) => HttpBody::Binary(bytes.to_vec()),
