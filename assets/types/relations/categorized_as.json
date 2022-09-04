@@ -1,5 +1,6 @@
 {
   "name": "categorized_as",
+  "description": "The outbound entity is categorized as the inbound category",
   "outbound_type": "*",
   "inbound_type": "category",
   "components": [

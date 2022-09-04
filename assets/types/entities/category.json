@@ -1,7 +1,7 @@
 {
   "name": "category",
   "group": "taxonomy",
-  "description": "Category",
+  "description": "A category is a fundamental and distinct class to which entities or concepts belong",
   "components": [
     "named",
     "describable",
