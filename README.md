@@ -42,7 +42,7 @@ Visualizes the GraphQL schema.
 [<img src="https://img.shields.io/github/license/inexorgame/inexor-rgf-plugin-graphql-schema-visualization">](https://github.com/inexorgame/inexor-rgf-plugin-graphql-schema-visualization/blob/main/LICENSE)
 [<img src="https://img.shields.io/discord/698219248954376256?logo=discord">](https://discord.com/invite/acUW8k7)
 
-<img src="https://raw.githubusercontent.com/inexorgame/inexor-rgf-plugin-graphql-schema-visualization/main/docs/images/screenshot1">
+<img src="https://raw.githubusercontent.com/inexorgame/inexor-rgf-plugin-graphql-schema-visualization/main/docs/images/screenshot1.png">
 
 ### Thanks to
 
