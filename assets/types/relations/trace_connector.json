@@ -1,5 +1,5 @@
 {
-  "name": "debug_connector",
+  "name": "trace_connector",
   "outbound_type": "*",
   "inbound_type": "*",
   "components": [
