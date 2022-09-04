@@ -6,5 +6,15 @@
   "components": [
   ],
   "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "outbound_field_name",
+      "extension": "categorized_as"
+    },
+    {
+      "name": "inbound_field_name",
+      "extension": "categorizes"
+    }
   ]
 }

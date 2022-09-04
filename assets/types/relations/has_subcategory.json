@@ -7,5 +7,15 @@
     "weighted"
   ],
   "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "outbound_field_name",
+      "extension": "has_subcategory"
+    },
+    {
+      "name": "inbound_field_name",
+      "extension": "is_subcategory_of"
+    }
   ]
 }
