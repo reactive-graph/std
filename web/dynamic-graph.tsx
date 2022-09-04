@@ -9,9 +9,11 @@ const endpointURL = window.location.origin + '/dynamic_graph'
 const addQuery = `
 query {
   add {
-    lhs
-    rhs
-    result
+    arithmetic_gate {
+      lhs
+      rhs
+      result
+    }
   }
 }
 `
