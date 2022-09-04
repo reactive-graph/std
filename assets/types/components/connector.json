@@ -9,5 +9,11 @@
       "name": "inbound_property_name",
       "data_type": "string"
     }
+  ],
+  "extensions": [
+    {
+      "name": "component_category",
+      "extension": "flow"
+    }
   ]
 }
