@@ -43,16 +43,31 @@ semantic operations on the graph like graph queries and graph navigation.
 [<img src="https://img.shields.io/github/license/inexorgame/inexor-rgf-plugin-taxonomy">](https://github.com/inexorgame/inexor-rgf-plugin-taxonomy/blob/main/LICENSE)
 [<img src="https://img.shields.io/discord/698219248954376256?logo=discord">](https://discord.com/invite/acUW8k7)
 
-#### Entity Types
+## Components
 
-* category
-* tag
+| Name      | Properties | DataType | SocketType | Description                                                |
+|-----------|------------|----------|------------|------------------------------------------------------------|
+|           |
+| weighted  | weight     | number   | none       | The weight of a relation between two entity instances      |
 
-#### Relation Types
+## Entity Types
 
-* categorized_as
-* has_subcategory
-* tagged_with
+| Name     | Components  | Properties  | DataType | SocketType | Description                     |
+|----------|-------------|-------------|----------|------------|---------------------------------|
+||
+| category | named       | name        | string   | none       | The name of the category        |
+|          | describable | description | string   | none       | The description of the category |
+||
+| tag      | named       | name        | string   | none       | The tag name                    |
+||
+
+## Relation Types
+
+| Name            | Description | Components | Source Entity Type | Target Entity Type |
+|-----------------|-------------|------------|--------------------|--------------------|
+| categorized_as  |             |            | *                  | category           |
+| has_subcategory |             |            | category           | category           |
+| tagged_with     |             | weighted   | *                  | tag                |
 
 ### Thanks to
 
