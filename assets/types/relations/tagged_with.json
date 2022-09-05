@@ -7,5 +7,23 @@
     "weighted"
   ],
   "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "outbound_field_name",
+      "extension": "tagged"
+    },
+    {
+      "name": "outbound_field_description",
+      "extension": "The entity which is tagged"
+    },
+    {
+      "name": "inbound_field_name",
+      "extension": "tag"
+    },
+    {
+      "name": "inbound_field_description",
+      "extension": "The tag which is applied to the entity"
+    }
   ]
 }

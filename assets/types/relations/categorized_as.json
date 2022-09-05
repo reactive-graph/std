@@ -4,17 +4,34 @@
   "outbound_type": "*",
   "inbound_type": "category",
   "components": [
+    "weighted"
   ],
   "properties": [
   ],
   "extensions": [
     {
       "name": "outbound_field_name",
+      "extension": "categorized"
+    },
+    {
+      "name": "outbound_collection_field_name",
       "extension": "categorized_as"
     },
     {
+      "name": "outbound_field_description",
+      "extension": "The entity which is categorized"
+    },
+    {
       "name": "inbound_field_name",
+      "extension": "category"
+    },
+    {
+      "name": "inbound_collection_field_name",
       "extension": "categorizes"
+    },
+    {
+      "name": "inbound_field_description",
+      "extension": "The category which categorizes an entity"
     }
   ]
 }
