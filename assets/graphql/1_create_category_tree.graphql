@@ -1,0 +1,281 @@
+# Some mutations which creates a simple category tree
+
+mutation createCategory_Root {
+  instances {
+    entities {
+      create(
+        type: "category",
+        id: "00000000-0000-0000-0000-000000000001",
+        properties: [
+          {
+            name: "name",
+            value: "Root Category"
+          }
+          {
+            name: "description",
+            value: "Level 0"
+          }
+        ]
+      ) {
+        id
+      }
+    }
+  }
+}
+
+mutation createCategory_A {
+  instances {
+    entities {
+      create(
+        type: "category",
+        id: "00000000-0000-0000-0000-0000000000A1",
+        properties: [
+          {
+            name: "name",
+            value: "Category A"
+          }
+          {
+            name: "description",
+            value: "Level 1"
+          }
+        ]
+      ) {
+        id
+      }
+    }
+  }
+}
+
+mutation createCategory_B {
+  instances {
+    entities {
+      create(
+        type: "category",
+        id: "00000000-0000-0000-0000-0000000000B1",
+        properties: [
+          {
+            name: "name",
+            value: "Category B"
+          }
+          {
+            name: "description",
+            value: "Level 1"
+          }
+        ]
+      ) {
+        id
+      }
+    }
+  }
+}
+
+mutation createCategory_A_1 {
+  instances {
+    entities {
+      create(
+        type: "category",
+        id: "00000000-0000-0000-0000-0000000001A1",
+        properties: [
+          {
+            name: "name",
+            value: "Category A 1"
+          }
+          {
+            name: "description",
+            value: "Level 2"
+          }
+        ]
+      ) {
+        id
+      }
+    }
+  }
+}
+
+mutation createCategory_A_2 {
+  instances {
+    entities {
+      create(
+        type: "category",
+        id: "00000000-0000-0000-0000-0000000002A1",
+        properties: [
+          {
+            name: "name",
+            value: "Category A 2"
+          }
+          {
+            name: "description",
+            value: "Level 2"
+          }
+        ]
+      ) {
+        id
+      }
+    }
+  }
+}
+
+mutation createCategory_B_1 {
+  instances {
+    entities {
+      create(
+        type: "category",
+        id: "00000000-0000-0000-0000-0000000001B1",
+        properties: [
+          {
+            name: "name",
+            value: "Category B 1"
+          }
+          {
+            name: "description",
+            value: "Level 2"
+          }
+        ]
+      ) {
+        id
+      }
+    }
+  }
+}
+
+mutation createCategory_B_2 {
+  instances {
+    entities {
+      create(
+        type: "category",
+        id: "00000000-0000-0000-0000-0000000002B1",
+        properties: [
+          {
+            name: "name",
+            value: "Category B 2"
+          }
+          {
+            name: "description",
+            value: "Level 2"
+          }
+        ]
+      ) {
+        id
+      }
+    }
+  }
+}
+
+mutation createSubCategory_Root_A {
+  instances {
+    relations {
+      createSubCategory_Root_A: create(
+        edgeKey: {
+          outboundId: "00000000-0000-0000-0000-000000000001",
+          typeName: "has_subcategory"
+          inboundId: "00000000-0000-0000-0000-0000000000A1",
+        },
+        properties: [
+          {
+            name: "weight",
+            value: 0
+          }
+        ]
+      ) {
+        type {
+          fullName
+        },
+      }
+    }
+  }
+}
+
+mutation createSubCategory_Root_B {
+  instances {
+    relations {
+      create(
+        edgeKey: {
+          outboundId: "00000000-0000-0000-0000-000000000001",
+          typeName: "has_subcategory"
+          inboundId: "00000000-0000-0000-0000-0000000000B1",
+        },
+        properties: []
+      ) {
+        type {
+          fullName
+        },
+      }
+    }
+  }
+}
+
+mutation createSubCategory_A_1 {
+  instances {
+    relations {
+      create(
+        edgeKey: {
+          outboundId: "00000000-0000-0000-0000-0000000000A1",
+          typeName: "has_subcategory"
+          inboundId: "00000000-0000-0000-0000-0000000001A1",
+        },
+        properties: []
+      ) {
+        type {
+          fullName
+        },
+      }
+    }
+  }
+}
+
+mutation createSubCategory_A_2 {
+  instances {
+    relations {
+      create(
+        edgeKey: {
+          outboundId: "00000000-0000-0000-0000-0000000000A1",
+          typeName: "has_subcategory"
+          inboundId: "00000000-0000-0000-0000-0000000002A1",
+        },
+        properties: []
+      ) {
+        type {
+          fullName
+        },
+      }
+    }
+  }
+}
+
+mutation createSubCategory_B_1 {
+  instances {
+    relations {
+      create(
+        edgeKey: {
+          outboundId: "00000000-0000-0000-0000-0000000000B1",
+          typeName: "has_subcategory"
+          inboundId: "00000000-0000-0000-0000-0000000001B1",
+        },
+        properties: []
+      ) {
+        type {
+          fullName
+        },
+      }
+    }
+  }
+}
+
+mutation createSubCategory_B_2 {
+  instances {
+    relations {
+      create(
+        edgeKey: {
+          outboundId: "00000000-0000-0000-0000-0000000000B1",
+          typeName: "has_subcategory"
+          inboundId: "00000000-0000-0000-0000-0000000002B1",
+        },
+        properties: []
+      ) {
+        type {
+          fullName
+        },
+      }
+    }
+  }
+}

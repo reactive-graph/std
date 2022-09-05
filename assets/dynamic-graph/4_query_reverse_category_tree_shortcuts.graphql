@@ -1,0 +1,21 @@
+# Traverse the category tree in reverse order from bottom to top
+query GetCategoryTreeShort {
+  category {
+    name
+    description
+    parent_categories {
+      weight
+      parent_category {
+        name
+        description
+        parent_categories {
+          weight
+          parent_category {
+            name
+            description
+          }
+        }
+      }
+    }
+  }
+}
