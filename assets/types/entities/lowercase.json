@@ -86,7 +86,7 @@
     },
     {
       "name": "dublin-core",
-      "extension":{
+      "extension": {
         "title": "Lowercase",
         "subject": "Lowercase",
         "creator": "Hanack"

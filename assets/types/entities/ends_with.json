@@ -86,7 +86,7 @@
     },
     {
       "name": "dublin-core",
-      "extension":{
+      "extension": {
         "title": "Ends With",
         "subject": "Ends With",
         "creator": "Hanack"

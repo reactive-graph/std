@@ -86,7 +86,7 @@
     },
     {
       "name": "dublin-core",
-      "extension":{
+      "extension": {
         "title": "Contains",
         "subject": "Contains",
         "creator": "Hanack"

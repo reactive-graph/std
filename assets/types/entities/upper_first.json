@@ -1,0 +1,20 @@
+{
+  "name": "upper_first",
+  "group": "string",
+  "description": "Converts the first character of the title to upper case",
+  "components": [
+    "string_operation"
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension": {
+        "title": "Upper First",
+        "subject": "Converts the first character of the title to upper case",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

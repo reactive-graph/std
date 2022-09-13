@@ -86,7 +86,7 @@
     },
     {
       "name": "dublin-core",
-      "extension":{
+      "extension": {
         "title": "Concat",
         "subject": "Concat",
         "creator": "Hanack"

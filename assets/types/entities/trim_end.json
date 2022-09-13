@@ -86,7 +86,7 @@
     },
     {
       "name": "dublin-core",
-      "extension":{
+      "extension": {
         "title": "Trim  End",
         "subject": "Trim  End",
         "creator": "Hanack"

@@ -1,0 +1,20 @@
+{
+  "name": "shouty_kebab_case",
+  "group": "string",
+  "description": "Converts the input to SHOUTY kebab case",
+  "components": [
+    "string_operation"
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension": {
+        "title": "SHOUTY kebab case",
+        "subject": "Converts the input to SHOUTY kebab case",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

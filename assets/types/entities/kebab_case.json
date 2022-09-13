@@ -1,0 +1,20 @@
+{
+  "name": "kebab_case",
+  "group": "string",
+  "description": "Converts the input to kebab case",
+  "components": [
+    "string_operation"
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension":{
+        "title": "Kebab Case",
+        "subject": "Converts the input to kebab case",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "lower_first",
+  "group": "string",
+  "description": "Converts the first character of the input to lower case",
+  "components": [
+    "string_operation"
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension": {
+        "title": "Lower First",
+        "subject": "Converts the first character of the input to lower case",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

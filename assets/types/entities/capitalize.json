@@ -1,0 +1,20 @@
+{
+  "name": "capitalize",
+  "group": "string",
+  "description": "Converts the first character of the input to upper case and convert the rest of the input to lower case",
+  "components": [
+    "string_operation"
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension": {
+        "title": "Capitalize",
+        "subject": "Converts the first character of the input to upper case and convert the rest of the input to lower case",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

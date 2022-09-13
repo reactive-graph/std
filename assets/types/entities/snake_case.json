@@ -1,0 +1,20 @@
+{
+  "name": "snake_case",
+  "group": "string",
+  "description": "Converts the subject to snake case",
+  "components": [
+    "string_operation"
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension": {
+        "title": "Snake Case",
+        "subject": "Converts the subject to snake case",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

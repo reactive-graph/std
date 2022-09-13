@@ -1,0 +1,20 @@
+{
+  "name": "decapitalize",
+  "group": "string",
+  "description": "Converts the first character of the input to lower case and convert the rest of the input to lower case",
+  "components": [
+    "string_operation"
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension": {
+        "title": "Decapitalize",
+        "subject": "Converts the first character of the input to lower case and convert the rest of the input to lower case",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}
