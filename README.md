@@ -48,42 +48,43 @@ String Handling
 
 #### Components
 
-| Name             | Property | Data Type | Socket Type |
-|------------------|----------|-----------|-------------|
-| StringOperation  | lhs      | string    | input       |
-|                  | result   | string    | output      |
-| StringGate       | lhs      | string    | input       |
-|                  | rhs      | string    | input       |
-|                  | result   | string    | output      |
-| StringComparison | lhs      | string    | input       |
-|                  | rhs      | string    | input       |
-|                  | result   | bool      | output      |
+| Name              | Property | Data Type | Socket Type |
+|-------------------|----------|-----------|-------------|
+| string_operation  | lhs      | string    | input       |
+|                   | result   | string    | output      |
+| string_gate       | lhs      | string    | input       |
+|                   | rhs      | string    | input       |
+|                   | result   | string    | output      |
+| string_comparison | lhs      | string    | input       |
+|                   | rhs      | string    | input       |
+|                   | result   | bool      | output      |
 
 #### Entity Types / Behaviours
 
-| Name              | Component        | Description                                                                                             |
-|-------------------|------------------|---------------------------------------------------------------------------------------------------------|
-| camel_case        | StringOperation  | Converts the input to camel case                                                                        |
-| capitalize        | StringOperation  | Converts the first character of the input to upper case and convert the rest of the input to lower case |
-| decapitalize      | StringOperation  | Converts the first character of the input to lower case and convert the rest of the input to lower case |
-| contains          | StringComparison | Returns true, if lhs contains rhs                                                                       |
-| ends_with         | StringComparison | Returns true, if lhs ends with rhs                                                                      |
-| kebab_case        | StringOperation  | Converts the input to kebab case                                                                        |
-| lowercase         | StringOperation  | Converts the input to lower case                                                                        |
-| lower_first       | StringOperation  | Converts the first character of the input to lower case                                                 |
-| pascal_case       | StringOperation  | Converts the input to pascal case                                                                       |
-| starts_with       | StringComparison | Returns true, if lhs starts with rhs                                                                    |
-| shouty_kebab_case | StringOperation  | Converts the input to SHOUTY kebab case                                                                 |
-| shouty_snake_case | StringOperation  | Converts the input to SHOUTY snake case                                                                 |
-| snake_case        | StringOperation  | Converts the input to snake case                                                                        |
-| swap_case         | StringOperation  | Converts the input to swap case                                                                         |
-| title_case        | StringOperation  | Converts the input to title case                                                                        |
-| train_case        | StringOperation  | Converts the input to train case                                                                        |
-| trim              | StringOperation  | Removes whitespace at the beginning and end of a string                                                 |
-| trim_start        | StringOperation  | Removes whitespace at the beginning of a string                                                         |
-| trim_end          | StringOperation  | Removes whitespace at the end of a string                                                               |
-| uppercase         | StringOperation  | Converts the input to upper case                                                                        |
-| upper_first       | StringOperation  | Converts the first character of the input to upper case                                                 |
+| Name              | Component         | Description                                                                                             |
+|-------------------|-------------------|---------------------------------------------------------------------------------------------------------|
+| camel_case        | string_operation  | Converts the input to camel case                                                                        |
+| capitalize        | string_operation  | Converts the first character of the input to upper case and convert the rest of the input to lower case |
+| decapitalize      | string_operation  | Converts the first character of the input to lower case and convert the rest of the input to lower case |
+| concat            | string_gate       | Concatenate lhs with rhs                                                                                |
+| contains          | string_comparison | Returns true, if lhs contains rhs                                                                       |
+| ends_with         | string_comparison | Returns true, if lhs ends with rhs                                                                      |
+| kebab_case        | string_operation  | Converts the input to kebab case                                                                        |
+| lowercase         | string_operation  | Converts the input to lower case                                                                        |
+| lower_first       | string_operation  | Converts the first character of the input to lower case                                                 |
+| pascal_case       | string_operation  | Converts the input to pascal case                                                                       |
+| starts_with       | string_comparison | Returns true, if lhs starts with rhs                                                                    |
+| shouty_kebab_case | string_operation  | Converts the input to SHOUTY kebab case                                                                 |
+| shouty_snake_case | string_operation  | Converts the input to SHOUTY snake case                                                                 |
+| snake_case        | string_operation  | Converts the input to snake case                                                                        |
+| swap_case         | string_operation  | Converts the input to swap case                                                                         |
+| title_case        | string_operation  | Converts the input to title case                                                                        |
+| train_case        | string_operation  | Converts the input to train case                                                                        |
+| trim              | string_operation  | Removes whitespace at the beginning and end of a string                                                 |
+| trim_start        | string_operation  | Removes whitespace at the beginning of a string                                                         |
+| trim_end          | string_operation  | Removes whitespace at the end of a string                                                               |
+| uppercase         | string_operation  | Converts the input to upper case                                                                        |
+| upper_first       | string_operation  | Converts the first character of the input to upper case                                                 |
 
 ### TODO
 
