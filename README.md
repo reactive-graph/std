@@ -61,16 +61,29 @@ String Handling
 
 #### Entity Types / Behaviours
 
-| Name       | Component        | Description                                              |
-|------------|------------------|----------------------------------------------------------|
-| Trim       | StringOperation  | Removes whitespace at the beginning and end of a string  |
-| TrimStart  | StringOperation  | Removes whitespace at the beginning of a string          |
-| TrimEnd    | StringOperation  | Removes whitespace at the end of a string                |
-| Uppercase  | StringOperation  |                                                          |
-| Lowercase  | StringOperation  |                                                          |
-| StartsWith | StringComparison |                                                          |
-| EndsWith   | StringComparison |                                                          |
-| Contains   | StringComparison |                                                          |
+| Name              | Component        | Description                                                                                             |
+|-------------------|------------------|---------------------------------------------------------------------------------------------------------|
+| camel_case        | StringOperation  | Converts the input to camel case                                                                        |
+| capitalize        | StringOperation  | Converts the first character of the input to upper case and convert the rest of the input to lower case |
+| decapitalize      | StringOperation  | Converts the first character of the input to lower case and convert the rest of the input to lower case |
+| contains          | StringComparison | Returns true, if lhs contains rhs                                                                       |
+| ends_with         | StringComparison | Returns true, if lhs ends with rhs                                                                      |
+| kebab_case        | StringOperation  | Converts the input to kebab case                                                                        |
+| lowercase         | StringOperation  | Converts the input to lower case                                                                        |
+| lower_first       | StringOperation  | Converts the first character of the input to lower case                                                 |
+| pascal_case       | StringOperation  | Converts the input to pascal case                                                                       |
+| starts_with       | StringComparison | Returns true, if lhs starts with rhs                                                                    |
+| shouty_kebab_case | StringOperation  | Converts the input to SHOUTY kebab case                                                                 |
+| shouty_snake_case | StringOperation  | Converts the input to SHOUTY snake case                                                                 |
+| snake_case        | StringOperation  | Converts the input to snake case                                                                        |
+| swap_case         | StringOperation  | Converts the input to swap case                                                                         |
+| title_case        | StringOperation  | Converts the input to title case                                                                        |
+| train_case        | StringOperation  | Converts the input to train case                                                                        |
+| trim              | StringOperation  | Removes whitespace at the beginning and end of a string                                                 |
+| trim_start        | StringOperation  | Removes whitespace at the beginning of a string                                                         |
+| trim_end          | StringOperation  | Removes whitespace at the end of a string                                                               |
+| uppercase         | StringOperation  | Converts the input to upper case                                                                        |
+| upper_first       | StringOperation  | Converts the first character of the input to upper case                                                 |
 
 ### TODO
 
