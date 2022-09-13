@@ -1,0 +1,20 @@
+{
+  "name": "chop_remove_prefix",
+  "group": "string",
+  "description": "Extracts the prefix from the input",
+  "components": [
+    "string_gate"
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension": {
+        "title": "Chop Remove Prefix",
+        "subject": "Extracts the prefix from the input",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}
