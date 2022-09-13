@@ -42,10 +42,6 @@ String Handling
 [<img src="https://img.shields.io/github/license/inexorgame/inexor-rgf-plugin-string">](https://github.com/inexorgame/inexor-rgf-plugin-string/blob/main/LICENSE)
 [<img src="https://img.shields.io/discord/698219248954376256?logo=discord">](https://discord.com/invite/acUW8k7)
 
-#### Type System
-
-<img src="https://raw.githubusercontent.com/inexorgame/inexor-rgf-plugin-string/main/docs/images/type_system.png">
-
 #### Components
 
 | Name              | Property | Data Type | Socket Type |
