@@ -1,0 +1,20 @@
+{
+  "name": "strip_html_tags",
+  "group": "string",
+  "description": "Strips all HTML tags",
+  "components": [
+    "string_operation"
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension": {
+        "title": "Strip HTML Tags",
+        "subject": "Strips all HTML tags",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

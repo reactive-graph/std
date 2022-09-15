@@ -1,0 +1,20 @@
+{
+  "name": "is_kebab_case",
+  "group": "string",
+  "description": "Checks whether the input string is kebab-cased",
+  "components": [
+    "string_bool_operation"
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension": {
+        "title": "Is Kebab Case",
+        "subject": "Checks whether the input string is kebab-cased",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

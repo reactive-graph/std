@@ -1,13 +1,17 @@
 use std::convert::AsRef;
-use std::sync::{Arc, RwLock};
+use std::sync::Arc;
+use std::sync::RwLock;
 
-use crate::behaviour::entity::operation::string_operation_properties::StringOperationProperties;
 use log::debug;
-use serde_json::{json, Value};
+use serde_json::json;
+use serde_json::Value;
 
+use crate::behaviour::entity::operation::properties::StringOperationProperties;
 use crate::behaviour::entity::operation::StringOperationFunction;
 use crate::frp::Stream;
-use crate::model::{PropertyInstanceGetter, PropertyInstanceSetter, ReactiveEntityInstance};
+use crate::model::PropertyInstanceGetter;
+use crate::model::PropertyInstanceSetter;
+use crate::model::ReactiveEntityInstance;
 use crate::reactive::entity::operation::Operation;
 use crate::reactive::entity::Disconnectable;
 
@@ -35,8 +39,11 @@ impl StringOperation<'_> {
             .stream
             .read()
             .unwrap()
-            .map(move |v| json!(f(v.as_str().unwrap().into())));
-        let string_operation = StringOperation {
+            .map(move |v| match v.as_str() {
+                Some(v) => json!(f(v.into())),
+                None => StringOperationProperties::RESULT.default_value(),
+            });
+        let operation = StringOperation {
             f,
             internal_result: RwLock::new(internal_result),
             entity: e.clone(),
@@ -44,19 +51,17 @@ impl StringOperation<'_> {
         };
 
         // Connect the internal result with the stream of the result property
-        string_operation.internal_result.read().unwrap().observe_with_handle(
+        operation.internal_result.read().unwrap().observe_with_handle(
             move |v| {
                 debug!("Setting result of string gate: {}", v);
-                e.set(StringOperationProperties::RESULT.to_string(), json!(*v));
+                e.set(StringOperationProperties::RESULT.to_string(), v.clone()); // json!(*v)
             },
             handle_id,
         );
 
-        string_operation
+        operation
     }
 
-    /// TODO: extract to trait "Named"
-    /// TODO: unit test
     pub fn type_name(&self) -> String {
         self.entity.type_name.clone()
     }
@@ -65,7 +70,6 @@ impl StringOperation<'_> {
 impl Disconnectable for StringOperation<'_> {
     /// TODO: Add guard: disconnect only if actually connected
     fn disconnect(&self) {
-        debug!("Disconnect string operation {}", self.handle_id);
         self.internal_result.read().unwrap().remove(self.handle_id);
     }
 }
@@ -80,10 +84,8 @@ impl Operation for StringOperation<'_> {
     }
 }
 
-/// Automatically disconnect streams on destruction
 impl Drop for StringOperation<'_> {
     fn drop(&mut self) {
-        debug!("Drop string operation");
         self.disconnect();
     }
 }

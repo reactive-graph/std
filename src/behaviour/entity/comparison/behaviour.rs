@@ -3,7 +3,7 @@ use std::sync::{Arc, RwLock};
 use log::debug;
 use serde_json::{json, Value};
 
-use crate::behaviour::entity::comparison::string_comparison_properties::StringComparisonProperties;
+use crate::behaviour::entity::comparison::properties::StringComparisonProperties;
 use crate::behaviour::entity::comparison::StringComparisonFunction;
 use crate::frp::Stream;
 use crate::model::{PropertyInstanceGetter, PropertyInstanceSetter, ReactiveEntityInstance};
@@ -40,9 +40,11 @@ impl StringComparison<'_> {
             .stream
             .read()
             .unwrap()
-            .map(|v| match v.as_str() {
-                Some(lhs_str) => (OperatorPosition::LHS, String::from(lhs_str)),
-                None => (OperatorPosition::LHS, StringComparisonProperties::LHS.default_value()),
+            .map(|v| -> StringComparisonExpressionValue {
+                match v.as_str() {
+                    Some(lhs_str) => (OperatorPosition::LHS, String::from(lhs_str)),
+                    None => (OperatorPosition::LHS, StringComparisonProperties::LHS.default_value().as_str().unwrap().into()),
+                }
             });
         let rhs = e
             .properties
@@ -54,15 +56,18 @@ impl StringComparison<'_> {
             .map(|v| -> StringComparisonExpressionValue {
                 match v.as_str() {
                     Some(rhs_str) => (OperatorPosition::RHS, String::from(rhs_str)),
-                    None => (OperatorPosition::RHS, StringComparisonProperties::RHS.default_value()),
+                    None => (OperatorPosition::RHS, StringComparisonProperties::RHS.default_value().as_str().unwrap().into()),
                 }
             });
 
         let expression = lhs.merge(&rhs).fold(
-            Expression::new(StringComparisonProperties::LHS.default_value(), StringComparisonProperties::RHS.default_value()),
+            Expression::new(
+                StringComparisonProperties::LHS.default_value().as_str().unwrap().into(),
+                StringComparisonProperties::RHS.default_value().as_str().unwrap().into(),
+            ),
             |old_state, (o, value)| match *o {
-                OperatorPosition::LHS => old_state.lhs(String::from(value.clone())),
-                OperatorPosition::RHS => old_state.rhs(String::from(value.clone())),
+                OperatorPosition::LHS => old_state.lhs(value.clone()),
+                OperatorPosition::RHS => old_state.rhs(value.clone()),
             },
         );
 
@@ -83,7 +88,6 @@ impl StringComparison<'_> {
         // Connect the internal result with the stream of the result property
         string_comparison.internal_result.read().unwrap().observe_with_handle(
             move |v| {
-                debug!("Setting result of string comparison: {}", v);
                 e.set(StringComparisonProperties::RESULT.to_string(), json!(*v));
             },
             handle_id,
@@ -92,8 +96,6 @@ impl StringComparison<'_> {
         string_comparison
     }
 
-    /// TODO: extract to trait "Named"
-    /// TODO: unit test
     pub fn type_name(&self) -> String {
         self.entity.type_name.clone()
     }
@@ -102,7 +104,6 @@ impl StringComparison<'_> {
 impl Disconnectable for StringComparison<'_> {
     /// TODO: Add guard: disconnect only if actually connected
     fn disconnect(&self) {
-        debug!("Disconnect string comparison {} {}", self.type_name(), self.handle_id);
         self.internal_result.read().unwrap().remove(self.handle_id);
     }
 }
@@ -123,10 +124,8 @@ impl Gate for StringComparison<'_> {
     }
 }
 
-/// Automatically disconnect streams on destruction
 impl Drop for StringComparison<'_> {
     fn drop(&mut self) {
-        debug!("Drop comparison gate");
         self.disconnect();
     }
 }

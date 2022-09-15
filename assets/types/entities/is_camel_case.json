@@ -1,0 +1,20 @@
+{
+  "name": "is_camel_case",
+  "group": "string",
+  "description": "Checks whether the input string is camelCased",
+  "components": [
+    "string_bool_operation"
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension": {
+        "title": "Is Camel Case",
+        "subject": "Checks whether the input string is camelCased",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "char_count",
+  "group": "string",
+  "description": "Counts the characters",
+  "components": [
+    "string_number_operation"
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension": {
+        "title": "Character Count",
+        "subject": "Counts the characters",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

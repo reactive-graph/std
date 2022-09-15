@@ -1,0 +1,34 @@
+mutation {
+  instances {
+    entities {
+      create(
+        type: "escape_html",
+        id: "ea545477-cbc2-469a-84ac-ffd2f0fd8281",
+        properties: [
+          {
+            name: "lhs",
+            value: "<h1>Hello World & </h1>"
+          },
+          {
+            name: "result",
+            value: ""
+          }
+        ]
+      ) {
+        id
+        type {
+          name
+        }
+        properties(
+          names: [
+            "lhs",
+            "result"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}

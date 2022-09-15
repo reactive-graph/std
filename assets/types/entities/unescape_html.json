@@ -1,0 +1,20 @@
+{
+  "name": "unescape_html",
+  "group": "string",
+  "description": "Unescapes HTML special characters",
+  "components": [
+    "string_operation"
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension": {
+        "title": "Unescape HTML",
+        "subject": "Unescapes HTML special characters",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

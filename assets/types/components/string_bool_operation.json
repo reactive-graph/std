@@ -1,0 +1,15 @@
+{
+  "name": "string_bool_operation",
+  "properties": [
+    {
+      "name": "lhs",
+      "data_type": "string",
+      "socket_type": "input"
+    },
+    {
+      "name": "result",
+      "data_type": "bool",
+      "socket_type": "output"
+    }
+  ]
+}

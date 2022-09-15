@@ -1,0 +1,20 @@
+{
+  "name": "is_alpha",
+  "group": "string",
+  "description": "Checks whether the input string contains only alpha characters",
+  "components": [
+    "string_bool_operation"
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension": {
+        "title": "Is Alpha",
+        "subject": "Checks whether the input string contains only alpha characters",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

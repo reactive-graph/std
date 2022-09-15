@@ -1,0 +1,20 @@
+{
+  "name": "is_title_case",
+  "group": "string",
+  "description": "Checks whether the input string is a titlecased string and there is at least one character",
+  "components": [
+    "string_bool_operation"
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension": {
+        "title": "Is Title Cased",
+        "subject": "Checks whether the input string is a titlecased string and there is at least one character",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

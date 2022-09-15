@@ -1,6 +1,10 @@
-use indradb::{Identifier, NamedProperty};
+use indradb::Identifier;
+use indradb::NamedProperty;
 use serde_json::json;
-use strum_macros::{AsRefStr, Display, IntoStaticStr};
+use serde_json::Value;
+use strum_macros::AsRefStr;
+use strum_macros::Display;
+use strum_macros::IntoStaticStr;
 
 use crate::reactive::property::NamedProperties;
 
@@ -14,10 +18,10 @@ pub enum StringOperationProperties {
 }
 
 impl StringOperationProperties {
-    pub fn default_value(&self) -> String {
+    pub fn default_value(&self) -> Value {
         match self {
-            StringOperationProperties::LHS => String::new(),
-            StringOperationProperties::RESULT => String::new(),
+            StringOperationProperties::LHS => json!(""),
+            StringOperationProperties::RESULT => json!(""),
         }
     }
     pub fn properties() -> NamedProperties {
@@ -32,7 +36,7 @@ impl From<StringOperationProperties> for NamedProperty {
     fn from(p: StringOperationProperties) -> Self {
         NamedProperty {
             name: Identifier::new(p.to_string()).unwrap(),
-            value: json!(p.default_value()),
+            value: p.default_value(),
         }
     }
 }

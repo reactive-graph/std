@@ -1,0 +1,20 @@
+{
+  "name": "escape_html",
+  "group": "string",
+  "description": "Escapes HTML special characters",
+  "components": [
+    "string_operation"
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension": {
+        "title": "Escape HTML",
+        "subject": "Escapes HTML special characters",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

@@ -1,7 +1,7 @@
+pub use behaviour::StringOperation;
 pub use function::StringOperationFunction;
 pub use function::STRING_OPERATIONS;
-pub use string_operation::StringOperation;
 
+pub mod behaviour;
 pub mod function;
-pub mod string_operation;
-pub mod string_operation_properties;
+pub mod properties;

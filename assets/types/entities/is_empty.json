@@ -1,0 +1,20 @@
+{
+  "name": "is_empty",
+  "group": "string",
+  "description": "Checks whether the input string is empty",
+  "components": [
+    "string_bool_operation"
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension": {
+        "title": "Is Empty",
+        "subject": "Checks whether the input string is empty",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

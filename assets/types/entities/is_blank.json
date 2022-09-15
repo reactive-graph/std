@@ -1,0 +1,20 @@
+{
+  "name": "is_blank",
+  "group": "string",
+  "description": "Checks whether the input string is empty or contains only whitespaces",
+  "components": [
+    "string_bool_operation"
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension": {
+        "title": "Is Blank",
+        "subject": "Checks whether the input string is empty or contains only whitespaces",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "is_pascal_case",
+  "group": "string",
+  "description": "Checks whether the input string is PascalCased",
+  "components": [
+    "string_bool_operation"
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension": {
+        "title": "Is Pascal Case",
+        "subject": "Checks whether the input string is PascalCased",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

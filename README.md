@@ -95,14 +95,11 @@ String Handling
 | Split      |                  | lhs (str), rhs (str) -> result (array of str)            |
 | Replace    |                  | lhs (str), search (str), replace (str) -> result (str)   |
 | Chars      |                  | lhs (str) -> result (array of str)                       |
-| Len        |                  | lhs (str) -> result (f64)                                |
 | Lines      |                  | lhs (str) -> result (array of str)                       |
 
-length (str: str) => number
 insert (str: str, to_be_inserted: str, at_pos: number) => str
 replace (str: str, search: str, replace: str) => str
 split (str: str, pos: number) => (str, str)
-is_empty (str: str) => bool
 substring (str: str, start: number, end: number) => str
 to_lines (str: str) => arr(str)
 to_chars (str: str) => arr(str)

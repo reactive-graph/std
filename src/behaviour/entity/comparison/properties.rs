@@ -1,6 +1,10 @@
-use indradb::{Identifier, NamedProperty};
+use indradb::Identifier;
+use indradb::NamedProperty;
 use serde_json::json;
-use strum_macros::{AsRefStr, Display, IntoStaticStr};
+use serde_json::Value;
+use strum_macros::AsRefStr;
+use strum_macros::Display;
+use strum_macros::IntoStaticStr;
 
 use crate::reactive::property::NamedProperties;
 
@@ -16,11 +20,11 @@ pub enum StringComparisonProperties {
 }
 
 impl StringComparisonProperties {
-    pub fn default_value(&self) -> String {
+    pub fn default_value(&self) -> Value {
         match self {
-            StringComparisonProperties::LHS => String::new(),
-            StringComparisonProperties::RHS => String::new(),
-            StringComparisonProperties::RESULT => String::new(),
+            StringComparisonProperties::LHS => json!(""),
+            StringComparisonProperties::RHS => json!(""),
+            StringComparisonProperties::RESULT => json!(false),
         }
     }
     pub fn properties() -> NamedProperties {

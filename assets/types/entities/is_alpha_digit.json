@@ -1,0 +1,20 @@
+{
+  "name": "is_alpha_digit",
+  "group": "string",
+  "description": "Checks whether the input string contains contains only alpha and digit characters",
+  "components": [
+    "string_bool_operation"
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension": {
+        "title": "Is Alpha Digit",
+        "subject": "Checks whether the input string contains contains only alpha and digit characters",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

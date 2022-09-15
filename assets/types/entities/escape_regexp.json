@@ -1,0 +1,20 @@
+{
+  "name": "escape_regexp",
+  "group": "string",
+  "description": "Escapes the regular expression special characters",
+  "components": [
+    "string_operation"
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension": {
+        "title": "Escape Regular Expressions",
+        "subject": "Escapes the regular expression special characters",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

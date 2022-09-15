@@ -1,0 +1,34 @@
+mutation {
+  instances {
+    entities {
+      create(
+        type: "snake_case",
+        id: "d522e6a1-74c8-4808-8388-716b50fba5d8",
+        properties: [
+          {
+            name: "lhs",
+            value: "camelCase"
+          },
+          {
+            name: "result",
+            value: ""
+          }
+        ]
+      ) {
+        id
+        type {
+          name
+        }
+        properties(
+          names: [
+            "lhs",
+            "result"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}
