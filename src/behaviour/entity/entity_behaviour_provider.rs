@@ -12,11 +12,14 @@ use crate::behaviour::entity::gate::StringGate;
 use crate::behaviour::entity::gate::STRING_GATES;
 use crate::behaviour::entity::operation::StringOperation;
 use crate::behaviour::entity::operation::STRING_OPERATIONS;
-use crate::behaviour::entity::str_bool_operation::{StrBoolOperation, STR_BOOL_FUNCTIONS};
+use crate::behaviour::entity::str_bool_operation::StrBoolOperation;
+use crate::behaviour::entity::str_bool_operation::STR_BOOL_FUNCTIONS;
 use crate::behaviour::entity::str_num_operation::StrNumOperation;
 use crate::behaviour::entity::str_num_operation::STR_NUM_FUNCTIONS;
 use crate::behaviour::entity::str_str_num_gate::StrStrNumGate;
 use crate::behaviour::entity::str_str_num_gate::STR_STR_NUM_FUNCTIONS;
+use crate::behaviour::entity::templating::behaviour::Templating;
+use crate::behaviour::entity::templating::behaviour::TEMPLATING;
 use crate::di::*;
 use crate::model::ReactiveEntityInstance;
 use crate::plugins::EntityBehaviourProvider;
@@ -38,6 +41,9 @@ pub struct StrStrNumGateStorage(RwLock<HashMap<Uuid, Arc<StrStrNumGate<'static>>
 
 #[wrapper]
 pub struct StrBoolOperationStorage(RwLock<HashMap<Uuid, Arc<StrBoolOperation<'static>>>>);
+
+#[wrapper]
+pub struct TemplatingStorage(RwLock<HashMap<Uuid, Arc<Templating<'static>>>>);
 
 #[provides]
 fn create_string_operation_storage() -> StringOperationStorage {
@@ -69,6 +75,11 @@ fn create_str_bool_operation_storage() -> StrBoolOperationStorage {
     StrBoolOperationStorage(RwLock::new(HashMap::new()))
 }
 
+#[provides]
+fn create_templating_storage() -> TemplatingStorage {
+    TemplatingStorage(RwLock::new(HashMap::new()))
+}
+
 #[async_trait]
 pub trait StringEntityBehaviourProvider: EntityBehaviourProvider + Send + Sync {
     fn create_string_operation(&self, entity_instance: Arc<ReactiveEntityInstance>);
@@ -83,6 +94,8 @@ pub trait StringEntityBehaviourProvider: EntityBehaviourProvider + Send + Sync {
 
     fn create_str_bool_operation(&self, entity_instance: Arc<ReactiveEntityInstance>);
 
+    fn create_templating(&self, entity_instance: Arc<ReactiveEntityInstance>);
+
     fn remove_string_operation(&self, entity_instance: Arc<ReactiveEntityInstance>);
 
     fn remove_string_gate(&self, entity_instance: Arc<ReactiveEntityInstance>);
@@ -95,6 +108,8 @@ pub trait StringEntityBehaviourProvider: EntityBehaviourProvider + Send + Sync {
 
     fn remove_str_bool_operation(&self, entity_instance: Arc<ReactiveEntityInstance>);
 
+    fn remove_templating(&self, entity_instance: Arc<ReactiveEntityInstance>);
+
     fn remove_by_id(&self, id: Uuid);
 }
 
@@ -105,6 +120,7 @@ pub struct StringEntityBehaviourProviderImpl {
     str_num_operations: StrNumOperationStorage,
     str_str_num_gates: StrStrNumGateStorage,
     str_bool_operations: StrBoolOperationStorage,
+    templating_gates: TemplatingStorage,
 }
 
 interfaces!(StringEntityBehaviourProviderImpl: dyn EntityBehaviourProvider);
@@ -120,6 +136,7 @@ impl StringEntityBehaviourProviderImpl {
             str_num_operations: create_str_num_operation_storage(),
             str_str_num_gates: create_str_str_num_gate_storage(),
             str_bool_operations: create_str_bool_operation_storage(),
+            templating_gates: create_templating_storage(),
         }
     }
 }
@@ -205,6 +222,15 @@ impl StringEntityBehaviourProvider for StringEntityBehaviourProviderImpl {
         }
     }
 
+    fn create_templating(&self, entity_instance: Arc<ReactiveEntityInstance>) {
+        let type_name = entity_instance.type_name.as_str();
+        let id = entity_instance.id;
+        let behaviour = Arc::new(Templating::new(entity_instance.clone()));
+        self.templating_gates.0.write().unwrap().insert(id, behaviour);
+        entity_instance.add_behaviour(type_name);
+        debug!("Added behaviour {} to entity instance {}", type_name, id);
+    }
+
     fn remove_string_operation(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         if self.string_operations.0.write().unwrap().remove(&entity_instance.id).is_some() {
             let type_name = entity_instance.type_name.as_str();
@@ -253,6 +279,14 @@ impl StringEntityBehaviourProvider for StringEntityBehaviourProviderImpl {
         }
     }
 
+    fn remove_templating(&self, entity_instance: Arc<ReactiveEntityInstance>) {
+        if self.templating_gates.0.write().unwrap().remove(&entity_instance.id).is_some() {
+            let type_name = entity_instance.type_name.as_str();
+            entity_instance.remove_behaviour(type_name);
+            debug!("Removed behaviour {} from entity instance {}", type_name, entity_instance.id);
+        }
+    }
+
     fn remove_by_id(&self, id: Uuid) {
         if self.string_operations.0.write().unwrap().contains_key(&id) && self.string_operations.0.write().unwrap().remove(&id).is_some() {
             debug!("Removed behaviour string_operation from entity instance {}", id);
@@ -272,6 +306,9 @@ impl StringEntityBehaviourProvider for StringEntityBehaviourProviderImpl {
         if self.str_bool_operations.0.write().unwrap().contains_key(&id) && self.str_bool_operations.0.write().unwrap().remove(&id).is_some() {
             debug!("Removed behaviour str_bool_operation from entity instance {}", id);
         }
+        if self.templating_gates.0.write().unwrap().contains_key(&id) && self.templating_gates.0.write().unwrap().remove(&id).is_some() {
+            debug!("Removed behaviour templating from entity instance {}", id);
+        }
     }
 }
 
@@ -282,7 +319,11 @@ impl EntityBehaviourProvider for StringEntityBehaviourProviderImpl {
         self.create_string_comparison(entity_instance.clone());
         self.create_str_num_operation(entity_instance.clone());
         self.create_str_str_num_gate(entity_instance.clone());
-        self.create_str_bool_operation(entity_instance);
+        self.create_str_bool_operation(entity_instance.clone());
+        match entity_instance.type_name.as_str() {
+            TEMPLATING => self.create_templating(entity_instance),
+            _ => {}
+        }
     }
 
     fn remove_behaviours(&self, entity_instance: Arc<ReactiveEntityInstance>) {
@@ -291,7 +332,11 @@ impl EntityBehaviourProvider for StringEntityBehaviourProviderImpl {
         self.remove_string_comparison(entity_instance.clone());
         self.remove_str_num_operation(entity_instance.clone());
         self.remove_str_str_num_gate(entity_instance.clone());
-        self.remove_str_bool_operation(entity_instance);
+        self.remove_str_bool_operation(entity_instance.clone());
+        match entity_instance.type_name.as_str() {
+            TEMPLATING => self.remove_templating(entity_instance),
+            _ => {}
+        }
     }
 
     fn remove_behaviours_by_id(&self, id: Uuid) {

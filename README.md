@@ -30,7 +30,7 @@ The Inexor Reactive Graph Flow (RGF) manages reactive flows based on a graph dat
 
 ### About this plugin
 
-String Handling
+This plugin provides string manipulation entities.
 
 [<img src="https://img.shields.io/badge/Language-Rust-brightgreen">](https://www.rust-lang.org/)
 [<img src="https://img.shields.io/badge/Platforms-Linux%20%26%20Windows-brightgreen">]()
@@ -122,6 +122,7 @@ String Handling
 | string_length        | string_number_operation   | Returns the length of the input string                                                                       |
 | strip_html_tags      | string_operation          | Strips all HTML tags                                                                                         |
 | swap_case            | string_operation          | Converts the input to swap case                                                                              |
+| templating           |                           | Renders a template                                                                                           |
 | title_case           | string_operation          | Converts the input to title case                                                                             |
 | train_case           | string_operation          | Converts the input to train case                                                                             |
 | trim                 | string_operation          | Removes whitespace at the beginning and end of a string                                                      |
@@ -151,6 +152,8 @@ find (str: str) => number
 
 ### Thanks to
 
+* https://github.com/a-merezhanyi/voca_rs
+* https://github.com/Keats/tera
 * https://github.com/xd009642/tarpaulin
 * https://codecov.io/
 
