@@ -1,13 +1,18 @@
-use std::sync::{Arc, RwLock};
+use std::sync::Arc;
+use std::sync::RwLock;
 
-use log::debug;
-use serde_json::{json, Value};
+use serde_json::json;
+use serde_json::Value;
 
 use crate::behaviour::entity::gate::function::StringGateFunction;
-use crate::behaviour::entity::gate::string_gate_properties::StringGateProperties;
+use crate::behaviour::entity::gate::properties::StringGateProperties;
 use crate::frp::Stream;
-use crate::model::{PropertyInstanceGetter, PropertyInstanceSetter, ReactiveEntityInstance};
-use crate::reactive::entity::expression::{Expression, ExpressionValue, OperatorPosition};
+use crate::model::PropertyInstanceGetter;
+use crate::model::PropertyInstanceSetter;
+use crate::model::ReactiveEntityInstance;
+use crate::reactive::entity::expression::Expression;
+use crate::reactive::entity::expression::ExpressionValue;
+use crate::reactive::entity::expression::OperatorPosition;
 use crate::reactive::entity::gate::Gate;
 use crate::reactive::entity::operation::Operation;
 use crate::reactive::entity::Disconnectable;
@@ -83,7 +88,6 @@ impl StringGate<'_> {
         // Connect the internal result with the stream of the result property
         string_gate.internal_result.read().unwrap().observe_with_handle(
             move |v| {
-                debug!("Setting result of string gate: {}", v);
                 e.set(StringGateProperties::RESULT.to_string(), json!(*v));
             },
             handle_id,
@@ -92,17 +96,13 @@ impl StringGate<'_> {
         string_gate
     }
 
-    /// TODO: extract to trait "Named"
-    /// TODO: unit test
     pub fn type_name(&self) -> String {
         self.entity.type_name.clone()
     }
 }
 
 impl Disconnectable for StringGate<'_> {
-    /// TODO: Add guard: disconnect only if actually connected
     fn disconnect(&self) {
-        debug!("Disconnect string gate {} {}", self.type_name(), self.handle_id);
         self.internal_result.read().unwrap().remove(self.handle_id);
     }
 }
@@ -123,10 +123,8 @@ impl Gate for StringGate<'_> {
     }
 }
 
-/// Automatically disconnect streams on destruction
 impl Drop for StringGate<'_> {
     fn drop(&mut self) {
-        debug!("Drop string gate");
         self.disconnect();
     }
 }

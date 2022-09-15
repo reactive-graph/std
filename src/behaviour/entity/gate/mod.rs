@@ -1,7 +1,7 @@
+pub use behaviour::StringGate;
 pub use function::StringGateFunction;
 pub use function::STRING_GATES;
-pub use string_gate::StringGate;
 
+pub mod behaviour;
 pub mod function;
-pub mod string_gate;
-pub mod string_gate_properties;
+pub mod properties;

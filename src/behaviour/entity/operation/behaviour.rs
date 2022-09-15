@@ -68,7 +68,6 @@ impl StringOperation<'_> {
 }
 
 impl Disconnectable for StringOperation<'_> {
-    /// TODO: Add guard: disconnect only if actually connected
     fn disconnect(&self) {
         self.internal_result.read().unwrap().remove(self.handle_id);
     }

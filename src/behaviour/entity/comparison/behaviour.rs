@@ -1,13 +1,17 @@
 use std::sync::{Arc, RwLock};
 
-use log::debug;
-use serde_json::{json, Value};
+use serde_json::json;
+use serde_json::Value;
 
 use crate::behaviour::entity::comparison::properties::StringComparisonProperties;
 use crate::behaviour::entity::comparison::StringComparisonFunction;
 use crate::frp::Stream;
-use crate::model::{PropertyInstanceGetter, PropertyInstanceSetter, ReactiveEntityInstance};
-use crate::reactive::entity::expression::{Expression, ExpressionValue, OperatorPosition};
+use crate::model::PropertyInstanceGetter;
+use crate::model::PropertyInstanceSetter;
+use crate::model::ReactiveEntityInstance;
+use crate::reactive::entity::expression::Expression;
+use crate::reactive::entity::expression::ExpressionValue;
+use crate::reactive::entity::expression::OperatorPosition;
 use crate::reactive::entity::gate::Gate;
 use crate::reactive::entity::operation::Operation;
 use crate::reactive::entity::Disconnectable;
@@ -102,7 +106,6 @@ impl StringComparison<'_> {
 }
 
 impl Disconnectable for StringComparison<'_> {
-    /// TODO: Add guard: disconnect only if actually connected
     fn disconnect(&self) {
         self.internal_result.read().unwrap().remove(self.handle_id);
     }

@@ -1,7 +1,6 @@
 use std::sync::Arc;
 use std::sync::RwLock;
 
-use log::debug;
 use serde_json::json;
 use serde_json::Value;
 
