@@ -98,14 +98,18 @@ On destruction of the connector, the stream will be removed.
 
 #### Relation Types
 
-| Name                  | Components | Description                                                                            |
-|-----------------------|------------|----------------------------------------------------------------------------------------|
-| debug_connector       | connector  | This connector logs the value before propagation (log level debug)                     |
-| default_connector     | connector  | This is the default connector type, which simply does nothing than propagate the value |
-| parse_float_connector | connector  | This connector parses a string value and propagates a float value                      |
-| parse_int_connector   | connector  | This connector parses a string value and propagates a int value                        |
-| to_string_connector   | connector  | This connector converts the value of any type to string before propagation             |
-| trace_connector       | connector  | This connector logs the value before propagation (log level trace)                     |
+| Name                            | Components | Description                                                                               |
+|---------------------------------|------------|-------------------------------------------------------------------------------------------|
+| buffered_fifo_connector         | connector  | This connector propagates the first inserted value of the FIFO buffer with the given size |
+| debounce_connector              | connector  | This connector propagates the value if and only if the value is different                 |
+| debug_connector                 | connector  | This connector logs the value before propagation (log level debug)                        |
+| default_connector               | connector  | This is the default connector type, which simply does nothing than propagate the value    |
+| delay_connector                 | connector  | This connector propagates the value after a given duration. This operation is blocking    |
+| numeric_interpolation_connector | connector  | This connector propagates the average of the numeric elements in the buffer               |
+| parse_float_connector           | connector  | This connector parses a string value and propagates a float value                         |
+| parse_int_connector             | connector  | This connector parses a string value and propagates a int value                           |
+| to_string_connector             | connector  | This connector converts the value of any type to string before propagation                |
+| trace_connector                 | connector  | This connector logs the value before propagation (log level trace)                        |
 
 ##### Future: More (useful) connectors
 

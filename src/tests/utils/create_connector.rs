@@ -12,11 +12,7 @@ pub fn create_connector<S: Into<String>>(
 ) -> ReactiveRelationInstance {
     let outbound_property_name = outbound_property_name.into();
     let inbound_property_name = inbound_property_name.into();
-    let type_name = Connector::type_name(
-        type_name.into(),
-        outbound_property_name.clone(),
-        inbound_property_name.clone(),
-    );
+    let type_name = Connector::type_name(type_name.into(), outbound_property_name.clone(), inbound_property_name.clone());
     create_connector_relation_instance_with_properties(
         outbound_entity,
         type_name.into(),

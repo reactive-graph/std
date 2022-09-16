@@ -1,0 +1,12 @@
+{
+  "name": "buffered_fifo_connector",
+  "description": "Connects a property with a other property and buffers the values in a FIFO buffer before propagation",
+  "outbound_type": "*",
+  "inbound_type": "*",
+  "components": [
+    "connector",
+    "buffer"
+  ],
+  "properties": [
+  ]
+}

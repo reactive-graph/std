@@ -1,10 +1,9 @@
-
 mutation createOutbound {
   instances {
     entities {
       create(
         type: "value",
-        id: "dc82735e-28ec-4c24-aedb-d968b73b288f",
+        id: "c171d2bc-5843-46f7-884a-f15033229f1f",
         properties: [
           {
             name: "value",
@@ -34,7 +33,7 @@ mutation createInbound {
     entities {
       create(
         type: "value",
-        id: "4cf8e6d8-f92e-4ffa-9610-ec0635f55e08",
+        id: "560f004f-dc04-49cd-8f56-3d7ed5a59551",
         properties: [
           {
             name: "value",
@@ -64,9 +63,9 @@ mutation createConnector {
     relations {
       create(
         edgeKey: {
-          outboundId: "dc82735e-28ec-4c24-aedb-d968b73b288f",
-          typeName: "default_connector--value--value"
-          inboundId: "4cf8e6d8-f92e-4ffa-9610-ec0635f55e08",
+          outboundId: "c171d2bc-5843-46f7-884a-f15033229f1f",
+          typeName: "debounce_connector--value--value"
+          inboundId: "560f004f-dc04-49cd-8f56-3d7ed5a59551",
         },
         properties: [
           {

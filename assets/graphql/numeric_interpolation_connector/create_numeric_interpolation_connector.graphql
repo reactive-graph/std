@@ -1,13 +1,12 @@
-
 mutation createOutbound {
   instances {
     entities {
       create(
-        type: "value",
-        id: "dc82735e-28ec-4c24-aedb-d968b73b288f",
+        type: "value"
+        id: "e71ac5bb-30d1-452b-8bbe-295bad1e810a"
         properties: [
           {
-            name: "value",
+            name: "value"
             value: "Test"
           }
         ]
@@ -33,11 +32,11 @@ mutation createInbound {
   instances {
     entities {
       create(
-        type: "value",
-        id: "4cf8e6d8-f92e-4ffa-9610-ec0635f55e08",
+        type: "value"
+        id: "2732bf15-d560-48e3-9018-74c949870563"
         properties: [
           {
-            name: "value",
+            name: "value"
             value: "Test"
           }
         ]
@@ -64,18 +63,26 @@ mutation createConnector {
     relations {
       create(
         edgeKey: {
-          outboundId: "dc82735e-28ec-4c24-aedb-d968b73b288f",
-          typeName: "default_connector--value--value"
-          inboundId: "4cf8e6d8-f92e-4ffa-9610-ec0635f55e08",
+          outboundId: "e71ac5bb-30d1-452b-8bbe-295bad1e810a"
+          typeName: "numeric_interpolation_connector--value--value"
+          inboundId: "2732bf15-d560-48e3-9018-74c949870563"
         },
         properties: [
           {
-            name: "outbound_property_name",
+            name: "outbound_property_name"
             value: "value"
           },
           {
-            name: "inbound_property_name",
+            name: "inbound_property_name"
             value: "value"
+          },
+          {
+            name: "buffer_size"
+            value: 10
+          },
+          {
+            name: "buffer"
+            value: []
           }
         ]
       ) {
@@ -85,7 +92,7 @@ mutation createConnector {
         },
         properties(
           names: [
-            "outbound_property_name",
+            "outbound_property_name"
             "inbound_property_name"
           ]
         ) {

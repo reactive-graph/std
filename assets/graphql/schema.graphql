@@ -6,6 +6,10 @@ schema {
   subscription: Subscription
 }
 
+directive @concat(value: String!) on FIELD
+
+directive @random_uuid on FIELD
+
 "Components are composable parts which can be used by types (entity type, relation type)."
 type Component {
   "Textual description of the component."
@@ -492,6 +496,7 @@ type PropertyType {
 
 "Search queries for the type system, the instances and the flows."
 type Query {
+  dynamicGraph: String!
   "Search for flows and their contained instances."
   flows(
     "Filters by the id of the flow"
@@ -717,9 +722,9 @@ scalar JSON
 
 """
 
-A UUID is a unique 128-bit number, stored as 16 octets. UUIDs are parsed as Strings
-within GraphQL. UUIDs are used to assign unique identifiers to entities without requiring a central
-allocating authority.
+A UUID is a unique 128-bit number, stored as 16 octets. UUIDs are parsed as
+Strings within GraphQL. UUIDs are used to assign unique identifiers to
+entities without requiring a central allocating authority.
 
 # References
 

@@ -19,10 +19,7 @@ pub fn create_random_entity_instance<S: Into<String>>(property_name: S) -> React
     };
     let properties = vec![property];
     let vertex_properties = VertexProperties {
-        vertex: Vertex {
-            id: uuid,
-            t: t.clone(),
-        },
+        vertex: Vertex { id: uuid, t: t.clone() },
         props: properties.clone(),
     };
     ReactiveEntityInstance::from(vertex_properties)

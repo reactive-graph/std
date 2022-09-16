@@ -1,0 +1,11 @@
+{
+  "name": "threaded_connector",
+  "description": "Connects a property with a other property. The propagation will run in a new thread",
+  "outbound_type": "*",
+  "inbound_type": "*",
+  "components": [
+    "connector"
+  ],
+  "properties": [
+  ]
+}

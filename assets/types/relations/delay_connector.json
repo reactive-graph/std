@@ -1,0 +1,16 @@
+{
+  "name": "delay_connector",
+  "description": "Connects a property with a other property after the given milli seconds",
+  "outbound_type": "*",
+  "inbound_type": "*",
+  "components": [
+    "connector"
+  ],
+  "properties": [
+    {
+      "name": "delay",
+      "description": "The delay in milli seconds",
+      "data_type": "number"
+    }
+  ]
+}

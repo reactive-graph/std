@@ -1,0 +1,54 @@
+mutation {
+  instances {
+    entities {
+      update(
+        id: "e32e01a9-2956-4d5a-8ad7-6dde79ab5dbc"
+        properties: [
+          {
+            name: "value"
+            value: [
+              "abc"
+            ]
+          }
+        ]
+      ) {
+        id
+        type {
+          name
+        }
+        outbound {
+          inbound {
+            id
+            properties(
+              names: [
+                "value"
+              ]
+            ) {
+              name
+              value
+            }
+          }
+          properties(
+            names: [
+              "buffer_size"
+              "buffer"
+            ]
+          ) {
+            name
+            value
+          }
+        }
+        properties(
+          names: [
+            "value"
+            "buffer_size"
+            "buffer"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}

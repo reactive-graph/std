@@ -1,4 +1,5 @@
-use log::{debug, trace};
+use log::debug;
+use log::trace;
 use serde_json::json;
 use serde_json::Value;
 use std::collections::HashMap;
@@ -33,11 +34,7 @@ pub const FN_PARSE_INT_CONNECTOR: ConnectorFunction = |v| {
     if str_value.is_none() {
         return json!(0);
     }
-    str_value
-        .unwrap()
-        .parse::<i64>()
-        .map(|int_value| json!(int_value))
-        .unwrap_or_else(|_| json!(0))
+    str_value.unwrap().parse::<i64>().map(|int_value| json!(int_value)).unwrap_or_else(|_| json!(0))
 };
 
 /// This connector converts the value of any type to string before propagation
