@@ -1,0 +1,11 @@
+{
+  "name": "decrement_by_connector",
+  "description": "Connects a outbound property with another property. The value of the outbound property will be subtracted from the value of the inbound property.",
+  "outbound_type": "*",
+  "inbound_type": "*",
+  "components": [
+    "connector"
+  ],
+  "properties": [
+  ]
+}

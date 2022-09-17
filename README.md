@@ -101,20 +101,22 @@ On destruction of the connector, the stream will be removed.
 
 #### Relation Types
 
-| Name                            | Components | Description                                                                               |
-|---------------------------------|------------|-------------------------------------------------------------------------------------------|
-| buffered_fifo_connector         | connector  | This connector propagates the first inserted value of the FIFO buffer with the given size |
+| Name                            | Components | Description                                                                                        |
+|---------------------------------|------------|----------------------------------------------------------------------------------------------------|
+| buffered_fifo_connector         | connector  | This connector propagates the first inserted value of the FIFO buffer with the given size          |
 |                                 | buffer     |
-| debounce_connector              | connector  | This connector propagates the value if and only if the value is different                 |
-| debug_connector                 | connector  | This connector logs the value before propagation (log level debug)                        |
-| default_connector               | connector  | This is the default connector type, which simply does nothing than propagate the value    |
-| delay_connector                 | connector  | This connector propagates the value after a given duration. This operation is blocking    |
-| numeric_interpolation_connector | connector  | This connector propagates the average of the numeric elements in the buffer               |
+| debounce_connector              | connector  | This connector propagates the value if and only if the value is different                          |
+| debug_connector                 | connector  | This connector logs the value before propagation (log level debug)                                 |
+| default_connector               | connector  | This is the default connector type, which simply does nothing than propagate the value             |
+| delay_connector                 | connector  | This connector propagates the value after a given duration. This operation is blocking             |
+| numeric_interpolation_connector | connector  | This connector propagates the average of the numeric elements in the buffer                        |
 |                                 | buffer     |
-| parse_float_connector           | connector  | This connector parses a string value and propagates a float value                         |
-| parse_int_connector             | connector  | This connector parses a string value and propagates a int value                           |
-| to_string_connector             | connector  | This connector converts the value of any type to string before propagation                |
-| trace_connector                 | connector  | This connector logs the value before propagation (log level trace)                        |
+| parse_float_connector           | connector  | This connector parses a string value and propagates a float value                                  |
+| parse_int_connector             | connector  | This connector parses a string value and propagates a int value                                    |
+| to_string_connector             | connector  | This connector converts the value of any type to string before propagation                         |
+| trace_connector                 | connector  | This connector logs the value before propagation (log level trace)                                 |
+| increment_by_connector          | connector  | This connector adds the value of the outbound property to the value of the inbound property        |
+| increment_by_connector          | connector  | This connector subtracts the value of the outbound property from the value of the inbound property |
 
 ##### Future: More (useful) connectors
 
@@ -122,8 +124,6 @@ On destruction of the connector, the stream will be removed.
 |---------------------|------------|--------------------------------------------------------------------------|
 | str_split_connector | connector  | A string is split into tokens. Propagates an JSON array of string tokens |
 | str_join_connector  | connector  | Joins an array of strings and propagates the resulting string            |
-| increment_connector | connector  | Propagates the incremented number                                        |
-| decrement_connector | connector  | Propagates the decremented number                                        |
 
 ### Thanks to
 

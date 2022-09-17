@@ -68,6 +68,24 @@ pub const FN_THREADED_CONNECTOR: ComplexConnectorFunction = |new_value, inbound_
     });
 };
 
+pub const FN_INCREMENT_BY_CONNECTOR: ComplexConnectorFunction = |increment_by, inbound_property_name, relation_instance| {
+    if let Some(old_value) = relation_instance.inbound.get(&inbound_property_name).and_then(|v| v.as_i64()) {
+        if let Some(increment_by) = increment_by.as_i64() {
+            let new_value = old_value + increment_by;
+            relation_instance.inbound.set(&inbound_property_name, json!(new_value));
+        }
+    }
+};
+
+pub const FN_DECREMENT_BY_CONNECTOR: ComplexConnectorFunction = |decrement_by, inbound_property_name, relation_instance| {
+    if let Some(old_value) = relation_instance.inbound.get(&inbound_property_name).and_then(|v| v.as_i64()) {
+        if let Some(decrement_by) = decrement_by.as_i64() {
+            let new_value = old_value - decrement_by;
+            relation_instance.inbound.set(&inbound_property_name, json!(new_value));
+        }
+    }
+};
+
 lazy_static! {
     pub static ref COMPLEX_CONNECTORS: HashMap<&'static str, ComplexConnectorFunction> = vec![
         ("delay_connector", FN_DELAY_CONNECTOR),
@@ -75,6 +93,8 @@ lazy_static! {
         ("buffered_fifo_connector", FN_BUFFERED_FIFO_CONNECTOR),
         ("numeric_interpolation_connector", FN_NUMERIC_INTERPOLATION_CONNECTOR),
         ("threaded_connector", FN_THREADED_CONNECTOR),
+        ("increment_by_connector", FN_INCREMENT_BY_CONNECTOR),
+        ("decrement_by_connector", FN_DECREMENT_BY_CONNECTOR),
     ]
     .into_iter()
     .collect();
