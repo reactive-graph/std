@@ -16,7 +16,7 @@ log = { version = "0.4", features = ["std", "serde"] }
 log4rs = { version = "1.0", features = ["console_appender", "file_appender", "toml_format"]}
 matchit = "0.4"
 query_interface = "0.3"
-rust-embed = { version = "6.2", features = ["debug-embed", "compression"] }
+rust-embed = { version = "6.4", features = ["debug-embed", "compression"] }
 serde = { version = "1.0", features = [ "derive" ] }
 serde_json = "1.0"
 shellexpand = "2.1"
