@@ -1,17 +1,22 @@
+#![allow(clippy::map_entry)]
+
 #[macro_use]
 extern crate query_interface;
 
 use std::sync::Arc;
 
-use crate::di::{profiles, Container, Provider};
 use inexor_rgf_core_di as di;
 use inexor_rgf_core_model as model;
 use inexor_rgf_core_plugins as plugins;
 use inexor_rgf_core_reactive as reactive;
 use log::error;
 
+use crate::di::profiles;
+use crate::di::Container;
+use crate::di::Provider;
 use crate::plugin::ConfigPlugin;
-use crate::plugins::{Plugin, PluginError};
+use crate::plugins::Plugin;
+use crate::plugins::PluginError;
 
 pub mod behaviour;
 pub mod plugin;
@@ -26,13 +31,13 @@ pub fn construct_plugin() -> Result<Arc<dyn Plugin>, PluginError> {
     let container = &mut container;
     let plugin = Provider::<dyn ConfigPlugin>::create(container);
     let plugin = Arc::new(plugin);
-    let plugin: Result<Arc<dyn Plugin>, _> = <dyn query_interface::Object>::query_arc(plugin.clone());
+    let plugin: Result<Arc<dyn Plugin>, _> = <dyn query_interface::Object>::query_arc(plugin);
     match plugin {
         Ok(plugin) => Ok(plugin),
         Err(_) => {
             const PKG_NAME: &str = env!("CARGO_PKG_NAME");
             error!("Failed to construct plugin {}", PKG_NAME);
-            return Err(PluginError::PluginCreationError);
+            Err(PluginError::PluginCreationError)
         }
     }
 }

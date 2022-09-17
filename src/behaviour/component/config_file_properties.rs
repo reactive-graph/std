@@ -2,7 +2,9 @@ use indradb::Identifier;
 use indradb::NamedProperty;
 use serde_json::json;
 use serde_json::Value;
-use strum_macros::{AsRefStr, Display, IntoStaticStr};
+use strum_macros::AsRefStr;
+use strum_macros::Display;
+use strum_macros::IntoStaticStr;
 
 use crate::reactive::NamedProperties;
 

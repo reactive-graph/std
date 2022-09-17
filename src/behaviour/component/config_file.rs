@@ -1,4 +1,3 @@
-use inexor_rgf_core_model::PropertyInstanceGetter;
 use std::convert::AsRef;
 use std::path::Path;
 use std::sync::Arc;
@@ -8,6 +7,7 @@ use log::trace;
 use serde_json::Value;
 
 use crate::behaviour::component::ConfigFileProperties;
+use crate::model::PropertyInstanceGetter;
 use crate::model::PropertyInstanceSetter;
 use crate::model::ReactiveEntityInstance;
 use crate::reactive::entity::Disconnectable;
@@ -40,7 +40,7 @@ impl ConfigFile {
                             let data = toml::from_str::<Value>(toml_config.as_str());
                             match data {
                                 Ok(data) => {
-                                    entity.set(ConfigFileProperties::RESULT, data.clone());
+                                    entity.set(ConfigFileProperties::RESULT, data);
                                 }
                                 Err(e) => {
                                     error!("Failed to parse config file {}: {}", filename, e.to_string());

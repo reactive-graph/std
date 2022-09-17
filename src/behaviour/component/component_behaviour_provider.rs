@@ -51,17 +51,15 @@ impl ConfigComponentBehaviourProvider for ConfigComponentBehaviourProviderImpl {
     }
 
     fn remove_config_file_behaviour(&self, entity_instance: Arc<ReactiveEntityInstance>) {
-        if let Some(_) = self.config_file_behaviours.0.write().unwrap().remove(&entity_instance.id) {
+        if self.config_file_behaviours.0.write().unwrap().remove(&entity_instance.id).is_some() {
             entity_instance.remove_behaviour(CONFIG_FILE);
             debug!("Removed behaviour {} from entity instance {}", CONFIG_FILE, entity_instance.id);
         }
     }
 
     fn remove_by_id(&self, id: Uuid) {
-        if self.config_file_behaviours.0.write().unwrap().contains_key(&id) {
-            if let Some(_) = self.config_file_behaviours.0.write().unwrap().remove(&id) {
-                debug!("Removed behaviour {} from entity instance {}", CONFIG_FILE, id);
-            }
+        if self.config_file_behaviours.0.write().unwrap().contains_key(&id) && self.config_file_behaviours.0.write().unwrap().remove(&id).is_some() {
+            debug!("Removed behaviour {} from entity instance {}", CONFIG_FILE, id);
         }
     }
 }
