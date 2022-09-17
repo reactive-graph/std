@@ -1,3 +1,5 @@
+#![allow(clippy::map_entry)]
+
 #[macro_use]
 extern crate query_interface;
 

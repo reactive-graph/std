@@ -75,14 +75,14 @@ impl HttpComponentBehaviourProvider for HttpComponentBehaviourProviderImpl {
     }
 
     fn remove_http(&self, entity_instance: Arc<ReactiveEntityInstance>) {
-        if let Some(_) = self.http.0.write().unwrap().remove(&entity_instance.id) {
+        if self.http.0.write().unwrap().remove(&entity_instance.id).is_some() {
             entity_instance.remove_behaviour(HTTP);
             debug!("Removed behaviour {} from entity instance {}", HTTP, entity_instance.id);
         }
     }
 
     fn remove_json_rpc(&self, entity_instance: Arc<ReactiveEntityInstance>) {
-        if let Some(_) = self.json_rpc.0.write().unwrap().remove(&entity_instance.id) {
+        if self.json_rpc.0.write().unwrap().remove(&entity_instance.id).is_some() {
             entity_instance.remove_behaviour(JSON_RPC);
             debug!("Removed behaviour {} from entity instance {}", JSON_RPC, entity_instance.id);
         }
@@ -110,7 +110,7 @@ impl ComponentBehaviourProvider for HttpComponentBehaviourProviderImpl {
             self.create_http(entity_instance.clone());
         }
         if entity_instance.is_a(JSON_RPC) {
-            self.create_json_rpc(entity_instance.clone());
+            self.create_json_rpc(entity_instance);
         }
     }
 
@@ -127,7 +127,7 @@ impl ComponentBehaviourProvider for HttpComponentBehaviourProviderImpl {
             self.remove_http(entity_instance.clone());
         }
         if entity_instance.behaves_as(JSON_RPC) {
-            self.remove_json_rpc(entity_instance.clone());
+            self.remove_json_rpc(entity_instance);
         }
     }
 
