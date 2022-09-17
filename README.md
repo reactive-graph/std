@@ -53,19 +53,53 @@ There are entity types for each data type.
 
 #### Components
 
-| Name        | Description                                                                                     |
-|-------------|-------------------------------------------------------------------------------------------------|
-| debug_value | With this component applied an entity type with a property value will be logged on every change |
+| *Component*            | *Properties* | *Data Type* | *Socket Type* | Description                           |
+|------------------------|--------------|-------------|---------------|---------------------------------------|
+|                        |
+| value_boolean          | value        | boolean     | output        | A boolean value                       |
+| value_number           | value        | number      | output        | A numeric value                       |
+| value_string           | value        | string      | output        | A string value                        |
+| value_array            | value        | array       | output        | A array value                         |
+| value_object           | value        | object      | output        | A object value                        | 
+|                        |
+| state_boolean          | state        | boolean     | none          | A boolean state                       |
+|                        | set_state    | boolean     | input         |
+| state_number           | state        | number      | none          | A numeric state                       |
+|                        | set_state    | number      | input         |
+| state_string           | state        | string      | none          | A string state                        |
+|                        | set_state    | string      | input         |
+| state_array            | state        | array       | none          | A array state                         |
+|                        | set_state    | array       | input         |
+| state_object           | state        | object      | none          | A object state                        |
+|                        | set_state    | object      | input         |
+|                        |
+| value_debugger_debug   |              |             |               | Debugger for values (log level debug) |
+| value_debugger_trace   |              |             |               | Debugger for values (log level trace) |
+|                        |
+| state_debugger_debug   |              |             |               | Debugger for states (log level debug) |
+| state_debugger_trace   |              |             |               | Debugger for states (log level trace) |
 
 #### Entity Types
 
-| Name          | Description           | Output Properties |
-|---------------|-----------------------|-------------------|
-| value         | Value of any type     | value             |
-| string_value  | Value of type string  | value             |
-| numeric_value | Value of type numeric | value             |
-| array_value   | Value of type array   | value             |
-| object_value  | Value of type object  | value             |
+| Name          | Components    | Description     |
+|---------------|---------------|-----------------|
+|               |
+| value_array   | value_array   | A array value   |
+| value_boolean | value_boolean | A boolean value |
+| value_number  | value_number  | A numeric value |
+| value_string  | value_string  | A string value  |
+| value_object  | value_object  | A object value  |
+|               |
+| state_array   | value_array   | A array state   |
+|               | state_array   |                 |
+| state_boolean | value_boolean | A boolean state |
+|               | state_boolean |                 |
+| state_number  | value_number  | A numeric state |
+|               | state_boolean |                 |
+| state_string  | value_string  | A string state  |
+|               | state_boolean |                 |
+| state_object  | value_object  | A object state  | 
+|               | state_boolean |                 |
 
 ### Thanks to
 
