@@ -1,8 +1,11 @@
-use crate::behaviour::relation::connector::ConnectorProperties;
-use crate::model::{ReactiveEntityInstance, ReactiveRelationInstance};
-use serde_json::json;
 use std::collections::HashMap;
 use std::sync::Arc;
+
+use serde_json::json;
+
+use crate::behaviour::relation::properties::ConnectorProperties;
+use crate::model::ReactiveEntityInstance;
+use crate::model::ReactiveRelationInstance;
 
 pub fn create_connector_relation_instance_with_properties<S: Into<String>>(
     outbound_entity: Arc<ReactiveEntityInstance>,

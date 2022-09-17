@@ -116,7 +116,7 @@ On destruction of the connector, the stream will be removed.
 | to_string_connector             | connector  | This connector converts the value of any type to string before propagation                         |
 | trace_connector                 | connector  | This connector logs the value before propagation (log level trace)                                 |
 | increment_by_connector          | connector  | This connector adds the value of the outbound property to the value of the inbound property        |
-| increment_by_connector          | connector  | This connector subtracts the value of the outbound property from the value of the inbound property |
+| decrement_by_connector          | connector  | This connector subtracts the value of the outbound property from the value of the inbound property |
 
 ##### Future: More (useful) connectors
 
