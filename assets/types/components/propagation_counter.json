@@ -1,0 +1,13 @@
+{
+  "name": "propagation_counter",
+  "description": "Counts the number of propagations",
+  "properties": [
+    {
+      "name": "propagation_count",
+      "description": "The count of propagations",
+      "data_type": "number"
+    }
+  ],
+  "extensions": [
+  ]
+}

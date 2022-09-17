@@ -1,5 +1,5 @@
-use crate::behaviour::relation::complex_connector::BufferProperties::BUFFER;
-use crate::behaviour::relation::complex_connector::BufferProperties::BUFFER_SIZE;
+use crate::behaviour::relation::properties::BufferProperties::BUFFER;
+use crate::behaviour::relation::properties::BufferProperties::BUFFER_SIZE;
 use crate::model::PropertyInstanceGetter;
 use crate::model::PropertyInstanceSetter;
 use crate::model::ReactiveRelationInstance;

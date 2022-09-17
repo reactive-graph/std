@@ -3,8 +3,8 @@ use std::sync::Arc;
 use serde_json::Value;
 use uuid::Uuid;
 
-use crate::behaviour::relation::connector::properties::ConnectorProperties;
 use crate::behaviour::relation::get_connector_relation_properties;
+use crate::behaviour::relation::properties::ConnectorProperties;
 use crate::model::PropertyInstanceGetter;
 use crate::model::PropertyInstanceSetter;
 use crate::model::ReactiveEntityInstance;

@@ -161,11 +161,11 @@ impl ConnectorRelationBehaviourProvider for ConnectorRelationBehaviourProviderIm
     fn remove_by_key(&self, edge_key: EdgeKey) {
         if self.connectors.0.write().unwrap().contains_key(&edge_key) {
             self.connectors.0.write().unwrap().remove(&edge_key);
-            debug!("Removed behaviour connector to relation instance {:?}", edge_key);
+            debug!("Removed behaviour connector from relation instance {:?}", edge_key);
         }
         if self.complex_connectors.0.write().unwrap().contains_key(&edge_key) {
             self.complex_connectors.0.write().unwrap().remove(&edge_key);
-            debug!("Removed behaviour complex_connectors to relation instance {:?}", edge_key);
+            debug!("Removed behaviour complex_connectors from relation instance {:?}", edge_key);
         }
     }
 }

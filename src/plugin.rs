@@ -4,6 +4,7 @@ use std::sync::RwLock;
 use crate::di::*;
 use async_trait::async_trait;
 
+use crate::behaviour::component::component_behaviour_provider::ConnectorComponentBehaviourProviderImpl;
 use crate::behaviour::relation::relation_behaviour_provider::ConnectorRelationBehaviourProviderImpl;
 use crate::plugins::plugin::PluginMetadata;
 use crate::plugins::plugin_context::PluginContext;
@@ -35,6 +36,7 @@ pub trait ConnectorPlugin: Plugin + Send + Sync {}
 pub struct ConnectorPluginImpl {
     component_provider: Wrc<ConnectorComponentProviderImpl>,
     relation_type_provider: Wrc<ConnectorRelationTypeProviderImpl>,
+    component_behaviour_provider: Wrc<ConnectorComponentBehaviourProviderImpl>,
     relation_behaviour_provider: Wrc<ConnectorRelationBehaviourProviderImpl>,
 
     context: PluginContextContainer,
@@ -99,7 +101,13 @@ impl Plugin for ConnectorPluginImpl {
     }
 
     fn get_component_behaviour_provider(&self) -> Result<Arc<dyn ComponentBehaviourProvider>, PluginError> {
-        Err(PluginError::NoComponentBehaviourProvider)
+        let component_behaviour_provider = self.component_behaviour_provider.clone();
+        let component_behaviour_provider: Result<Arc<dyn ComponentBehaviourProvider>, _> =
+            <dyn query_interface::Object>::query_arc(component_behaviour_provider);
+        if component_behaviour_provider.is_err() {
+            return Err(PluginError::NoComponentBehaviourProvider);
+        }
+        Ok(component_behaviour_provider.unwrap())
     }
 
     fn get_entity_behaviour_provider(&self) -> Result<Arc<dyn EntityBehaviourProvider>, PluginError> {

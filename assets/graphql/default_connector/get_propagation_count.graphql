@@ -1,0 +1,14 @@
+query {
+  instances {
+    relations(
+      outboundId: "dc82735e-28ec-4c24-aedb-d968b73b288f"
+      type: "default_connector--value--value"
+      inboundId: "4cf8e6d8-f92e-4ffa-9610-ec0635f55e08"
+    ) {
+      properties(name: "propagation_count") {
+        name
+        value
+      }
+    }
+  }
+}

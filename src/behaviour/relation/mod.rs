@@ -1,10 +1,13 @@
-use crate::behaviour::relation::connector::ConnectorProperties;
+use std::collections::HashMap;
+
 use serde_json::json;
 use serde_json::Value;
-use std::collections::HashMap;
+
+use crate::behaviour::relation::properties::ConnectorProperties;
 
 pub mod complex_connector;
 pub mod connector;
+pub mod properties;
 pub mod relation_behaviour_provider;
 
 /// The relation instance of type connector contains exactly two properties

@@ -1,5 +1,5 @@
 use crate::behaviour::relation::complex_connector::function::ComplexConnectorFunction;
-use crate::behaviour::relation::connector::ConnectorProperties;
+use crate::behaviour::relation::properties::ConnectorProperties;
 use crate::model::PropertyInstanceGetter;
 use crate::model::ReactiveRelationInstance;
 use serde_json::Value;

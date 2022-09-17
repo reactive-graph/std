@@ -1,0 +1,3 @@
+pub use propagation_counter_properties::PropagationCountProperties;
+
+pub mod propagation_counter_properties;
