@@ -37,14 +37,11 @@ impl LoadBinaryData {
                     if let Ok(mut file) = File::open(path) {
                         let mut buffer = Vec::new();
                         let _ = file.read_to_end(&mut buffer);
-                        match infer::get(&buffer) {
-                            Some(kind) => {
-                                let mime_type = kind.mime_type();
-                                let data_as_base64 = base64::encode(&buffer);
-                                let data_url = json!(format!("data:{};base64,{}", mime_type, data_as_base64));
-                                entity.set(LoadBinaryDataProperties::DATA_URL.as_ref(), data_url);
-                            }
-                            None => {}
+                        if let Some(kind) = infer::get(&buffer) {
+                            let mime_type = kind.mime_type();
+                            let data_as_base64 = base64::encode(&buffer);
+                            let data_url = json!(format!("data:{};base64,{}", mime_type, data_as_base64));
+                            entity.set(LoadBinaryDataProperties::DATA_URL.as_ref(), data_url);
                         }
                     }
                 }
