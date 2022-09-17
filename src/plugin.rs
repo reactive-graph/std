@@ -19,7 +19,6 @@ use crate::plugins::RelationBehaviourProvider;
 use crate::plugins::RelationTypeProvider;
 use crate::plugins::WebResourceProvider;
 use crate::provider::FileComponentProviderImpl;
-use crate::provider::FileEntityTypeProviderImpl;
 
 #[wrapper]
 pub struct PluginContextContainer(RwLock<Option<std::sync::Arc<dyn PluginContext>>>);
@@ -36,7 +35,6 @@ pub trait FilePlugin: Plugin + Send + Sync {}
 pub struct FilePluginImpl {
     component_provider: Wrc<FileComponentProviderImpl>,
     component_behaviour_provider: Wrc<FileComponentBehaviourProviderImpl>,
-    entity_type_provider: Wrc<FileEntityTypeProviderImpl>,
 
     runtime_manager: Wrc<dyn RuntimeManager>,
 
@@ -91,12 +89,7 @@ impl Plugin for FilePluginImpl {
     }
 
     fn get_entity_type_provider(&self) -> Result<Arc<dyn EntityTypeProvider>, PluginError> {
-        let entity_type_provider = self.entity_type_provider.clone();
-        let entity_type_provider: Result<Arc<dyn EntityTypeProvider>, _> = <dyn query_interface::Object>::query_arc(entity_type_provider);
-        if entity_type_provider.is_err() {
-            return Err(PluginError::NoEntityTypeProvider);
-        }
-        Ok(entity_type_provider.unwrap())
+        Err(PluginError::NoEntityTypeProvider)
     }
 
     fn get_relation_type_provider(&self) -> Result<Arc<dyn RelationTypeProvider>, PluginError> {
