@@ -6,6 +6,10 @@ schema {
   subscription: Subscription
 }
 
+directive @concat(value: String!) on FIELD
+
+directive @random_uuid on FIELD
+
 "Components are composable parts which can be used by types (entity type, relation type)."
 type Component {
   "Textual description of the component."
@@ -14,8 +18,12 @@ type Component {
   entityTypes: [EntityType!]!
   "The extensions which are defined by the component."
   extensions(name: String): [Extension!]!
+  "Query which relation types are using this component as inbound type"
+  inboundOf: [RelationType!]!
   "The name of the component."
   name: String!
+  "Query which relation types are using this component as outbound type"
+  outboundOf: [RelationType!]!
   "The properties which are applied on entity or relation instances."
   properties(name: String): [PropertyType!]!
   "Query which relation types are using this component"
@@ -161,6 +169,8 @@ type Flow {
 
 "Search for instances"
 type Instances {
+  countEntityInstances: Int!
+  countRelationInstances: Int!
   """
 
   Search for entity instances.
@@ -245,6 +255,8 @@ type MutationEntityInstances {
   of the property.
   """
   create(
+    "Creates the entity instance with the given components."
+    components: [String!],
     "The id of the entity instance. If none is given a random uuid will be generated."
     id: UUID,
     properties: [PropertyInstanceDefinition!],
@@ -380,7 +392,12 @@ type MutationRelationInstances {
   If properties are not provided, default values will be used depending on the data type
   of the property.
   """
-  create(edgeKey: EdgeKeyDefinition!, properties: [PropertyInstanceDefinition!]): RelationInstance!
+  create(
+    "Creates the relation instance with the given components."
+    components: [String!],
+    edgeKey: EdgeKeyDefinition!,
+    properties: [PropertyInstanceDefinition!]
+  ): RelationInstance!
   "Deletes an relation instance."
   delete(edgeKey: EdgeKeyDefinition!): Boolean!
   """
@@ -481,6 +498,7 @@ type PropertyType {
 
 "Search queries for the type system, the instances and the flows."
 type Query {
+  dynamicGraph: String!
   "Search for flows and their contained instances."
   flows(
     "Filters by the id of the flow"
@@ -492,6 +510,7 @@ type Query {
   ): [Flow!]!
   "Search for instances (entity instances, relation instances)."
   instances: Instances!
+  randomUuid: String!
   "Search for types (components, entity types, relation types)."
   types: Types!
 }
@@ -582,7 +601,9 @@ type RelationType {
   fullName: String!
   "The relation type belongs to the given group of relation types."
   group: String!
-  "The inbound entity type."
+  "The inbound components."
+  inboundComponents: [Component!]!
+  "The inbound entity type(s)."
   inboundTypes: [EntityType!]!
   """
 
@@ -594,7 +615,9 @@ type RelationType {
   (without type suffix).
   """
   name: String!
-  "The outbound entity type."
+  "The outbound components."
+  outboundComponents: [Component!]!
+  "The outbound entity type(s)."
   outboundTypes: [EntityType!]!
   """
 
@@ -635,6 +658,9 @@ type Types {
     "Searches by the name of the components. Allowed wildcards are: ? and *"
     search: String
   ): [Component!]!
+  countComponents: Int!
+  countEntityTypes: Int!
+  countRelationTypes: Int!
   """
 
   Search for entity types.
@@ -702,9 +728,9 @@ scalar JSON
 
 """
 
-A UUID is a unique 128-bit number, stored as 16 octets. UUIDs are parsed as Strings
-within GraphQL. UUIDs are used to assign unique identifiers to entities without requiring a central
-allocating authority.
+A UUID is a unique 128-bit number, stored as 16 octets. UUIDs are parsed as
+Strings within GraphQL. UUIDs are used to assign unique identifiers to
+entities without requiring a central allocating authority.
 
 # References
 

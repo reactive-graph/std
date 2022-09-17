@@ -1,0 +1,14 @@
+{
+  "name": "state_number",
+  "group": "value",
+  "description": "State of type number",
+  "components": [
+    "named",
+    "value_number",
+    "state_number"
+  ],
+  "properties": [
+  ],
+  "extensions": [
+  ]
+}

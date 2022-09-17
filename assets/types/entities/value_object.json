@@ -1,0 +1,13 @@
+{
+  "name": "value_object",
+  "group": "value",
+  "description": "Value of type object",
+  "components": [
+    "named",
+    "value_object"
+  ],
+  "properties": [
+  ],
+  "extensions": [
+  ]
+}

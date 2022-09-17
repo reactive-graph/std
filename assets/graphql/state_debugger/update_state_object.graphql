@@ -1,0 +1,28 @@
+mutation {
+  instances {
+    entities {
+      update(
+        id: "1f0d1b1f-bb53-4e80-8103-6a350f459ceb",
+        properties: [
+          {
+            name: "set_state",
+            value: {
+              test: "123456"
+            }
+          }
+        ]
+      ) {
+        id
+        type {
+          name
+        }
+        components
+        behaviours
+        properties(names: [ "value", "state"]) {
+          name
+          value
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "state_number",
+  "description": "State of type number",
+  "properties": [
+    {
+      "name": "state",
+      "data_type": "number",
+      "socket_type": "none"
+    },
+    {
+      "name": "set_state",
+      "data_type": "number",
+      "socket_type": "input"
+    }
+  ]
+}

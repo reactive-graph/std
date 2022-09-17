@@ -1,0 +1,11 @@
+{
+  "name": "value_boolean",
+  "description": "Value of type boolean",
+  "properties": [
+    {
+      "name": "value",
+      "data_type": "bool",
+      "socket_type": "output"
+    }
+  ]
+}

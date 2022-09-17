@@ -1,0 +1,16 @@
+{
+  "name": "state_boolean",
+  "description": "State of type boolean",
+  "properties": [
+    {
+      "name": "state",
+      "data_type": "bool",
+      "socket_type": "none"
+    },
+    {
+      "name": "set_state",
+      "data_type": "bool",
+      "socket_type": "input"
+    }
+  ]
+}

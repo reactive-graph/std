@@ -1,0 +1,14 @@
+{
+  "name": "state_boolean",
+  "group": "value",
+  "description": "State of type boolean",
+  "components": [
+    "named",
+    "value_boolean",
+    "state_boolean"
+  ],
+  "properties": [
+  ],
+  "extensions": [
+  ]
+}

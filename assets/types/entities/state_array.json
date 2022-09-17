@@ -1,0 +1,14 @@
+{
+  "name": "state_array",
+  "group": "value",
+  "description": "State of type array",
+  "components": [
+    "named",
+    "value_array",
+    "state_array"
+  ],
+  "properties": [
+  ],
+  "extensions": [
+  ]
+}

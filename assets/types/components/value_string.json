@@ -1,0 +1,11 @@
+{
+  "name": "value_string",
+  "description": "Value of type string",
+  "properties": [
+    {
+      "name": "value",
+      "data_type": "string",
+      "socket_type": "output"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+mutation {
+  instances {
+    entities {
+      update(
+        id: "1f0d1b1f-bb53-4e80-8103-6a350f459ceb",
+        addComponents: [
+          "state_debugger_debug",
+          "labeled"
+        ]
+      ) {
+        id
+        type {
+          name
+        }
+        components
+        behaviours
+        properties(names: ["value", "state"]) {
+          name
+          value
+        }
+      }
+    }
+  }
+}

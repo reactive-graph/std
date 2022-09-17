@@ -1,12 +1,15 @@
 #![feature(register_tool)]
 #![register_tool(tarpaulin)]
+#![allow(clippy::map_entry)]
 
 #[macro_use]
 extern crate query_interface;
 
 use std::sync::Arc;
 
-use crate::di::{profiles, Container, Provider};
+use crate::di::profiles;
+use crate::di::Container;
+use crate::di::Provider;
 use inexor_rgf_core_di as di;
 use inexor_rgf_core_model as model;
 use inexor_rgf_core_plugins as plugins;
@@ -14,7 +17,8 @@ use inexor_rgf_core_reactive as reactive;
 use log::error;
 
 use crate::plugin::ValuePlugin;
-use crate::plugins::{Plugin, PluginError};
+use crate::plugins::Plugin;
+use crate::plugins::PluginError;
 
 pub mod behaviour;
 pub mod plugin;

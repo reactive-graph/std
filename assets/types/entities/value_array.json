@@ -1,0 +1,13 @@
+{
+  "name": "value_array",
+  "group": "value",
+  "description": "Value of type array",
+  "components": [
+    "named",
+    "value_array"
+  ],
+  "properties": [
+  ],
+  "extensions": [
+  ]
+}

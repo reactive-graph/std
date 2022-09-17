@@ -1,0 +1,14 @@
+{
+  "name": "state_object",
+  "group": "value",
+  "description": "State of type object",
+  "components": [
+    "named",
+    "value_object",
+    "state_object"
+  ],
+  "properties": [
+  ],
+  "extensions": [
+  ]
+}

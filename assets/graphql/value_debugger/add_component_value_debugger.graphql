@@ -4,7 +4,7 @@ mutation {
       update(
         id: "c4bc7ab7-f166-4710-96e0-7defb3a73207",
         addComponents: [
-          "debug_value",
+          "value_debugger_debug",
           "labeled"
         ]
       ) {
