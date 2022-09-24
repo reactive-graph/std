@@ -1,0 +1,64 @@
+{
+  "type": "generic_flow",
+  "name": "example_flow",
+  "namespace": "base",
+  "description": "Example Flow Type",
+  "entity_instances": [
+    {
+      "type": "value_boolean",
+      "id": "a3d23df3-8cc6-4162-a3de-63dc274ba15c",
+      "properties": {
+        "value": false
+      }
+    },
+    {
+      "type": "value_boolean",
+      "id": "ee935ece-bf8d-4d10-956c-8c97d006e97f",
+      "properties": {
+        "value": false
+      }
+    },
+    {
+      "type": "and",
+      "id": "34689bbc-d611-4748-81a6-ad0f32f701ac",
+      "properties": {
+        "lhs": false,
+        "rhs": false,
+        "result": false
+      }
+    }
+  ],
+  "relation_instances": [
+    {
+      "outbound_id": "a3d23df3-8cc6-4162-a3de-63dc274ba15c",
+      "type": "default_connector",
+      "inbound_id": "34689bbc-d611-4748-81a6-ad0f32f701ac",
+      "properties": {
+        "outbound_property_name": "value",
+        "inbound_property_name": "lhs"
+      }
+    },
+    {
+      "outbound_id": "ee935ece-bf8d-4d10-956c-8c97d006e97f",
+      "type": "default_connector",
+      "inbound_id": "34689bbc-d611-4748-81a6-ad0f32f701ac",
+      "properties": {
+        "outbound_property_name": "value",
+        "inbound_property_name": "rhs"
+      }
+    }
+  ],
+  "variables": [
+    {
+      "name": "example",
+      "description": "Example Variable",
+      "data_type": "string"
+    }
+  ],
+  "extensions": [
+    {
+      "name": "example",
+      "extension": "Example Extension"
+    }
+  ]
+}
