@@ -21,6 +21,7 @@ use crate::behaviour::entity::str_str_num_gate::STR_STR_NUM_FUNCTIONS;
 use crate::behaviour::entity::templating::behaviour::Templating;
 use crate::behaviour::entity::templating::behaviour::TEMPLATING;
 use crate::di::*;
+use crate::model::ReactiveBehaviourContainer;
 use crate::model::ReactiveEntityInstance;
 use crate::plugins::EntityBehaviourProvider;
 

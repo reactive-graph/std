@@ -2,7 +2,6 @@ use std::convert::AsRef;
 use std::sync::Arc;
 use std::sync::RwLock;
 
-use log::debug;
 use serde_json::json;
 use serde_json::Value;
 
@@ -53,7 +52,6 @@ impl StringOperation<'_> {
         // Connect the internal result with the stream of the result property
         operation.internal_result.read().unwrap().observe_with_handle(
             move |v| {
-                debug!("Setting result of string gate: {}", v);
                 e.set(StringOperationProperties::RESULT.to_string(), v.clone()); // json!(*v)
             },
             handle_id,

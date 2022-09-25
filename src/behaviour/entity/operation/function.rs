@@ -1,7 +1,10 @@
-use lazy_static::lazy_static;
 use std::collections::HashMap;
-use voca_rs::{case, manipulate};
-use voca_rs::{escape, strip};
+
+use lazy_static::lazy_static;
+use voca_rs::case;
+use voca_rs::escape;
+use voca_rs::manipulate;
+use voca_rs::strip;
 
 pub type StringOperationFunction = fn(String) -> String;
 

@@ -5,7 +5,7 @@ use strum_macros::AsRefStr;
 use strum_macros::Display;
 use strum_macros::IntoStaticStr;
 
-use crate::reactive::property::NamedProperties;
+use crate::reactive::NamedProperties;
 
 #[allow(non_camel_case_types)]
 #[derive(AsRefStr, IntoStaticStr, Display)]
@@ -41,5 +41,11 @@ impl From<StringGateProperties> for NamedProperty {
             name: Identifier::new(p.to_string()).unwrap(),
             value: json!(p.default_value()),
         }
+    }
+}
+
+impl From<StringGateProperties> for String {
+    fn from(p: StringGateProperties) -> Self {
+        p.to_string()
     }
 }
