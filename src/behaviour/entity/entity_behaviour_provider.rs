@@ -13,6 +13,7 @@ use crate::behaviour::entity::gate::ARITHMETIC_GATES;
 use crate::behaviour::entity::operation::ArithmeticOperation;
 use crate::behaviour::entity::operation::ARITHMETIC_OPERATIONS;
 use crate::di::*;
+use crate::model::ReactiveBehaviourContainer;
 use crate::model::ReactiveEntityInstance;
 use crate::plugins::EntityBehaviourProvider;
 
@@ -82,25 +83,27 @@ impl ArithmeticEntityBehaviourProviderImpl {
 impl ArithmeticEntityBehaviourProvider for ArithmeticEntityBehaviourProviderImpl {
     fn create_operation(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let id = entity_instance.id;
+        let type_name = entity_instance.type_name.as_str();
         if let Some(arithmetic_operation) = ARITHMETIC_OPERATIONS
-            .get(entity_instance.type_name.as_str())
+            .get(type_name)
             .map(|function| Arc::new(ArithmeticOperation::new(entity_instance.clone(), *function)))
         {
             self.arithmetic_operations.0.write().unwrap().insert(id, arithmetic_operation);
-            entity_instance.add_behaviour(entity_instance.type_name.as_str());
-            debug!("Added behaviour arithmetic_operation to entity instance {}", id);
+            entity_instance.add_behaviour(type_name);
+            debug!("Added behaviour {} to entity instance {}", type_name, id);
         }
     }
 
     fn create_gate(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let id = entity_instance.id;
+        let type_name = entity_instance.type_name.as_str();
         if let Some(arithmetic_gate) = ARITHMETIC_GATES
-            .get(entity_instance.type_name.as_str())
+            .get(type_name)
             .map(|function| Arc::new(ArithmeticGate::new(entity_instance.clone(), *function)))
         {
             self.arithmetic_gates.0.write().unwrap().insert(id, arithmetic_gate);
-            entity_instance.add_behaviour(entity_instance.type_name.as_str());
-            debug!("Added behaviour arithmetic_gate to entity instance {}", id);
+            entity_instance.add_behaviour(type_name);
+            debug!("Added behaviour {} to entity instance {}", type_name, id);
         }
     }
 
