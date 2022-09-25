@@ -1,12 +1,10 @@
 {
   "name": "category",
-  "group": "taxonomy",
+  "namespace": "taxonomy",
   "description": "A category is a fundamental and distinct class to which entities or concepts belong",
   "components": [
     "named",
-    "describable",
-    "flow_2d",
-    "flow_3d"
+    "describable"
   ],
   "properties": [
   ],

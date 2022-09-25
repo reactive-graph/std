@@ -1,11 +1,9 @@
 {
   "name": "tag",
-  "group": "taxonomy",
+  "namespace": "taxonomy",
   "description": "A tag is a piece of information that describes the data or content that it is assigned to. Tags are nonhierarchical keywords used for Internet bookmarks, digital images, videos, files and so on. A tag doesn't carry any information or semantics itself.",
   "components": [
-    "named",
-    "flow_2d",
-    "flow_3d"
+    "named"
   ],
   "properties": [
   ],

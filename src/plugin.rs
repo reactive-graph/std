@@ -1,22 +1,30 @@
-use std::sync::{Arc, RwLock};
+use std::sync::Arc;
+use std::sync::RwLock;
+
+use async_trait::async_trait;
 
 use crate::di::*;
-use async_trait::async_trait;
-use log::debug;
-
+use crate::plugins::component_provider;
+use crate::plugins::entity_type_provider;
 use crate::plugins::plugin::PluginMetadata;
+use crate::plugins::plugin::PluginMetadataError;
 use crate::plugins::plugin_context::PluginContext;
-use crate::plugins::{
-    ComponentBehaviourProvider, ComponentProvider, EntityBehaviourProvider, EntityTypeProvider,
-    FlowProvider, Plugin, PluginError, RelationBehaviourProvider, RelationTypeProvider,
-    WebResourceProvider,
-};
-use crate::provider::{
-    TaxonomyComponentProviderImpl, TaxonomyEntityTypeProviderImpl, TaxonomyRelationTypeProviderImpl,
-};
+use crate::plugins::plugin_metadata;
+use crate::plugins::relation_type_provider;
+use crate::plugins::ComponentProvider;
+use crate::plugins::ComponentProviderError;
+use crate::plugins::EntityTypeProvider;
+use crate::plugins::EntityTypeProviderError;
+use crate::plugins::Plugin;
+use crate::plugins::PluginContextInitializationError;
+use crate::plugins::RelationTypeProvider;
+use crate::plugins::RelationTypeProviderError;
+use crate::provider::TaxonomyComponentProviderImpl;
+use crate::provider::TaxonomyEntityTypeProviderImpl;
+use crate::provider::TaxonomyRelationTypeProviderImpl;
 
 #[wrapper]
-pub struct PluginContextContainer(RwLock<Option<std::sync::Arc<dyn PluginContext>>>);
+pub struct PluginContextContainer(RwLock<Option<Arc<dyn PluginContext>>>);
 
 #[provides]
 fn create_empty_plugin_context_container() -> PluginContextContainer {
@@ -42,92 +50,33 @@ interfaces!(TaxonomyPluginImpl: dyn Plugin);
 impl TaxonomyPlugin for TaxonomyPluginImpl {}
 
 impl Plugin for TaxonomyPluginImpl {
-    fn metadata(&self) -> Result<PluginMetadata, PluginError> {
-        Ok(PluginMetadata {
-            name: env!("CARGO_PKG_NAME").into(),
-            description: env!("CARGO_PKG_DESCRIPTION").into(),
-            version: env!("CARGO_PKG_VERSION").into(),
-        })
+    fn metadata(&self) -> Result<PluginMetadata, PluginMetadataError> {
+        plugin_metadata!("inexor-rgf-plugin-base")
     }
 
-    fn init(&self) -> Result<(), PluginError> {
-        debug!("TaxonomyPluginModuleImpl::init()");
-        Ok(())
-    }
-
-    fn post_init(&self) -> Result<(), PluginError> {
-        debug!("TaxonomyPluginModuleImpl::post_init()");
-        Ok(())
-    }
-
-    fn pre_shutdown(&self) -> Result<(), PluginError> {
-        debug!("TaxonomyPluginModuleImpl::shutdown()");
-        Ok(())
-    }
-
-    fn shutdown(&self) -> Result<(), PluginError> {
-        debug!("TaxonomyPluginModuleImpl::shutdown()");
-        Ok(())
-    }
-
-    fn set_context(&self, context: Arc<dyn PluginContext>) -> Result<(), PluginError> {
+    fn set_context(
+        &self,
+        context: Arc<dyn PluginContext>,
+    ) -> Result<(), PluginContextInitializationError> {
         self.context.0.write().unwrap().replace(context);
         Ok(())
     }
 
-    fn get_component_provider(&self) -> Result<Arc<dyn ComponentProvider>, PluginError> {
-        let component_provider = self.component_provider.clone();
-        let component_provider: Result<Arc<dyn ComponentProvider>, _> =
-            <dyn query_interface::Object>::query_arc(component_provider);
-        if component_provider.is_err() {
-            return Err(PluginError::NoComponentProvider);
-        }
-        Ok(component_provider.unwrap())
-    }
-
-    fn get_entity_type_provider(&self) -> Result<Arc<dyn EntityTypeProvider>, PluginError> {
-        let entity_type_provider = self.entity_type_provider.clone();
-        let entity_type_provider: Result<Arc<dyn EntityTypeProvider>, _> =
-            <dyn query_interface::Object>::query_arc(entity_type_provider);
-        if entity_type_provider.is_err() {
-            return Err(PluginError::NoEntityTypeProvider);
-        }
-        Ok(entity_type_provider.unwrap())
-    }
-
-    fn get_relation_type_provider(&self) -> Result<Arc<dyn RelationTypeProvider>, PluginError> {
-        let relation_type_provider = self.relation_type_provider.clone();
-        let relation_type_provider: Result<Arc<dyn RelationTypeProvider>, _> =
-            <dyn query_interface::Object>::query_arc(relation_type_provider);
-        if relation_type_provider.is_err() {
-            return Err(PluginError::NoRelationTypeProvider);
-        }
-        Ok(relation_type_provider.unwrap())
-    }
-
-    fn get_component_behaviour_provider(
+    fn get_component_provider(
         &self,
-    ) -> Result<Arc<dyn ComponentBehaviourProvider>, PluginError> {
-        Err(PluginError::NoComponentBehaviourProvider)
+    ) -> Result<Option<Arc<dyn ComponentProvider>>, ComponentProviderError> {
+        component_provider!(self.component_provider)
     }
 
-    fn get_entity_behaviour_provider(
+    fn get_entity_type_provider(
         &self,
-    ) -> Result<Arc<dyn EntityBehaviourProvider>, PluginError> {
-        Err(PluginError::NoEntityBehaviourProvider)
+    ) -> Result<Option<Arc<dyn EntityTypeProvider>>, EntityTypeProviderError> {
+        entity_type_provider!(self.entity_type_provider)
     }
 
-    fn get_relation_behaviour_provider(
+    fn get_relation_type_provider(
         &self,
-    ) -> Result<Arc<dyn RelationBehaviourProvider>, PluginError> {
-        Err(PluginError::NoRelationBehaviourProvider)
-    }
-
-    fn get_flow_provider(&self) -> Result<Arc<dyn FlowProvider>, PluginError> {
-        Err(PluginError::NoFlowProvider)
-    }
-
-    fn get_web_resource_provider(&self) -> Result<Arc<dyn WebResourceProvider>, PluginError> {
-        Err(PluginError::NoWebResourceProvider)
+    ) -> Result<Option<Arc<dyn RelationTypeProvider>>, RelationTypeProviderError> {
+        relation_type_provider!(self.relation_type_provider)
     }
 }

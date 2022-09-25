@@ -3,14 +3,17 @@ extern crate query_interface;
 
 use std::sync::Arc;
 
-use crate::di::{profiles, Container, Provider};
 use inexor_rgf_core_di as di;
 use inexor_rgf_core_model as model;
 use inexor_rgf_core_plugins as plugins;
 use log::error;
 
+use crate::di::profiles;
+use crate::di::Container;
+use crate::di::Provider;
 use crate::plugin::TaxonomyPlugin;
-use crate::plugins::{Plugin, PluginError};
+use crate::plugins::Plugin;
+use crate::plugins::PluginLoadingError;
 
 pub mod plugin;
 pub mod provider;
@@ -19,7 +22,7 @@ pub fn get<T>() -> Container<T> {
     Container::<T>::new()
 }
 
-pub fn construct_plugin() -> Result<Arc<dyn Plugin>, PluginError> {
+pub fn construct_plugin() -> Result<Arc<dyn Plugin>, PluginLoadingError> {
     let mut container = get::<profiles::Default>();
     let container = &mut container;
     let plugin = Provider::<dyn TaxonomyPlugin>::create(container);
@@ -27,7 +30,7 @@ pub fn construct_plugin() -> Result<Arc<dyn Plugin>, PluginError> {
     let plugin: Result<Arc<dyn Plugin>, _> = <dyn query_interface::Object>::query_arc(plugin);
     if plugin.is_err() {
         error!("Failed to construct plugin");
-        return Err(PluginError::PluginCreationError);
+        return Err(PluginLoadingError::PluginContainerInitializationError);
     }
     Ok(plugin.unwrap())
 }

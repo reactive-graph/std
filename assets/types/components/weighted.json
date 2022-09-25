@@ -1,5 +1,6 @@
 {
   "name": "weighted",
+  "description": "",
   "properties": [
     {
       "name": "weight",

@@ -1,5 +1,6 @@
 {
   "name": "tagged_with",
+  "namespace": "taxonomy",
   "description": "The outbound entity is tagged with the inbound tag",
   "outbound_type": "*",
   "inbound_type": "tag",

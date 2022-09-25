@@ -1,5 +1,6 @@
 {
   "name": "has_subcategory",
+  "namespace": "taxonomy",
   "description": "The outbound category has the inbound entity as sub category",
   "outbound_type": "category",
   "inbound_type": "category",
