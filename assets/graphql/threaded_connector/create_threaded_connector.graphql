@@ -2,7 +2,7 @@ mutation createOutbound {
   instances {
     entities {
       create(
-        type: "value",
+        type: "value_string",
         id: "34263429-b1d8-49b1-b935-928adfcd220a",
         properties: [
           {
@@ -32,7 +32,7 @@ mutation createInbound {
   instances {
     entities {
       create(
-        type: "value",
+        type: "value_string",
         id: "e72cecb6-6008-4710-8a43-46f6c7baa4b4",
         properties: [
           {
@@ -79,8 +79,9 @@ mutation createConnector {
         ]
       ) {
         type {
+          namespace
           name
-          fullName
+          instanceTypeName
         },
         properties(
           names: [
