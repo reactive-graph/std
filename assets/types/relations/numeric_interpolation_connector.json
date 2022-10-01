@@ -1,4 +1,5 @@
 {
+  "namespace": "connector",
   "name": "numeric_interpolation_connector",
   "description": "Connects a property with a other property and interpolate the numeric values before propagation",
   "outbound_type": "*",

@@ -1,4 +1,5 @@
 {
+  "namespace": "connector",
   "name": "parse_int_connector",
   "description": "Connects an string property of an entity instance with a number property of another entity instance. Outgoing string values gets converted to integer numbers if possible",
   "outbound_type": "*",

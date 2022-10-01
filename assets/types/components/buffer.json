@@ -1,4 +1,5 @@
 {
+  "namespace": "connector",
   "name": "buffer",
   "description": "A buffer of the given size",
   "properties": [

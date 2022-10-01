@@ -1,4 +1,5 @@
 {
+  "namespace": "connector",
   "name": "connector",
   "description": "Connects a property of an entity instance with a other property of another entity instance",
   "properties": [
