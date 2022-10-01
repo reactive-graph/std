@@ -33,7 +33,7 @@ pub const FN_BUFFERED_FIFO_CONNECTOR: ComplexConnectorFunction = |new_value, inb
         .and_then(|v| v.as_u64())
         .and_then(|v| usize::try_from(v).ok())
         .unwrap_or(10);
-    let mut buffer = relation_instance.get(BUFFER).and_then(|v| v.as_array().cloned()).unwrap_or(Vec::new()); // .cloned()
+    let mut buffer = relation_instance.get(BUFFER).and_then(|v| v.as_array().cloned()).unwrap_or_default();
     buffer.insert(0, new_value);
     // Only update inbound if FIFO is full
     while buffer.len() > buffer_size {
@@ -50,14 +50,14 @@ pub const FN_NUMERIC_INTERPOLATION_CONNECTOR: ComplexConnectorFunction = |new_va
         .and_then(|v| v.as_u64())
         .and_then(|v| usize::try_from(v).ok())
         .unwrap_or(10);
-    let mut buffer = relation_instance.get(BUFFER).and_then(|v| v.as_array().cloned()).unwrap_or(Vec::new()); // .cloned()
+    let mut buffer = relation_instance.get(BUFFER).and_then(|v| v.as_array().cloned()).unwrap_or_default();
     buffer.insert(0, new_value);
     while buffer.len() > buffer_size {
         buffer.pop();
     }
     relation_instance.set(BUFFER, json!(buffer));
     // Calculate average
-    let average = buffer.iter().map(|v| v.as_f64()).filter(Option::is_some).map(Option::unwrap).sum::<f64>() / buffer.len() as f64;
+    let average = buffer.iter().filter_map(|v| v.as_f64()).sum::<f64>() / buffer.len() as f64;
     relation_instance.inbound.set(&inbound_property_name, json!(average));
 };
 

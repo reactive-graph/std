@@ -2,13 +2,15 @@ use std::collections::HashMap;
 use std::sync::Arc;
 use std::sync::RwLock;
 
-use crate::behaviour::component::behaviour::PROPAGATION_COUNTER;
 use async_trait::async_trait;
 use indradb::EdgeKey;
 use log::debug;
 
+use crate::behaviour::component::behaviour::PROPAGATION_COUNTER;
 use crate::behaviour::component::PropagationCounter;
 use crate::di::*;
+use crate::model::ComponentContainer;
+use crate::model::ReactiveBehaviourContainer;
 use crate::model::ReactiveRelationInstance;
 use crate::plugins::ComponentBehaviourProvider;
 
@@ -78,25 +80,25 @@ impl ConnectorComponentBehaviourProvider for ConnectorComponentBehaviourProvider
 impl ComponentBehaviourProvider for ConnectorComponentBehaviourProviderImpl {
     fn add_behaviours_to_relation(&self, relation_instance: Arc<ReactiveRelationInstance>) {
         if relation_instance.is_a(PROPAGATION_COUNTER) {
-            self.create_propagation_counter(relation_instance.clone());
+            self.create_propagation_counter(relation_instance);
         }
     }
 
     fn add_behaviours_to_relation_component(&self, relation_instance: Arc<ReactiveRelationInstance>, component: crate::model::Component) {
         if component.name == PROPAGATION_COUNTER {
-            self.create_propagation_counter(relation_instance.clone());
+            self.create_propagation_counter(relation_instance);
         }
     }
 
     fn remove_behaviours_from_relation(&self, relation_instance: Arc<ReactiveRelationInstance>) {
         if relation_instance.behaves_as(PROPAGATION_COUNTER) {
-            self.remove_propagation_counter(relation_instance.clone());
+            self.remove_propagation_counter(relation_instance);
         }
     }
 
     fn remove_behaviours_from_relation_component(&self, relation_instance: Arc<ReactiveRelationInstance>, component: crate::model::Component) {
         if component.name == PROPAGATION_COUNTER {
-            self.remove_propagation_counter(relation_instance.clone());
+            self.remove_propagation_counter(relation_instance);
         }
     }
 

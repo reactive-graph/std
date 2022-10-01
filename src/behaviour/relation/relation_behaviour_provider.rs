@@ -11,6 +11,7 @@ use crate::behaviour::relation::complex_connector::ComplexConnector;
 use crate::behaviour::relation::connector::Connector;
 use crate::behaviour::relation::connector::CONNECTORS;
 use crate::di::*;
+use crate::model::ReactiveBehaviourContainer;
 use crate::model::ReactiveRelationInstance;
 use crate::plugins::RelationBehaviourProvider;
 

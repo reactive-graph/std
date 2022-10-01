@@ -21,7 +21,7 @@ use crate::di::Container;
 use crate::di::Provider;
 use crate::plugin::ConnectorPlugin;
 use crate::plugins::Plugin;
-use crate::plugins::PluginError;
+use crate::plugins::PluginLoadingError;
 
 pub mod behaviour;
 pub mod plugin;
@@ -31,7 +31,7 @@ pub fn get<T>() -> Container<T> {
     Container::<T>::new()
 }
 
-pub fn construct_plugin() -> Result<Arc<dyn Plugin>, PluginError> {
+pub fn construct_plugin() -> Result<Arc<dyn Plugin>, PluginLoadingError> {
     let mut container = get::<profiles::Default>();
     let container = &mut container;
     let plugin = Provider::<dyn ConnectorPlugin>::create(container);
@@ -39,7 +39,7 @@ pub fn construct_plugin() -> Result<Arc<dyn Plugin>, PluginError> {
     let plugin: Result<Arc<dyn Plugin>, _> = <dyn query_interface::Object>::query_arc(plugin);
     if plugin.is_err() {
         error!("Failed to construct plugin");
-        return Err(PluginError::PluginCreationError);
+        return Err(PluginLoadingError::PluginContainerInitializationError);
     }
     Ok(plugin.unwrap())
 }
