@@ -17,8 +17,9 @@ use crate::model::PropertyType;
 use crate::model::ReactiveEntityInstance;
 use crate::model::SocketType;
 
-const COMPONENT_NAME_NUMERIC_OPERATION: &'static str = "numeric_operation";
-const TYPE_NAME_SIN: &'static str = "sin";
+const NAMESPACE: &str = "test";
+const COMPONENT_NAME_NUMERIC_OPERATION: &str = "numeric_operation";
+const TYPE_NAME_SIN: &str = "sin";
 
 #[test]
 fn behaviour_function_should_exist() {
@@ -32,7 +33,7 @@ fn numeric_operation_sin_type_test() {
         PropertyType::new_with_socket(NumericOperationProperties::LHS, DataType::Number, SocketType::Input),
         PropertyType::new_with_socket(NumericOperationProperties::RESULT, DataType::Number, SocketType::Output),
     ];
-    let sin_type = EntityType::new(TYPE_NAME_SIN, "", "", vec![String::from(COMPONENT_NAME_NUMERIC_OPERATION)], property_types, Vec::new());
+    let sin_type = EntityType::new(NAMESPACE, TYPE_NAME_SIN, "", vec![String::from(COMPONENT_NAME_NUMERIC_OPERATION)], property_types, Vec::new());
     let sin_function = NUMERIC_OPERATIONS.get(TYPE_NAME_SIN).unwrap();
     let mut properties = HashMap::new();
     properties.insert(NumericOperationProperties::LHS.into(), json!(NumericOperationProperties::LHS.default_value()));
