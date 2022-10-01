@@ -1,13 +1,20 @@
-use std::sync::{Arc, RwLock};
+use std::sync::Arc;
+use std::sync::RwLock;
 
 use log::debug;
-use serde_json::{json, Value};
+use serde_json::json;
+use serde_json::Value;
+use uuid::Uuid;
 
 use crate::behaviour::entity::gate::function::ArithmeticGateFunction;
 use crate::behaviour::entity::gate::properties::ArithmeticGateProperties;
 use crate::frp::Stream;
-use crate::model::{PropertyInstanceGetter, PropertyInstanceSetter, ReactiveEntityInstance};
-use crate::reactive::entity::expression::{Expression, ExpressionValue, OperatorPosition};
+use crate::model::PropertyInstanceGetter;
+use crate::model::PropertyInstanceSetter;
+use crate::model::ReactiveEntityInstance;
+use crate::reactive::entity::expression::Expression;
+use crate::reactive::entity::expression::ExpressionValue;
+use crate::reactive::entity::expression::OperatorPosition;
 use crate::reactive::entity::gate::Gate;
 use crate::reactive::entity::operation::Operation;
 use crate::reactive::entity::Disconnectable;
@@ -33,6 +40,9 @@ pub struct ArithmeticGate<'a> {
 
 impl ArithmeticGate<'_> {
     pub fn new(e: Arc<ReactiveEntityInstance>, f: ArithmeticGateFunction<f64>) -> ArithmeticGate<'static> {
+        let lhs_initial = e
+            .as_f64(ArithmeticGateProperties::LHS.as_ref())
+            .unwrap_or_else(|| ArithmeticGateProperties::LHS.default_value());
         let lhs = e
             .properties
             .get(ArithmeticGateProperties::LHS.as_ref())
@@ -40,10 +50,13 @@ impl ArithmeticGate<'_> {
             .stream
             .read()
             .unwrap()
-            .map(|v| match v.as_f64() {
+            .map(move |v| match v.as_f64() {
                 Some(b) => (OperatorPosition::LHS, b),
-                None => (OperatorPosition::LHS, ArithmeticGateProperties::LHS.default_value()),
+                None => (OperatorPosition::LHS, lhs_initial),
             });
+        let rhs_initial = e
+            .as_f64(ArithmeticGateProperties::RHS.as_ref())
+            .unwrap_or_else(|| ArithmeticGateProperties::RHS.default_value());
         let rhs = e
             .properties
             .get(ArithmeticGateProperties::RHS.as_ref())
@@ -51,26 +64,24 @@ impl ArithmeticGate<'_> {
             .stream
             .read()
             .unwrap()
-            .map(|v| -> ArithmeticExpressionValue {
+            .map(move |v| -> ArithmeticExpressionValue {
                 match v.as_f64() {
                     Some(b) => (OperatorPosition::RHS, b),
-                    None => (OperatorPosition::RHS, ArithmeticGateProperties::RHS.default_value()),
+                    None => (OperatorPosition::RHS, rhs_initial),
                 }
             });
 
-        let expression = lhs.merge(&rhs).fold(
-            Expression::new(ArithmeticGateProperties::LHS.default_value(), ArithmeticGateProperties::RHS.default_value()),
-            |old_state, (o, value)| match *o {
+        let expression = lhs
+            .merge(&rhs)
+            .fold(Expression::new(lhs_initial, rhs_initial), |old_state, (o, value)| match *o {
                 OperatorPosition::LHS => old_state.lhs(*value),
                 OperatorPosition::RHS => old_state.rhs(*value),
-            },
-        );
+            });
 
         // The internal result
         let internal_result = expression.map(move |e| f(e.lhs, e.rhs));
 
-        // TODO: handle result based on outbound property id and inbound property id
-        let handle_id = e.properties.get(ArithmeticGateProperties::RESULT.as_ref()).unwrap().id.as_u128();
+        let handle_id = Uuid::new_v4().as_u128();
 
         let arithmetic_gate = ArithmeticGate {
             lhs: RwLock::new(lhs),
@@ -80,6 +91,9 @@ impl ArithmeticGate<'_> {
             entity: e.clone(),
             handle_id,
         };
+
+        // Initial calculation
+        e.set(ArithmeticGateProperties::RESULT.as_ref(), json!(f(lhs_initial, rhs_initial)));
 
         // Connect the internal result with the stream of the result property
         arithmetic_gate.internal_result.read().unwrap().observe_with_handle(
@@ -101,9 +115,7 @@ impl ArithmeticGate<'_> {
 }
 
 impl Disconnectable for ArithmeticGate<'_> {
-    /// TODO: Add guard: disconnect only if actually connected
     fn disconnect(&self) {
-        debug!("Disconnect arithmetic gate {} {}", self.type_name(), self.handle_id);
         self.internal_result.read().unwrap().remove(self.handle_id);
     }
 }
@@ -124,10 +136,8 @@ impl Gate for ArithmeticGate<'_> {
     }
 }
 
-/// Automatically disconnect streams on destruction
 impl Drop for ArithmeticGate<'_> {
     fn drop(&mut self) {
-        debug!("Drop arithmetic gate");
         self.disconnect();
     }
 }

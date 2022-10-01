@@ -13,8 +13,9 @@ const LHS: ArithmeticGateProperties = ArithmeticGateProperties::LHS;
 const RHS: ArithmeticGateProperties = ArithmeticGateProperties::RHS;
 const RESULT: ArithmeticGateProperties = ArithmeticGateProperties::RESULT;
 
-const COMPONENT_NAME_ARITHMETIC_GATE: &'static str = "arithmetic_gate";
-const TYPE_NAME_ADD: &'static str = "add";
+const NAMESPACE: &str = "test";
+const COMPONENT_NAME_ARITHMETIC_GATE: &str = "arithmetic_gate";
+const TYPE_NAME_ADD: &str = "add";
 
 #[test]
 fn behaviour_function_should_exist() {
@@ -29,7 +30,7 @@ fn arithmetic_gate_add_type_test() {
         PropertyType::new_with_socket(RHS, DataType::Number, SocketType::Input),
         PropertyType::new_with_socket(RESULT, DataType::Number, SocketType::Output),
     ];
-    let add_type = EntityType::new(TYPE_NAME_ADD, "", "", vec![String::from(COMPONENT_NAME_ARITHMETIC_GATE)], property_types, Vec::new());
+    let add_type = EntityType::new(NAMESPACE, TYPE_NAME_ADD, "", vec![String::from(COMPONENT_NAME_ARITHMETIC_GATE)], property_types, Vec::new());
     let add_function = ARITHMETIC_GATES.get(TYPE_NAME_ADD).unwrap();
     let mut properties = HashMap::new();
     properties.insert(LHS.into(), json!(LHS.default_value()));
