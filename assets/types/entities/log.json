@@ -1,11 +1,9 @@
 {
+  "namespace": "numeric",
   "name": "log",
-  "group": "math",
   "description": "Returns the logarithm of the number with respect to an arbitrary base",
   "components": [
-    "numeric_gate",
-    "flow_2d",
-    "flow_3d"
+    "numeric_gate"
   ],
   "properties": [
   ],

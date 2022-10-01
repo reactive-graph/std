@@ -1,11 +1,9 @@
 {
+  "namespace": "numeric",
   "name": "hypot",
-  "group": "math",
   "description": "Calculates the length of the hypotenuse of a right-angle triangle given legs of length x and y",
   "components": [
-    "numeric_gate",
-    "flow_2d",
-    "flow_3d"
+    "numeric_gate"
   ],
   "properties": [
   ],

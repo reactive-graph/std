@@ -1,4 +1,5 @@
 {
+  "namespace": "numeric",
   "name": "numeric_operation",
   "properties": [
     {

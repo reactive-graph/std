@@ -1,11 +1,9 @@
 {
+  "namespace": "numeric",
   "name": "atan2",
-  "group": "math",
   "description": "Computes the four quadrant arctangent in radians",
   "components": [
-    "numeric_gate",
-    "flow_2d",
-    "flow_3d"
+    "numeric_gate"
   ],
   "properties": [
   ],

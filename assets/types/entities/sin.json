@@ -1,11 +1,9 @@
 {
+  "namespace": "numeric",
   "name": "sin",
-  "group": "math",
   "description": "Computes the sine of a number (in radians)",
   "components": [
-    "numeric_operation",
-    "flow_2d",
-    "flow_3d"
+    "numeric_operation"
   ],
   "properties": [
   ],

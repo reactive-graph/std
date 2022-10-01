@@ -1,11 +1,9 @@
 {
+  "namespace": "numeric",
   "name": "ceil",
-  "group": "math",
   "description": "Returns the smallest integer greater than or equal to a number",
   "components": [
-    "numeric_operation",
-    "flow_2d",
-    "flow_3d"
+    "numeric_operation"
   ],
   "properties": [
   ],

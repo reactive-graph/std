@@ -1,11 +1,9 @@
 {
+  "namespace": "numeric",
   "name": "pow",
-  "group": "math",
   "description": "Raises a number to a power",
   "components": [
-    "numeric_gate",
-    "flow_2d",
-    "flow_3d"
+    "numeric_gate"
   ],
   "properties": [
   ],

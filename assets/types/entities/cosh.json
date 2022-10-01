@@ -1,11 +1,9 @@
 {
+  "namespace": "numeric",
   "name": "cosh",
-  "group": "math",
   "description": "Hyperbolic cosine function",
   "components": [
-    "numeric_operation",
-    "flow_2d",
-    "flow_3d"
+    "numeric_operation"
   ],
   "properties": [
   ],

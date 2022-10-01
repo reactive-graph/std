@@ -1,11 +1,9 @@
 {
+  "namespace": "numeric",
   "name": "recip",
-  "group": "math",
   "description": "Takes the reciprocal (inverse) of a number, 1/x",
   "components": [
-    "numeric_operation",
-    "flow_2d",
-    "flow_3d"
+    "numeric_operation"
   ],
   "properties": [
   ],

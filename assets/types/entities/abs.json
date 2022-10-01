@@ -1,11 +1,9 @@
 {
+  "namespace": "numeric",
   "name": "abs",
-  "group": "math",
   "description": "Computes the absolute value",
   "components": [
-    "numeric_operation",
-    "flow_2d",
-    "flow_3d"
+    "numeric_operation"
   ],
   "properties": [
   ],

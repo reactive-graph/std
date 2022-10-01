@@ -1,11 +1,9 @@
 {
+  "namespace": "numeric",
   "name": "cos",
-  "group": "math",
   "description": "Computes the cosine of a number (in radians)",
   "components": [
-    "numeric_operation",
-    "flow_2d",
-    "flow_3d"
+    "numeric_operation"
   ],
   "properties": [
   ],
