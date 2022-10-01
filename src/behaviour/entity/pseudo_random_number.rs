@@ -11,6 +11,7 @@ use log::trace;
 use rand::{Rng, SeedableRng};
 use rand_chacha::ChaCha8Rng;
 use serde_json::json;
+use uuid::Uuid;
 
 pub const PSEUDO_RANDOM_NUMBER: &str = "pseudo_random_number";
 
@@ -23,7 +24,7 @@ pub struct PseudoRandomNumber {
 impl PseudoRandomNumber {
     pub fn new(e: Arc<ReactiveEntityInstance>) -> Result<PseudoRandomNumber, BehaviourCreationError> {
         let entity = e.clone();
-        let handle_id = e.properties.get(PseudoRandomNumberProperties::TRIGGER.as_ref()).unwrap().id.as_u128();
+        let handle_id = Uuid::new_v4().as_u128();
 
         let seed = e.get(PseudoRandomNumberProperties::SEED.as_ref()).and_then(|v| v.as_u64());
         if seed.is_none() {
@@ -54,7 +55,6 @@ impl PseudoRandomNumber {
 impl Disconnectable for PseudoRandomNumber {
     fn disconnect(&self) {
         if let Some(property) = self.entity.properties.get(PseudoRandomNumberProperties::TRIGGER.as_ref()) {
-            trace!("Disconnecting {} with id {}", PSEUDO_RANDOM_NUMBER, self.entity.id);
             property.stream.read().unwrap().remove(self.handle_id);
         }
     }

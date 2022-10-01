@@ -1,6 +1,5 @@
 use std::sync::Arc;
 
-use crate::di::*;
 use async_trait::async_trait;
 use log::debug;
 use uuid::Uuid;
@@ -17,6 +16,8 @@ use crate::behaviour::entity::random_string::RandomString;
 use crate::behaviour::entity::random_string::RANDOM_STRING;
 use crate::behaviour::entity::random_uuid::RandomUuid;
 use crate::behaviour::entity::random_uuid::RANDOM_UUID;
+use crate::di::*;
+use crate::model::ReactiveBehaviourContainer;
 use crate::model::ReactiveEntityInstance;
 use crate::plugins::EntityBehaviourProvider;
 

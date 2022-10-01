@@ -3,6 +3,7 @@ use std::sync::Arc;
 
 use log::trace;
 use serde_json::json;
+use uuid::Uuid;
 
 use crate::behaviour::entity::RandomStringProperties;
 use crate::model::PropertyInstanceGetter;
@@ -23,7 +24,7 @@ pub struct RandomString {
 impl RandomString {
     pub fn new(e: Arc<ReactiveEntityInstance>) -> Result<RandomString, BehaviourCreationError> {
         let entity = e.clone();
-        let handle_id = e.properties.get(RandomStringProperties::TRIGGER.as_ref()).unwrap().id.as_u128();
+        let handle_id = Uuid::new_v4().as_u128();
         e.properties
             .get(RandomStringProperties::TRIGGER.as_ref())
             .unwrap()
@@ -52,7 +53,6 @@ impl RandomString {
 impl Disconnectable for RandomString {
     fn disconnect(&self) {
         if let Some(property) = self.entity.properties.get(RandomStringProperties::TRIGGER.as_ref()) {
-            trace!("Disconnecting {} with id {}", RANDOM_STRING, self.entity.id);
             property.stream.read().unwrap().remove(self.handle_id);
         }
     }

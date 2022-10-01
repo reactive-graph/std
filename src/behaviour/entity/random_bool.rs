@@ -9,6 +9,7 @@ use crate::reactive::BehaviourCreationError;
 use log::trace;
 use rand::Rng;
 use serde_json::json;
+use uuid::Uuid;
 
 pub const RANDOM_BOOL: &str = "random_bool";
 
@@ -21,7 +22,7 @@ pub struct RandomBool {
 impl RandomBool {
     pub fn new(e: Arc<ReactiveEntityInstance>) -> Result<RandomBool, BehaviourCreationError> {
         let entity = e.clone();
-        let handle_id = e.properties.get(RandomBoolProperties::TRIGGER.as_ref()).unwrap().id.as_u128();
+        let handle_id = Uuid::new_v4().as_u128();
         let mut rng = rand::thread_rng();
         e.properties
             .get(RandomBoolProperties::TRIGGER.as_ref())
@@ -45,7 +46,6 @@ impl RandomBool {
 impl Disconnectable for RandomBool {
     fn disconnect(&self) {
         if let Some(property) = self.entity.properties.get(RandomBoolProperties::TRIGGER.as_ref()) {
-            trace!("Disconnecting {} with id {}", RANDOM_BOOL, self.entity.id);
             property.stream.read().unwrap().remove(self.handle_id);
         }
     }

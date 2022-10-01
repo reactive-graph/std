@@ -9,6 +9,7 @@ use crate::reactive::BehaviourCreationError;
 use log::trace;
 use rand::Rng;
 use serde_json::json;
+use uuid::Uuid;
 
 pub const RANDOM_NUMBER: &str = "random_number";
 
@@ -21,7 +22,7 @@ pub struct RandomNumber {
 impl RandomNumber {
     pub fn new(e: Arc<ReactiveEntityInstance>) -> Result<RandomNumber, BehaviourCreationError> {
         let entity = e.clone();
-        let handle_id = e.properties.get(RandomNumberProperties::TRIGGER.as_ref()).unwrap().id.as_u128();
+        let handle_id = Uuid::new_v4().as_u128();
         let mut rng = rand::thread_rng();
         e.properties
             .get(RandomNumberProperties::TRIGGER.as_ref())
@@ -48,14 +49,12 @@ impl RandomNumber {
 
 impl Disconnectable for RandomNumber {
     fn disconnect(&self) {
-        trace!("Disconnecting {} with id {}", RANDOM_NUMBER, self.entity.id);
         if let Some(property) = self.entity.properties.get(RandomNumberProperties::TRIGGER.as_ref()) {
             property.stream.read().unwrap().remove(self.handle_id);
         }
     }
 }
 
-/// Automatically disconnect streams on destruction
 impl Drop for RandomNumber {
     fn drop(&mut self) {
         self.disconnect();

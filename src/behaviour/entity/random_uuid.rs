@@ -21,7 +21,7 @@ pub struct RandomUuid {
 impl RandomUuid {
     pub fn new(e: Arc<ReactiveEntityInstance>) -> Result<RandomUuid, BehaviourCreationError> {
         let entity = e.clone();
-        let handle_id = e.properties.get(RandomUuidProperties::TRIGGER.as_ref()).unwrap().id.as_u128();
+        let handle_id = Uuid::new_v4().as_u128();
         e.properties
             .get(RandomUuidProperties::TRIGGER.as_ref())
             .unwrap()
@@ -47,14 +47,12 @@ impl RandomUuid {
 
 impl Disconnectable for RandomUuid {
     fn disconnect(&self) {
-        trace!("Disconnecting {} with id {}", RANDOM_UUID, self.entity.id);
         if let Some(property) = self.entity.properties.get(RandomUuidProperties::TRIGGER.as_ref()) {
             property.stream.read().unwrap().remove(self.handle_id);
         }
     }
 }
 
-/// Automatically disconnect streams on destruction
 impl Drop for RandomUuid {
     fn drop(&mut self) {
         self.disconnect();
