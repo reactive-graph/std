@@ -1,4 +1,5 @@
 {
+  "namespace": "base",
   "name": "versioned",
   "description": "The entity is versioned.",
   "properties": [

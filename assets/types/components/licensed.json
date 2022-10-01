@@ -1,4 +1,5 @@
 {
+  "namespace": "base",
   "name": "licensed",
   "description": "The entity is licensed.",
   "properties": [

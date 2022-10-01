@@ -1,4 +1,5 @@
 {
+  "namespace": "base",
   "name": "named",
   "description": "The entity or relation has a name.",
   "properties": [

@@ -1,12 +1,10 @@
 {
+  "namespace": "base",
   "name": "comment",
-  "group": "semantic",
   "description": "A simple comment",
   "components": [
     "named",
-    "describable",
-    "flow_2d",
-    "flow_3d"
+    "describable"
   ],
   "properties": [
   ],
