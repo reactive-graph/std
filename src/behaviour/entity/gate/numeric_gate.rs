@@ -40,7 +40,7 @@ impl NumericGate<'_> {
     pub fn new(e: Arc<ReactiveEntityInstance>, f: NumericGateFunction<f64>) -> NumericGate<'static> {
         let lhs_initial = e
             .as_f64(NumericGateProperties::LHS.as_ref())
-            .unwrap_or(NumericGateProperties::LHS.default_value());
+            .unwrap_or_else(|| NumericGateProperties::LHS.default_value());
         let lhs = e
             .properties
             .get(NumericGateProperties::LHS.as_ref())
@@ -54,7 +54,7 @@ impl NumericGate<'_> {
             });
         let rhs_initial = e
             .as_f64(NumericGateProperties::RHS.as_ref())
-            .unwrap_or(NumericGateProperties::RHS.default_value());
+            .unwrap_or_else(|| NumericGateProperties::RHS.default_value());
         let rhs = e
             .properties
             .get(NumericGateProperties::RHS.as_ref())
