@@ -1,7 +1,10 @@
-use std::sync::{Arc, RwLock};
+use std::sync::Arc;
+use std::sync::RwLock;
 
 use log::debug;
-use serde_json::{json, Value};
+use serde_json::json;
+use serde_json::Value;
+use uuid::Uuid;
 
 use crate::behaviour::entity::gate::function::NumericGateFunction;
 use crate::behaviour::entity::gate::properties::NumericGateProperties;
@@ -71,8 +74,7 @@ impl NumericGate<'_> {
         // The internal result
         let internal_result = expression.map(move |e| f(e.lhs, e.rhs));
 
-        // TODO: handle result based on outbound property id and inbound property id
-        let handle_id = e.properties.get(NumericGateProperties::RESULT.as_ref()).unwrap().id.as_u128();
+        let handle_id = Uuid::new_v4().as_u128();
 
         let numeric_gate = NumericGate {
             lhs: RwLock::new(lhs),
