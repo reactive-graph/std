@@ -1,13 +1,18 @@
 use std::convert::AsRef;
-use std::sync::{Arc, RwLock};
+use std::sync::Arc;
+use std::sync::RwLock;
 
 use log::debug;
-use serde_json::{json, Value};
+use serde_json::json;
+use serde_json::Value;
+use uuid::Uuid;
 
 use crate::behaviour::entity::operation::properties::ArithmeticOperationProperties;
 use crate::behaviour::entity::operation::ArithmeticOperationFunction;
 use crate::frp::Stream;
-use crate::model::{PropertyInstanceGetter, PropertyInstanceSetter, ReactiveEntityInstance};
+use crate::model::PropertyInstanceGetter;
+use crate::model::PropertyInstanceSetter;
+use crate::model::ReactiveEntityInstance;
 use crate::reactive::entity::operation::Operation;
 use crate::reactive::entity::Disconnectable;
 
@@ -28,7 +33,7 @@ pub struct ArithmeticOperation<'a> {
 
 impl ArithmeticOperation<'_> {
     pub fn new(e: Arc<ReactiveEntityInstance>, f: ArithmeticOperationFunction<f64>) -> ArithmeticOperation<'static> {
-        let handle_id = e.properties.get(ArithmeticOperationProperties::RESULT.as_ref()).unwrap().id.as_u128();
+        let handle_id = Uuid::new_v4().as_u128();
 
         let internal_result = e
             .properties
@@ -44,6 +49,12 @@ impl ArithmeticOperation<'_> {
             entity: e.clone(),
             handle_id,
         };
+
+        // Initial calculation
+        let lhs_initial = e
+            .as_f64(ArithmeticOperationProperties::LHS.as_ref())
+            .unwrap_or_else(|| ArithmeticOperationProperties::LHS.default_value());
+        e.set(ArithmeticOperationProperties::RESULT.as_ref(), json!(f(lhs_initial)));
 
         // Connect the internal result with the stream of the result property
         arithmetic_operation.internal_result.read().unwrap().observe_with_handle(
@@ -65,9 +76,7 @@ impl ArithmeticOperation<'_> {
 }
 
 impl Disconnectable for ArithmeticOperation<'_> {
-    /// TODO: Add guard: disconnect only if actually connected
     fn disconnect(&self) {
-        debug!("Disconnect {} {} with handle {}", ARITHMETIC_OPERATION, self.type_name(), self.handle_id);
         self.internal_result.read().unwrap().remove(self.handle_id);
     }
 }
@@ -82,7 +91,6 @@ impl Operation for ArithmeticOperation<'_> {
     }
 }
 
-/// Automatically disconnect streams on destruction
 impl Drop for ArithmeticOperation<'_> {
     fn drop(&mut self) {
         self.disconnect();

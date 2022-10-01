@@ -9,6 +9,7 @@ extern crate query_interface;
 
 use std::sync::Arc;
 
+use inexor_rgf_core_builder as builder;
 use inexor_rgf_core_di as di;
 use inexor_rgf_core_frp as frp;
 use inexor_rgf_core_model as model;
