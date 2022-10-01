@@ -1,11 +1,9 @@
 {
+  "namespace": "arithmetic",
   "name": "mod",
-  "group": "math",
   "description": "Modulo",
   "components": [
-    "arithmetic_gate",
-    "flow_2d",
-    "flow_3d"
+    "arithmetic_gate"
   ],
   "properties": [
   ],

@@ -1,4 +1,5 @@
 {
+  "namespace": "arithmetic",
   "name": "arithmetic_operation",
   "description": "Arithmetic operation with one input and one result",
   "properties": [

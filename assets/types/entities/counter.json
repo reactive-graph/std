@@ -1,11 +1,9 @@
 {
+  "namespace": "arithmetic",
   "name": "counter",
-  "group": "math",
   "description": "If triggered the counter will be increased",
   "components": [
-    "action",
-    "flow_2d",
-    "flow_3d"
+    "action"
   ],
   "properties": [
     {

@@ -1,11 +1,9 @@
 {
+  "namespace": "arithmetic",
   "name": "decrement",
-  "group": "math",
   "description": "Decrements a number",
   "components": [
-    "arithmetic_operation",
-    "flow_2d",
-    "flow_3d"
+    "arithmetic_operation"
   ],
   "properties": [
   ],

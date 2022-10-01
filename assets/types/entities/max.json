@@ -1,11 +1,9 @@
 {
+  "namespace": "arithmetic",
   "name": "max",
-  "group": "math",
   "description": "Returns the maximum value of two inputs",
   "components": [
-    "arithmetic_gate",
-    "flow_2d",
-    "flow_3d"
+    "arithmetic_gate"
   ],
   "properties": [
   ],
