@@ -1,7 +1,6 @@
 use std::collections::BTreeMap;
 use std::sync::{Arc, RwLock};
 
-use crate::di::*;
 use async_trait::async_trait;
 use log::debug;
 use uuid::Uuid;
@@ -12,6 +11,8 @@ use crate::behaviour::entity::gate::NUMERIC_GATES;
 use crate::behaviour::entity::operation::NumericOperation;
 use crate::behaviour::entity::operation::NUMERIC_OPERATION;
 use crate::behaviour::entity::operation::NUMERIC_OPERATIONS;
+use crate::di::*;
+use crate::model::ReactiveBehaviourContainer;
 use crate::model::ReactiveEntityInstance;
 use crate::plugins::EntityBehaviourProvider;
 
