@@ -1,12 +1,17 @@
 use std::convert::AsRef;
-use std::sync::{Arc, RwLock};
+use std::sync::Arc;
+use std::sync::RwLock;
 
 use log::debug;
-use serde_json::{json, Value};
+use serde_json::json;
+use serde_json::Value;
+use uuid::Uuid;
 
 use crate::behaviour::entity::operation::NumericOperationFunction;
 use crate::frp::Stream;
-use crate::model::{PropertyInstanceGetter, PropertyInstanceSetter, ReactiveEntityInstance};
+use crate::model::PropertyInstanceGetter;
+use crate::model::PropertyInstanceSetter;
+use crate::model::ReactiveEntityInstance;
 use crate::reactive::entity::operation::Operation;
 use crate::reactive::entity::Disconnectable;
 use crate::NumericOperationProperties;
@@ -28,7 +33,7 @@ pub struct NumericOperation<'a> {
 
 impl NumericOperation<'_> {
     pub fn new(e: Arc<ReactiveEntityInstance>, f: NumericOperationFunction<f64>) -> NumericOperation<'static> {
-        let handle_id = e.properties.get(NumericOperationProperties::RESULT.as_ref()).unwrap().id.as_u128();
+        let handle_id = Uuid::new_v4().as_u128();
 
         let internal_result = e
             .properties
@@ -37,7 +42,10 @@ impl NumericOperation<'_> {
             .stream
             .read()
             .unwrap()
-            .map(move |v| json!(f(v.as_f64().unwrap())));
+            .map(move |v| match v.as_f64() {
+                Some(v) => json!(f(v)),
+                None => json!(0.0),
+            });
         let numeric_operation = NumericOperation {
             f,
             internal_result: RwLock::new(internal_result),
@@ -45,11 +53,17 @@ impl NumericOperation<'_> {
             handle_id,
         };
 
+        // Initial calculation
+        let lhs_initial = e
+            .as_f64(NumericOperationProperties::LHS.as_ref())
+            .unwrap_or_else(|| NumericOperationProperties::LHS.default_value());
+        e.set(NumericOperationProperties::RESULT.as_ref(), json!(f(lhs_initial)));
+
         // Connect the internal result with the stream of the result property
         numeric_operation.internal_result.read().unwrap().observe_with_handle(
             move |v| {
                 debug!("Setting result of {}: {}", NUMERIC_OPERATION, v);
-                e.set(NumericOperationProperties::RESULT.to_string(), json!(*v));
+                e.set(NumericOperationProperties::RESULT.as_ref(), json!(*v));
             },
             handle_id,
         );
@@ -65,9 +79,7 @@ impl NumericOperation<'_> {
 }
 
 impl Disconnectable for NumericOperation<'_> {
-    /// TODO: Add guard: disconnect only if actually connected
     fn disconnect(&self) {
-        debug!("Disconnect {} {} with handle {}", NUMERIC_OPERATION, self.type_name(), self.handle_id);
         self.internal_result.read().unwrap().remove(self.handle_id);
     }
 }
@@ -82,7 +94,6 @@ impl Operation for NumericOperation<'_> {
     }
 }
 
-/// Automatically disconnect streams on destruction
 impl Drop for NumericOperation<'_> {
     fn drop(&mut self) {
         self.disconnect();
