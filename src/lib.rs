@@ -1,5 +1,6 @@
 #![feature(register_tool)]
 #![register_tool(tarpaulin)]
+#![allow(clippy::map_entry)]
 
 #[macro_use]
 extern crate lazy_static;
