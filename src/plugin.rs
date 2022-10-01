@@ -54,29 +54,20 @@ impl Plugin for BasePluginImpl {
         plugin_metadata!()
     }
 
-    fn set_context(
-        &self,
-        context: Arc<dyn PluginContext>,
-    ) -> Result<(), PluginContextInitializationError> {
+    fn set_context(&self, context: Arc<dyn PluginContext>) -> Result<(), PluginContextInitializationError> {
         self.context.0.write().unwrap().replace(context);
         Ok(())
     }
 
-    fn get_component_provider(
-        &self,
-    ) -> Result<Option<Arc<dyn ComponentProvider>>, ComponentProviderError> {
+    fn get_component_provider(&self) -> Result<Option<Arc<dyn ComponentProvider>>, ComponentProviderError> {
         component_provider!(self.component_provider)
     }
 
-    fn get_entity_type_provider(
-        &self,
-    ) -> Result<Option<Arc<dyn EntityTypeProvider>>, EntityTypeProviderError> {
+    fn get_entity_type_provider(&self) -> Result<Option<Arc<dyn EntityTypeProvider>>, EntityTypeProviderError> {
         entity_type_provider!(self.entity_type_provider)
     }
 
-    fn get_flow_type_provider(
-        &self,
-    ) -> Result<Option<Arc<dyn FlowTypeProvider>>, FlowTypeProviderError> {
+    fn get_flow_type_provider(&self) -> Result<Option<Arc<dyn FlowTypeProvider>>, FlowTypeProviderError> {
         flow_type_provider!(self.flow_type_provider)
     }
 }
