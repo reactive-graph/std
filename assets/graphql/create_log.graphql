@@ -2,31 +2,33 @@ mutation {
   instances {
     entities {
       create(
-        type: "log",
-        id: "f62bdf89-7832-469f-8e68-5f89fd3648c2",
+        type: "log"
+        id: "f62bdf89-7832-469f-8e68-5f89fd3648c2"
         properties: [
           {
-            name: "lhs",
+            name: "lhs"
             value: 10
           },
           {
-            name: "rhs",
+            name: "rhs"
             value: 3
           },
-          {
-            name: "result",
-            value: 100
-          }
+          # This would have no effect because the initial value of the property result will be overwritten immediately
+          # {
+          #   name: "result"
+          #   value: 100
+          # }
         ]
       ) {
         id
         type {
+          namespace
           name
         }
         properties(
           names: [
-            "lhs",
-            "rhs",
+            "lhs"
+            "rhs"
             "result"
           ]
         ) {

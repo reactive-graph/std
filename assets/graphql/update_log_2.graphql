@@ -5,8 +5,8 @@ mutation {
         id: "f62bdf89-7832-469f-8e68-5f89fd3648c2",
         properties: [
           {
-            name: "rhs",
-            value: 4
+            name: "lhs",
+            value: 2
           }
         ]
       ) {
