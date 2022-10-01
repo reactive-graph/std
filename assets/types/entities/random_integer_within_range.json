@@ -1,6 +1,6 @@
 {
+  "namespace": "random",
   "name": "random_integer_within_range",
-  "group": "json",
   "description": "Random Integer Within Range",
   "components": [
     "action",

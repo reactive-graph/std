@@ -1,6 +1,6 @@
 {
+  "namespace": "random",
   "name": "random_number",
-  "group": "json",
   "description": "Random Number",
   "components": [
     "action",
@@ -11,7 +11,21 @@
     {
       "name": "result",
       "data_type": "number",
-      "socket_type": "output"
+      "socket_type": "output",
+      "extensions": [
+        {
+          "name": "widgetType",
+          "extension": "NumberOutput"
+        },
+        {
+          "name": "socket",
+          "extension": {
+            "width": 60,
+            "height": 30,
+            "offset": 5
+          }
+        }
+      ]
     }
   ],
   "extensions": [

@@ -1,6 +1,6 @@
 {
+  "namespace": "random",
   "name": "random_bool",
-  "group": "json",
   "description": "Random Bool",
   "components": [
     "action",

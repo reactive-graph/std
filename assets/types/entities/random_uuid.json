@@ -1,6 +1,6 @@
 {
+  "namespace": "random",
   "name": "random_uuid",
-  "group": "json",
   "description": "Random UUID",
   "components": [
     "action",

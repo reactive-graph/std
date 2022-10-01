@@ -1,6 +1,6 @@
 {
+  "namespace": "random",
   "name": "pseudo_random_number",
-  "group": "json",
   "description": "Pseudo Random Number",
   "components": [
     "action",

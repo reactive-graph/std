@@ -1,6 +1,6 @@
 {
+  "namespace": "random",
   "name": "random_string",
-  "group": "json",
   "description": "Random String",
   "components": [
     "action",
