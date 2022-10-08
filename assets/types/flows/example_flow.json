@@ -1,10 +1,15 @@
 {
-  "type": "generic_flow",
-  "name": "example_flow",
   "namespace": "base",
+  "name": "example_flow",
   "description": "Example Flow Type",
+  "wrapper_entity_instance": {
+    "namespace": "flow",
+    "type": "generic_flow",
+    "id": "5616e791-a943-487c-b79f-4a827e9d6a36"
+  },
   "entity_instances": [
     {
+      "namespace": "value",
       "type": "value_boolean",
       "id": "a3d23df3-8cc6-4162-a3de-63dc274ba15c",
       "properties": {
@@ -12,6 +17,7 @@
       }
     },
     {
+      "namespace": "value",
       "type": "value_boolean",
       "id": "ee935ece-bf8d-4d10-956c-8c97d006e97f",
       "properties": {
@@ -19,6 +25,7 @@
       }
     },
     {
+      "namespace": "logical",
       "type": "and",
       "id": "34689bbc-d611-4748-81a6-ad0f32f701ac",
       "properties": {
@@ -30,8 +37,9 @@
   ],
   "relation_instances": [
     {
+      "namespace": "connector",
       "outbound_id": "a3d23df3-8cc6-4162-a3de-63dc274ba15c",
-      "type": "default_connector",
+      "type": "default_connector__value__lhs",
       "inbound_id": "34689bbc-d611-4748-81a6-ad0f32f701ac",
       "properties": {
         "outbound_property_name": "value",
@@ -39,8 +47,9 @@
       }
     },
     {
+      "namespace": "connector",
       "outbound_id": "ee935ece-bf8d-4d10-956c-8c97d006e97f",
-      "type": "default_connector",
+      "type": "default_connector__value__rhs",
       "inbound_id": "34689bbc-d611-4748-81a6-ad0f32f701ac",
       "properties": {
         "outbound_property_name": "value",
