@@ -1,4 +1,5 @@
 {
+  "namespace": "logical",
   "name": "action",
   "description": "An action can be triggered",
   "properties": [

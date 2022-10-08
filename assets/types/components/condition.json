@@ -1,4 +1,5 @@
 {
+  "namespace": "logical",
   "name": "condition",
   "description": "Depending on the given condition outputs a result",
   "properties": [

@@ -1,6 +1,6 @@
 {
+  "namespace": "logical",
   "name": "if_then_else",
-  "group": "logical_gates",
   "description": "Each time it's triggered, either the then-payload or the else-payload gets propagated",
   "components": [
     "condition"

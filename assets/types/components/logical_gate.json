@@ -1,4 +1,5 @@
 {
+  "namespace": "logical",
   "name": "logical_gate",
   "description": "Executes a logical operation on the inputs lhs and rhs and outputs the result",
   "properties": [

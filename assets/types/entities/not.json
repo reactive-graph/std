@@ -1,6 +1,6 @@
 {
+  "namespace": "logical",
   "name": "not",
-  "group": "logical_operation",
   "description": "NOT",
   "components": [
     "logical_gate"

@@ -1,4 +1,5 @@
 {
+  "namespace": "logical",
   "name": "generator",
   "description": "A generator sends a trigger",
   "properties": [

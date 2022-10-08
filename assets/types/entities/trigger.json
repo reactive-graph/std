@@ -1,6 +1,6 @@
 {
+  "namespace": "logical",
   "name": "trigger",
-  "group": "logical_gates",
   "description": "If triggered the payload will be copied to the output",
   "components": [
     "action"

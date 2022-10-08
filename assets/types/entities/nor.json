@@ -1,6 +1,6 @@
 {
+  "namespace": "logical",
   "name": "nor",
-  "group": "logical_gates",
   "description": "NOR",
   "components": [
     "logical_gate"
