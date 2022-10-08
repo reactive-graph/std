@@ -1,0 +1,39 @@
+{
+  "namespace": "logical",
+  "name": "and3",
+  "description": "An AND Gate with three inputs",
+  "components": [
+  ],
+  "properties": [
+    {
+      "name": "input1",
+      "data_type": "bool",
+      "socket_type": "input"
+    },
+    {
+      "name": "input2",
+      "data_type": "bool",
+      "socket_type": "input"
+    },
+    {
+      "name": "input3",
+      "data_type": "bool",
+      "socket_type": "input"
+    },
+    {
+      "name": "result",
+      "data_type": "bool",
+      "socket_type": "output"
+    }
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension":{
+        "title": "AND3",
+        "subject": "An AND Gate with three inputs",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

@@ -17,6 +17,7 @@ use crate::behaviour::entity::toggle::TOGGLE;
 use crate::behaviour::entity::trigger::Trigger;
 use crate::behaviour::entity::trigger::TRIGGER;
 use crate::di::*;
+use crate::model::ReactiveBehaviourContainer;
 use crate::model::ReactiveEntityInstance;
 use crate::plugins::EntityBehaviourProvider;
 

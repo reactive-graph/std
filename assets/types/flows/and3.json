@@ -1,0 +1,78 @@
+{
+  "namespace": "logical",
+  "name": "and3",
+  "description": "AND with 3 boolean inputs",
+  "wrapper_entity_instance": {
+    "namespace": "logical",
+    "type": "and3",
+    "id": "d563faba-1747-43fb-ac38-497fd7c84796"
+  },
+  "entity_instances": [
+    {
+      "namespace": "logical",
+      "type": "and",
+      "id": "16525bdc-dbf4-48f3-992b-9fdbff8cd33b"
+    },
+    {
+      "namespace": "logical",
+      "type": "and",
+      "id": "3779acfc-414a-4481-8ee2-11d0172c99c0"
+    }
+  ],
+  "relation_instances": [
+    {
+      "namespace": "connector",
+      "outbound_id": "d563faba-1747-43fb-ac38-497fd7c84796",
+      "type": "default_connector__input1__lhs",
+      "inbound_id": "16525bdc-dbf4-48f3-992b-9fdbff8cd33b",
+      "properties": {
+        "outbound_property_name": "input1",
+        "inbound_property_name": "lhs"
+      }
+    },
+    {
+      "namespace": "connector",
+      "outbound_id": "d563faba-1747-43fb-ac38-497fd7c84796",
+      "type": "default_connector__input2__rhs",
+      "inbound_id": "16525bdc-dbf4-48f3-992b-9fdbff8cd33b",
+      "properties": {
+        "outbound_property_name": "input2",
+        "inbound_property_name": "rhs"
+      }
+    },
+    {
+      "namespace": "connector",
+      "outbound_id": "d563faba-1747-43fb-ac38-497fd7c84796",
+      "type": "default_connector__input3__lhs",
+      "inbound_id": "3779acfc-414a-4481-8ee2-11d0172c99c0",
+      "properties": {
+        "outbound_property_name": "input3",
+        "inbound_property_name": "lhs"
+      }
+    },
+    {
+      "namespace": "connector",
+      "outbound_id": "16525bdc-dbf4-48f3-992b-9fdbff8cd33b",
+      "type": "default_connector__result__rhs",
+      "inbound_id": "3779acfc-414a-4481-8ee2-11d0172c99c0",
+      "properties": {
+        "outbound_property_name": "result",
+        "inbound_property_name": "rhs"
+      }
+    },
+    {
+      "namespace": "connector",
+      "outbound_id": "3779acfc-414a-4481-8ee2-11d0172c99c0",
+      "type": "default_connector__result__result",
+      "inbound_id": "d563faba-1747-43fb-ac38-497fd7c84796",
+      "properties": {
+        "outbound_property_name": "result",
+        "inbound_property_name": "result"
+      }
+    }
+  ],
+  "variables": [
+  ],
+  "extensions": [
+  ]
+}
