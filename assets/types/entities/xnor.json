@@ -3,9 +3,7 @@
   "group": "logical_gates",
   "description": "XNOR",
   "components": [
-    "logical_gate",
-    "flow_2d",
-    "flow_3d"
+    "logical_gate"
   ],
   "properties": [
   ],
