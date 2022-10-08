@@ -22,7 +22,8 @@ const LHS: LogicalGateProperties = LogicalGateProperties::LHS;
 const RHS: LogicalGateProperties = LogicalGateProperties::RHS;
 const RESULT: LogicalGateProperties = LogicalGateProperties::RESULT;
 
-const COMPONENT_NAME_LOGICAL_GATE: &'static str = "logical_gate";
+const NAMESPACE: &str = "logical";
+const COMPONENT_NAME_LOGICAL_GATE: &str = "logical_gate";
 const TYPE_NAME_AND: &str = "and";
 
 #[test]
@@ -38,13 +39,13 @@ fn and_gate_test() {
         PropertyType::new_with_socket(RHS, DataType::Number, SocketType::Input),
         PropertyType::new_with_socket(RESULT, DataType::Number, SocketType::Output),
     ];
-    let and_type = EntityType::new(TYPE_NAME_AND, "", "", vec![String::from(COMPONENT_NAME_LOGICAL_GATE)], property_types, Vec::new());
+    let and_type = EntityType::new(NAMESPACE, TYPE_NAME_AND, "", vec![String::from(COMPONENT_NAME_LOGICAL_GATE)], property_types, Vec::new());
     let and_function = LOGICAL_GATES.get(TYPE_NAME_AND).unwrap();
     let mut properties = HashMap::new();
     properties.insert(LHS.into(), json!(LHS.default_value()));
     properties.insert(RHS.into(), json!(LHS.default_value()));
     properties.insert(RESULT.into(), json!(RESULT.default_value()));
-    let and_entity = EntityInstance::new(and_type.name.clone(), Uuid::new_v4(), properties);
+    let and_entity = EntityInstance::new(NAMESPACE, &and_type.name, Uuid::new_v4(), properties);
     let and_reactive_entity = Arc::new(ReactiveEntityInstance::from(and_entity));
     let and_behaviour = LogicalGate::new(and_reactive_entity.clone(), *and_function);
     assert_eq!(TYPE_NAME_AND, and_behaviour.type_name().as_str());
