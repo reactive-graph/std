@@ -1,5 +1,3 @@
-use crate::model::ReactivePropertyContainer;
-use crate::reactive::BehaviourCreationError;
 use std::sync::Arc;
 use std::sync::RwLock;
 
@@ -20,6 +18,7 @@ use crate::reactive::entity::expression::OperatorPosition;
 use crate::reactive::entity::gate::Gate;
 use crate::reactive::entity::operation::Operation;
 use crate::reactive::entity::Disconnectable;
+use crate::reactive::BehaviourCreationError;
 
 pub type LogicalExpressionValue = ExpressionValue<bool>;
 
@@ -42,38 +41,21 @@ pub struct LogicalGate<'a> {
 
 impl LogicalGate<'_> {
     pub fn new(e: Arc<ReactiveEntityInstance>, f: LogicalGateFunction) -> Result<LogicalGate<'static>, BehaviourCreationError> {
-        if !e.has_property(LogicalGateProperties::LHS.as_ref())
-            || !e.has_property(LogicalGateProperties::RHS.as_ref())
-            || !e.has_property(LogicalGateProperties::RESULT.as_ref())
-        {
-            return Err(BehaviourCreationError);
-        }
-        let lhs = e
-            .properties
-            .get(LogicalGateProperties::LHS.as_ref())
-            .unwrap()
-            .stream
-            .read()
-            .unwrap()
-            .map(|v| match v.as_bool() {
-                Some(b) => (OperatorPosition::LHS, b),
-                None => (OperatorPosition::LHS, LogicalGateProperties::LHS.default_value()),
-            });
-        let rhs = e
-            .properties
-            .get(LogicalGateProperties::RHS.as_ref())
-            .unwrap()
-            .stream
-            .read()
-            .unwrap()
-            .map(|v| -> LogicalExpressionValue {
-                match v.as_bool() {
-                    Some(b) => (OperatorPosition::RHS, b),
-                    None => (OperatorPosition::RHS, LogicalGateProperties::RHS.default_value()),
-                }
-            });
+        let lhs = e.properties.get(LogicalGateProperties::LHS.as_ref()).ok_or(BehaviourCreationError)?;
+        let rhs = e.properties.get(LogicalGateProperties::RHS.as_ref()).ok_or(BehaviourCreationError)?;
 
-        let expression = lhs.merge(&rhs).fold(
+        let lhs_stream = lhs.stream.read().unwrap().map(|v| match v.as_bool() {
+            Some(b) => (OperatorPosition::LHS, b),
+            None => (OperatorPosition::LHS, LogicalGateProperties::LHS.default_value()),
+        });
+        let rhs_stream = rhs.stream.read().unwrap().map(|v| -> LogicalExpressionValue {
+            match v.as_bool() {
+                Some(b) => (OperatorPosition::RHS, b),
+                None => (OperatorPosition::RHS, LogicalGateProperties::RHS.default_value()),
+            }
+        });
+
+        let expression = lhs_stream.merge(&rhs_stream).fold(
             Expression::new(LogicalGateProperties::LHS.default_value(), LogicalGateProperties::RHS.default_value()),
             |old_state, (o, value)| match *o {
                 OperatorPosition::LHS => old_state.lhs(*value),
@@ -86,25 +68,26 @@ impl LogicalGate<'_> {
         let handle_id = Uuid::new_v4().as_u128();
 
         let logical_gate = LogicalGate {
-            lhs: RwLock::new(lhs),
-            rhs: RwLock::new(rhs),
+            lhs: RwLock::new(lhs_stream),
+            rhs: RwLock::new(rhs_stream),
             f,
             internal_result: RwLock::new(internal_result),
             entity: e.clone(),
             handle_id,
         };
 
-        if let Some(lhs) = e.as_bool(LogicalGateProperties::LHS.as_ref()) {
-            if let Some(rhs) = e.as_bool(LogicalGateProperties::RHS.as_ref()) {
+        if let Some(lhs) = lhs.as_bool() {
+            if let Some(rhs) = rhs.as_bool() {
                 e.set(LogicalGateProperties::RESULT, Value::Bool(f(lhs, rhs)));
             }
         }
 
         // Connect the internal result with the stream of the result property
+        let entity = e.clone();
         logical_gate.internal_result.read().unwrap().observe_with_handle(
             move |v| {
                 debug!("Setting result of logical gate: {}", v);
-                e.set(LogicalGateProperties::RESULT.as_ref(), json!(*v));
+                entity.set(LogicalGateProperties::RESULT.as_ref(), json!(*v));
             },
             handle_id,
         );
