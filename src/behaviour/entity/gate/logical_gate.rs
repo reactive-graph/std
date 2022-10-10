@@ -43,6 +43,7 @@ impl LogicalGate<'_> {
     pub fn new(e: Arc<ReactiveEntityInstance>, f: LogicalGateFunction) -> Result<LogicalGate<'static>, BehaviourCreationError> {
         let lhs = e.properties.get(LogicalGateProperties::LHS.as_ref()).ok_or(BehaviourCreationError)?;
         let rhs = e.properties.get(LogicalGateProperties::RHS.as_ref()).ok_or(BehaviourCreationError)?;
+        let result = e.properties.get(LogicalGateProperties::RESULT.as_ref()).ok_or(BehaviourCreationError)?;
 
         let lhs_stream = lhs.stream.read().unwrap().map(|v| match v.as_bool() {
             Some(b) => (OperatorPosition::LHS, b),
@@ -78,7 +79,7 @@ impl LogicalGate<'_> {
 
         if let Some(lhs) = lhs.as_bool() {
             if let Some(rhs) = rhs.as_bool() {
-                e.set(LogicalGateProperties::RESULT, Value::Bool(f(lhs, rhs)));
+                result.set(Value::Bool(f(lhs, rhs)));
             }
         }
 

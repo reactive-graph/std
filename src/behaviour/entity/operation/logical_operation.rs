@@ -1,4 +1,3 @@
-use crate::model::ReactivePropertyContainer;
 use crate::reactive::BehaviourCreationError;
 use std::convert::AsRef;
 use std::sync::Arc;
@@ -12,7 +11,9 @@ use uuid::Uuid;
 use crate::behaviour::entity::operation::function::LogicalOperationFunction;
 use crate::behaviour::entity::operation::properties::LogicalOperationProperties;
 use crate::frp::Stream;
-use crate::model::{PropertyInstanceGetter, PropertyInstanceSetter, ReactiveEntityInstance};
+use crate::model::PropertyInstanceGetter;
+use crate::model::PropertyInstanceSetter;
+use crate::model::ReactiveEntityInstance;
 use crate::reactive::entity::operation::Operation;
 use crate::reactive::entity::Disconnectable;
 
@@ -31,18 +32,10 @@ pub struct LogicalOperation<'a> {
 
 impl LogicalOperation<'_> {
     pub fn new(e: Arc<ReactiveEntityInstance>, f: LogicalOperationFunction) -> Result<LogicalOperation<'static>, BehaviourCreationError> {
-        if !e.has_property(LogicalOperationProperties::LHS.as_ref()) || !e.has_property(LogicalOperationProperties::RESULT.as_ref()) {
-            return Err(BehaviourCreationError);
-        }
+        let lhs = e.properties.get(LogicalOperationProperties::LHS.as_ref()).ok_or(BehaviourCreationError)?;
+        let result = e.properties.get(LogicalOperationProperties::RESULT.as_ref()).ok_or(BehaviourCreationError)?;
 
-        let internal_result = e
-            .properties
-            .get(LogicalOperationProperties::LHS.as_ref())
-            .unwrap()
-            .stream
-            .read()
-            .unwrap()
-            .map(move |v| json!(f(v.as_bool().unwrap())));
+        let internal_result = lhs.stream.read().unwrap().map(move |v| json!(f(v.as_bool().unwrap())));
 
         let handle_id = Uuid::new_v4().as_u128();
 
@@ -54,15 +47,16 @@ impl LogicalOperation<'_> {
         };
 
         // Initial calculation
-        if let Some(lhs) = e.as_bool(LogicalOperationProperties::LHS.as_ref()) {
-            e.set(LogicalOperationProperties::RESULT, Value::Bool(f(lhs)));
+        if let Some(lhs) = lhs.as_bool() {
+            result.set(Value::Bool(f(lhs)));
         }
 
         // Connect the internal result with the stream of the result property
+        let entity = e.clone();
         logical_operation.internal_result.read().unwrap().observe_with_handle(
             move |v| {
                 debug!("Setting result of logical gate: {}", v);
-                e.set(LogicalOperationProperties::RESULT.to_string(), json!(*v));
+                entity.set(LogicalOperationProperties::RESULT.to_string(), json!(*v));
             },
             handle_id,
         );
