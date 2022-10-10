@@ -118,9 +118,9 @@ impl LogicalEntityBehaviourProvider for LogicalEntityBehaviourProviderImpl {
         let id = entity_instance.id;
         if let Some(logical_operation) = LOGICAL_OPERATIONS
             .get(type_name)
-            .map(|function| Arc::new(LogicalOperation::new(entity_instance.clone(), *function)))
+            .and_then(|function| LogicalOperation::new(entity_instance.clone(), *function).ok())
         {
-            self.logical_operations.0.write().unwrap().insert(id, logical_operation);
+            self.logical_operations.0.write().unwrap().insert(id, Arc::new(logical_operation));
             entity_instance.add_behaviour(type_name);
             debug!("Added behaviour {} to entity instance {}", type_name, id);
         }
@@ -131,9 +131,9 @@ impl LogicalEntityBehaviourProvider for LogicalEntityBehaviourProviderImpl {
         let id = entity_instance.id;
         if let Some(logical_gate) = LOGICAL_GATES
             .get(type_name)
-            .map(|function| Arc::new(LogicalGate::new(entity_instance.clone(), *function)))
+            .and_then(|function| LogicalGate::new(entity_instance.clone(), *function).ok())
         {
-            self.logical_gates.0.write().unwrap().insert(id, logical_gate);
+            self.logical_gates.0.write().unwrap().insert(id, Arc::new(logical_gate));
             entity_instance.add_behaviour(type_name);
             debug!("Added behaviour {} to entity instance {}", type_name, id);
         }

@@ -44,6 +44,8 @@ fn not_operation_test() {
     let not_entity = EntityInstance::new(NAMESPACE, &not_type.name, Uuid::new_v4(), properties);
     let not_reactive_entity = Arc::new(ReactiveEntityInstance::from(not_entity));
     let not_behaviour = LogicalOperation::new(not_reactive_entity.clone(), *not_function);
+    assert!(not_behaviour.is_ok());
+    let not_behaviour = not_behaviour.unwrap();
     assert_eq!(TYPE_NAME_NOT, not_behaviour.type_name().as_str());
 
     // === Reactive Entity API ===
@@ -59,4 +61,19 @@ fn not_operation_test() {
     assert_eq!(false, not_behaviour.result().as_bool().unwrap());
     not_behaviour.lhs(json!(false));
     assert_eq!(true, not_behaviour.result().as_bool().unwrap());
+}
+
+#[test]
+fn incomplete_not_operation_test() {
+    let property_types = vec![
+        PropertyType::new_with_socket(LHS, DataType::Number, SocketType::Input),
+        PropertyType::new_with_socket(RESULT, DataType::Number, SocketType::Output),
+    ];
+    let not_type = EntityType::new(NAMESPACE, TYPE_NAME_NOT, "", vec![String::from(COMPONENT_NAME_LOGICAL_OPERATION)], property_types, Vec::new());
+    let not_function = LOGICAL_OPERATIONS.get(TYPE_NAME_NOT).unwrap();
+    // No-properties
+    let not_entity = EntityInstance::new(NAMESPACE, &not_type.name, Uuid::new_v4(), HashMap::new());
+    let not_reactive_entity = Arc::new(ReactiveEntityInstance::from(not_entity));
+    let not_behaviour = LogicalOperation::new(not_reactive_entity.clone(), *not_function);
+    assert!(not_behaviour.is_err());
 }

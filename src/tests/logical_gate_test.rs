@@ -48,6 +48,8 @@ fn and_gate_test() {
     let and_entity = EntityInstance::new(NAMESPACE, &and_type.name, Uuid::new_v4(), properties);
     let and_reactive_entity = Arc::new(ReactiveEntityInstance::from(and_entity));
     let and_behaviour = LogicalGate::new(and_reactive_entity.clone(), *and_function);
+    assert!(and_behaviour.is_ok());
+    let and_behaviour = and_behaviour.unwrap();
     assert_eq!(TYPE_NAME_AND, and_behaviour.type_name().as_str());
 
     // === Reactive Entity API ===
@@ -78,4 +80,20 @@ fn and_gate_test() {
     assert_eq!(false, and_behaviour.result().as_bool().unwrap());
     and_behaviour.rhs(json!(true));
     assert_eq!(true, and_behaviour.result().as_bool().unwrap());
+}
+
+#[test]
+fn incomplete_and_gate_test() {
+    let property_types = vec![
+        PropertyType::new_with_socket(LHS, DataType::Number, SocketType::Input),
+        PropertyType::new_with_socket(RHS, DataType::Number, SocketType::Input),
+        PropertyType::new_with_socket(RESULT, DataType::Number, SocketType::Output),
+    ];
+    let and_type = EntityType::new(NAMESPACE, TYPE_NAME_AND, "", vec![String::from(COMPONENT_NAME_LOGICAL_GATE)], property_types, Vec::new());
+    let and_function = LOGICAL_GATES.get(TYPE_NAME_AND).unwrap();
+    // No-properties
+    let and_entity = EntityInstance::new(NAMESPACE, &and_type.name, Uuid::new_v4(), HashMap::new());
+    let and_reactive_entity = Arc::new(ReactiveEntityInstance::from(and_entity));
+    let and_behaviour = LogicalGate::new(and_reactive_entity.clone(), *and_function);
+    assert!(and_behaviour.is_err());
 }

@@ -1,8 +1,13 @@
+use crate::model::ReactivePropertyContainer;
+use crate::reactive::BehaviourCreationError;
 use std::convert::AsRef;
-use std::sync::{Arc, RwLock};
+use std::sync::Arc;
+use std::sync::RwLock;
 
 use log::debug;
-use serde_json::{json, Value};
+use serde_json::json;
+use serde_json::Value;
+use uuid::Uuid;
 
 use crate::behaviour::entity::operation::function::LogicalOperationFunction;
 use crate::behaviour::entity::operation::properties::LogicalOperationProperties;
@@ -25,8 +30,10 @@ pub struct LogicalOperation<'a> {
 }
 
 impl LogicalOperation<'_> {
-    pub fn new(e: Arc<ReactiveEntityInstance>, f: LogicalOperationFunction) -> LogicalOperation<'static> {
-        let handle_id = e.properties.get(LogicalOperationProperties::RESULT.as_ref()).unwrap().id.as_u128();
+    pub fn new(e: Arc<ReactiveEntityInstance>, f: LogicalOperationFunction) -> Result<LogicalOperation<'static>, BehaviourCreationError> {
+        if !e.has_property(LogicalOperationProperties::LHS.as_ref()) || !e.has_property(LogicalOperationProperties::RESULT.as_ref()) {
+            return Err(BehaviourCreationError);
+        }
 
         let internal_result = e
             .properties
@@ -36,12 +43,20 @@ impl LogicalOperation<'_> {
             .read()
             .unwrap()
             .map(move |v| json!(f(v.as_bool().unwrap())));
+
+        let handle_id = Uuid::new_v4().as_u128();
+
         let logical_operation = LogicalOperation {
             f,
             internal_result: RwLock::new(internal_result),
             entity: e.clone(),
             handle_id,
         };
+
+        // Initial calculation
+        if let Some(lhs) = e.as_bool(LogicalOperationProperties::LHS.as_ref()) {
+            e.set(LogicalOperationProperties::RESULT, Value::Bool(f(lhs)));
+        }
 
         // Connect the internal result with the stream of the result property
         logical_operation.internal_result.read().unwrap().observe_with_handle(
@@ -52,20 +67,16 @@ impl LogicalOperation<'_> {
             handle_id,
         );
 
-        logical_operation
+        Ok(logical_operation)
     }
 
-    /// TODO: extract to trait "Named"
-    /// TODO: unit test
     pub fn type_name(&self) -> String {
         self.entity.type_name.clone()
     }
 }
 
 impl Disconnectable for LogicalOperation<'_> {
-    /// TODO: Add guard: disconnect only if actually connected
     fn disconnect(&self) {
-        debug!("Disconnect logical operation {}", self.handle_id);
         self.internal_result.read().unwrap().remove(self.handle_id);
     }
 }
@@ -80,10 +91,8 @@ impl Operation for LogicalOperation<'_> {
     }
 }
 
-/// Automatically disconnect streams on destruction
 impl Drop for LogicalOperation<'_> {
     fn drop(&mut self) {
-        debug!("Drop logical operation");
         self.disconnect();
     }
 }

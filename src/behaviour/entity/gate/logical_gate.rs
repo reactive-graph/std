@@ -1,13 +1,22 @@
-use std::sync::{Arc, RwLock};
+use crate::model::ReactivePropertyContainer;
+use crate::reactive::BehaviourCreationError;
+use std::sync::Arc;
+use std::sync::RwLock;
 
 use log::debug;
-use serde_json::{json, Value};
+use serde_json::json;
+use serde_json::Value;
+use uuid::Uuid;
 
 use crate::behaviour::entity::gate::properties::LogicalGateProperties;
 use crate::behaviour::entity::gate::LogicalGateFunction;
 use crate::frp::Stream;
-use crate::model::{PropertyInstanceGetter, PropertyInstanceSetter, ReactiveEntityInstance};
-use crate::reactive::entity::expression::{Expression, ExpressionValue, OperatorPosition};
+use crate::model::PropertyInstanceGetter;
+use crate::model::PropertyInstanceSetter;
+use crate::model::ReactiveEntityInstance;
+use crate::reactive::entity::expression::Expression;
+use crate::reactive::entity::expression::ExpressionValue;
+use crate::reactive::entity::expression::OperatorPosition;
 use crate::reactive::entity::gate::Gate;
 use crate::reactive::entity::operation::Operation;
 use crate::reactive::entity::Disconnectable;
@@ -32,7 +41,13 @@ pub struct LogicalGate<'a> {
 }
 
 impl LogicalGate<'_> {
-    pub fn new(e: Arc<ReactiveEntityInstance>, f: LogicalGateFunction) -> LogicalGate<'static> {
+    pub fn new(e: Arc<ReactiveEntityInstance>, f: LogicalGateFunction) -> Result<LogicalGate<'static>, BehaviourCreationError> {
+        if !e.has_property(LogicalGateProperties::LHS.as_ref())
+            || !e.has_property(LogicalGateProperties::RHS.as_ref())
+            || !e.has_property(LogicalGateProperties::RESULT.as_ref())
+        {
+            return Err(BehaviourCreationError);
+        }
         let lhs = e
             .properties
             .get(LogicalGateProperties::LHS.as_ref())
@@ -66,11 +81,9 @@ impl LogicalGate<'_> {
             },
         );
 
-        // The internal result
         let internal_result = expression.map(move |e| f(e.lhs, e.rhs));
 
-        // TODO: handle result based on outbound property id and inbound property id
-        let handle_id = e.properties.get(LogicalGateProperties::RESULT.as_ref()).unwrap().id.as_u128();
+        let handle_id = Uuid::new_v4().as_u128();
 
         let logical_gate = LogicalGate {
             lhs: RwLock::new(lhs),
@@ -81,29 +94,31 @@ impl LogicalGate<'_> {
             handle_id,
         };
 
+        if let Some(lhs) = e.as_bool(LogicalGateProperties::LHS.as_ref()) {
+            if let Some(rhs) = e.as_bool(LogicalGateProperties::RHS.as_ref()) {
+                e.set(LogicalGateProperties::RESULT, Value::Bool(f(lhs, rhs)));
+            }
+        }
+
         // Connect the internal result with the stream of the result property
         logical_gate.internal_result.read().unwrap().observe_with_handle(
             move |v| {
                 debug!("Setting result of logical gate: {}", v);
-                e.set(LogicalGateProperties::RESULT.to_string(), json!(*v));
+                e.set(LogicalGateProperties::RESULT.as_ref(), json!(*v));
             },
             handle_id,
         );
 
-        logical_gate
+        Ok(logical_gate)
     }
 
-    /// TODO: extract to trait "Named"
-    /// TODO: unit test
     pub fn type_name(&self) -> String {
         self.entity.type_name.clone()
     }
 }
 
 impl Disconnectable for LogicalGate<'_> {
-    /// TODO: Add guard: disconnect only if actually connected
     fn disconnect(&self) {
-        debug!("Disconnect logical gate {} {}", self.type_name(), self.handle_id);
         self.internal_result.read().unwrap().remove(self.handle_id);
     }
 }
@@ -124,10 +139,8 @@ impl Gate for LogicalGate<'_> {
     }
 }
 
-/// Automatically disconnect streams on destruction
 impl Drop for LogicalGate<'_> {
     fn drop(&mut self) {
-        debug!("Drop logical gate");
         self.disconnect();
     }
 }
