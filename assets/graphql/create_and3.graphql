@@ -23,12 +23,8 @@ mutation UpdateAnd3 {
         id: "7adafc81-266a-4640-897a-902eabf8bdc1"
         properties: [
           {
-            name: "input1"
-            value: true
-          }
-          {
             name: "input2"
-            value: false
+            value: true
           }
           {
             name: "input3"
@@ -44,7 +40,7 @@ mutation UpdateAnd3 {
 
 query GetAnd3 {
   instances {
-    entities(id: "7adafc81-266a-4640-897a-902eabf8bdc1") {
+    entities(type: "and3") {
       ...FullEntityInstance
     }
   }
