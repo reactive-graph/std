@@ -1,4 +1,5 @@
 {
+  "namespace": "metadata",
   "name": "dublin_core",
   "properties": [
     {
