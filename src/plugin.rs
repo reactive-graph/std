@@ -90,7 +90,7 @@ impl NumericPluginImpl {
         let reader = self.context.0.read().unwrap();
         let entity_instance_manager = reader.as_ref().unwrap().get_entity_instance_manager().clone();
         for (name, value) in NUMERIC_CONSTANTS.iter() {
-            let entity_instance = EntityInstanceBuilder::new("value_number")
+            let entity_instance = EntityInstanceBuilder::new("value", "value_number")
                 .id(Uuid::new_v5(&NAMESPACE_NUMERIC, name.as_bytes()))
                 .property("value", json!(value))
                 .property("name", json!(name))
