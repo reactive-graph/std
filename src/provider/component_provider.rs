@@ -1,11 +1,11 @@
-use crate::di::*;
 use async_trait::async_trait;
-use log::{debug, error};
+use log::debug;
+use log::error;
 use rust_embed::RustEmbed;
 
+use crate::di::*;
+use crate::model::Component;
 use crate::plugins::ComponentProvider;
-
-use crate::model::component::Component;
 
 #[derive(RustEmbed)]
 #[folder = "./assets/types/components"]

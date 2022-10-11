@@ -13,6 +13,8 @@ use crate::behaviour::component::STATE_COMPONENTS;
 use crate::behaviour::component::STATE_DEBUGGERS;
 use crate::behaviour::component::VALUE_DEBUGGERS;
 use crate::di::*;
+use crate::model::ComponentContainer;
+use crate::model::ReactiveBehaviourContainer;
 use crate::model::ReactiveEntityInstance;
 use crate::plugins::ComponentBehaviourProvider;
 
@@ -42,17 +44,17 @@ fn create_state_debugger_storage() -> StateDebuggerStorage {
 
 #[async_trait]
 pub trait ValueComponentBehaviourProvider: ComponentBehaviourProvider + Send + Sync {
-    fn create_state(&self, entity_instance: Arc<ReactiveEntityInstance>, component_name: &String);
+    fn create_state(&self, entity_instance: Arc<ReactiveEntityInstance>, component_name: &str);
 
-    fn create_value_debugger(&self, entity_instance: Arc<ReactiveEntityInstance>, component_name: &String);
+    fn create_value_debugger(&self, entity_instance: Arc<ReactiveEntityInstance>, component_name: &str);
 
-    fn create_state_debugger(&self, entity_instance: Arc<ReactiveEntityInstance>, component_name: &String);
+    fn create_state_debugger(&self, entity_instance: Arc<ReactiveEntityInstance>, component_name: &str);
 
-    fn remove_state(&self, entity_instance: Arc<ReactiveEntityInstance>, component_name: &String);
+    fn remove_state(&self, entity_instance: Arc<ReactiveEntityInstance>, component_name: &str);
 
-    fn remove_value_debugger(&self, entity_instance: Arc<ReactiveEntityInstance>, component_name: &String);
+    fn remove_value_debugger(&self, entity_instance: Arc<ReactiveEntityInstance>, component_name: &str);
 
-    fn remove_state_debugger(&self, entity_instance: Arc<ReactiveEntityInstance>, component_name: &String);
+    fn remove_state_debugger(&self, entity_instance: Arc<ReactiveEntityInstance>, component_name: &str);
 
     fn remove_by_id(&self, id: Uuid);
 }
@@ -80,9 +82,9 @@ impl ValueComponentBehaviourProviderImpl {
 #[async_trait]
 #[provides]
 impl ValueComponentBehaviourProvider for ValueComponentBehaviourProviderImpl {
-    fn create_state(&self, entity_instance: Arc<ReactiveEntityInstance>, component_name: &String) {
+    fn create_state(&self, entity_instance: Arc<ReactiveEntityInstance>, component_name: &str) {
         let id = entity_instance.id;
-        if STATE_COMPONENTS.contains(&component_name.as_str()) {
+        if STATE_COMPONENTS.contains(&component_name) {
             if let Ok(behaviour) = State::new(entity_instance.clone()) {
                 self.states.0.write().unwrap().insert(id, Arc::new(behaviour));
                 entity_instance.add_behaviour(component_name);
@@ -91,10 +93,10 @@ impl ValueComponentBehaviourProvider for ValueComponentBehaviourProviderImpl {
         }
     }
 
-    fn create_value_debugger(&self, entity_instance: Arc<ReactiveEntityInstance>, component_name: &String) {
+    fn create_value_debugger(&self, entity_instance: Arc<ReactiveEntityInstance>, component_name: &str) {
         let id = entity_instance.id;
         if let Some(behaviour) = VALUE_DEBUGGERS
-            .get(component_name.as_str())
+            .get(component_name)
             .and_then(|function| ValueDebugger::new(entity_instance.clone(), *function).ok())
         {
             self.value_debuggers.0.write().unwrap().insert(id, Arc::new(behaviour));
@@ -103,10 +105,10 @@ impl ValueComponentBehaviourProvider for ValueComponentBehaviourProviderImpl {
         }
     }
 
-    fn create_state_debugger(&self, entity_instance: Arc<ReactiveEntityInstance>, component_name: &String) {
+    fn create_state_debugger(&self, entity_instance: Arc<ReactiveEntityInstance>, component_name: &str) {
         let id = entity_instance.id;
         if let Some(behaviour) = STATE_DEBUGGERS
-            .get(component_name.as_str())
+            .get(component_name)
             .and_then(|function| StateDebugger::new(entity_instance.clone(), *function).ok())
         {
             self.state_debuggers.0.write().unwrap().insert(id, Arc::new(behaviour));
@@ -115,19 +117,19 @@ impl ValueComponentBehaviourProvider for ValueComponentBehaviourProviderImpl {
         }
     }
 
-    fn remove_state(&self, entity_instance: Arc<ReactiveEntityInstance>, component_name: &String) {
+    fn remove_state(&self, entity_instance: Arc<ReactiveEntityInstance>, component_name: &str) {
         self.states.0.write().unwrap().remove(&entity_instance.id);
         entity_instance.remove_behaviour(component_name);
         debug!("Removed behaviour {} from entity instance {}", component_name, entity_instance.id);
     }
 
-    fn remove_value_debugger(&self, entity_instance: Arc<ReactiveEntityInstance>, component_name: &String) {
+    fn remove_value_debugger(&self, entity_instance: Arc<ReactiveEntityInstance>, component_name: &str) {
         self.value_debuggers.0.write().unwrap().remove(&entity_instance.id);
         entity_instance.remove_behaviour(component_name);
         debug!("Removed behaviour {} from entity instance {}", component_name, entity_instance.id);
     }
 
-    fn remove_state_debugger(&self, entity_instance: Arc<ReactiveEntityInstance>, component_name: &String) {
+    fn remove_state_debugger(&self, entity_instance: Arc<ReactiveEntityInstance>, component_name: &str) {
         self.state_debuggers.0.write().unwrap().remove(&entity_instance.id);
         entity_instance.remove_behaviour(component_name);
         debug!("Removed behaviour {} from entity instance {}", component_name, entity_instance.id);

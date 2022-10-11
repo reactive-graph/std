@@ -1,11 +1,12 @@
-use inexor_rgf_core_model::PropertyInstanceSetter;
 use std::sync::Arc;
 
 use serde_json::Value;
 use uuid::Uuid;
 
-use crate::behaviour::component::{StateProperties, ValueProperties};
+use crate::behaviour::component::StateProperties;
+use crate::behaviour::component::ValueProperties;
 use crate::model::PropertyInstanceGetter;
+use crate::model::PropertyInstanceSetter;
 use crate::model::ReactiveEntityInstance;
 use crate::reactive::entity::Disconnectable;
 use crate::reactive::BehaviourCreationError;
