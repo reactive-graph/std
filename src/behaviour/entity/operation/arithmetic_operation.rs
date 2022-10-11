@@ -15,6 +15,7 @@ use crate::model::PropertyInstanceSetter;
 use crate::model::ReactiveEntityInstance;
 use crate::reactive::entity::operation::Operation;
 use crate::reactive::entity::Disconnectable;
+use crate::reactive::BehaviourCreationError;
 
 pub const ARITHMETIC_OPERATION: &str = "arithmetic_operation";
 
@@ -32,17 +33,17 @@ pub struct ArithmeticOperation<'a> {
 }
 
 impl ArithmeticOperation<'_> {
-    pub fn new(e: Arc<ReactiveEntityInstance>, f: ArithmeticOperationFunction<f64>) -> ArithmeticOperation<'static> {
+    pub fn new(e: Arc<ReactiveEntityInstance>, f: ArithmeticOperationFunction<f64>) -> Result<ArithmeticOperation<'static>, BehaviourCreationError> {
+        let lhs = e.properties.get(ArithmeticOperationProperties::LHS.as_ref()).ok_or(BehaviourCreationError)?;
+        let result = e.properties.get(ArithmeticOperationProperties::RESULT.as_ref()).ok_or(BehaviourCreationError)?;
+
+        let internal_result = lhs.stream.read().unwrap().map(move |v| match v.as_f64() {
+            Some(v) => json!(f(v)),
+            None => json!(ArithmeticOperationProperties::RESULT.default_value()),
+        });
+
         let handle_id = Uuid::new_v4().as_u128();
 
-        let internal_result = e
-            .properties
-            .get(ArithmeticOperationProperties::LHS.as_ref())
-            .unwrap()
-            .stream
-            .read()
-            .unwrap()
-            .map(move |v| json!(f(v.as_f64().unwrap())));
         let arithmetic_operation = ArithmeticOperation {
             f,
             internal_result: RwLock::new(internal_result),
@@ -51,21 +52,21 @@ impl ArithmeticOperation<'_> {
         };
 
         // Initial calculation
-        let lhs_initial = e
-            .as_f64(ArithmeticOperationProperties::LHS.as_ref())
-            .unwrap_or_else(|| ArithmeticOperationProperties::LHS.default_value());
-        e.set(ArithmeticOperationProperties::RESULT.as_ref(), json!(f(lhs_initial)));
+        if let Some(lhs) = lhs.as_f64() {
+            result.set(json!(f(lhs)));
+        }
 
         // Connect the internal result with the stream of the result property
+        let entity = e.clone();
         arithmetic_operation.internal_result.read().unwrap().observe_with_handle(
             move |v| {
                 debug!("Setting result of {}: {}", ARITHMETIC_OPERATION, v);
-                e.set(ArithmeticOperationProperties::RESULT.to_string(), json!(*v));
+                entity.set(ArithmeticOperationProperties::RESULT.to_string(), json!(*v));
             },
             handle_id,
         );
 
-        arithmetic_operation
+        Ok(arithmetic_operation)
     }
 
     pub fn type_name(&self) -> String {

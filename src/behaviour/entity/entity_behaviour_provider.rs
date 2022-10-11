@@ -82,26 +82,26 @@ impl ArithmeticEntityBehaviourProviderImpl {
 #[provides]
 impl ArithmeticEntityBehaviourProvider for ArithmeticEntityBehaviourProviderImpl {
     fn create_operation(&self, entity_instance: Arc<ReactiveEntityInstance>) {
-        let id = entity_instance.id;
         let type_name = entity_instance.type_name.as_str();
         if let Some(arithmetic_operation) = ARITHMETIC_OPERATIONS
             .get(type_name)
-            .map(|function| Arc::new(ArithmeticOperation::new(entity_instance.clone(), *function)))
+            .and_then(|function| ArithmeticOperation::new(entity_instance.clone(), *function).ok())
         {
-            self.arithmetic_operations.0.write().unwrap().insert(id, arithmetic_operation);
+            let id = entity_instance.id;
+            self.arithmetic_operations.0.write().unwrap().insert(id, Arc::new(arithmetic_operation));
             entity_instance.add_behaviour(type_name);
             debug!("Added behaviour {} to entity instance {}", type_name, id);
         }
     }
 
     fn create_gate(&self, entity_instance: Arc<ReactiveEntityInstance>) {
-        let id = entity_instance.id;
         let type_name = entity_instance.type_name.as_str();
         if let Some(arithmetic_gate) = ARITHMETIC_GATES
             .get(type_name)
-            .map(|function| Arc::new(ArithmeticGate::new(entity_instance.clone(), *function)))
+            .and_then(|function| ArithmeticGate::new(entity_instance.clone(), *function).ok())
         {
-            self.arithmetic_gates.0.write().unwrap().insert(id, arithmetic_gate);
+            let id = entity_instance.id;
+            self.arithmetic_gates.0.write().unwrap().insert(id, Arc::new(arithmetic_gate));
             entity_instance.add_behaviour(type_name);
             debug!("Added behaviour {} to entity instance {}", type_name, id);
         }
