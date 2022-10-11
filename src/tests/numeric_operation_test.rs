@@ -38,9 +38,11 @@ fn numeric_operation_sin_type_test() {
     let mut properties = HashMap::new();
     properties.insert(NumericOperationProperties::LHS.into(), json!(NumericOperationProperties::LHS.default_value()));
     properties.insert(NumericOperationProperties::RESULT.into(), json!(NumericOperationProperties::RESULT.default_value()));
-    let sin_entity = EntityInstance::new(sin_type.name.clone(), Uuid::new_v4(), properties);
+    let sin_entity = EntityInstance::new(NAMESPACE, &sin_type.name, Uuid::new_v4(), properties);
     let sin_reactive_entity = Arc::new(ReactiveEntityInstance::from(sin_entity));
     let sin_behaviour = NumericOperation::new(sin_reactive_entity.clone(), *sin_function);
+    assert!(sin_behaviour.is_ok());
+    let sin_behaviour = sin_behaviour.unwrap();
     assert_eq!(TYPE_NAME_SIN, sin_behaviour.type_name().as_str());
 
     // Set the input value

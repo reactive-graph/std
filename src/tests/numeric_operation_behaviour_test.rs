@@ -6,6 +6,7 @@ use crate::behaviour::entity::operation::function::*;
 use crate::behaviour::entity::operation::NumericOperation;
 use crate::builder::ReactiveEntityInstanceBuilder;
 use crate::model::ReactiveEntityInstance;
+use crate::reactive::BehaviourCreationError;
 use crate::reactive::Operation;
 use crate::NumericOperationProperties;
 
@@ -43,17 +44,17 @@ fn numeric_operation_behaviour_test() {
 }
 
 fn test_numeric_operation_behaviour(f: NumericOperationFunction<f64>, v: f64) -> Option<f64> {
-    let b = create_numeric_operation_behaviour(f);
+    let b = create_numeric_operation_behaviour(f).unwrap();
     b.lhs(json!(v));
     b.result().as_f64()
 }
 
-fn create_numeric_operation_behaviour(f: NumericOperationFunction<f64>) -> NumericOperation<'static> {
+fn create_numeric_operation_behaviour(f: NumericOperationFunction<f64>) -> Result<NumericOperation<'static>, BehaviourCreationError> {
     NumericOperation::new(create_numeric_operation_entity(), f)
 }
 
 fn create_numeric_operation_entity() -> Arc<ReactiveEntityInstance> {
-    ReactiveEntityInstanceBuilder::new("abs")
+    ReactiveEntityInstanceBuilder::new("numeric", "abs")
         .property(NumericOperationProperties::LHS.as_ref(), json!(NumericOperationProperties::LHS.default_value()))
         .property(NumericOperationProperties::RESULT.as_ref(), json!(NumericOperationProperties::RESULT.default_value()))
         .build()
