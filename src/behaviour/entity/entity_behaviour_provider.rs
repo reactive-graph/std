@@ -115,11 +115,11 @@ impl LogicalEntityBehaviourProviderImpl {
 impl LogicalEntityBehaviourProvider for LogicalEntityBehaviourProviderImpl {
     fn create_logical_operation(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let type_name = entity_instance.type_name.as_str();
-        let id = entity_instance.id;
         if let Some(logical_operation) = LOGICAL_OPERATIONS
             .get(type_name)
             .and_then(|function| LogicalOperation::new(entity_instance.clone(), *function).ok())
         {
+            let id = entity_instance.id;
             self.logical_operations.0.write().unwrap().insert(id, Arc::new(logical_operation));
             entity_instance.add_behaviour(type_name);
             debug!("Added behaviour {} to entity instance {}", type_name, id);
@@ -128,11 +128,11 @@ impl LogicalEntityBehaviourProvider for LogicalEntityBehaviourProviderImpl {
 
     fn create_logical_gate(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         let type_name = entity_instance.type_name.as_str();
-        let id = entity_instance.id;
         if let Some(logical_gate) = LOGICAL_GATES
             .get(type_name)
             .and_then(|function| LogicalGate::new(entity_instance.clone(), *function).ok())
         {
+            let id = entity_instance.id;
             self.logical_gates.0.write().unwrap().insert(id, Arc::new(logical_gate));
             entity_instance.add_behaviour(type_name);
             debug!("Added behaviour {} to entity instance {}", type_name, id);
