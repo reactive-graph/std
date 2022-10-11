@@ -7,6 +7,7 @@ use crate::behaviour::entity::operation::properties::ArithmeticOperationProperti
 use crate::behaviour::entity::operation::ArithmeticOperation;
 use crate::builder::ReactiveEntityInstanceBuilder;
 use crate::model::ReactiveEntityInstance;
+use crate::reactive::BehaviourCreationError;
 use crate::reactive::Operation;
 
 #[test]
@@ -17,17 +18,17 @@ fn arithmetic_operation_behaviour_test() {
 }
 
 fn test_arithmetic_operation_behaviour(f: ArithmeticOperationFunction<f64>, v: f64) -> Option<f64> {
-    let b = create_arithmetic_operation_behaviour(f);
+    let b = create_arithmetic_operation_behaviour(f).unwrap();
     b.lhs(json!(v));
     b.result().as_f64()
 }
 
-fn create_arithmetic_operation_behaviour(f: ArithmeticOperationFunction<f64>) -> ArithmeticOperation<'static> {
+fn create_arithmetic_operation_behaviour(f: ArithmeticOperationFunction<f64>) -> Result<ArithmeticOperation<'static>, BehaviourCreationError> {
     ArithmeticOperation::new(create_arithmetic_operation_entity(), f)
 }
 
 fn create_arithmetic_operation_entity() -> Arc<ReactiveEntityInstance> {
-    ReactiveEntityInstanceBuilder::new("abs")
+    ReactiveEntityInstanceBuilder::new("arithmetic", "abs")
         .property(ArithmeticOperationProperties::LHS.as_ref(), json!(ArithmeticOperationProperties::LHS.default_value()))
         .property(ArithmeticOperationProperties::RESULT.as_ref(), json!(ArithmeticOperationProperties::RESULT.default_value()))
         .build()

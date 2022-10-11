@@ -7,6 +7,7 @@ use crate::behaviour::entity::gate::properties::ArithmeticGateProperties;
 use crate::behaviour::entity::gate::ArithmeticGate;
 use crate::builder::ReactiveEntityInstanceBuilder;
 use crate::model::ReactiveEntityInstance;
+use crate::reactive::BehaviourCreationError;
 use crate::reactive::Gate;
 use crate::reactive::Operation;
 
@@ -25,18 +26,18 @@ fn arithmetic_operation_behaviour_test() {
 }
 
 fn test_arithmetic_gate_behaviour(f: ArithmeticGateFunction<f64>, lhs: f64, rhs: f64) -> Option<f64> {
-    let b = create_arithmetic_gate_behaviour(f);
+    let b = create_arithmetic_gate_behaviour(f).unwrap();
     b.lhs(json!(lhs));
     b.rhs(json!(rhs));
     b.result().as_f64()
 }
 
-fn create_arithmetic_gate_behaviour(f: ArithmeticGateFunction<f64>) -> ArithmeticGate<'static> {
+fn create_arithmetic_gate_behaviour(f: ArithmeticGateFunction<f64>) -> Result<ArithmeticGate<'static>, BehaviourCreationError> {
     ArithmeticGate::new(create_arithmetic_gate_entity(), f)
 }
 
 fn create_arithmetic_gate_entity() -> Arc<ReactiveEntityInstance> {
-    ReactiveEntityInstanceBuilder::new("abs")
+    ReactiveEntityInstanceBuilder::new("arithmetic", "abs")
         .property(ArithmeticGateProperties::LHS.as_ref(), json!(ArithmeticGateProperties::LHS.default_value()))
         .property(ArithmeticGateProperties::RHS.as_ref(), json!(ArithmeticGateProperties::RHS.default_value()))
         .property(ArithmeticGateProperties::RESULT.as_ref(), json!(ArithmeticGateProperties::RESULT.default_value()))

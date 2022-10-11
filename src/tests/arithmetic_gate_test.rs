@@ -43,9 +43,11 @@ fn arithmetic_gate_add_type_test() {
     properties.insert(LHS.into(), json!(LHS.default_value()));
     properties.insert(RHS.into(), json!(LHS.default_value()));
     properties.insert(RESULT.into(), json!(RESULT.default_value()));
-    let add_entity = EntityInstance::new(add_type.name.clone(), Uuid::new_v4(), properties);
+    let add_entity = EntityInstance::new(NAMESPACE, &add_type.name, Uuid::new_v4(), properties);
     let add_reactive_entity = Arc::new(ReactiveEntityInstance::from(add_entity));
     let add_behaviour = ArithmeticGate::new(add_reactive_entity.clone(), *add_function);
+    assert!(add_behaviour.is_ok());
+    let add_behaviour = add_behaviour.unwrap();
     assert_eq!(TYPE_NAME_ADD, add_behaviour.type_name().as_str());
 
     // Set both inputs
