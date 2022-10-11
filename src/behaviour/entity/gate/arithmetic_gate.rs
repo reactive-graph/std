@@ -107,8 +107,6 @@ impl ArithmeticGate<'_> {
         arithmetic_gate
     }
 
-    /// TODO: extract to trait "Named"
-    /// TODO: unit test
     pub fn type_name(&self) -> String {
         self.entity.type_name.clone()
     }
