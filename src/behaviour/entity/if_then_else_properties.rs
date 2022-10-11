@@ -1,7 +1,12 @@
+use indradb::Identifier;
+use indradb::NamedProperty;
+use serde_json::json;
+use serde_json::Value;
+use strum_macros::AsRefStr;
+use strum_macros::Display;
+use strum_macros::IntoStaticStr;
+
 use crate::reactive::NamedProperties;
-use indradb::{Identifier, NamedProperty};
-use serde_json::{json, Value};
-use strum_macros::{AsRefStr, Display, IntoStaticStr};
 
 #[allow(non_camel_case_types)]
 #[derive(AsRefStr, IntoStaticStr, Display)]

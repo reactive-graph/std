@@ -2,7 +2,8 @@ use std::convert::AsRef;
 use std::sync::Arc;
 
 use log::error;
-use serde_json::{json, Value};
+use serde_json::json;
+use serde_json::Value;
 
 use crate::behaviour::entity::toggle_properties::ToggleProperties;
 use crate::model::PropertyInstanceGetter;

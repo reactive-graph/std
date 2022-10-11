@@ -1,12 +1,12 @@
 use std::convert::AsRef;
 use std::sync::Arc;
 
-use inexor_rgf_core_model::PropertyInstanceSetter;
 use log::error;
 use serde_json::Value;
 
 use crate::behaviour::entity::if_then_else_properties::IfThenElseProperties;
 use crate::model::PropertyInstanceGetter;
+use crate::model::PropertyInstanceSetter;
 use crate::model::ReactiveEntityInstance;
 use crate::reactive::entity::Disconnectable;
 use crate::reactive::BehaviourCreationError;
