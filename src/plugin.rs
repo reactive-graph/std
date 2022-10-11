@@ -44,17 +44,12 @@ impl Plugin for MetaDataPluginImpl {
         plugin_metadata!("inexor-rgf-plugin-base")
     }
 
-    fn set_context(
-        &self,
-        context: Arc<dyn PluginContext>,
-    ) -> Result<(), PluginContextInitializationError> {
+    fn set_context(&self, context: Arc<dyn PluginContext>) -> Result<(), PluginContextInitializationError> {
         self.context.0.write().unwrap().replace(context);
         Ok(())
     }
 
-    fn get_component_provider(
-        &self,
-    ) -> Result<Option<Arc<dyn ComponentProvider>>, ComponentProviderError> {
+    fn get_component_provider(&self) -> Result<Option<Arc<dyn ComponentProvider>>, ComponentProviderError> {
         component_provider!(self.component_provider)
     }
 }
