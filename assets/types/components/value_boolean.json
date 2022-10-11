@@ -1,4 +1,5 @@
 {
+  "namespace": "value",
   "name": "value_boolean",
   "description": "Value of type boolean",
   "properties": [

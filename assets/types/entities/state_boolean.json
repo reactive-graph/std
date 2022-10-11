@@ -1,6 +1,6 @@
 {
+  "namespace": "state",
   "name": "state_boolean",
-  "group": "value",
   "description": "State of type boolean",
   "components": [
     "named",

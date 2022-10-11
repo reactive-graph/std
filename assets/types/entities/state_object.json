@@ -1,6 +1,6 @@
 {
+  "namespace": "state",
   "name": "state_object",
-  "group": "value",
   "description": "State of type object",
   "components": [
     "named",

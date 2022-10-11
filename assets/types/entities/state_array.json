@@ -1,6 +1,6 @@
 {
+  "namespace": "state",
   "name": "state_array",
-  "group": "value",
   "description": "State of type array",
   "components": [
     "named",

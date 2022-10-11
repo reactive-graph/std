@@ -1,6 +1,6 @@
 {
+  "namespace": "value",
   "name": "value_boolean",
-  "group": "value",
   "description": "Value of type boolean",
   "components": [
     "named",

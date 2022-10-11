@@ -1,4 +1,5 @@
 {
+  "namespace": "value",
   "name": "value_object",
   "description": "Value of type object",
   "properties": [

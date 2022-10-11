@@ -1,6 +1,6 @@
 {
+  "namespace": "value",
   "name": "value_object",
-  "group": "value",
   "description": "Value of type object",
   "components": [
     "named",

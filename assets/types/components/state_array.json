@@ -1,4 +1,5 @@
 {
+  "namespace": "state",
   "name": "state_array",
   "description": "State of type array",
   "properties": [
