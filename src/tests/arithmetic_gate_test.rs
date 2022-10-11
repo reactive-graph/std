@@ -1,13 +1,20 @@
-use serde_json::json;
+use std::collections::HashMap;
+use std::sync::Arc;
 
-use crate::model::{DataType, EntityInstance, EntityType, PropertyInstanceGetter, PropertyInstanceSetter, PropertyType, ReactiveEntityInstance, SocketType};
+use serde_json::json;
+use uuid::Uuid;
 
 use crate::behaviour::entity::gate::function::ARITHMETIC_GATES;
 use crate::behaviour::entity::gate::properties::ArithmeticGateProperties;
 use crate::behaviour::entity::gate::ArithmeticGate;
-use std::collections::HashMap;
-use std::sync::Arc;
-use uuid::Uuid;
+use crate::model::DataType;
+use crate::model::EntityInstance;
+use crate::model::EntityType;
+use crate::model::PropertyInstanceGetter;
+use crate::model::PropertyInstanceSetter;
+use crate::model::PropertyType;
+use crate::model::ReactiveEntityInstance;
+use crate::model::SocketType;
 
 const LHS: ArithmeticGateProperties = ArithmeticGateProperties::LHS;
 const RHS: ArithmeticGateProperties = ArithmeticGateProperties::RHS;
