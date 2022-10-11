@@ -36,8 +36,8 @@ impl LogicalOperation<'_> {
         let result = e.properties.get(LogicalOperationProperties::RESULT.as_ref()).ok_or(BehaviourCreationError)?;
 
         let internal_result = lhs.stream.read().unwrap().map(move |v| match v.as_bool() {
-            Some(v) => Value::Bool(v),
-            None => Value::Bool(false),
+            Some(v) => json!(f(v)),
+            None => json!(false),
         });
 
         let handle_id = Uuid::new_v4().as_u128();
@@ -51,7 +51,7 @@ impl LogicalOperation<'_> {
 
         // Initial calculation
         if let Some(lhs) = lhs.as_bool() {
-            result.set(Value::Bool(f(lhs)));
+            result.set(json!(f(lhs)));
         }
 
         // Connect the internal result with the stream of the result property
