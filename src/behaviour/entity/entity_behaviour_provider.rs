@@ -67,26 +67,24 @@ impl NumericEntityBehaviourProviderImpl {
 #[provides]
 impl NumericEntityBehaviourProvider for NumericEntityBehaviourProviderImpl {
     fn create_numeric_operation(&self, entity_instance: Arc<ReactiveEntityInstance>) {
-        let id = entity_instance.id;
-        let numeric_operation = NUMERIC_OPERATIONS
-            .get(entity_instance.type_name.as_str())
-            .map(|function| Arc::new(NumericOperation::new(entity_instance.clone(), *function)));
-        if let Some(numeric_operation) = numeric_operation {
-            self.numeric_operations.0.write().unwrap().insert(id, numeric_operation);
-            entity_instance.add_behaviour(entity_instance.type_name.as_str());
-            debug!("Added behaviour {} {} to entity instance {}", NUMERIC_OPERATION, entity_instance.type_name.as_str(), id);
+        if let Some(function) = NUMERIC_OPERATIONS.get(entity_instance.type_name.as_str()) {
+            if let Ok(numeric_operation) = NumericOperation::new(entity_instance.clone(), *function) {
+                let id = entity_instance.id;
+                self.numeric_operations.0.write().unwrap().insert(id, Arc::new(numeric_operation));
+                entity_instance.add_behaviour(&entity_instance.type_name);
+                debug!("Added behaviour {} {} to entity instance {}", NUMERIC_OPERATION, entity_instance.type_name.as_str(), id);
+            }
         }
     }
 
     fn create_numeric_gate(&self, entity_instance: Arc<ReactiveEntityInstance>) {
-        let id = entity_instance.id;
-        let numeric_gate = NUMERIC_GATES
-            .get(entity_instance.type_name.as_str())
-            .map(|function| Arc::new(NumericGate::new(entity_instance.clone(), *function)));
-        if let Some(numeric_gate) = numeric_gate {
-            self.numeric_gates.0.write().unwrap().insert(id, numeric_gate);
-            entity_instance.add_behaviour(entity_instance.type_name.as_str());
-            debug!("Added behaviour {} {} to entity instance {}", NUMERIC_GATE, entity_instance.type_name.as_str(), id);
+        if let Some(function) = NUMERIC_GATES.get(entity_instance.type_name.as_str()) {
+            if let Ok(numeric_gate) = NumericGate::new(entity_instance.clone(), *function) {
+                let id = entity_instance.id;
+                self.numeric_gates.0.write().unwrap().insert(id, Arc::new(numeric_gate));
+                entity_instance.add_behaviour(&entity_instance.type_name);
+                debug!("Added behaviour {} {} to entity instance {}", NUMERIC_GATE, &entity_instance.type_name, id);
+            }
         }
     }
 
@@ -95,9 +93,7 @@ impl NumericEntityBehaviourProvider for NumericEntityBehaviourProviderImpl {
             entity_instance.remove_behaviour(entity_instance.type_name.as_str());
             debug!(
                 "Removed behaviour {} {} from entity instance {}",
-                NUMERIC_OPERATION,
-                entity_instance.type_name.as_str(),
-                entity_instance.id
+                NUMERIC_OPERATION, &entity_instance.type_name, entity_instance.id
             );
         }
     }
@@ -107,9 +103,7 @@ impl NumericEntityBehaviourProvider for NumericEntityBehaviourProviderImpl {
             entity_instance.remove_behaviour(entity_instance.type_name.as_str());
             debug!(
                 "Removed behaviour {} {} from entity instance {}",
-                NUMERIC_GATE,
-                entity_instance.type_name.as_str(),
-                entity_instance.id
+                NUMERIC_GATE, &entity_instance.type_name, entity_instance.id
             );
         }
     }

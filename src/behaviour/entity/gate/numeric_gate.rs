@@ -14,6 +14,7 @@ use crate::reactive::entity::expression::{Expression, ExpressionValue, OperatorP
 use crate::reactive::entity::gate::Gate;
 use crate::reactive::entity::operation::Operation;
 use crate::reactive::entity::Disconnectable;
+use crate::reactive::BehaviourCreationError;
 
 pub const NUMERIC_GATE: &str = "numeric_gate";
 
@@ -37,40 +38,28 @@ pub struct NumericGate<'a> {
 }
 
 impl NumericGate<'_> {
-    pub fn new(e: Arc<ReactiveEntityInstance>, f: NumericGateFunction<f64>) -> NumericGate<'static> {
-        let lhs_initial = e
-            .as_f64(NumericGateProperties::LHS.as_ref())
-            .unwrap_or_else(|| NumericGateProperties::LHS.default_value());
-        let lhs = e
-            .properties
-            .get(NumericGateProperties::LHS.as_ref())
-            .unwrap()
-            .stream
-            .read()
-            .unwrap()
-            .map(move |v| match v.as_f64() {
-                Some(b) => (OperatorPosition::LHS, b),
-                None => (OperatorPosition::LHS, lhs_initial),
-            });
-        let rhs_initial = e
-            .as_f64(NumericGateProperties::RHS.as_ref())
-            .unwrap_or_else(|| NumericGateProperties::RHS.default_value());
-        let rhs = e
-            .properties
-            .get(NumericGateProperties::RHS.as_ref())
-            .unwrap()
-            .stream
-            .read()
-            .unwrap()
-            .map(move |v| -> NumericExpressionValue {
-                match v.as_f64() {
-                    Some(b) => (OperatorPosition::RHS, b),
-                    None => (OperatorPosition::RHS, rhs_initial),
-                }
-            });
+    pub fn new(e: Arc<ReactiveEntityInstance>, f: NumericGateFunction<f64>) -> Result<NumericGate<'static>, BehaviourCreationError> {
+        let lhs = e.properties.get(NumericGateProperties::LHS.as_ref()).ok_or(BehaviourCreationError)?;
+        let rhs = e.properties.get(NumericGateProperties::RHS.as_ref()).ok_or(BehaviourCreationError)?;
+        let result = e.properties.get(NumericGateProperties::RESULT.as_ref()).ok_or(BehaviourCreationError)?;
 
-        let expression = lhs
-            .merge(&rhs)
+        let lhs_initial = lhs.as_f64().unwrap_or_else(|| NumericGateProperties::LHS.default_value());
+
+        let rhs_initial = rhs.as_f64().unwrap_or_else(|| NumericGateProperties::LHS.default_value());
+
+        let lhs_stream = lhs.stream.read().unwrap().map(|v| match v.as_f64() {
+            Some(f) => (OperatorPosition::LHS, f),
+            None => (OperatorPosition::LHS, NumericGateProperties::LHS.default_value()),
+        });
+        let rhs_stream = rhs.stream.read().unwrap().map(|v| -> NumericExpressionValue {
+            match v.as_f64() {
+                Some(f) => (OperatorPosition::RHS, f),
+                None => (OperatorPosition::RHS, NumericGateProperties::RHS.default_value()),
+            }
+        });
+
+        let expression = lhs_stream
+            .merge(&rhs_stream)
             .fold(Expression::new(lhs_initial, rhs_initial), |old_state, (o, value)| match *o {
                 OperatorPosition::LHS => old_state.lhs(*value),
                 OperatorPosition::RHS => old_state.rhs(*value),
@@ -81,8 +70,8 @@ impl NumericGate<'_> {
         let handle_id = Uuid::new_v4().as_u128();
 
         let numeric_gate = NumericGate {
-            lhs: RwLock::new(lhs),
-            rhs: RwLock::new(rhs),
+            lhs: RwLock::new(lhs_stream),
+            rhs: RwLock::new(rhs_stream),
             f,
             internal_result: RwLock::new(internal_result),
             entity: e.clone(),
@@ -90,18 +79,23 @@ impl NumericGate<'_> {
         };
 
         // Initial calculation
-        e.set(NumericGateProperties::RESULT.as_ref(), json!(f(lhs_initial, rhs_initial)));
+        if let Some(lhs) = lhs.as_f64() {
+            if let Some(rhs) = rhs.as_f64() {
+                result.set(json!(f(lhs, rhs)));
+            }
+        }
 
         // Connect the internal result with the stream of the result property
+        let entity = e.clone();
         numeric_gate.internal_result.read().unwrap().observe_with_handle(
             move |v| {
                 debug!("Setting result of {}: {}", NUMERIC_GATE, v);
-                e.set(NumericGateProperties::RESULT.to_string(), json!(*v));
+                entity.set(NumericGateProperties::RESULT.to_string(), json!(*v));
             },
             handle_id,
         );
 
-        numeric_gate
+        Ok(numeric_gate)
     }
 
     pub fn type_name(&self) -> String {

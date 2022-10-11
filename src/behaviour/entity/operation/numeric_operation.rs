@@ -14,6 +14,7 @@ use crate::model::PropertyInstanceSetter;
 use crate::model::ReactiveEntityInstance;
 use crate::reactive::entity::operation::Operation;
 use crate::reactive::entity::Disconnectable;
+use crate::reactive::BehaviourCreationError;
 use crate::NumericOperationProperties;
 
 pub const NUMERIC_OPERATION: &str = "numeric_operation";
@@ -32,20 +33,17 @@ pub struct NumericOperation<'a> {
 }
 
 impl NumericOperation<'_> {
-    pub fn new(e: Arc<ReactiveEntityInstance>, f: NumericOperationFunction<f64>) -> NumericOperation<'static> {
+    pub fn new(e: Arc<ReactiveEntityInstance>, f: NumericOperationFunction<f64>) -> Result<NumericOperation<'static>, BehaviourCreationError> {
+        let lhs = e.properties.get(NumericOperationProperties::LHS.as_ref()).ok_or(BehaviourCreationError)?;
+        let result = e.properties.get(NumericOperationProperties::RESULT.as_ref()).ok_or(BehaviourCreationError)?;
+
+        let internal_result = lhs.stream.read().unwrap().map(move |v| match v.as_f64() {
+            Some(v) => json!(f(v)),
+            None => json!(0.0),
+        });
+
         let handle_id = Uuid::new_v4().as_u128();
 
-        let internal_result = e
-            .properties
-            .get(NumericOperationProperties::LHS.as_ref())
-            .unwrap()
-            .stream
-            .read()
-            .unwrap()
-            .map(move |v| match v.as_f64() {
-                Some(v) => json!(f(v)),
-                None => json!(0.0),
-            });
         let numeric_operation = NumericOperation {
             f,
             internal_result: RwLock::new(internal_result),
@@ -54,21 +52,21 @@ impl NumericOperation<'_> {
         };
 
         // Initial calculation
-        let lhs_initial = e
-            .as_f64(NumericOperationProperties::LHS.as_ref())
-            .unwrap_or_else(|| NumericOperationProperties::LHS.default_value());
-        e.set(NumericOperationProperties::RESULT.as_ref(), json!(f(lhs_initial)));
+        if let Some(lhs_initial) = lhs.as_f64() {
+            result.set(json!(f(lhs_initial)));
+        }
 
         // Connect the internal result with the stream of the result property
+        let entity = e.clone();
         numeric_operation.internal_result.read().unwrap().observe_with_handle(
             move |v| {
                 debug!("Setting result of {}: {}", NUMERIC_OPERATION, v);
-                e.set(NumericOperationProperties::RESULT.as_ref(), json!(*v));
+                entity.set(NumericOperationProperties::RESULT.as_ref(), json!(*v));
             },
             handle_id,
         );
 
-        numeric_operation
+        Ok(numeric_operation)
     }
 
     pub fn type_name(&self) -> String {
