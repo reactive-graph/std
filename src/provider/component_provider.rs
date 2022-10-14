@@ -1,4 +1,3 @@
-use async_trait::async_trait;
 use log::debug;
 use log::error;
 use rust_embed::RustEmbed;
@@ -11,10 +10,8 @@ use crate::plugins::ComponentProvider;
 #[folder = "./assets/types/components"]
 struct ArithmeticComponentAsset;
 
-#[async_trait]
 pub trait ArithmeticComponentProvider: ComponentProvider + Send + Sync {}
 
-#[derive(Clone)]
 pub struct ArithmeticComponentProviderImpl {}
 
 interfaces!(ArithmeticComponentProviderImpl: dyn ComponentProvider);
@@ -27,7 +24,6 @@ impl ArithmeticComponentProviderImpl {
     }
 }
 
-#[async_trait]
 #[provides]
 impl ArithmeticComponentProvider for ArithmeticComponentProviderImpl {}
 
