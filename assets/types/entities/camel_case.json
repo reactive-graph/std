@@ -1,6 +1,6 @@
 {
+  "namespace": "string",
   "name": "camel_case",
-  "group": "string",
   "description": "Converts the input to camel case",
   "components": [
     "string_operation"
