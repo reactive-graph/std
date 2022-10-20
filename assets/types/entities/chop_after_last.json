@@ -1,6 +1,6 @@
 {
+  "namespace": "string",
   "name": "chop_after_last",
-  "group": "string",
   "description": "Returns everything after the last given search",
   "components": [
     "string_gate"

@@ -1,6 +1,6 @@
 {
+  "namespace": "string",
   "name": "is_train_case",
-  "group": "string",
   "description": "Checks whether the input string is Train-Cased",
   "components": [
     "string_bool_operation"

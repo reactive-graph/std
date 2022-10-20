@@ -1,6 +1,6 @@
 {
+  "namespace": "string",
   "name": "is_numeric",
-  "group": "string",
   "description": "Checks whether the input string is numeric",
   "components": [
     "string_bool_operation"

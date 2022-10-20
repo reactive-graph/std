@@ -1,4 +1,5 @@
 {
+  "namespace": "string",
   "name": "string_string_number_gate",
   "properties": [
     {

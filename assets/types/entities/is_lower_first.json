@@ -1,6 +1,6 @@
 {
+  "namespace": "string",
   "name": "is_lower_first",
-  "group": "string",
   "description": "Checks whether the input string has the first character in lower case",
   "components": [
     "string_bool_operation"

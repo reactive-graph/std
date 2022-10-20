@@ -1,4 +1,5 @@
 {
+  "namespace": "string",
   "name": "string_number_operation",
   "properties": [
     {

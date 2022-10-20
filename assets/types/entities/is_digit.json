@@ -1,6 +1,6 @@
 {
+  "namespace": "string",
   "name": "is_digit",
-  "group": "string",
   "description": "Checks whether the input string contains only digit characters",
   "components": [
     "string_bool_operation"

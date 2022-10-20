@@ -1,6 +1,6 @@
 {
+  "namespace": "string",
   "name": "trim_start",
-  "group": "string",
   "description": "Trim  Start",
   "components": [
     "string_operation",

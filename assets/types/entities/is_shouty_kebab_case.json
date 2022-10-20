@@ -1,6 +1,6 @@
 {
+  "namespace": "string",
   "name": "is_shouty_kebab_case",
-  "group": "string",
   "description": "Checks whether the input string is SHOUTY-KEBAB-CASED",
   "components": [
     "string_bool_operation"

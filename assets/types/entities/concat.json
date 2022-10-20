@@ -1,6 +1,6 @@
 {
+  "namespace": "string",
   "name": "concat",
-  "group": "string",
   "description": "Concat",
   "components": [
     "string_gate",

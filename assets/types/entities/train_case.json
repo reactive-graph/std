@@ -1,6 +1,6 @@
 {
+  "namespace": "string",
   "name": "train_case",
-  "group": "string",
   "description": "Converts the input to train case",
   "components": [
     "string_operation"

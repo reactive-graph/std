@@ -1,6 +1,6 @@
 {
+  "namespace": "string",
   "name": "escape_regexp",
-  "group": "string",
   "description": "Escapes the regular expression special characters",
   "components": [
     "string_operation"

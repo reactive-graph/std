@@ -1,4 +1,5 @@
 {
+  "namespace": "string",
   "name": "string_comparison",
   "properties": [
     {

@@ -1,6 +1,6 @@
 {
+  "namespace": "string",
   "name": "shouty_kebab_case",
-  "group": "string",
   "description": "Converts the input to SHOUTY kebab case",
   "components": [
     "string_operation"

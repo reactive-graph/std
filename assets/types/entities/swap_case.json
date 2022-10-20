@@ -1,6 +1,6 @@
 {
+  "namespace": "string",
   "name": "swap_case",
-  "group": "string",
   "description": "Converts the uppercase alpha characters of the input to lowercase and lowercase characters to uppercase",
   "components": [
     "string_operation"

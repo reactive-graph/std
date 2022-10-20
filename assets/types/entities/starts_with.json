@@ -1,6 +1,6 @@
 {
+  "namespace": "string",
   "name": "starts_with",
-  "group": "string",
   "description": "Starts With",
   "components": [
     "string_comparison",

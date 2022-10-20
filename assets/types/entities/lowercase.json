@@ -1,6 +1,6 @@
 {
+  "namespace": "string",
   "name": "lowercase",
-  "group": "string",
   "description": "Lowercase",
   "components": [
     "string_operation",

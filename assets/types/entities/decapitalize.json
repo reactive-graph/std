@@ -1,6 +1,6 @@
 {
+  "namespace": "string",
   "name": "decapitalize",
-  "group": "string",
   "description": "Converts the first character of the input to lower case and convert the rest of the input to lower case",
   "components": [
     "string_operation"

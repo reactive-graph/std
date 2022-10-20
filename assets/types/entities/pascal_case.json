@@ -1,6 +1,6 @@
 {
+  "namespace": "string",
   "name": "pascal_case",
-  "group": "string",
   "description": "Converts the input to pascal case",
   "components": [
     "string_operation"

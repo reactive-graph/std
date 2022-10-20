@@ -1,6 +1,6 @@
 {
+  "namespace": "string",
   "name": "shouty_snake_case",
-  "group": "string",
   "description": "Converts the title to SHOUTY snake case",
   "components": [
     "string_operation"

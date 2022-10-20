@@ -1,6 +1,6 @@
 {
+  "namespace": "string",
   "name": "title_case",
-  "group": "string",
   "description": "Converts the input to title case",
   "components": [
     "string_operation"

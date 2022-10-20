@@ -1,6 +1,6 @@
 {
+  "namespace": "string",
   "name": "is_upper_first",
-  "group": "string",
   "description": "Checks whether the input string has the first character in upper case",
   "components": [
     "string_bool_operation"

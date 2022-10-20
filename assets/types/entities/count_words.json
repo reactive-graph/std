@@ -1,6 +1,6 @@
 {
+  "namespace": "string",
   "name": "count_words",
-  "group": "string",
   "description": "Counts the number of words in the input string",
   "components": [
     "string_string_number_gate"

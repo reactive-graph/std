@@ -1,6 +1,6 @@
 {
+  "namespace": "string",
   "name": "snake_case",
-  "group": "string",
   "description": "Converts the subject to snake case",
   "components": [
     "string_operation"

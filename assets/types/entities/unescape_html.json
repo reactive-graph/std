@@ -1,6 +1,6 @@
 {
+  "namespace": "string",
   "name": "unescape_html",
-  "group": "string",
   "description": "Unescapes HTML special characters",
   "components": [
     "string_operation"

@@ -1,6 +1,6 @@
 {
+  "namespace": "string",
   "name": "is_camel_case",
-  "group": "string",
   "description": "Checks whether the input string is camelCased",
   "components": [
     "string_bool_operation"

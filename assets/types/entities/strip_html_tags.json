@@ -1,6 +1,6 @@
 {
+  "namespace": "string",
   "name": "strip_html_tags",
-  "group": "string",
   "description": "Strips all HTML tags",
   "components": [
     "string_operation"

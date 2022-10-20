@@ -1,6 +1,6 @@
 {
+  "namespace": "string",
   "name": "ends_with",
-  "group": "string",
   "description": "Ends With",
   "components": [
     "string_comparison",

@@ -1,6 +1,6 @@
 {
+  "namespace": "string",
   "name": "char_count",
-  "group": "string",
   "description": "Counts the characters",
   "components": [
     "string_number_operation"

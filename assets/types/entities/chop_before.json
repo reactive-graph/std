@@ -1,6 +1,6 @@
 {
+  "namespace": "string",
   "name": "chop_before",
-  "group": "string",
   "description": "Returns everything before the given search",
   "components": [
     "string_gate"

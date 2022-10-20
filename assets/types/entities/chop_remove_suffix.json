@@ -1,6 +1,6 @@
 {
+  "namespace": "string",
   "name": "chop_remove_suffix",
-  "group": "string",
   "description": "Extracts the suffix from the input",
   "components": [
     "string_gate"

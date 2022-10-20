@@ -1,6 +1,6 @@
 {
+  "namespace": "string",
   "name": "kebab_case",
-  "group": "string",
   "description": "Converts the input to kebab case",
   "components": [
     "string_operation"

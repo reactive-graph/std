@@ -1,6 +1,6 @@
 {
+  "namespace": "string",
   "name": "contains",
-  "group": "string",
   "description": "Contains",
   "components": [
     "string_comparison",

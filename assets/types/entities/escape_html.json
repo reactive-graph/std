@@ -1,6 +1,6 @@
 {
+  "namespace": "string",
   "name": "escape_html",
-  "group": "string",
   "description": "Escapes HTML special characters",
   "components": [
     "string_operation"
