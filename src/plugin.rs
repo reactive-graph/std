@@ -7,10 +7,7 @@ use crate::di::*;
 use crate::plugins::component_provider;
 use crate::plugins::entity_type_provider;
 use crate::plugins::flow_type_provider;
-use crate::plugins::plugin::PluginMetadata;
-use crate::plugins::plugin::PluginMetadataError;
 use crate::plugins::plugin_context::PluginContext;
-use crate::plugins::plugin_metadata;
 use crate::plugins::ComponentProvider;
 use crate::plugins::ComponentProviderError;
 use crate::plugins::EntityTypeProvider;
@@ -18,6 +15,7 @@ use crate::plugins::EntityTypeProviderError;
 use crate::plugins::FlowTypeProvider;
 use crate::plugins::FlowTypeProviderError;
 use crate::plugins::Plugin;
+use crate::plugins::PluginContextDeinitializationError;
 use crate::plugins::PluginContextInitializationError;
 use crate::provider::BaseComponentProviderImpl;
 use crate::provider::BaseEntityTypeProviderImpl;
@@ -50,12 +48,14 @@ interfaces!(BasePluginImpl: dyn Plugin);
 impl BasePlugin for BasePluginImpl {}
 
 impl Plugin for BasePluginImpl {
-    fn metadata(&self) -> Result<PluginMetadata, PluginMetadataError> {
-        plugin_metadata!()
-    }
-
     fn set_context(&self, context: Arc<dyn PluginContext>) -> Result<(), PluginContextInitializationError> {
         self.context.0.write().unwrap().replace(context);
+        Ok(())
+    }
+
+    fn remove_context(&self) -> Result<(), PluginContextDeinitializationError> {
+        let mut writer = self.context.0.write().unwrap();
+        *writer = None;
         Ok(())
     }
 
