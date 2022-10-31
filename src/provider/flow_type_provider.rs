@@ -5,7 +5,6 @@ use rust_embed::RustEmbed;
 
 use crate::di::*;
 use crate::model::FlowType;
-use crate::model::FlowTypeDao;
 use crate::plugins::embedded_asset_provider_impl;
 use crate::plugins::FlowTypeProvider;
 
@@ -35,6 +34,6 @@ impl BaseFlowTypeProvider for BaseFlowTypeProviderImpl {}
 
 impl FlowTypeProvider for BaseFlowTypeProviderImpl {
     fn get_flow_types(&self) -> Vec<FlowType> {
-        embedded_asset_provider_impl!(BaseFlowTypeAsset, FlowTypeDao, FlowType)
+        embedded_asset_provider_impl!(BaseFlowTypeAsset, FlowType)
     }
 }

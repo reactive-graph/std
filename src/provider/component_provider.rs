@@ -5,7 +5,6 @@ use rust_embed::RustEmbed;
 
 use crate::di::*;
 use crate::model::Component;
-use crate::model::ComponentDao;
 use crate::plugins::embedded_asset_provider_impl;
 use crate::plugins::ComponentProvider;
 
@@ -34,6 +33,6 @@ impl BaseComponentProviderImpl {
 impl BaseComponentProvider for BaseComponentProviderImpl {}
 impl ComponentProvider for BaseComponentProviderImpl {
     fn get_components(&self) -> Vec<Component> {
-        embedded_asset_provider_impl!(BaseComponentAsset, ComponentDao, Component)
+        embedded_asset_provider_impl!(BaseComponentAsset, Component)
     }
 }
