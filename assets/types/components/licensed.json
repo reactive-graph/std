@@ -1,6 +1,6 @@
 {
   "namespace": "base",
-  "name": "licensed",
+  "type_name": "licensed",
   "description": "The entity is licensed.",
   "properties": [
     {

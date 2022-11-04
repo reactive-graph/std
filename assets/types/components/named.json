@@ -1,6 +1,6 @@
 {
   "namespace": "base",
-  "name": "named",
+  "type_name": "named",
   "description": "The entity or relation has a name.",
   "properties": [
     {

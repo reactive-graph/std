@@ -1,6 +1,6 @@
 {
   "namespace": "flow",
-  "name": "flow_3d",
+  "type_name": "flow_3d",
   "description": "The position (x,y,z) of the entity or relation on a three dimensional flow (in-game visual scripting).",
   "properties": [
     {

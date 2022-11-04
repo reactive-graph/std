@@ -1,6 +1,6 @@
 {
   "namespace": "base",
-  "name": "describable",
+  "type_name": "describable",
   "description": "The entity or relation has a description.",
   "properties": [
     {

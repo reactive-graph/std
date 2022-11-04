@@ -1,6 +1,6 @@
 {
   "namespace": "color",
-  "name": "color",
+  "type_name": "color",
   "properties": [
     {
       "name": "color_r",

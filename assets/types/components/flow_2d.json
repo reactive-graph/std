@@ -1,6 +1,6 @@
 {
   "namespace": "flow",
-  "name": "flow_2d",
+  "type_name": "flow_2d",
   "description": "The position (x,y) of the entity or relation on a two dimensional flow.",
   "properties": [
     {

@@ -1,6 +1,6 @@
 {
   "namespace": "base",
-  "name": "ordered",
+  "type_name": "ordered",
   "description": "The relations between two entities are ordered using a ordinal number associated with sibling relations",
   "properties": [
     {

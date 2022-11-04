@@ -1,10 +1,16 @@
 {
   "namespace": "base",
-  "name": "comment",
+  "type_name": "comment",
   "description": "A simple comment",
   "components": [
-    "named",
-    "describable"
+    {
+      "namespace": "base",
+      "type_name": "named"
+    },
+    {
+      "namespace": "base",
+      "type_name": "describable"
+    }
   ],
   "properties": [
   ],
