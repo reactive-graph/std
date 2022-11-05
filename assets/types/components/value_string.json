@@ -1,6 +1,6 @@
 {
   "namespace": "value",
-  "name": "value_string",
+  "type_name": "value_string",
   "description": "Value of type string",
   "properties": [
     {

@@ -1,6 +1,6 @@
 {
   "namespace": "value",
-  "name": "value_debugger_trace",
+  "type_name": "value_debugger_trace",
   "properties": [
   ]
 }

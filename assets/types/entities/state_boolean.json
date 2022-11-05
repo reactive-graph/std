@@ -1,11 +1,20 @@
 {
   "namespace": "state",
-  "name": "state_boolean",
+  "type_name": "state_boolean",
   "description": "State of type boolean",
   "components": [
-    "named",
-    "value_boolean",
-    "state_boolean"
+    {
+      "namespace": "base",
+      "type_name": "named"
+    },
+    {
+      "namespace": "value",
+      "type_name": "value_boolean"
+    },
+    {
+      "namespace": "state",
+      "type_name": "state_boolean"
+    }
   ],
   "properties": [
   ],

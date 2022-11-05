@@ -1,6 +1,6 @@
 {
   "namespace": "state",
-  "name": "state_object",
+  "type_name": "state_object",
   "description": "State of type object",
   "properties": [
     {

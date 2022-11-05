@@ -1,6 +1,6 @@
 {
   "namespace": "value",
-  "name": "value_array",
+  "type_name": "value_array",
   "description": "Value of type array",
   "properties": [
     {

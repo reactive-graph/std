@@ -1,10 +1,16 @@
 {
   "namespace": "value",
-  "name": "value_string",
+  "type_name": "value_string",
   "description": "Value of type string",
   "components": [
-    "named",
-    "value_string"
+    {
+      "namespace": "base",
+      "type_name": "named"
+    },
+    {
+      "namespace": "value",
+      "type_name": "value_string"
+    }
   ],
   "properties": [
   ],

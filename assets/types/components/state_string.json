@@ -1,6 +1,6 @@
 {
   "namespace": "state",
-  "name": "state_string",
+  "type_name": "state_string",
   "description": "State of type string",
   "properties": [
     {

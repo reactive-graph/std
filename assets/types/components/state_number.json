@@ -1,6 +1,6 @@
 {
   "namespace": "state",
-  "name": "state_number",
+  "type_name": "state_number",
   "description": "State of type number",
   "properties": [
     {

@@ -1,6 +1,6 @@
 {
   "namespace": "state",
-  "name": "state_debugger_debug",
+  "type_name": "state_debugger_debug",
   "properties": [
   ]
 }

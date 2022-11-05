@@ -1,6 +1,6 @@
 {
   "namespace": "value",
-  "name": "value_number",
+  "type_name": "value_number",
   "description": "Value of type number",
   "properties": [
     {

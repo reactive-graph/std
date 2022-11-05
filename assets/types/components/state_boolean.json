@@ -1,6 +1,6 @@
 {
   "namespace": "state",
-  "name": "state_boolean",
+  "type_name": "state_boolean",
   "description": "State of type boolean",
   "properties": [
     {

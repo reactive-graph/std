@@ -1,10 +1,16 @@
 {
   "namespace": "value",
-  "name": "value_object",
+  "type_name": "value_object",
   "description": "Value of type object",
   "components": [
-    "named",
-    "value_object"
+    {
+      "namespace": "base",
+      "type_name": "named"
+    },
+    {
+      "namespace": "value",
+      "type_name": "value_object"
+    }
   ],
   "properties": [
   ],
