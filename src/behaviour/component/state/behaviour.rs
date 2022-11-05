@@ -24,52 +24,37 @@ pub struct State {
 
 impl State {
     pub fn new<'a>(e: Arc<ReactiveEntityInstance>, ty: BehaviourTypeId) -> Result<State, BehaviourCreationError> {
-        if !e.properties.contains_key(StateProperties::STATE.as_ref()) {
-            return Err(BehaviourCreationError);
-        }
-        if !e.properties.contains_key(StateProperties::SET_STATE.as_ref()) {
-            return Err(BehaviourCreationError);
-        }
+        let property_state = e.properties.get(StateProperties::STATE.as_ref()).ok_or(BehaviourCreationError)?;
+        let property_set_state = e.properties.get(StateProperties::SET_STATE.as_ref()).ok_or(BehaviourCreationError)?;
         if !e.properties.contains_key(ValueProperties::VALUE.as_ref()) {
             return Err(BehaviourCreationError);
         }
         // Debounce set_state -> state
         let handle_id_set_state = Uuid::new_v4().as_u128();
-        let entity_instance = e.clone();
-        e.properties
-            .get(StateProperties::SET_STATE.as_ref())
-            .unwrap()
-            .stream
-            .read()
-            .unwrap()
-            .observe_with_handle(
-                move |new_value: &Value| {
-                    if let Some(old_value) = entity_instance.get(StateProperties::STATE.as_ref()) {
-                        let new_value = new_value.clone();
-                        if old_value != new_value {
-                            entity_instance.set(StateProperties::STATE.as_ref(), new_value);
-                        }
+        let entity = e.clone();
+        property_set_state.stream.read().unwrap().observe_with_handle(
+            move |new_value: &Value| {
+                if let Some(old_value) = entity.get(StateProperties::STATE.as_ref()) {
+                    let new_value = new_value.clone();
+                    if old_value != new_value {
+                        entity.set(StateProperties::STATE.as_ref(), new_value);
                     }
-                },
-                handle_id_set_state,
-            );
+                }
+            },
+            handle_id_set_state,
+        );
         // Propagate state -> value
         let handle_id_value = Uuid::new_v4().as_u128();
-        let entity_instance = e.clone();
-        e.properties
-            .get(StateProperties::STATE.as_ref())
-            .unwrap()
-            .stream
-            .read()
-            .unwrap()
-            .observe_with_handle(
-                move |v: &Value| {
-                    entity_instance.set(ValueProperties::VALUE.as_ref(), v.clone());
-                },
-                handle_id_set_state,
-            );
+        let entity = e.clone();
+        property_state.stream.read().unwrap().observe_with_handle(
+            move |v: &Value| {
+                entity.set(ValueProperties::VALUE.as_ref(), v.clone());
+            },
+            handle_id_value,
+        );
+        let entity = e.clone();
         Ok(State {
-            entity: e,
+            entity,
             ty,
             handle_id_set_state,
             handle_id_value,
