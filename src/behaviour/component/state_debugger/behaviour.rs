@@ -5,20 +5,25 @@ use serde_json::Value;
 
 use crate::behaviour::component::state_debugger::StateDebuggerFunction;
 use crate::behaviour::component::StateProperties;
+use crate::model::ComponentTypeId;
+use crate::model::NamespacedTypeGetter;
 use crate::model::ReactiveEntityInstance;
 use crate::reactive::entity::Disconnectable;
 use crate::reactive::BehaviourCreationError;
+use crate::reactive::BehaviourType;
 
 pub struct StateDebugger {
-    pub f: StateDebuggerFunction,
-
     pub entity: Arc<ReactiveEntityInstance>,
+
+    pub ty: ComponentTypeId,
+
+    pub f: StateDebuggerFunction,
 
     pub handle_id: u128,
 }
 
 impl StateDebugger {
-    pub fn new<'a>(e: Arc<ReactiveEntityInstance>, f: StateDebuggerFunction) -> Result<StateDebugger, BehaviourCreationError> {
+    pub fn new<'a>(e: Arc<ReactiveEntityInstance>, ty: ComponentTypeId, f: StateDebuggerFunction) -> Result<StateDebugger, BehaviourCreationError> {
         if !e.properties.contains_key(StateProperties::STATE.as_ref()) {
             return Err(BehaviourCreationError);
         }
@@ -32,7 +37,13 @@ impl StateDebugger {
             .unwrap()
             .observe_with_handle(move |v: &Value| f(v.clone(), entity_instance.clone()), handle_id);
         debug!("Starting debugging of entity {} property {}", e.id, StateProperties::STATE.as_ref());
-        Ok(StateDebugger { f, entity: e, handle_id })
+        Ok(StateDebugger { entity: e, ty, f, handle_id })
+    }
+}
+
+impl BehaviourType for StateDebugger {
+    fn type_name(&self) -> String {
+        self.ty.type_name()
     }
 }
 

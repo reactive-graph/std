@@ -1,24 +1,29 @@
 use std::sync::Arc;
 
-use crate::behaviour::component::value_debugger::ValueDebuggerFunction;
 use log::debug;
 use serde_json::Value;
 
+use crate::behaviour::component::value_debugger::ValueDebuggerFunction;
 use crate::behaviour::component::ValueProperties;
+use crate::model::ComponentTypeId;
+use crate::model::NamespacedTypeGetter;
 use crate::model::ReactiveEntityInstance;
 use crate::reactive::entity::Disconnectable;
 use crate::reactive::BehaviourCreationError;
+use crate::reactive::BehaviourType;
 
 pub struct ValueDebugger {
-    pub f: ValueDebuggerFunction,
-
     pub entity: Arc<ReactiveEntityInstance>,
+
+    pub ty: ComponentTypeId,
+
+    pub f: ValueDebuggerFunction,
 
     pub handle_id: u128,
 }
 
 impl ValueDebugger {
-    pub fn new<'a>(e: Arc<ReactiveEntityInstance>, f: ValueDebuggerFunction) -> Result<ValueDebugger, BehaviourCreationError> {
+    pub fn new<'a>(e: Arc<ReactiveEntityInstance>, ty: ComponentTypeId, f: ValueDebuggerFunction) -> Result<ValueDebugger, BehaviourCreationError> {
         if !e.properties.contains_key(ValueProperties::VALUE.as_ref()) {
             return Err(BehaviourCreationError);
         }
@@ -31,7 +36,13 @@ impl ValueDebugger {
             .unwrap()
             .observe_with_handle(move |v: &Value| f(v.clone()), handle_id);
         debug!("Starting debugging of entity {} property {}", e.id, ValueProperties::VALUE.as_ref());
-        Ok(ValueDebugger { f, entity: e, handle_id })
+        Ok(ValueDebugger { entity: e, ty, f, handle_id })
+    }
+}
+
+impl BehaviourType for ValueDebugger {
+    fn type_name(&self) -> String {
+        self.ty.type_name()
     }
 }
 

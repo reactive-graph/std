@@ -5,14 +5,19 @@ use uuid::Uuid;
 
 use crate::behaviour::component::StateProperties;
 use crate::behaviour::component::ValueProperties;
+use crate::model::ComponentTypeId;
+use crate::model::NamespacedTypeGetter;
 use crate::model::PropertyInstanceGetter;
 use crate::model::PropertyInstanceSetter;
 use crate::model::ReactiveEntityInstance;
 use crate::reactive::entity::Disconnectable;
 use crate::reactive::BehaviourCreationError;
+use crate::reactive::BehaviourType;
 
 pub struct State {
     pub entity: Arc<ReactiveEntityInstance>,
+
+    pub ty: ComponentTypeId,
 
     pub handle_id_set_state: u128,
 
@@ -20,7 +25,7 @@ pub struct State {
 }
 
 impl State {
-    pub fn new<'a>(e: Arc<ReactiveEntityInstance>) -> Result<State, BehaviourCreationError> {
+    pub fn new<'a>(e: Arc<ReactiveEntityInstance>, ty: ComponentTypeId) -> Result<State, BehaviourCreationError> {
         if !e.properties.contains_key(StateProperties::STATE.as_ref()) {
             return Err(BehaviourCreationError);
         }
@@ -67,9 +72,16 @@ impl State {
             );
         Ok(State {
             entity: e,
+            ty,
             handle_id_set_state,
             handle_id_value,
         })
+    }
+}
+
+impl BehaviourType for State {
+    fn type_name(&self) -> String {
+        self.ty.type_name()
     }
 }
 
