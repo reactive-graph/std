@@ -1,21 +1,20 @@
+use inexor_rgf_core_model::BehaviourTypeId;
+use inexor_rgf_core_reactive::Behaviour;
 use std::sync::Arc;
 
 use log::debug;
 use serde_json::Value;
+use uuid::Uuid;
 
 use crate::behaviour::component::value_debugger::ValueDebuggerFunction;
 use crate::behaviour::component::ValueProperties;
-use crate::model::ComponentTypeId;
-use crate::model::NamespacedTypeGetter;
 use crate::model::ReactiveEntityInstance;
-use crate::reactive::entity::Disconnectable;
 use crate::reactive::BehaviourCreationError;
-use crate::reactive::BehaviourType;
 
 pub struct ValueDebugger {
     pub entity: Arc<ReactiveEntityInstance>,
 
-    pub ty: ComponentTypeId,
+    pub ty: BehaviourTypeId,
 
     pub f: ValueDebuggerFunction,
 
@@ -23,35 +22,30 @@ pub struct ValueDebugger {
 }
 
 impl ValueDebugger {
-    pub fn new<'a>(e: Arc<ReactiveEntityInstance>, ty: ComponentTypeId, f: ValueDebuggerFunction) -> Result<ValueDebugger, BehaviourCreationError> {
-        if !e.properties.contains_key(ValueProperties::VALUE.as_ref()) {
-            return Err(BehaviourCreationError);
-        }
-        let handle_id = e.properties.get(ValueProperties::VALUE.as_ref()).unwrap().id.as_u128();
-        e.properties
-            .get(ValueProperties::VALUE.as_ref())
-            .unwrap()
+    pub fn new<'a>(e: Arc<ReactiveEntityInstance>, ty: BehaviourTypeId, f: ValueDebuggerFunction) -> Result<ValueDebugger, BehaviourCreationError> {
+        let property_value = e.properties.get(ValueProperties::VALUE.as_ref()).ok_or(BehaviourCreationError)?;
+        let handle_id = Uuid::new_v4().as_u128();
+        property_value
             .stream
             .read()
             .unwrap()
             .observe_with_handle(move |v: &Value| f(v.clone()), handle_id);
         debug!("Starting debugging of entity {} property {}", e.id, ValueProperties::VALUE.as_ref());
-        Ok(ValueDebugger { entity: e, ty, f, handle_id })
+        let entity = e.clone();
+        Ok(ValueDebugger { entity, ty, f, handle_id })
     }
 }
 
-impl BehaviourType for ValueDebugger {
-    fn type_name(&self) -> String {
-        self.ty.type_name()
-    }
-}
-
-impl Disconnectable for ValueDebugger {
+impl Behaviour for ValueDebugger {
     fn disconnect(&self) {
         if let Some(property) = self.entity.properties.get(ValueProperties::VALUE.as_ref()) {
             property.stream.read().unwrap().remove(self.handle_id);
             debug!("Stopped debugging of entity {} property {}", self.entity.id, ValueProperties::VALUE.as_ref());
         }
+    }
+
+    fn ty(&self) -> BehaviourTypeId {
+        self.ty.clone()
     }
 }
 

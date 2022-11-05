@@ -6,7 +6,7 @@ use log::debug;
 use log::trace;
 use serde_json::Value;
 
-use crate::model::ComponentTypeId;
+use crate::model::BehaviourTypeId;
 use crate::model::ReactiveEntityInstance;
 
 pub type StateDebuggerFunction = fn(Value, Arc<ReactiveEntityInstance>);
@@ -20,9 +20,9 @@ pub const FN_LOG_TRACE: StateDebuggerFunction = |v, entity_instance| {
 };
 
 lazy_static! {
-    pub static ref STATE_DEBUGGERS: HashMap<ComponentTypeId, StateDebuggerFunction> = vec![
-        (ComponentTypeId::new_from_type("state", "state_debugger_debug"), FN_LOG_DEBUG),
-        (ComponentTypeId::new_from_type("state", "state_debugger_trace"), FN_LOG_TRACE),
+    pub static ref STATE_DEBUGGER_BEHAVIOURS: HashMap<BehaviourTypeId, StateDebuggerFunction> = vec![
+        (BehaviourTypeId::new_from_type("state", "state_debugger_debug"), FN_LOG_DEBUG),
+        (BehaviourTypeId::new_from_type("state", "state_debugger_trace"), FN_LOG_TRACE),
     ]
     .into_iter()
     .collect();

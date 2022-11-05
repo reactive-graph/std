@@ -1,21 +1,20 @@
+use inexor_rgf_core_model::BehaviourTypeId;
+use inexor_rgf_core_reactive::Behaviour;
 use std::sync::Arc;
 
 use log::debug;
 use serde_json::Value;
+use uuid::Uuid;
 
 use crate::behaviour::component::state_debugger::StateDebuggerFunction;
 use crate::behaviour::component::StateProperties;
-use crate::model::ComponentTypeId;
-use crate::model::NamespacedTypeGetter;
 use crate::model::ReactiveEntityInstance;
-use crate::reactive::entity::Disconnectable;
 use crate::reactive::BehaviourCreationError;
-use crate::reactive::BehaviourType;
 
 pub struct StateDebugger {
     pub entity: Arc<ReactiveEntityInstance>,
 
-    pub ty: ComponentTypeId,
+    pub ty: BehaviourTypeId,
 
     pub f: StateDebuggerFunction,
 
@@ -23,36 +22,35 @@ pub struct StateDebugger {
 }
 
 impl StateDebugger {
-    pub fn new<'a>(e: Arc<ReactiveEntityInstance>, ty: ComponentTypeId, f: StateDebuggerFunction) -> Result<StateDebugger, BehaviourCreationError> {
-        if !e.properties.contains_key(StateProperties::STATE.as_ref()) {
-            return Err(BehaviourCreationError);
-        }
-        let handle_id = e.properties.get(StateProperties::STATE.as_ref()).unwrap().id.as_u128();
-        let entity_instance = e.clone();
-        e.properties
-            .get(StateProperties::STATE.as_ref())
-            .unwrap()
+    pub fn new<'a>(e: Arc<ReactiveEntityInstance>, ty: BehaviourTypeId, f: StateDebuggerFunction) -> Result<StateDebugger, BehaviourCreationError> {
+        let property_value = e.properties.get(StateProperties::STATE.as_ref()).ok_or(BehaviourCreationError)?;
+        let handle_id = Uuid::new_v4().as_u128();
+        // if !e.properties.contains_key(StateProperties::STATE.as_ref()) {
+        //     return Err(BehaviourCreationError);
+        // }
+        // let handle_id = e.properties.get(StateProperties::STATE.as_ref()).unwrap().id.as_u128();
+        let entity = e.clone();
+        property_value
             .stream
             .read()
             .unwrap()
-            .observe_with_handle(move |v: &Value| f(v.clone(), entity_instance.clone()), handle_id);
+            .observe_with_handle(move |v: &Value| f(v.clone(), entity.clone()), handle_id);
         debug!("Starting debugging of entity {} property {}", e.id, StateProperties::STATE.as_ref());
-        Ok(StateDebugger { entity: e, ty, f, handle_id })
+        let entity = e.clone();
+        Ok(StateDebugger { entity, ty, f, handle_id })
     }
 }
 
-impl BehaviourType for StateDebugger {
-    fn type_name(&self) -> String {
-        self.ty.type_name()
-    }
-}
-
-impl Disconnectable for StateDebugger {
+impl Behaviour for StateDebugger {
     fn disconnect(&self) {
         if let Some(property) = self.entity.properties.get(StateProperties::STATE.as_ref()) {
             property.stream.read().unwrap().remove(self.handle_id);
             debug!("Stopped debugging of entity {} property {}", self.entity.id, StateProperties::STATE.as_ref());
         }
+    }
+
+    fn ty(&self) -> BehaviourTypeId {
+        self.ty.clone()
     }
 }
 

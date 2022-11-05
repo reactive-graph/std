@@ -5,7 +5,7 @@ use log::debug;
 use log::trace;
 use serde_json::Value;
 
-use crate::model::ComponentTypeId;
+use crate::model::BehaviourTypeId;
 
 pub type ValueDebuggerFunction = fn(Value);
 
@@ -18,9 +18,9 @@ pub const FN_LOG_TRACE: ValueDebuggerFunction = |v| {
 };
 
 lazy_static! {
-    pub static ref VALUE_DEBUGGERS: HashMap<ComponentTypeId, ValueDebuggerFunction> = vec![
-        (ComponentTypeId::new_from_type("value", "value_debugger_debug"), FN_LOG_DEBUG),
-        (ComponentTypeId::new_from_type("value", "value_debugger_trace"), FN_LOG_TRACE),
+    pub static ref VALUE_DEBUGGER_BEHAVIOURS: HashMap<BehaviourTypeId, ValueDebuggerFunction> = vec![
+        (BehaviourTypeId::new_from_type("value", "value_debugger_debug"), FN_LOG_DEBUG),
+        (BehaviourTypeId::new_from_type("value", "value_debugger_trace"), FN_LOG_TRACE),
     ]
     .into_iter()
     .collect();

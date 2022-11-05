@@ -5,19 +5,17 @@ use uuid::Uuid;
 
 use crate::behaviour::component::StateProperties;
 use crate::behaviour::component::ValueProperties;
-use crate::model::ComponentTypeId;
-use crate::model::NamespacedTypeGetter;
+use crate::model::BehaviourTypeId;
 use crate::model::PropertyInstanceGetter;
 use crate::model::PropertyInstanceSetter;
 use crate::model::ReactiveEntityInstance;
-use crate::reactive::entity::Disconnectable;
+use crate::reactive::Behaviour;
 use crate::reactive::BehaviourCreationError;
-use crate::reactive::BehaviourType;
 
 pub struct State {
     pub entity: Arc<ReactiveEntityInstance>,
 
-    pub ty: ComponentTypeId,
+    pub ty: BehaviourTypeId,
 
     pub handle_id_set_state: u128,
 
@@ -25,7 +23,7 @@ pub struct State {
 }
 
 impl State {
-    pub fn new<'a>(e: Arc<ReactiveEntityInstance>, ty: ComponentTypeId) -> Result<State, BehaviourCreationError> {
+    pub fn new<'a>(e: Arc<ReactiveEntityInstance>, ty: BehaviourTypeId) -> Result<State, BehaviourCreationError> {
         if !e.properties.contains_key(StateProperties::STATE.as_ref()) {
             return Err(BehaviourCreationError);
         }
@@ -79,13 +77,7 @@ impl State {
     }
 }
 
-impl BehaviourType for State {
-    fn type_name(&self) -> String {
-        self.ty.type_name()
-    }
-}
-
-impl Disconnectable for State {
+impl Behaviour for State {
     fn disconnect(&self) {
         if let Some(property) = self.entity.properties.get(StateProperties::SET_STATE.as_ref()) {
             property.stream.read().unwrap().remove(self.handle_id_set_state);
@@ -93,6 +85,10 @@ impl Disconnectable for State {
         if let Some(property) = self.entity.properties.get(ValueProperties::VALUE.as_ref()) {
             property.stream.read().unwrap().remove(self.handle_id_value);
         }
+    }
+
+    fn ty(&self) -> BehaviourTypeId {
+        self.ty.clone()
     }
 }
 
