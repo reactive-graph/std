@@ -8,10 +8,7 @@ use crate::di::*;
 use crate::plugins::component_behaviour_provider;
 use crate::plugins::component_provider;
 use crate::plugins::entity_type_provider;
-use crate::plugins::plugin::PluginMetadata;
-use crate::plugins::plugin::PluginMetadataError;
 use crate::plugins::plugin_context::PluginContext;
-use crate::plugins::plugin_metadata;
 use crate::plugins::ComponentBehaviourProvider;
 use crate::plugins::ComponentBehaviourProviderError;
 use crate::plugins::ComponentProvider;
@@ -19,6 +16,7 @@ use crate::plugins::ComponentProviderError;
 use crate::plugins::EntityTypeProvider;
 use crate::plugins::EntityTypeProviderError;
 use crate::plugins::Plugin;
+use crate::plugins::PluginContextDeinitializationError;
 use crate::plugins::PluginContextInitializationError;
 use crate::provider::ValueComponentProviderImpl;
 use crate::provider::ValueEntityTypeProviderImpl;
@@ -50,12 +48,14 @@ interfaces!(ValuePluginImpl: dyn Plugin);
 impl ValuePlugin for ValuePluginImpl {}
 
 impl Plugin for ValuePluginImpl {
-    fn metadata(&self) -> Result<PluginMetadata, PluginMetadataError> {
-        plugin_metadata!("inexor-rgf-plugin-base")
-    }
-
     fn set_context(&self, context: Arc<dyn PluginContext>) -> Result<(), PluginContextInitializationError> {
         self.context.0.write().unwrap().replace(context);
+        Ok(())
+    }
+
+    fn remove_context(&self) -> Result<(), PluginContextDeinitializationError> {
+        let mut writer = self.context.0.write().unwrap();
+        *writer = None;
         Ok(())
     }
 
