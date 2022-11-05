@@ -4,14 +4,21 @@ mutation {
       update(
         id: "1f0d1b1f-bb53-4e80-8103-6a350f459ceb",
         addComponents: [
-          "value_debugger_debug"
+          {
+            namespace: "value"
+            name: "value_debugger_debug",
+          }
         ]
       ) {
         id
         type {
+          namespace
           name
         }
-        components
+        components {
+          namespace
+          name
+        }
         behaviours
         properties(names: ["value", "state"]) {
           name

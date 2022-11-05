@@ -14,9 +14,13 @@ mutation {
       ) {
         id
         type {
+          namespace
           name
         }
-        components
+        components {
+          namespace
+          name
+        }
         behaviours
         properties(names: [ "value", "state"]) {
           name
