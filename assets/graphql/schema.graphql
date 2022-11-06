@@ -911,7 +911,7 @@ input EdgeKeyDefinition {
   "The id of the inbound entity instance."
   inboundId: UUID!
   "The instance id."
-  instanceId: String! = "String::new"
+  instanceId: String! = ""
   "The namespace."
   namespace: String!
   "The id of the outbound entity instance."
