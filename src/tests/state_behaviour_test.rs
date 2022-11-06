@@ -1,9 +1,9 @@
-use inexor_rgf_core_builder::ReactiveEntityInstanceBuilder;
-use inexor_rgf_core_model::PropertyInstanceSetter;
-use serde_json::json;
 use std::sync::atomic::AtomicBool;
 use std::sync::atomic::Ordering;
 use std::sync::Arc;
+
+use inexor_rgf_core_builder::ReactiveEntityInstanceBuilder;
+use serde_json::json;
 use uuid::Uuid;
 
 use crate::behaviour::component::State;
@@ -11,6 +11,7 @@ use crate::behaviour::component::StateProperties;
 use crate::behaviour::component::ValueProperties;
 use crate::behaviour::component::STATE_BEHAVIOURS;
 use crate::model::NamespacedType;
+use crate::model::PropertyInstanceSetter;
 
 #[test]
 fn state_behaviour_test() {
