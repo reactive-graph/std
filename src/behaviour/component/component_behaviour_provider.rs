@@ -90,7 +90,7 @@ impl ValueComponentBehaviourProvider for ValueComponentBehaviourProviderImpl {
             if let Ok(behaviour) = State::new(entity_instance.clone(), behaviour_ty.clone()) {
                 self.states.0.write().unwrap().insert(id, Arc::new(behaviour));
                 entity_instance.add_behaviour(behaviour_ty.clone());
-                debug!("Added behaviour {} to entity instance {}", behaviour_ty, id);
+                debug!("Added behaviour {} to entity instance {}", behaviour_ty, entity_instance);
             }
         }
     }
@@ -103,7 +103,7 @@ impl ValueComponentBehaviourProvider for ValueComponentBehaviourProviderImpl {
         {
             self.value_debuggers.0.write().unwrap().insert(id, Arc::new(behaviour));
             entity_instance.add_behaviour(behaviour_ty.clone());
-            debug!("Added behaviour {} to entity instance {}", &behaviour_ty, id);
+            debug!("Added behaviour {} to entity instance {}", &behaviour_ty, entity_instance);
         }
     }
 
@@ -115,28 +115,28 @@ impl ValueComponentBehaviourProvider for ValueComponentBehaviourProviderImpl {
         {
             self.state_debuggers.0.write().unwrap().insert(id, Arc::new(behaviour));
             entity_instance.add_behaviour(behaviour_ty.clone());
-            debug!("Added behaviour {} to entity instance {}", &behaviour_ty, id);
+            debug!("Added behaviour {} to entity instance {}", &behaviour_ty, entity_instance);
         }
     }
 
     fn remove_state(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         if let Some(behaviour) = self.states.0.write().unwrap().remove(&entity_instance.id) {
             entity_instance.remove_behaviour(&behaviour.ty);
-            debug!("Removed behaviour {} from entity instance {}", &behaviour.ty, entity_instance.id);
+            debug!("Removed behaviour {} from entity instance {}", &behaviour.ty, entity_instance);
         }
     }
 
     fn remove_value_debugger(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         if let Some(behaviour) = self.value_debuggers.0.write().unwrap().remove(&entity_instance.id) {
             entity_instance.remove_behaviour(&behaviour.ty);
-            debug!("Removed behaviour {} from entity instance {}", &behaviour.ty, entity_instance.id);
+            debug!("Removed behaviour {} from entity instance {}", &behaviour.ty, entity_instance);
         }
     }
 
     fn remove_state_debugger(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         if let Some(behaviour) = self.state_debuggers.0.write().unwrap().remove(&entity_instance.id) {
             entity_instance.remove_behaviour(&behaviour.ty);
-            debug!("Removed behaviour {} from entity instance {}", &behaviour.ty, entity_instance.id);
+            debug!("Removed behaviour {} from entity instance {}", &behaviour.ty, entity_instance);
         }
     }
 
@@ -144,19 +144,19 @@ impl ValueComponentBehaviourProvider for ValueComponentBehaviourProviderImpl {
         if self.states.0.write().unwrap().contains_key(&id) {
             if let Some(behaviour) = self.states.0.write().unwrap().remove(&id) {
                 behaviour.entity.remove_behaviour(&behaviour.ty);
-                debug!("Removed a state behaviour from entity instance {}", id);
+                debug!("Removed behaviour {} from entity instance {}", &behaviour.ty, behaviour.entity);
             }
         }
         if self.value_debuggers.0.write().unwrap().contains_key(&id) {
             if let Some(behaviour) = self.value_debuggers.0.write().unwrap().remove(&id) {
                 behaviour.entity.remove_behaviour(&behaviour.ty);
-                debug!("Removed a value_debugger behaviour from entity instance {}", id);
+                debug!("Removed behaviour {} from entity instance {}", &behaviour.ty, behaviour.entity);
             }
         }
         if self.state_debuggers.0.write().unwrap().contains_key(&id) {
             if let Some(behaviour) = self.state_debuggers.0.write().unwrap().remove(&id) {
                 behaviour.entity.remove_behaviour(&behaviour.ty);
-                debug!("Removed a state_debugger behaviour from entity instance {}", id);
+                debug!("Removed behaviour {} from entity instance {}", &behaviour.ty, behaviour.entity);
             }
         }
     }
