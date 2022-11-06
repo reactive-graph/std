@@ -167,21 +167,21 @@ impl ComponentBehaviourProvider for ValueComponentBehaviourProviderImpl {
         for behaviour_ty in STATE_BEHAVIOURS.iter() {
             let namespaced_ty: NamespacedType = behaviour_ty.into();
             let component_ty = namespaced_ty.into();
-            if entity_instance.is_a(&component_ty) {
+            if entity_instance.is_a(&component_ty) && !entity_instance.behaves_as(behaviour_ty) {
                 self.create_state(entity_instance.clone(), behaviour_ty);
             }
         }
         for behaviour_ty in VALUE_DEBUGGER_BEHAVIOURS.keys() {
             let namespaced_ty: NamespacedType = behaviour_ty.into();
             let component_ty = namespaced_ty.into();
-            if entity_instance.is_a(&component_ty) {
+            if entity_instance.is_a(&component_ty) && !entity_instance.behaves_as(behaviour_ty) {
                 self.create_value_debugger(entity_instance.clone(), behaviour_ty);
             }
         }
         for behaviour_ty in STATE_DEBUGGER_BEHAVIOURS.keys() {
             let namespaced_ty: NamespacedType = behaviour_ty.into();
             let component_ty = namespaced_ty.into();
-            if entity_instance.is_a(&component_ty) {
+            if entity_instance.is_a(&component_ty) && !entity_instance.behaves_as(behaviour_ty) {
                 self.create_state_debugger(entity_instance.clone(), behaviour_ty);
             }
         }
@@ -189,14 +189,16 @@ impl ComponentBehaviourProvider for ValueComponentBehaviourProviderImpl {
 
     fn add_behaviours_to_entity_component(&self, entity_instance: Arc<ReactiveEntityInstance>, component: crate::model::Component) {
         let behaviour_ty = NamespacedType::from(&component.ty).into();
-        if STATE_BEHAVIOURS.contains(&behaviour_ty) {
-            self.create_state(entity_instance.clone(), &behaviour_ty);
-        }
-        if VALUE_DEBUGGER_BEHAVIOURS.contains_key(&behaviour_ty) {
-            self.create_value_debugger(entity_instance.clone(), &behaviour_ty);
-        }
-        if STATE_DEBUGGER_BEHAVIOURS.contains_key(&behaviour_ty) {
-            self.create_state_debugger(entity_instance, &behaviour_ty);
+        if entity_instance.is_a(&component.ty) && !entity_instance.behaves_as(&behaviour_ty) {
+            if STATE_BEHAVIOURS.contains(&behaviour_ty) {
+                self.create_state(entity_instance.clone(), &behaviour_ty);
+            }
+            if VALUE_DEBUGGER_BEHAVIOURS.contains_key(&behaviour_ty) {
+                self.create_value_debugger(entity_instance.clone(), &behaviour_ty);
+            }
+            if STATE_DEBUGGER_BEHAVIOURS.contains_key(&behaviour_ty) {
+                self.create_state_debugger(entity_instance, &behaviour_ty);
+            }
         }
     }
 
