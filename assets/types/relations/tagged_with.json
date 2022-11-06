@@ -1,11 +1,24 @@
 {
-  "name": "tagged_with",
   "namespace": "taxonomy",
+  "type_name": "tagged_with",
   "description": "The outbound entity is tagged with the inbound tag",
-  "outbound_type": "*",
-  "inbound_type": "tag",
+  "outbound": {
+    "entity_type": {
+      "namespace": "*",
+      "type_name": "*"
+    }
+  },
+  "inbound": {
+    "entity_type": {
+      "namespace": "taxonomy",
+      "type_name": "tag"
+    }
+  },
   "components": [
-    "weighted"
+    {
+      "namespace": "taxonomy",
+      "type_name": "weighted"
+    }
   ],
   "properties": [
   ],

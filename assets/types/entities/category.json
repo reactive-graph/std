@@ -1,10 +1,16 @@
 {
-  "name": "category",
   "namespace": "taxonomy",
+  "type_name": "category",
   "description": "A category is a fundamental and distinct class to which entities or concepts belong",
   "components": [
-    "named",
-    "describable"
+    {
+      "namespace": "base",
+      "type_name": "named"
+    },
+    {
+      "namespace": "base",
+      "type_name": "describable"
+    }
   ],
   "properties": [
   ],

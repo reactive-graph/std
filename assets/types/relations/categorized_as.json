@@ -1,11 +1,24 @@
 {
-  "name": "categorized_as",
   "namespace": "taxonomy",
+  "type_name": "categorized_as",
   "description": "The outbound entity is categorized as the inbound category",
-  "outbound_type": "*",
-  "inbound_type": "category",
+  "outbound": {
+    "entity_type": {
+      "namespace": "*",
+      "type_name": "*"
+    }
+  },
+  "inbound": {
+    "entity_type": {
+      "namespace": "taxonomy",
+      "type_name": "category"
+    }
+  },
   "components": [
-    "weighted"
+    {
+      "namespace": "taxonomy",
+      "type_name": "weighted"
+    }
   ],
   "properties": [
   ],

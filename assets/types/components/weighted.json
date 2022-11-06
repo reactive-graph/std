@@ -1,5 +1,6 @@
 {
-  "name": "weighted",
+  "namespace": "taxonomy",
+  "type_name": "weighted",
   "description": "",
   "properties": [
     {

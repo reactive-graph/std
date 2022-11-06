@@ -1,11 +1,24 @@
 {
-  "name": "has_subcategory",
   "namespace": "taxonomy",
+  "type_name": "has_subcategory",
   "description": "The outbound category has the inbound entity as sub category",
-  "outbound_type": "category",
-  "inbound_type": "category",
+  "outbound": {
+    "entity_type": {
+      "namespace": "taxonomy",
+      "type_name": "category"
+    }
+  },
+  "inbound": {
+    "entity_type": {
+      "namespace": "taxonomy",
+      "type_name": "category"
+    }
+  },
   "components": [
-    "weighted"
+    {
+      "namespace": "taxonomy",
+      "type_name": "weighted"
+    }
   ],
   "properties": [
   ],
