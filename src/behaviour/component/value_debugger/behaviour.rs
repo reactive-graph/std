@@ -22,7 +22,7 @@ pub struct ValueDebugger {
 }
 
 impl ValueDebugger {
-    pub fn new<'a>(e: Arc<ReactiveEntityInstance>, ty: BehaviourTypeId, f: ValueDebuggerFunction) -> Result<ValueDebugger, BehaviourCreationError> {
+    pub fn new(e: Arc<ReactiveEntityInstance>, ty: BehaviourTypeId, f: ValueDebuggerFunction) -> Result<ValueDebugger, BehaviourCreationError> {
         let property_value = e.properties.get(ValueProperties::VALUE.as_ref()).ok_or(BehaviourCreationError)?;
         let handle_id = Uuid::new_v4().as_u128();
         property_value

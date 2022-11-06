@@ -23,7 +23,7 @@ pub struct State {
 }
 
 impl State {
-    pub fn new<'a>(e: Arc<ReactiveEntityInstance>, ty: BehaviourTypeId) -> Result<State, BehaviourCreationError> {
+    pub fn new(e: Arc<ReactiveEntityInstance>, ty: BehaviourTypeId) -> Result<State, BehaviourCreationError> {
         let property_state = e.properties.get(StateProperties::STATE.as_ref()).ok_or(BehaviourCreationError)?;
         let property_set_state = e.properties.get(StateProperties::SET_STATE.as_ref()).ok_or(BehaviourCreationError)?;
         if !e.properties.contains_key(ValueProperties::VALUE.as_ref()) {

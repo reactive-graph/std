@@ -22,7 +22,7 @@ pub struct StateDebugger {
 }
 
 impl StateDebugger {
-    pub fn new<'a>(e: Arc<ReactiveEntityInstance>, ty: BehaviourTypeId, f: StateDebuggerFunction) -> Result<StateDebugger, BehaviourCreationError> {
+    pub fn new(e: Arc<ReactiveEntityInstance>, ty: BehaviourTypeId, f: StateDebuggerFunction) -> Result<StateDebugger, BehaviourCreationError> {
         let property_value = e.properties.get(StateProperties::STATE.as_ref()).ok_or(BehaviourCreationError)?;
         let handle_id = Uuid::new_v4().as_u128();
         let entity = e.clone();
