@@ -1,0 +1,23 @@
+{
+  "namespace": "state",
+  "type_name": "state_string",
+  "description": "State of type string",
+  "components": [
+    {
+      "namespace": "base",
+      "type_name": "named"
+    },
+    {
+      "namespace": "value",
+      "type_name": "value_string"
+    },
+    {
+      "namespace": "state",
+      "type_name": "state_string"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+  ]
+}
