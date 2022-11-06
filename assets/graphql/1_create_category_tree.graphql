@@ -4,7 +4,10 @@ mutation createCategory_Root {
   instances {
     entities {
       create(
-        type: "category",
+        type: {
+          namespace: "taxonomy",
+          name: "category",
+        }
         id: "00000000-0000-0000-0000-000000000001",
         properties: [
           {
@@ -27,7 +30,10 @@ mutation createCategory_A {
   instances {
     entities {
       create(
-        type: "category",
+        type: {
+          namespace: "taxonomy",
+          name: "category",
+        }
         id: "00000000-0000-0000-0000-0000000000A1",
         properties: [
           {
@@ -50,7 +56,10 @@ mutation createCategory_B {
   instances {
     entities {
       create(
-        type: "category",
+        type: {
+          namespace: "taxonomy",
+          name: "category",
+        }
         id: "00000000-0000-0000-0000-0000000000B1",
         properties: [
           {
@@ -73,7 +82,10 @@ mutation createCategory_A_1 {
   instances {
     entities {
       create(
-        type: "category",
+        type: {
+          namespace: "taxonomy",
+          name: "category",
+        }
         id: "00000000-0000-0000-0000-0000000001A1",
         properties: [
           {
@@ -96,7 +108,10 @@ mutation createCategory_A_2 {
   instances {
     entities {
       create(
-        type: "category",
+        type: {
+          namespace: "taxonomy",
+          name: "category",
+        }
         id: "00000000-0000-0000-0000-0000000002A1",
         properties: [
           {
@@ -119,7 +134,10 @@ mutation createCategory_B_1 {
   instances {
     entities {
       create(
-        type: "category",
+        type: {
+          namespace: "taxonomy",
+          name: "category",
+        }
         id: "00000000-0000-0000-0000-0000000001B1",
         properties: [
           {
@@ -142,7 +160,10 @@ mutation createCategory_B_2 {
   instances {
     entities {
       create(
-        type: "category",
+        type: {
+          namespace: "taxonomy",
+          name: "category",
+        }
         id: "00000000-0000-0000-0000-0000000002B1",
         properties: [
           {
@@ -167,6 +188,7 @@ mutation createSubCategory_Root_A {
       createSubCategory_Root_A: create(
         edgeKey: {
           outboundId: "00000000-0000-0000-0000-000000000001",
+          namespace: "taxonomy",
           typeName: "has_subcategory"
           inboundId: "00000000-0000-0000-0000-0000000000A1",
         },
@@ -178,8 +200,10 @@ mutation createSubCategory_Root_A {
         ]
       ) {
         type {
-          fullName
-        },
+          namespace
+          name
+        }
+        instanceId
       }
     }
   }
@@ -191,14 +215,17 @@ mutation createSubCategory_Root_B {
       create(
         edgeKey: {
           outboundId: "00000000-0000-0000-0000-000000000001",
+          namespace: "taxonomy",
           typeName: "has_subcategory"
           inboundId: "00000000-0000-0000-0000-0000000000B1",
         },
         properties: []
       ) {
         type {
-          fullName
-        },
+          namespace
+          name
+        }
+        instanceId
       }
     }
   }
@@ -210,14 +237,17 @@ mutation createSubCategory_A_1 {
       create(
         edgeKey: {
           outboundId: "00000000-0000-0000-0000-0000000000A1",
+          namespace: "taxonomy",
           typeName: "has_subcategory"
           inboundId: "00000000-0000-0000-0000-0000000001A1",
         },
         properties: []
       ) {
         type {
-          fullName
-        },
+          namespace
+          name
+        }
+        instanceId
       }
     }
   }
@@ -229,14 +259,17 @@ mutation createSubCategory_A_2 {
       create(
         edgeKey: {
           outboundId: "00000000-0000-0000-0000-0000000000A1",
+          namespace: "taxonomy",
           typeName: "has_subcategory"
           inboundId: "00000000-0000-0000-0000-0000000002A1",
         },
         properties: []
       ) {
         type {
-          fullName
-        },
+          namespace
+          name
+        }
+        instanceId
       }
     }
   }
@@ -248,14 +281,17 @@ mutation createSubCategory_B_1 {
       create(
         edgeKey: {
           outboundId: "00000000-0000-0000-0000-0000000000B1",
+          namespace: "taxonomy",
           typeName: "has_subcategory"
           inboundId: "00000000-0000-0000-0000-0000000001B1",
         },
         properties: []
       ) {
         type {
-          fullName
-        },
+          namespace
+          name
+        }
+        instanceId
       }
     }
   }
@@ -267,14 +303,17 @@ mutation createSubCategory_B_2 {
       create(
         edgeKey: {
           outboundId: "00000000-0000-0000-0000-0000000000B1",
+          namespace: "taxonomy",
           typeName: "has_subcategory"
           inboundId: "00000000-0000-0000-0000-0000000002B1",
         },
         properties: []
       ) {
         type {
-          fullName
-        },
+          namespace
+          name
+        }
+        instanceId
       }
     }
   }
