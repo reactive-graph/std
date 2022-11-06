@@ -168,21 +168,21 @@ impl ComponentBehaviourProvider for ValueComponentBehaviourProviderImpl {
             let namespaced_ty: NamespacedType = behaviour_ty.into();
             let component_ty = namespaced_ty.into();
             if entity_instance.is_a(&component_ty) {
-                self.create_state(entity_instance.clone(), &behaviour_ty);
+                self.create_state(entity_instance.clone(), behaviour_ty);
             }
         }
         for behaviour_ty in VALUE_DEBUGGER_BEHAVIOURS.keys() {
             let namespaced_ty: NamespacedType = behaviour_ty.into();
             let component_ty = namespaced_ty.into();
             if entity_instance.is_a(&component_ty) {
-                self.create_value_debugger(entity_instance.clone(), &behaviour_ty);
+                self.create_value_debugger(entity_instance.clone(), behaviour_ty);
             }
         }
         for behaviour_ty in STATE_DEBUGGER_BEHAVIOURS.keys() {
             let namespaced_ty: NamespacedType = behaviour_ty.into();
             let component_ty = namespaced_ty.into();
             if entity_instance.is_a(&component_ty) {
-                self.create_state_debugger(entity_instance.clone(), &behaviour_ty);
+                self.create_state_debugger(entity_instance.clone(), behaviour_ty);
             }
         }
     }
@@ -202,17 +202,17 @@ impl ComponentBehaviourProvider for ValueComponentBehaviourProviderImpl {
 
     fn remove_behaviours_from_entity(&self, entity_instance: Arc<ReactiveEntityInstance>) {
         for behaviour_ty in STATE_BEHAVIOURS.iter() {
-            if entity_instance.behaves_as(&behaviour_ty) {
+            if entity_instance.behaves_as(behaviour_ty) {
                 self.remove_state(entity_instance.clone());
             }
         }
         for behaviour_ty in VALUE_DEBUGGER_BEHAVIOURS.keys() {
-            if entity_instance.behaves_as(&behaviour_ty) {
+            if entity_instance.behaves_as(behaviour_ty) {
                 self.remove_value_debugger(entity_instance.clone());
             }
         }
         for behaviour_ty in STATE_DEBUGGER_BEHAVIOURS.keys() {
-            if entity_instance.behaves_as(&behaviour_ty) {
+            if entity_instance.behaves_as(behaviour_ty) {
                 self.remove_state_debugger(entity_instance.clone());
             }
         }
