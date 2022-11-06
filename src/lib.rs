@@ -64,3 +64,7 @@ extern "C" fn get_dependencies() -> Vec<PluginDependency> {
     dependencies.push(PluginDependency::new("inexor-rgf-plugin-base", "0.8.0"));
     dependencies
 }
+
+#[cfg(test)]
+#[tarpaulin::ignore]
+pub mod tests;
