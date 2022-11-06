@@ -6,16 +6,14 @@ use async_trait::async_trait;
 use crate::di::*;
 use crate::plugins::component_provider;
 use crate::plugins::entity_type_provider;
-use crate::plugins::plugin::PluginMetadata;
-use crate::plugins::plugin::PluginMetadataError;
 use crate::plugins::plugin_context::PluginContext;
-use crate::plugins::plugin_metadata;
 use crate::plugins::relation_type_provider;
 use crate::plugins::ComponentProvider;
 use crate::plugins::ComponentProviderError;
 use crate::plugins::EntityTypeProvider;
 use crate::plugins::EntityTypeProviderError;
 use crate::plugins::Plugin;
+use crate::plugins::PluginContextDeinitializationError;
 use crate::plugins::PluginContextInitializationError;
 use crate::plugins::RelationTypeProvider;
 use crate::plugins::RelationTypeProviderError;
@@ -50,33 +48,26 @@ interfaces!(TaxonomyPluginImpl: dyn Plugin);
 impl TaxonomyPlugin for TaxonomyPluginImpl {}
 
 impl Plugin for TaxonomyPluginImpl {
-    fn metadata(&self) -> Result<PluginMetadata, PluginMetadataError> {
-        plugin_metadata!("inexor-rgf-plugin-base")
-    }
-
-    fn set_context(
-        &self,
-        context: Arc<dyn PluginContext>,
-    ) -> Result<(), PluginContextInitializationError> {
+    fn set_context(&self, context: Arc<dyn PluginContext>) -> Result<(), PluginContextInitializationError> {
         self.context.0.write().unwrap().replace(context);
         Ok(())
     }
 
-    fn get_component_provider(
-        &self,
-    ) -> Result<Option<Arc<dyn ComponentProvider>>, ComponentProviderError> {
+    fn remove_context(&self) -> Result<(), PluginContextDeinitializationError> {
+        let mut writer = self.context.0.write().unwrap();
+        *writer = None;
+        Ok(())
+    }
+
+    fn get_component_provider(&self) -> Result<Option<Arc<dyn ComponentProvider>>, ComponentProviderError> {
         component_provider!(self.component_provider)
     }
 
-    fn get_entity_type_provider(
-        &self,
-    ) -> Result<Option<Arc<dyn EntityTypeProvider>>, EntityTypeProviderError> {
+    fn get_entity_type_provider(&self) -> Result<Option<Arc<dyn EntityTypeProvider>>, EntityTypeProviderError> {
         entity_type_provider!(self.entity_type_provider)
     }
 
-    fn get_relation_type_provider(
-        &self,
-    ) -> Result<Option<Arc<dyn RelationTypeProvider>>, RelationTypeProviderError> {
+    fn get_relation_type_provider(&self) -> Result<Option<Arc<dyn RelationTypeProvider>>, RelationTypeProviderError> {
         relation_type_provider!(self.relation_type_provider)
     }
 }
