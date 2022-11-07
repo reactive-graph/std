@@ -5,18 +5,16 @@ use async_trait::async_trait;
 
 use crate::di::*;
 use crate::plugins::component_provider;
-use crate::plugins::plugin::PluginMetadata;
-use crate::plugins::plugin::PluginMetadataError;
 use crate::plugins::plugin_context::PluginContext;
-use crate::plugins::plugin_metadata;
 use crate::plugins::ComponentProvider;
 use crate::plugins::ComponentProviderError;
 use crate::plugins::Plugin;
+use crate::plugins::PluginContextDeinitializationError;
 use crate::plugins::PluginContextInitializationError;
 use crate::provider::MetaDataComponentProviderImpl;
 
 #[wrapper]
-pub struct PluginContextContainer(RwLock<Option<std::sync::Arc<dyn PluginContext>>>);
+pub struct PluginContextContainer(RwLock<Option<Arc<dyn PluginContext>>>);
 
 #[provides]
 fn create_empty_plugin_context_container() -> PluginContextContainer {
@@ -40,12 +38,14 @@ interfaces!(MetaDataPluginImpl: dyn Plugin);
 impl MetaDataPlugin for MetaDataPluginImpl {}
 
 impl Plugin for MetaDataPluginImpl {
-    fn metadata(&self) -> Result<PluginMetadata, PluginMetadataError> {
-        plugin_metadata!("inexor-rgf-plugin-base")
-    }
-
     fn set_context(&self, context: Arc<dyn PluginContext>) -> Result<(), PluginContextInitializationError> {
         self.context.0.write().unwrap().replace(context);
+        Ok(())
+    }
+
+    fn remove_context(&self) -> Result<(), PluginContextDeinitializationError> {
+        let mut writer = self.context.0.write().unwrap();
+        *writer = None;
         Ok(())
     }
 
