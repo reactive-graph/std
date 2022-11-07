@@ -1,6 +1,6 @@
 {
   "namespace": "metadata",
-  "name": "dublin_core",
+  "type_name": "dublin_core",
   "properties": [
     {
       "name": "dc_language",
