@@ -9,7 +9,7 @@ use crate::plugins::embedded_asset_provider_impl;
 use crate::plugins::ComponentProvider;
 
 #[derive(RustEmbed)]
-#[folder = "./assets/types/components"]
+#[folder = "../../assets/types/components"]
 struct BaseComponentAsset;
 
 #[async_trait]

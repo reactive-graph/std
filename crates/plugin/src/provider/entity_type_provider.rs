@@ -9,7 +9,7 @@ use crate::plugins::embedded_asset_provider_impl;
 use crate::plugins::EntityTypeProvider;
 
 #[derive(RustEmbed)]
-#[folder = "./assets/types/entities"]
+#[folder = "../../assets/types/entities"]
 struct BaseEntityTypeAsset;
 
 #[async_trait]

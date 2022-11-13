@@ -1,0 +1,40 @@
+[package]
+name = "inexor-rgf-plugin-base"
+description = "Inexor - Reactive Graph Flow - Plugin - Base"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+async-trait = { workspace = true }
+indradb-lib = { workspace = true }
+lazy_static = { workspace = true }
+log = { workspace = true, features = ["std", "serde"] }
+log4rs = { workspace = true, features = ["console_appender", "file_appender", "toml_format"]}
+query_interface = { workspace = true }
+rust-embed = { workspace = true, features = ["debug-embed", "compression"] }
+serde = { workspace = true, features = [ "derive" ] }
+serde_json = { workspace = true }
+strum = { workspace = true, features = ["derive"] }
+strum_macros = { workspace = true }
+uuid = { workspace = true, features = ["serde", "v4"] }
+
+inexor-rgf-core-di = { workspace = true, features = ["async"] }
+inexor-rgf-core-model = { workspace = true }
+inexor-rgf-core-plugins = { workspace = true }
+inexor-rgf-model-base = { path = "../../crates/model" }
+
+[dev-dependencies]
+inexor-rgf-core-builder = { workspace = true }
+
+[lib]
+# Plugins use crate-type cdylib
+# https://doc.rust-lang.org/reference/linkage.html
+# https://users.rust-lang.org/t/what-is-the-difference-between-dylib-and-cdylib/28847/3
+crate-type = ["cdylib"]
+
+[package.metadata.cargo-post.dependencies]
+toml = "0.5"
+serde = { version = "1.0", features = [ "derive" ] }
+glob = "0.3"
