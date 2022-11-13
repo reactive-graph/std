@@ -8,8 +8,6 @@ use strum_macros::IntoStaticStr;
 
 use inexor_rgf_core_reactive::NamedProperties;
 
-pub const COMPONENT_NAME_NAMED: &str = "named";
-
 #[allow(non_camel_case_types)]
 #[derive(AsRefStr, IntoStaticStr, Display)]
 pub enum ComponentNamedProperties {

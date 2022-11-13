@@ -1,3 +1,7 @@
-pub use named_properties::*;
+pub use component::*;
 
-pub mod named_properties;
+pub mod component;
+
+use inexor_rgf_core_model as model;
+
+pub const NAMESPACE_BASE: &str = "BASE";
