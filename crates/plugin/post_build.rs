@@ -9,7 +9,7 @@ struct Deployment {
 }
 
 fn main() {
-    match fs::read_to_string("./crates/plugin/.deployment.toml") {
+    match fs::read_to_string("./.deployment.toml") {
         Ok(toml_string) => {
             let deployment: Result<Deployment, _> = toml::from_str(&toml_string);
             match deployment {
