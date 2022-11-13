@@ -9,7 +9,7 @@ use crate::plugins::embedded_asset_provider_impl;
 use crate::plugins::RelationTypeProvider;
 
 #[derive(RustEmbed)]
-#[folder = "./assets/types/relations"]
+#[folder = "../../assets/types/relations"]
 struct TaxonomyRelationTypeAsset;
 
 #[async_trait]
