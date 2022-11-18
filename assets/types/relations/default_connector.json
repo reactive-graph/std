@@ -1,11 +1,24 @@
 {
   "namespace": "connector",
-  "name": "default_connector",
+  "type_name": "default_connector",
   "description": "Connects a property of an entity instance with a other property of another entity instance",
-  "outbound_type": "*",
-  "inbound_type": "*",
+  "outbound": {
+    "entity_type": {
+      "namespace": "*",
+      "type_name": "*"
+    }
+  },
+  "inbound": {
+    "entity_type": {
+      "namespace": "*",
+      "type_name": "*"
+    }
+  },
   "components": [
-    "connector"
+    {
+      "namespace": "connector",
+      "type_name": "connector"
+    }
   ],
   "properties": [
   ]

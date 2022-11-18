@@ -1,6 +1,6 @@
 {
   "namespace": "connector",
-  "name": "propagation_counter",
+  "type_name": "propagation_counter",
   "description": "Counts the number of propagations",
   "properties": [
     {

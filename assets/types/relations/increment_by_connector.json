@@ -1,11 +1,24 @@
 {
   "namespace": "connector",
-  "name": "increment_by_connector",
+  "type_name": "increment_by_connector",
   "description": "Connects a outbound property with another property. The value of the outbound property will be added to the value of the inbound property.",
-  "outbound_type": "*",
-  "inbound_type": "*",
+  "outbound": {
+    "entity_type": {
+      "namespace": "*",
+      "type_name": "*"
+    }
+  },
+  "inbound": {
+    "entity_type": {
+      "namespace": "*",
+      "type_name": "*"
+    }
+  },
   "components": [
-    "connector"
+    {
+      "namespace": "connector",
+      "type_name": "connector"
+    }
   ],
   "properties": [
   ]

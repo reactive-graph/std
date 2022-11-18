@@ -1,6 +1,6 @@
 {
   "namespace": "connector",
-  "name": "buffer",
+  "type_name": "buffer",
   "description": "A buffer of the given size",
   "properties": [
     {

@@ -1,11 +1,24 @@
 {
   "namespace": "connector",
-  "name": "delay_connector",
+  "type_name": "delay_connector",
   "description": "Connects a property with a other property after the given milli seconds",
-  "outbound_type": "*",
-  "inbound_type": "*",
+  "outbound": {
+    "entity_type": {
+      "namespace": "*",
+      "type_name": "*"
+    }
+  },
+  "inbound": {
+    "entity_type": {
+      "namespace": "*",
+      "type_name": "*"
+    }
+  },
   "components": [
-    "connector"
+    {
+      "namespace": "connector",
+      "type_name": "connector"
+    }
   ],
   "properties": [
     {

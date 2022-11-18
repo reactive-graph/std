@@ -1,11 +1,24 @@
 {
   "namespace": "connector",
-  "name": "parse_float_connector",
+  "type_name": "parse_float_connector",
   "description": "Connects an string property of an entity instance with a number property of another entity instance. Outgoing string point values gets converted to floating point numbers if possible",
-  "outbound_type": "*",
-  "inbound_type": "*",
+  "outbound": {
+    "entity_type": {
+      "namespace": "*",
+      "type_name": "*"
+    }
+  },
+  "inbound": {
+    "entity_type": {
+      "namespace": "*",
+      "type_name": "*"
+    }
+  },
   "components": [
-    "connector"
+    {
+      "namespace": "connector",
+      "type_name": "connector"
+    }
   ],
   "properties": [
   ]
