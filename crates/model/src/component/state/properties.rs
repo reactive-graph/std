@@ -6,7 +6,7 @@ use strum_macros::AsRefStr;
 use strum_macros::Display;
 use strum_macros::IntoStaticStr;
 
-use inexor_rgf_core_reactive::NamedProperties;
+use crate::reactive::NamedProperties;
 
 #[allow(non_camel_case_types)]
 #[derive(AsRefStr, IntoStaticStr, Display)]
