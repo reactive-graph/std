@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Install" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
-    <option name="command" value="post build" />
+    <option name="command" value="post build --package=inexor-rgf-plugin-value" />
     <option name="workingDirectory" value="file://$PROJECT_DIR$" />
     <option name="channel" value="NIGHTLY" />
     <option name="requiredFeatures" value="true" />
