@@ -12,6 +12,7 @@ indradb-lib = { workspace = true }
 lazy_static = { workspace = true }
 log = { workspace = true, features = ["std", "serde"] }
 log4rs = { workspace = true, features = ["console_appender", "file_appender", "toml_format"]}
+paste = { workspace = true }
 query_interface = { workspace = true }
 rust-embed = { workspace = true, features = ["debug-embed", "compression"] }
 serde = { workspace = true, features = [ "derive" ] }
