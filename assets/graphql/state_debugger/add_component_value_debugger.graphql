@@ -2,11 +2,11 @@ mutation {
   instances {
     entities {
       update(
-        id: "1f0d1b1f-bb53-4e80-8103-6a350f459ceb",
+        id: "1f0d1b1f-bb53-4e80-8103-6a350f459ceb"
         addComponents: [
           {
             namespace: "value"
-            name: "value_debugger_debug",
+            name: "value_debugger_debug"
           }
         ]
       ) {
