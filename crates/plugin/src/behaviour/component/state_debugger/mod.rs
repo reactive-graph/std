@@ -12,20 +12,21 @@ use crate::reactive::*;
 
 pub mod functions;
 
-behaviour!(
+entity_behaviour!(
     StateDebugger,
     StateDebuggerFactory,
     StateDebuggerFsm,
     StateDebuggerBehaviourTransitions,
     StateDebuggerValidator,
-    ReactiveEntityInstance,
     f,
     StateDebuggerFunction
 );
 
 behaviour_validator!(StateDebuggerValidator, ReactiveEntityInstance, StateProperties::STATE.as_ref());
 
-impl BehaviourTransitions<ReactiveEntityInstance> for StateDebuggerBehaviourTransitions {
+impl BehaviourInit<ReactiveEntityInstance> for StateDebuggerBehaviourTransitions {}
+
+impl BehaviourConnect<ReactiveEntityInstance> for StateDebuggerBehaviourTransitions {
     fn connect(&self) -> Result<(), BehaviourConnectFailed> {
         let reactive_instance = self.property_observers.reactive_instance.clone();
         let f = self.f;
@@ -34,8 +35,7 @@ impl BehaviourTransitions<ReactiveEntityInstance> for StateDebuggerBehaviourTran
         debug!("Starting debugging of {}[{}]", &self.property_observers.reactive_instance, StateProperties::STATE.as_ref());
         Ok(())
     }
-
-    fn get_property_observers(&self) -> &PropertyObserverContainerImpl<ReactiveEntityInstance> {
-        &self.property_observers
-    }
 }
+
+impl BehaviourShutdown<ReactiveEntityInstance> for StateDebuggerBehaviourTransitions {}
+impl BehaviourTransitions<ReactiveEntityInstance> for StateDebuggerBehaviourTransitions {}

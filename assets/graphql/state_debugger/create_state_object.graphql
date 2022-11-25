@@ -11,13 +11,13 @@ mutation {
           {
             name: "value"
             value: {
-              test: "test"
+              test: "initial_value"
             }
           }
           {
             name: "state"
             value: {
-              test: "test"
+              test: "initial_state"
             }
           }
         ]

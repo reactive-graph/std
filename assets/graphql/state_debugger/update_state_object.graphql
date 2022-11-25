@@ -7,7 +7,7 @@ mutation {
           {
             name: "set_state",
             value: {
-              test: "123456"
+              test: "updated_state"
             }
           }
         ]

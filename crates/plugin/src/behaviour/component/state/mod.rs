@@ -22,7 +22,7 @@ behaviour_types!(
     "state_string"
 );
 
-behaviour!(State, StateFactory, StateFsm, StateBehaviourTransitions, StateValidator, ReactiveEntityInstance);
+entity_behaviour!(State, StateFactory, StateFsm, StateBehaviourTransitions, StateValidator);
 
 behaviour_validator!(
     StateValidator,
@@ -32,17 +32,21 @@ behaviour_validator!(
     ValueProperties::VALUE.as_ref()
 );
 
-impl BehaviourTransitions<ReactiveEntityInstance> for StateBehaviourTransitions {
+impl BehaviourInit<ReactiveEntityInstance> for StateBehaviourTransitions {
     fn init(&self) -> Result<(), BehaviourInitializationFailed> {
         // If value and state are not equal propagate the state, initially
         let state = self.get(StateProperties::STATE.as_ref()).ok_or(BehaviourInitializationFailed {})?;
-        let value = self.get(StateProperties::STATE.as_ref()).ok_or(BehaviourInitializationFailed {})?;
+        let value = self.get(ValueProperties::VALUE.as_ref()).ok_or(BehaviourInitializationFailed {})?;
         if state != value {
             self.set(ValueProperties::VALUE.as_ref(), state);
         }
         Ok(())
     }
+}
 
+impl BehaviourShutdown<ReactiveEntityInstance> for StateBehaviourTransitions {}
+
+impl BehaviourConnect<ReactiveEntityInstance> for StateBehaviourTransitions {
     fn connect(&self) -> Result<(), BehaviourConnectFailed> {
         let reactive_instance = self.property_observers.reactive_instance.clone();
         self.property_observers
@@ -61,8 +65,6 @@ impl BehaviourTransitions<ReactiveEntityInstance> for StateBehaviourTransitions 
         });
         Ok(())
     }
-
-    fn get_property_observers(&self) -> &PropertyObserverContainerImpl<ReactiveEntityInstance> {
-        &self.property_observers
-    }
 }
+
+impl BehaviourTransitions<ReactiveEntityInstance> for StateBehaviourTransitions {}

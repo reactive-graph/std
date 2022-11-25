@@ -12,20 +12,21 @@ use crate::reactive::*;
 
 pub mod functions;
 
-behaviour!(
+entity_behaviour!(
     ValueDebugger,
     ValueDebuggerFactory,
     ValueDebuggerFsm,
     ValueDebuggerBehaviourTransitions,
     ValueDebuggerValidator,
-    ReactiveEntityInstance,
     f,
     ValueDebuggerFunction
 );
 
 behaviour_validator!(ValueDebuggerValidator, ReactiveEntityInstance, ValueProperties::VALUE.as_ref());
 
-impl BehaviourTransitions<ReactiveEntityInstance> for ValueDebuggerBehaviourTransitions {
+impl BehaviourInit<ReactiveEntityInstance> for ValueDebuggerBehaviourTransitions {}
+
+impl BehaviourConnect<ReactiveEntityInstance> for ValueDebuggerBehaviourTransitions {
     fn connect(&self) -> Result<(), BehaviourConnectFailed> {
         let f = self.f;
         self.property_observers
@@ -33,8 +34,7 @@ impl BehaviourTransitions<ReactiveEntityInstance> for ValueDebuggerBehaviourTran
         debug!("Starting debugging of {}[{}]", &self.property_observers.reactive_instance, ValueProperties::VALUE.as_ref());
         Ok(())
     }
-
-    fn get_property_observers(&self) -> &PropertyObserverContainerImpl<ReactiveEntityInstance> {
-        &self.property_observers
-    }
 }
+
+impl BehaviourShutdown<ReactiveEntityInstance> for ValueDebuggerBehaviourTransitions {}
+impl BehaviourTransitions<ReactiveEntityInstance> for ValueDebuggerBehaviourTransitions {}
