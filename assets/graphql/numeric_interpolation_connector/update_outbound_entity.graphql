@@ -5,13 +5,14 @@ mutation {
         id: "e71ac5bb-30d1-452b-8bbe-295bad1e810a"
         properties: [
           {
-            name: "value"
+            name: "value_number"
             value: 100
           }
         ]
       ) {
         id
         type {
+          namespace
           name
         }
         outbound {

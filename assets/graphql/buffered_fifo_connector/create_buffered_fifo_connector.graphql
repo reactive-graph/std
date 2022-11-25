@@ -2,7 +2,10 @@ mutation createOutbound {
   instances {
     entities {
       create(
-        type: "value"
+        type: {
+          namespace: "value"
+          name: "value_string"
+        }
         id: "e32e01a9-2956-4d5a-8ad7-6dde79ab5dbc"
         properties: [
           {
@@ -13,6 +16,7 @@ mutation createOutbound {
       ) {
         id
         type {
+          namespace
           name
         }
         properties(
@@ -32,7 +36,10 @@ mutation createInbound {
   instances {
     entities {
       create(
-        type: "value"
+        type: {
+          namespace: "value"
+          name: "value_string"
+        }
         id: "76466943-a5b9-4669-a2d2-a9d8631c8302"
         properties: [
           {
@@ -43,6 +50,7 @@ mutation createInbound {
       ) {
         id
         type {
+          namespace
           name
         }
         properties(
@@ -64,7 +72,9 @@ mutation createConnector {
       create(
         edgeKey: {
           outboundId: "e32e01a9-2956-4d5a-8ad7-6dde79ab5dbc"
-          typeName: "buffered_fifo_connector--value--value"
+          namespace: "connector"
+          typeName: "buffered_fifo_connector"
+          instanceId: "value__value"
           inboundId: "76466943-a5b9-4669-a2d2-a9d8631c8302"
         },
         properties: [
@@ -87,9 +97,10 @@ mutation createConnector {
         ]
       ) {
         type {
+          namespace
           name
-          fullName
-        },
+        }
+        instanceId
         properties(
           names: [
             "outbound_property_name"

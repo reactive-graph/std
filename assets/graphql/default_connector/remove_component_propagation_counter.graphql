@@ -4,11 +4,16 @@ mutation {
       update(
         edgeKey: {
           outboundId: "dc82735e-28ec-4c24-aedb-d968b73b288f"
-          typeName: "default_connector--value--value"
+          namespace: "connector"
+          typeName: "default_connector"
+          instanceId: "value__value"
           inboundId: "4cf8e6d8-f92e-4ffa-9610-ec0635f55e08"
         },
         removeComponents: [
-          "propagation_counter"
+          {
+            namespace: "connector"
+            name: "propagation_counter"
+          }
         ]
       ) {
         properties {

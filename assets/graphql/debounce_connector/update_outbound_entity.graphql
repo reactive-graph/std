@@ -2,16 +2,17 @@ mutation {
   instances {
     entities {
       update(
-        id: "c171d2bc-5843-46f7-884a-f15033229f1f",
+        id: "c171d2bc-5843-46f7-884a-f15033229f1f"
         properties: [
           {
-            name: "value",
+            name: "value"
             value: "Hello World!"
           }
         ]
       ) {
         id
         type {
+          namespace
           name
         }
         outbound {

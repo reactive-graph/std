@@ -2,9 +2,11 @@ mutation DeleteConnector {
   instances {
     relations {
       delete(edgeKey: {
-        outboundId: "e32e01a9-2956-4d5a-8ad7-6dde79ab5dbc",
-        typeName: "buffered_fifo_connector--value--value"
-        inboundId: "76466943-a5b9-4669-a2d2-a9d8631c8302",
+        outboundId: "e32e01a9-2956-4d5a-8ad7-6dde79ab5dbc"
+        namespace: "connector"
+        typeName: "buffered_fifo_connector"
+        instanceId: "value__value"
+        inboundId: "76466943-a5b9-4669-a2d2-a9d8631c8302"
       })
     }
   }

@@ -3,7 +3,9 @@ mutation DeleteConnector {
     relations {
       delete(edgeKey: {
         outboundId: "e71ac5bb-30d1-452b-8bbe-295bad1e810a"
-        typeName: "numeric_interpolation_connector--value--value"
+        namespace: "connector"
+        typeName: "numeric_interpolation_connector"
+        instanceId: "value__value"
         inboundId: "2732bf15-d560-48e3-9018-74c949870563"
       })
     }

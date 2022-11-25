@@ -5,7 +5,7 @@ mutation {
         id: "dc82735e-28ec-4c24-aedb-d968b73b288f",
         properties: [
           {
-            name: "value",
+            name: "value"
             value: "Hello World!"
           }
         ]

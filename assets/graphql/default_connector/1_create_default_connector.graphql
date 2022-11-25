@@ -3,17 +3,21 @@ mutation createOutbound {
   instances {
     entities {
       create(
-        type: "value_string",
-        id: "dc82735e-28ec-4c24-aedb-d968b73b288f",
+        type: {
+          namespace: "value"
+          name: "value_string"
+        }
+        id: "dc82735e-28ec-4c24-aedb-d968b73b288f"
         properties: [
           {
-            name: "value",
+            name: "value"
             value: "Test"
           }
         ]
       ) {
         id
         type {
+          namespace
           name
         }
         properties(
@@ -33,17 +37,21 @@ mutation createInbound {
   instances {
     entities {
       create(
-        type: "value_string",
-        id: "4cf8e6d8-f92e-4ffa-9610-ec0635f55e08",
+        type: {
+          namespace: "value"
+          name: "value_string"
+        }
+        id: "4cf8e6d8-f92e-4ffa-9610-ec0635f55e08"
         properties: [
           {
-            name: "value",
+            name: "value"
             value: "Test"
           }
         ]
       ) {
         id
         type {
+          namespace
           name
         }
         properties(
@@ -64,17 +72,19 @@ mutation createConnector {
     relations {
       create(
         edgeKey: {
-          outboundId: "dc82735e-28ec-4c24-aedb-d968b73b288f",
-          typeName: "default_connector--value--value"
-          inboundId: "4cf8e6d8-f92e-4ffa-9610-ec0635f55e08",
+          outboundId: "dc82735e-28ec-4c24-aedb-d968b73b288f"
+          namespace: "connector"
+          typeName: "debug_connector"
+          instanceId: "value__value"
+          inboundId: "4cf8e6d8-f92e-4ffa-9610-ec0635f55e08"
         },
         properties: [
           {
-            name: "outbound_property_name",
+            name: "outbound_property_name"
             value: "value"
           },
           {
-            name: "inbound_property_name",
+            name: "inbound_property_name"
             value: "value"
           }
         ]
@@ -82,11 +92,11 @@ mutation createConnector {
         type {
           namespace
           name
-          instanceTypeName
-        },
+        }
+        instanceId
         properties(
           names: [
-            "outbound_property_name",
+            "outbound_property_name"
             "inbound_property_name"
           ]
         ) {

@@ -3,12 +3,17 @@ mutation {
     relations {
       update(
         edgeKey: {
-          outboundId: "5e00defc-8d67-48a7-8316-959b58c8dac9",
-          typeName: "increment_by_connector--value--value"
-          inboundId: "fbf31223-b7e3-43a9-a287-6f7e6103cbc5",
+          outboundId: "5e00defc-8d67-48a7-8316-959b58c8dac9"
+          namespace: "connector"
+          typeName: "increment_by_connector"
+          instanceId: "value__value"
+          inboundId: "fbf31223-b7e3-43a9-a287-6f7e6103cbc5"
         },
         removeComponents: [
-          "propagation_counter"
+          {
+            namespace: "connector"
+            name: "propagation_counter"
+          }
         ]
       ) {
         properties {

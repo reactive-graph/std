@@ -12,6 +12,7 @@ mutation {
       ) {
         id
         type {
+          namespace
           name
         }
         outbound {
