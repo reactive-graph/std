@@ -37,7 +37,7 @@ impl BehaviourConnect<ReactiveRelationInstance> for PropagationCounterBehaviourT
     fn connect(&self) -> Result<(), BehaviourConnectFailed> {
         let outbound_property_name = self.get_outbound_property_name().ok_or(BehaviourConnectFailed {})?;
         let reactive_instance = self.reactive_instance.clone();
-        self.property_observers.observe_with_handle(outbound_property_name.as_str(), move |_| {
+        self.outbound_property_observers.observe_with_handle(outbound_property_name.as_str(), move |_| {
             if let Some(mut count) = reactive_instance.as_u64(PROPAGATION_COUNT) {
                 count += 1;
                 reactive_instance.set(PROPAGATION_COUNT.as_ref(), json!(count));
