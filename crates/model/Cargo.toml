@@ -15,7 +15,6 @@ strum = { workspace = true, features = ["derive"] }
 strum_macros = { workspace = true }
 
 inexor-rgf-core-model = { workspace = true }
-inexor-rgf-core-reactive = { workspace = true }
 
 [lib]
 crate-type = ["lib"]
