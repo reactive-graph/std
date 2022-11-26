@@ -35,7 +35,20 @@ impl ConnectorBehaviourTransitions {
     }
 }
 
-impl BehaviourInit<ReactiveRelationInstance> for ConnectorBehaviourTransitions {}
+impl BehaviourInit<ReactiveRelationInstance> for ConnectorBehaviourTransitions {
+    fn init(&self) -> Result<(), BehaviourInitializationFailed> {
+        let outbound_property_name = self.get_outbound_property_name().ok_or(BehaviourInitializationFailed {})?;
+        let inbound_property_name = self.get_inbound_property_name().ok_or(BehaviourInitializationFailed {})?;
+        let value = self
+            .reactive_instance
+            .outbound
+            .get(outbound_property_name)
+            .ok_or(BehaviourInitializationFailed {})?;
+        let f = self.f;
+        self.reactive_instance.inbound.set(inbound_property_name.clone(), f(&value));
+        Ok(())
+    }
+}
 
 impl BehaviourShutdown<ReactiveRelationInstance> for ConnectorBehaviourTransitions {}
 
