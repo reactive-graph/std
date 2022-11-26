@@ -29,6 +29,7 @@ inexor-rgf-model-connector = { path = "../../crates/model" }
 
 [dev-dependencies]
 inexor-rgf-core-builder = { workspace = true }
+random-string = { workspace = true }
 
 [lib]
 # Plugins use crate-type cdylib

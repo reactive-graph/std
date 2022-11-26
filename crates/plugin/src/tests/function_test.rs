@@ -1,4 +1,5 @@
-use crate::behaviour::relation::connector::CONNECTORS;
+use crate::behaviour::relation::connector::CONNECTOR_BEHAVIOURS;
+use crate::model::NamespacedTypeGetter;
 
 #[test]
 fn propagation_function_test() {
@@ -12,10 +13,11 @@ fn propagation_function_test() {
     ];
     assert_eq!(
         expected_propagation_functions.len(),
-        CONNECTORS
+        CONNECTOR_BEHAVIOURS
             .keys()
             .into_iter()
-            .filter(|function_name| expected_propagation_functions.contains(function_name))
+            .map(|ty| ty.type_name())
+            .filter(|function_name| expected_propagation_functions.contains(&function_name.as_str()))
             .count()
     );
 }
