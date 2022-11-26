@@ -3,8 +3,6 @@
 #![allow(clippy::map_entry)]
 
 #[macro_use]
-extern crate lazy_static;
-#[macro_use]
 extern crate query_interface;
 
 use std::sync::Arc;

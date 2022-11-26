@@ -1,5 +1,3 @@
-use std::sync::Arc;
-
 use crate::model::PropertyInstanceGetter;
 use crate::model::ReactiveRelationInstance;
 use crate::model_connector::ConnectorProperties::INBOUND_PROPERTY_NAME;

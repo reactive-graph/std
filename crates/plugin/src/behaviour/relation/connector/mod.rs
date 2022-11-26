@@ -1,14 +1,9 @@
-use std::sync::Arc;
-use std::sync::RwLock;
-
-use log::trace;
 use serde_json::Value;
 
 pub use function::ConnectorFunction;
 pub use function::CONNECTOR_BEHAVIOURS;
 
 use crate::behaviour::relation::connector::validator::ConnectorValidator;
-use crate::model::BehaviourTypeId;
 use crate::model::PropertyInstanceGetter;
 use crate::model::PropertyInstanceSetter;
 use crate::model::ReactiveBehaviourContainer;

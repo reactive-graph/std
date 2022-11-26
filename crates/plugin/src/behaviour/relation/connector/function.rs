@@ -1,12 +1,12 @@
+use std::clone::Clone;
+
 use log::debug;
 use log::trace;
 use serde_json::json;
 use serde_json::Value;
-use std::clone::Clone;
-use std::collections::HashMap;
 
-use crate::model::BehaviourTypeId;
 use crate::model_connector::*;
+use crate::reactive::behaviour_functions;
 
 pub type ConnectorFunction = fn(&Value) -> Value;
 
@@ -58,15 +58,20 @@ pub const FN_TRACE_CONNECTOR: ConnectorFunction = |v| {
     v.clone()
 };
 
-lazy_static! {
-    pub static ref CONNECTOR_BEHAVIOURS: HashMap<BehaviourTypeId, ConnectorFunction> = vec![
-        (BehaviourTypeId::new_from_type(NAMESPACE_CONNECTOR, "debug_connector"), FN_DEBUG_CONNECTOR),
-        (BehaviourTypeId::new_from_type(NAMESPACE_CONNECTOR, "default_connector"), FN_DEFAULT_CONNECTOR),
-        (BehaviourTypeId::new_from_type(NAMESPACE_CONNECTOR, "parse_float_connector"), FN_PARSE_FLOAT_CONNECTOR),
-        (BehaviourTypeId::new_from_type(NAMESPACE_CONNECTOR, "parse_int_connector"), FN_PARSE_INT_CONNECTOR),
-        (BehaviourTypeId::new_from_type(NAMESPACE_CONNECTOR, "to_string_connector"), FN_TO_STRING_CONNECTOR),
-        (BehaviourTypeId::new_from_type(NAMESPACE_CONNECTOR, "trace_connector"), FN_TRACE_CONNECTOR),
-    ]
-    .into_iter()
-    .collect();
-}
+behaviour_functions!(
+    CONNECTOR_BEHAVIOURS,
+    ConnectorFunction,
+    NAMESPACE_CONNECTOR,
+    "debug_connector",
+    FN_DEBUG_CONNECTOR,
+    "default_connector",
+    FN_DEFAULT_CONNECTOR,
+    "parse_float_connector",
+    FN_PARSE_FLOAT_CONNECTOR,
+    "parse_int_connector",
+    FN_PARSE_INT_CONNECTOR,
+    "to_string_connector",
+    FN_TO_STRING_CONNECTOR,
+    "trace_connector",
+    FN_TRACE_CONNECTOR
+);

@@ -1,4 +1,3 @@
-use std::collections::HashMap;
 use std::sync::Arc;
 use std::thread;
 use std::time::Duration;
@@ -6,13 +5,13 @@ use std::time::Duration;
 use serde_json::json;
 use serde_json::Value;
 
-use crate::model::BehaviourTypeId;
 use crate::model::PropertyInstanceGetter;
 use crate::model::PropertyInstanceSetter;
 use crate::model::ReactiveRelationInstance;
 use crate::model_connector::BufferProperties::BUFFER;
 use crate::model_connector::BufferProperties::BUFFER_SIZE;
 use crate::model_connector::NAMESPACE_CONNECTOR;
+use crate::reactive::behaviour_functions;
 
 pub type ComplexConnectorFunction = fn(Value, String, Arc<ReactiveRelationInstance>);
 
@@ -90,19 +89,22 @@ pub const FN_DECREMENT_BY_CONNECTOR: ComplexConnectorFunction = |decrement_by, i
     }
 };
 
-lazy_static! {
-    pub static ref COMPLEX_CONNECTOR_BEHAVIOURS: HashMap<BehaviourTypeId, ComplexConnectorFunction> = vec![
-        (BehaviourTypeId::new_from_type(NAMESPACE_CONNECTOR, "delay_connector"), FN_DELAY_CONNECTOR),
-        (BehaviourTypeId::new_from_type(NAMESPACE_CONNECTOR, "debounce_connector"), FN_DEBOUNCE_CONNECTOR),
-        (BehaviourTypeId::new_from_type(NAMESPACE_CONNECTOR, "buffered_fifo_connector"), FN_BUFFERED_FIFO_CONNECTOR),
-        (
-            BehaviourTypeId::new_from_type(NAMESPACE_CONNECTOR, "numeric_interpolation_connector"),
-            FN_NUMERIC_INTERPOLATION_CONNECTOR
-        ),
-        (BehaviourTypeId::new_from_type(NAMESPACE_CONNECTOR, "threaded_connector"), FN_THREADED_CONNECTOR),
-        (BehaviourTypeId::new_from_type(NAMESPACE_CONNECTOR, "increment_by_connector"), FN_INCREMENT_BY_CONNECTOR),
-        (BehaviourTypeId::new_from_type(NAMESPACE_CONNECTOR, "decrement_by_connector"), FN_DECREMENT_BY_CONNECTOR),
-    ]
-    .into_iter()
-    .collect();
-}
+behaviour_functions!(
+    COMPLEX_CONNECTOR_BEHAVIOURS,
+    ComplexConnectorFunction,
+    NAMESPACE_CONNECTOR,
+    "delay_connector",
+    FN_DELAY_CONNECTOR,
+    "debounce_connector",
+    FN_DEBOUNCE_CONNECTOR,
+    "buffered_fifo_connector",
+    FN_BUFFERED_FIFO_CONNECTOR,
+    "numeric_interpolation_connector",
+    FN_NUMERIC_INTERPOLATION_CONNECTOR,
+    "threaded_connector",
+    FN_THREADED_CONNECTOR,
+    "increment_by_connector",
+    FN_INCREMENT_BY_CONNECTOR,
+    "decrement_by_connector",
+    FN_DECREMENT_BY_CONNECTOR
+);
