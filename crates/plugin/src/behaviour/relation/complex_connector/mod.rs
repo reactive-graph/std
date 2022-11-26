@@ -1,4 +1,5 @@
 use std::sync::Arc;
+use std::sync::RwLock;
 
 use log::trace;
 use serde_json::Value;
@@ -9,6 +10,7 @@ pub use function::COMPLEX_CONNECTOR_BEHAVIOURS;
 use crate::behaviour::relation::complex_connector::validator::ComplexConnectorValidator;
 use crate::model::BehaviourTypeId;
 use crate::model::PropertyInstanceGetter;
+use crate::model::PropertyInstanceSetter;
 use crate::model::ReactiveBehaviourContainer;
 use crate::model::ReactiveRelationInstance;
 use crate::model_connector::ConnectorProperties::INBOUND_PROPERTY_NAME;
