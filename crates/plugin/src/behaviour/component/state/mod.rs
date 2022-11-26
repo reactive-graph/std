@@ -1,11 +1,5 @@
-use std::sync::Arc;
-use std::sync::RwLock;
-
-use lazy_static::lazy_static;
-use log::trace;
 use serde_json::Value;
 
-use crate::model::BehaviourTypeId;
 use crate::model::PropertyInstanceGetter;
 use crate::model::PropertyInstanceSetter;
 use crate::model::ReactiveBehaviourContainer;
