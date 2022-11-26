@@ -62,16 +62,10 @@ behaviour_functions!(
     CONNECTOR_BEHAVIOURS,
     ConnectorFunction,
     NAMESPACE_CONNECTOR,
-    "debug_connector",
-    FN_DEBUG_CONNECTOR,
-    "default_connector",
-    FN_DEFAULT_CONNECTOR,
-    "parse_float_connector",
-    FN_PARSE_FLOAT_CONNECTOR,
-    "parse_int_connector",
-    FN_PARSE_INT_CONNECTOR,
-    "to_string_connector",
-    FN_TO_STRING_CONNECTOR,
-    "trace_connector",
-    FN_TRACE_CONNECTOR
+    ("debug_connector", FN_DEBUG_CONNECTOR),
+    ("default_connector", FN_DEFAULT_CONNECTOR),
+    ("parse_float_connector", FN_PARSE_FLOAT_CONNECTOR),
+    ("parse_int_connector", FN_PARSE_INT_CONNECTOR),
+    ("to_string_connector", FN_TO_STRING_CONNECTOR),
+    ("trace_connector", FN_TRACE_CONNECTOR)
 );
