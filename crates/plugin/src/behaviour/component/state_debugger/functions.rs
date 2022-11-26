@@ -22,8 +22,6 @@ behaviour_functions!(
     STATE_DEBUGGER_BEHAVIOURS,
     StateDebuggerFunction,
     NAMESPACE_STATE,
-    "state_debugger_debug",
-    FN_LOG_DEBUG,
-    "state_debugger_trace",
-    FN_LOG_TRACE
+    ("state_debugger_debug", FN_LOG_DEBUG),
+    ("state_debugger_trace", FN_LOG_TRACE)
 );

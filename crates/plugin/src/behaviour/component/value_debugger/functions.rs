@@ -19,8 +19,6 @@ behaviour_functions!(
     VALUE_DEBUGGER_BEHAVIOURS,
     ValueDebuggerFunction,
     NAMESPACE_VALUE,
-    "value_debugger_debug",
-    FN_LOG_DEBUG,
-    "value_debugger_trace",
-    FN_LOG_TRACE
+    ("value_debugger_debug", FN_LOG_DEBUG),
+    ("value_debugger_trace", FN_LOG_TRACE)
 );
