@@ -25,8 +25,8 @@ impl BehaviourPropertyValidator<ReactiveRelationInstance> for ConnectorValidator
         self.validate_outbound_property(&outbound_property_name)?;
         let inbound_property_name = self
             .reactive_instance
-            .as_string(OUTBOUND_PROPERTY_NAME.as_ref())
-            .ok_or(BehaviourPropertyInvalid::PropertyMissing(OUTBOUND_PROPERTY_NAME.to_string()))?;
+            .as_string(INBOUND_PROPERTY_NAME.as_ref())
+            .ok_or(BehaviourPropertyInvalid::PropertyMissing(INBOUND_PROPERTY_NAME.to_string()))?;
         self.validate_inbound_property(&inbound_property_name)?;
         Ok(())
     }
