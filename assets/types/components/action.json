@@ -1,6 +1,6 @@
 {
   "namespace": "logical",
-  "name": "action",
+  "type_name": "action",
   "description": "An action can be triggered",
   "properties": [
     {

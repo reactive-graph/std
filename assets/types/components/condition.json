@@ -1,6 +1,6 @@
 {
   "namespace": "logical",
-  "name": "condition",
+  "type_name": "condition",
   "description": "Depending on the given condition outputs a result",
   "properties": [
     {

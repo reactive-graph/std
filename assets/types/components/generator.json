@@ -1,6 +1,6 @@
 {
   "namespace": "logical",
-  "name": "generator",
+  "type_name": "generator",
   "description": "A generator sends a trigger",
   "properties": [
     {
