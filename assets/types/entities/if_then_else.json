@@ -3,7 +3,10 @@
   "type_name": "if_then_else",
   "description": "Each time it's triggered, either the then-payload or the else-payload gets propagated",
   "components": [
-    "condition"
+    {
+      "namespace": "logical",
+      "type_name": "condition"
+    }
   ],
   "properties": [
     {

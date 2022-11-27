@@ -3,7 +3,10 @@
   "type_name": "nor",
   "description": "NOR",
   "components": [
-    "logical_gate"
+    {
+      "namespace": "logical",
+      "type_name": "logical_gate"
+    }
   ],
   "properties": [
   ],

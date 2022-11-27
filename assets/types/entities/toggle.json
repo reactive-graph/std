@@ -3,7 +3,10 @@
   "type_name": "toggle",
   "description": "If triggered the state will toggled",
   "components": [
-    "action"
+    {
+      "namespace": "logical",
+      "type_name": "action"
+    }
   ],
   "properties": [
     {

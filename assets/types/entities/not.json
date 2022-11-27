@@ -3,7 +3,10 @@
   "type_name": "not",
   "description": "NOT",
   "components": [
-    "logical_gate"
+    {
+      "namespace": "logical",
+      "type_name": "logical_operation"
+    }
   ],
   "properties": [
   ],

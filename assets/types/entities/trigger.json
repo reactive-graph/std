@@ -3,7 +3,10 @@
   "type_name": "trigger",
   "description": "If triggered the payload will be copied to the output",
   "components": [
-    "action"
+    {
+      "namespace": "logical",
+      "type_name": "action"
+    }
   ],
   "properties": [
     {
