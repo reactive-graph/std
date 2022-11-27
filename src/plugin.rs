@@ -11,7 +11,7 @@ use crate::plugins::ComponentProviderError;
 use crate::plugins::Plugin;
 use crate::plugins::PluginContextDeinitializationError;
 use crate::plugins::PluginContextInitializationError;
-use crate::provider::MetaDataComponentProviderImpl;
+use crate::providers::MetaDataComponentProviderImpl;
 
 #[wrapper]
 pub struct PluginContextContainer(RwLock<Option<Arc<dyn PluginContext>>>);
