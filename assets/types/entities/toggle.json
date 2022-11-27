@@ -1,6 +1,6 @@
 {
   "namespace": "logical",
-  "name": "toggle",
+  "type_name": "toggle",
   "description": "If triggered the state will toggled",
   "components": [
     "action"

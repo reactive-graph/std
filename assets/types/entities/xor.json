@@ -1,6 +1,6 @@
 {
   "namespace": "logical",
-  "name": "xor",
+  "type_name": "xor",
   "description": "XOR",
   "components": [
     "logical_gate"

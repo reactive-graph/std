@@ -1,6 +1,6 @@
 {
   "namespace": "logical",
-  "name": "xnor",
+  "type_name": "xnor",
   "description": "XNOR",
   "components": [
     "logical_gate"

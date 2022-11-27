@@ -1,6 +1,6 @@
 {
   "namespace": "logical",
-  "name": "or",
+  "type_name": "or",
   "description": "OR",
   "components": [
     "logical_gate"

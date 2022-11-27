@@ -1,6 +1,6 @@
 {
   "namespace": "logical",
-  "name": "and3",
+  "type_name": "and3",
   "description": "An AND Gate with three inputs",
   "components": [
   ],

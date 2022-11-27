@@ -1,6 +1,6 @@
 {
   "namespace": "logical",
-  "name": "nand",
+  "type_name": "nand",
   "description": "NAND",
   "components": [
     "logical_gate"
