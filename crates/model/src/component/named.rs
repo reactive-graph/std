@@ -4,4 +4,4 @@ use crate::NAMESPACE_BASE;
 
 properties!(NamedProperties, (NAME, "name", ""));
 
-component_type!(COMPONENT_NAMED, NAMESPACE_BASE, COMPONENT_NAM_ENAMED, "named");
+component_type!(COMPONENT_NAMED, NAMESPACE_BASE, COMPONENT_NAME_NAMED, "named");
