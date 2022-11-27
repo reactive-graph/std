@@ -25,8 +25,8 @@ use crate::plugins::PluginContextInitializationError;
 use crate::plugins::PluginDeactivationError;
 use crate::plugins::RelationTypeProvider;
 use crate::plugins::RelationTypeProviderError;
-use crate::provider::ConnectorComponentProviderImpl;
-use crate::provider::ConnectorRelationTypeProviderImpl;
+use crate::providers::ConnectorComponentProviderImpl;
+use crate::providers::ConnectorRelationTypeProviderImpl;
 
 #[wrapper]
 pub struct PluginContextContainer(RwLock<Option<Arc<dyn PluginContext>>>);

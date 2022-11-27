@@ -25,7 +25,7 @@ use crate::plugins::PluginLoadingError;
 
 pub mod behaviour;
 pub mod plugin;
-pub mod provider;
+pub mod providers;
 
 pub static PLUGIN_NAME: &str = env!("CARGO_PKG_NAME");
 pub static PLUGIN_DESCRIPTION: &str = env!("CARGO_PKG_DESCRIPTION");
