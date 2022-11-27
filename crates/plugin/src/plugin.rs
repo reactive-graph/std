@@ -17,9 +17,9 @@ use crate::plugins::FlowTypeProviderError;
 use crate::plugins::Plugin;
 use crate::plugins::PluginContextDeinitializationError;
 use crate::plugins::PluginContextInitializationError;
-use crate::provider::BaseComponentProviderImpl;
-use crate::provider::BaseEntityTypeProviderImpl;
-use crate::provider::BaseFlowTypeProviderImpl;
+use crate::providers::BaseComponentProviderImpl;
+use crate::providers::BaseEntityTypeProviderImpl;
+use crate::providers::BaseFlowTypeProviderImpl;
 
 #[wrapper]
 pub struct PluginContextContainer(RwLock<Option<Arc<dyn PluginContext>>>);
