@@ -2,7 +2,6 @@ use serde_json::json;
 
 use crate::model::PropertyInstanceGetter;
 use crate::model::PropertyInstanceSetter;
-use crate::model::ReactiveBehaviourContainer;
 use crate::model::ReactiveRelationInstance;
 use crate::model_connector::ConnectorProperties::OUTBOUND_PROPERTY_NAME;
 use crate::model_connector::PropagationCounterProperties::PROPAGATION_COUNT;

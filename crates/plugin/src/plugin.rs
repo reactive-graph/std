@@ -2,7 +2,6 @@ use std::sync::Arc;
 use std::sync::RwLock;
 
 use async_trait::async_trait;
-use inexor_rgf_core_model::RelationBehaviourTypeId;
 
 use crate::behaviour::component::PropagationCounterFactory;
 use crate::behaviour::relation::complex_connector::function::COMPLEX_CONNECTOR_BEHAVIOURS;
@@ -11,8 +10,9 @@ use crate::behaviour::relation::connector::ConnectorFactory;
 use crate::behaviour::relation::connector::CONNECTOR_BEHAVIOURS;
 use crate::di::*;
 use crate::model::ComponentBehaviourTypeId;
+use crate::model::RelationBehaviourTypeId;
 use crate::model_connector::BEHAVIOUR_PROPAGATION_COUNTER;
-use crate::model_connector::COMPONENT_PROPAGATION_COUNTER;
+use crate::model_connector::COMPONENT_BEHAVIOUR_PROPAGATION_COUNTER;
 use crate::plugins::component_provider;
 use crate::plugins::plugin_context::PluginContext;
 use crate::plugins::relation_type_provider;
@@ -60,9 +60,8 @@ impl Plugin for ConnectorPluginImpl {
             let relation_component_behaviour_registry = context.get_relation_component_behaviour_registry();
             let relation_behaviour_registry = context.get_relation_behaviour_registry();
             // PropagationCounter
-            let component_behaviour_ty = ComponentBehaviourTypeId::new(COMPONENT_PROPAGATION_COUNTER.clone(), BEHAVIOUR_PROPAGATION_COUNTER.clone());
             let factory = Arc::new(PropagationCounterFactory::new(BEHAVIOUR_PROPAGATION_COUNTER.clone()));
-            relation_component_behaviour_registry.register(component_behaviour_ty, factory);
+            relation_component_behaviour_registry.register(COMPONENT_BEHAVIOUR_PROPAGATION_COUNTER.clone(), factory);
             // Connector
             for (behaviour_ty, f) in CONNECTOR_BEHAVIOURS.iter() {
                 relation_behaviour_registry.register(RelationBehaviourTypeId::from(behaviour_ty), Arc::new(ConnectorFactory::new(behaviour_ty.clone(), *f)));
@@ -81,8 +80,7 @@ impl Plugin for ConnectorPluginImpl {
         if let Some(context) = guard.clone() {
             let relation_component_behaviour_registry = context.get_relation_component_behaviour_registry();
             // PropagationCounter
-            relation_component_behaviour_registry
-                .unregister(&ComponentBehaviourTypeId::new(COMPONENT_PROPAGATION_COUNTER.clone(), BEHAVIOUR_PROPAGATION_COUNTER.clone()));
+            relation_component_behaviour_registry.unregister(&COMPONENT_BEHAVIOUR_PROPAGATION_COUNTER);
             // Connector
             for behaviour_ty in CONNECTOR_BEHAVIOURS.keys() {
                 relation_component_behaviour_registry.unregister(&ComponentBehaviourTypeId::from(behaviour_ty));
