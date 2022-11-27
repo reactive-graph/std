@@ -1,6 +1,6 @@
+use crate::model::NamespacedTypeGetter;
 use crate::plugins::ComponentProvider;
-use crate::provider::ValueComponentProviderImpl;
-use inexor_rgf_core_model::NamespacedTypeGetter;
+use crate::providers::ValueComponentProviderImpl;
 
 #[test]
 fn components_should_exist() {
