@@ -27,8 +27,8 @@ use crate::plugins::PluginActivationError;
 use crate::plugins::PluginContextDeinitializationError;
 use crate::plugins::PluginContextInitializationError;
 use crate::plugins::PluginDeactivationError;
-use crate::provider::ValueComponentProviderImpl;
-use crate::provider::ValueEntityTypeProviderImpl;
+use crate::providers::ValueComponentProviderImpl;
+use crate::providers::ValueEntityTypeProviderImpl;
 
 #[wrapper]
 pub struct PluginContextContainer(RwLock<Option<Arc<dyn PluginContext>>>);
