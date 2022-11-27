@@ -20,7 +20,7 @@ mutation UpdateAnd3 {
   instances {
     entities {
       update(
-        id: "7adafc81-266a-4640-897a-902eabf8bdc1"
+        id: "ae9262ce-637b-4f6b-a730-866cab7ada8a"
         properties: [
           {
             name: "input2"

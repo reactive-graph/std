@@ -2,15 +2,18 @@ mutation {
   instances {
     entities {
       create(
-        type: "toggle",
-        id: "f4d18986-60f6-4b2b-8207-57c8fdcc9a2e",
+        type: {
+          namespace: "logical"
+          name: "toggle"
+        }
+        id: "f4d18986-60f6-4b2b-8207-57c8fdcc9a2e"
         properties: [
           {
-            name: "trigger",
+            name: "trigger"
             value: false
           },
           {
-            name: "result",
+            name: "result"
             value: false
           }
         ]
@@ -21,7 +24,7 @@ mutation {
         }
         properties(
           names: [
-            "trigger",
+            "trigger"
             "result"
           ]
         ) {

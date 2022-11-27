@@ -2,14 +2,14 @@ mutation {
   instances {
     entities {
       update(
-        id: "c2091964-2e22-454f-8983-8cf0cbb47388",
+        id: "c2091964-2e22-454f-8983-8cf0cbb47388"
         properties: [
           {
-            name: "payload",
+            name: "payload"
             value: "Must not propagated to result"
           },
           {
-            name: "trigger",
+            name: "trigger"
             value: false
           }
         ]
@@ -20,8 +20,8 @@ mutation {
         }
         properties(
           names: [
-            "trigger",
-            "payload",
+            "trigger"
+            "payload"
             "result"
           ]
         ) {

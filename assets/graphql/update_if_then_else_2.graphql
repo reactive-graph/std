@@ -2,10 +2,10 @@ mutation {
   instances {
     entities {
       update(
-        id: "d70f222b-f9e0-4172-a086-b30c310b412a",
+        id: "d70f222b-f9e0-4172-a086-b30c310b412a"
         properties: [
           {
-            name: "condition",
+            name: "condition"
             value: false
           }
         ]
@@ -16,9 +16,9 @@ mutation {
         }
         properties(
           names: [
-            "condition",
-            "then_payload",
-            "else_payload",
+            "condition"
+            "then_payload"
+            "else_payload"
             "result"
           ]
         ) {
