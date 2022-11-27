@@ -17,9 +17,9 @@ use crate::plugins::PluginContextDeinitializationError;
 use crate::plugins::PluginContextInitializationError;
 use crate::plugins::RelationTypeProvider;
 use crate::plugins::RelationTypeProviderError;
-use crate::provider::TaxonomyComponentProviderImpl;
-use crate::provider::TaxonomyEntityTypeProviderImpl;
-use crate::provider::TaxonomyRelationTypeProviderImpl;
+use crate::providers::TaxonomyComponentProviderImpl;
+use crate::providers::TaxonomyEntityTypeProviderImpl;
+use crate::providers::TaxonomyRelationTypeProviderImpl;
 
 #[wrapper]
 pub struct PluginContextContainer(RwLock<Option<Arc<dyn PluginContext>>>);

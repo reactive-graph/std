@@ -4,7 +4,6 @@ extern crate query_interface;
 use std::sync::Arc;
 
 use inexor_rgf_core_di as di;
-use inexor_rgf_core_model as model;
 use inexor_rgf_core_plugins as plugins;
 use log::error;
 
@@ -17,7 +16,7 @@ use crate::plugins::PluginDependency;
 use crate::plugins::PluginLoadingError;
 
 pub mod plugin;
-pub mod provider;
+pub mod providers;
 
 pub static PLUGIN_NAME: &str = env!("CARGO_PKG_NAME");
 pub static PLUGIN_DESCRIPTION: &str = env!("CARGO_PKG_DESCRIPTION");
