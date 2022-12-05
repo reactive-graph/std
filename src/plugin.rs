@@ -1,20 +1,22 @@
-use std::sync::{Arc, RwLock};
+use std::sync::Arc;
+use std::sync::RwLock;
+
+use async_trait::async_trait;
+use log::info;
 
 use crate::di::*;
-use async_trait::async_trait;
-use log::debug;
-
-use crate::plugins::plugin::PluginMetadata;
 use crate::plugins::plugin_context::PluginContext;
-use crate::plugins::{
-    ComponentBehaviourProvider, ComponentProvider, EntityBehaviourProvider, EntityTypeProvider,
-    FlowProvider, Plugin, PluginError, RelationBehaviourProvider, RelationTypeProvider,
-    WebResourceProvider,
-};
+use crate::plugins::web_resource_provider;
+use crate::plugins::Plugin;
+use crate::plugins::PluginActivationError;
+use crate::plugins::PluginContextDeinitializationError;
+use crate::plugins::PluginContextInitializationError;
+use crate::plugins::WebResourceProvider;
+use crate::plugins::WebResourceProviderError;
 use crate::provider::GraphQlSchemaVisualizationWebResourceProviderImpl;
 
 #[wrapper]
-pub struct PluginContextContainer(RwLock<Option<std::sync::Arc<dyn PluginContext>>>);
+pub struct PluginContextContainer(RwLock<Option<Arc<dyn PluginContext>>>);
 
 #[provides]
 fn create_empty_plugin_context_container() -> PluginContextContainer {
@@ -38,80 +40,38 @@ interfaces!(GraphQlSchemaVisualizationPluginImpl: dyn Plugin);
 impl GraphQlSchemaVisualizationPlugin for GraphQlSchemaVisualizationPluginImpl {}
 
 impl Plugin for GraphQlSchemaVisualizationPluginImpl {
-    fn metadata(&self) -> Result<PluginMetadata, PluginError> {
-        Ok(PluginMetadata {
-            name: env!("CARGO_PKG_NAME").into(),
-            description: env!("CARGO_PKG_DESCRIPTION").into(),
-            version: env!("CARGO_PKG_VERSION").into(),
-        })
-    }
-
-    fn init(&self) -> Result<(), PluginError> {
-        debug!("GraphQlSchemaVisualizationPluginModuleImpl::init()");
+    fn activate(&self) -> Result<(), PluginActivationError> {
+        let base_path = self.web_resource_provider.get_base_path().clone();
+        info!(
+            r"
+    http://localhost:31415/{base_path}/graph/query
+    http://localhost:31415/{base_path}/graph/mutation
+    http://localhost:31415/{base_path}/graph/subscription
+    http://localhost:31415/{base_path}/dynamic-graph/query
+    http://localhost:31415/{base_path}/dynamic-graph/mutation
+    http://localhost:31415/{base_path}/dynamic-graph/subscription
+        "
+        );
         Ok(())
     }
 
-    fn post_init(&self) -> Result<(), PluginError> {
-        debug!("GraphQlSchemaVisualizationPluginModuleImpl::post_init()");
-        Ok(())
-    }
-
-    fn pre_shutdown(&self) -> Result<(), PluginError> {
-        debug!("GraphQlSchemaVisualizationPluginModuleImpl::pre_shutdown()");
-        Ok(())
-    }
-
-    fn shutdown(&self) -> Result<(), PluginError> {
-        debug!("GraphQlSchemaVisualizationPluginModuleImpl::shutdown()");
-        Ok(())
-    }
-
-    fn set_context(&self, context: Arc<dyn PluginContext>) -> Result<(), PluginError> {
+    fn set_context(
+        &self,
+        context: Arc<dyn PluginContext>,
+    ) -> Result<(), PluginContextInitializationError> {
         self.context.0.write().unwrap().replace(context);
         Ok(())
     }
 
-    fn get_component_provider(&self) -> Result<Arc<dyn ComponentProvider>, PluginError> {
-        Err(PluginError::NoComponentProvider)
+    fn remove_context(&self) -> Result<(), PluginContextDeinitializationError> {
+        let mut writer = self.context.0.write().unwrap();
+        *writer = None;
+        Ok(())
     }
 
-    fn get_entity_type_provider(&self) -> Result<Arc<dyn EntityTypeProvider>, PluginError> {
-        Err(PluginError::NoEntityTypeProvider)
-    }
-
-    fn get_relation_type_provider(&self) -> Result<Arc<dyn RelationTypeProvider>, PluginError> {
-        Err(PluginError::NoRelationTypeProvider)
-    }
-
-    fn get_component_behaviour_provider(
+    fn get_web_resource_provider(
         &self,
-    ) -> Result<Arc<dyn ComponentBehaviourProvider>, PluginError> {
-        Err(PluginError::NoComponentBehaviourProvider)
-    }
-
-    fn get_entity_behaviour_provider(
-        &self,
-    ) -> Result<Arc<dyn EntityBehaviourProvider>, PluginError> {
-        Err(PluginError::NoEntityBehaviourProvider)
-    }
-
-    fn get_relation_behaviour_provider(
-        &self,
-    ) -> Result<Arc<dyn RelationBehaviourProvider>, PluginError> {
-        Err(PluginError::NoRelationBehaviourProvider)
-    }
-
-    fn get_flow_provider(&self) -> Result<Arc<dyn FlowProvider>, PluginError> {
-        Err(PluginError::NoFlowProvider)
-    }
-
-    fn get_web_resource_provider(&self) -> Result<Arc<dyn WebResourceProvider>, PluginError> {
-        let web_resource_provider = self.web_resource_provider.clone();
-        let web_resource_provider: Result<Arc<dyn WebResourceProvider>, _> =
-            <dyn query_interface::Object>::query_arc(web_resource_provider);
-        if web_resource_provider.is_err() {
-            return Err(PluginError::NoWebResourceProvider);
-        }
-        Ok(web_resource_provider.unwrap())
+    ) -> Result<Option<Arc<dyn WebResourceProvider>>, WebResourceProviderError> {
+        web_resource_provider!(self.web_resource_provider)
     }
 }
