@@ -4,7 +4,7 @@ use serde_json::json;
 
 use crate::behaviour::entity::operation::function::*;
 use crate::behaviour::entity::operation::properties::ArithmeticOperationProperties;
-use crate::behaviour::entity::operation::ArithmeticOperation;
+use crate::behaviour::entity::operation::ArithmeticOperationF64;
 use crate::builder::ReactiveEntityInstanceBuilder;
 use crate::model::ReactiveEntityInstance;
 use crate::reactive::BehaviourCreationError;
@@ -23,8 +23,8 @@ fn test_arithmetic_operation_behaviour(f: ArithmeticOperationFunction<f64>, v: f
     b.result().as_f64()
 }
 
-fn create_arithmetic_operation_behaviour(f: ArithmeticOperationFunction<f64>) -> Result<ArithmeticOperation<'static>, BehaviourCreationError> {
-    ArithmeticOperation::new(create_arithmetic_operation_entity(), f)
+fn create_arithmetic_operation_behaviour(f: ArithmeticOperationFunction<f64>) -> Result<ArithmeticOperationF64<'static>, BehaviourCreationError> {
+    ArithmeticOperationF64::new(create_arithmetic_operation_entity(), f)
 }
 
 fn create_arithmetic_operation_entity() -> Arc<ReactiveEntityInstance> {
