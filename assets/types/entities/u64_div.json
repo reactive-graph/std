@@ -1,9 +1,12 @@
 {
-  "namespace": "arithmetic",
-  "name": "div",
-  "description": "Divides two integer numbers",
+  "namespace": "arithmetic_u64",
+  "type_name": "div",
+  "description": "Divides two unsigned integer numbers",
   "components": [
-    "arithmetic_gate"
+    {
+      "namespace": "arithmetic",
+      "type_name": "arithmetic_gate"
+    }
   ],
   "properties": [
   ],

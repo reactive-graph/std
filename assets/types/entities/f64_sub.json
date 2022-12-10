@@ -1,0 +1,25 @@
+{
+  "namespace": "arithmetic_f64",
+  "type_name": "sub",
+  "description": "Subtract an floating point number from another floating point number",
+  "components": [
+    {
+      "namespace": "arithmetic",
+      "type_name": "arithmetic_gate"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "palette",
+      "extension": {
+        "content": "-",
+        "styles": {
+          "font-family": "Fira Code",
+          "font-size": "40px"
+        }
+      }
+    }
+  ]
+}

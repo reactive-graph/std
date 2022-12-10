@@ -1,0 +1,97 @@
+{
+  "namespace": "arithmetic_u64",
+  "type_name": "decrement",
+  "description": "Decrements a unsigned integer number",
+  "components": [
+    {
+      "namespace": "arithmetic",
+      "type_name": "arithmetic_operation"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "palette",
+      "extension": {
+        "content": "Decrement",
+        "styles": {
+          "font-family": "Fira Code",
+          "font-size": "12px",
+          "padding": "5px"
+        }
+      }
+    },
+    {
+      "name": "shape",
+      "extension": {
+        "width": 200,
+        "socket": {
+          "width": 60,
+          "height": 30,
+          "offset": 5
+        },
+        "offset": {
+          "top": "socket.height",
+          "bottom": "socket.height"
+        },
+        "elements": {
+          "title": {
+            "show": true,
+            "type": "text",
+            "content": "element.description",
+            "position": {
+              "left": 0,
+              "top": 0,
+              "width": "shape.width",
+              "height": "socket.height"
+            },
+            "styles": {
+              "font-size": "12px",
+              "color": "black"
+            }
+          },
+          "symbol": {
+            "show": true,
+            "type": "text",
+            "content": "--",
+            "position": {
+              "left": 0,
+              "top": 0,
+              "width": "shape.width",
+              "height": "shape.height"
+            },
+            "styles": {
+              "fill": "steelblue",
+              "font-size": "80px",
+              "font-family": "Fira Code"
+            }
+          },
+          "id": {
+            "show": true,
+            "type": "text",
+            "content": "shape.id",
+            "position": {
+              "left": 0,
+              "top": "shape.height-socket.height",
+              "width": "shape.width",
+              "height": "socket.height"
+            },
+            "styles": {
+              "font-size": "9px",
+              "color": "black"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "dublin-core",
+      "extension":{
+        "title": "Decrement number",
+        "subject": "Decrement number",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

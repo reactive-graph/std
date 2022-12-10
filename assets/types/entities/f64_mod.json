@@ -1,0 +1,25 @@
+{
+  "namespace": "arithmetic_f64",
+  "type_name": "mod",
+  "description": "Modulo",
+  "components": [
+    {
+      "namespace": "arithmetic",
+      "type_name": "arithmetic_gate"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "palette",
+      "extension": {
+        "content": "mod",
+        "styles": {
+          "font-family": "Fira Code",
+          "font-size": "20px"
+        }
+      }
+    }
+  ]
+}

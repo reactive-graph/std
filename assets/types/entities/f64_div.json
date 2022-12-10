@@ -1,9 +1,12 @@
 {
-  "namespace": "arithmetic",
-  "name": "sub",
-  "description": "Subtract an integer number from another number",
+  "namespace": "arithmetic_f64",
+  "type_name": "div",
+  "description": "Divides two floating point numbers",
   "components": [
-    "arithmetic_gate"
+    {
+      "namespace": "arithmetic",
+      "type_name": "arithmetic_gate"
+    }
   ],
   "properties": [
   ],
@@ -11,7 +14,7 @@
     {
       "name": "palette",
       "extension": {
-        "content": "-",
+        "content": "÷",
         "styles": {
           "font-family": "Fira Code",
           "font-size": "40px"

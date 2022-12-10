@@ -1,9 +1,12 @@
 {
-  "namespace": "arithmetic",
-  "name": "max",
-  "description": "Returns the maximum value of two inputs",
+  "namespace": "arithmetic_u64",
+  "type_name": "max",
+  "description": "Returns the maximum value of two unsigned integer numbers",
   "components": [
-    "arithmetic_gate"
+    {
+      "namespace": "arithmetic",
+      "type_name": "arithmetic_gate"
+    }
   ],
   "properties": [
   ],

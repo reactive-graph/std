@@ -1,25 +1,23 @@
 {
-  "namespace": "arithmetic",
-  "name": "counter",
-  "description": "If triggered the counter will be increased",
+  "namespace": "arithmetic_f64",
+  "type_name": "decrement",
+  "description": "Decrements a number",
   "components": [
-    "action"
+    {
+      "namespace": "arithmetic",
+      "type_name": "arithmetic_operation"
+    }
   ],
   "properties": [
-    {
-      "name": "result",
-      "data_type": "number",
-      "socket_type": "output"
-    }
   ],
   "extensions": [
     {
       "name": "palette",
       "extension": {
-        "content": "Counter",
-        "styles":  {
-          "font-size": "20px",
+        "content": "Decrement",
+        "styles": {
           "font-family": "Fira Code",
+          "font-size": "12px",
           "padding": "5px"
         }
       }
@@ -50,13 +48,13 @@
             },
             "styles": {
               "font-size": "12px",
-              "fill": "black"
+              "color": "black"
             }
           },
           "symbol": {
             "show": true,
             "type": "text",
-            "content": "Counter",
+            "content": "--",
             "position": {
               "left": 0,
               "top": 0,
@@ -64,9 +62,9 @@
               "height": "shape.height"
             },
             "styles": {
-              "font-family": "Fira Code",
-              "font-size": "40px",
-              "fill": "fuchsia"
+              "fill": "steelblue",
+              "font-size": "80px",
+              "font-family": "Fira Code"
             }
           },
           "id": {
@@ -81,7 +79,7 @@
             },
             "styles": {
               "font-size": "9px",
-              "fill": "black"
+              "color": "black"
             }
           }
         }
@@ -90,8 +88,8 @@
     {
       "name": "dublin-core",
       "extension":{
-        "title": "Counter",
-        "subject": "If triggered the counter will be increased",
+        "title": "Decrement number",
+        "subject": "Decrement number",
         "creator": "Hanack"
       }
     }

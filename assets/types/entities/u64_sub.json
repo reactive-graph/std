@@ -1,0 +1,25 @@
+{
+  "namespace": "arithmetic_u64",
+  "type_name": "sub",
+  "description": "Subtract an unsigned integer number from another unsigned integer number",
+  "components": [
+    {
+      "namespace": "arithmetic",
+      "type_name": "arithmetic_gate"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "palette",
+      "extension": {
+        "content": "-",
+        "styles": {
+          "font-family": "Fira Code",
+          "font-size": "40px"
+        }
+      }
+    }
+  ]
+}

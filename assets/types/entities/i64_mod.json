@@ -1,9 +1,12 @@
 {
-  "namespace": "arithmetic",
-  "name": "mod",
+  "namespace": "arithmetic_i64",
+  "type_name": "mod",
   "description": "Modulo",
   "components": [
-    "arithmetic_gate"
+    {
+      "namespace": "arithmetic",
+      "type_name": "arithmetic_gate"
+    }
   ],
   "properties": [
   ],

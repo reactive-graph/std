@@ -1,21 +1,31 @@
 {
-  "namespace": "arithmetic",
-  "name": "decrement",
-  "description": "Decrements a number",
+  "namespace": "arithmetic_u64",
+  "type_name": "add",
+  "description": "Adds two unsigned integer numbers",
   "components": [
-    "arithmetic_operation"
+    {
+      "namespace": "arithmetic",
+      "type_name": "arithmetic_gate"
+    }
   ],
   "properties": [
   ],
   "extensions": [
     {
+      "name": "plugin",
+      "extension": "arithmetic"
+    },
+    {
+      "name": "icon",
+      "extension": "fa/FaPlus"
+    },
+    {
       "name": "palette",
       "extension": {
-        "content": "Decrement",
+        "content": "+",
         "styles": {
           "font-family": "Fira Code",
-          "font-size": "12px",
-          "padding": "5px"
+          "font-size": "40px"
         }
       }
     },
@@ -51,7 +61,7 @@
           "symbol": {
             "show": true,
             "type": "text",
-            "content": "--",
+            "content": "+",
             "position": {
               "left": 0,
               "top": 0,
@@ -85,8 +95,8 @@
     {
       "name": "dublin-core",
       "extension":{
-        "title": "Decrement number",
-        "subject": "Decrement number",
+        "title": "Add Gate",
+        "subject": "Arithmetic Gate for Integer Additions",
         "creator": "Hanack"
       }
     }

@@ -1,9 +1,12 @@
 {
-  "namespace": "arithmetic",
-  "name": "increment",
-  "description": "Increments a number",
+  "namespace": "arithmetic_i64",
+  "type_name": "decrement",
+  "description": "Decrements a signed integer number",
   "components": [
-    "arithmetic_operation"
+    {
+      "namespace": "arithmetic",
+      "type_name": "arithmetic_operation"
+    }
   ],
   "properties": [
   ],
@@ -11,7 +14,7 @@
     {
       "name": "palette",
       "extension": {
-        "content": "Increment",
+        "content": "Decrement",
         "styles": {
           "font-family": "Fira Code",
           "font-size": "12px",
@@ -51,7 +54,7 @@
           "symbol": {
             "show": true,
             "type": "text",
-            "content": "++",
+            "content": "--",
             "position": {
               "left": 0,
               "top": 0,
@@ -85,8 +88,8 @@
     {
       "name": "dublin-core",
       "extension":{
-        "title": "Increment number",
-        "subject": "Increment number",
+        "title": "Decrement number",
+        "subject": "Decrement number",
         "creator": "Hanack"
       }
     }

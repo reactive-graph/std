@@ -1,9 +1,12 @@
 {
-  "namespace": "arithmetic",
-  "name": "add",
-  "description": "Adds two integer numbers",
+  "namespace": "arithmetic_f64",
+  "type_name": "add",
+  "description": "Adds two floating point numbers",
   "components": [
-    "arithmetic_gate"
+    {
+      "namespace": "arithmetic",
+      "type_name": "arithmetic_gate"
+    }
   ],
   "properties": [
   ],

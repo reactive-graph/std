@@ -1,6 +1,6 @@
 {
   "namespace": "arithmetic",
-  "name": "arithmetic_gate",
+  "type_name": "arithmetic_gate",
   "description": "Arithmetic operation with two inputs and one result",
   "properties": [
     {
