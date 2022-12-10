@@ -16,6 +16,7 @@ mutation {
       ) {
         id
         type {
+          namespace
           name
         }
         properties(

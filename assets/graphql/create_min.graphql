@@ -2,31 +2,35 @@ mutation {
   instances {
     entities {
       create(
-        type: "min",
-        id: "6b1fab87-ecc8-49e7-ac1b-bf9b7d8b9073",
+        type: {
+          namespace: "arithmetic_i64"
+          name: "min"
+        }
+        id: "6b1fab87-ecc8-49e7-ac1b-bf9b7d8b9073"
         properties: [
           {
-            name: "lhs",
+            name: "lhs"
             value: 10
           },
           {
-            name: "rhs",
+            name: "rhs"
             value: 20
           },
           {
-            name: "result",
+            name: "result"
             value: 10
           }
         ]
       ) {
         id
         type {
+          namespace
           name
         }
         properties(
           names: [
-            "lhs",
-            "rhs",
+            "lhs"
+            "rhs"
             "result"
           ]
         ) {
