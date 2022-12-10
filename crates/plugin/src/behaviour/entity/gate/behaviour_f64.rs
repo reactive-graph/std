@@ -1,8 +1,8 @@
-use crate::behaviour::as_f64;
 use serde_json::json;
+use serde_json::Value;
 
+use crate::behaviour::as_f64;
 use crate::behaviour::entity::gate::function::ArithmeticGateF64Function;
-
 use crate::model::PropertyInstanceSetter;
 use crate::model::ReactiveEntityInstance;
 use crate::model_arithmetic::ArithmeticGateProperties::LHS;
@@ -18,6 +18,8 @@ use crate::reactive::BehaviourInit;
 use crate::reactive::BehaviourInitializationFailed;
 use crate::reactive::BehaviourShutdown;
 use crate::reactive::BehaviourTransitions;
+use crate::reactive::Gate;
+use crate::reactive::Operation;
 use crate::reactive::PropertyObserverContainer;
 
 entity_behaviour!(
@@ -73,3 +75,23 @@ impl BehaviourConnect<ReactiveEntityInstance> for ArithmeticGateF64BehaviourTran
 }
 impl BehaviourShutdown<ReactiveEntityInstance> for ArithmeticGateF64BehaviourTransitions {}
 impl BehaviourTransitions<ReactiveEntityInstance> for ArithmeticGateF64BehaviourTransitions {}
+
+impl Operation for ArithmeticGateF64 {
+    fn lhs(&self, value: Value) {
+        if value.is_f64() {
+            self.reactive_instance.set(LHS, value);
+        }
+    }
+
+    fn result(&self) -> Value {
+        self.reactive_instance.get(RESULT).unwrap_or(RESULT.default_value())
+    }
+}
+
+impl Gate for ArithmeticGateF64 {
+    fn rhs(&self, value: Value) {
+        if value.is_f64() {
+            self.reactive_instance.set(RHS, value);
+        }
+    }
+}

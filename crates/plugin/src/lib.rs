@@ -8,7 +8,6 @@ extern crate core;
 
 use std::sync::Arc;
 
-// use inexor_rgf_core_builder as builder;
 use inexor_rgf_core_di as di;
 use inexor_rgf_core_model as model;
 use inexor_rgf_core_plugins as plugins;
@@ -69,6 +68,9 @@ extern "C" fn get_dependencies() -> Vec<PluginDependency> {
         PluginDependency::new("nonexistent", ">=0.8.0, <0.9.0"),
     ]
 }
+
+#[cfg(test)]
+use inexor_rgf_core_builder as builder;
 
 #[cfg(test)]
 #[tarpaulin::ignore]

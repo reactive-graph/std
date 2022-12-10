@@ -1,9 +1,9 @@
 use std::sync::Arc;
 use std::sync::RwLock;
 
-use crate::behaviour::entity::counter::CounterFactory;
 use async_trait::async_trait;
 
+use crate::behaviour::entity::counter::CounterFactory;
 use crate::behaviour::entity::gate::behaviour_f64::ArithmeticGateF64Factory;
 use crate::behaviour::entity::gate::behaviour_i64::ArithmeticGateI64Factory;
 use crate::behaviour::entity::gate::behaviour_u64::ArithmeticGateU64Factory;

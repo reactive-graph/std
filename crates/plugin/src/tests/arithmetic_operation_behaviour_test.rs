@@ -2,34 +2,45 @@ use std::sync::Arc;
 
 use serde_json::json;
 
+use crate::behaviour::entity::operation::behaviour_f64::ArithmeticOperationF64;
 use crate::behaviour::entity::operation::function::*;
-use crate::behaviour::entity::operation::properties::ArithmeticOperationProperties;
-use crate::behaviour::entity::operation::ArithmeticOperationF64;
 use crate::builder::ReactiveEntityInstanceBuilder;
+use crate::model::BehaviourTypeId;
+use crate::model::EntityTypeId;
+use crate::model::NamespacedType;
 use crate::model::ReactiveEntityInstance;
-use crate::reactive::BehaviourCreationError;
+use crate::model_arithmetic::ArithmeticOperationProperties;
+use crate::model_arithmetic::NAMESPACE_ARITHMETIC_F64;
 use crate::reactive::Operation;
+
+const LHS: ArithmeticOperationProperties = ArithmeticOperationProperties::LHS;
+const RESULT: ArithmeticOperationProperties = ArithmeticOperationProperties::RESULT;
 
 #[test]
 fn arithmetic_operation_behaviour_test() {
     let lhs: f64 = -10.0;
-    assert_eq!(-9.0, test_arithmetic_operation_behaviour(FN_INCREMENT, lhs).unwrap());
-    assert_eq!(-11.0, test_arithmetic_operation_behaviour(FN_DECREMENT, lhs).unwrap());
+    let incremented_value = test_arithmetic_operation_behaviour("increment", FN_INCREMENT_F64, lhs);
+    assert_eq!(-9.0, incremented_value);
+    let decremented_value = test_arithmetic_operation_behaviour("decrement", FN_DECREMENT_F64, lhs);
+    assert_eq!(-11.0, decremented_value);
 }
 
-fn test_arithmetic_operation_behaviour(f: ArithmeticOperationFunction<f64>, v: f64) -> Option<f64> {
-    let b = create_arithmetic_operation_behaviour(f).unwrap();
+fn test_arithmetic_operation_behaviour(type_name: &str, f: ArithmeticOperationFunction<f64>, v: f64) -> f64 {
+    let ty = EntityTypeId::new_from_type(NAMESPACE_ARITHMETIC_F64, type_name);
+    let b = create_arithmetic_operation_behaviour(ty, f);
     b.lhs(json!(v));
-    b.result().as_f64()
+    b.result().as_f64().expect("Result is not of type f64")
 }
 
-fn create_arithmetic_operation_behaviour(f: ArithmeticOperationFunction<f64>) -> Result<ArithmeticOperationF64<'static>, BehaviourCreationError> {
-    ArithmeticOperationF64::new(create_arithmetic_operation_entity(), f)
+fn create_arithmetic_operation_behaviour(ty: EntityTypeId, f: ArithmeticOperationFunction<f64>) -> Arc<ArithmeticOperationF64> {
+    let behaviour_ty = BehaviourTypeId::from(NamespacedType::from(&ty));
+    let reactive_instance = create_arithmetic_operation_entity(ty.clone());
+    ArithmeticOperationF64::new(reactive_instance, behaviour_ty, f).expect("Failed to create ArithmeticOperationF64")
 }
 
-fn create_arithmetic_operation_entity() -> Arc<ReactiveEntityInstance> {
-    ReactiveEntityInstanceBuilder::new("arithmetic", "abs")
-        .property(ArithmeticOperationProperties::LHS.as_ref(), json!(ArithmeticOperationProperties::LHS.default_value()))
-        .property(ArithmeticOperationProperties::RESULT.as_ref(), json!(ArithmeticOperationProperties::RESULT.default_value()))
+fn create_arithmetic_operation_entity(ty: EntityTypeId) -> Arc<ReactiveEntityInstance> {
+    ReactiveEntityInstanceBuilder::new(ty)
+        .property(LHS, json!(0.0))
+        .property(RESULT, json!(0.0))
         .build()
 }

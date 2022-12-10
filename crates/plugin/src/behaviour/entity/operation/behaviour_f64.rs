@@ -1,9 +1,8 @@
-use crate::behaviour::as_f64;
 use serde_json::json;
 use serde_json::Value;
 
+use crate::behaviour::as_f64;
 use crate::behaviour::entity::operation::function::ArithmeticOperationF64Function;
-
 use crate::model::PropertyInstanceSetter;
 use crate::model::ReactiveEntityInstance;
 use crate::model_arithmetic::ArithmeticOperationProperties::LHS;
@@ -18,6 +17,7 @@ use crate::reactive::BehaviourInit;
 use crate::reactive::BehaviourInitializationFailed;
 use crate::reactive::BehaviourShutdown;
 use crate::reactive::BehaviourTransitions;
+use crate::reactive::Operation;
 use crate::reactive::PropertyObserverContainer;
 
 entity_behaviour!(
@@ -58,3 +58,15 @@ impl BehaviourConnect<ReactiveEntityInstance> for ArithmeticOperationF64Behaviou
 
 impl BehaviourShutdown<ReactiveEntityInstance> for ArithmeticOperationF64BehaviourTransitions {}
 impl BehaviourTransitions<ReactiveEntityInstance> for ArithmeticOperationF64BehaviourTransitions {}
+
+impl Operation for ArithmeticOperationF64 {
+    fn lhs(&self, value: Value) {
+        if value.is_f64() {
+            self.reactive_instance.set(LHS, value);
+        }
+    }
+
+    fn result(&self) -> Value {
+        self.reactive_instance.get(RESULT).unwrap_or(RESULT.default_value())
+    }
+}
