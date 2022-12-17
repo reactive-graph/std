@@ -65,7 +65,6 @@ extern "C" fn get_dependencies() -> Vec<PluginDependency> {
     vec![
         PluginDependency::new("inexor-rgf-plugin-base", ">=0.8.0, <0.9.0"),
         PluginDependency::new("inexor-rgf-plugin-logical", ">=0.8.0, <0.9.0"),
-        PluginDependency::new("nonexistent", ">=0.8.0, <0.9.0"),
     ]
 }
 
