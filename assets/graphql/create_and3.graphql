@@ -2,7 +2,8 @@ mutation CreateAnd3 {
   instances {
     flows {
       createFromType(
-        flowTypeName: "and3"
+        namespace: "logical"
+        typeName: "and3"
         properties: [
           {
             name: "input1"
@@ -40,7 +41,12 @@ mutation UpdateAnd3 {
 
 query GetAnd3 {
   instances {
-    entities(type: "and3") {
+    entities(
+      type: {
+        namespace: "logical"
+        name: "and3"
+      }
+    ) {
       ...FullEntityInstance
     }
   }
@@ -97,8 +103,8 @@ fragment FullRelationInstance on RelationInstance {
   type {
     namespace
     name
-    instanceTypeName
   }
+  instanceId
   outbound {
     id
   }
