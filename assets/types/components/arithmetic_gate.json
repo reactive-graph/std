@@ -45,6 +45,7 @@
       "name": "result",
       "data_type": "number",
       "socket_type": "output",
+      "mutability": "immutable",
       "extensions": [
         {
           "name": "widgetType",
