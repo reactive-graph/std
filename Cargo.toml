@@ -1,7 +1,7 @@
 [package]
 name = "inexor-rgf-plugin-graphql-client"
 description = "Inexor - Reactive Graph Flow - Plugin - GraphQL Client"
-version = "0.6.0"
+version = "0.8.0"
 authors = ["Andreas Schaeffer <hanack@nooblounge.net"]
 edition = "2021"
 license = "MIT"
@@ -44,9 +44,5 @@ opt-level = 0
 
 [profile.release]
 opt-level = 3
-# 12MB -> 7.8MB
 lto = true
-# 7.8MB -> 4.5MB
 strip = "symbols"
-# 4.5MB -> 3.7MB
-# opt-level = "z"
