@@ -2,7 +2,6 @@ use crate::model::component_ty;
 use crate::model::properties;
 use crate::model::relation_model;
 use crate::model::PropertyInstanceGetter;
-use crate::model::PropertyInstanceSetter;
 use crate::NAMESPACE_CONNECTOR;
 
 properties!(
