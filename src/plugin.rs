@@ -8,10 +8,11 @@ use crate::di::*;
 use crate::plugins::plugin_context::PluginContext;
 use crate::plugins::web_resource_provider;
 use crate::plugins::Plugin;
+use crate::plugins::PluginActivationError;
+use crate::plugins::PluginContextDeinitializationError;
 use crate::plugins::PluginContextInitializationError;
 use crate::plugins::WebResourceProvider;
 use crate::plugins::WebResourceProviderError;
-use crate::plugins::{PluginActivationError, PluginContextDeinitializationError};
 use crate::provider::GraphQlClientWebResourceProviderImpl;
 
 #[wrapper]
