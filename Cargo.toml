@@ -28,6 +28,11 @@ inexor-rgf-core-plugins = { git = "https://github.com/inexorgame/inexor-rgf-core
 [build-dependencies]
 static-files = "0.2.3"
 
+[package.metadata.cargo-post.dependencies]
+toml = "0.5"
+serde = { version = "1.0", features = [ "derive" ] }
+glob = "0.3"
+
 [lib]
 # Plugins use crate-type cdylib
 # https://doc.rust-lang.org/reference/linkage.html
