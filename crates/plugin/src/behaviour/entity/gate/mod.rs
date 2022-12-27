@@ -57,25 +57,21 @@ impl BehaviourConnect<ReactiveEntityInstance> for LogicalGateBehaviourTransition
     fn connect(&self) -> Result<(), BehaviourConnectFailed> {
         let reactive_instance = self.reactive_instance.clone();
         let f = self.f;
-        self.property_observers.observe_with_handle(LHS.as_ref(), move |v| match v.as_bool() {
-            Some(lhs) => match reactive_instance.get(RHS).and_then(|v| v.as_bool()) {
-                Some(rhs) => {
+        self.property_observers.observe_with_handle(LHS.as_ref(), move |v| {
+            if let Some(lhs) = v.as_bool() {
+                if let Some(rhs) = reactive_instance.get(RHS).and_then(|v| v.as_bool()) {
                     reactive_instance.set(RESULT, json!(f(lhs, rhs)));
                 }
-                None => {}
-            },
-            None => {}
+            }
         });
         let reactive_instance = self.reactive_instance.clone();
         let f = self.f;
-        self.property_observers.observe_with_handle(RHS.as_ref(), move |v| match v.as_bool() {
-            Some(rhs) => match reactive_instance.get(LHS).and_then(|v| v.as_bool()) {
-                Some(lhs) => {
+        self.property_observers.observe_with_handle(RHS.as_ref(), move |v| {
+            if let Some(rhs) = v.as_bool() {
+                if let Some(lhs) = reactive_instance.get(LHS).and_then(|v| v.as_bool()) {
                     reactive_instance.set(RESULT, json!(f(lhs, rhs)));
                 }
-                None => {}
-            },
-            None => {}
+            }
         });
         Ok(())
     }

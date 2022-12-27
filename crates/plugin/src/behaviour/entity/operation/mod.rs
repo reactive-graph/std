@@ -1,4 +1,3 @@
-use inexor_rgf_core_reactive::Operation;
 use serde_json::json;
 use serde_json::Value;
 
@@ -50,13 +49,12 @@ impl BehaviourInit<ReactiveEntityInstance> for LogicalOperationBehaviourTransiti
 
 impl BehaviourConnect<ReactiveEntityInstance> for LogicalOperationBehaviourTransitions {
     fn connect(&self) -> Result<(), BehaviourConnectFailed> {
-        let reactive_instance = self.property_observers.reactive_instance.clone();
+        let reactive_instance = self.reactive_instance.clone();
         let f = self.f;
-        self.property_observers.observe_with_handle(LHS.as_ref(), move |v: &Value| match v.as_bool() {
-            Some(v) => {
+        self.property_observers.observe_with_handle(LHS.as_ref(), move |v: &Value| {
+            if let Some(v) = v.as_bool() {
                 reactive_instance.set(RESULT, json!(f(v)));
             }
-            None => {}
         });
         Ok(())
     }
@@ -64,15 +62,3 @@ impl BehaviourConnect<ReactiveEntityInstance> for LogicalOperationBehaviourTrans
 
 impl BehaviourShutdown<ReactiveEntityInstance> for LogicalOperationBehaviourTransitions {}
 impl BehaviourTransitions<ReactiveEntityInstance> for LogicalOperationBehaviourTransitions {}
-
-impl Operation for LogicalOperationBehaviourTransitions {
-    fn lhs(&self, value: Value) {
-        if value.is_boolean() {
-            self.reactive_instance.set(LHS, value);
-        }
-    }
-
-    fn result(&self) -> Value {
-        self.reactive_instance.get(RESULT).unwrap_or(RESULT.default_value())
-    }
-}
