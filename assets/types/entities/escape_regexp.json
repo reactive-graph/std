@@ -1,9 +1,12 @@
 {
   "namespace": "string",
-  "name": "escape_regexp",
+  "type_name": "escape_regexp",
   "description": "Escapes the regular expression special characters",
   "components": [
-    "string_operation"
+    {
+      "namespace": "string",
+      "type_name": "string_operation"
+    }
   ],
   "properties": [
   ],

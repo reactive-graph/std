@@ -1,9 +1,12 @@
 {
   "namespace": "string",
-  "name": "is_empty",
+  "type_name": "is_empty",
   "description": "Checks whether the input string is empty",
   "components": [
-    "string_bool_operation"
+    {
+      "namespace": "string",
+      "type_name": "string_bool_operation"
+    }
   ],
   "properties": [
   ],

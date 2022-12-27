@@ -1,9 +1,12 @@
 {
   "namespace": "string",
-  "name": "kebab_case",
+  "type_name": "kebab_case",
   "description": "Converts the input to kebab case",
   "components": [
-    "string_operation"
+    {
+      "namespace": "string",
+      "type_name": "string_operation"
+    }
   ],
   "properties": [
   ],

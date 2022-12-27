@@ -1,6 +1,6 @@
 {
   "namespace": "string",
-  "name": "templating",
+  "type_name": "templating",
   "description": "Renders a template",
   "components": [
   ],

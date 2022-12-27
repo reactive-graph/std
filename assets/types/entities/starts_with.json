@@ -1,11 +1,12 @@
 {
   "namespace": "string",
-  "name": "starts_with",
+  "type_name": "starts_with",
   "description": "Starts With",
   "components": [
-    "string_comparison",
-    "flow_2d",
-    "flow_3d"
+    {
+      "namespace": "string",
+      "type_name": "string_comparison"
+    }
   ],
   "properties": [
   ],

@@ -1,11 +1,12 @@
 {
   "namespace": "string",
-  "name": "ends_with",
+  "type_name": "ends_with",
   "description": "Ends With",
   "components": [
-    "string_comparison",
-    "flow_2d",
-    "flow_3d"
+    {
+      "namespace": "string",
+      "type_name": "string_comparison"
+    }
   ],
   "properties": [
   ],

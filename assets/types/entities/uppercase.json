@@ -1,11 +1,12 @@
 {
   "namespace": "string",
-  "name": "uppercase",
+  "type_name": "uppercase",
   "description": "Uppercase",
   "components": [
-    "string_operation",
-    "flow_2d",
-    "flow_3d"
+    {
+      "namespace": "string",
+      "type_name": "string_operation"
+    }
   ],
   "properties": [
   ],

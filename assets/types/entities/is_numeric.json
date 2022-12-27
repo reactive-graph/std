@@ -1,9 +1,12 @@
 {
   "namespace": "string",
-  "name": "is_numeric",
+  "type_name": "is_numeric",
   "description": "Checks whether the input string is numeric",
   "components": [
-    "string_bool_operation"
+    {
+      "namespace": "string",
+      "type_name": "string_bool_operation"
+    }
   ],
   "properties": [
   ],

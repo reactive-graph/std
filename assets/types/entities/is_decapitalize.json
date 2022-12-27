@@ -1,9 +1,12 @@
 {
   "namespace": "string",
-  "name": "is_decapitalize",
+  "type_name": "is_decapitalize",
   "description": "Checks whether the input string is decapitalized and the rest of the input string is converted to lower case",
   "components": [
-    "string_bool_operation"
+    {
+      "namespace": "string",
+      "type_name": "string_bool_operation"
+    }
   ],
   "properties": [
   ],

@@ -1,9 +1,12 @@
 {
   "namespace": "string",
-  "name": "pascal_case",
+  "type_name": "pascal_case",
   "description": "Converts the input to pascal case",
   "components": [
-    "string_operation"
+    {
+      "namespace": "string",
+      "type_name": "string_operation"
+    }
   ],
   "properties": [
   ],

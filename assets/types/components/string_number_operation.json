@@ -1,6 +1,6 @@
 {
   "namespace": "string",
-  "name": "string_number_operation",
+  "type_name": "string_number_operation",
   "properties": [
     {
       "name": "lhs",
@@ -10,7 +10,8 @@
     {
       "name": "result",
       "data_type": "number",
-      "socket_type": "output"
+      "socket_type": "output",
+      "mutability": "immutable"
     }
   ]
 }

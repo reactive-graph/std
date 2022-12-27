@@ -1,9 +1,12 @@
 {
   "namespace": "string",
-  "name": "lower_first",
+  "type_name": "lower_first",
   "description": "Converts the first character of the input to lower case",
   "components": [
-    "string_operation"
+    {
+      "namespace": "string",
+      "type_name": "string_operation"
+    }
   ],
   "properties": [
   ],

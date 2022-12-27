@@ -1,6 +1,6 @@
 {
   "namespace": "string",
-  "name": "string_comparison",
+  "type_name": "string_comparison",
   "properties": [
     {
       "name": "lhs",
@@ -15,7 +15,8 @@
     {
       "name": "result",
       "data_type": "bool",
-      "socket_type": "output"
+      "socket_type": "output",
+      "mutability": "immutable"
     }
   ]
 }

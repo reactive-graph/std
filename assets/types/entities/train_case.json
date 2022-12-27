@@ -1,9 +1,12 @@
 {
   "namespace": "string",
-  "name": "train_case",
+  "type_name": "train_case",
   "description": "Converts the input to train case",
   "components": [
-    "string_operation"
+    {
+      "namespace": "string",
+      "type_name": "string_operation"
+    }
   ],
   "properties": [
   ],

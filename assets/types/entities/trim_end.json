@@ -1,11 +1,12 @@
 {
   "namespace": "string",
-  "name": "trim_end",
+  "type_name": "trim_end",
   "description": "Trim  End",
   "components": [
-    "string_operation",
-    "flow_2d",
-    "flow_3d"
+    {
+      "namespace": "string",
+      "type_name": "string_operation"
+    }
   ],
   "properties": [
   ],

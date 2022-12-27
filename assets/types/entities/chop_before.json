@@ -1,9 +1,12 @@
 {
   "namespace": "string",
-  "name": "chop_before",
+  "type_name": "chop_before",
   "description": "Returns everything before the given search",
   "components": [
-    "string_gate"
+    {
+      "namespace": "string",
+      "type_name": "string_gate"
+    }
   ],
   "properties": [
   ],

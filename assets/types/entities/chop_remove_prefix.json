@@ -1,9 +1,12 @@
 {
   "namespace": "string",
-  "name": "chop_remove_prefix",
+  "type_name": "chop_remove_prefix",
   "description": "Extracts the prefix from the input",
   "components": [
-    "string_gate"
+    {
+      "namespace": "string",
+      "type_name": "string_gate"
+    }
   ],
   "properties": [
   ],

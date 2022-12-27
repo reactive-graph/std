@@ -1,9 +1,12 @@
 {
   "namespace": "string",
-  "name": "char_count_graphemes",
+  "type_name": "char_count_graphemes",
   "description": "Counts the graphemes in the input string taking care of surrogate pairs and combining marks",
   "components": [
-    "string_number_operation"
+    {
+      "namespace": "string",
+      "type_name": "string_number_operation"
+    }
   ],
   "properties": [
   ],

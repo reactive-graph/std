@@ -1,9 +1,12 @@
 {
   "namespace": "string",
-  "name": "upper_first",
+  "type_name": "upper_first",
   "description": "Converts the first character of the title to upper case",
   "components": [
-    "string_operation"
+    {
+      "namespace": "string",
+      "type_name": "string_operation"
+    }
   ],
   "properties": [
   ],

@@ -1,9 +1,12 @@
 {
   "namespace": "string",
-  "name": "capitalize",
+  "type_name": "capitalize",
   "description": "Converts the first character of the input to upper case and convert the rest of the input to lower case",
   "components": [
-    "string_operation"
+    {
+      "namespace": "string",
+      "type_name": "string_operation"
+    }
   ],
   "properties": [
   ],

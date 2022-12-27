@@ -1,9 +1,12 @@
 {
   "namespace": "string",
-  "name": "snake_case",
+  "type_name": "snake_case",
   "description": "Converts the subject to snake case",
   "components": [
-    "string_operation"
+    {
+      "namespace": "string",
+      "type_name": "string_operation"
+    }
   ],
   "properties": [
   ],

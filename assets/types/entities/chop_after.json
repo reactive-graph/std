@@ -1,9 +1,12 @@
 {
   "namespace": "string",
-  "name": "chop_after",
+  "type_name": "chop_after",
   "description": "Returns everything after the given search",
   "components": [
-    "string_gate"
+    {
+      "namespace": "string",
+      "type_name": "string_gate"
+    }
   ],
   "properties": [
   ],

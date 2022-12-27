@@ -1,9 +1,12 @@
 {
   "namespace": "string",
-  "name": "is_alpha_digit",
+  "type_name": "is_alpha_digit",
   "description": "Checks whether the input string contains contains only alpha and digit characters",
   "components": [
-    "string_bool_operation"
+    {
+      "namespace": "string",
+      "type_name": "string_bool_operation"
+    }
   ],
   "properties": [
   ],

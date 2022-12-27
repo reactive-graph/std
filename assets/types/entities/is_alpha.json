@@ -1,9 +1,12 @@
 {
   "namespace": "string",
-  "name": "is_alpha",
+  "type_name": "is_alpha",
   "description": "Checks whether the input string contains only alpha characters",
   "components": [
-    "string_bool_operation"
+    {
+      "namespace": "string",
+      "type_name": "string_bool_operation"
+    }
   ],
   "properties": [
   ],

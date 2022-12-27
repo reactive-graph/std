@@ -1,9 +1,12 @@
 {
   "namespace": "string",
-  "name": "is_lowercase",
+  "type_name": "is_lowercase",
   "description": "Checks whether the input string has only lower case characters",
   "components": [
-    "string_bool_operation"
+    {
+      "namespace": "string",
+      "type_name": "string_bool_operation"
+    }
   ],
   "properties": [
   ],

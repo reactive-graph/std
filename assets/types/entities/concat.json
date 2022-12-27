@@ -1,11 +1,12 @@
 {
   "namespace": "string",
-  "name": "concat",
+  "type_name": "concat",
   "description": "Concat",
   "components": [
-    "string_gate",
-    "flow_2d",
-    "flow_3d"
+    {
+      "namespace": "string",
+      "type_name": "string_gate"
+    }
   ],
   "properties": [
   ],

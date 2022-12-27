@@ -1,7 +1,7 @@
 {
   "namespace": "string",
-  "type_name": "camel_case",
-  "description": "Converts the input to camel case",
+  "type_name": "reverse",
+  "description": "Reverses the given string",
   "components": [
     {
       "namespace": "string",
@@ -14,8 +14,8 @@
     {
       "name": "dublin-core",
       "extension": {
-        "title": "Camel Case",
-        "subject": "Converts the input to camel case",
+        "title": "Reverse",
+        "subject": "Reverses the given string",
         "creator": "Hanack"
       }
     }

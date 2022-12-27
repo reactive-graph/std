@@ -1,6 +1,6 @@
 {
   "namespace": "string",
-  "name": "string_string_number_gate",
+  "type_name": "string_string_number_gate",
   "properties": [
     {
       "name": "lhs",
@@ -15,7 +15,8 @@
     {
       "name": "result",
       "data_type": "number",
-      "socket_type": "output"
+      "socket_type": "output",
+      "mutability": "immutable"
     }
   ]
 }

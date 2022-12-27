@@ -1,9 +1,12 @@
 {
   "namespace": "string",
-  "name": "unescape_html",
+  "type_name": "unescape_html",
   "description": "Unescapes HTML special characters",
   "components": [
-    "string_operation"
+    {
+      "namespace": "string",
+      "type_name": "string_operation"
+    }
   ],
   "properties": [
   ],

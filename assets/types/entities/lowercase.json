@@ -1,11 +1,12 @@
 {
   "namespace": "string",
-  "name": "lowercase",
+  "type_name": "lowercase",
   "description": "Lowercase",
   "components": [
-    "string_operation",
-    "flow_2d",
-    "flow_3d"
+    {
+      "namespace": "string",
+      "type_name": "string_operation"
+    }
   ],
   "properties": [
   ],

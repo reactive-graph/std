@@ -1,11 +1,12 @@
 {
   "namespace": "string",
-  "name": "contains",
+  "type_name": "contains",
   "description": "Contains",
   "components": [
-    "string_comparison",
-    "flow_2d",
-    "flow_3d"
+    {
+      "namespace": "string",
+      "type_name": "string_comparison"
+    }
   ],
   "properties": [
   ],

@@ -1,9 +1,12 @@
 {
   "namespace": "string",
-  "name": "is_snake_case",
+  "type_name": "is_snake_case",
   "description": "Checks whether the input string is snake_cased",
   "components": [
-    "string_bool_operation"
+    {
+      "namespace": "string",
+      "type_name": "string_bool_operation"
+    }
   ],
   "properties": [
   ],

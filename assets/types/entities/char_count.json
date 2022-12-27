@@ -1,9 +1,12 @@
 {
   "namespace": "string",
-  "name": "char_count",
+  "type_name": "char_count",
   "description": "Counts the characters",
   "components": [
-    "string_number_operation"
+    {
+      "namespace": "string",
+      "type_name": "string_number_operation"
+    }
   ],
   "properties": [
   ],

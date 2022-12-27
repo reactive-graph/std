@@ -1,9 +1,12 @@
 {
   "namespace": "string",
-  "name": "is_uppercase",
+  "type_name": "is_uppercase",
   "description": "Checks whether the input string has only upper case characters",
   "components": [
-    "string_bool_operation"
+    {
+      "namespace": "string",
+      "type_name": "string_bool_operation"
+    }
   ],
   "properties": [
   ],

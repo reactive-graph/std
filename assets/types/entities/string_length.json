@@ -1,9 +1,12 @@
 {
   "namespace": "string",
-  "name": "string_length",
+  "type_name": "string_length",
   "description": "Returns the length of the input string",
   "components": [
-    "string_number_operation"
+    {
+      "namespace": "string",
+      "type_name": "string_number_operation"
+    }
   ],
   "properties": [
   ],

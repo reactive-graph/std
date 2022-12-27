@@ -1,9 +1,12 @@
 {
   "namespace": "string",
-  "name": "shouty_kebab_case",
+  "type_name": "shouty_kebab_case",
   "description": "Converts the input to SHOUTY kebab case",
   "components": [
-    "string_operation"
+    {
+      "namespace": "string",
+      "type_name": "string_operation"
+    }
   ],
   "properties": [
   ],

@@ -1,9 +1,12 @@
 {
   "namespace": "string",
-  "name": "strip_html_tags",
+  "type_name": "strip_html_tags",
   "description": "Strips all HTML tags",
   "components": [
-    "string_operation"
+    {
+      "namespace": "string",
+      "type_name": "string_operation"
+    }
   ],
   "properties": [
   ],
