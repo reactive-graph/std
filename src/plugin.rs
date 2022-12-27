@@ -55,10 +55,7 @@ impl Plugin for GraphQlSchemaVisualizationPluginImpl {
         Ok(())
     }
 
-    fn set_context(
-        &self,
-        context: Arc<dyn PluginContext>,
-    ) -> Result<(), PluginContextInitializationError> {
+    fn set_context(&self, context: Arc<dyn PluginContext>) -> Result<(), PluginContextInitializationError> {
         self.context.0.write().unwrap().replace(context);
         Ok(())
     }
@@ -69,9 +66,7 @@ impl Plugin for GraphQlSchemaVisualizationPluginImpl {
         Ok(())
     }
 
-    fn get_web_resource_provider(
-        &self,
-    ) -> Result<Option<Arc<dyn WebResourceProvider>>, WebResourceProviderError> {
+    fn get_web_resource_provider(&self) -> Result<Option<Arc<dyn WebResourceProvider>>, WebResourceProviderError> {
         web_resource_provider!(self.web_resource_provider)
     }
 }

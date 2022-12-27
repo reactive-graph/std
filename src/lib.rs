@@ -43,13 +43,7 @@ pub fn construct_plugin() -> Result<Arc<dyn Plugin>, PluginLoadingError> {
     Ok(plugin.unwrap())
 }
 
-plugins::export_plugin!(
-    register,
-    get_dependencies,
-    PLUGIN_NAME,
-    PLUGIN_DESCRIPTION,
-    PLUGIN_VERSION
-);
+plugins::export_plugin!(register, get_dependencies, PLUGIN_NAME, PLUGIN_DESCRIPTION, PLUGIN_VERSION);
 
 #[allow(improper_ctypes_definitions)]
 extern "C" fn register(registrar: &mut dyn plugins::PluginRegistrar) {
