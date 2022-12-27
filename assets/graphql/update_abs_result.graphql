@@ -2,11 +2,11 @@ mutation {
   instances {
     entities {
       update(
-        id: "f62bdf89-7832-469f-8e68-5f89fd3648c2"
+        id: "e17cec5e-b018-4209-a4c8-932fd117f90f"
         properties: [
           {
-            name: "rhs"
-            value: 4
+            name: "result"
+            value: 0.0
           }
         ]
       ) {
@@ -17,12 +17,17 @@ mutation {
         properties(
           names: [
             "lhs"
-            "rhs"
             "result"
           ]
         ) {
           name
           value
+          type {
+            name
+            dataType
+            socketType
+            mutability
+          }
         }
       }
     }

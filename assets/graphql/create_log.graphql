@@ -2,7 +2,10 @@ mutation {
   instances {
     entities {
       create(
-        type: "log"
+        type: {
+          namespace: "numeric_f64"
+          name: "log"
+        }
         id: "f62bdf89-7832-469f-8e68-5f89fd3648c2"
         properties: [
           {

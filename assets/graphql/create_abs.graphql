@@ -2,7 +2,10 @@ mutation {
   instances {
     entities {
       create(
-        type: "abs"
+        type: {
+          namespace: "numeric_f64"
+          name: "abs"
+        }
         id: "e17cec5e-b018-4209-a4c8-932fd117f90f"
         properties: [
           {
@@ -29,6 +32,12 @@ mutation {
         ) {
           name
           value
+          type {
+            name
+            dataType
+            socketType
+            mutability
+          }
         }
       }
     }
