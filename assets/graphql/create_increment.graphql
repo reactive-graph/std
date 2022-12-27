@@ -14,7 +14,7 @@ mutation {
           },
           {
             name: "result"
-            value: 11
+            value: 10
           }
         ]
       ) {
@@ -26,6 +26,7 @@ mutation {
         properties(
           names: [
             "lhs"
+            # Expected: 11
             "result"
           ]
         ) {

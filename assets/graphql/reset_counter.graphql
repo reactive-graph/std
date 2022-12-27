@@ -22,6 +22,7 @@ mutation {
         properties(
           names: [
             "trigger"
+            # Expected: 0
             "result"
           ]
         ) {

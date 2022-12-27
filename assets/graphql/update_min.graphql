@@ -23,6 +23,7 @@ mutation {
           names: [
             "lhs"
             "rhs"
+            # Expected: -100 (because of datatype is i64)
             "result"
           ]
         ) {

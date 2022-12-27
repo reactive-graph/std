@@ -23,6 +23,7 @@ mutation {
           names: [
             "lhs"
             "rhs"
+            # Expected: 55.5
             "result"
           ]
         ) {

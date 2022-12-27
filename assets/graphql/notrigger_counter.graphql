@@ -18,6 +18,7 @@ mutation {
         properties(
           names: [
             "trigger"
+            # Expected: no change
             "result"
           ]
         ) {

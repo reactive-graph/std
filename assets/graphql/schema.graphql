@@ -353,6 +353,8 @@ type Instances {
 type Mutation {
   "Mutations for instances (entity instances, relation instances)."
   instances: MutationInstances!
+  "Mutations for instances (entity instances, relation instances)."
+  system: MutationSystem!
   "Mutations for types (components, entity types, relation types)."
   types: MutationTypes!
 }
@@ -375,6 +377,7 @@ type MutationComponents {
 
 "Mutation of entity instances."
 type MutationEntityInstances {
+  connect(id: UUID!, type: BehaviourTypeId!): EntityInstance!
   """
 
   Creates a new entity instance of the given type.
@@ -404,6 +407,8 @@ type MutationEntityInstances {
     "The id of the entity instance"
     id: UUID!
   ): Boolean!
+  disconnect(id: UUID!, type: BehaviourTypeId!): EntityInstance!
+  reconnect(id: UUID!, type: BehaviourTypeId!): EntityInstance!
   """
 
   Manually tick the entity instance. This means for each property of the entity instance
@@ -533,8 +538,20 @@ type MutationInstances {
   relations: MutationRelationInstances!
 }
 
+"Mutations for plugins."
+type MutationPlugins {
+  "Redeploys a plugin which is already installed, resolved or active."
+  redeploy(name: String!): Plugin!
+  restart(name: String!): Plugin!
+  start(name: String!): Plugin!
+  stop(name: String!): Plugin!
+  "Uninstalls a plugin"
+  uninstall(name: String!): Boolean!
+}
+
 "Mutation of relation instances."
 type MutationRelationInstances {
+  connect(edgeKey: EdgeKeyDefinition!, type: BehaviourTypeId!): RelationInstance!
   """
 
   Creates a new relation instance with the given edge_key.
@@ -584,6 +601,8 @@ type MutationRelationInstances {
   ): RelationInstance!
   "Deletes an relation instance."
   delete(edgeKey: EdgeKeyDefinition!): Boolean!
+  disconnect(edgeKey: EdgeKeyDefinition!, type: BehaviourTypeId!): RelationInstance!
+  reconnect(edgeKey: EdgeKeyDefinition!, type: BehaviourTypeId!): RelationInstance!
   """
 
   Manually tick the relation instance. This means for each property of the entity instance
@@ -644,6 +663,10 @@ type MutationRelationTypes {
   removeProperty(propertyName: String!, type: RelationTypeId!): RelationType!
 }
 
+type MutationSystem {
+  plugins: MutationPlugins!
+}
+
 "Mutations for types (components, entity types, relation types)."
 type MutationTypes {
   "Mutations for components"
@@ -652,6 +675,21 @@ type MutationTypes {
   entities: MutationEntityTypes!
   "Mutations for relation types"
   relations: MutationRelationTypes!
+}
+
+type Plugin {
+  dependencies: [Plugin!]!
+  dependents: [Plugin!]!
+  description: String!
+  id: UUID!
+  name: String!
+  path: String!
+  pluginApiVersion: String!
+  rustcVersion: String!
+  state: String!
+  stem: String!
+  unsatisfiedDependencies: [Plugin!]!
+  version: String!
 }
 
 """
@@ -686,6 +724,8 @@ type PropertyType {
   description: String!
   "The extensions which are defined by the entity type."
   extensions(name: String): [Extension!]!
+  "The property instance is mutable or immutable."
+  mutability: Mutability!
   "The name of the component."
   name: String!
   "The socket type of the property instances."
@@ -694,11 +734,16 @@ type PropertyType {
 
 "Search queries for the type system, the instances and the flows."
 type Query {
-  "Search for instances (entity instances, relation instances)."
+  """
+
+  Search for behaviours (entity behaviours, entity component behaviours, relation behaviours,
+  relation component behaviours).
+  """
   behaviours: Behaviours!
   "Search for instances (entity instances, relation instances)."
   instances: Instances!
   randomUuid: String!
+  system: System!
   "Search for types (components, entity types, relation types)."
   types: Types!
 }
@@ -855,6 +900,10 @@ type Subscription {
   ): PropertyInstance!
 }
 
+type System {
+  plugins(id: UUID, name: String, state: String, stem: String): [Plugin!]!
+}
+
 "Search for types (components, entity types or relation types)"
 type Types {
   """
@@ -933,6 +982,14 @@ enum DataType {
   OBJECT
   "Represents a JSON string."
   STRING
+}
+
+"The mutability of a property."
+enum Mutability {
+  "The property is immutable."
+  IMMUTABLE
+  "The property is mutable."
+  MUTABLE
 }
 
 """
@@ -1100,6 +1157,8 @@ input PropertyTypeDefinition {
   description: String!
   "Property specific extensions"
   extensions: [ExtensionDefinition!]!
+  "The property is mutable or immutable"
+  mutability: Mutability!
   "The name of the property"
   name: String!
   "Specifies which type of socket"
