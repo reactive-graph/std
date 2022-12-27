@@ -1,11 +1,12 @@
 {
-  "name": "equals",
-  "group": "comparison_gates",
+  "namespace": "comparison",
+  "type_name": "equals",
   "description": "Checks if lhs is equal to rhs",
   "components": [
-    "comparison_gate",
-    "flow_2d",
-    "flow_3d"
+    {
+      "namespace": "comparison",
+      "type_name": "comparison_gate"
+    }
   ],
   "properties": [
   ],

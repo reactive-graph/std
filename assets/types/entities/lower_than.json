@@ -1,11 +1,12 @@
 {
-  "name": "lower_than",
-  "group": "comparison_gates",
+  "namespace": "comparison",
+  "type_name": "lower_than",
   "description": "Checks if lhs is lower than rhs",
   "components": [
-    "comparison_gate",
-    "flow_2d",
-    "flow_3d"
+    {
+      "namespace": "comparison",
+      "type_name": "comparison_gate"
+    }
   ],
   "properties": [
     {

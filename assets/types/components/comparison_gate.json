@@ -1,5 +1,6 @@
 {
-  "name": "comparison_gate",
+  "namespace": "comparison",
+  "type_name": "comparison_gate",
   "properties": [
     {
       "name": "lhs",
