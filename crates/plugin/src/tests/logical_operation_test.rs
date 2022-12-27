@@ -1,3 +1,5 @@
+use std::sync::Arc;
+
 use serde_json::json;
 
 use crate::behaviour::entity::operation::LogicalOperationFactory;
@@ -8,6 +10,8 @@ use crate::model::EntityTypeId;
 use crate::model::NamespacedTypeGetter;
 use crate::model::PropertyInstanceGetter;
 use crate::model::PropertyInstanceSetter;
+use crate::model::ReactiveEntityInstance;
+use crate::model_logical::LogicalOperation;
 use crate::model_logical::LogicalOperationProperties;
 use crate::model_logical::COMPONENT_LOGICAL_OPERATION;
 use crate::model_logical::NAMESPACE_LOGICAL;
@@ -28,11 +32,7 @@ fn logical_operation_behaviour_function_should_exist() {
 #[test]
 fn not_operation_test() {
     let entity_ty = EntityTypeId::new_from_type(NAMESPACE_LOGICAL, TYPE_NAME_NOT);
-    let reactive_instance = ReactiveEntityInstanceBuilder::new(entity_ty.clone())
-        .property(LHS, json!(false))
-        .property(RESULT, json!(false))
-        .component(COMPONENT_LOGICAL_OPERATION.clone())
-        .build();
+    let reactive_instance = logical_operation(&entity_ty);
 
     let behaviour_ty = BehaviourTypeId::new_from_type(NAMESPACE_LOGICAL, TYPE_NAME_NOT);
     let not_function = LOGICAL_OPERATIONS.get(&behaviour_ty).expect("Failed to get function");
@@ -65,4 +65,39 @@ fn incomplete_not_operation_test() {
     let not_factory = LogicalOperationFactory::new(behaviour_ty, not_function.clone());
     let behaviour = not_factory.create(reactive_instance.clone());
     assert!(behaviour.is_err());
+}
+
+#[test]
+fn rx_not_operation_test() {
+    let entity_ty = EntityTypeId::new_from_type(NAMESPACE_LOGICAL, TYPE_NAME_NOT);
+    let reactive_instance = logical_operation(&entity_ty);
+
+    let rx_not = LogicalOperation::from(reactive_instance.clone());
+
+    assert_eq!(NAMESPACE_LOGICAL, rx_not.namespace().as_str());
+    assert_eq!(TYPE_NAME_NOT, rx_not.type_name().as_str());
+
+    {
+        let behaviour_ty = BehaviourTypeId::new_from_type(NAMESPACE_LOGICAL, TYPE_NAME_NOT);
+        let not_function = LOGICAL_OPERATIONS.get(&behaviour_ty).expect("Failed to get function");
+        let not_factory = LogicalOperationFactory::new(behaviour_ty, not_function.clone());
+        let behaviour = not_factory.create(reactive_instance.clone());
+        assert!(behaviour.is_ok());
+
+        rx_not.lhs(true);
+        assert_eq!(false, rx_not.result().unwrap());
+        rx_not.lhs(false);
+        assert_eq!(true, rx_not.result().unwrap());
+    }
+    // The behaviour has been dropped (no more changes)
+    rx_not.lhs(true);
+    assert_eq!(true, rx_not.result().unwrap());
+}
+
+fn logical_operation(entity_ty: &EntityTypeId) -> Arc<ReactiveEntityInstance> {
+    ReactiveEntityInstanceBuilder::new(entity_ty.clone())
+        .property(LHS, json!(false))
+        .property(RESULT, json!(false))
+        .component(COMPONENT_LOGICAL_OPERATION.clone())
+        .build()
 }

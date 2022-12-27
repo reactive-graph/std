@@ -1,3 +1,5 @@
+use std::sync::Arc;
+
 use serde_json::json;
 
 use crate::behaviour::entity::gate::LogicalGateFactory;
@@ -8,6 +10,8 @@ use crate::model::EntityTypeId;
 use crate::model::NamespacedTypeGetter;
 use crate::model::PropertyInstanceGetter;
 use crate::model::PropertyInstanceSetter;
+use crate::model::ReactiveEntityInstance;
+use crate::model_logical::LogicalGate;
 use crate::model_logical::LogicalGateProperties;
 use crate::model_logical::COMPONENT_LOGICAL_GATE;
 use crate::model_logical::NAMESPACE_LOGICAL;
@@ -29,12 +33,7 @@ fn logical_gate_behaviour_function_should_exist() {
 #[test]
 fn and_gate_test() {
     let entity_ty = EntityTypeId::new_from_type(NAMESPACE_LOGICAL, TYPE_NAME_AND);
-    let reactive_instance = ReactiveEntityInstanceBuilder::new(entity_ty.clone())
-        .property(LHS, json!(false))
-        .property(RHS, json!(false))
-        .property(RESULT, json!(false))
-        .component(COMPONENT_LOGICAL_GATE.clone())
-        .build();
+    let reactive_instance = logical_gate(&entity_ty);
 
     let behaviour_ty = BehaviourTypeId::new_from_type(NAMESPACE_LOGICAL, TYPE_NAME_AND);
     let and_function = LOGICAL_GATES.get(&behaviour_ty).expect("Failed to get function");
@@ -72,4 +71,47 @@ fn incomplete_and_gate_test() {
     let and_factory = LogicalGateFactory::new(behaviour_ty, and_function.clone());
     let behaviour = and_factory.create(reactive_instance.clone());
     assert!(behaviour.is_err());
+}
+
+#[test]
+fn rx_and_gate_test() {
+    let entity_ty = EntityTypeId::new_from_type(NAMESPACE_LOGICAL, TYPE_NAME_AND);
+    let reactive_instance = logical_gate(&entity_ty);
+
+    let rx_and = LogicalGate::from(reactive_instance.clone());
+
+    assert_eq!(NAMESPACE_LOGICAL, rx_and.namespace().as_str());
+    assert_eq!(TYPE_NAME_AND, rx_and.type_name().as_str());
+
+    {
+        let behaviour_ty = BehaviourTypeId::new_from_type(NAMESPACE_LOGICAL, TYPE_NAME_AND);
+        let and_function = LOGICAL_GATES.get(&behaviour_ty).expect("Failed to get function");
+        let and_factory = LogicalGateFactory::new(behaviour_ty, and_function.clone());
+        let behaviour = and_factory.create(reactive_instance.clone());
+        assert!(behaviour.is_ok());
+
+        rx_and.lhs(true);
+        rx_and.rhs(true);
+        assert_eq!(true, rx_and.result().unwrap());
+        rx_and.lhs(false);
+        assert_eq!(false, rx_and.result().unwrap());
+        rx_and.rhs(false);
+        assert_eq!(false, rx_and.result().unwrap());
+        rx_and.lhs(true);
+        assert_eq!(false, rx_and.result().unwrap());
+        rx_and.rhs(true);
+        assert_eq!(true, rx_and.result().unwrap());
+    }
+    // The behaviour has been dropped (no more changes)
+    rx_and.lhs(false);
+    assert_eq!(true, rx_and.result().unwrap());
+}
+
+fn logical_gate(entity_ty: &EntityTypeId) -> Arc<ReactiveEntityInstance> {
+    ReactiveEntityInstanceBuilder::new(entity_ty.clone())
+        .property(LHS, json!(false))
+        .property(RHS, json!(false))
+        .property(RESULT, json!(false))
+        .component(COMPONENT_LOGICAL_GATE.clone())
+        .build()
 }
