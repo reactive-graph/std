@@ -1,6 +1,7 @@
 use crate::di::*;
 use async_trait::async_trait;
-use log::{debug, error};
+use log::debug;
+use log::error;
 use rust_embed::RustEmbed;
 
 use crate::model::entity_type::EntityType;
