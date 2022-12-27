@@ -62,7 +62,6 @@ impl ArithmeticPlugin for ArithmeticPluginImpl {}
 
 impl Plugin for ArithmeticPluginImpl {
     fn activate(&self) -> Result<(), PluginActivationError> {
-        // TODO: register arithmetic gates and arithmetic operations
         let guard = self.context.0.read().unwrap();
         if let Some(context) = guard.clone() {
             let entity_behaviour_registry = context.get_entity_behaviour_registry();
