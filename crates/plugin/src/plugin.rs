@@ -33,9 +33,9 @@ use crate::plugins::PluginActivationError;
 use crate::plugins::PluginContextDeinitializationError;
 use crate::plugins::PluginContextInitializationError;
 use crate::plugins::PluginDeactivationError;
-use crate::provider::LogicalComponentProviderImpl;
-use crate::provider::LogicalEntityTypeProviderImpl;
-use crate::provider::LogicalFlowTypeProviderImpl;
+use crate::providers::LogicalComponentProviderImpl;
+use crate::providers::LogicalEntityTypeProviderImpl;
+use crate::providers::LogicalFlowTypeProviderImpl;
 
 #[wrapper]
 pub struct PluginContextContainer(RwLock<Option<Arc<dyn PluginContext>>>);

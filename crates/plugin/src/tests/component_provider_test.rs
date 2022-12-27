@@ -1,7 +1,7 @@
 use crate::model::ComponentTypeId;
 use crate::model_logical::NAMESPACE_LOGICAL;
 use crate::plugins::ComponentProvider;
-use crate::provider::LogicalComponentProviderImpl;
+use crate::providers::LogicalComponentProviderImpl;
 
 #[test]
 fn components_should_exist() {
