@@ -1,5 +1,8 @@
 use crate::model::component_ty;
 use crate::model::properties;
+use crate::model::relation_model;
+use crate::model::PropertyInstanceGetter;
+use crate::model::PropertyInstanceSetter;
 use crate::NAMESPACE_CONNECTOR;
 
 properties!(
@@ -9,3 +12,5 @@ properties!(
 );
 
 component_ty!(COMPONENT_CONNECTOR, NAMESPACE_CONNECTOR, COMPONENT_NAME_CONNECTOR, "connector");
+
+relation_model!(Connector, get outbound_property_name string, get inbound_property_name string);
