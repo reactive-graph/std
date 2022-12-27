@@ -1,9 +1,12 @@
 {
-  "namespace": "numeric",
-  "name": "round",
-  "description": "Returns the nearest integer to a number. Round half-way cases away from 0.0",
+  "namespace": "numeric_f64",
+  "type_name": "asinh",
+  "description": "Inverse hyperbolic sine function",
   "components": [
-    "numeric_operation"
+    {
+      "namespace": "numeric",
+      "type_name": "numeric_operation"
+    }
   ],
   "properties": [
   ],
@@ -11,7 +14,7 @@
     {
       "name": "palette",
       "extension": {
-        "content": "round",
+        "content": "asin2",
         "styles": {
           "font-family": "Fira Code",
           "font-size": "12px",

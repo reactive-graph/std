@@ -1,9 +1,12 @@
 {
-  "namespace": "numeric",
-  "name": "to_degrees",
-  "description": "Converts radians to degrees",
+  "namespace": "numeric_f64",
+  "type_name": "cbrt",
+  "description": "Returns the cube root of a number",
   "components": [
-    "numeric_operation"
+    {
+      "namespace": "numeric",
+      "type_name": "numeric_operation"
+    }
   ],
   "properties": [
   ],
@@ -11,7 +14,7 @@
     {
       "name": "palette",
       "extension": {
-        "content": "degree",
+        "content": "cbrt",
         "styles": {
           "font-family": "Fira Code",
           "font-size": "12px",

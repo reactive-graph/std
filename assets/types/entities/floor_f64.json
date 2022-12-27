@@ -1,9 +1,12 @@
 {
-  "namespace": "numeric",
-  "name": "signum",
-  "description": "Returns a number that represents the sign of the input",
+  "namespace": "numeric_f64",
+  "type_name": "floor",
+  "description": "Returns the largest integer less than or equal to a number",
   "components": [
-    "numeric_operation"
+    {
+      "namespace": "numeric",
+      "type_name": "numeric_operation"
+    }
   ],
   "properties": [
   ],
@@ -11,7 +14,7 @@
     {
       "name": "palette",
       "extension": {
-        "content": "signum",
+        "content": "floor",
         "styles": {
           "font-family": "Fira Code",
           "font-size": "12px",

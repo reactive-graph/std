@@ -1,9 +1,12 @@
 {
-  "namespace": "numeric",
-  "name": "cosh",
-  "description": "Hyperbolic cosine function",
+  "namespace": "numeric_f64",
+  "type_name": "log",
+  "description": "Returns the logarithm of the number with respect to an arbitrary base",
   "components": [
-    "numeric_operation"
+    {
+      "namespace": "numeric",
+      "type_name": "numeric_gate"
+    }
   ],
   "properties": [
   ],
@@ -11,7 +14,7 @@
     {
       "name": "palette",
       "extension": {
-        "content": "cosh",
+        "content": "log",
         "styles": {
           "font-family": "Fira Code",
           "font-size": "12px",

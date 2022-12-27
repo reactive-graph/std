@@ -1,9 +1,12 @@
 {
-  "namespace": "numeric",
-  "name": "ceil",
-  "description": "Returns the smallest integer greater than or equal to a number",
+  "namespace": "numeric_f64",
+  "type_name": "tan",
+  "description": "Computes the tangent of a number (in radians)",
   "components": [
-    "numeric_operation"
+    {
+      "namespace": "numeric",
+      "type_name": "numeric_operation"
+    }
   ],
   "properties": [
   ],
@@ -11,7 +14,7 @@
     {
       "name": "palette",
       "extension": {
-        "content": "ceil",
+        "content": "tan",
         "styles": {
           "font-family": "Fira Code",
           "font-size": "12px",

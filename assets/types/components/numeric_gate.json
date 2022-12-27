@@ -1,6 +1,6 @@
 {
   "namespace": "numeric",
-  "name": "numeric_gate",
+  "type_name": "numeric_gate",
   "properties": [
     {
       "name": "lhs",

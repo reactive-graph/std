@@ -1,9 +1,12 @@
 {
-  "namespace": "numeric",
-  "name": "ln",
-  "description": "Returns the natural logarithm of the number",
+  "namespace": "numeric_f64",
+  "type_name": "abs",
+  "description": "Computes the absolute value",
   "components": [
-    "numeric_operation"
+    {
+      "namespace": "numeric",
+      "type_name": "numeric_operation"
+    }
   ],
   "properties": [
   ],
@@ -11,7 +14,7 @@
     {
       "name": "palette",
       "extension": {
-        "content": "ln",
+        "content": "abs",
         "styles": {
           "font-family": "Fira Code",
           "font-size": "12px",

@@ -1,9 +1,12 @@
 {
-  "namespace": "numeric",
-  "name": "floor",
-  "description": "Returns the largest integer less than or equal to a number",
+  "namespace": "numeric_f64",
+  "type_name": "sqrt",
+  "description": "Returns the square root of a number",
   "components": [
-    "numeric_operation"
+    {
+      "namespace": "numeric",
+      "type_name": "numeric_operation"
+    }
   ],
   "properties": [
   ],
@@ -11,7 +14,7 @@
     {
       "name": "palette",
       "extension": {
-        "content": "floor",
+        "content": "sqrt",
         "styles": {
           "font-family": "Fira Code",
           "font-size": "12px",

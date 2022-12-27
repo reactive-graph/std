@@ -1,9 +1,12 @@
 {
-  "namespace": "numeric",
-  "name": "log10",
+  "namespace": "numeric_f64",
+  "type_name": "log10",
   "description": "Returns the base 10 logarithm of the number",
   "components": [
-    "numeric_operation"
+    {
+      "namespace": "numeric",
+      "type_name": "numeric_operation"
+    }
   ],
   "properties": [
   ],

@@ -1,9 +1,12 @@
 {
-  "namespace": "numeric",
-  "name": "tanh",
-  "description": "Hyperbolic tangent function",
+  "namespace": "numeric_i64",
+  "type_name": "signum",
+  "description": "Returns a number that represents the sign of the input",
   "components": [
-    "numeric_operation"
+    {
+      "namespace": "numeric",
+      "type_name": "numeric_operation"
+    }
   ],
   "properties": [
   ],
@@ -11,7 +14,7 @@
     {
       "name": "palette",
       "extension": {
-        "content": "tanh",
+        "content": "signum",
         "styles": {
           "font-family": "Fira Code",
           "font-size": "12px",

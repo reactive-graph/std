@@ -1,9 +1,12 @@
 {
-  "namespace": "numeric",
-  "name": "asin",
-  "description": "Computes the arcsine of a number",
+  "namespace": "numeric_f64",
+  "type_name": "fract",
+  "description": "Returns the fractional part of a number",
   "components": [
-    "numeric_operation"
+    {
+      "namespace": "numeric",
+      "type_name": "numeric_operation"
+    }
   ],
   "properties": [
   ],
@@ -11,7 +14,7 @@
     {
       "name": "palette",
       "extension": {
-        "content": "asin",
+        "content": "fract",
         "styles": {
           "font-family": "Fira Code",
           "font-size": "12px",

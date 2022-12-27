@@ -1,9 +1,12 @@
 {
-  "namespace": "numeric",
-  "name": "abs",
-  "description": "Computes the absolute value",
+  "namespace": "numeric_f64",
+  "type_name": "pow",
+  "description": "Raises a number to a power",
   "components": [
-    "numeric_operation"
+    {
+      "namespace": "numeric",
+      "type_name": "numeric_gate"
+    }
   ],
   "properties": [
   ],
@@ -11,7 +14,7 @@
     {
       "name": "palette",
       "extension": {
-        "content": "abs",
+        "content": "pow",
         "styles": {
           "font-family": "Fira Code",
           "font-size": "12px",

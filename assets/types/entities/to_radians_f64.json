@@ -1,9 +1,12 @@
 {
-  "namespace": "numeric",
-  "name": "cos",
-  "description": "Computes the cosine of a number (in radians)",
+  "namespace": "numeric_f64",
+  "type_name": "to_radians",
+  "description": "Converts degrees to radians",
   "components": [
-    "numeric_operation"
+    {
+      "namespace": "numeric",
+      "type_name": "numeric_operation"
+    }
   ],
   "properties": [
   ],
@@ -11,7 +14,7 @@
     {
       "name": "palette",
       "extension": {
-        "content": "cos",
+        "content": "radians",
         "styles": {
           "font-family": "Fira Code",
           "font-size": "12px",

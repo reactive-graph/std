@@ -1,9 +1,12 @@
 {
-  "namespace": "numeric",
-  "name": "exp2",
+  "namespace": "numeric_f64",
+  "type_name": "exp2",
   "description": "Returns 2^(input)",
   "components": [
-    "numeric_operation"
+    {
+      "namespace": "numeric",
+      "type_name": "numeric_operation"
+    }
   ],
   "properties": [
   ],

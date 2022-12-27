@@ -1,9 +1,12 @@
 {
-  "namespace": "numeric",
-  "name": "asinh",
-  "description": "Inverse hyperbolic sine function",
+  "namespace": "numeric_f64",
+  "type_name": "sinh",
+  "description": "Hyperbolic sine function",
   "components": [
-    "numeric_operation"
+    {
+      "namespace": "numeric",
+      "type_name": "numeric_operation"
+    }
   ],
   "properties": [
   ],
@@ -11,7 +14,7 @@
     {
       "name": "palette",
       "extension": {
-        "content": "asin2",
+        "content": "sinh",
         "styles": {
           "font-family": "Fira Code",
           "font-size": "12px",

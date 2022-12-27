@@ -1,9 +1,12 @@
 {
-  "namespace": "numeric",
-  "name": "trunc",
-  "description": "Returns the integer part of a number",
+  "namespace": "numeric_f64",
+  "type_name": "acosh",
+  "description": "Inverse hyperbolic cosine function",
   "components": [
-    "numeric_operation"
+    {
+      "namespace": "numeric",
+      "type_name": "numeric_operation"
+    }
   ],
   "properties": [
   ],
@@ -11,7 +14,7 @@
     {
       "name": "palette",
       "extension": {
-        "content": "trunc",
+        "content": "acosh",
         "styles": {
           "font-family": "Fira Code",
           "font-size": "12px",

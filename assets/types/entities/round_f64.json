@@ -1,9 +1,12 @@
 {
-  "namespace": "numeric",
-  "name": "recip",
-  "description": "Takes the reciprocal (inverse) of a number, 1/x",
+  "namespace": "numeric_f64",
+  "type_name": "round",
+  "description": "Returns the nearest integer to a number. Round half-way cases away from 0.0",
   "components": [
-    "numeric_operation"
+    {
+      "namespace": "numeric",
+      "type_name": "numeric_operation"
+    }
   ],
   "properties": [
   ],
@@ -11,7 +14,7 @@
     {
       "name": "palette",
       "extension": {
-        "content": "recip",
+        "content": "round",
         "styles": {
           "font-family": "Fira Code",
           "font-size": "12px",
