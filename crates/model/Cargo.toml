@@ -1,0 +1,24 @@
+[package]
+name = "inexor-rgf-model-string"
+description = "Inexor - Reactive Graph Flow - Model - String"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+ambassador = "0.3.5"
+proc-macro2 = "1.0"
+quote = "1.0"
+indradb-lib = { workspace = true }
+lazy_static = { workspace = true }
+serde = { workspace = true, features = [ "derive" ] }
+serde_json = { workspace = true }
+strum = { workspace = true, features = ["derive"] }
+strum_macros = { workspace = true }
+
+inexor-rgf-core-model = { workspace = true }
+inexor-rgf-core-reactive = { workspace = true }
+
+[lib]
+crate-type = ["lib"]
