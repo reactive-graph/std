@@ -18,7 +18,20 @@ behaviour_validator!(
     RESULT.as_ref()
 );
 
-impl BehaviourInit<ReactiveEntityInstance> for IfThenElseBehaviourTransitions {}
+impl BehaviourInit<ReactiveEntityInstance> for IfThenElseBehaviourTransitions {
+    fn init(&self) -> Result<(), BehaviourInitializationFailed> {
+        let condition = self
+            .reactive_instance
+            .get(CONDITION)
+            .and_then(|v| v.as_bool())
+            .ok_or(BehaviourInitializationFailed {})?;
+        let payload_property = if condition { THEN_PAYLOAD } else { ELSE_PAYLOAD };
+        if let Some(payload) = self.reactive_instance.get(payload_property) {
+            self.reactive_instance.set(RESULT, payload);
+        }
+        Ok(())
+    }
+}
 
 impl BehaviourConnect<ReactiveEntityInstance> for IfThenElseBehaviourTransitions {
     fn connect(&self) -> Result<(), BehaviourConnectFailed> {
