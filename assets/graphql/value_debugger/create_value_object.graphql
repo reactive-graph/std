@@ -2,11 +2,14 @@ mutation {
   instances {
     entities {
       create(
-        type: "value_object",
-        id: "c4bc7ab7-f166-4710-96e0-7defb3a73207",
+        type: {
+          namespace: "value"
+          name:"value_object"
+        },
+        id: "c4bc7ab7-f166-4710-96e0-7defb3a73207"
         properties: [
           {
-            name: "value",
+            name: "value"
             value: {
               test: "test"
             }
@@ -17,8 +20,14 @@ mutation {
         type {
           name
         }
-        components
-        behaviours
+        components {
+          namespace
+          name
+        }
+        behaviours {
+          namespace
+          name
+        }
         properties(name: "value") {
           name
           value

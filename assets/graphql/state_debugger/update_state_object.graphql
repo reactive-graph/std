@@ -2,10 +2,10 @@ mutation {
   instances {
     entities {
       update(
-        id: "1f0d1b1f-bb53-4e80-8103-6a350f459ceb",
+        id: "1f0d1b1f-bb53-4e80-8103-6a350f459ceb"
         properties: [
           {
-            name: "set_state",
+            name: "set_state"
             value: {
               test: "updated_state"
             }
@@ -21,8 +21,14 @@ mutation {
           namespace
           name
         }
-        behaviours
-        properties(names: [ "value", "state"]) {
+        behaviours {
+          namespace
+          name
+        }
+        properties(names: [
+          "value"
+          "state"
+        ]) {
           name
           value
         }

@@ -1,11 +1,25 @@
 query getAllEntityInstancesThatBehavesAs {
   instances {
-    behavesAs: entities(behaviours: "value_debugger_debug") {
+    behavesAs: entities(
+      behaviours: {
+        namespace: "value"
+        name: "value_debugger_debug"
+      }
+    ) {
       id
       label
-      components
-      behaviours
-      properties(names: ["value", "state"]) {
+      components {
+        namespace
+        name
+      }
+      behaviours {
+        namespace
+        name
+      }
+      properties(names: [
+        "value"
+        "state"
+      ]) {
         name
         value
       }

@@ -14,8 +14,14 @@ query getAllEntityInstancesThatBehavesAs {
         namespace
         name
       }
-      behaviours
-      properties(names: ["value", "state"]) {
+      behaviours {
+        namespace
+        name
+      }
+      properties(names: [
+        "value"
+        "state"
+      ]) {
         name
         value
       }
