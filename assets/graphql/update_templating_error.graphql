@@ -2,11 +2,12 @@ mutation {
   instances {
     entities {
       update(
-        id: "e5b13c23-9c31-4b1d-9e17-3506ee3afe68",
+        id: "e5b13c23-9c31-4b1d-9e17-3506ee3afe68"
         properties: [
           {
-            name: "context",
+            name: "context"
             value: {
+              # Note: The template expects a context variable named "greeting" which is missing
               world: "World"
             }
           }
@@ -18,8 +19,8 @@ mutation {
         }
         properties(
           names: [
-            "template",
-            "context",
+            "template"
+            "context"
             # Expected: Error Object
             "result"
           ]

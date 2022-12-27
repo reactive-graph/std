@@ -2,22 +2,25 @@ mutation {
   instances {
     entities {
       create(
-        type: "templating",
-        id: "e5b13c23-9c31-4b1d-9e17-3506ee3afe68",
+        type: {
+          namespace: "string"
+          name: "templating"
+        }
+        id: "e5b13c23-9c31-4b1d-9e17-3506ee3afe68"
         properties: [
           {
-            name: "template",
+            name: "template"
             value: "{{greeting}}, {{world}}"
           },
           {
-            name: "context",
+            name: "context"
             value: {
               greeting: "Hello"
               world: "Inexor"
             }
-          },
+          }
           {
-            name: "result",
+            name: "result"
             value: ""
           }
         ]
@@ -28,8 +31,9 @@ mutation {
         }
         properties(
           names: [
-            "template",
-            "context",
+            "template"
+            "context"
+            # Expected: Hello, Inexor
             "result"
           ]
         ) {

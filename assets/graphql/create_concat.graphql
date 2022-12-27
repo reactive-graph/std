@@ -2,19 +2,22 @@ mutation {
   instances {
     entities {
       create(
-        type: "concat",
-        id: "b11f9222-b0f9-4484-9849-091ef3676d6e",
+        type: {
+          namespace: "string"
+          name: "concat"
+        }
+        id: "b11f9222-b0f9-4484-9849-091ef3676d6e"
         properties: [
           {
-            name: "lhs",
+            name: "lhs"
             value: "Hello, "
-          },
+          }
           {
-            name: "rhs",
+            name: "rhs"
             value: "World"
-          },
+          }
           {
-            name: "result",
+            name: "result"
             value: ""
           }
         ]
@@ -25,8 +28,8 @@ mutation {
         }
         properties(
           names: [
-            "lhs",
-            "rhs",
+            "lhs"
+            "rhs"
             "result"
           ]
         ) {

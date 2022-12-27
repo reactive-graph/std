@@ -2,10 +2,10 @@ mutation {
   instances {
     entities {
       update(
-        id: "e5b13c23-9c31-4b1d-9e17-3506ee3afe68",
+        id: "e5b13c23-9c31-4b1d-9e17-3506ee3afe68"
         properties: [
           {
-            name: "context",
+            name: "context"
             value: {
               greeting: "Servus"
               world: "Inexor"
@@ -19,8 +19,8 @@ mutation {
         }
         properties(
           names: [
-            "template",
-            "context",
+            "template"
+            "context"
             # Expected: Servus, Inexor
             "result"
           ]

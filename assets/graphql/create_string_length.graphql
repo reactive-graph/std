@@ -2,15 +2,18 @@ mutation {
   instances {
     entities {
       create(
-        type: "string_length",
-        id: "1f802033-24ce-4c0b-821e-a1dd8ec1bcd9",
+        type: {
+          namespace: "string"
+          name: "string_length"
+        }
+        id: "1f802033-24ce-4c0b-821e-a1dd8ec1bcd9"
         properties: [
           {
-            name: "lhs",
+            name: "lhs"
             value: "Hello, "
-          },
+          }
           {
-            name: "result",
+            name: "result"
             value: 0
           }
         ]
@@ -21,7 +24,8 @@ mutation {
         }
         properties(
           names: [
-            "lhs",
+            "lhs"
+            # Expected: 7
             "result"
           ]
         ) {
