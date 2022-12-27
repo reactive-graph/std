@@ -2,21 +2,25 @@ mutation {
   instances {
     entities {
       create(
-        type: "equals",
-        id: "6b436008-7859-4e1e-a223-d994829101c6",
+        type: {
+          namespace: "comparison"
+          name:"equals"
+        }
+        id: "6b436008-7859-4e1e-a223-d994829101c6"
         properties: [
           {
-            name: "lhs",
+            name: "lhs"
             value: 0
           },
           {
-            name: "rhs",
-            value: 0
+            name: "rhs"
+            value: 1
           },
-          {
-            name: "result",
-            value: true
-          }
+          # This would have no effect because the initial value of the property result will be overwritten immediately
+          # {
+          #   name: "result",
+          #   value: true
+          # }
         ]
       ) {
         id
@@ -25,8 +29,8 @@ mutation {
         }
         properties(
           names: [
-            "lhs",
-            "rhs",
+            "lhs"
+            "rhs"
             "result"
           ]
         ) {
