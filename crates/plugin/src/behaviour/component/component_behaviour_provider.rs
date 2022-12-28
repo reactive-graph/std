@@ -9,6 +9,8 @@ use uuid::Uuid;
 use crate::behaviour::component::config_file::ConfigFile;
 use crate::behaviour::component::config_file::CONFIG_FILE;
 use crate::di::*;
+use crate::model::ComponentContainer;
+use crate::model::ReactiveBehaviourContainer;
 use crate::model::ReactiveEntityInstance;
 use crate::plugins::ComponentBehaviourProvider;
 
