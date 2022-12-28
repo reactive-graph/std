@@ -65,5 +65,8 @@ extern "C" fn get_dependencies() -> Vec<PluginDependency> {
 }
 
 #[cfg(test)]
+use inexor_rgf_core_builder as builder;
+
+#[cfg(test)]
 #[tarpaulin::ignore]
 pub mod tests;

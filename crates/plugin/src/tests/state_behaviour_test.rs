@@ -2,16 +2,18 @@ use std::sync::atomic::AtomicBool;
 use std::sync::atomic::Ordering;
 use std::sync::Arc;
 
-use inexor_rgf_core_builder::ReactiveEntityInstanceBuilder;
 use serde_json::json;
 use uuid::Uuid;
 
-use crate::behaviour::component::State;
+use crate::behaviour::component::StateFactory;
 use crate::behaviour::component::STATE_BEHAVIOURS;
+use crate::builder::ReactiveEntityInstanceBuilder;
 use crate::model::NamespacedType;
 use crate::model::PropertyInstanceSetter;
+use crate::model_value::State;
 use crate::model_value::StateProperties;
 use crate::model_value::ValueProperties;
+use crate::reactive::BehaviourFactory;
 
 #[test]
 fn state_behaviour_test() {
@@ -51,7 +53,10 @@ fn state_behaviour_test() {
 
         {
             // Create behaviour
-            let _state_behaviour = State::new(entity_instance.clone(), behaviour_ty.clone()).expect("Failed to create behaviour");
+            let factory = StateFactory::new(behaviour_ty.clone());
+            let behaviour = factory.create(entity_instance.clone());
+            assert!(behaviour.is_ok());
+            let state = State::from(entity_instance.clone());
 
             // Set state without changing its initial value
             entity_instance.set(StateProperties::SET_STATE, json!(0));
