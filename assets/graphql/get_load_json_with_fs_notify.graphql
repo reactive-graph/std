@@ -5,12 +5,13 @@ query {
     entities(id: "dfc2db31-8dbf-4ab4-9b66-c378fb8a3e41") {
       id
       type {
+        namespace
         name
       }
       properties(
         names: [
-          "trigger",
-          "filename",
+          "trigger"
+          "filename"
           "result"
         ]
       ) {
