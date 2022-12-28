@@ -1,13 +1,16 @@
 query getAllConfigs {
   instances {
-    entities(type: "config_file") {
+    entities(type: {
+      namespace: "config"
+      name: "config_file"
+    }) {
       id
       label
       description
       properties(
         names: [
-          "trigger",
-          "filename",
+          "trigger"
+          "filename"
           "result"
         ]
       ) {

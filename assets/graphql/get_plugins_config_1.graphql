@@ -5,8 +5,8 @@ query getPluginsConfig {
       description
       properties(
         names: [
-          "trigger",
-          "filename",
+          "trigger"
+          "filename"
           "result"
         ]
       ) {

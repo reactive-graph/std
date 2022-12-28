@@ -7,7 +7,7 @@ mutation {
           {
             # Relative to the current directory
             name: "filename"
-            value: "config/graphql.toml"
+            value: "config/plugins.toml"
           }
           {
             name: "trigger"

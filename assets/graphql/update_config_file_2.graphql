@@ -8,21 +8,22 @@ mutation {
             # Expand tilde to the user home directory
             name: "filename"
             value: "~/CLionProjects/inexor-rgf/config/graphql.toml"
-          },
+          }
           {
-            name: "trigger",
+            name: "trigger"
             value: true
           }
         ]
       ) {
         id
         type {
+          namespace
           name
         }
         properties(
           names: [
-            "trigger",
-            "filename",
+            "trigger"
+            "filename"
             "result"
           ]
         ) {

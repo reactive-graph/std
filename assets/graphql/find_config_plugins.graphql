@@ -3,12 +3,13 @@ query findConfigByLabel {
     entities(label: "/org/inexor/system/config/plugins") {
       id
       type {
+        namespace
         name
       }
       properties(names: [
         "label"
-        "trigger",
-        "filename",
+        "trigger"
+        "filename"
         "result"
       ]) {
         name
