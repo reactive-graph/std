@@ -34,7 +34,7 @@ This plugin provides a configuration file reader.
 
 [<img src="https://img.shields.io/badge/Language-Rust-brightgreen">](https://www.rust-lang.org/)
 [<img src="https://img.shields.io/badge/Platforms-Linux%20%26%20Windows-brightgreen">]()
-[<img src="https://img.shields.io/github/workflow/status/inexorgame/inexor-rgf-plugin-config/Rust">](https://github.com/inexorgame/inexor-rgf-plugin-config/actions?query=workflow%3ARust)
+[<img src="https://img.shields.io/github/actions/workflow/status/inexorgame/inexor-rgf-plugin-config/rust.yml">](https://github.com/inexorgame/inexor-rgf-plugin-config/actions?query=workflow%3ARust)
 [<img src="https://img.shields.io/github/last-commit/inexorgame/inexor-rgf-plugin-config">]()
 [<img src="https://img.shields.io/github/languages/code-size/inexorgame/inexor-rgf-plugin-config">]()
 [<img src="https://img.shields.io/codecov/c/github/inexorgame/inexor-rgf-plugin-config">](https://app.codecov.io/gh/inexorgame/inexor-rgf-plugin-config)
@@ -52,10 +52,11 @@ This plugin provides a configuration file reader.
 
 #### Entity Types
 
-| Name        | Properties    | Data Type | Socket Type |
-|-------------|---------------|-----------|-------------|
-| config_file | filename      | string    | none        |
-|             | configuration | object    | output      |
+| Name        | Component | Property  | Data Type | Socket Type |
+|-------------|-----------|-----------|-----------|-------------|
+| config_file | file      | filename  | string    | none        |
+|             | action    | trigger   | boolean   | input       |
+|             | action    | result    | object    | output      |
 
 ### Thanks to
 
