@@ -1,18 +1,20 @@
 {
   "id": "c280eb07-36fc-4056-96de-10b7c9e13c4f",
-  "type": "generic_flow",
+  "type_name": "generic_flow",
   "name": "Configurations",
   "description": "The configurations",
   "entities": [
     {
-      "type": "generic_flow",
+      "namespace": "flow",
+      "type_name": "generic_flow",
       "id": "c280eb07-36fc-4056-96de-10b7c9e13c4f",
       "properties": {
         "label": "/org/inexor/system/config"
       }
     },
     {
-      "type": "config_file",
+      "namespace": "config",
+      "type_name": "config_file",
       "id": "f3c6927a-378c-4dc3-ad71-eb9303eb9911",
       "description": "Plugins",
       "properties": {
@@ -23,7 +25,8 @@
       }
     },
     {
-      "type": "config_file",
+      "namespace": "config",
+      "type_name": "config_file",
       "id": "79721a12-9592-4061-acba-7ce542043648",
       "description": "Input Devices",
       "properties": {
