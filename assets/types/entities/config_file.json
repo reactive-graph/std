@@ -1,12 +1,24 @@
 {
-  "name": "config_file",
-  "group": "config",
+  "namespace": "config",
+  "type_name": "config_file",
   "description": "Loads a configuration file",
   "components": [
-    "named",
-    "action",
-    "file",
-    "config_file"
+    {
+      "namespace": "base",
+      "name": "named"
+    },
+    {
+      "namespace": "logical",
+      "name": "action"
+    },
+    {
+      "namespace": "file",
+      "name": "file"
+    },
+    {
+      "namespace": "config",
+      "name": "config_file"
+    }
   ],
   "properties": [
   ],
