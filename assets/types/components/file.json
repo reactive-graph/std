@@ -1,5 +1,6 @@
 {
-  "name": "file",
+  "namespace": "file",
+  "type_name": "file",
   "description": "Represents a file in the file system",
   "properties": [
     {
