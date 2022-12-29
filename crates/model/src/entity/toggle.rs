@@ -14,6 +14,6 @@ entity_behaviour_ty!(ENTITY_BEHAVIOUR_TOGGLE, ENTITY_TYPE_TOGGLE, BEHAVIOUR_TOGG
 
 entity_model!(
     Toggle,
-    get result bool,
-    set trigger bool
+    trigger,
+    get result bool
 );

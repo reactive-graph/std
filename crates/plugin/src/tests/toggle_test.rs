@@ -33,22 +33,16 @@ fn toggle_test() {
         let behaviour = factory.create(reactive_instance.clone());
         assert!(behaviour.is_ok());
 
-        toggle.trigger(true);
+        toggle.trigger();
         assert_eq!(true, toggle.result().unwrap());
-        toggle.trigger(true);
+        toggle.trigger();
         assert_eq!(false, toggle.result().unwrap());
-        toggle.trigger(true);
+        toggle.trigger();
         assert_eq!(true, toggle.result().unwrap());
-        toggle.trigger(false);
-        assert_eq!(true, toggle.result().unwrap());
-        toggle.trigger(true);
-        assert_eq!(false, toggle.result().unwrap());
-        toggle.trigger(false);
+        toggle.trigger();
         assert_eq!(false, toggle.result().unwrap());
     }
     // The behaviour has been dropped
-    toggle.trigger(true);
-    assert_eq!(false, toggle.result().unwrap());
-    toggle.trigger(false);
+    toggle.trigger();
     assert_eq!(false, toggle.result().unwrap());
 }

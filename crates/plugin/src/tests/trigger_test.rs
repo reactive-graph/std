@@ -3,6 +3,7 @@ use serde_json::json;
 use crate::behaviour::entity::trigger::TriggerFactory;
 use crate::builder::ReactiveEntityInstanceBuilder;
 use crate::model::NamespacedTypeGetter;
+use crate::model_logical::Action;
 use crate::model_logical::ActionProperties::RESULT;
 use crate::model_logical::ActionProperties::TRIGGER;
 use crate::model_logical::Trigger;
@@ -36,17 +37,17 @@ fn trigger_test() {
         assert!(behaviour.is_ok());
 
         trigger.payload(json!("Hello"));
-        trigger.trigger(true);
+        trigger.trigger();
         assert_eq!("Hello", trigger.result().unwrap().as_str().unwrap());
-        trigger.trigger(true);
+        trigger.trigger();
         assert_eq!("Hello", trigger.result().unwrap().as_str().unwrap());
         trigger.payload(json!("World"));
         assert_eq!("Hello", trigger.result().unwrap().as_str().unwrap());
-        trigger.trigger(true);
+        trigger.trigger();
         assert_eq!("World", trigger.result().unwrap().as_str().unwrap());
     }
     // The behaviour has been dropped
     trigger.payload(json!("Inexor"));
-    trigger.trigger(true);
+    trigger.trigger();
     assert_eq!("World", trigger.result().unwrap().as_str().unwrap());
 }
