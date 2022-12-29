@@ -2,23 +2,27 @@ mutation {
   instances {
     entities {
       create(
-        type: "save_json",
-        id: "418c575a-3fb3-4b84-abe4-829c8b6763c9",
+        type: {
+          namespace: "json"
+          name: "save_json"
+        }
+        id: "418c575a-3fb3-4b84-abe4-829c8b6763c9"
         properties: [
           {
-            name: "filename",
+            name: "filename"
             value: "assets/test.json"
           }
         ]
       ) {
         id
         type {
+          namespace
           name
         }
         properties(
           names: [
-            "trigger",
-            "filename",
+            "trigger"
+            "filename"
             "payload"
           ]
         ) {

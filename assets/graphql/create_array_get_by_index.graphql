@@ -2,8 +2,11 @@ mutation {
   instances {
     entities {
       create(
-        type: "array_get_by_index",
-        id: "d47068ff-b97d-4982-a06c-4c12d68caa96",
+        type: {
+          namespace: "json"
+          name: "array_get_by_index"
+        }
+        id: "d47068ff-b97d-4982-a06c-4c12d68caa96"
         properties: [
           {
             name: "array",
@@ -11,12 +14,15 @@ mutation {
           }
         ]
       ) {
-        id,
-        type {name},
+        id
+        type {
+          namespace
+          name
+        }
         properties(
           names: [
-            "array",
-            "index",
+            "array"
+            "index"
             "result"
           ]
         ) {

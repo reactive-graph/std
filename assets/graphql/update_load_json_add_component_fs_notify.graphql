@@ -2,21 +2,28 @@ mutation {
   instances {
     entities {
       update(
-        id: "8400d16f-1e08-4ec1-a071-f36f7e365a35",
+        id: "8400d16f-1e08-4ec1-a071-f36f7e365a35"
         addComponents: [
           "fs_notify"
         ]
       ) {
         id
         type {
+          namespace
           name
         }
-        components
-        behaviours
+        components {
+          namespace
+          name
+        }
+        behaviours {
+          namespace
+          name
+        }
         properties(
           names: [
-            "trigger",
-            "filename",
+            "trigger"
+            "filename"
             "result"
           ]
         ) {

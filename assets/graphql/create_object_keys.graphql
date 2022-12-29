@@ -2,30 +2,36 @@ mutation {
   instances {
     entities {
       create(
-        type: "object_keys",
-        id: "607284e5-9c5a-4918-a255-eba797cdd84c",
+        type: {
+          namespace: "json"
+          name: "object_keys"
+        }
+        id: "607284e5-9c5a-4918-a255-eba797cdd84c"
         properties: [
           {
-            name: "object",
+            name: "object"
             value: {
               hello: "World",
               good: "Morning"
             }
-          },
+          }
           {
-            name: "keys",
+            name: "keys"
             value: [
-              "hello",
+              "hello"
               "good"
             ]
           }
         ]
       ) {
         id,
-        type {name},
+        type {
+          namespace
+          name
+        }
         properties(
           names: [
-            "object",
+            "object"
             "keys"
           ]
         ) {

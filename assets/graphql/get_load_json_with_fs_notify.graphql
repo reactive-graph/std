@@ -9,8 +9,8 @@ query {
       }
       properties(
         names: [
-          "trigger",
-          "filename",
+          "trigger"
+          "filename"
           "result"
         ]
       ) {

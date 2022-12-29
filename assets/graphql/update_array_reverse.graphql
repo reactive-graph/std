@@ -2,19 +2,22 @@ mutation {
   instances {
     entities {
       update(
-        id: "013bd4c8-1bd1-4263-a696-e3af57385c1d",
+        id: "013bd4c8-1bd1-4263-a696-e3af57385c1d"
         properties: [
           {
-            name: "array",
+            name: "array"
             value: [ 30, 20, 10 ]
           }
         ]
       ) {
-        id,
-        type {name},
+        id
+        type {
+          namespace
+          name
+        }
         properties(
           names: [
-            "array",
+            "array"
             "result"
           ]
         ) {

@@ -2,7 +2,7 @@ mutation {
   instances {
     entities {
       update(
-        id: "4501cc21-e056-410a-ae31-44f79d737f4d",
+        id: "4501cc21-e056-410a-ae31-44f79d737f4d"
         properties: [
           {
             name: "property_name",
@@ -10,12 +10,15 @@ mutation {
           }
         ]
       ) {
-        id,
-        type {name},
+        id
+        type {
+          namespace
+          name
+        }
         properties(
           names: [
-            "object",
-            "property_name",
+            "object"
+            "property_name"
             "result"
           ]
         ) {

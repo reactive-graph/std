@@ -2,11 +2,14 @@ mutation {
   instances {
     entities {
       create(
-        type: "object_set_property",
-        id: "34ff6218-e0df-4294-a04f-22f691665d50",
+        type: {
+          namespace: "json"
+          name: "object_set_property"
+        }
+        id: "34ff6218-e0df-4294-a04f-22f691665d50"
         properties: [
           {
-            name: "object",
+            name: "object"
             value: {
               hello: "World",
               good: "Morning",
@@ -14,13 +17,16 @@ mutation {
           }
         ]
       ) {
-        id,
-        type {name},
+        id
+        type {
+          namespace
+          name
+        }
         properties(
           names: [
-            "object",
-            "property_name",
-            "value",
+            "object"
+            "property_name"
+            "value"
             "result"
           ]
         ) {

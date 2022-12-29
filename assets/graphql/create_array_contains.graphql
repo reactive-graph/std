@@ -2,29 +2,35 @@ mutation {
   instances {
     entities {
       create(
-        type: "array_contains",
-        id: "66e9d33b-02d5-4d3c-bdf5-70bdbfcfb2ad",
+        type: {
+          namespace: "json"
+          name: "array_contains"
+        }
+        id: "66e9d33b-02d5-4d3c-bdf5-70bdbfcfb2ad"
         properties: [
           {
-            name: "array",
+            name: "array"
             value: [ 10, 20, 30 ]
-          },
+          }
           {
-            name: "search",
+            name: "search"
             value: 20
-          },
+          }
           {
-            name: "result",
+            name: "result"
             value: true
           }
         ]
       ) {
-        id,
-        type {name},
+        id
+        type {
+          namespace
+          name
+        }
         properties(
           names: [
-            "array",
-            "search",
+            "array"
+            "search"
             "result"
           ]
         ) {
