@@ -15,6 +15,7 @@ log4rs = { workspace = true, features = ["console_appender", "file_appender", "t
 paste = { workspace = true }
 query_interface = { workspace = true }
 rust-embed = { workspace = true, features = ["debug-embed", "compression"] }
+semver = { workspace = true }
 serde = { workspace = true, features = [ "derive" ] }
 serde_json = { workspace = true }
 strum = { workspace = true, features = ["derive"] }
