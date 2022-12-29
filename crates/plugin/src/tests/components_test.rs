@@ -1,3 +1,4 @@
+use license::License;
 use semver::Version;
 use serde_json::json;
 
@@ -10,6 +11,7 @@ use crate::model_base::LicensedProperties::ATTRIBUTION;
 use crate::model_base::LicensedProperties::LICENSE;
 use crate::model_base::Named;
 use crate::model_base::NamedProperties::NAME;
+use crate::model_base::SPDXLicensed;
 use crate::model_base::SemVer;
 use crate::model_base::Versioned;
 use crate::model_base::VersionedProperties::VERSION;
@@ -54,6 +56,7 @@ fn component_describable_test() {
 
 entity_model!(ExampleLicensed);
 impl Licensed for ExampleLicensed {}
+impl SPDXLicensed for ExampleLicensed {}
 
 #[test]
 fn component_licensed_test() {
@@ -64,11 +67,20 @@ fn component_licensed_test() {
         .build();
     let entity = ExampleLicensed::from(reactive_instance);
     assert_eq!("MIT", entity.get_license().unwrap());
+    assert!(entity.is_osi_approved());
+    assert!(!entity.is_deprecated());
     assert_eq!("(c) The Inexor Collective", entity.get_attribution().unwrap());
-    entity.set_license("GPL3");
-    assert_eq!("GPL3", entity.get_license().unwrap());
+    entity.set_license("GPL-3.0-or-later");
+    assert_eq!("GPL-3.0-or-later", entity.get_license().unwrap());
+    let license = entity.to_license().unwrap();
+    assert_eq!("GPL-3.0-or-later".parse::<&dyn License>().unwrap().id(), license.id());
     entity.set_attribution("(c) 2011-2022 by The Inexor Collective");
     assert_eq!("(c) 2011-2022 by The Inexor Collective", entity.get_attribution().unwrap());
+    entity.set_license_checked("GPL-3.0-only");
+    assert_eq!("GPL-3.0-only", entity.get_license().unwrap());
+    // Invalid license -> no change
+    entity.set_license_checked("GPL-3.0-blah");
+    assert_eq!("GPL-3.0-only", entity.get_license().unwrap());
 }
 
 entity_model!(ExampleVersioned);
