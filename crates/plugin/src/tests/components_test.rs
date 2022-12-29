@@ -31,7 +31,7 @@ fn component_named_test() {
         .build();
     let entity = ExampleNamed::from(reactive_instance);
     assert_eq!("name", entity.get_name().unwrap());
-    entity.set_name(String::from("modified_name"));
+    entity.set_name("modified_name");
     assert_eq!("modified_name", entity.get_name().unwrap());
 }
 
@@ -46,7 +46,7 @@ fn component_describable_test() {
         .build();
     let entity = ExampleDescribable::from(reactive_instance);
     assert_eq!("description", entity.get_description().unwrap());
-    entity.set_description(String::from("modified_description"));
+    entity.set_description("modified_description");
     assert_eq!("modified_description", entity.get_description().unwrap());
 }
 
@@ -61,7 +61,7 @@ fn component_versioned_test() {
         .build();
     let entity = ExampleVersioned::from(reactive_instance);
     assert_eq!("0.8.0", entity.get_version().unwrap());
-    entity.set_version(String::from("0.9.0"));
+    entity.set_version("0.9.0");
     assert_eq!("0.9.0", entity.get_version().unwrap());
 }
 
@@ -78,8 +78,8 @@ fn component_licensed_test() {
     let entity = ExampleLicensed::from(reactive_instance);
     assert_eq!("MIT", entity.get_license().unwrap());
     assert_eq!("(c) The Inexor Collective", entity.get_attribution().unwrap());
-    entity.set_license(String::from("GPL3"));
+    entity.set_license("GPL3");
     assert_eq!("GPL3", entity.get_license().unwrap());
-    entity.set_attribution(String::from("(c) 2011-2022 by The Inexor Collective"));
+    entity.set_attribution("(c) 2011-2022 by The Inexor Collective");
     assert_eq!("(c) 2011-2022 by The Inexor Collective", entity.get_attribution().unwrap());
 }
