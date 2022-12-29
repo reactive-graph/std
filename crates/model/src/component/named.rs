@@ -1,5 +1,5 @@
-use crate::model::component_ty;
 use crate::model::component_model;
+use crate::model::component_ty;
 use crate::model::properties;
 use crate::NAMESPACE_BASE;
 
