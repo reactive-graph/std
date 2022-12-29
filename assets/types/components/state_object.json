@@ -6,7 +6,8 @@
     {
       "name": "state",
       "data_type": "object",
-      "socket_type": "none"
+      "socket_type": "none",
+      "mutability": "immutable"
     },
     {
       "name": "set_state",

@@ -8,9 +8,9 @@ use uuid::Uuid;
 use crate::behaviour::component::StateFactory;
 use crate::behaviour::component::STATE_BEHAVIOURS;
 use crate::builder::ReactiveEntityInstanceBuilder;
+use crate::model::EntityTypeId;
 use crate::model::NamespacedType;
 use crate::model::PropertyInstanceSetter;
-use crate::model_value::State;
 use crate::model_value::StateProperties;
 use crate::model_value::ValueProperties;
 use crate::reactive::BehaviourFactory;
@@ -18,9 +18,8 @@ use crate::reactive::BehaviourFactory;
 #[test]
 fn state_behaviour_test() {
     for behaviour_ty in STATE_BEHAVIOURS.iter() {
-        let namespaced_ty: NamespacedType = behaviour_ty.into();
-        let entity_ty = namespaced_ty.into();
-        let entity_instance = ReactiveEntityInstanceBuilder::new(&entity_ty)
+        let namespaced_ty = NamespacedType::from(behaviour_ty);
+        let entity_instance = ReactiveEntityInstanceBuilder::new(EntityTypeId::from(namespaced_ty))
             .property(StateProperties::STATE, json!(0))
             .property(StateProperties::SET_STATE, json!(0))
             .property(ValueProperties::VALUE, json!(0))
@@ -56,7 +55,6 @@ fn state_behaviour_test() {
             let factory = StateFactory::new(behaviour_ty.clone());
             let behaviour = factory.create(entity_instance.clone());
             assert!(behaviour.is_ok());
-            let state = State::from(entity_instance.clone());
 
             // Set state without changing its initial value
             entity_instance.set(StateProperties::SET_STATE, json!(0));

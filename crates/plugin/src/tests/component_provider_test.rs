@@ -23,8 +23,6 @@ fn components_should_exist() {
     let component_provider = ValueComponentProviderImpl {};
     let components = component_provider.get_components();
     assert_eq!(expected_components.len(), components.len());
-    println!("{}", expected_components.join(", "));
-    println!("{}", components.clone().into_iter().map(|component| component.type_name()).collect::<String>());
     assert_eq!(
         expected_components.len(),
         components
