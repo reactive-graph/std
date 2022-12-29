@@ -24,10 +24,10 @@ uuid = { workspace = true, features = ["serde", "v4"] }
 inexor-rgf-core-di = { workspace = true, features = ["async"] }
 inexor-rgf-core-model = { workspace = true }
 inexor-rgf-core-plugins = { workspace = true }
-inexor-rgf-model-base = { path = "../../crates/model" }
 
 [dev-dependencies]
 inexor-rgf-core-builder = { workspace = true }
+inexor-rgf-model-base = { path = "../../crates/model" }
 
 [lib]
 # Plugins use crate-type cdylib
