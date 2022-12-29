@@ -1,6 +1,6 @@
 {
-  "name": "save_json",
-  "group": "json",
+  "namespace": "json",
+  "type_name": "save_json",
   "description": "Saves an object as JSON file",
   "properties": [
     {

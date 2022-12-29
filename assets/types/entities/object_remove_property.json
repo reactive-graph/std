@@ -1,11 +1,12 @@
 {
-  "name": "object_remove_property",
-  "group": "json",
+  "namespace": "json",
+  "type_name": "object_remove_property",
   "description": "Object Remove Property",
   "components": [
-    "named",
-    "flow_2d",
-    "flow_3d"
+    {
+      "namespace": "base",
+      "name": "named"
+    }
   ],
   "properties": [
     {

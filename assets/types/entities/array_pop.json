@@ -1,11 +1,12 @@
 {
-  "name": "array_pop",
-  "group": "json",
+  "namespace": "json",
+  "type_name": "array_pop",
   "description": "Array Pop",
   "components": [
-    "named",
-    "flow_2d",
-    "flow_3d"
+    {
+      "namespace": "base",
+      "name": "named"
+    }
   ],
   "properties": [
     {

@@ -1,12 +1,28 @@
 {
-  "name": "save_json",
-  "group": "json",
+  "namespace": "json",
+  "type_name": "save_json",
   "description": "Saves an object as JSON file",
   "components": [
-    "named",
-    "action",
-    "file",
-    "save_json"
+    {
+      "namespace": "base",
+      "name": "named"
+    },
+    {
+      "namespace": "logical",
+      "name": "action"
+    },
+    {
+      "namespace": "file",
+      "name": "file"
+    },
+    {
+      "namespace": "base",
+      "name": "named"
+    },
+    {
+      "namespace": "json",
+      "name": "save_json"
+    }
   ],
   "properties": [
   ],

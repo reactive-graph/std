@@ -1,11 +1,12 @@
 {
-  "name": "array_get_by_index",
-  "group": "json",
+  "namespace": "json",
+  "type_name": "array_get_by_index",
   "description": "Array Get By Index",
   "components": [
-    "named",
-    "flow_2d",
-    "flow_3d"
+    {
+      "namespace": "base",
+      "name": "named"
+    }
   ],
   "properties": [
     {

@@ -1,11 +1,12 @@
 {
-  "name": "array_length",
-  "group": "json",
+  "namespace": "json",
+  "type_name": "array_length",
   "description": "Array Length",
   "components": [
-    "named",
-    "flow_2d",
-    "flow_3d"
+    {
+      "namespace": "base",
+      "name": "named"
+    }
   ],
   "properties": [
     {

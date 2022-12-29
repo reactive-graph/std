@@ -1,11 +1,12 @@
 {
-  "name": "object_keys",
-  "group": "json",
+  "namespace": "json",
+  "type_name": "object_keys",
   "description": "Object Keys",
   "components": [
-    "named",
-    "flow_2d",
-    "flow_3d"
+    {
+      "namespace": "base",
+      "name": "named"
+    }
   ],
   "properties": [
     {

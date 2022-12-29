@@ -1,11 +1,12 @@
 {
-  "name": "object_get_property",
-  "group": "json",
+  "namespace": "json",
+  "type_name": "object_get_property",
   "description": "Object Get Property",
   "components": [
-    "named",
-    "flow_2d",
-    "flow_3d"
+    {
+      "namespace": "base",
+      "name": "named"
+    }
   ],
   "properties": [
     {

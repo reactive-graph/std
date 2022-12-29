@@ -1,11 +1,12 @@
 {
-  "name": "array_reverse",
-  "group": "json",
+  "namespace": "json",
+  "type_name": "array_reverse",
   "description": "Array Reverse",
   "components": [
-    "named",
-    "flow_2d",
-    "flow_3d"
+    {
+      "namespace": "base",
+      "name": "named"
+    }
   ],
   "properties": [
     {

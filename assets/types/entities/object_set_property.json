@@ -1,11 +1,12 @@
 {
-  "name": "object_set_property",
-  "group": "json",
+  "namespace": "json",
+  "type_name": "object_set_property",
   "description": "Object Set Property",
   "components": [
-    "named",
-    "flow_2d",
-    "flow_3d"
+    {
+      "namespace": "base",
+      "name": "named"
+    }
   ],
   "properties": [
     {

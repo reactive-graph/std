@@ -1,11 +1,12 @@
 {
-  "name": "array_contains",
-  "group": "json",
+  "namespace": "json",
+  "type_name": "array_contains",
   "description": "Array Contains",
   "components": [
-    "named",
-    "flow_2d",
-    "flow_3d"
+    {
+      "namespace": "base",
+      "name": "named"
+    }
   ],
   "properties": [
     {
