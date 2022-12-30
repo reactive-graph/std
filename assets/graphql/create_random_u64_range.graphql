@@ -4,13 +4,21 @@ mutation {
       create(
         type: {
           namespace: "random"
-          name: "pseudo_random_number"
+          name: "random_u64_range"
         }
-        id: "d497bc6d-e7cf-4719-9e6b-57b9f033fa36"
+        id: "1488d3cc-e542-4568-9891-0f31e56d9be3"
         properties: [
           {
-            name: "seed"
-            value: 85494
+            name: "low"
+            value: 10
+          }
+          {
+            name: "high"
+            value: 20
+          }
+          {
+            name: "trigger"
+            value: true
           }
         ]
       ) {
@@ -21,7 +29,6 @@ mutation {
         }
         properties(
           names: [
-            "seed"
             "result"
           ]
         ) {

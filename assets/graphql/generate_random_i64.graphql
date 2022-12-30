@@ -2,7 +2,7 @@ mutation {
   instances {
     entities {
       update(
-        id: "24f1e42f-1072-4c39-a239-774af89286c6"
+        id: "e32f39f2-b670-4509-a1f6-644e4ee69392"
         properties: [
           {
             name: "trigger"
@@ -17,6 +17,8 @@ mutation {
         }
         properties(
           names: [
+            "low"
+            "high"
             "result"
           ]
         ) {
