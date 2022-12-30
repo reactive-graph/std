@@ -8,6 +8,7 @@ use crate::model::EntityTypeId;
 use crate::model_string::StringOperation;
 use crate::model_string::StringOperationProperties::LHS;
 use crate::model_string::StringOperationProperties::RESULT;
+use crate::model_string::COMPONENT_STRING_OPERATION;
 use crate::model_string::NAMESPACE_STRING;
 use crate::reactive::BehaviourFactory;
 use crate::reactive::BehaviourState;
@@ -20,6 +21,7 @@ fn rx_camel_case_test() {
     let reactive_instance = ReactiveEntityInstanceBuilder::new(entity_ty)
         .property(LHS, json!(""))
         .property(RESULT, json!(""))
+        .component(COMPONENT_STRING_OPERATION.clone())
         .build();
     let camel_case = StringOperation::from(reactive_instance.clone());
 
