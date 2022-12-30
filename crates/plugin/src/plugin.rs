@@ -1,8 +1,6 @@
 use std::sync::Arc;
 use std::sync::RwLock;
 
-use async_trait::async_trait;
-
 use crate::behaviour::entity::string_bool_operation::StringBoolOperationFactory;
 use crate::behaviour::entity::string_bool_operation::STRING_BOOL_OPERATIONS;
 use crate::behaviour::entity::string_comparison::function::STRING_COMPARISONS;
@@ -41,7 +39,6 @@ fn create_empty_plugin_context_container() -> PluginContextContainer {
     PluginContextContainer(RwLock::new(None))
 }
 
-#[async_trait]
 pub trait StringPlugin: Plugin + Send + Sync {}
 
 #[module]
@@ -56,7 +53,6 @@ impl StringPluginImpl {}
 
 interfaces!(StringPluginImpl: dyn Plugin);
 
-#[async_trait]
 #[provides]
 impl StringPlugin for StringPluginImpl {}
 
