@@ -16,10 +16,6 @@
       "name": "file"
     },
     {
-      "namespace": "base",
-      "name": "named"
-    },
-    {
       "namespace": "json",
       "name": "save_json"
     }
