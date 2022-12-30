@@ -1,0 +1,22 @@
+[package]
+name = "inexor-rgf-model-metadata"
+description = "Inexor - Reactive Graph Flow - Model - Metadata"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+indradb-lib = { workspace = true }
+lazy_static = { workspace = true }
+paste = { workspace = true }
+serde = { workspace = true, features = [ "derive" ] }
+serde_json = { workspace = true }
+strum = { workspace = true, features = ["derive"] }
+strum_macros = { workspace = true }
+
+inexor-rgf-core-model = { workspace = true }
+inexor-rgf-core-reactive = { workspace = true }
+
+[lib]
+crate-type = ["lib"]

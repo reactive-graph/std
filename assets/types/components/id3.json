@@ -1,0 +1,22 @@
+{
+  "namespace": "metadata",
+  "type_name": "id3",
+  "properties": [
+    {
+      "name": "id3_talb",
+      "data_type": "string",
+      "extensions": [
+        {
+          "name": "metadata_description",
+          "extension": "Name of the album"
+        }
+      ]
+    }
+  ],
+  "extensions": [
+    {
+      "name": "component_category",
+      "extension": "metadata"
+    }
+  ]
+}

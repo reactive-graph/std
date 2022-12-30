@@ -1,3 +1,5 @@
+#![feature(register_tool)]
+#![register_tool(tarpaulin)]
 #![allow(clippy::map_entry)]
 
 #[macro_use]
@@ -57,3 +59,16 @@ extern "C" fn register(registrar: &mut dyn plugins::PluginRegistrar) {
 extern "C" fn get_dependencies() -> Vec<PluginDependency> {
     vec![PluginDependency::new("inexor-rgf-plugin-taxonomy", ">=0.8.0, <0.9.0")]
 }
+
+#[cfg(test)]
+use inexor_rgf_core_builder as builder;
+
+#[cfg(test)]
+use inexor_rgf_core_model as model;
+
+#[cfg(test)]
+use inexor_rgf_model_metadata as model_metadata;
+
+#[cfg(test)]
+#[tarpaulin::ignore]
+pub mod tests;
