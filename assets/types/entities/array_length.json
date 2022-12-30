@@ -16,8 +16,9 @@
     },
     {
       "name": "length",
-      "data_type": "array",
-      "socket_type": "output"
+      "data_type": "number",
+      "socket_type": "output",
+      "mutability": "immutable"
     }
   ],
   "extensions": [

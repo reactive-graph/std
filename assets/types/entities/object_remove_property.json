@@ -22,7 +22,8 @@
     {
       "name": "result",
       "data_type": "object",
-      "socket_type": "output"
+      "socket_type": "output",
+      "mutability": "immutable"
     }
   ],
   "extensions": [

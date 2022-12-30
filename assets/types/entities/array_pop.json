@@ -17,12 +17,14 @@
     {
       "name": "result",
       "data_type": "array",
-      "socket_type": "output"
+      "socket_type": "output",
+      "mutability": "immutable"
     },
     {
       "name": "value",
       "data_type": "any",
-      "socket_type": "output"
+      "socket_type": "output",
+      "mutability": "immutable"
     }
   ],
   "extensions": [
