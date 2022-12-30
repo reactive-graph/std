@@ -34,7 +34,7 @@ Generate random numbers
 
 [<img src="https://img.shields.io/badge/Language-Rust-brightgreen">](https://www.rust-lang.org/)
 [<img src="https://img.shields.io/badge/Platforms-Linux%20%26%20Windows-brightgreen">]()
-[<img src="https://img.shields.io/github/workflow/status/inexorgame/inexor-rgf-plugin-random/Rust">](https://github.com/inexorgame/inexor-rgf-plugin-random/actions?query=workflow%3ARust)
+[<img src="https://img.shields.io/github/actions/workflow/status/inexorgame/inexor-rgf-plugin-random/rust.yml">](https://github.com/inexorgame/inexor-rgf-plugin-random/actions?query=workflow%3ARust)
 [<img src="https://img.shields.io/github/last-commit/inexorgame/inexor-rgf-plugin-random">]()
 [<img src="https://img.shields.io/github/languages/code-size/inexorgame/inexor-rgf-plugin-random">]()
 [<img src="https://img.shields.io/codecov/c/github/inexorgame/inexor-rgf-plugin-random">](https://app.codecov.io/gh/inexorgame/inexor-rgf-plugin-random)
