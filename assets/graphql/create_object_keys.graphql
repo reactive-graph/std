@@ -15,13 +15,6 @@ mutation {
               good: "Morning"
             }
           }
-          {
-            name: "keys"
-            value: [
-              "hello"
-              "good"
-            ]
-          }
         ]
       ) {
         id,
@@ -32,6 +25,7 @@ mutation {
         properties(
           names: [
             "object"
+            # Expected array ["hello", "good"]
             "keys"
           ]
         ) {

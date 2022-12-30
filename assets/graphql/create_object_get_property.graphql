@@ -11,10 +11,14 @@ mutation {
           {
             name: "object"
             value: {
-              hello: "World",
-              good: "Morning",
+              hello: "World"
+              good: "Morning"
               greet: "Servus"
             }
+          }
+          {
+            name: "property_name"
+            value: "hello"
           }
         ]
       ) {
@@ -27,6 +31,7 @@ mutation {
           names: [
             "object"
             "property_name"
+            # Expected "World"
             "result"
           ]
         ) {

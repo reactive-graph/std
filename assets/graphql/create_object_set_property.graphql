@@ -11,9 +11,17 @@ mutation {
           {
             name: "object"
             value: {
-              hello: "World",
-              good: "Morning",
+              hello: "World"
+              greet: "Good Morning"
             }
+          }
+          {
+            name: "property_name"
+            value: "greeting"
+          }
+          {
+            name: "value"
+            value: "Servus"
           }
         ]
       ) {
@@ -27,6 +35,7 @@ mutation {
             "object"
             "property_name"
             "value"
+            # Expected object { "hello": "World", "greet": "Good Morning", "greeting": "Servus" }
             "result"
           ]
         ) {

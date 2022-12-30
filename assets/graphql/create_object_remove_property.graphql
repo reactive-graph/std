@@ -16,6 +16,10 @@ mutation {
               greet: "Servus"
             }
           }
+          {
+            name: "property_name"
+            value: "good"
+          }
         ]
       ) {
         id
@@ -27,6 +31,7 @@ mutation {
           names: [
             "object"
             "property_name"
+            # Expected object { "hello": "World", "greet": "Servus" }
             "result"
           ]
         ) {
