@@ -2,21 +2,25 @@ mutation {
   instances {
     entities {
       create(
-        type: "random_integer_within_range",
-        id: "1488d3cc-e542-4568-9891-0f31e56d9be3",
+        type: {
+          namespace: "random"
+          name: "random_integer_within_range"
+        }
+        id: "1488d3cc-e542-4568-9891-0f31e56d9be3"
         properties: [
           {
-            name: "low",
+            name: "low"
             value: 10
-          },
+          }
           {
-            name: "high",
+            name: "high"
             value: 20
           }
         ]
       ) {
         id
         type {
+          namespace
           name
         }
         properties(

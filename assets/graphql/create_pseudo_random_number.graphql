@@ -2,22 +2,26 @@ mutation {
   instances {
     entities {
       create(
-        type: "pseudo_random_number",
-        id: "d497bc6d-e7cf-4719-9e6b-57b9f033fa36",
+        type: {
+          namespace: "random"
+          name: "pseudo_random_number"
+        }
+        id: "d497bc6d-e7cf-4719-9e6b-57b9f033fa36"
         properties: [
           {
-            name: "seed",
+            name: "seed"
             value: 85494
           }
         ]
       ) {
         id
         type {
+          namespace
           name
         }
         properties(
           names: [
-            "seed",
+            "seed"
             "result"
           ]
         ) {

@@ -2,13 +2,17 @@ mutation {
   instances {
     entities {
       create(
-        type: "random_bool",
-        id: "8833e784-423d-4e35-92a1-23226bca6729",
+        type: {
+          namespace: "random"
+          name: "random_bool"
+        }
+        id: "8833e784-423d-4e35-92a1-23226bca6729"
         properties: [
         ]
       ) {
         id
         type {
+          namespace
           name
         }
         properties(

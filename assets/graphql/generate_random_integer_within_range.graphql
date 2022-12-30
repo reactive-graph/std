@@ -2,22 +2,23 @@ mutation {
   instances {
     entities {
       update(
-        id: "1488d3cc-e542-4568-9891-0f31e56d9be3",
+        id: "1488d3cc-e542-4568-9891-0f31e56d9be3"
         properties: [
           {
-            name: "trigger",
+            name: "trigger"
             value: true
           }
         ]
       ) {
         id
         type {
+          namespace
           name
         }
         properties(
           names: [
-            "low",
-            "high",
+            "low"
+            "high"
             "result"
           ]
         ) {
