@@ -11,11 +11,11 @@ mutation {
           {
             name: "lhs"
             value: 0
-          },
+          }
           {
             name: "rhs"
             value: 1
-          },
+          }
           # This would have no effect because the initial value of the property result will be overwritten immediately
           # {
           #   name: "result",
@@ -31,6 +31,7 @@ mutation {
           names: [
             "lhs"
             "rhs"
+            # Expected: false
             "result"
           ]
         ) {
