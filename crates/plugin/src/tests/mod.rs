@@ -6,3 +6,4 @@ mod rx_contains_test;
 mod rx_count_words_test;
 mod rx_is_lowercase_test;
 mod rx_pascal_case_test;
+mod rx_templating_test;
