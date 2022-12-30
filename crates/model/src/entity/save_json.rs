@@ -1,7 +1,5 @@
 use crate::model::entity_model;
 use crate::model::entity_ty;
-use crate::model::PropertyInstanceGetter;
-use crate::model::PropertyInstanceSetter;
 use crate::ComponentSaveJson;
 use crate::NAMESPACE_JSON;
 

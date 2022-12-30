@@ -3,8 +3,6 @@ use crate::model::entity_behaviour_ty;
 use crate::model::entity_model;
 use crate::model::entity_ty;
 use crate::model::properties;
-use crate::model::PropertyInstanceGetter;
-use crate::model::PropertyInstanceSetter;
 use crate::NAMESPACE_JSON;
 use serde_json::json;
 use serde_json::Value;
