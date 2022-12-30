@@ -8,7 +8,7 @@ use crate::NAMESPACE_RANDOM;
 properties!(
     RandomI64RangeProperties,
     (TRIGGER, "trigger", false),
-    (LOW, "low", 0),
+    (LOW, "low", -100),
     (HIGH, "high", 100),
     (RESULT, "result", 0)
 );
