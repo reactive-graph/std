@@ -10,7 +10,7 @@ pub const FN_CHAR_COUNT: StringNumberFunction = |lhs: String| count::count(lhs.a
 pub const FN_CHAR_COUNT_GRAPHEMES: StringNumberFunction = |lhs: String| count::count_graphemes(lhs.as_str());
 
 behaviour_functions!(
-    STRING_NUMBER_OPERATION,
+    STRING_NUMBER_OPERATIONS,
     StringNumberFunction,
     NAMESPACE_STRING,
     ("string_length", FN_STRING_LENGTH),

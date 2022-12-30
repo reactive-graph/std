@@ -10,7 +10,7 @@ use crate::behaviour::entity::string_comparison::StringComparisonFactory;
 use crate::behaviour::entity::string_gate::StringGateFactory;
 use crate::behaviour::entity::string_gate::STRING_GATES;
 use crate::behaviour::entity::string_number_operation::StringNumberOperationFactory;
-use crate::behaviour::entity::string_number_operation::STRING_NUMBER_OPERATION;
+use crate::behaviour::entity::string_number_operation::STRING_NUMBER_OPERATIONS;
 use crate::behaviour::entity::string_operation::StringOperationFactory;
 use crate::behaviour::entity::string_operation::STRING_OPERATIONS;
 use crate::behaviour::entity::templating::TemplatingFactory;
@@ -83,7 +83,7 @@ impl Plugin for StringPluginImpl {
             }
             // String Number Operations
             // fn(String) -> Number
-            for (behaviour_ty, f) in STRING_NUMBER_OPERATION.iter() {
+            for (behaviour_ty, f) in STRING_NUMBER_OPERATIONS.iter() {
                 entity_behaviour_registry.register(
                     EntityBehaviourTypeId::from(behaviour_ty),
                     Arc::new(StringNumberOperationFactory::new(behaviour_ty.clone(), *f)),
@@ -120,7 +120,7 @@ impl Plugin for StringPluginImpl {
             for behaviour_ty in STRING_GATES.keys() {
                 entity_behaviour_registry.unregister(&EntityBehaviourTypeId::from(behaviour_ty));
             }
-            for behaviour_ty in STRING_NUMBER_OPERATION.keys() {
+            for behaviour_ty in STRING_NUMBER_OPERATIONS.keys() {
                 entity_behaviour_registry.unregister(&EntityBehaviourTypeId::from(behaviour_ty));
             }
             for behaviour_ty in STRING_OPERATIONS.keys() {

@@ -2,7 +2,7 @@ use serde_json::json;
 use serde_json::Value;
 
 pub use function::StringNumberFunction;
-pub use function::STRING_NUMBER_OPERATION;
+pub use function::STRING_NUMBER_OPERATIONS;
 
 use crate::model::PropertyInstanceSetter;
 use crate::model::ReactiveEntityInstance;
