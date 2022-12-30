@@ -22,7 +22,7 @@ fn rx_load_json_test() {
 
     let reactive_instance = ReactiveEntityInstanceBuilder::new(ENTITY_TYPE_LOAD_JSON.clone())
         .property(RESULT, json!({}))
-        .property(TRIGGER, json!(false))
+        .property_with_default(&TRIGGER)
         .property(FILENAME, json!(path.to_str().unwrap()))
         .build();
 

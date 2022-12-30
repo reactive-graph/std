@@ -17,8 +17,8 @@ fn rx_array_reverse_test() {
     let reversed_array = json!(vec![3, 2, 1]);
 
     let reactive_instance = ReactiveEntityInstanceBuilder::new(ENTITY_TYPE_ARRAY_REVERSE.clone())
-        .property(RESULT, empty_array.clone())
-        .property(ARRAY, empty_array.clone())
+        .property_with_default(&RESULT)
+        .property_with_default(&ARRAY)
         .build();
     let array_reverse = ArrayReverse::from(reactive_instance.clone());
 
