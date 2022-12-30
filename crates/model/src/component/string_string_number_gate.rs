@@ -3,7 +3,7 @@ use crate::model::entity_model;
 use crate::model::properties;
 use crate::NAMESPACE_STRING;
 
-properties!(StringStringNumberGateProperties, (LHS, "lhs", ""), (RHS, "rhs", ""), (RESULT, "result", 0.0));
+properties!(StringStringNumberGateProperties, (LHS, "lhs", ""), (RHS, "rhs", ""), (RESULT, "result", 0));
 
 component_ty!(
     COMPONENT_STRING_STRING_NUMBER_GATE,
@@ -14,7 +14,7 @@ component_ty!(
 
 entity_model!(
     StringStringNumberGate,
-    get result f64,
+    get result u64,
     set lhs string,
     set rhs string
 );
