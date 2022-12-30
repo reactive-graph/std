@@ -724,6 +724,8 @@ type PropertyType {
   description: String!
   "The extensions which are defined by the entity type."
   extensions(name: String): [Extension!]!
+  "The property instance is mutable or immutable."
+  mutability: Mutability!
   "The name of the component."
   name: String!
   "The socket type of the property instances."
@@ -982,6 +984,14 @@ enum DataType {
   STRING
 }
 
+"The mutability of a property."
+enum Mutability {
+  "The property is immutable."
+  IMMUTABLE
+  "The property is mutable."
+  MUTABLE
+}
+
 """
 
 The socket type defines if the property acts as an input or output socket
@@ -1147,6 +1157,8 @@ input PropertyTypeDefinition {
   description: String!
   "Property specific extensions"
   extensions: [ExtensionDefinition!]!
+  "The property is mutable or immutable"
+  mutability: Mutability!
   "The name of the property"
   name: String!
   "Specifies which type of socket"
