@@ -1,11 +1,12 @@
 {
   "namespace": "random",
-  "name": "pseudo_random_number",
+  "type_name": "pseudo_random_number",
   "description": "Pseudo Random Number",
   "components": [
-    "action",
-    "flow_2d",
-    "flow_3d"
+    {
+      "namespace": "logical",
+      "type_name": "action"
+    }
   ],
   "properties": [
     {
@@ -16,7 +17,8 @@
     {
       "name": "result",
       "data_type": "number",
-      "socket_type": "output"
+      "socket_type": "output",
+      "mutability": "immutable"
     }
   ],
   "extensions": [

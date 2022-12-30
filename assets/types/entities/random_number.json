@@ -1,17 +1,19 @@
 {
   "namespace": "random",
-  "name": "random_number",
+  "type_name": "random_number",
   "description": "Random Number",
   "components": [
-    "action",
-    "flow_2d",
-    "flow_3d"
+    {
+      "namespace": "logical",
+      "type_name": "action"
+    }
   ],
   "properties": [
     {
       "name": "result",
       "data_type": "number",
-      "socket_type": "output",
+      "socket_type": "output",,
+      "mutability": "immutable",
       "extensions": [
         {
           "name": "widgetType",

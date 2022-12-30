@@ -1,17 +1,19 @@
 {
   "namespace": "random",
-  "name": "random_integer_within_range",
+  "type_name": "random_integer_within_range",
   "description": "Random Integer Within Range",
   "components": [
-    "action",
-    "flow_2d",
-    "flow_3d"
+    {
+      "namespace": "logical",
+      "type_name": "action"
+    }
   ],
   "properties": [
     {
       "name": "low",
       "data_type": "number",
-      "socket_type": "input"
+      "socket_type": "input",
+      "mutability": "immutable"
     },
     {
       "name": "high",

@@ -1,11 +1,12 @@
 {
   "namespace": "random",
-  "name": "random_string",
+  "type_name": "random_string",
   "description": "Random String",
   "components": [
-    "action",
-    "flow_2d",
-    "flow_3d"
+    {
+      "namespace": "logical",
+      "type_name": "action"
+    }
   ],
   "properties": [
     {
@@ -16,7 +17,8 @@
     {
       "name": "result",
       "data_type": "string",
-      "socket_type": "output"
+      "socket_type": "output",
+      "mutability": "immutable"
     }
   ],
   "extensions": [

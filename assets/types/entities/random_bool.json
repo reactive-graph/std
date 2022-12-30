@@ -1,17 +1,19 @@
 {
   "namespace": "random",
-  "name": "random_bool",
+  "type_name": "random_bool",
   "description": "Random Bool",
   "components": [
-    "action",
-    "flow_2d",
-    "flow_3d"
+    {
+      "namespace": "logical",
+      "type_name": "action"
+    }
   ],
   "properties": [
     {
       "name": "result",
       "data_type": "bool",
-      "socket_type": "output"
+      "socket_type": "output",
+      "mutability": "immutable"
     }
   ],
   "extensions": [
