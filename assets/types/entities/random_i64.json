@@ -1,0 +1,29 @@
+{
+  "namespace": "random",
+  "type_name": "random_i64",
+  "description": "Random Signed Integer Number",
+  "components": [
+    {
+      "namespace": "logical",
+      "type_name": "action"
+    }
+  ],
+  "properties": [
+    {
+      "name": "result",
+      "data_type": "number",
+      "socket_type": "output",
+      "mutability": "immutable"
+    }
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension":{
+        "title": "Random Signed Integer Number",
+        "subject": "Random Signed Integer Number",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

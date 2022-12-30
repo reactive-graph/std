@@ -1,0 +1,29 @@
+{
+  "namespace": "random",
+  "type_name": "random_u64",
+  "description": "Random Unsigned Integer Number",
+  "components": [
+    {
+      "namespace": "logical",
+      "type_name": "action"
+    }
+  ],
+  "properties": [
+    {
+      "name": "result",
+      "data_type": "number",
+      "socket_type": "output",
+      "mutability": "immutable"
+    }
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension":{
+        "title": "Random Unsigned Integer Number",
+        "subject": "Random Unsigned Integer Number",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

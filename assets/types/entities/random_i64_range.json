@@ -1,0 +1,39 @@
+{
+  "namespace": "random",
+  "type_name": "random_i64_range",
+  "description": "Random Signed Integer Within Range",
+  "components": [
+    {
+      "namespace": "logical",
+      "type_name": "action"
+    }
+  ],
+  "properties": [
+    {
+      "name": "low",
+      "data_type": "number",
+      "socket_type": "input"
+    },
+    {
+      "name": "high",
+      "data_type": "number",
+      "socket_type": "input"
+    },
+    {
+      "name": "result",
+      "data_type": "number",
+      "socket_type": "output",
+      "mutability": "immutable"
+    }
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension":{
+        "title": "Random Signed Integer Within Range",
+        "subject": "Random Signed Integer Within Range",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}
