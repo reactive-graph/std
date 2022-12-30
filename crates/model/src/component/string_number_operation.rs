@@ -3,7 +3,7 @@ use crate::model::entity_model;
 use crate::model::properties;
 use crate::NAMESPACE_STRING;
 
-properties!(StringNumberOperationProperties, (LHS, "lhs", ""), (RESULT, "result", 0.0));
+properties!(StringNumberOperationProperties, (LHS, "lhs", ""), (RESULT, "result", 0));
 
 component_ty!(
     COMPONENT_STRING_NUMBER_OPERATION,
@@ -14,6 +14,6 @@ component_ty!(
 
 entity_model!(
     StringNumberOperation,
-    get result f64,
+    get result u64,
     set lhs string
 );
