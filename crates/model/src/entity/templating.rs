@@ -5,8 +5,6 @@ use crate::model::entity_behaviour_ty;
 use crate::model::entity_model;
 use crate::model::entity_ty;
 use crate::model::properties;
-use crate::model::PropertyInstanceGetter;
-use crate::model::PropertyInstanceSetter;
 use crate::NAMESPACE_STRING;
 
 properties!(TemplatingProperties, (TEMPLATE, "template", ""), (CONTEXT, "context", json!({})), (RESULT, "result", ""));
