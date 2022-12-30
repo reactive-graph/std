@@ -1,5 +1,3 @@
-use serde_json::json;
-
 use crate::behaviour::entity::string_operation::StringOperationFactory;
 use crate::behaviour::entity::string_operation::STRING_OPERATIONS;
 use crate::builder::ReactiveEntityInstanceBuilder;
@@ -19,8 +17,8 @@ fn rx_camel_case_test() {
     let entity_ty = EntityTypeId::new_from_type(NAMESPACE_STRING, "camel_case");
 
     let reactive_instance = ReactiveEntityInstanceBuilder::new(entity_ty)
-        .property(LHS, json!(""))
-        .property(RESULT, json!(""))
+        .property_with_default(&LHS)
+        .property_with_default(&RESULT)
         .component(COMPONENT_STRING_OPERATION.clone())
         .build();
     let camel_case = StringOperation::from(reactive_instance.clone());

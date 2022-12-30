@@ -1,5 +1,3 @@
-use serde_json::json;
-
 use crate::behaviour::entity::string_gate::StringGateFactory;
 use crate::behaviour::entity::string_gate::STRING_GATES;
 use crate::builder::ReactiveEntityInstanceBuilder;
@@ -20,9 +18,9 @@ fn rx_concat_test() {
     let entity_ty = EntityTypeId::new_from_type(NAMESPACE_STRING, "concat");
 
     let reactive_instance = ReactiveEntityInstanceBuilder::new(entity_ty)
-        .property(LHS, json!(""))
-        .property(RHS, json!(""))
-        .property(RESULT, json!(""))
+        .property_with_default(&LHS)
+        .property_with_default(&RHS)
+        .property_with_default(&RESULT)
         .component(COMPONENT_STRING_GATE.clone())
         .build();
     let concat = StringGate::from(reactive_instance.clone());

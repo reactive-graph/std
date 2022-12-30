@@ -1,5 +1,3 @@
-use serde_json::json;
-
 use crate::behaviour::entity::string_bool_operation::StringBoolOperationFactory;
 use crate::behaviour::entity::string_bool_operation::STRING_BOOL_OPERATIONS;
 use crate::builder::ReactiveEntityInstanceBuilder;
@@ -19,8 +17,8 @@ fn rx_is_lowercase_test() {
     let entity_ty = EntityTypeId::new_from_type(NAMESPACE_STRING, "is_lowercase");
 
     let reactive_instance = ReactiveEntityInstanceBuilder::new(entity_ty)
-        .property(LHS, json!(""))
-        .property(RESULT, json!(false))
+        .property_with_default(&LHS)
+        .property_with_default(&RESULT)
         .component(COMPONENT_STRING_BOOL_OPERATION.clone())
         .build();
     let is_lowercase = StringBoolOperation::from(reactive_instance.clone());

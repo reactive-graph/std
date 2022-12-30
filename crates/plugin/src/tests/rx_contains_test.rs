@@ -1,5 +1,3 @@
-use serde_json::json;
-
 use crate::behaviour::entity::string_comparison::StringComparisonFactory;
 use crate::behaviour::entity::string_comparison::STRING_COMPARISONS;
 use crate::builder::ReactiveEntityInstanceBuilder;
@@ -20,9 +18,9 @@ fn rx_contains_test() {
     let entity_ty = EntityTypeId::new_from_type(NAMESPACE_STRING, "contains");
 
     let reactive_instance = ReactiveEntityInstanceBuilder::new(entity_ty)
-        .property(LHS, json!(""))
-        .property(RHS, json!(""))
-        .property(RESULT, json!(false))
+        .property_with_default(&LHS)
+        .property_with_default(&RHS)
+        .property_with_default(&RESULT)
         .component(COMPONENT_STRING_COMPARISON.clone())
         .build();
     let contains = StringComparison::from(reactive_instance.clone());
