@@ -8,7 +8,7 @@ properties!(StringGateProperties, (LHS, "lhs", ""), (RHS, "rhs", ""), (RESULT, "
 component_ty!(COMPONENT_STRING_GATE, NAMESPACE_STRING, COMPONENT_NAME_STRING_GATE, "string_gate");
 
 entity_model!(
-    StringGateOperation,
+    StringGate,
     get result string,
     set lhs string,
     set rhs string
