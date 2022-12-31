@@ -20,7 +20,8 @@
     {
       "name": "value",
       "data_type": "string",
-      "socket_type": "output"
+      "socket_type": "output",
+      "mutability": "immutable"
     }
   ],
   "extensions": [
