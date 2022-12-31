@@ -1,6 +1,6 @@
 {
-  "name": "save_binary_data",
-  "group": "os",
+  "namespace": "binary",
+  "type_name": "save_binary_data",
   "description": "Saves binary data",
   "properties": [
     {

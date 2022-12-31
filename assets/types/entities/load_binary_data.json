@@ -1,13 +1,28 @@
 {
-  "name": "load_binary_data",
-  "group": "os",
+  "namespace": "binary",
+  "type_name": "load_binary_data",
   "description": "Loads binary data",
   "components": [
-    "named",
-    "action",
-    "file",
-    "binary_data",
-    "load_binary_data"
+    {
+      "namespace": "base",
+      "type_name": "named"
+    },
+    {
+      "namespace": "logical",
+      "type_name": "action"
+    },
+    {
+      "namespace": "file",
+      "type_name": "file"
+    },
+    {
+      "namespace": "binary",
+      "type_name": "binary_data"
+    },
+    {
+      "namespace": "binary",
+      "type_name": "load_binary_data"
+    }
   ],
   "properties": [
     {

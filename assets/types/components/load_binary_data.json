@@ -1,6 +1,6 @@
 {
-  "name": "load_binary_data",
-  "group": "os",
+  "namespace": "binary",
+  "type_name": "load_binary_data",
   "description": "Loads binary data",
   "properties": [
     {
