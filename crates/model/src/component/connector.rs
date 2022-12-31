@@ -11,4 +11,8 @@ properties!(
 
 component_ty!(COMPONENT_CONNECTOR, NAMESPACE_CONNECTOR, COMPONENT_NAME_CONNECTOR, "connector");
 
-relation_model!(Connector, get outbound_property_name string, get inbound_property_name string);
+relation_model!(
+    Connector,
+    get outbound_property_name string,
+    get inbound_property_name string
+);
