@@ -6,12 +6,18 @@ query {
       type {
         name
       }
-      components
-      behaviours
+      components {
+        namespace
+        name
+      }
+      behaviours {
+        namespace
+        name
+      }
       properties(
         names: [
-          "trigger",
-          "filename",
+          "trigger"
+          "filename"
           "data_url"
         ]
       ) {

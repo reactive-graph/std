@@ -2,12 +2,19 @@ mutation {
   instances {
     entities {
       create(
-        type: "save_binary_data",
-        id: "d715b2e8-da53-47eb-a217-fbe715292e60",
+        type: {
+          namespace: "binary"
+          name: "save_binary_data"
+        }
+        id: "d715b2e8-da53-47eb-a217-fbe715292e60"
         properties: [
           {
-            name: "filename",
+            name: "filename"
             value: "/tmp/d715b2e8-da53-47eb-a217-fbe715292e60.png"
+          }
+          {
+            name: "trigger"
+            value: false
           }
         ]
       ) {
@@ -15,12 +22,18 @@ mutation {
         type {
           name
         }
-        components
-        behaviours
+        components {
+          namespace
+          name
+        }
+        behaviours {
+          namespace
+          name
+        }
         properties(
           names: [
-            "trigger",
-            "filename",
+            "trigger"
+            "filename"
             "data_url"
           ]
         ) {

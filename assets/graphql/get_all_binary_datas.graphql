@@ -2,7 +2,10 @@ query {
   instances {
     entities(
       components: [
-        "binary_data"
+        {
+          namespace: "binary"
+          name: "binary_data"
+        }
       ]
     ) {
       id
@@ -10,11 +13,17 @@ query {
       type {
         name
       }
-      components
-      behaviours
+      components {
+        namespace
+        name
+      }
+      behaviours {
+        namespace
+        name
+      }
       properties(
         names: [
-          "filename",
+          "filename"
           "data_url"
         ]
       ) {

@@ -2,14 +2,14 @@ mutation {
   instances {
     entities {
       update(
-        id: "dce4bd25-7b25-4a6a-8567-5429a2b3a101",
+        id: "dce4bd25-7b25-4a6a-8567-5429a2b3a101"
         properties: [
           {
-            name: "filename",
+            name: "filename"
             value: "/tmp/d715b2e8-da53-47eb-a217-fbe715292e60.png"
           }
           {
-            name: "trigger",
+            name: "trigger"
             value: true
           }
         ]
@@ -19,12 +19,18 @@ mutation {
         type {
           name
         }
-        components
-        behaviours
+        components {
+          namespace
+          name
+        }
+        behaviours {
+          namespace
+          name
+        }
         properties(
           names: [
-            "trigger",
-            "filename",
+            "trigger"
+            "filename"
             "data_url"
           ]
         ) {
