@@ -1,16 +1,6 @@
 use std::sync::Arc;
 use std::sync::RwLock;
 
-use async_trait::async_trait;
-use inexor_rgf_model_json::BEHAVIOUR_OBJECT_GET_PROPERTY;
-use inexor_rgf_model_json::BEHAVIOUR_OBJECT_KEYS;
-use inexor_rgf_model_json::BEHAVIOUR_OBJECT_REMOVE_PROPERTY;
-use inexor_rgf_model_json::BEHAVIOUR_OBJECT_SET_PROPERTY;
-use inexor_rgf_model_json::ENTITY_BEHAVIOUR_OBJECT_GET_PROPERTY;
-use inexor_rgf_model_json::ENTITY_BEHAVIOUR_OBJECT_KEYS;
-use inexor_rgf_model_json::ENTITY_BEHAVIOUR_OBJECT_REMOVE_PROPERTY;
-use inexor_rgf_model_json::ENTITY_BEHAVIOUR_OBJECT_SET_PROPERTY;
-
 use crate::behaviour::component::load_json::LoadJsonFactory;
 use crate::behaviour::component::save_json::SaveJsonFactory;
 use crate::behaviour::entity::array_contains::ArrayContainsFactory;
@@ -31,6 +21,10 @@ use crate::model_json::BEHAVIOUR_ARRAY_POP;
 use crate::model_json::BEHAVIOUR_ARRAY_PUSH;
 use crate::model_json::BEHAVIOUR_ARRAY_REVERSE;
 use crate::model_json::BEHAVIOUR_LOAD_JSON;
+use crate::model_json::BEHAVIOUR_OBJECT_GET_PROPERTY;
+use crate::model_json::BEHAVIOUR_OBJECT_KEYS;
+use crate::model_json::BEHAVIOUR_OBJECT_REMOVE_PROPERTY;
+use crate::model_json::BEHAVIOUR_OBJECT_SET_PROPERTY;
 use crate::model_json::BEHAVIOUR_SAVE_JSON;
 use crate::model_json::COMPONENT_BEHAVIOUR_LOAD_JSON;
 use crate::model_json::COMPONENT_BEHAVIOUR_SAVE_JSON;
@@ -40,6 +34,10 @@ use crate::model_json::ENTITY_BEHAVIOUR_ARRAY_LENGTH;
 use crate::model_json::ENTITY_BEHAVIOUR_ARRAY_POP;
 use crate::model_json::ENTITY_BEHAVIOUR_ARRAY_PUSH;
 use crate::model_json::ENTITY_BEHAVIOUR_ARRAY_REVERSE;
+use crate::model_json::ENTITY_BEHAVIOUR_OBJECT_GET_PROPERTY;
+use crate::model_json::ENTITY_BEHAVIOUR_OBJECT_KEYS;
+use crate::model_json::ENTITY_BEHAVIOUR_OBJECT_REMOVE_PROPERTY;
+use crate::model_json::ENTITY_BEHAVIOUR_OBJECT_SET_PROPERTY;
 use crate::plugins::component_provider;
 use crate::plugins::entity_type_provider;
 use crate::plugins::plugin_context::PluginContext;
@@ -63,7 +61,6 @@ fn create_empty_plugin_context_container() -> PluginContextContainer {
     return PluginContextContainer(RwLock::new(None));
 }
 
-#[async_trait]
 pub trait JsonPlugin: Plugin + Send + Sync {}
 
 #[module]
@@ -77,7 +74,6 @@ impl JsonPluginImpl {}
 
 interfaces!(JsonPluginImpl: dyn Plugin);
 
-#[async_trait]
 #[provides]
 impl JsonPlugin for JsonPluginImpl {}
 
