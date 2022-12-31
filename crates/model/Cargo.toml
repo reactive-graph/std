@@ -1,6 +1,6 @@
 [package]
 name = "inexor-rgf-model-taxonomy"
-description = "Inexor - Reactive Graph Flow - Model - Base"
+description = "Inexor - Reactive Graph Flow - Model - Taxonomy"
 version.workspace = true
 authors.workspace = true
 edition.workspace = true
@@ -9,13 +9,11 @@ license.workspace = true
 [dependencies]
 indradb-lib = { workspace = true }
 lazy_static = { workspace = true }
-serde = { workspace = true, features = [ "derive" ] }
+paste = { workspace = true }
 serde_json = { workspace = true }
-strum = { workspace = true, features = ["derive"] }
 strum_macros = { workspace = true }
 
 inexor-rgf-core-model = { workspace = true }
-inexor-rgf-core-reactive = { workspace = true }
 
 [lib]
 crate-type = ["lib"]
