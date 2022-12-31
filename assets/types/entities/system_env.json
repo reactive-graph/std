@@ -1,12 +1,20 @@
 {
+  "namespace": "system",
   "name": "system_env",
-  "group": "system",
   "description": "System Environment Variable",
   "components": [
-    "labeled",
-    "named",
-    "flow_2d",
-    "flow_3d"
+    {
+      "namespace": "core",
+      "name": "labeled"
+    },
+    {
+      "namespace": "base",
+      "name": "named"
+    },
+    {
+      "namespace": "value",
+      "name": "value_string"
+    }
   ],
   "properties": [
     {
