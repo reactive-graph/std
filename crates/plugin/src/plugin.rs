@@ -1,8 +1,6 @@
 use std::sync::Arc;
 use std::sync::RwLock;
 
-use async_trait::async_trait;
-
 use crate::di::*;
 use crate::plugins::component_provider;
 use crate::plugins::entity_type_provider;
@@ -29,7 +27,6 @@ fn create_empty_plugin_context_container() -> PluginContextContainer {
     PluginContextContainer(RwLock::new(None))
 }
 
-#[async_trait]
 pub trait TaxonomyPlugin: Plugin + Send + Sync {}
 
 #[module]
@@ -43,7 +40,6 @@ pub struct TaxonomyPluginImpl {
 
 interfaces!(TaxonomyPluginImpl: dyn Plugin);
 
-#[async_trait]
 #[provides]
 impl TaxonomyPlugin for TaxonomyPluginImpl {}
 
