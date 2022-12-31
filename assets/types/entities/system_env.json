@@ -1,19 +1,19 @@
 {
   "namespace": "system",
-  "name": "system_env",
+  "type_name": "system_env",
   "description": "System Environment Variable",
   "components": [
     {
       "namespace": "core",
-      "name": "labeled"
+      "type_name": "labeled"
     },
     {
       "namespace": "base",
-      "name": "named"
+      "type_name": "named"
     },
     {
       "namespace": "value",
-      "name": "value_string"
+      "type_name": "value_string"
     }
   ],
   "properties": [
