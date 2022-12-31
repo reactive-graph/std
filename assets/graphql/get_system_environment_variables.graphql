@@ -1,8 +1,17 @@
 query getSystemEnvironmentVariables {
   instances {
-    entities(type: "system_env") {
+    entities(
+      type: {
+        namespace: "system"
+        name: "system_env"
+      }
+    ) {
       id
-      type { name }
+      label
+      type {
+        namespace
+        name
+      }
       properties(names: ["name", "value"]) {
         name
         value

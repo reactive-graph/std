@@ -2,7 +2,9 @@ query findSystemEnvPwd {
   instances {
     entities(label: "/org/inexor/system/env/pwd") {
       id
+      label
       type {
+        namespace
         name
       }
       properties(names: [

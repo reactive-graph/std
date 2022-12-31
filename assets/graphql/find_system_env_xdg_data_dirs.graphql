@@ -2,7 +2,9 @@ query findSystemEnvXdgDataDirs {
   instances {
     entities(label: "/org/inexor/system/env/xdg_data_dirs") {
       id
+      label
       type {
+        namespace
         name
       }
       properties(names: [

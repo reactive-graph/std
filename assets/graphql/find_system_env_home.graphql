@@ -4,6 +4,7 @@ query findSystemEnvHome {
       id
       label
       type {
+        namespace
         name
       }
       properties(names: [

@@ -2,7 +2,9 @@ query findSystemEnvDesktopSession {
   instances {
     entities(label: "/org/inexor/system/env/desktop_session") {
       id
+      label
       type {
+        namespace
         name
       }
       properties(names: [
