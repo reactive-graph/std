@@ -16,5 +16,5 @@ entity_model!(
     ArrayGetByIndex,
     get result value,
     set array array,
-    set index f64,
+    set index u64,
 );

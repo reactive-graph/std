@@ -15,7 +15,7 @@ entity_behaviour_ty!(ENTITY_BEHAVIOUR_ARRAY_CONTAINS, ENTITY_TYPE_ARRAY_CONTAINS
 entity_model!(
     ArrayContains,
     trigger,
-    get result value,
+    get result bool,
     set array array,
     set search value,
 );
