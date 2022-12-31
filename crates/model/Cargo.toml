@@ -1,0 +1,19 @@
+[package]
+name = "inexor-rgf-model-system-environment"
+description = "Inexor - Reactive Graph Flow - Model - System Environment"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+indradb-lib = { workspace = true }
+lazy_static = { workspace = true }
+serde_json = { workspace = true }
+strum_macros = { workspace = true }
+uuid = { workspace = true, features = ["serde", "v4", "v5"] }
+
+inexor-rgf-core-model = { workspace = true }
+
+[lib]
+crate-type = ["lib"]
