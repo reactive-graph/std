@@ -9,7 +9,6 @@ use std::sync::Arc;
 
 use inexor_rgf_core_builder as builder;
 use inexor_rgf_core_di as di;
-use inexor_rgf_core_model as model;
 use inexor_rgf_core_plugins as plugins;
 use inexor_rgf_model_system_environment as model_system_environment;
 use log::error;
@@ -65,9 +64,6 @@ extern "C" fn get_dependencies() -> Vec<PluginDependency> {
         PluginDependency::new("inexor-rgf-plugin-value", ">=0.8.0, <0.9.0"),
     ]
 }
-
-#[cfg(test)]
-use inexor_rgf_core_builder as builder;
 
 #[cfg(test)]
 #[tarpaulin::ignore]
