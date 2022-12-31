@@ -1,8 +1,6 @@
 use std::sync::Arc;
 use std::sync::RwLock;
 
-use async_trait::async_trait;
-
 use crate::di::*;
 use crate::plugins::component_provider;
 use crate::plugins::plugin_context::PluginContext;
@@ -21,7 +19,6 @@ fn create_empty_plugin_context_container() -> PluginContextContainer {
     PluginContextContainer(RwLock::new(None))
 }
 
-#[async_trait]
 pub trait MetaDataPlugin: Plugin + Send + Sync {}
 
 #[module]
@@ -33,7 +30,6 @@ pub struct MetaDataPluginImpl {
 
 interfaces!(MetaDataPluginImpl: dyn Plugin);
 
-#[async_trait]
 #[provides]
 impl MetaDataPlugin for MetaDataPluginImpl {}
 
