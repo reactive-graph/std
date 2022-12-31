@@ -8,9 +8,11 @@ use http::Response;
 use http::Result;
 use http::StatusCode;
 use log::debug;
-use matchit::Node;
+use matchit::Router;
 use serde_json::json;
-use strum_macros::{AsRefStr, Display, IntoStaticStr};
+use strum_macros::AsRefStr;
+use strum_macros::Display;
+use strum_macros::IntoStaticStr;
 use uuid::Uuid;
 
 use crate::di::*;
@@ -60,7 +62,7 @@ interfaces!(BinaryWebResourceProviderImpl: dyn WebResourceProvider);
 
 impl BinaryWebResourceProviderImpl {
     fn get_property_reference(&self, search: String) -> Option<PropertyReference> {
-        let mut matcher = Node::new();
+        let mut matcher = Router::new();
         let _ = matcher.insert("/entities/:uuid/:property_name", BinaryRequestType::Uuid);
         let _ = matcher.insert("/entities/label/*label", BinaryRequestType::Label);
         match matcher.at(search.as_str()) {
@@ -92,34 +94,31 @@ impl BinaryWebResourceProviderImpl {
                 .get(id)
                 .and_then(|entity_instance| entity_instance.as_string(property_reference.property_name))
                 .and_then(filter_by_base64_data_url),
-            EntityInstanceReference::Label(label) => entity_instance_manager.get_by_label_with_params(label).and_then(|(entity_instance, params)| {
-                debug!("params {:?}", params);
-                // Prefer path variable "property"
-                if let Some(data_url) = params.get("property").and_then(|property_name| entity_instance.as_string(property_name)) {
-                    return Some(data_url);
-                }
-                // Try other path variable
-                params.iter().next().and_then(|(_, property_name)| entity_instance.as_string(property_name))
-            }),
+            EntityInstanceReference::Label(label) => entity_instance_manager
+                .get_by_label_with_params(label.as_str())
+                .and_then(|(entity_instance, params)| {
+                    debug!("params {:?}", params);
+                    // Prefer path variable "property"
+                    if let Some(data_url) = params.get("property").and_then(|property_name| entity_instance.as_string(property_name)) {
+                        return Some(data_url);
+                    }
+                    // Try other path variable
+                    params.iter().next().and_then(|(_, property_name)| entity_instance.as_string(property_name))
+                }),
         }
     }
 
     fn set_data_url_binary(&self, property_reference: PropertyReference, bytes: &Vec<u8>) {
         let reader = self.context.0.read().unwrap();
         let entity_instance_manager = reader.as_ref().unwrap().get_entity_instance_manager().clone();
-        match property_reference.entity_instance {
-            EntityInstanceReference::Id(id) => match entity_instance_manager.get(id) {
-                Some(entity_instance) => match infer::get(bytes) {
-                    Some(mime_type) => {
-                        let data_as_base64 = base64::encode(&bytes);
-                        let data_url = json!(format!("data:{};base64,{}", mime_type, data_as_base64));
-                        entity_instance.set(property_reference.property_name, data_url);
-                    }
-                    None => {}
-                },
-                None => {}
-            },
-            EntityInstanceReference::Label(_) => {}
+        if let EntityInstanceReference::Id(id) = property_reference.entity_instance {
+            if let Some(entity_instance) = entity_instance_manager.get(id) {
+                if let Some(mime_type) = infer::get(bytes) {
+                    let data_as_base64 = base64::encode(&bytes);
+                    let data_url = json!(format!("data:{};base64,{}", mime_type, data_as_base64));
+                    entity_instance.set(property_reference.property_name, data_url);
+                }
+            }
         }
     }
 
@@ -127,13 +126,12 @@ impl BinaryWebResourceProviderImpl {
         let reader = self.context.0.read().unwrap();
         let entity_instance_manager = reader.as_ref().unwrap().get_entity_instance_manager().clone();
         match property_reference.entity_instance {
-            EntityInstanceReference::Id(id) => match entity_instance_manager.get(id) {
-                Some(entity_instance) => {
+            EntityInstanceReference::Id(id) => {
+                if let Some(entity_instance) = entity_instance_manager.get(id) {
                     debug!("{} {}", id, property_reference.property_name);
                     entity_instance.set(property_reference.property_name, json!(data_url_base64));
                 }
-                None => {}
-            },
+            }
             EntityInstanceReference::Label(_) => {}
         }
     }
