@@ -2,38 +2,39 @@ mutation {
   instances {
     entities {
       update(
-        id: "854161a4-b3e0-4267-9415-7dd9f1bcb5d0",
+        id: "854161a4-b3e0-4267-9415-7dd9f1bcb5d0"
         properties: [
           {
-            name: "method",
+            name: "method"
             value: "Player.Open"
-          },
+          }
           {
-            name: "params",
+            name: "params"
             value: {
               item: {
                 file: "https://hirschmilch.de/psytrance/listen.pls"
               }
             }
-          },
+          }
           {
-            name: "trigger",
+            name: "trigger"
             value: true
           }
         ]
       ) {
         id
         type {
+          namespace
           name
         }
         properties(
           names: [
-            "trigger",
-            "url",
-            "json_rpc_version",
-            "method",
-            "params",
-            "result",
+            "trigger"
+            "url"
+            "json_rpc_version"
+            "method"
+            "params"
+            "result"
             "error"
           ]
         ) {

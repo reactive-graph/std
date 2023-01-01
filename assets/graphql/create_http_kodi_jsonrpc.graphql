@@ -2,58 +2,62 @@ mutation {
   instances {
     entities {
       create(
-        type: "http",
-        id: "123f0859-47cb-4cf4-817e-02d77c382697",
+        type: {
+          namespace: "http"
+          name: "http"
+        }
+        id: "123f0859-47cb-4cf4-817e-02d77c382697"
         properties: [
           {
-            name: "url",
+            name: "url"
             value: "http://kodi:8080/jsonrpc"
-          },
+          }
           {
-            name: "method",
+            name: "method"
             value: "POST"
-          },
+          }
           {
-            name: "request_headers",
+            name: "request_headers"
             value: {
               contentType: "application/json"
             }
-          },
+          }
           {
-            name: "payload",
+            name: "payload"
             value: {}
-          },
+          }
           {
-            name: "response_headers",
+            name: "response_headers"
             value: {}
-          },
+          }
           {
-            name: "result",
+            name: "result"
             value: {}
-          },
+          }
           {
-            name: "status",
+            name: "status"
             value: 500
-          },
+          }
           {
-            name: "trigger",
+            name: "trigger"
             value: true
           }
         ]
       ) {
         id
         type {
+          namespace
           name
         }
         properties(
           names: [
-            "trigger",
-            "url",
-            "method",
-            "request_headers",
-            "payload",
-            "response_headers",
-            "result",
+            "trigger"
+            "url"
+            "method"
+            "request_headers"
+            "payload"
+            "response_headers"
+            "result"
             "status"
           ]
         ) {

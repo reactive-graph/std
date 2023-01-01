@@ -2,51 +2,55 @@ mutation {
   instances {
     entities {
       create(
-        type: "json_rpc",
-        id: "854161a4-b3e0-4267-9415-7dd9f1bcb5d0",
+        type: {
+          namespace: "http"
+          name: "json_rpc"
+        }
+        id: "854161a4-b3e0-4267-9415-7dd9f1bcb5d0"
         properties: [
           {
-            name: "url",
-            value: "http://aschaeffer:2ShdHpPP@qualityland:8080/jsonrpc"
-          },
+            name: "url"
+            value: "http://kodi:8080/jsonrpc"
+          }
           {
-            name: "json_rpc_version",
+            name: "json_rpc_version"
             value: "2.0"
-          },
+          }
           {
-            name: "method",
+            name: "method"
             value: "JSONRPC.Version"
-          },
+          }
           {
-            name: "params",
+            name: "params"
             value: {}
-          },
+          }
           {
-            name: "result",
+            name: "result"
             value: {}
-          },
+          }
           {
-            name: "error",
+            name: "error"
             value: {}
-          },
+          }
           {
-            name: "trigger",
+            name: "trigger"
             value: true
           }
         ]
       ) {
         id
         type {
+          namespace
           name
         }
         properties(
           names: [
-            "trigger",
-            "url",
-            "json_rpc_version",
-            "method",
-            "params",
-            "result",
+            "trigger"
+            "url"
+            "json_rpc_version"
+            "method"
+            "params"
+            "result"
             "error"
           ]
         ) {
