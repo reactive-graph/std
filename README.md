@@ -36,7 +36,7 @@ With this plugin it's possible to integrate external services into your home aut
 
 [<img src="https://img.shields.io/badge/Language-Rust-brightgreen">](https://www.rust-lang.org/)
 [<img src="https://img.shields.io/badge/Platforms-Linux%20%26%20Windows-brightgreen">]()
-[<img src="https://img.shields.io/github/workflow/status/inexorgame/inexor-rgf-plugin-http/Rust">](https://github.com/inexorgame/inexor-rgf-plugin-http/actions?query=workflow%3ARust)
+[<img src="https://img.shields.io/github/actions/workflow/status/inexorgame/inexor-rgf-plugin-http/rust.yml">](https://github.com/inexorgame/inexor-rgf-plugin-http/actions?query=workflow%3ARust)
 [<img src="https://img.shields.io/github/last-commit/inexorgame/inexor-rgf-plugin-http">]()
 [<img src="https://img.shields.io/github/languages/code-size/inexorgame/inexor-rgf-plugin-http">]()
 [<img src="https://img.shields.io/codecov/c/github/inexorgame/inexor-rgf-plugin-http">](https://app.codecov.io/gh/inexorgame/inexor-rgf-plugin-http)
