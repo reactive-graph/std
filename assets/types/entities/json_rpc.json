@@ -1,10 +1,16 @@
 {
-  "name": "json_rpc",
-  "group": "network",
+  "namespace": "http",
+  "type_name": "json_rpc",
   "description": "Sends JSON-RPC request to a given URL",
   "components": [
-    "action",
-    "json_rpc"
+    {
+      "namespace": "logical",
+      "type_name": "action"
+    },
+    {
+      "namespace": "http",
+      "type_name": "json_rpc"
+    }
   ],
   "properties": [
   ],

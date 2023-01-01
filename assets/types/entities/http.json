@@ -1,10 +1,16 @@
 {
-  "name": "http",
-  "group": "network",
+  "namespace": "http",
+  "type_name": "http",
   "description": "Sends HTTP request to a given URL",
   "components": [
-    "action",
-    "http"
+    {
+      "namespace": "logical",
+      "type_name": "action"
+    },
+    {
+      "namespace": "http",
+      "type_name": "http"
+    }
   ],
   "properties": [
   ],

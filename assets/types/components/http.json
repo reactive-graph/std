@@ -1,5 +1,6 @@
 {
-  "name": "http",
+  "namespace": "http",
+  "type_name": "http",
   "description": "Sends HTTP request to a given URL",
   "properties": [
     {
@@ -31,17 +32,20 @@
     {
       "name": "response_headers",
       "data_type": "object",
-      "socket_type": "output"
+      "socket_type": "output",
+      "mutability": "immutable"
     },
     {
       "name": "result",
       "data_type": "object",
-      "socket_type": "output"
+      "socket_type": "output",
+      "mutability": "immutable"
     },
     {
       "name": "status",
       "data_type": "number",
-      "socket_type": "output"
+      "socket_type": "output",
+      "mutability": "immutable"
     }
   ],
   "extensions": [

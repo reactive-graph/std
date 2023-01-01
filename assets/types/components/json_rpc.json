@@ -1,6 +1,6 @@
 {
-  "name": "json_rpc",
-  "group": "network",
+  "namespace": "http",
+  "type_name": "json_rpc",
   "description": "Sends JSON-RPC request to a given URL",
   "properties": [
     {
@@ -32,12 +32,14 @@
     {
       "name": "result",
       "data_type": "object",
-      "socket_type": "output"
+      "socket_type": "output",
+      "mutability": "immutable"
     },
     {
       "name": "error",
       "data_type": "object",
-      "socket_type": "output"
+      "socket_type": "output",
+      "mutability": "immutable"
     }
   ],
   "extensions": [
