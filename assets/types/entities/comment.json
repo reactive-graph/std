@@ -16,7 +16,8 @@
   ],
   "extensions": [
     {
-      "name": "palette",
+      "namespace": "flow",
+      "type_name": "palette",
       "extension": {
 
       }

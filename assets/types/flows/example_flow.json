@@ -68,7 +68,8 @@
   ],
   "extensions": [
     {
-      "name": "example",
+      "namespace": "example",
+      "type_name": "example",
       "extension": "Example Extension"
     }
   ]
