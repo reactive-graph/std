@@ -12,7 +12,8 @@
   ],
   "extensions": [
     {
-      "name": "palette",
+      "namespace": "flow_editor",
+      "type_name": "palette",
       "extension": {
         "content": "log",
         "styles": {
