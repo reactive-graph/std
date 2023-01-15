@@ -1,0 +1,49 @@
+mutation {
+  instances {
+    entities {
+      update(
+        id: "123f0859-47cb-4cf4-817e-02d77c382697"
+        properties: [
+          {
+            name: "payload"
+            value: {
+              jsonrpc: "2.0"
+              method: "Player.Open"
+              id: 1
+              params: {
+                item: {
+                  file: "https://somafm.com/groovesalad130.pls"
+                }
+              }
+            }
+          }
+          {
+            name: "trigger"
+            value: true
+          }
+        ]
+      ) {
+        id
+        type {
+          namespace
+          name
+        }
+        properties(
+          names: [
+            "trigger"
+            "url"
+            "method"
+            "request_headers"
+            "payload"
+            "response_headers"
+            "result"
+            "status"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}

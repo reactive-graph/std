@@ -1,0 +1,43 @@
+mutation {
+  instances {
+    entities {
+      update(
+        id: "854161a4-b3e0-4267-9415-7dd9f1bcb5d0"
+        properties: [
+          {
+            name: "method"
+            value: "Input.Home"
+          }
+          {
+            name: "params"
+            value: {}
+          }
+          {
+            name: "trigger"
+            value: true
+          }
+        ]
+      ) {
+        id
+        type {
+          namespace
+          name
+        }
+        properties(
+          names: [
+            "trigger"
+            "url"
+            "json_rpc_version"
+            "method"
+            "params"
+            "result"
+            "error"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}
