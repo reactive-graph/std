@@ -11,11 +11,13 @@
   ],
   "extensions": [
     {
-      "name": "component_category",
+      "namespace": "core",
+      "type_name": "component_category",
       "extension": "filesystem"
     },
     {
-      "name": "dublin-core",
+      "namespace": "metadata",
+      "type_name": "dublin-core",
       "extension": {
         "title": "Config File",
         "subject": "Loads a configuration file",
