@@ -23,3 +23,6 @@ tarpaulin-report.html
 
 **/yarn-error.log
 **/yarn.lock
+
+# Exclude generated frontend bundles
+plugins/**/web/dist/bundle
