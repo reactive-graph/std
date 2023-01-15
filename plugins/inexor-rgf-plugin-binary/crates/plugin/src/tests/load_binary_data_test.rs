@@ -20,7 +20,7 @@ use crate::reactive::BehaviourState;
 #[test]
 fn rx_load_binary_data_test() {
     let mut load_png_file_path = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
-    load_png_file_path.push("../../docs/images/inexor_2.png");
+    load_png_file_path.push("../../../../docs/images/inexor_2.png");
     load_png_file_path = load_png_file_path.canonicalize().unwrap();
 
     let mut type_definition_path = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
