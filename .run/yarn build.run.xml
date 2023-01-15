@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="yarn build" type="js.build_tools.npm">
+    <package-json value="$PROJECT_DIR$/web/package.json" />
+    <command value="build" />
+    <node-interpreter value="$USER_HOME$/.nvm/versions/node/v14.17.6/bin/node" />
+    <package-manager value="yarn" />
+    <envs />
+    <method v="2" />
+  </configuration>
+</component>
