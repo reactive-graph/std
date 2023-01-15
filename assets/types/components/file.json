@@ -12,7 +12,8 @@
   ],
   "extensions": [
     {
-      "name": "component_category",
+      "namespace": "core",
+      "type_name": "component_category",
       "extension": "file"
     }
   ]
