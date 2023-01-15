@@ -1,9 +1,9 @@
 use crate::model::behaviour_ty;
 use crate::model::component_behaviour_ty;
+use crate::model::component_model;
 use crate::model::component_ty;
 use crate::model::properties;
 use crate::NAMESPACE_JSON;
-use inexor_rgf_core_model::component_model;
 
 properties!(LoadJsonProperties, (RESULT, "result", {}));
 

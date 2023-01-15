@@ -4,7 +4,7 @@ use std::path::PathBuf;
 
 use crate::behaviour::component::load_json::LoadJsonFactory;
 use crate::builder::ReactiveEntityInstanceBuilder;
-use crate::model_json::FileProperties::FILENAME;
+use crate::model_file::FileProperties::FILENAME;
 use crate::model_json::LoadJson;
 use crate::model_json::BEHAVIOUR_LOAD_JSON;
 use crate::model_json::ENTITY_TYPE_LOAD_JSON;

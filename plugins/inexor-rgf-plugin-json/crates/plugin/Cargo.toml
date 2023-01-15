@@ -20,6 +20,7 @@ inexor-rgf-core-frp = { workspace = true }
 inexor-rgf-core-model = { workspace = true }
 inexor-rgf-core-reactive = { workspace = true }
 inexor-rgf-core-plugins = { workspace = true }
+inexor-rgf-model-file = { path = "../../../inexor-rgf-plugin-file/crates/model" }
 inexor-rgf-model-json = { path = "../../crates/model" }
 inexor-rgf-model-logical = { path = "../../../inexor-rgf-plugin-logical/crates/model" }
 
