@@ -4,6 +4,10 @@
   "description": "A tag is a piece of information that describes the data or content that it is assigned to. Tags are nonhierarchical keywords used for Internet bookmarks, digital images, videos, files and so on. A tag doesn't carry any information or semantics itself.",
   "components": [
     {
+      "namespace": "core",
+      "type_name": "labeled"
+    },
+    {
       "namespace": "base",
       "type_name": "named"
     }
@@ -12,70 +16,18 @@
   ],
   "extensions": [
     {
-      "name": "entity_category",
-      "extension": "taxonomy"
+      "namespace": "taxonomy",
+      "type_name": "dublin-core",
+      "extension": {
+        "title": "Tag",
+        "subject": "A tag is a piece of information that describes the data or content that it is assigned to. Tags are nonhierarchical keywords used for Internet bookmarks, digital images, videos, files and so on. A tag doesn't carry any information or semantics itself.",
+        "creator": "Hanack"
+      }
     },
     {
-      "name": "palette",
-      "extension": {
-
-      }
+      "namespace": "taxonomy",
+      "type_name": "entity_category",
+      "extension": "taxonomy"
     }
-  ],
-  "palette": {
-    "className": "inexor-ecs-tag-empty"
-  },
-  "shape": {
-    "width": 200,
-    "socket": {
-      "width": 60,
-      "height": 30,
-      "offset": 5
-    },
-    "offset": {
-      "top": "socket.height",
-      "bottom": "socket.height"
-    },
-    "style": {
-      "stroke": "blue",
-      "stroke-opacity": 0.3,
-      "stroke-width": 5,
-      "fill": "rgba(255, 0, 255, 0.05)",
-      "rx": 5,
-      "ry": 5
-    },
-    "elements": {
-      "tag": {
-        "show": true,
-        "type": "text",
-        "content": "element.description",
-        "position": {
-          "left": 0,
-          "top": 0,
-          "width": "shape.width",
-          "height": "shape.height"
-        },
-        "styles": {
-          "font-size": "12px",
-          "color": "black"
-        }
-      },
-      "symbol": {
-        "show": true,
-        "type": "text",
-        "content": "\uE81F",
-        "position": {
-          "left": 0,
-          "top": 0,
-          "width": 50,
-          "height": "shape.height"
-        },
-        "styles": {
-          "font-size": "40px",
-          "fill": "darkorange",
-          "font-family": "inexor-ecs"
-        }
-      }
-    }
-  }
+  ]
 }

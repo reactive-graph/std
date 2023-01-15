@@ -16,6 +16,10 @@
   },
   "components": [
     {
+      "namespace": "core",
+      "type_name": "labeled"
+    },
+    {
       "namespace": "taxonomy",
       "type_name": "weighted"
     }
@@ -24,20 +28,28 @@
   ],
   "extensions": [
     {
-      "name": "outbound_field_name",
-      "extension": "tagged"
+      "namespace": "dynamic_graph",
+      "type_name": "field_name",
+      "extension": {
+        "from_outbound_entity_to_relation": "is_tagged_with",
+        "from_relation_to_outbound_entity": "tagged_entity",
+        "from_inbound_entity_to_relation": "tags_entities",
+        "from_relation_to_inbound_entity": "tag",
+        "from_outbound_entity_to_inbound_entity": "tags",
+        "from_inbound_entity_to_outbound_entity": "tagged_entities"
+      }
     },
     {
-      "name": "outbound_field_description",
-      "extension": "The entity which is tagged"
-    },
-    {
-      "name": "inbound_field_name",
-      "extension": "tag"
-    },
-    {
-      "name": "inbound_field_description",
-      "extension": "The tag which is applied to the entity"
+      "namespace": "dynamic_graph",
+      "type_name": "field_description",
+      "extension": {
+        "from_outbound_entity_to_relation": "The weighted relations between the entity and the tags.",
+        "from_relation_to_outbound_entity": "The entity which is tagged.",
+        "from_inbound_entity_to_relation": "The weighted relations between the tag and the tagged entities.",
+        "from_relation_to_inbound_entity": "The tag.",
+        "from_outbound_entity_to_inbound_entity": "The entity is tagged with these tags.",
+        "from_inbound_entity_to_outbound_entity": "Entities which are tagged by this tag."
+      }
     }
   ]
 }

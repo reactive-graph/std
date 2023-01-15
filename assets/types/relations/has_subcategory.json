@@ -24,28 +24,28 @@
   ],
   "extensions": [
     {
-      "name": "outbound_field_name",
-      "extension": "parent_category"
+      "namespace": "dynamic_graph",
+      "type_name": "field_name",
+      "extension": {
+        "from_outbound_entity_to_relation": "has_sub_categories",
+        "from_relation_to_outbound_entity": "parent_category",
+        "from_inbound_entity_to_relation": "has_parent_categories",
+        "from_relation_to_inbound_entity": "sub_category",
+        "from_outbound_entity_to_inbound_entity": "sub_categories",
+        "from_inbound_entity_to_outbound_entity": "parent_categories"
+      }
     },
     {
-      "name": "outbound_collection_field_name",
-      "extension": "child_categories"
-    },
-    {
-      "name": "outbound_field_description",
-      "extension": "The parent category"
-    },
-    {
-      "name": "inbound_field_name",
-      "extension": "child_category"
-    },
-    {
-      "name": "inbound_collection_field_name",
-      "extension": "parent_categories"
-    },
-    {
-      "name": "inbound_field_description",
-      "extension": "The child category"
+      "namespace": "dynamic_graph",
+      "type_name": "field_description",
+      "extension": {
+        "from_outbound_entity_to_relation": "The sub categories.",
+        "from_relation_to_outbound_entity": "The parent category.",
+        "from_inbound_entity_to_relation": "The parent categories.",
+        "from_relation_to_inbound_entity": "The sub category.",
+        "from_outbound_entity_to_inbound_entity": "The sub categories.",
+        "from_inbound_entity_to_outbound_entity": "The parent categories."
+      }
     }
   ]
 }
