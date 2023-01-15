@@ -3,7 +3,7 @@ use crate::model_arithmetic::NAMESPACE_ARITHMETIC_F64;
 use crate::model_arithmetic::NAMESPACE_ARITHMETIC_I64;
 use crate::model_arithmetic::NAMESPACE_ARITHMETIC_U64;
 use crate::plugins::EntityTypeProvider;
-use crate::provider::ArithmeticEntityTypeProviderImpl;
+use crate::providers::ArithmeticEntityTypeProviderImpl;
 
 #[test]
 fn entity_types_should_exist() {

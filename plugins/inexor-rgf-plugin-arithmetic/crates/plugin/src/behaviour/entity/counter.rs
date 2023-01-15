@@ -15,7 +15,7 @@ impl BehaviourInit<ReactiveEntityInstance> for CounterBehaviourTransitions {}
 
 impl BehaviourConnect<ReactiveEntityInstance> for CounterBehaviourTransitions {
     fn connect(&self) -> Result<(), BehaviourConnectFailed> {
-        let reactive_instance = self.property_observers.reactive_instance.clone();
+        let reactive_instance = self.reactive_instance.clone();
         self.property_observers.observe_with_handle(TRIGGER.as_ref(), move |v: &Value| {
             if !v.is_boolean() {
                 // Invalid type

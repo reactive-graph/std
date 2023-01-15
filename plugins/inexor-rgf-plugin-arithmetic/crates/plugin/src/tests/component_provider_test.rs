@@ -1,6 +1,6 @@
 use crate::model::NamespacedTypeGetter;
 use crate::plugins::ComponentProvider;
-use crate::provider::ArithmeticComponentProviderImpl;
+use crate::providers::ArithmeticComponentProviderImpl;
 
 #[test]
 fn components_should_exist() {

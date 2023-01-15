@@ -12,15 +12,18 @@
   ],
   "extensions": [
     {
-      "name": "plugin",
+      "namespace": "flow_editor",
+      "type_name": "plugin",
       "extension": "arithmetic"
     },
     {
-      "name": "icon",
+      "namespace": "flow_editor",
+      "type_name": "icon",
       "extension": "fa/FaPlus"
     },
     {
-      "name": "palette",
+      "namespace": "flow_editor",
+      "type_name": "palette",
       "extension": {
         "content": "+",
         "styles": {
@@ -30,7 +33,8 @@
       }
     },
     {
-      "name": "shape",
+      "namespace": "flow_editor",
+      "type_name": "shape",
       "extension": {
         "width": 200,
         "socket": {
@@ -93,7 +97,8 @@
       }
     },
     {
-      "name": "dublin-core",
+      "namespace": "metadata",
+      "type_name": "dublin-core",
       "extension":{
         "title": "Add Gate",
         "subject": "Arithmetic Gate for Integer Additions",

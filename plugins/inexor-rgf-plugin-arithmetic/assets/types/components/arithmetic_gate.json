@@ -9,11 +9,13 @@
       "socket_type": "input",
       "extensions": [
         {
-          "name": "widgetType",
+          "namespace": "flow_editor",
+          "type_name": "widget_type",
           "extension": "NumberInput"
         },
         {
-          "name": "socket",
+          "namespace": "flow_editor",
+          "type_name": "socket",
           "extension": {
             "width": 60,
             "height": 30,
@@ -28,11 +30,13 @@
       "socket_type": "input",
       "extensions": [
         {
-          "name": "widgetType",
+          "namespace": "flow_editor",
+          "type_name": "widget_type",
           "extension": "NumberInput"
         },
         {
-          "name": "socket",
+          "namespace": "flow_editor",
+          "type_name": "socket",
           "extension": {
             "width": 60,
             "height": 30,
@@ -48,11 +52,13 @@
       "mutability": "immutable",
       "extensions": [
         {
-          "name": "widgetType",
+          "namespace": "flow_editor",
+          "type_name": "widget_type",
           "extension": "NumberInput"
         },
         {
-          "name": "socket",
+          "namespace": "flow_editor",
+          "type_name": "socket",
           "extension": {
             "width": 60,
             "height": 30,
@@ -64,7 +70,8 @@
   ],
   "extensions": [
     {
-      "name": "component_category",
+      "namespace": "core",
+      "type_name": "component_category",
       "extension": "math"
     }
   ]
