@@ -3,10 +3,9 @@ use serde_json::Value;
 use std::path::Path;
 
 use crate::model::*;
+use crate::model_file::FileProperties::FILENAME;
 use crate::model_logical::ActionProperties::RESULT;
 use crate::model_logical::ActionProperties::TRIGGER;
-// TODO: import model_file::FileProperties instead of model_config::ActionProperties
-use crate::model_config::FileProperties::FILENAME;
 use crate::reactive::*;
 
 entity_behaviour!(ConfigFile, ConfigFileFactory, ConfigFileFsm, ConfigFileBehaviourTransitions, ConfigFileValidator);

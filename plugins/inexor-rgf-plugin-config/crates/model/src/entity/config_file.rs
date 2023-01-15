@@ -1,5 +1,6 @@
 use crate::model::entity_model;
 use crate::model::entity_ty;
+use crate::model_file::File;
 use crate::model_logical::Action;
 use crate::NAMESPACE_CONFIG;
 
@@ -10,7 +11,7 @@ entity_ty!(ENTITY_TYPE_CONFIG_FILE, NAMESPACE_CONFIG, ENTITY_TYPE_NAME_CONFIG_FI
 entity_model!(
     ConfigFile,
     get result value,
-    set trigger bool,
-    set filename string
+    set trigger bool
 );
 impl Action for ConfigFile {}
+impl File for ConfigFile {}
