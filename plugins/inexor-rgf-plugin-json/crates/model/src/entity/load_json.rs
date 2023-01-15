@@ -1,5 +1,6 @@
 use crate::model::entity_model;
 use crate::model::entity_ty;
+use crate::model_base::Named;
 use crate::model_file::File;
 use crate::model_logical::Action;
 use crate::ComponentLoadJson;
@@ -13,4 +14,4 @@ entity_model!(LoadJson);
 impl ComponentLoadJson for LoadJson {}
 impl File for LoadJson {}
 impl Action for LoadJson {}
-// impl model_base::Named for LoadJson {}
+impl Named for LoadJson {}

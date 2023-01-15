@@ -1,5 +1,6 @@
 use crate::model::entity_model;
 use crate::model::entity_ty;
+use crate::model_base::Named;
 use crate::model_file::File;
 use crate::ComponentSaveJson;
 use crate::NAMESPACE_JSON;
@@ -16,3 +17,4 @@ entity_model!(
 );
 impl ComponentSaveJson for SaveJson {}
 impl File for SaveJson {}
+impl Named for SaveJson {}
