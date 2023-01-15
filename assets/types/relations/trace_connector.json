@@ -1,0 +1,25 @@
+{
+  "namespace": "connector",
+  "type_name": "trace_connector",
+  "description": "Connects a property with a other property and logs changes to the trace logger",
+  "outbound": {
+    "entity_type": {
+      "namespace": "*",
+      "type_name": "*"
+    }
+  },
+  "inbound": {
+    "entity_type": {
+      "namespace": "*",
+      "type_name": "*"
+    }
+  },
+  "components": [
+    {
+      "namespace": "connector",
+      "type_name": "connector"
+    }
+  ],
+  "properties": [
+  ]
+}

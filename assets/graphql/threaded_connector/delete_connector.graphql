@@ -1,0 +1,13 @@
+mutation DeleteConnector {
+  instances {
+    relations {
+      delete(edgeKey: {
+        outboundId: "34263429-b1d8-49b1-b935-928adfcd220a"
+        namespace: "connector"
+        typeName: "threaded_connector"
+        instanceId: "value__value"
+        inboundId: "e72cecb6-6008-4710-8a43-46f6c7baa4b4"
+      })
+    }
+  }
+}

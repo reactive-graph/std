@@ -1,0 +1,43 @@
+mutation {
+  instances {
+    entities {
+      update(
+        id: "34263429-b1d8-49b1-b935-928adfcd220a",
+        properties: [
+          {
+            name: "value",
+            value: "Hello World!"
+          }
+        ]
+      ) {
+        id
+        type {
+          namespace
+          name
+        }
+        outbound {
+          inbound {
+            id
+            properties(
+              names: [
+                "value"
+              ]
+            ) {
+              name
+              # Note that the value may or may not be propagated on the second thread
+              value
+            }
+          }
+        }
+        properties(
+          names: [
+            "value"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}

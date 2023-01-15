@@ -1,0 +1,25 @@
+{
+  "namespace": "connector",
+  "type_name": "debounce_connector",
+  "description": "Connects a property with a other property and propagates the value if and only if the value is different",
+  "outbound": {
+    "entity_type": {
+      "namespace": "*",
+      "type_name": "*"
+    }
+  },
+  "inbound": {
+    "entity_type": {
+      "namespace": "*",
+      "type_name": "*"
+    }
+  },
+  "components": [
+    {
+      "namespace": "connector",
+      "type_name": "connector"
+    }
+  ],
+  "properties": [
+  ]
+}

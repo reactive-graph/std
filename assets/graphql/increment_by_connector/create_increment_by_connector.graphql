@@ -1,0 +1,113 @@
+mutation createOutbound {
+  instances {
+    entities {
+      create(
+        type: {
+          namespace: "value"
+          name: "value_number"
+        }
+        id: "5e00defc-8d67-48a7-8316-959b58c8dac9"
+        properties: [
+          {
+            name: "value"
+            value: 0
+          }
+        ]
+      ) {
+        id
+        type {
+          namespace
+          name
+        }
+        properties(
+          names: [
+            "value"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}
+
+mutation createInbound {
+  instances {
+    entities {
+      create(
+        type: {
+          namespace: "value"
+          name: "value_number"
+        }
+        id: "fbf31223-b7e3-43a9-a287-6f7e6103cbc5"
+        properties: [
+          {
+            name: "value"
+            value: 0
+          }
+        ]
+      ) {
+        id
+        type {
+          name
+        }
+        properties(
+          names: [
+            "value"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}
+
+mutation createConnector {
+  instances {
+    relations {
+      create(
+        edgeKey: {
+          outboundId: "5e00defc-8d67-48a7-8316-959b58c8dac9"
+          namespace: "connector"
+          typeName: "increment_by_connector"
+          instanceId: "value__value"
+          inboundId: "fbf31223-b7e3-43a9-a287-6f7e6103cbc5"
+        },
+        properties: [
+          {
+            name: "outbound_property_name"
+            value: "value"
+          },
+          {
+            name: "inbound_property_name"
+            value: "value"
+          }
+        ]
+      ) {
+        type {
+          namespace
+          name
+        }
+        instanceId
+        properties(
+          names: [
+            "outbound_property_name"
+            "inbound_property_name"
+          ]
+        ) {
+          name
+          value
+        }
+        outbound {
+          id
+        }
+        inbound {
+          id
+        }
+      }
+    }
+  }
+}

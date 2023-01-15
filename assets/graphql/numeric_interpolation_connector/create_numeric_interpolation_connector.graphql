@@ -1,0 +1,115 @@
+mutation createOutbound {
+  instances {
+    entities {
+      create(
+        type: {
+          namespace: "value"
+          name: "value_number"
+        }
+        id: "e71ac5bb-30d1-452b-8bbe-295bad1e810a"
+        properties: [
+          {
+            name: "value"
+            value: 0
+          }
+        ]
+      ) {
+        id
+        type {
+          namespace
+          name
+        }
+        properties(
+          names: [
+            "value"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}
+
+mutation createInbound {
+  instances {
+    entities {
+      create(
+        type: {
+          namespace: "value"
+          name: "value_number"
+        }
+        id: "2732bf15-d560-48e3-9018-74c949870563"
+        properties: [
+          {
+            name: "value"
+            value: 0
+          }
+        ]
+      ) {
+        id
+        type {
+          name
+        }
+        properties(
+          names: [
+            "value"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}
+
+mutation createConnector {
+  instances {
+    relations {
+      create(
+        edgeKey: {
+          outboundId: "e71ac5bb-30d1-452b-8bbe-295bad1e810a"
+          namespace: "connector"
+          typeName: "numeric_interpolation_connector"
+          instanceId: "value__value"
+          inboundId: "2732bf15-d560-48e3-9018-74c949870563"
+        },
+        properties: [
+          {
+            name: "outbound_property_name"
+            value: "value"
+          },
+          {
+            name: "inbound_property_name"
+            value: "value"
+          },
+          {
+            name: "buffer_size"
+            value: 10
+          },
+          {
+            name: "buffer"
+            value: []
+          }
+        ]
+      ) {
+        type {
+          namespace
+          name
+        }
+        instanceId
+        properties(
+          names: [
+            "outbound_property_name"
+            "inbound_property_name"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}
