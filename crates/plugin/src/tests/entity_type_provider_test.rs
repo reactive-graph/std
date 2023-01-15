@@ -1,0 +1,38 @@
+use crate::model_random::ENTITY_TYPE_RANDOM_BOOL;
+use crate::model_random::ENTITY_TYPE_RANDOM_F64;
+use crate::model_random::ENTITY_TYPE_RANDOM_F64_PSEUDO;
+use crate::model_random::ENTITY_TYPE_RANDOM_F64_RANGE;
+use crate::model_random::ENTITY_TYPE_RANDOM_I64;
+use crate::model_random::ENTITY_TYPE_RANDOM_I64_RANGE;
+use crate::model_random::ENTITY_TYPE_RANDOM_STRING;
+use crate::model_random::ENTITY_TYPE_RANDOM_U64;
+use crate::model_random::ENTITY_TYPE_RANDOM_U64_RANGE;
+use crate::model_random::ENTITY_TYPE_RANDOM_UUID;
+use crate::plugins::EntityTypeProvider;
+use crate::providers::RandomEntityTypeProviderImpl;
+
+#[test]
+fn entity_types_should_exist() {
+    let expected_entity_types = vec![
+        ENTITY_TYPE_RANDOM_BOOL.clone(),
+        ENTITY_TYPE_RANDOM_F64.clone(),
+        ENTITY_TYPE_RANDOM_F64_PSEUDO.clone(),
+        ENTITY_TYPE_RANDOM_F64_RANGE.clone(),
+        ENTITY_TYPE_RANDOM_I64.clone(),
+        ENTITY_TYPE_RANDOM_I64_RANGE.clone(),
+        ENTITY_TYPE_RANDOM_STRING.clone(),
+        ENTITY_TYPE_RANDOM_U64.clone(),
+        ENTITY_TYPE_RANDOM_U64_RANGE.clone(),
+        ENTITY_TYPE_RANDOM_UUID.clone(),
+    ];
+    let entity_type_provider = RandomEntityTypeProviderImpl {};
+    let entity_types = entity_type_provider.get_entity_types();
+    assert_eq!(
+        expected_entity_types.len(),
+        entity_types
+            .into_iter()
+            .map(|entity_type| entity_type.ty)
+            .filter(|ty| expected_entity_types.contains(&ty))
+            .count()
+    );
+}
