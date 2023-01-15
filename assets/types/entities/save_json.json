@@ -24,7 +24,8 @@
   ],
   "extensions": [
     {
-      "name": "dublin-core",
+      "namespace": "metadata",
+      "type_name": "dublin-core",
       "extension":{
         "title": "Save JSON",
         "subject": "Saves an object as JSON file",

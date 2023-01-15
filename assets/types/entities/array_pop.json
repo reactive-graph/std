@@ -29,7 +29,8 @@
   ],
   "extensions": [
     {
-      "name": "palette",
+      "namespace": "flow_editor",
+      "type_name": "palette",
       "extension": {
         "content": "Array Pop",
         "styles":  {
@@ -40,7 +41,8 @@
       }
     },
     {
-      "name": "shape",
+      "namespace": "flow_editor",
+      "type_name": "shape",
       "extension": {
         "width": 200,
         "socket": {
@@ -103,7 +105,8 @@
       }
     },
     {
-      "name": "dublin-core",
+      "namespace": "metadata",
+      "type_name": "dublin-core",
       "extension":{
         "title": "Array Pop",
         "subject": "Array Pop",

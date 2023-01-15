@@ -28,7 +28,8 @@
   ],
   "extensions": [
     {
-      "name": "palette",
+      "namespace": "flow_editor",
+      "type_name": "palette",
       "extension": {
         "content": "Object Get Property",
         "styles":  {
@@ -39,7 +40,8 @@
       }
     },
     {
-      "name": "shape",
+      "namespace": "flow_editor",
+      "type_name": "shape",
       "extension": {
         "width": 200,
         "socket": {
@@ -102,7 +104,8 @@
       }
     },
     {
-      "name": "dublin-core",
+      "namespace": "metadata",
+      "type_name": "dublin-core",
       "extension":{
         "title": "Object Get Property",
         "subject": "Object Get Property",
