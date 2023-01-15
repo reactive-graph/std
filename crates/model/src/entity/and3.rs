@@ -2,8 +2,6 @@ use crate::model::entity_model;
 use crate::model::entity_ty;
 use crate::model::flow_ty;
 use crate::model::properties;
-use crate::model::PropertyInstanceGetter;
-use crate::model::PropertyInstanceSetter;
 use crate::NAMESPACE_LOGICAL;
 
 properties!(And3Properties, (INPUT_1, "input1", false), (INPUT_2, "input2", false), (INPUT_3, "input3", false));
