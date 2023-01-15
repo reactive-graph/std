@@ -1,0 +1,23 @@
+# After editing assets/test/hello_world.json execute this query
+# Expected: The property result should reflect the changes on the file
+query {
+  instances {
+    entities(id: "dfc2db31-8dbf-4ab4-9b66-c378fb8a3e41") {
+      id
+      type {
+        namespace
+        name
+      }
+      properties(
+        names: [
+          "trigger"
+          "filename"
+          "result"
+        ]
+      ) {
+        name
+        value
+      }
+    }
+  }
+}

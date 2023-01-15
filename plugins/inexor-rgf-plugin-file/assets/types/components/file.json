@@ -1,0 +1,20 @@
+{
+  "namespace": "file",
+  "type_name": "file",
+  "description": "Represents a file in the file system",
+  "properties": [
+    {
+      "name": "filename",
+      "description": "The filename",
+      "data_type": "string",
+      "socket_type": "input"
+    }
+  ],
+  "extensions": [
+    {
+      "namespace": "core",
+      "type_name": "component_category",
+      "extension": "file"
+    }
+  ]
+}
