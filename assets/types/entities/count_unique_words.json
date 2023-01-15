@@ -12,7 +12,8 @@
   ],
   "extensions": [
     {
-      "name": "dublin-core",
+      "namespace": "metadata",
+      "type_name": "dublin-core",
       "extension": {
         "title": "Count Unique Words",
         "subject": "Counting occurrences of unique words in the input string. This function respects unicode",

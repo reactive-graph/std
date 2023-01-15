@@ -12,7 +12,8 @@
   ],
   "extensions": [
     {
-      "name": "dublin-core",
+      "namespace": "metadata",
+      "type_name": "dublin-core",
       "extension": {
         "title": "Character Count",
         "subject": "Counts the graphemes in the input string taking care of surrogate pairs and combining marks",
