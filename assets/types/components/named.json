@@ -1,0 +1,20 @@
+{
+  "namespace": "base",
+  "type_name": "named",
+  "description": "The entity or relation has a name.",
+  "properties": [
+    {
+      "name": "name",
+      "description": "The name of an entity or a relation",
+      "data_type": "string",
+      "socket_type": "none"
+    }
+  ],
+  "extensions": [
+    {
+      "namespace": "core",
+      "type_name": "component_category",
+      "extension": "base"
+    }
+  ]
+}

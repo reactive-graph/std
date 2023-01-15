@@ -1,0 +1,37 @@
+{
+  "namespace": "flow",
+  "type_name": "flow_2d",
+  "description": "The position (x,y) of the entity or relation on a two dimensional flow.",
+  "properties": [
+    {
+      "name": "f2dx",
+      "description": "The X position in a 2D flow",
+      "data_type": "number",
+      "socket_type": "none"
+    },
+    {
+      "name": "f2dy",
+      "description": "The Y position in a 2D flow",
+      "data_type": "number",
+      "socket_type": "none"
+    },
+    {
+      "name": "f2dw",
+      "description": "The width in a 2D flow",
+      "data_type": "number",
+      "socket_type": "none"
+    },
+    {
+      "name": "f2dh",
+      "description": "The height in a 2D flow",
+      "data_type": "number",
+      "socket_type": "none"
+    }
+  ],
+  "extensions": [
+    {
+      "name": "component_category",
+      "extension": "flow"
+    }
+  ]
+}

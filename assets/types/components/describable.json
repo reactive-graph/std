@@ -1,0 +1,20 @@
+{
+  "namespace": "base",
+  "type_name": "describable",
+  "description": "The entity or relation has a description.",
+  "properties": [
+    {
+      "name": "description",
+      "description": "The description of an entity or a relation",
+      "data_type": "string",
+      "socket_type": "none"
+    }
+  ],
+  "extensions": [
+    {
+      "namespace": "core",
+      "type_name": "component_category",
+      "extension": "base"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "namespace": "base",
+  "type_name": "licensed",
+  "description": "The entity is licensed.",
+  "properties": [
+    {
+      "name": "license",
+      "description": "The SPDX license identifier. See: https://spdx.org/licenses/",
+      "data_type": "string",
+      "socket_type": "none"
+    },
+    {
+      "name": "attribution",
+      "description": "Title, author, source and license. Best practices for attribution: https://wiki.creativecommons.org/wiki/best_practices_for_attribution",
+      "data_type": "string",
+      "socket_type": "none"
+    }
+  ],
+  "extensions": [
+    {
+      "namespace": "core",
+      "type_name": "component_category",
+      "extension": "base"
+    }
+  ]
+}

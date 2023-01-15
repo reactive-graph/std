@@ -1,0 +1,76 @@
+{
+  "namespace": "base",
+  "type_name": "example_flow",
+  "description": "Example Flow Type",
+  "wrapper_entity_instance": {
+    "namespace": "flow",
+    "type_name": "generic_flow",
+    "id": "5616e791-a943-487c-b79f-4a827e9d6a36"
+  },
+  "entity_instances": [
+    {
+      "namespace": "value",
+      "type_name": "value_boolean",
+      "id": "a3d23df3-8cc6-4162-a3de-63dc274ba15c",
+      "properties": {
+        "value": false
+      }
+    },
+    {
+      "namespace": "value",
+      "type_name": "value_boolean",
+      "id": "ee935ece-bf8d-4d10-956c-8c97d006e97f",
+      "properties": {
+        "value": false
+      }
+    },
+    {
+      "namespace": "logical",
+      "type_name": "and",
+      "id": "34689bbc-d611-4748-81a6-ad0f32f701ac",
+      "properties": {
+        "lhs": false,
+        "rhs": false,
+        "result": false
+      }
+    }
+  ],
+  "relation_instances": [
+    {
+      "outbound_id": "a3d23df3-8cc6-4162-a3de-63dc274ba15c",
+      "namespace": "connector",
+      "type_name": "default_connector",
+      "instance_id": "value__lhs",
+      "inbound_id": "34689bbc-d611-4748-81a6-ad0f32f701ac",
+      "properties": {
+        "outbound_property_name": "value",
+        "inbound_property_name": "lhs"
+      }
+    },
+    {
+      "outbound_id": "ee935ece-bf8d-4d10-956c-8c97d006e97f",
+      "namespace": "connector",
+      "type_name": "default_connector",
+      "instance_id": "value__rhs",
+      "inbound_id": "34689bbc-d611-4748-81a6-ad0f32f701ac",
+      "properties": {
+        "outbound_property_name": "value",
+        "inbound_property_name": "rhs"
+      }
+    }
+  ],
+  "variables": [
+    {
+      "name": "example",
+      "description": "Example Variable",
+      "data_type": "string"
+    }
+  ],
+  "extensions": [
+    {
+      "namespace": "example",
+      "type_name": "example",
+      "extension": "Example Extension"
+    }
+  ]
+}
