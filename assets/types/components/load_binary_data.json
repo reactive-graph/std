@@ -11,7 +11,8 @@
   ],
   "extensions": [
     {
-      "name": "dublin-core",
+      "namespace": "metadata",
+      "type_name": "dublin-core",
       "extension":{
         "title": "Load Binary Data",
         "subject": "Loads binary data",

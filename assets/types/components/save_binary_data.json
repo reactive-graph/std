@@ -11,7 +11,8 @@
   ],
   "extensions": [
     {
-      "name": "dublin-core",
+      "namespace": "metadata",
+      "type_name": "dublin-core",
       "extension":{
         "title": "Save Binary Data",
         "subject": "Saves binary data",
