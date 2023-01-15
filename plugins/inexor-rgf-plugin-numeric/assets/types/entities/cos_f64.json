@@ -1,0 +1,27 @@
+{
+  "namespace": "numeric_f64",
+  "type_name": "cos",
+  "description": "Computes the cosine of a number (in radians)",
+  "components": [
+    {
+      "namespace": "numeric",
+      "type_name": "numeric_operation"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "namespace": "flow_editor",
+      "type_name": "palette",
+      "extension": {
+        "content": "cos",
+        "styles": {
+          "font-family": "Fira Code",
+          "font-size": "12px",
+          "padding": "5px"
+        }
+      }
+    }
+  ]
+}

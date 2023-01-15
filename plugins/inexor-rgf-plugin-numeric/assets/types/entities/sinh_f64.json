@@ -1,0 +1,27 @@
+{
+  "namespace": "numeric_f64",
+  "type_name": "sinh",
+  "description": "Hyperbolic sine function",
+  "components": [
+    {
+      "namespace": "numeric",
+      "type_name": "numeric_operation"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "namespace": "flow_editor",
+      "type_name": "palette",
+      "extension": {
+        "content": "sinh",
+        "styles": {
+          "font-family": "Fira Code",
+          "font-size": "12px",
+          "padding": "5px"
+        }
+      }
+    }
+  ]
+}

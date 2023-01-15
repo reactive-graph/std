@@ -1,0 +1,27 @@
+{
+  "namespace": "numeric_f64",
+  "type_name": "ceil",
+  "description": "Returns the smallest integer greater than or equal to a number",
+  "components": [
+    {
+      "namespace": "numeric",
+      "type_name": "numeric_operation"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "namespace": "flow_editor",
+      "type_name": "palette",
+      "extension": {
+        "content": "ceil",
+        "styles": {
+          "font-family": "Fira Code",
+          "font-size": "12px",
+          "padding": "5px"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "namespace": "numeric_i64",
+  "type_name": "signum",
+  "description": "Returns a number that represents the sign of the input",
+  "components": [
+    {
+      "namespace": "numeric",
+      "type_name": "numeric_operation"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "namespace": "flow_editor",
+      "type_name": "palette",
+      "extension": {
+        "content": "signum",
+        "styles": {
+          "font-family": "Fira Code",
+          "font-size": "12px",
+          "padding": "5px"
+        }
+      }
+    }
+  ]
+}

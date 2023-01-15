@@ -1,0 +1,27 @@
+{
+  "namespace": "numeric_f64",
+  "type_name": "hypot",
+  "description": "Calculates the length of the hypotenuse of a right-angle triangle given legs of length x and y",
+  "components": [
+    {
+      "namespace": "numeric",
+      "type_name": "numeric_gate"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "namespace": "flow_editor",
+      "type_name": "palette",
+      "extension": {
+        "content": "hypot",
+        "styles": {
+          "font-family": "Fira Code",
+          "font-size": "12px",
+          "padding": "5px"
+        }
+      }
+    }
+  ]
+}

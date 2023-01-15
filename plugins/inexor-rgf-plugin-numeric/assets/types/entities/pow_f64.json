@@ -1,0 +1,27 @@
+{
+  "namespace": "numeric_f64",
+  "type_name": "pow",
+  "description": "Raises a number to a power",
+  "components": [
+    {
+      "namespace": "numeric",
+      "type_name": "numeric_gate"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "namespace": "flow_editor",
+      "type_name": "palette",
+      "extension": {
+        "content": "pow",
+        "styles": {
+          "font-family": "Fira Code",
+          "font-size": "12px",
+          "padding": "5px"
+        }
+      }
+    }
+  ]
+}
