@@ -1,0 +1,28 @@
+{
+  "namespace": "config",
+  "type_name": "config_file",
+  "description": "Loads a configuration file",
+  "properties": [
+    {
+      "name": "result",
+      "data_type": "object",
+      "socket_type": "output"
+    }
+  ],
+  "extensions": [
+    {
+      "namespace": "core",
+      "type_name": "component_category",
+      "extension": "filesystem"
+    },
+    {
+      "namespace": "metadata",
+      "type_name": "dublin-core",
+      "extension": {
+        "title": "Config File",
+        "subject": "Loads a configuration file",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

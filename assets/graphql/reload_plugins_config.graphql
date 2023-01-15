@@ -1,0 +1,31 @@
+mutation reloadPluginsConfig {
+  instances {
+    entities {
+      update(
+        id: "f3c6927a-378c-4dc3-ad71-eb9303eb9911"
+        properties: [
+          {
+            name: "trigger"
+            value: true
+          }
+        ]
+      ) {
+        id
+        type {
+          namespace
+          name
+        }
+        properties(
+          names: [
+            "trigger"
+            "filename"
+            "result"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}

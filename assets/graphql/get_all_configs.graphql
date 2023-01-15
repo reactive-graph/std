@@ -1,0 +1,22 @@
+query getAllConfigs {
+  instances {
+    entities(type: {
+      namespace: "config"
+      name: "config_file"
+    }) {
+      id
+      label
+      description
+      properties(
+        names: [
+          "trigger"
+          "filename"
+          "result"
+        ]
+      ) {
+        name
+        value
+      }
+    }
+  }
+}
