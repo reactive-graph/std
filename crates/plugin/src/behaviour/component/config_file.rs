@@ -16,12 +16,7 @@ behaviour_validator!(ConfigFileValidator, ReactiveEntityInstance, TRIGGER.as_ref
 
 impl BehaviourInit<ReactiveEntityInstance> for ConfigFileBehaviourTransitions {
     fn init(&self) -> Result<(), BehaviourInitializationFailed> {
-        if let Some(data) = self
-            .reactive_instance
-            .get(FILENAME)
-            .and_then(|v| v.as_str().map(String::from))
-            .and_then(|filename| read_toml(filename))
-        {
+        if let Some(data) = self.reactive_instance.as_string(FILENAME).and_then(|filename| read_toml(filename)) {
             self.reactive_instance.set(RESULT, data);
         }
         Ok(())
@@ -35,11 +30,7 @@ impl BehaviourConnect<ReactiveEntityInstance> for ConfigFileBehaviourTransitions
             if !trigger.is_boolean() || !trigger.as_bool().unwrap_or(false) {
                 return;
             }
-            if let Some(data) = reactive_instance
-                .get(FILENAME)
-                .and_then(|v| v.as_str().map(String::from))
-                .and_then(|filename| read_toml(filename))
-            {
+            if let Some(data) = reactive_instance.as_string(FILENAME).and_then(|filename| read_toml(filename)) {
                 reactive_instance.set(RESULT, data);
             }
         });
