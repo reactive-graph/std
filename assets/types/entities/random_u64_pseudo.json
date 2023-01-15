@@ -23,7 +23,8 @@
   ],
   "extensions": [
     {
-      "name": "dublin-core",
+      "namespace": "metadata",
+      "type_name": "dublin-core",
       "extension":{
         "title": "Pseudo Random Unsigned Integer Number",
         "subject": "Pseudo Random Unsigned Integer Number",

@@ -28,7 +28,8 @@
   ],
   "extensions": [
     {
-      "name": "dublin-core",
+      "namespace": "metadata",
+      "type_name": "dublin-core",
       "extension":{
         "title": "Random Floating Point Number Within Range",
         "subject": "Random Floating Point Number Within Range",

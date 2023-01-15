@@ -18,7 +18,8 @@
   ],
   "extensions": [
     {
-      "name": "dublin-core",
+      "namespace": "metadata",
+      "type_name": "dublin-core",
       "extension":{
         "title": "Random Signed Integer Number",
         "subject": "Random Signed Integer Number",

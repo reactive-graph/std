@@ -28,7 +28,8 @@
   ],
   "extensions": [
     {
-      "name": "dublin-core",
+      "namespace": "metadata",
+      "type_name": "dublin-core",
       "extension":{
         "title": "Random Unsigned Integer Within Range",
         "subject": "Random Unsigned Integer Within Range",
