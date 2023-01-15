@@ -1,0 +1,99 @@
+cargo-features = [ "workspace-inheritance" ]
+
+[workspace]
+
+members = [
+    "plugins/inexor-rgf-plugin-arithmetic/crates/model",
+    "plugins/inexor-rgf-plugin-arithmetic/crates/plugin",
+    "plugins/inexor-rgf-plugin-base/crates/model",
+    "plugins/inexor-rgf-plugin-base/crates/plugin",
+    "plugins/inexor-rgf-plugin-binary/crates/model",
+    "plugins/inexor-rgf-plugin-binary/crates/plugin",
+    "plugins/inexor-rgf-plugin-comparison/crates/model",
+    "plugins/inexor-rgf-plugin-comparison/crates/plugin",
+    "plugins/inexor-rgf-plugin-config/crates/model",
+    "plugins/inexor-rgf-plugin-config/crates/plugin",
+    "plugins/inexor-rgf-plugin-connector/crates/model",
+    "plugins/inexor-rgf-plugin-connector/crates/plugin",
+    "plugins/inexor-rgf-plugin-file/crates/model",
+    "plugins/inexor-rgf-plugin-file/crates/plugin",
+    "plugins/inexor-rgf-plugin-graphql-client",
+    "plugins/inexor-rgf-plugin-graphql-schema-visualization",
+    "plugins/inexor-rgf-plugin-json/crates/model",
+    "plugins/inexor-rgf-plugin-json/crates/plugin",
+    "plugins/inexor-rgf-plugin-logical/crates/model",
+    "plugins/inexor-rgf-plugin-logical/crates/plugin",
+    "plugins/inexor-rgf-plugin-metadata/crates/model",
+    "plugins/inexor-rgf-plugin-metadata/crates/plugin",
+    "plugins/inexor-rgf-plugin-numeric/crates/model",
+    "plugins/inexor-rgf-plugin-numeric/crates/plugin",
+    "plugins/inexor-rgf-plugin-random/crates/model",
+    "plugins/inexor-rgf-plugin-random/crates/plugin",
+    "plugins/inexor-rgf-plugin-string/crates/model",
+    "plugins/inexor-rgf-plugin-string/crates/plugin",
+    "plugins/inexor-rgf-plugin-system-environment/crates/model",
+    "plugins/inexor-rgf-plugin-system-environment/crates/plugin",
+    "plugins/inexor-rgf-plugin-taxonomy/crates/model",
+    "plugins/inexor-rgf-plugin-taxonomy/crates/plugin",
+    "plugins/inexor-rgf-plugin-value/crates/model",
+    "plugins/inexor-rgf-plugin-value/crates/plugin",
+    "deployment"
+]
+
+[workspace.package]
+version = "0.8.0"
+authors = ["Andreas Schaeffer <hanack@nooblounge.net>"]
+edition = "2021"
+license = "MIT"
+
+[workspace.dependencies]
+async-trait = "0.1"
+base64 = "0.20"
+crossbeam = "0.8"
+dashmap = "5.4"
+data-url = "0.2"
+http = "0.2"
+indradb-lib = "3"
+infer = "0.11"
+lazy_static = "1.4"
+license = "3.0"
+log = { version = "0.4", features = ["std", "serde"] }
+log4rs = { version = "1.2", features = ["console_appender", "file_appender", "toml_format"]}
+matchit = "0.7"
+mime_guess = "2.0"
+notify = "5.0"
+num-traits = "0.2"
+paste = "1.0"
+quote = "1.0"
+query_interface = "0.3"
+rand = "0.8"
+rand_chacha = "0.3"
+random-string = "1.0"
+rust-embed = { version = "6.4", features = ["debug-embed", "compression"] }
+semver = "1.0"
+serde = { version = "1.0", features = [ "derive" ] }
+serde_json = "1.0"
+shellexpand = "3.0"
+strum = { version = "0.24", features = ["derive"] }
+strum_macros = "0.24"
+tera = "1"
+tokio = { version = "1", features =  ["time", "rt", "rt-multi-thread"] }
+toml = "0.5"
+ureq = { version = "2.4", features = ["json"] }
+uuid = { version = "1.2", features = ["serde", "v4", "v5"] }
+voca_rs = "1"
+
+inexor-rgf-core-di = { version = "2.0", features = ["async"], git = "https://github.com/inexorgame/inexor-rgf-core-di.git" }
+inexor-rgf-core-frp = { git = "https://github.com/inexorgame/inexor-rgf-core-frp.git" }
+inexor-rgf-core-model = { git = "https://github.com/inexorgame/inexor-rgf-core-model.git" }
+inexor-rgf-core-reactive = { git = "https://github.com/inexorgame/inexor-rgf-core-reactive.git" }
+inexor-rgf-core-plugins = { git = "https://github.com/inexorgame/inexor-rgf-core-plugins.git" }
+inexor-rgf-core-builder = { git = "https://github.com/inexorgame/inexor-rgf-core-builder.git" }
+
+[profile.dev]
+opt-level = 0
+
+[profile.release]
+opt-level = 3
+lto = true
+strip = "symbols"

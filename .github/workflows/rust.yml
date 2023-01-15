@@ -22,6 +22,14 @@ jobs:
       with:
         toolchain: nightly
         override: true
+    - name: Install Yarn
+      uses: borales/actions-yarn@v3.0.0
+      with:
+        cmd: --cwd plugins/inexor-rgf-plugin-graphql-client/web install
+    - name: Install Yarn
+      uses: borales/actions-yarn@v3.0.0
+      with:
+        cmd: --cwd plugins/inexor-rgf-plugin-graphql-schema-visualization/web install
     - name: Build
       run: cargo build --verbose
     - name: Run tests
@@ -46,6 +54,14 @@ jobs:
       - uses: hecrj/setup-rust-action@v1
         with:
           rust-version: nightly
+      - name: Install Yarn
+        uses: borales/actions-yarn@v3.0.0
+        with:
+          cmd: --cwd plugins/inexor-rgf-plugin-graphql-client/web install
+      - name: Install Yarn
+        uses: borales/actions-yarn@v3.0.0
+        with:
+          cmd: --cwd plugins/inexor-rgf-plugin-graphql-schema-visualization/web install
       - uses: actions-rs/tarpaulin@v0.1
         with:
           args: --all-features

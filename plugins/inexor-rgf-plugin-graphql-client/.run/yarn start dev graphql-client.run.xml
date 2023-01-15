@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="yarn start dev" type="js.build_tools.npm">
-    <package-json value="$PROJECT_DIR$/web/package.json" />
+  <configuration default="false" name="yarn start dev graphql-client" type="js.build_tools.npm">
+    <package-json value="$PROJECT_DIR$/plugins/inexor-rgf-plugin-graphql-client/web/package.json" />
     <command value="run" />
     <scripts>
       <script value="start:dev" />
