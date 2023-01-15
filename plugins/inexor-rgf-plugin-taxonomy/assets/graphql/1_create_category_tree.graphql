@@ -219,7 +219,12 @@ mutation createSubCategory_Root_B {
           typeName: "has_subcategory"
           inboundId: "00000000-0000-0000-0000-0000000000B1",
         },
-        properties: []
+        properties: [
+          {
+            name: "weight",
+            value: 1
+          }
+        ]
       ) {
         type {
           namespace
@@ -241,7 +246,12 @@ mutation createSubCategory_A_1 {
           typeName: "has_subcategory"
           inboundId: "00000000-0000-0000-0000-0000000001A1",
         },
-        properties: []
+        properties: [
+          {
+            name: "weight",
+            value: 0
+          }
+        ]
       ) {
         type {
           namespace
@@ -263,7 +273,12 @@ mutation createSubCategory_A_2 {
           typeName: "has_subcategory"
           inboundId: "00000000-0000-0000-0000-0000000002A1",
         },
-        properties: []
+        properties: [
+          {
+            name: "weight",
+            value: 1
+          }
+        ]
       ) {
         type {
           namespace
@@ -285,7 +300,12 @@ mutation createSubCategory_B_1 {
           typeName: "has_subcategory"
           inboundId: "00000000-0000-0000-0000-0000000001B1",
         },
-        properties: []
+        properties: [
+          {
+            name: "weight",
+            value: 0
+          }
+        ]
       ) {
         type {
           namespace
@@ -307,7 +327,12 @@ mutation createSubCategory_B_2 {
           typeName: "has_subcategory"
           inboundId: "00000000-0000-0000-0000-0000000002B1",
         },
-        properties: []
+        properties: [
+          {
+            name: "weight",
+            value: 1
+          }
+        ]
       ) {
         type {
           namespace

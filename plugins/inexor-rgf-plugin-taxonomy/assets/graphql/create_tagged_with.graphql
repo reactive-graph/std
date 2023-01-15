@@ -1,0 +1,37 @@
+mutation CreateTaggedWith {
+  instances {
+    relations {
+      create(
+        edgeKey: {
+          # The Shutdown Entity
+          outboundId: "6ba7b810-9e15-11d1-50b4-00c04fd530c7"
+          namespace: "taxonomy"
+          typeName: "tagged_with"
+          inboundId: "a58a82b4-8e2e-11ed-8000-000000000000"
+        }
+        properties: [
+          {
+            name: "weight"
+            value: 100
+          }
+        ]
+      ) {
+        outbound {
+          id
+        }
+        type {
+          namespace
+          name
+        }
+        instanceId
+        inbound {
+          id
+        }
+        properties {
+          name
+          value
+        }
+      }
+    }
+  }
+}

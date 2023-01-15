@@ -1,0 +1,22 @@
+query CategoryTree {
+  taxonomy {
+    category {
+      name
+      sub_categories {
+        name
+        sub_categories {
+          name
+          sub_categories {
+            name
+            sub_categories {
+              name
+              sub_categories {
+                name
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
