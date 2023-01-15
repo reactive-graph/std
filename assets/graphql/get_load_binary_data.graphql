@@ -1,0 +1,29 @@
+query {
+  instances {
+    entities(id: "dce4bd25-7b25-4a6a-8567-5429a2b3a101") {
+      id
+      label
+      type {
+        name
+      }
+      components {
+        namespace
+        name
+      }
+      behaviours {
+        namespace
+        name
+      }
+      properties(
+        names: [
+          "trigger"
+          "filename"
+          "data_url"
+        ]
+      ) {
+        name
+        value
+      }
+    }
+  }
+}

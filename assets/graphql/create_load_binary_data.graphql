@@ -1,0 +1,51 @@
+mutation {
+  instances {
+    entities {
+      create(
+        type:  {
+          namespace: "binary"
+          name: "load_binary_data"
+        }
+        id: "dce4bd25-7b25-4a6a-8567-5429a2b3a101"
+        properties: [
+          {
+            name: "label"
+            value: "/org/inexor/logo/:property"
+          }
+          {
+            name: "filename"
+            value: "docs/images/inexor_2.png"
+          }
+          {
+            name: "trigger"
+            value: true
+          }
+        ]
+      ) {
+        id
+        label
+        type {
+          name
+        }
+        components {
+          namespace
+          name
+        }
+        behaviours {
+          namespace
+          name
+        }
+        properties(
+          names: [
+            "trigger"
+            "filename"
+            "data_url"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}
