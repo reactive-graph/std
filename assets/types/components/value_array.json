@@ -1,0 +1,12 @@
+{
+  "namespace": "value",
+  "type_name": "value_array",
+  "description": "Value of type array",
+  "properties": [
+    {
+      "name": "value",
+      "data_type": "array",
+      "socket_type": "output"
+    }
+  ]
+}

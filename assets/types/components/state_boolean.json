@@ -1,0 +1,18 @@
+{
+  "namespace": "state",
+  "type_name": "state_boolean",
+  "description": "State of type boolean",
+  "properties": [
+    {
+      "name": "state",
+      "data_type": "bool",
+      "socket_type": "none",
+      "mutability": "immutable"
+    },
+    {
+      "name": "set_state",
+      "data_type": "bool",
+      "socket_type": "input"
+    }
+  ]
+}

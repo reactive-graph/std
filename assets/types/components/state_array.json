@@ -1,0 +1,18 @@
+{
+  "namespace": "state",
+  "type_name": "state_array",
+  "description": "State of type array",
+  "properties": [
+    {
+      "name": "state",
+      "data_type": "array",
+      "socket_type": "none",
+      "mutability": "immutable"
+    },
+    {
+      "name": "set_state",
+      "data_type": "array",
+      "socket_type": "input"
+    }
+  ]
+}

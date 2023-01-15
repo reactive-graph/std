@@ -1,0 +1,12 @@
+{
+  "namespace": "value",
+  "type_name": "value_object",
+  "description": "Value of type object",
+  "properties": [
+    {
+      "name": "value",
+      "data_type": "object",
+      "socket_type": "output"
+    }
+  ]
+}

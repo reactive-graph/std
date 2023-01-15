@@ -1,0 +1,48 @@
+mutation {
+  instances {
+    entities {
+      create(
+        type: {
+          namespace: "state"
+          name: "state_object"
+        }
+        id: "1f0d1b1f-bb53-4e80-8103-6a350f459ceb"
+        properties: [
+          {
+            name: "value"
+            value: {
+              test: "initial_value"
+            }
+          }
+          {
+            name: "state"
+            value: {
+              test: "initial_state"
+            }
+          }
+        ]
+      ) {
+        id
+        type {
+          namespace
+          name
+        }
+        components {
+          namespace
+          name
+        }
+        behaviours {
+          namespace
+          name
+        }
+        properties(names: [
+          "value"
+          "state"
+        ]) {
+          name
+          value
+        }
+      }
+    }
+  }
+}

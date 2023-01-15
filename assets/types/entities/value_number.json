@@ -1,0 +1,19 @@
+{
+  "namespace": "value",
+  "type_name": "value_number",
+  "description": "Value of type number",
+  "components": [
+    {
+      "namespace": "base",
+      "type_name": "named"
+    },
+    {
+      "namespace": "value",
+      "type_name": "value_number"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "namespace": "state",
+  "type_name": "state_array",
+  "description": "State of type array",
+  "components": [
+    {
+      "namespace": "base",
+      "type_name": "named"
+    },
+    {
+      "namespace": "value",
+      "type_name": "value_array"
+    },
+    {
+      "namespace": "state",
+      "type_name": "state_array"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+  ]
+}

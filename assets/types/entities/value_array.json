@@ -1,0 +1,19 @@
+{
+  "namespace": "value",
+  "type_name": "value_array",
+  "description": "Value of type array",
+  "components": [
+    {
+      "namespace": "base",
+      "type_name": "named"
+    },
+    {
+      "namespace": "value",
+      "type_name": "value_array"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+  ]
+}
