@@ -23,12 +23,14 @@
     {
       "name": "result",
       "data_type": "bool",
-      "socket_type": "output"
+      "socket_type": "output",
+      "mutability": "immutable"
     }
   ],
   "extensions": [
     {
-      "name": "dublin-core",
+      "namespace": "metadata",
+      "type_name": "dublin-core",
       "extension":{
         "title": "AND3",
         "subject": "An AND Gate with three inputs",

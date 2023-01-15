@@ -10,11 +10,13 @@
       "socket_type": "input",
       "extensions": [
         {
-          "name": "widgetType",
+          "namespace": "ui",
+          "type_name": "widget",
           "extension": "Trigger"
         },
         {
-          "name": "socket",
+          "namespace": "flow_editor",
+          "type_name": "socket",
           "extension": {
             "width": 60,
             "height": 30,
@@ -33,7 +35,8 @@
   ],
   "extensions": [
     {
-      "name": "component_category",
+      "namespace": "core",
+      "type_name": "component_category",
       "extension": "trigger"
     }
   ]
