@@ -1,0 +1,63 @@
+mutation {
+  instances {
+    entities {
+      create(
+        type: {
+          namespace: "http"
+          name: "json_rpc"
+        }
+        id: "854161a4-b3e0-4267-9415-7dd9f1bcb5d0"
+        properties: [
+          {
+            name: "url"
+            value: "http://kodi:8080/jsonrpc"
+          }
+          {
+            name: "json_rpc_version"
+            value: "2.0"
+          }
+          {
+            name: "method"
+            value: "JSONRPC.Version"
+          }
+          {
+            name: "params"
+            value: {}
+          }
+          {
+            name: "result"
+            value: {}
+          }
+          {
+            name: "error"
+            value: {}
+          }
+          {
+            name: "trigger"
+            value: true
+          }
+        ]
+      ) {
+        id
+        type {
+          namespace
+          name
+        }
+        properties(
+          names: [
+            "trigger"
+            "url"
+            "json_rpc_version"
+            "method"
+            "params"
+            "result"
+            "error"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}

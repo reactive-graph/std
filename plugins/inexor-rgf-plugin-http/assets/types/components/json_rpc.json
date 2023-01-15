@@ -1,0 +1,57 @@
+{
+  "namespace": "http",
+  "type_name": "json_rpc",
+  "description": "Sends JSON-RPC request to a given URL",
+  "properties": [
+    {
+      "name": "method",
+      "data_type": "string",
+      "socket_type": "input"
+    },
+    {
+      "name": "url",
+      "data_type": "string",
+      "socket_type": "input"
+    },
+    {
+      "name": "json_rpc_version",
+      "data_type": "string",
+      "socket_type": "input"
+    },
+    {
+      "name": "params",
+      "data_type": "object",
+      "socket_type": "input",
+      "extensions":[
+        {
+          "namespace": "core",
+          "type_name": "auto_trigger",
+          "extension": true
+        }
+      ]
+    },
+    {
+      "name": "result",
+      "data_type": "object",
+      "socket_type": "output",
+      "mutability": "immutable"
+    },
+    {
+      "name": "error",
+      "data_type": "object",
+      "socket_type": "output",
+      "mutability": "immutable"
+    }
+  ],
+  "extensions": [
+    {
+      "namespace": "metadata",
+      "type_name": "dublin-core",
+      "extension":{
+        "title": "JSON-RPC",
+        "subject": "JSON Remote Procedure Call",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}
