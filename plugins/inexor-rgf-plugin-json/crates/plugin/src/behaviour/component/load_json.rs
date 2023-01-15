@@ -4,9 +4,9 @@ use std::path::Path;
 use serde_json::Value;
 
 use crate::model::*;
+use crate::model_file::FileProperties::FILENAME;
 use crate::model_logical::ActionProperties::RESULT;
 use crate::model_logical::ActionProperties::TRIGGER;
-use crate::model_file::FileProperties::FILENAME;
 use crate::reactive::*;
 
 entity_behaviour!(LoadJson, LoadJsonFactory, LoadJsonFsm, LoadJsonBehaviourTransitions, LoadJsonValidator);
