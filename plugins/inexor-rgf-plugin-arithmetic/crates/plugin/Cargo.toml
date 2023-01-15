@@ -29,6 +29,7 @@ inexor-rgf-core-model = { workspace = true }
 inexor-rgf-core-reactive = { workspace = true }
 inexor-rgf-core-plugins = { workspace = true }
 inexor-rgf-model-arithmetic = { path = "../../crates/model" }
+inexor-rgf-model-logical = { path = "../../../inexor-rgf-plugin-logical/crates/model" }
 
 [dev-dependencies]
 inexor-rgf-core-builder = { workspace = true }

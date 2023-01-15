@@ -13,6 +13,7 @@ use inexor_rgf_core_model as model;
 use inexor_rgf_core_plugins as plugins;
 use inexor_rgf_core_reactive as reactive;
 use inexor_rgf_model_arithmetic as model_arithmetic;
+use inexor_rgf_model_logical as model_logical;
 use log::error;
 
 use crate::di::profiles;

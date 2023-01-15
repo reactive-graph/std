@@ -2,11 +2,11 @@ use serde_json::json;
 
 use crate::behaviour::entity::counter::CounterFactory;
 use crate::builder::ReactiveEntityInstanceBuilder;
-use crate::model_arithmetic::ActionProperties::RESULT;
-use crate::model_arithmetic::ActionProperties::TRIGGER;
 use crate::model_arithmetic::Counter;
 use crate::model_arithmetic::BEHAVIOUR_COUNTER;
 use crate::model_arithmetic::ENTITY_TYPE_COUNTER;
+use crate::model_logical::ActionProperties::RESULT;
+use crate::model_logical::ActionProperties::TRIGGER;
 use crate::reactive::BehaviourFactory;
 use crate::reactive::BehaviourState;
 

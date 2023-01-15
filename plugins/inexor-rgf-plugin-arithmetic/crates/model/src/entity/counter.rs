@@ -2,6 +2,7 @@ use crate::model::behaviour_ty;
 use crate::model::entity_behaviour_ty;
 use crate::model::entity_model;
 use crate::model::entity_ty;
+use crate::model_logical::Action;
 use crate::NAMESPACE_ARITHMETIC_U64;
 
 // All properties are defined in the component(s)
@@ -15,3 +16,4 @@ entity_model!(
     get result u64,
     set trigger bool,
 );
+impl Action for Counter {}

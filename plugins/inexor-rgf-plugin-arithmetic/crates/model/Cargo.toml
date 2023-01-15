@@ -17,6 +17,7 @@ strum_macros = { workspace = true }
 
 inexor-rgf-core-model = { workspace = true }
 inexor-rgf-core-reactive = { workspace = true }
+inexor-rgf-model-logical = { path = "../../../inexor-rgf-plugin-logical/crates/model" }
 
 [lib]
 crate-type = ["lib"]

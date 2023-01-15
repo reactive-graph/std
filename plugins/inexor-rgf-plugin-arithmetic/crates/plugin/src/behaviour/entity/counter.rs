@@ -2,9 +2,8 @@ use serde_json::json;
 use serde_json::Value;
 
 use crate::model::*;
-// TODO: import model_logical::ActionProperties instead of model_arithmetic::ActionProperties
-use crate::model_arithmetic::ActionProperties::RESULT;
-use crate::model_arithmetic::ActionProperties::TRIGGER;
+use crate::model_logical::ActionProperties::RESULT;
+use crate::model_logical::ActionProperties::TRIGGER;
 use crate::reactive::*;
 
 entity_behaviour!(Counter, CounterFactory, CounterFsm, CounterBehaviourTransitions, CounterValidator);
