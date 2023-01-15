@@ -4,13 +4,13 @@ use std::path::PathBuf;
 
 use crate::behaviour::component::load_json::LoadJsonFactory;
 use crate::builder::ReactiveEntityInstanceBuilder;
-use crate::model_json::Action;
-use crate::model_json::ActionProperties::RESULT;
-use crate::model_json::ActionProperties::TRIGGER;
 use crate::model_json::FileProperties::FILENAME;
 use crate::model_json::LoadJson;
 use crate::model_json::BEHAVIOUR_LOAD_JSON;
 use crate::model_json::ENTITY_TYPE_LOAD_JSON;
+use crate::model_logical::Action;
+use crate::model_logical::ActionProperties::RESULT;
+use crate::model_logical::ActionProperties::TRIGGER;
 use crate::reactive::BehaviourFactory;
 use crate::reactive::BehaviourState;
 

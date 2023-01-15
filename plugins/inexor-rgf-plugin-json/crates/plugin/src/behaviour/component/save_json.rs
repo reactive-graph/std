@@ -4,9 +4,8 @@ use log::trace;
 use serde_json::Value;
 
 use crate::model::*;
-// TODO: import model_logical::ActionProperties instead of model_json::ActionProperties
-use crate::model_json::ActionProperties::RESULT;
-use crate::model_json::ActionProperties::TRIGGER;
+use crate::model_logical::ActionProperties::RESULT;
+use crate::model_logical::ActionProperties::TRIGGER;
 // TODO: import model_file::FileProperties instead of model_json::FileProperties
 use crate::model_json::FileProperties::FILENAME;
 use crate::model_json::SaveJsonProperties::PAYLOAD;
