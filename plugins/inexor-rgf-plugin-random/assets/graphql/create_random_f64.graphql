@@ -1,0 +1,33 @@
+mutation {
+  instances {
+    entities {
+      create(
+        type: {
+          namespace: "random"
+          name: "random_f64"
+        }
+        id: "bff99899-2583-4325-a462-a7f21f045fe2"
+        properties: [
+          {
+            name: "trigger"
+            value: true
+          }
+        ]
+      ) {
+        id
+        type {
+          namespace
+          name
+        }
+        properties(
+          names: [
+            "result"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}

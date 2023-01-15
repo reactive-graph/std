@@ -1,0 +1,35 @@
+{
+  "namespace": "random",
+  "type_name": "random_u64_pseudo",
+  "description": "Pseudo Random Unsigned Integer Number",
+  "components": [
+    {
+      "namespace": "logical",
+      "type_name": "action"
+    }
+  ],
+  "properties": [
+    {
+      "name": "seed",
+      "data_type": "number",
+      "socket_type": "input"
+    },
+    {
+      "name": "result",
+      "data_type": "number",
+      "socket_type": "output",
+      "mutability": "immutable"
+    }
+  ],
+  "extensions": [
+    {
+      "namespace": "metadata",
+      "type_name": "dublin-core",
+      "extension":{
+        "title": "Pseudo Random Unsigned Integer Number",
+        "subject": "Pseudo Random Unsigned Integer Number",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}
