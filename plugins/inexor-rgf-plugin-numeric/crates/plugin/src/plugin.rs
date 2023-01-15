@@ -1,13 +1,13 @@
 use std::sync::Arc;
 use std::sync::RwLock;
 
-use crate::behaviour::entity::gate::behaviour_f64::NumericGateF64Factory;
 use async_trait::async_trait;
 use log::debug;
 use log::error;
 use serde_json::json;
 use uuid::Uuid;
 
+use crate::behaviour::entity::gate::behaviour_f64::NumericGateF64Factory;
 use crate::behaviour::entity::gate::function::NUMERIC_GATES_F64;
 use crate::behaviour::entity::operation::behaviour_f64::NumericOperationF64Factory;
 use crate::behaviour::entity::operation::behaviour_i64::NumericOperationI64Factory;
@@ -18,7 +18,9 @@ use crate::constants::NAMESPACE_NUMERIC;
 use crate::constants::NUMERIC_CONSTANTS;
 use crate::di::*;
 use crate::model::EntityBehaviourTypeId;
-use crate::model::EntityTypeId;
+use crate::model_base::NamedProperties;
+use crate::model_value::ValueProperties;
+use crate::model_value::ENTITY_TYPE_VALUE_NUMBER;
 use crate::plugins::component_provider;
 use crate::plugins::entity_type_provider;
 use crate::plugins::plugin_context::PluginContext;
@@ -128,19 +130,15 @@ impl NumericPluginImpl {
     fn create_numeric_constants(&self) {
         let reader = self.context.0.read().unwrap();
         let entity_instance_manager = reader.as_ref().unwrap().get_entity_instance_manager().clone();
-        // TODO: NAMESPACE_VALUE + TYPE_NAME
-        let ty = EntityTypeId::new_from_type("value", "value_number");
         for (name, value) in NUMERIC_CONSTANTS.iter() {
             let id = get_id_for_numeric_constant(name);
             if entity_instance_manager.has(id) {
                 continue;
             }
-            let entity_instance = EntityInstanceBuilder::new(ty.clone())
+            let entity_instance = EntityInstanceBuilder::new(ENTITY_TYPE_VALUE_NUMBER.clone())
                 .id(id)
-                // TODO: ComponentValueProperties::VALUE
-                .property("value", json!(value))
-                // TODO: ComponentValueProperties::NAME
-                .property("name", json!(name))
+                .property(ValueProperties::VALUE, json!(value))
+                .property(NamedProperties::NAME, json!(name))
                 .build();
             let reactive_entity_instance = entity_instance_manager.create(entity_instance);
             match reactive_entity_instance {

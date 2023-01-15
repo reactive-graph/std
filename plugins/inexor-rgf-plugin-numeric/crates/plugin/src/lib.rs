@@ -14,7 +14,9 @@ use inexor_rgf_core_di as di;
 use inexor_rgf_core_model as model;
 use inexor_rgf_core_plugins as plugins;
 use inexor_rgf_core_reactive as reactive;
+use inexor_rgf_model_base as model_base;
 use inexor_rgf_model_numeric as model_numeric;
+use inexor_rgf_model_value as model_value;
 use log::error;
 
 use crate::di::profiles;
