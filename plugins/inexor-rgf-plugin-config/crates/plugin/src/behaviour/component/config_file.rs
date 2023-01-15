@@ -3,9 +3,8 @@ use serde_json::Value;
 use std::path::Path;
 
 use crate::model::*;
-// TODO: import model_logical::ActionProperties instead of model_config::ActionProperties
-use crate::model_config::ActionProperties::RESULT;
-use crate::model_config::ActionProperties::TRIGGER;
+use crate::model_logical::ActionProperties::RESULT;
+use crate::model_logical::ActionProperties::TRIGGER;
 // TODO: import model_file::FileProperties instead of model_config::ActionProperties
 use crate::model_config::FileProperties::FILENAME;
 use crate::reactive::*;
