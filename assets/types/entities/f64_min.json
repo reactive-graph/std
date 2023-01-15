@@ -1,0 +1,25 @@
+{
+  "namespace": "arithmetic_f64",
+  "type_name": "min",
+  "description": "Returns the minimum value of two inputs",
+  "components": [
+    {
+      "namespace": "arithmetic",
+      "type_name": "arithmetic_gate"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "palette",
+      "extension": {
+        "content": "min",
+        "styles": {
+          "font-family": "Fira Code",
+          "font-size": "20px"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "namespace": "arithmetic_f64",
+  "type_name": "mul",
+  "description": "Multiply two floating point numbers",
+  "components": [
+    {
+      "namespace": "arithmetic",
+      "type_name": "arithmetic_gate"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "palette",
+      "extension": {
+        "content": "×",
+        "styles": {
+          "font-family": "Fira Code",
+          "font-size": "40px"
+        }
+      }
+    }
+  ]
+}
