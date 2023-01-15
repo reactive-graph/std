@@ -1,9 +1,9 @@
 use crate::model::entity_model;
 use crate::model::entity_ty;
+use crate::model_file::File;
 use crate::model_logical::Action;
 use crate::BinaryData;
 use crate::BinaryDataUrl;
-use crate::File;
 use crate::NAMESPACE_BINARY;
 
 // All properties are defined in the component(s)

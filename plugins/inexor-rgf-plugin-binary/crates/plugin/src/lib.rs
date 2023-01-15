@@ -13,6 +13,7 @@ use inexor_rgf_core_plugins as plugins;
 use inexor_rgf_core_plugins::PluginDependency;
 use inexor_rgf_core_reactive as reactive;
 use inexor_rgf_model_binary as model_binary;
+use inexor_rgf_model_file as model_file;
 use inexor_rgf_model_logical as model_logical;
 use log::error;
 

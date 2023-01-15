@@ -6,10 +6,9 @@ use serde_json::Value;
 
 use crate::model::*;
 use crate::model_binary::BinaryDataProperties::DATA_URL;
+use crate::model_file::FileProperties::FILENAME;
 use crate::model_logical::ActionProperties::RESULT;
 use crate::model_logical::ActionProperties::TRIGGER;
-// TODO: import model_file::FileProperties instead of model_binary::FileProperties
-use crate::model_binary::FileProperties::FILENAME;
 use crate::reactive::*;
 
 entity_behaviour!(
