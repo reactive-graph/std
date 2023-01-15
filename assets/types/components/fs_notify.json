@@ -1,5 +1,6 @@
 {
-  "name": "fs_notify",
+  "namespace": "file",
+  "type_name": "fs_notify",
   "description": "Triggers if the file with the given filename has been changed",
   "properties": [
     {
@@ -17,7 +18,8 @@
   ],
   "extensions": [
     {
-      "name": "component_category",
+      "namespace": "core",
+      "type_name": "component_category",
       "extension": "file"
     }
   ]
