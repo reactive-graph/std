@@ -1,0 +1,46 @@
+mutation {
+  instances {
+    entities {
+      create(
+        type: {
+          namespace: "binary"
+          name: "save_binary_data"
+        }
+        id: "d715b2e8-da53-47eb-a217-fbe715292e60"
+        properties: [
+          {
+            name: "filename"
+            value: "/tmp/d715b2e8-da53-47eb-a217-fbe715292e60.png"
+          }
+          {
+            name: "trigger"
+            value: false
+          }
+        ]
+      ) {
+        id
+        type {
+          name
+        }
+        components {
+          namespace
+          name
+        }
+        behaviours {
+          namespace
+          name
+        }
+        properties(
+          names: [
+            "trigger"
+            "filename"
+            "data_url"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}

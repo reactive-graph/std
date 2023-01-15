@@ -1,0 +1,43 @@
+mutation {
+  instances {
+    entities {
+      update(
+        id: "dce4bd25-7b25-4a6a-8567-5429a2b3a101"
+        properties: [
+          {
+            name: "filename"
+            value: "/tmp/d715b2e8-da53-47eb-a217-fbe715292e60.png"
+          }
+          {
+            name: "trigger"
+            value: true
+          }
+        ]
+      ) {
+        id
+        label
+        type {
+          name
+        }
+        components {
+          namespace
+          name
+        }
+        behaviours {
+          namespace
+          name
+        }
+        properties(
+          names: [
+            "trigger"
+            "filename"
+            "data_url"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}

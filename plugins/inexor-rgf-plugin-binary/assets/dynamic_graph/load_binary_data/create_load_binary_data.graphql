@@ -1,0 +1,18 @@
+mutation {
+  binary {
+    createLoadBinaryData(
+      id: "5069fe9b-ad2f-4ff5-9992-0e225a70d2ad"
+      name: "The Inexor Logo"
+      filename: "docs/images/inexor_2.png"
+      data_url: ""
+      trigger: true
+      result: {}
+    ) {
+      id
+      name
+      filename
+      # Expected: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgA..."
+      data_url
+    }
+  }
+}
