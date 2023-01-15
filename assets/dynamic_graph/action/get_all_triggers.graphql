@@ -1,0 +1,17 @@
+query GetActionTrigger {
+  logical {
+    actionComponent {
+      __typename
+      trigger
+      ... on Core_Shutdown_Entity {
+        id
+      }
+      ... on Json_LoadJson_Entity {
+        id
+      }
+      ... on Config_ConfigFile_Entity {
+        id
+      }
+    }
+  }
+}

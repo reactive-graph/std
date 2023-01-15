@@ -1,0 +1,18 @@
+mutation {
+  logical {
+    # TODO: This creates the wrapper entity instance only. Create the flow type instead (with inner logic).
+    createAnd3(
+      id: "6542f6c2-fdc4-4054-85c6-6a1e85f88657"
+      input1: true
+      input2: true
+      input3: true
+      result: false
+    ) {
+      id
+      input1,
+      input2,
+      input3,
+      result
+    }
+  }
+}

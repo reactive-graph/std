@@ -1,0 +1,34 @@
+mutation {
+  instances {
+    entities {
+      update(
+        id: "c2091964-2e22-454f-8983-8cf0cbb47388"
+        properties: [
+          {
+            name: "payload"
+            value: "Must not propagated to result"
+          },
+          {
+            name: "trigger"
+            value: false
+          }
+        ]
+      ) {
+        id
+        type {
+          name
+        }
+        properties(
+          names: [
+            "trigger"
+            "payload"
+            "result"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}

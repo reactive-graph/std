@@ -1,0 +1,27 @@
+{
+  "namespace": "logical",
+  "type_name": "condition",
+  "description": "Depending on the given condition outputs a result",
+  "properties": [
+    {
+      "name": "condition",
+      "description": "A boolean condition",
+      "data_type": "bool",
+      "socket_type": "input"
+    },
+    {
+      "name": "result",
+      "description": "The result",
+      "data_type": "any",
+      "socket_type": "output",
+      "mutability": "immutable"
+    }
+  ],
+  "extensions": [
+    {
+      "namespace": "core",
+      "type_name": "component_category",
+      "extension": "logical"
+    }
+  ]
+}
