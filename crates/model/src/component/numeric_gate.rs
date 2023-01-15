@@ -1,8 +1,6 @@
 use crate::model::component_ty;
 use crate::model::entity_model;
 use crate::model::properties;
-use crate::model::PropertyInstanceGetter;
-use crate::model::PropertyInstanceSetter;
 use crate::NAMESPACE_NUMERIC;
 
 properties!(NumericGateProperties, (LHS, "lhs", 0.0), (RHS, "rhs", 0.0), (RESULT, "result", 0.0));
