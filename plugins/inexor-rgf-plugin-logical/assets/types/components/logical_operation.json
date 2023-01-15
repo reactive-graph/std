@@ -1,0 +1,25 @@
+{
+  "namespace": "logical",
+  "type_name": "logical_operation",
+  "description": "Executes a logical operation on the input lhs and outputs the result",
+  "properties": [
+    {
+      "name": "lhs",
+      "data_type": "bool",
+      "socket_type": "input"
+    },
+    {
+      "name": "result",
+      "data_type": "bool",
+      "socket_type": "output",
+      "mutability": "immutable"
+    }
+  ],
+  "extensions": [
+    {
+      "namespace": "core",
+      "type_name": "component_category",
+      "extension": "logical"
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "namespace": "logical",
+  "type_name": "and",
+  "description": "AND",
+  "components": [
+    {
+      "namespace": "logical",
+      "type_name": "logical_gate"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "namespace": "flow_editor",
+      "type_name": "palette",
+      "extension": {
+        "content": "&&",
+        "styles":  {
+          "font-size": "20px",
+          "font-family": "Fira Code",
+          "padding": "5px"
+        }
+      }
+    },
+    {
+      "namespace": "flow_editor",
+      "type_name": "shape",
+      "extension": {
+        "width": 200,
+        "socket": {
+          "width": 60,
+          "height": 30,
+          "offset": 5
+        },
+        "offset": {
+          "top": "socket.height",
+          "bottom": "socket.height"
+        },
+        "elements": {
+          "title": {
+            "show": true,
+            "type": "text",
+            "content": "element.description",
+            "position": {
+              "left": 0,
+              "top": 0,
+              "width": "shape.width",
+              "height": "socket.height"
+            },
+            "styles": {
+              "font-size": "12px",
+              "fill": "black"
+            }
+          },
+          "symbol": {
+            "show": true,
+            "type": "text",
+            "content": "&&",
+            "position": {
+              "left": 0,
+              "top": 0,
+              "width": "shape.width",
+              "height": "shape.height"
+            },
+            "styles": {
+              "font-family": "Fira Code",
+              "font-size": "40px",
+              "fill": "fuchsia"
+            }
+          },
+          "id": {
+            "show": true,
+            "type": "text",
+            "content": "shape.id",
+            "position": {
+              "left": 0,
+              "top": "shape.height-socket.height",
+              "width": "shape.width",
+              "height": "socket.height"
+            },
+            "styles": {
+              "font-size": "9px",
+              "fill": "black"
+            }
+          }
+        }
+      }
+    },
+    {
+      "namespace": "metadata",
+      "type_name": "dublin-core",
+      "extension":{
+        "title": "AND",
+        "subject": "Logical Gate AND",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

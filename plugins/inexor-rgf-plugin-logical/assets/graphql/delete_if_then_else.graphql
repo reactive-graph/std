@@ -1,0 +1,7 @@
+mutation {
+  instances {
+    entities {
+      delete(id: "d70f222b-f9e0-4172-a086-b30c310b412a")
+    }
+  }
+}

@@ -1,0 +1,114 @@
+mutation CreateAnd3 {
+  instances {
+    flows {
+      createFromType(
+        namespace: "logical"
+        typeName: "and3"
+        properties: [
+          {
+            name: "input1"
+            value: true
+          }
+        ]
+      ) {
+        ...FullFlowInstance
+      }
+    }
+  }
+}
+
+mutation UpdateAnd3 {
+  instances {
+    entities {
+      update(
+        id: "ae9262ce-637b-4f6b-a730-866cab7ada8a"
+        properties: [
+          {
+            name: "input2"
+            value: true
+          }
+          {
+            name: "input3"
+            value: true
+          }
+        ]
+      ) {
+        ...FullEntityInstance
+      }
+    }
+  }
+}
+
+query GetAnd3 {
+  instances {
+    entities(
+      type: {
+        namespace: "logical"
+        name: "and3"
+      }
+    ) {
+      ...FullEntityInstance
+    }
+  }
+}
+
+query GetAnd3FlowInstance {
+  instances {
+    flows(id: "7adafc81-266a-4640-897a-902eabf8bdc1") {
+      id
+      type {
+        namespace
+        name
+      }
+      entities {
+        ...FullEntityInstance
+      }
+      relations {
+        ...FullRelationInstance
+      }
+    }
+  }
+}
+
+fragment FullProperty on PropertyInstance {
+  name
+  value
+}
+
+fragment FullFlowInstance on FlowInstance {
+  id
+  wrapper {
+    ...FullEntityInstance
+  }
+  entities {
+    ...FullEntityInstance
+  }
+  relations {
+    ...FullRelationInstance
+  }
+}
+
+fragment FullEntityInstance on EntityInstance {
+  id
+  type {
+    namespace
+    name
+  }
+  properties {
+    ...FullProperty
+  }
+}
+
+fragment FullRelationInstance on RelationInstance {
+  type {
+    namespace
+    name
+  }
+  instanceId
+  outbound {
+    id
+  }
+  inbound {
+    id
+  }
+}

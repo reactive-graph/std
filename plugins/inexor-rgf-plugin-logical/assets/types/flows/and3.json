@@ -1,0 +1,83 @@
+{
+  "namespace": "logical",
+  "type_name": "and3",
+  "description": "AND with 3 boolean inputs",
+  "wrapper_entity_instance": {
+    "namespace": "logical",
+    "type_name": "and3",
+    "id": "d563faba-1747-43fb-ac38-497fd7c84796"
+  },
+  "entity_instances": [
+    {
+      "namespace": "logical",
+      "type_name": "and",
+      "id": "16525bdc-dbf4-48f3-992b-9fdbff8cd33b"
+    },
+    {
+      "namespace": "logical",
+      "type_name": "and",
+      "id": "3779acfc-414a-4481-8ee2-11d0172c99c0"
+    }
+  ],
+  "relation_instances": [
+    {
+      "outbound_id": "d563faba-1747-43fb-ac38-497fd7c84796",
+      "type_name": "default_connector",
+      "namespace": "connector",
+      "instance_id": "input1__lhs",
+      "inbound_id": "16525bdc-dbf4-48f3-992b-9fdbff8cd33b",
+      "properties": {
+        "outbound_property_name": "input1",
+        "inbound_property_name": "lhs"
+      }
+    },
+    {
+      "outbound_id": "d563faba-1747-43fb-ac38-497fd7c84796",
+      "namespace": "connector",
+      "type_name": "default_connector",
+      "instance_id": "input2__rhs",
+      "inbound_id": "16525bdc-dbf4-48f3-992b-9fdbff8cd33b",
+      "properties": {
+        "outbound_property_name": "input2",
+        "inbound_property_name": "rhs"
+      }
+    },
+    {
+      "outbound_id": "d563faba-1747-43fb-ac38-497fd7c84796",
+      "namespace": "connector",
+      "type_name": "default_connector",
+      "instance_id": "input3__lhs",
+      "inbound_id": "3779acfc-414a-4481-8ee2-11d0172c99c0",
+      "properties": {
+        "outbound_property_name": "input3",
+        "inbound_property_name": "lhs"
+      }
+    },
+    {
+      "outbound_id": "16525bdc-dbf4-48f3-992b-9fdbff8cd33b",
+      "namespace": "connector",
+      "type_name": "default_connector",
+      "instance_id": "result__rhs",
+      "inbound_id": "3779acfc-414a-4481-8ee2-11d0172c99c0",
+      "properties": {
+        "outbound_property_name": "result",
+        "inbound_property_name": "rhs"
+      }
+    },
+    {
+      "outbound_id": "3779acfc-414a-4481-8ee2-11d0172c99c0",
+      "namespace": "connector",
+      "type_name": "default_connector",
+      "instance_id": "result__result",
+      "inbound_id": "d563faba-1747-43fb-ac38-497fd7c84796",
+      "properties": {
+        "outbound_property_name": "result",
+        "inbound_property_name": "result"
+      }
+    }
+  ],
+  "variables": [
+  ],
+  "extensions": [
+  ]
+}
