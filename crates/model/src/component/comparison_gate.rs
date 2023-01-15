@@ -1,8 +1,6 @@
 use crate::model::component_ty;
 use crate::model::entity_model;
 use crate::model::properties;
-use crate::model::PropertyInstanceGetter;
-use crate::model::PropertyInstanceSetter;
 use crate::NAMESPACE_COMPARISON;
 
 properties!(ComparisonGateProperties, (LHS, "lhs", false), (RHS, "rhs", false), (RESULT, "result", false));

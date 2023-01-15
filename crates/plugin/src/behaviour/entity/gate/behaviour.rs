@@ -1,5 +1,4 @@
 use serde_json::json;
-use serde_json::Value;
 
 use crate::behaviour::entity::gate::function::ComparisonGateFunction;
 use crate::model::PropertyInstanceSetter;
@@ -17,8 +16,6 @@ use crate::reactive::BehaviourInit;
 use crate::reactive::BehaviourInitializationFailed;
 use crate::reactive::BehaviourShutdown;
 use crate::reactive::BehaviourTransitions;
-use crate::reactive::Gate;
-use crate::reactive::Operation;
 use crate::reactive::PropertyObserverContainer;
 
 entity_behaviour!(
@@ -65,19 +62,3 @@ impl BehaviourConnect<ReactiveEntityInstance> for ComparisonGateBehaviourTransit
 }
 impl BehaviourShutdown<ReactiveEntityInstance> for ComparisonGateBehaviourTransitions {}
 impl BehaviourTransitions<ReactiveEntityInstance> for ComparisonGateBehaviourTransitions {}
-
-impl Operation for ComparisonGate {
-    fn lhs(&self, value: Value) {
-        self.reactive_instance.set(LHS, value);
-    }
-
-    fn result(&self) -> Value {
-        self.reactive_instance.get(RESULT).unwrap_or_else(|| RESULT.default_value())
-    }
-}
-
-impl Gate for ComparisonGate {
-    fn rhs(&self, value: Value) {
-        self.reactive_instance.set(RHS, value);
-    }
-}
