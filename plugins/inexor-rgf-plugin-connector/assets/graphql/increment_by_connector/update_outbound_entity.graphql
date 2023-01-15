@@ -1,0 +1,40 @@
+mutation {
+  instances {
+    entities {
+      update(
+        id: "5e00defc-8d67-48a7-8316-959b58c8dac9"
+        properties: [
+          {
+            name: "value"
+            value: 2
+          }
+        ]
+      ) {
+        id
+        type {
+          name
+        }
+        outbound {
+          inbound {
+            id
+            # Inbound Properties
+            properties(name: "value") {
+              name
+              value
+            }
+          }
+          # Relation Properties
+          properties(name: "propagation_count") {
+            name
+            value
+          }
+        }
+        # Outbound Properties
+        properties(name: "value") {
+          name
+          value
+        }
+      }
+    }
+  }
+}

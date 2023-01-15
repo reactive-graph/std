@@ -1,0 +1,46 @@
+mutation {
+  instances {
+    entities {
+      update(
+        id: "435c7ff2-cee0-4446-8c78-ea7dc200a6e0"
+        properties: [
+          {
+            name: "value"
+            value: "Hello World!"
+          }
+        ]
+      ) {
+        id
+        type {
+          namespace
+          name
+        }
+        outbound {
+          properties(name: "delay") {
+            value
+          }
+          inbound {
+            id
+            properties(
+              names: [
+                "value"
+              ]
+            ) {
+              name
+              # expected: "Hello World!"
+              value
+            }
+          }
+        }
+        properties(
+          names: [
+            "value"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,116 @@
+mutation createOutbound {
+  instances {
+    entities {
+      create(
+        type: {
+          namespace: "value"
+          name: "value_string"
+        }
+        id: "e32e01a9-2956-4d5a-8ad7-6dde79ab5dbc"
+        properties: [
+          {
+            name: "value"
+            value: "Test"
+          }
+        ]
+      ) {
+        id
+        type {
+          namespace
+          name
+        }
+        properties(
+          names: [
+            "value"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}
+
+mutation createInbound {
+  instances {
+    entities {
+      create(
+        type: {
+          namespace: "value"
+          name: "value_string"
+        }
+        id: "76466943-a5b9-4669-a2d2-a9d8631c8302"
+        properties: [
+          {
+            name: "value"
+            value: "Test"
+          }
+        ]
+      ) {
+        id
+        type {
+          namespace
+          name
+        }
+        properties(
+          names: [
+            "value"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}
+
+mutation createConnector {
+  instances {
+    relations {
+      create(
+        edgeKey: {
+          outboundId: "e32e01a9-2956-4d5a-8ad7-6dde79ab5dbc"
+          namespace: "connector"
+          typeName: "buffered_fifo_connector"
+          instanceId: "value__value"
+          inboundId: "76466943-a5b9-4669-a2d2-a9d8631c8302"
+        },
+        properties: [
+          {
+            name: "outbound_property_name"
+            value: "value"
+          },
+          {
+            name: "inbound_property_name"
+            value: "value"
+          },
+          {
+            name: "buffer_size"
+            value: 2
+          },
+          {
+            name: "buffer"
+            value: []
+          }
+        ]
+      ) {
+        type {
+          namespace
+          name
+        }
+        instanceId
+        properties(
+          names: [
+            "outbound_property_name"
+            "inbound_property_name"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}

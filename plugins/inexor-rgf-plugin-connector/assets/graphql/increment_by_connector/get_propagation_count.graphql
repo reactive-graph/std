@@ -1,0 +1,18 @@
+query {
+  instances {
+    relations(
+      outboundId: "5e00defc-8d67-48a7-8316-959b58c8dac9"
+      type: {
+        namespace: "connector"
+        name: "increment_by_connector"
+        # TODO: instanceId: "value__value"
+      }
+      inboundId: "fbf31223-b7e3-43a9-a287-6f7e6103cbc5"
+    ) {
+      properties(name: "propagation_count") {
+        name
+        value
+      }
+    }
+  }
+}

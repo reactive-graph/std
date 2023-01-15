@@ -1,0 +1,113 @@
+mutation createOutbound {
+  instances {
+    entities {
+      create(
+        type: {
+          namespace: "value"
+          name: "value_string"
+        }
+        id: "435c7ff2-cee0-4446-8c78-ea7dc200a6e0"
+        properties: [
+          {
+            name: "value"
+            value: "Test"
+          }
+        ]
+      ) {
+        id
+        type {
+          namespace
+          name
+        }
+        properties(
+          names: [
+            "value"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}
+
+mutation createInbound {
+  instances {
+    entities {
+      create(
+        type: {
+          namespace: "value"
+          name: "value_string"
+        }
+        id: "11b53371-11c2-4f04-a05b-101e555a3349"
+        properties: [
+          {
+            name: "value"
+            value: "Test"
+          }
+        ]
+      ) {
+        id
+        type {
+          namespace
+          name
+        }
+        properties(
+          names: [
+            "value"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}
+
+mutation createConnector {
+  instances {
+    relations {
+      create(
+        edgeKey: {
+          outboundId: "435c7ff2-cee0-4446-8c78-ea7dc200a6e0"
+          namespace: "connector"
+          typeName: "delay_connector"
+          instanceId: "value__value"
+          inboundId: "11b53371-11c2-4f04-a05b-101e555a3349"
+        },
+        properties: [
+          {
+            name: "outbound_property_name"
+            value: "value"
+          },
+          {
+            name: "inbound_property_name"
+            value: "value"
+          },
+          {
+            name: "delay"
+            value: 2000
+          }
+        ]
+      ) {
+        type {
+          namespace
+          name
+        }
+        instanceId
+        properties(
+          names: [
+            "outbound_property_name"
+            "inbound_property_name"
+            "delay"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}

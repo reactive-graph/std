@@ -1,0 +1,24 @@
+{
+  "namespace": "connector",
+  "type_name": "buffer",
+  "description": "A buffer of the given size",
+  "properties": [
+    {
+      "name": "buffer_size",
+      "description": "The number of elements of the buffer",
+      "data_type": "number"
+    },
+    {
+      "name": "buffer",
+      "description": "The buffer with up to buffer_size elements",
+      "data_type": "array"
+    }
+  ],
+  "extensions": [
+    {
+      "namespace": "core",
+      "type_name": "component_category",
+      "extension": "flow"
+    }
+  ]
+}

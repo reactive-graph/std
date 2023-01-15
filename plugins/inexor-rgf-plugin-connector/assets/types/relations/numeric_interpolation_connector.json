@@ -1,0 +1,29 @@
+{
+  "namespace": "connector",
+  "type_name": "numeric_interpolation_connector",
+  "description": "Connects a property with a other property and interpolate the numeric values before propagation",
+  "outbound": {
+    "entity_type": {
+      "namespace": "*",
+      "type_name": "*"
+    }
+  },
+  "inbound": {
+    "entity_type": {
+      "namespace": "*",
+      "type_name": "*"
+    }
+  },
+  "components": [
+    {
+      "namespace": "connector",
+      "type_name": "connector"
+    },
+    {
+      "namespace": "connector",
+      "type_name": "buffer"
+    }
+  ],
+  "properties": [
+  ]
+}
