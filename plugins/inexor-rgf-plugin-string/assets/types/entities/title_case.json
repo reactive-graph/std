@@ -1,0 +1,24 @@
+{
+  "namespace": "string",
+  "type_name": "title_case",
+  "description": "Converts the input to title case",
+  "components": [
+    {
+      "namespace": "string",
+      "type_name": "string_operation"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "namespace": "metadata",
+      "type_name": "dublin-core",
+      "extension": {
+        "title": "Title Case",
+        "subject": "Converts the input to title case",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

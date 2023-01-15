@@ -1,0 +1,30 @@
+mutation {
+  instances {
+    entities {
+      update(
+        id: "e8091dbf-0d0f-4c5c-8718-417aae4b11f1"
+        properties: [
+          {
+            name: "lhs"
+            value: "abcdefghijklmnopqrstuvwxyz"
+          }
+        ]
+      ) {
+        id
+        type {
+          name
+        }
+        properties(
+          names: [
+            "lhs"
+            # expected result: true
+            "result"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}

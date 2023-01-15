@@ -1,0 +1,24 @@
+{
+  "namespace": "string",
+  "type_name": "is_lower_first",
+  "description": "Checks whether the input string has the first character in lower case",
+  "components": [
+    {
+      "namespace": "string",
+      "type_name": "string_bool_operation"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "namespace": "metadata",
+      "type_name": "dublin-core",
+      "extension": {
+        "title": "Is Lower First",
+        "subject": "Checks whether the input string has the first character in lower case",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

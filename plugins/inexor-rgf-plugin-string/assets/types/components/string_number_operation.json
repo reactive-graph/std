@@ -1,0 +1,17 @@
+{
+  "namespace": "string",
+  "type_name": "string_number_operation",
+  "properties": [
+    {
+      "name": "lhs",
+      "data_type": "string",
+      "socket_type": "input"
+    },
+    {
+      "name": "result",
+      "data_type": "number",
+      "socket_type": "output",
+      "mutability": "immutable"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "namespace": "string",
+  "type_name": "chop_remove_suffix",
+  "description": "Extracts the suffix from the input",
+  "components": [
+    {
+      "namespace": "string",
+      "type_name": "string_gate"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "namespace": "metadata",
+      "type_name": "dublin-core",
+      "extension": {
+        "title": "Chop Remove Suffix",
+        "subject": "Extracts the suffix from the input",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

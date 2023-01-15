@@ -1,0 +1,34 @@
+mutation {
+  instances {
+    entities {
+      update(
+        id: "e5b13c23-9c31-4b1d-9e17-3506ee3afe68"
+        properties: [
+          {
+            name: "context"
+            value: {
+              # Note: The template expects a context variable named "greeting" which is missing
+              world: "World"
+            }
+          }
+        ]
+      ) {
+        id
+        type {
+          name
+        }
+        properties(
+          names: [
+            "template"
+            "context"
+            # Expected: Error Object
+            "result"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "namespace": "string",
+  "type_name": "is_decapitalize",
+  "description": "Checks whether the input string is decapitalized and the rest of the input string is converted to lower case",
+  "components": [
+    {
+      "namespace": "string",
+      "type_name": "string_bool_operation"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "namespace": "metadata",
+      "type_name": "dublin-core",
+      "extension": {
+        "title": "Is Decapitalize",
+        "subject": "Checks whether the input string is decapitalized and the rest of the input string is converted to lower case",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

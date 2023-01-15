@@ -1,0 +1,24 @@
+{
+  "namespace": "string",
+  "type_name": "is_empty",
+  "description": "Checks whether the input string is empty",
+  "components": [
+    {
+      "namespace": "string",
+      "type_name": "string_bool_operation"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "namespace": "metadata",
+      "type_name": "dublin-core",
+      "extension": {
+        "title": "Is Empty",
+        "subject": "Checks whether the input string is empty",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

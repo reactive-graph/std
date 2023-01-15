@@ -1,0 +1,24 @@
+{
+  "namespace": "string",
+  "type_name": "char_count_graphemes",
+  "description": "Counts the graphemes in the input string taking care of surrogate pairs and combining marks",
+  "components": [
+    {
+      "namespace": "string",
+      "type_name": "string_number_operation"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "namespace": "metadata",
+      "type_name": "dublin-core",
+      "extension": {
+        "title": "Character Count",
+        "subject": "Counts the graphemes in the input string taking care of surrogate pairs and combining marks",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}
