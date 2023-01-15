@@ -1,5 +1,6 @@
 use crate::model::entity_model;
 use crate::model::entity_ty;
+use crate::model_base::Named;
 use crate::model_file::File;
 use crate::model_logical::Action;
 use crate::BinaryData;
@@ -15,4 +16,4 @@ impl BinaryData for LoadBinaryData {}
 impl BinaryDataUrl for LoadBinaryData {}
 impl File for LoadBinaryData {}
 impl Action for LoadBinaryData {}
-// impl model_base::Named for LoadBinaryData {}
+impl Named for LoadBinaryData {}
