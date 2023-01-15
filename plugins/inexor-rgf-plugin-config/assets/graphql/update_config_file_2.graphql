@@ -1,0 +1,36 @@
+mutation {
+  instances {
+    entities {
+      update(
+        id: "aed6c9b0-e495-4423-baeb-5597b66416f4"
+        properties: [
+          {
+            # Expand tilde to the user home directory
+            name: "filename"
+            value: "~/CLionProjects/inexor-rgf/config/graphql.toml"
+          }
+          {
+            name: "trigger"
+            value: true
+          }
+        ]
+      ) {
+        id
+        type {
+          namespace
+          name
+        }
+        properties(
+          names: [
+            "trigger"
+            "filename"
+            "result"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}
