@@ -2,8 +2,6 @@ use crate::model::behaviour_ty;
 use crate::model::entity_behaviour_ty;
 use crate::model::entity_model;
 use crate::model::entity_ty;
-use crate::model::PropertyInstanceGetter;
-use crate::model::PropertyInstanceSetter;
 use crate::NAMESPACE_ARITHMETIC_U64;
 
 // All properties are defined in the component(s)
