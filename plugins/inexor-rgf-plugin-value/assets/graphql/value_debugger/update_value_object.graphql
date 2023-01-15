@@ -1,0 +1,34 @@
+mutation {
+  instances {
+    entities {
+      update(
+        id: "c4bc7ab7-f166-4710-96e0-7defb3a73207"
+        properties: [
+          {
+            name: "value"
+            value: {
+              test: "asdf"
+            }
+          }
+        ]
+      ) {
+        id
+        type {
+          name
+        }
+        components {
+          namespace
+          name
+        }
+        behaviours {
+          namespace
+          name
+        }
+        properties(name: "value") {
+          name
+          value
+        }
+      }
+    }
+  }
+}

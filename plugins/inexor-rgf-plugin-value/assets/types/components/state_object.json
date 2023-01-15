@@ -1,0 +1,18 @@
+{
+  "namespace": "state",
+  "type_name": "state_object",
+  "description": "State of type object",
+  "properties": [
+    {
+      "name": "state",
+      "data_type": "object",
+      "socket_type": "none",
+      "mutability": "immutable"
+    },
+    {
+      "name": "set_state",
+      "data_type": "object",
+      "socket_type": "input"
+    }
+  ]
+}
