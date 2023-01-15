@@ -12,7 +12,8 @@
   ],
   "extensions": [
     {
-      "name": "dublin-core",
+      "namespace": "metadata",
+      "type_name": "dublin-core",
       "extension": {
         "title": "Is Upper Case",
         "subject": "Checks whether the input string has only upper case characters",

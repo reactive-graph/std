@@ -23,7 +23,8 @@
   ],
   "extensions": [
     {
-      "name": "dublin-core",
+      "namespace": "metadata",
+      "type_name": "dublin-core",
       "extension": {
         "title": "Templating",
         "subject": "Renders a template",

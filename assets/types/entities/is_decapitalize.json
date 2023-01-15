@@ -12,7 +12,8 @@
   ],
   "extensions": [
     {
-      "name": "dublin-core",
+      "namespace": "metadata",
+      "type_name": "dublin-core",
       "extension": {
         "title": "Is Decapitalize",
         "subject": "Checks whether the input string is decapitalized and the rest of the input string is converted to lower case",

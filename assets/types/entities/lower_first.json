@@ -12,7 +12,8 @@
   ],
   "extensions": [
     {
-      "name": "dublin-core",
+      "namespace": "metadata",
+      "type_name": "dublin-core",
       "extension": {
         "title": "Lower First",
         "subject": "Converts the first character of the input to lower case",

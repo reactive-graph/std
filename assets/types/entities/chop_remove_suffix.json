@@ -12,7 +12,8 @@
   ],
   "extensions": [
     {
-      "name": "dublin-core",
+      "namespace": "metadata",
+      "type_name": "dublin-core",
       "extension": {
         "title": "Chop Remove Suffix",
         "subject": "Extracts the suffix from the input",

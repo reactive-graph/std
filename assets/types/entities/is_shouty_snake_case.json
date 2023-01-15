@@ -12,7 +12,8 @@
   ],
   "extensions": [
     {
-      "name": "dublin-core",
+      "namespace": "metadata",
+      "type_name": "dublin-core",
       "extension": {
         "title": "Is Shouty Snake Case",
         "subject": "Checks whether the input string is SHOUTY_SNAKE_CASED",

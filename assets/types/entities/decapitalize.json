@@ -12,7 +12,8 @@
   ],
   "extensions": [
     {
-      "name": "dublin-core",
+      "namespace": "metadata",
+      "type_name": "dublin-core",
       "extension": {
         "title": "Decapitalize",
         "subject": "Converts the first character of the input to lower case and convert the rest of the input to lower case",

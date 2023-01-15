@@ -12,7 +12,8 @@
   ],
   "extensions": [
     {
-      "name": "dublin-core",
+      "namespace": "metadata",
+      "type_name": "dublin-core",
       "extension": {
         "title": "Is Capitalize",
         "subject": "Checks whether the input string is capitalized and the rest of the input string is lower case",

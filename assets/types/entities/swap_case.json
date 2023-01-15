@@ -12,7 +12,8 @@
   ],
   "extensions": [
     {
-      "name": "dublin-core",
+      "namespace": "metadata",
+      "type_name": "dublin-core",
       "extension": {
         "title": "Swap Case",
         "subject": "Converts the uppercase alpha characters of the input to lowercase and lowercase characters to uppercase",
