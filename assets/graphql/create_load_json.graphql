@@ -1,0 +1,40 @@
+mutation {
+  instances {
+    entities {
+      create(
+        type: {
+          namespace: "json"
+          name: "load_json"
+        }
+        id: "8400d16f-1e08-4ec1-a071-f36f7e365a35"
+        properties: [
+          {
+            name: "filename"
+            value: "assets/graphql/.graphqlconfig"
+            # value: "~/.inexor/test.json"
+          }
+          {
+            name: "trigger"
+            value: true
+          }
+        ]
+      ) {
+        id
+        type {
+          namespace
+          name
+        }
+        properties(
+          names: [
+            "trigger"
+            "filename"
+            "result"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}

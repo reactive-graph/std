@@ -1,0 +1,44 @@
+mutation {
+  instances {
+    entities {
+      create(
+        type: {
+          namespace: "json"
+          name: "object_get_property"
+        }
+        id: "4501cc21-e056-410a-ae31-44f79d737f4d"
+        properties: [
+          {
+            name: "object"
+            value: {
+              hello: "World"
+              good: "Morning"
+              greet: "Servus"
+            }
+          }
+          {
+            name: "property_name"
+            value: "hello"
+          }
+        ]
+      ) {
+        id
+        type {
+          namespace
+          name
+        }
+        properties(
+          names: [
+            "object"
+            "property_name"
+            # Expected "World"
+            "result"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}

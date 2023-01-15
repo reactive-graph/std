@@ -1,0 +1,35 @@
+mutation {
+  instances {
+    entities {
+      create(
+        type: {
+          namespace: "json"
+          name: "array_pop"
+        }
+        id: "77966801-b1f2-4bfa-b7e3-6660bf020ead"
+        properties: [
+          {
+            name: "array"
+            value: [ 10, 20, 30 ]
+          }
+        ]
+      ) {
+        id
+        type {
+          namespace
+          name
+        }
+        properties(
+          names: [
+            "array"
+            "value"
+            "result"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}

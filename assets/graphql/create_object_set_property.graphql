@@ -1,0 +1,48 @@
+mutation {
+  instances {
+    entities {
+      create(
+        type: {
+          namespace: "json"
+          name: "object_set_property"
+        }
+        id: "34ff6218-e0df-4294-a04f-22f691665d50"
+        properties: [
+          {
+            name: "object"
+            value: {
+              hello: "World"
+              greet: "Good Morning"
+            }
+          }
+          {
+            name: "property_name"
+            value: "greeting"
+          }
+          {
+            name: "value"
+            value: "Servus"
+          }
+        ]
+      ) {
+        id
+        type {
+          namespace
+          name
+        }
+        properties(
+          names: [
+            "object"
+            "property_name"
+            "value"
+            # Expected object { "hello": "World", "greet": "Good Morning", "greeting": "Servus" }
+            "result"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}
