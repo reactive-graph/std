@@ -1,0 +1,102 @@
+{
+  "data": {
+    "category": [
+      {
+        "name": "Root Category",
+        "description": "Level 0",
+        "parent_categories": []
+      },
+      {
+        "name": "Category A",
+        "description": "Level 1",
+        "parent_categories": [
+          {
+            "weight": 0,
+            "parent_category": {
+              "name": "Root Category",
+              "description": "Level 0",
+              "parent_categories": []
+            }
+          }
+        ]
+      },
+      {
+        "name": "Category B",
+        "description": "Level 1",
+        "parent_categories": []
+      },
+      {
+        "name": "Category A 1",
+        "description": "Level 2",
+        "parent_categories": [
+          {
+            "weight": 0,
+            "parent_category": {
+              "name": "Category A",
+              "description": "Level 1",
+              "parent_categories": [
+                {
+                  "weight": 0,
+                  "parent_category": {
+                    "name": "Root Category",
+                    "description": "Level 0"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Category B 1",
+        "description": "Level 2",
+        "parent_categories": [
+          {
+            "weight": 0,
+            "parent_category": {
+              "name": "Category B",
+              "description": "Level 1",
+              "parent_categories": []
+            }
+          }
+        ]
+      },
+      {
+        "name": "Category A 2",
+        "description": "Level 2",
+        "parent_categories": [
+          {
+            "weight": 0,
+            "parent_category": {
+              "name": "Category A",
+              "description": "Level 1",
+              "parent_categories": [
+                {
+                  "weight": 0,
+                  "parent_category": {
+                    "name": "Root Category",
+                    "description": "Level 0"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Category B 2",
+        "description": "Level 2",
+        "parent_categories": [
+          {
+            "weight": 0,
+            "parent_category": {
+              "name": "Category B",
+              "description": "Level 1",
+              "parent_categories": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

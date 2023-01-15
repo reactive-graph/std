@@ -1,0 +1,12 @@
+{
+  "namespace": "taxonomy",
+  "type_name": "weighted",
+  "description": "",
+  "properties": [
+    {
+      "name": "weight",
+      "data_type": "number",
+      "socket_type": "none"
+    }
+  ]
+}
