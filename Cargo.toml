@@ -1,42 +1,50 @@
-[package]
-name = "inexor-rgf-plugin-file"
-description = "Inexor - Reactive Graph Flow - Plugin - File"
-version = "0.6.0"
+cargo-features = [ "workspace-inheritance" ]
+
+[workspace]
+
+members = [
+    "crates/model",
+    "crates/plugin"
+]
+
+[workspace.package]
+version = "0.8.0"
 authors = ["Andreas Schaeffer <hanack@nooblounge.net"]
 edition = "2021"
 license = "MIT"
 
-[dependencies]
+[workspace.dependencies]
 async-trait = "0.1"
 crossbeam = "0.8"
+dashmap = "5.4"
 indradb-lib = "3"
 log = { version = "0.4", features = ["std", "serde"] }
 log4rs = { version = "1.0", features = ["console_appender", "file_appender", "toml_format"]}
-notify = "5.0.0-pre.16"
+lazy_static = "1.4"
+notify = "5.0"
+num-traits = "0.2"
+paste = "1.0"
 query_interface = "0.3"
 rust-embed = { version = "6.4", features = ["debug-embed", "compression"] }
 serde = { version = "1.0", features = [ "derive" ] }
 serde_json = "1.0"
-shellexpand = "2.1"
+shellexpand = "3.0"
 strum = { version = "0.24", features = ["derive"] }
 strum_macros = "0.24"
 tokio = { version = "1", features =  ["time", "rt", "rt-multi-thread"] }
-uuid = { version = "1.1", features = ["serde", "v4", "v5"] }
+uuid = { version = "1.2", features = ["serde", "v4", "v5"] }
 
 inexor-rgf-core-di = { version = "2.0", features = ["async"], git = "https://github.com/inexorgame/inexor-rgf-core-di.git" }
 inexor-rgf-core-frp = { git = "https://github.com/inexorgame/inexor-rgf-core-frp.git" }
 inexor-rgf-core-model = { git = "https://github.com/inexorgame/inexor-rgf-core-model.git" }
 inexor-rgf-core-reactive = { git = "https://github.com/inexorgame/inexor-rgf-core-reactive.git" }
 inexor-rgf-core-plugins = { git = "https://github.com/inexorgame/inexor-rgf-core-plugins.git" }
-
-[lib]
-# Plugins use crate-type cdylib
-# https://doc.rust-lang.org/reference/linkage.html
-# https://users.rust-lang.org/t/what-is-the-difference-between-dylib-and-cdylib/28847/3
-crate-type = ["cdylib"]
+inexor-rgf-core-builder = { git = "https://github.com/inexorgame/inexor-rgf-core-builder.git" }
 
 [profile.dev]
 opt-level = 0
 
 [profile.release]
 opt-level = 3
+lto = true
+strip = "symbols"
