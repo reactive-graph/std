@@ -17,18 +17,21 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-node@v3
     - name: Install latest nightly
       uses: actions-rs/toolchain@v1
       with:
         toolchain: nightly
         override: true
+    - name: Setup Node.js 16
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16.x
     - name: Install Yarn
-      uses: borales/actions-yarn@v3.0.0
+      uses: borales/actions-yarn@v4
       with:
         cmd: --cwd plugins/inexor-rgf-plugin-graphql-client/web install
     - name: Install Yarn
-      uses: borales/actions-yarn@v3.0.0
+      uses: borales/actions-yarn@v4
       with:
         cmd: --cwd plugins/inexor-rgf-plugin-graphql-schema-visualization/web install
     - name: Build
@@ -55,12 +58,16 @@ jobs:
       - uses: hecrj/setup-rust-action@v1
         with:
           rust-version: nightly
+      - name: Setup Node.js 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
       - name: Install Yarn
-        uses: borales/actions-yarn@v3.0.0
+        uses: borales/actions-yarn@v4
         with:
           cmd: --cwd plugins/inexor-rgf-plugin-graphql-client/web install
       - name: Install Yarn
-        uses: borales/actions-yarn@v3.0.0
+        uses: borales/actions-yarn@v4
         with:
           cmd: --cwd plugins/inexor-rgf-plugin-graphql-schema-visualization/web install
       - uses: actions-rs/tarpaulin@v0.1
