@@ -1,0 +1,39 @@
+mutation {
+  instances {
+    entities {
+      create(
+        type: {
+          namespace: "arithmetic_u64"
+          name: "counter"
+        }
+        id: "93419a15-ee61-449e-b942-1d6bc5230218"
+        properties: [
+          {
+            name: "trigger"
+            value: false
+          },
+          {
+            name: "result"
+            value: 0
+          }
+        ]
+      ) {
+        id
+        type {
+          namespace
+          name
+        }
+        properties(
+          names: [
+            "trigger"
+            # Expected: 0
+            "result"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}

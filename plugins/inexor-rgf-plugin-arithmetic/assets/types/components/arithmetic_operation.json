@@ -1,0 +1,24 @@
+{
+  "namespace": "arithmetic",
+  "type_name": "arithmetic_operation",
+  "description": "Arithmetic operation with one input and one result",
+  "properties": [
+    {
+      "name": "lhs",
+      "data_type": "number",
+      "socket_type": "input"
+    },
+    {
+      "name": "result",
+      "data_type": "number",
+      "socket_type": "output",
+      "mutability": "immutable"
+    }
+  ],
+  "extensions": [
+    {
+      "name": "component_category",
+      "extension": "math"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+mutation {
+  instances {
+    entities {
+      create(
+        type: {
+          namespace: "arithmetic_f64"
+          name: "add"
+        }
+        id: "08e65d5d-b015-4c1f-9c8d-25a8080d44b7"
+        properties: [
+          {
+            name: "lhs"
+            value: 10
+          },
+          {
+            name: "rhs"
+            value: 20
+          },
+          # This would have no effect because the initial value of the property result will be overwritten immediately
+          # {
+          #   name: "result"
+          #   value: 100
+          # }
+        ]
+      ) {
+        id
+        type {
+          namespace
+          name
+        }
+        properties(
+          names: [
+            "lhs"
+            "rhs"
+            # Expected: 30.0
+            "result"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}

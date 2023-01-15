@@ -1,0 +1,25 @@
+{
+  "namespace": "arithmetic_u64",
+  "type_name": "div",
+  "description": "Divides two unsigned integer numbers",
+  "components": [
+    {
+      "namespace": "arithmetic",
+      "type_name": "arithmetic_gate"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "palette",
+      "extension": {
+        "content": "÷",
+        "styles": {
+          "font-family": "Fira Code",
+          "font-size": "40px"
+        }
+      }
+    }
+  ]
+}
