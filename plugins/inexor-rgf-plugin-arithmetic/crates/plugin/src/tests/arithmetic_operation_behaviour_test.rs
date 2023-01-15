@@ -11,7 +11,7 @@ use crate::model::NamespacedType;
 use crate::model::ReactiveEntityInstance;
 use crate::model_arithmetic::ArithmeticOperationProperties;
 use crate::model_arithmetic::NAMESPACE_ARITHMETIC_F64;
-use crate::reactive::Operation;
+use crate::reactive::BehaviourReactiveInstanceContainer;
 
 const LHS: ArithmeticOperationProperties = ArithmeticOperationProperties::LHS;
 const RESULT: ArithmeticOperationProperties = ArithmeticOperationProperties::RESULT;
@@ -27,9 +27,11 @@ fn arithmetic_operation_behaviour_test() {
 
 fn test_arithmetic_operation_behaviour(type_name: &str, f: ArithmeticOperationFunction<f64>, v: f64) -> f64 {
     let ty = EntityTypeId::new_from_type(NAMESPACE_ARITHMETIC_F64, type_name);
-    let b = create_arithmetic_operation_behaviour(ty, f);
-    b.lhs(json!(v));
-    b.result().as_f64().expect("Result is not of type f64")
+    let behaviour = create_arithmetic_operation_behaviour(ty, f);
+    let reactive_instance = behaviour.get_reactive_instance();
+    let arithmetic_operation = crate::model_arithmetic::ArithmeticOperationF64::from(reactive_instance.clone());
+    arithmetic_operation.lhs(v);
+    arithmetic_operation.result().expect("Result is not of type f64")
 }
 
 fn create_arithmetic_operation_behaviour(ty: EntityTypeId, f: ArithmeticOperationFunction<f64>) -> Arc<ArithmeticOperationF64> {

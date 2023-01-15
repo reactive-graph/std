@@ -12,8 +12,7 @@ use crate::model::ReactiveEntityInstance;
 use crate::model_arithmetic::ArithmeticGateProperties;
 use crate::model_arithmetic::NAMESPACE_ARITHMETIC_F64;
 use crate::reactive::BehaviourCreationError;
-use crate::reactive::Gate;
-use crate::reactive::Operation;
+use crate::reactive::BehaviourReactiveInstanceContainer;
 
 const LHS: ArithmeticGateProperties = ArithmeticGateProperties::LHS;
 const RHS: ArithmeticGateProperties = ArithmeticGateProperties::RHS;
@@ -42,10 +41,12 @@ fn arithmetic_gate_f64_behaviour_test() {
 
 fn test_arithmetic_gate_f64_behaviour(type_name: &str, f: ArithmeticGateFunction<f64>, lhs: f64, rhs: f64) -> f64 {
     let ty = EntityTypeId::new_from_type(NAMESPACE_ARITHMETIC_F64, type_name);
-    let b = create_arithmetic_gate_f64_behaviour(ty, f).unwrap();
-    b.lhs(json!(lhs));
-    b.rhs(json!(rhs));
-    b.result().as_f64().expect("Result is not of type f64")
+    let behaviour = create_arithmetic_gate_f64_behaviour(ty, f).unwrap();
+    let reactive_instance = behaviour.get_reactive_instance();
+    let arithmetic_gate = crate::model_arithmetic::ArithmeticGateF64::from(reactive_instance.clone());
+    arithmetic_gate.lhs(lhs);
+    arithmetic_gate.rhs(rhs);
+    arithmetic_gate.result().expect("Result is not of type f64")
 }
 
 fn create_arithmetic_gate_f64_behaviour(ty: EntityTypeId, f: ArithmeticGateFunction<f64>) -> Result<Arc<ArithmeticGateF64>, BehaviourCreationError> {
