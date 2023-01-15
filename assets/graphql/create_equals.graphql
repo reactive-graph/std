@@ -1,0 +1,44 @@
+mutation {
+  instances {
+    entities {
+      create(
+        type: {
+          namespace: "comparison"
+          name:"equals"
+        }
+        id: "6b436008-7859-4e1e-a223-d994829101c6"
+        properties: [
+          {
+            name: "lhs"
+            value: 0
+          }
+          {
+            name: "rhs"
+            value: 1
+          }
+          # This would have no effect because the initial value of the property result will be overwritten immediately
+          # {
+          #   name: "result",
+          #   value: true
+          # }
+        ]
+      ) {
+        id
+        type {
+          name
+        }
+        properties(
+          names: [
+            "lhs"
+            "rhs"
+            # Expected: false
+            "result"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}

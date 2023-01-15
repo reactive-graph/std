@@ -1,0 +1,21 @@
+{
+  "namespace": "comparison",
+  "type_name": "comparison_gate",
+  "properties": [
+    {
+      "name": "lhs",
+      "data_type": "any",
+      "socket_type": "input"
+    },
+    {
+      "name": "rhs",
+      "data_type": "any",
+      "socket_type": "input"
+    },
+    {
+      "name": "result",
+      "data_type": "bool",
+      "socket_type": "output"
+    }
+  ]
+}
