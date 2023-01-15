@@ -1,19 +1,19 @@
 use std::path::PathBuf;
 
-use inexor_rgf_model_binary::BinaryDataUrl;
-use inexor_rgf_model_binary::File;
 use serde_json::json;
 
 use crate::behaviour::component::load_binary_data::LoadBinaryDataFactory;
 use crate::builder::ReactiveEntityInstanceBuilder;
-use crate::model_binary::Action;
-use crate::model_binary::ActionProperties::TRIGGER;
 use crate::model_binary::BinaryData;
 use crate::model_binary::BinaryDataProperties::DATA_URL;
+use crate::model_binary::BinaryDataUrl;
+use crate::model_binary::File;
 use crate::model_binary::FileProperties::FILENAME;
 use crate::model_binary::LoadBinaryData;
 use crate::model_binary::BEHAVIOUR_LOAD_BINARY_DATA;
 use crate::model_binary::ENTITY_TYPE_LOAD_BINARY_DATA;
+use crate::model_logical::Action;
+use crate::model_logical::ActionProperties::TRIGGER;
 use crate::reactive::BehaviourFactory;
 use crate::reactive::BehaviourState;
 

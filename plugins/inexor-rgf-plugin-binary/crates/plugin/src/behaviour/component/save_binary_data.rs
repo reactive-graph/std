@@ -5,10 +5,9 @@ use std::path::Path;
 use serde_json::Value;
 
 use crate::model::*;
-// TODO: import model_logical::ActionProperties instead of model_binary::ActionProperties
-use crate::model_binary::ActionProperties::RESULT;
-use crate::model_binary::ActionProperties::TRIGGER;
 use crate::model_binary::BinaryDataProperties::DATA_URL;
+use crate::model_logical::ActionProperties::RESULT;
+use crate::model_logical::ActionProperties::TRIGGER;
 // TODO: import model_file::FileProperties instead of model_binary::FileProperties
 use crate::model_binary::FileProperties::FILENAME;
 use crate::reactive::*;
