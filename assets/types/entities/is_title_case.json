@@ -1,0 +1,23 @@
+{
+  "namespace": "string",
+  "type_name": "is_train_case",
+  "description": "Checks whether the input string is Train-Cased",
+  "components": [
+    {
+      "namespace": "string",
+      "type_name": "string_bool_operation"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension": {
+        "title": "Is Train Cased",
+        "subject": "Checks whether the input string is Train-Cased",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "namespace": "string",
+  "type_name": "is_shouty_snake_case",
+  "description": "Checks whether the input string is SHOUTY_SNAKE_CASED",
+  "components": [
+    {
+      "namespace": "string",
+      "type_name": "string_bool_operation"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension": {
+        "title": "Is Shouty Snake Case",
+        "subject": "Checks whether the input string is SHOUTY_SNAKE_CASED",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

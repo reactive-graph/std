@@ -1,0 +1,34 @@
+mutation {
+  instances {
+    entities {
+      update(
+        id: "e5b13c23-9c31-4b1d-9e17-3506ee3afe68"
+        properties: [
+          {
+            name: "context"
+            value: {
+              greeting: "Hello"
+              world: "World"
+            }
+          }
+        ]
+      ) {
+        id
+        type {
+          name
+        }
+        properties(
+          names: [
+            "template"
+            "context"
+            # Expected: Hello, World
+            "result"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}

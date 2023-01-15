@@ -1,0 +1,23 @@
+{
+  "namespace": "string",
+  "type_name": "chop_after",
+  "description": "Returns everything after the given search",
+  "components": [
+    {
+      "namespace": "string",
+      "type_name": "string_gate"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension": {
+        "title": "Chop After",
+        "subject": "Returns everything after the given search",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

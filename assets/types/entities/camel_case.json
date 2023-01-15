@@ -1,0 +1,23 @@
+{
+  "namespace": "string",
+  "type_name": "camel_case",
+  "description": "Converts the input to camel case",
+  "components": [
+    {
+      "namespace": "string",
+      "type_name": "string_operation"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension": {
+        "title": "Camel Case",
+        "subject": "Converts the input to camel case",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

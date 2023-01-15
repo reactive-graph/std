@@ -1,0 +1,23 @@
+{
+  "namespace": "string",
+  "type_name": "is_uppercase",
+  "description": "Checks whether the input string has only upper case characters",
+  "components": [
+    {
+      "namespace": "string",
+      "type_name": "string_bool_operation"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension": {
+        "title": "Is Upper Case",
+        "subject": "Checks whether the input string has only upper case characters",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

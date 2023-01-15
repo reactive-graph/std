@@ -1,0 +1,34 @@
+{
+  "namespace": "string",
+  "type_name": "templating",
+  "description": "Renders a template",
+  "components": [
+  ],
+  "properties": [
+    {
+      "name": "template",
+      "data_type": "string",
+      "socket_type": "input"
+    },
+    {
+      "name": "context",
+      "data_type": "object",
+      "socket_type": "input"
+    },
+    {
+      "name": "result",
+      "data_type": "string",
+      "socket_type": "output"
+    }
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension": {
+        "title": "Templating",
+        "subject": "Renders a template",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

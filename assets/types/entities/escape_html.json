@@ -1,0 +1,23 @@
+{
+  "namespace": "string",
+  "type_name": "escape_html",
+  "description": "Escapes HTML special characters",
+  "components": [
+    {
+      "namespace": "string",
+      "type_name": "string_operation"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension": {
+        "title": "Escape HTML",
+        "subject": "Escapes HTML special characters",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

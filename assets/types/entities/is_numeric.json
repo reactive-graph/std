@@ -1,0 +1,23 @@
+{
+  "namespace": "string",
+  "type_name": "is_numeric",
+  "description": "Checks whether the input string is numeric",
+  "components": [
+    {
+      "namespace": "string",
+      "type_name": "string_bool_operation"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension": {
+        "title": "Is Numeric",
+        "subject": "Checks whether the input string is numeric",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

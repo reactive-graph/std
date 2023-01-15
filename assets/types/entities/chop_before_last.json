@@ -1,0 +1,23 @@
+{
+  "namespace": "string",
+  "type_name": "chop_before_last",
+  "description": "Returns everything before the last given search",
+  "components": [
+    {
+      "namespace": "string",
+      "type_name": "string_gate"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension": {
+        "title": "Chop Before Last",
+        "subject": "Returns everything before the last given search",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

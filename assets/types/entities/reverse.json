@@ -1,0 +1,23 @@
+{
+  "namespace": "string",
+  "type_name": "reverse",
+  "description": "Reverses the given string",
+  "components": [
+    {
+      "namespace": "string",
+      "type_name": "string_operation"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension": {
+        "title": "Reverse",
+        "subject": "Reverses the given string",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

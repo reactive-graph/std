@@ -1,0 +1,37 @@
+mutation {
+  instances {
+    entities {
+      create(
+        type: {
+          namespace: "string"
+          name: "trim"
+        }
+        id: "d4e12ead-6b91-4eaf-a534-248ac3b0bdfe"
+        properties: [
+          {
+            name: "lhs"
+            value: ""
+          }
+          {
+            name: "result"
+            value: ""
+          }
+        ]
+      ) {
+        id
+        type {
+          name
+        }
+        properties(
+          names: [
+            "lhs"
+            "result"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}

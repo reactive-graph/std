@@ -1,0 +1,23 @@
+{
+  "namespace": "string",
+  "type_name": "pascal_case",
+  "description": "Converts the input to pascal case",
+  "components": [
+    {
+      "namespace": "string",
+      "type_name": "string_operation"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension": {
+        "title": "Pascal Case",
+        "subject": "Converts the input to pascal case",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

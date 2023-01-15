@@ -1,0 +1,23 @@
+{
+  "namespace": "string",
+  "type_name": "count_unique_words",
+  "description": "Counting occurrences of unique words in the input string. This function respects unicode",
+  "components": [
+    {
+      "namespace": "string",
+      "type_name": "string_string_number_gate"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension": {
+        "title": "Count Unique Words",
+        "subject": "Counting occurrences of unique words in the input string. This function respects unicode",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

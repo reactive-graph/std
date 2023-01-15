@@ -1,0 +1,43 @@
+mutation {
+  instances {
+    entities {
+      create(
+        type: {
+          namespace: "string"
+          name: "contains"
+        }
+        id: "b11f9222-b0f9-4484-9849-091ef3676d6f"
+        properties: [
+          {
+            name: "lhs"
+            value: "Hello, World"
+          }
+          {
+            name: "rhs"
+            value: "test"
+          }
+          {
+            name: "result"
+            value: false
+          }
+        ]
+      ) {
+        id
+        type {
+          name
+        }
+        properties(
+          names: [
+            "lhs"
+            "rhs"
+            # Expected: false
+            "result"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}

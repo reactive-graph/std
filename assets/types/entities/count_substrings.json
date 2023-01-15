@@ -1,0 +1,23 @@
+{
+  "namespace": "string",
+  "type_name": "count_substrings",
+  "description": "Counts the number of substring appearances in the input string",
+  "components": [
+    {
+      "namespace": "string",
+      "type_name": "string_string_number_gate"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension": {
+        "title": "Count Substrings",
+        "subject": "Counts the number of substring appearances in the input string",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

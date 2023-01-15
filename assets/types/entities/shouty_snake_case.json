@@ -1,0 +1,23 @@
+{
+  "namespace": "string",
+  "type_name": "shouty_snake_case",
+  "description": "Converts the title to SHOUTY snake case",
+  "components": [
+    {
+      "namespace": "string",
+      "type_name": "string_operation"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension": {
+        "title": "SHOUTY Snake Case",
+        "subject": "Converts the title to SHOUTY snake case",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

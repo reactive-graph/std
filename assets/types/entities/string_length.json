@@ -1,0 +1,23 @@
+{
+  "namespace": "string",
+  "type_name": "string_length",
+  "description": "Returns the length of the input string",
+  "components": [
+    {
+      "namespace": "string",
+      "type_name": "string_number_operation"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension": {
+        "title": "String Length",
+        "subject": "Returns the length of the input string",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}
