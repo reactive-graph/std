@@ -4,7 +4,6 @@ use serde_json::Value;
 use std::sync::Arc;
 
 use crate::model::*;
-use crate::model_http::ActionProperties::TRIGGER;
 use crate::model_http::HttpProperties::METHOD;
 use crate::model_http::HttpProperties::PAYLOAD;
 use crate::model_http::HttpProperties::REQUEST_HEADERS;
@@ -12,6 +11,7 @@ use crate::model_http::HttpProperties::RESPONSE_HEADERS;
 use crate::model_http::HttpProperties::RESULT;
 use crate::model_http::HttpProperties::STATUS;
 use crate::model_http::HttpProperties::URL;
+use crate::model_logical::ActionProperties::TRIGGER;
 use crate::reactive::*;
 
 entity_behaviour!(Http, HttpFactory, HttpFsm, HttpBehaviourTransitions, HttpValidator);

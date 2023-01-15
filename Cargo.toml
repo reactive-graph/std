@@ -19,6 +19,8 @@ members = [
     "plugins/inexor-rgf-plugin-file/crates/plugin",
     "plugins/inexor-rgf-plugin-graphql-client",
     "plugins/inexor-rgf-plugin-graphql-schema-visualization",
+    "plugins/inexor-rgf-plugin-http/crates/model",
+    "plugins/inexor-rgf-plugin-http/crates/plugin",
     "plugins/inexor-rgf-plugin-json/crates/model",
     "plugins/inexor-rgf-plugin-json/crates/plugin",
     "plugins/inexor-rgf-plugin-logical/crates/model",

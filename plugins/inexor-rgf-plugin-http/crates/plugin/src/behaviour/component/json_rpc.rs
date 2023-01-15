@@ -3,13 +3,13 @@ use serde_json::json;
 use serde_json::Value;
 
 use crate::model::*;
-use crate::model_http::ActionProperties::TRIGGER;
 use crate::model_http::JsonRpcProperties::ERROR;
 use crate::model_http::JsonRpcProperties::JSON_RPC_VERSION;
 use crate::model_http::JsonRpcProperties::METHOD;
 use crate::model_http::JsonRpcProperties::PARAMS;
 use crate::model_http::JsonRpcProperties::RESULT;
 use crate::model_http::JsonRpcProperties::URL;
+use crate::model_logical::ActionProperties::TRIGGER;
 use crate::reactive::*;
 
 entity_behaviour!(JsonRpc, JsonRpcFactory, JsonRpcFsm, JsonRpcBehaviourTransitions, JsonRpcValidator);

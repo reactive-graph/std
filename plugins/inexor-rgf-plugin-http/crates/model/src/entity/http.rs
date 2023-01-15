@@ -1,6 +1,6 @@
 use crate::model::entity_model;
 use crate::model::entity_ty;
-use crate::Action;
+use crate::model_logical::Action;
 use crate::ComponentHttp;
 use crate::NAMESPACE_HTTP;
 
