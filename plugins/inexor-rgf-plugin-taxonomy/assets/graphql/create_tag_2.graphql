@@ -1,0 +1,25 @@
+mutation CreateTag2 {
+  instances {
+    entities {
+      create(
+        id: "a58a82b4-8e2e-11ed-9000-000000000000"
+        type: {
+          namespace: "taxonomy"
+          name: "tag"
+        }
+        properties: [
+          {
+            name: "name"
+            value: "sauerbraten"
+          }
+        ]
+      ) {
+        id
+        properties {
+          name
+          value
+        }
+      }
+    }
+  }
+}

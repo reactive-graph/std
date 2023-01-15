@@ -24,28 +24,28 @@
   ],
   "extensions": [
     {
-      "name": "outbound_field_name",
-      "extension": "categorized"
+      "namespace": "dynamic_graph",
+      "type_name": "field_name",
+      "extension": {
+        "from_outbound_entity_to_relation": "categorized_as",
+        "from_relation_to_outbound_entity": "categorized_entity",
+        "from_inbound_entity_to_relation": "categorized_as",
+        "from_relation_to_inbound_entity": "category",
+        "from_outbound_entity_to_inbound_entity": "categories",
+        "from_inbound_entity_to_outbound_entity": "categorizes"
+      }
     },
     {
-      "name": "outbound_collection_field_name",
-      "extension": "categorized_as"
-    },
-    {
-      "name": "outbound_field_description",
-      "extension": "The entity which is categorized"
-    },
-    {
-      "name": "inbound_field_name",
-      "extension": "category"
-    },
-    {
-      "name": "inbound_collection_field_name",
-      "extension": "categorizes"
-    },
-    {
-      "name": "inbound_field_description",
-      "extension": "The category which categorizes an entity"
+      "namespace": "dynamic_graph",
+      "type_name": "field_description",
+      "extension": {
+        "from_outbound_entity_to_relation": "The relations between the entity and the categories.",
+        "from_relation_to_outbound_entity": "The entity which is categorized.",
+        "from_inbound_entity_to_relation": "The relations between the category and the categorized entities.",
+        "from_relation_to_inbound_entity": "The category.",
+        "from_outbound_entity_to_inbound_entity": "The entity is categorized with these categories.",
+        "from_inbound_entity_to_outbound_entity": "The category categorizes these entities."
+      }
     }
   ]
 }

@@ -1,0 +1,20 @@
+query GetTags {
+  instances {
+    entities(
+      type: {
+        namespace: "taxonomy"
+        name: "tag"
+      }
+    ) {
+      id
+      properties(
+        names: [
+          "name"
+        ]
+      ) {
+        name
+        value
+      }
+    }
+  }
+}

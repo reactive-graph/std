@@ -1,0 +1,18 @@
+query GetTags {
+  taxonomy {
+    tag {
+      id
+      name
+      tagged_entities {
+        __typename
+        ... on Core_Labeled_Component {
+          label
+        }
+        ... on Core_Shutdown_Entity {
+          id
+          label
+        }
+      }
+    }
+  }
+}
