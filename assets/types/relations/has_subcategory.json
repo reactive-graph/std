@@ -1,0 +1,51 @@
+{
+  "namespace": "taxonomy",
+  "type_name": "has_subcategory",
+  "description": "The outbound category has the inbound entity as sub category",
+  "outbound": {
+    "entity_type": {
+      "namespace": "taxonomy",
+      "type_name": "category"
+    }
+  },
+  "inbound": {
+    "entity_type": {
+      "namespace": "taxonomy",
+      "type_name": "category"
+    }
+  },
+  "components": [
+    {
+      "namespace": "taxonomy",
+      "type_name": "weighted"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "outbound_field_name",
+      "extension": "parent_category"
+    },
+    {
+      "name": "outbound_collection_field_name",
+      "extension": "child_categories"
+    },
+    {
+      "name": "outbound_field_description",
+      "extension": "The parent category"
+    },
+    {
+      "name": "inbound_field_name",
+      "extension": "child_category"
+    },
+    {
+      "name": "inbound_collection_field_name",
+      "extension": "parent_categories"
+    },
+    {
+      "name": "inbound_field_description",
+      "extension": "The child category"
+    }
+  ]
+}

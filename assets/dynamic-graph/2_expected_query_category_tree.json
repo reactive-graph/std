@@ -1,0 +1,137 @@
+{
+  "data": {
+    "category": [
+      {
+        "named": {
+          "name": "Root Category"
+        },
+        "describable": {
+          "description": "Level 0"
+        },
+        "child_categories": [
+          {
+            "weighted": {
+              "weight": 0
+            },
+            "child_category": {
+              "named": {
+                "name": "Category A"
+              },
+              "describable": {
+                "description": "Level 1"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "named": {
+          "name": "Category A"
+        },
+        "describable": {
+          "description": "Level 1"
+        },
+        "child_categories": [
+          {
+            "weighted": {
+              "weight": 0
+            },
+            "child_category": {
+              "named": {
+                "name": "Category A 1"
+              },
+              "describable": {
+                "description": "Level 2"
+              }
+            }
+          },
+          {
+            "weighted": {
+              "weight": 0
+            },
+            "child_category": {
+              "named": {
+                "name": "Category A 2"
+              },
+              "describable": {
+                "description": "Level 2"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "named": {
+          "name": "Category B"
+        },
+        "describable": {
+          "description": "Level 1"
+        },
+        "child_categories": [
+          {
+            "weighted": {
+              "weight": 0
+            },
+            "child_category": {
+              "named": {
+                "name": "Category B 1"
+              },
+              "describable": {
+                "description": "Level 2"
+              }
+            }
+          },
+          {
+            "weighted": {
+              "weight": 0
+            },
+            "child_category": {
+              "named": {
+                "name": "Category B 2"
+              },
+              "describable": {
+                "description": "Level 2"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "named": {
+          "name": "Category A 1"
+        },
+        "describable": {
+          "description": "Level 2"
+        },
+        "child_categories": []
+      },
+      {
+        "named": {
+          "name": "Category B 1"
+        },
+        "describable": {
+          "description": "Level 2"
+        },
+        "child_categories": []
+      },
+      {
+        "named": {
+          "name": "Category A 2"
+        },
+        "describable": {
+          "description": "Level 2"
+        },
+        "child_categories": []
+      },
+      {
+        "named": {
+          "name": "Category B 2"
+        },
+        "describable": {
+          "description": "Level 2"
+        },
+        "child_categories": []
+      }
+    ]
+  }
+}

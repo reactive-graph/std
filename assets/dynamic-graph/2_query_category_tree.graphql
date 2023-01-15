@@ -1,0 +1,33 @@
+# Fully valid query
+# The properties are grouped into components
+query GetCategoryTree {
+  # All entities of type category
+  category {
+    # Category has component named
+    named {
+      name
+    }
+    # Category has component describable
+    describable {
+      description
+    }
+    # Outbound relations of type has_subcategory
+    child_categories {
+      # Relation has_subcategory has component weighted
+      weighted {
+        weight
+      }
+      # The other side of the relation is also a category
+      child_category {
+        # Component named
+        named {
+          name
+        }
+        # Component describable
+        describable {
+          description
+        }
+      }
+    }
+  }
+}
