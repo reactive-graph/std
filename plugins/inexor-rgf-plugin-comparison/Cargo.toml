@@ -1,0 +1,46 @@
+cargo-features = [ "workspace-inheritance" ]
+
+[workspace]
+
+members = [
+    "crates/model",
+    "crates/plugin"
+]
+
+[workspace.package]
+version = "0.8.0"
+authors = ["Andreas Schaeffer <hanack@nooblounge.net"]
+edition = "2021"
+license = "MIT"
+
+[workspace.dependencies]
+async-trait = "0.1"
+dashmap = "5.4"
+indradb-lib = "3"
+lazy_static = "1.4"
+log = { version = "0.4", features = ["std", "serde"] }
+log4rs = { version = "1.0", features = ["console_appender", "file_appender", "toml_format"]}
+num-traits = "0.2"
+paste = "1.0"
+query_interface = "0.3"
+rust-embed = { version = "6.2", features = ["debug-embed", "compression"] }
+serde = { version = "1.0", features = [ "derive" ] }
+serde_json = "1.0"
+strum = { version = "0.24", features = ["derive"] }
+strum_macros = "0.24"
+uuid = { version = "1.1", features = ["serde", "v4"] }
+
+inexor-rgf-core-di = { version = "2.0", features = ["async"], git = "https://github.com/inexorgame/inexor-rgf-core-di.git" }
+inexor-rgf-core-frp = { git = "https://github.com/inexorgame/inexor-rgf-core-frp.git" }
+inexor-rgf-core-model = { git = "https://github.com/inexorgame/inexor-rgf-core-model.git" }
+inexor-rgf-core-reactive = { git = "https://github.com/inexorgame/inexor-rgf-core-reactive.git" }
+inexor-rgf-core-plugins = { git = "https://github.com/inexorgame/inexor-rgf-core-plugins.git" }
+inexor-rgf-core-builder = { git = "https://github.com/inexorgame/inexor-rgf-core-builder.git" }
+
+[profile.dev]
+opt-level = 0
+
+[profile.release]
+opt-level = 3
+lto = true
+strip = "symbols"
