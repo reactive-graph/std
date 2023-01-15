@@ -1,0 +1,36 @@
+{
+  "namespace": "json",
+  "type_name": "load_json",
+  "description": "Loads a JSON file",
+  "components": [
+    {
+      "namespace": "base",
+      "name": "named"
+    },
+    {
+      "namespace": "logical",
+      "name": "action"
+    },
+    {
+      "namespace": "file",
+      "name": "file"
+    },
+    {
+      "namespace": "json",
+      "name": "load_json"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "namespace": "metadata",
+      "type_name": "dublin-core",
+      "extension":{
+        "title": "Load JSON",
+        "subject": "Loads a JSON file",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

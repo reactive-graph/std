@@ -1,0 +1,44 @@
+mutation {
+  instances {
+    entities {
+      create(
+        type: {
+          namespace: "json"
+          name: "object_remove_property"
+        }
+        id: "65d97e1e-e309-4bd7-93cb-d59f1d55970f"
+        properties: [
+          {
+            name: "object"
+            value: {
+              hello: "World",
+              good: "Morning",
+              greet: "Servus"
+            }
+          }
+          {
+            name: "property_name"
+            value: "good"
+          }
+        ]
+      ) {
+        id
+        type {
+          namespace
+          name
+        }
+        properties(
+          names: [
+            "object"
+            "property_name"
+            # Expected object { "hello": "World", "greet": "Servus" }
+            "result"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}

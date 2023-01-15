@@ -1,0 +1,23 @@
+{
+  "namespace": "json",
+  "type_name": "save_json",
+  "description": "Saves an object as JSON file",
+  "properties": [
+    {
+      "name": "payload",
+      "data_type": "object",
+      "socket_type": "input"
+    }
+  ],
+  "extensions": [
+    {
+      "namespace": "metadata",
+      "type_name": "dublin-core",
+      "extension":{
+        "title": "Save JSON",
+        "subject": "Saves an object as JSON file",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}
