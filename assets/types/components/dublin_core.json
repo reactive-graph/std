@@ -80,7 +80,8 @@
   ],
   "extensions": [
     {
-      "name": "component_category",
+      "namespace": "metadata",
+      "type_name": "component_category",
       "extension": "metadata"
     }
   ]

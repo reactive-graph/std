@@ -7,7 +7,8 @@
       "data_type": "string",
       "extensions": [
         {
-          "name": "metadata_description",
+          "namespace": "metadata",
+          "type_name": "metadata_description",
           "extension": "Name of the album"
         }
       ]
@@ -15,7 +16,8 @@
   ],
   "extensions": [
     {
-      "name": "component_category",
+      "namespace": "metadata",
+      "type_name": "component_category",
       "extension": "metadata"
     }
   ]
