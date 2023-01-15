@@ -1,0 +1,20 @@
+query findSystemEnvUsername {
+  instances {
+    entities(label: "/org/inexor/system/env/username") {
+      id
+      label
+      type {
+        namespace
+        name
+      }
+      properties(names: [
+        "label"
+        "name"
+        "value"
+      ]) {
+        name
+        value
+      }
+    }
+  }
+}

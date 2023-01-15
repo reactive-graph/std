@@ -1,0 +1,3 @@
+target_dirs = [
+    "../inexor-rgf/plugins/deploy"
+]
