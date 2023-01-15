@@ -1,0 +1,26 @@
+{
+  "namespace": "numeric_f64",
+  "type_name": "acos",
+  "description": "Computes the arccosine of a number",
+  "components": [
+    {
+      "namespace": "numeric",
+      "type_name": "numeric_operation"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "palette",
+      "extension": {
+        "content": "acos",
+        "styles": {
+          "font-family": "Fira Code",
+          "font-size": "12px",
+          "padding": "5px"
+        }
+      }
+    }
+  ]
+}

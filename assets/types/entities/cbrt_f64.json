@@ -1,0 +1,26 @@
+{
+  "namespace": "numeric_f64",
+  "type_name": "cbrt",
+  "description": "Returns the cube root of a number",
+  "components": [
+    {
+      "namespace": "numeric",
+      "type_name": "numeric_operation"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "palette",
+      "extension": {
+        "content": "cbrt",
+        "styles": {
+          "font-family": "Fira Code",
+          "font-size": "12px",
+          "padding": "5px"
+        }
+      }
+    }
+  ]
+}

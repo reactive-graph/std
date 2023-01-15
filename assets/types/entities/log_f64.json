@@ -1,0 +1,26 @@
+{
+  "namespace": "numeric_f64",
+  "type_name": "log",
+  "description": "Returns the logarithm of the number with respect to an arbitrary base",
+  "components": [
+    {
+      "namespace": "numeric",
+      "type_name": "numeric_gate"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "palette",
+      "extension": {
+        "content": "log",
+        "styles": {
+          "font-family": "Fira Code",
+          "font-size": "12px",
+          "padding": "5px"
+        }
+      }
+    }
+  ]
+}

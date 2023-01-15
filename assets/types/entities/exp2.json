@@ -1,0 +1,26 @@
+{
+  "namespace": "numeric_f64",
+  "type_name": "exp2",
+  "description": "Returns 2^(input)",
+  "components": [
+    {
+      "namespace": "numeric",
+      "type_name": "numeric_operation"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "palette",
+      "extension": {
+        "content": "exp2",
+        "styles": {
+          "font-family": "Fira Code",
+          "font-size": "12px",
+          "padding": "5px"
+        }
+      }
+    }
+  ]
+}

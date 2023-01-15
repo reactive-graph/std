@@ -1,0 +1,26 @@
+{
+  "namespace": "numeric_f64",
+  "type_name": "signum",
+  "description": "Returns a number that represents the sign of the input",
+  "components": [
+    {
+      "namespace": "numeric",
+      "type_name": "numeric_operation"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "name": "palette",
+      "extension": {
+        "content": "signum",
+        "styles": {
+          "font-family": "Fira Code",
+          "font-size": "12px",
+          "padding": "5px"
+        }
+      }
+    }
+  ]
+}
