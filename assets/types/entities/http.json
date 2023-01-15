@@ -4,19 +4,20 @@
   "description": "Sends HTTP request to a given URL",
   "components": [
     {
-      "namespace": "logical",
-      "type_name": "action"
-    },
-    {
       "namespace": "http",
       "type_name": "http"
+    },
+    {
+      "namespace": "logical",
+      "type_name": "action"
     }
   ],
   "properties": [
   ],
   "extensions": [
     {
-      "name": "palette",
+      "namespace": "flow_editor",
+      "type_name": "palette",
       "extension": {
         "content": "HTTP",
         "styles":  {
@@ -27,7 +28,8 @@
       }
     },
     {
-      "name": "shape",
+      "namespace": "flow_editor",
+      "type_name": "shape",
       "extension": {
         "width": 200,
         "socket": {
@@ -90,7 +92,8 @@
       }
     },
     {
-      "name": "dublin-core",
+      "namespace": "metadata",
+      "type_name": "dublin-core",
       "extension":{
         "title": "HTTP",
         "subject": "Sends HTTP request to a given URL",

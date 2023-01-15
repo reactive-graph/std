@@ -5,6 +5,7 @@
   "properties": [
     {
       "name": "method",
+      "description": "The HTTP method",
       "data_type": "string",
       "socket_type": "input"
     },
@@ -24,7 +25,8 @@
       "socket_type": "input",
       "extensions":[
         {
-          "name": "auto_trigger",
+          "namespace": "core",
+          "type_name": "auto_trigger",
           "extension": true
         }
       ]
@@ -50,7 +52,8 @@
   ],
   "extensions": [
     {
-      "name": "dublin-core",
+      "namespace": "metadata",
+      "type_name": "dublin-core",
       "extension":{
         "title": "HTTP",
         "subject": "Sends HTTP request to a given URL",

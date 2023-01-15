@@ -24,7 +24,8 @@
       "socket_type": "input",
       "extensions":[
         {
-          "name": "auto_trigger",
+          "namespace": "core",
+          "type_name": "auto_trigger",
           "extension": true
         }
       ]
@@ -44,7 +45,8 @@
   ],
   "extensions": [
     {
-      "name": "dublin-core",
+      "namespace": "metadata",
+      "type_name": "dublin-core",
       "extension":{
         "title": "JSON-RPC",
         "subject": "JSON Remote Procedure Call",

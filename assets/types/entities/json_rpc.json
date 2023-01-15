@@ -4,19 +4,20 @@
   "description": "Sends JSON-RPC request to a given URL",
   "components": [
     {
-      "namespace": "logical",
-      "type_name": "action"
-    },
-    {
       "namespace": "http",
       "type_name": "json_rpc"
+    },
+    {
+      "namespace": "logical",
+      "type_name": "action"
     }
   ],
   "properties": [
   ],
   "extensions": [
     {
-      "name": "palette",
+      "namespace": "flow_editor",
+      "type_name": "palette",
       "extension": {
         "content": "JSON-RPC",
         "styles":  {
@@ -27,7 +28,8 @@
       }
     },
     {
-      "name": "shape",
+      "namespace": "flow_editor",
+      "type_name": "shape",
       "extension": {
         "width": 200,
         "socket": {
@@ -90,7 +92,8 @@
       }
     },
     {
-      "name": "dublin-core",
+      "namespace": "metadata",
+      "type_name": "dublin-core",
       "extension":{
         "title": "JSON-RPC",
         "subject": "JSON Remote Procedure Call",
