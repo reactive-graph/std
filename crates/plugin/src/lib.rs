@@ -61,7 +61,10 @@ extern "C" fn register(registrar: &mut dyn plugins::PluginRegistrar) {
 
 #[allow(improper_ctypes_definitions)]
 extern "C" fn get_dependencies() -> Vec<PluginDependency> {
-    vec![PluginDependency::new("inexor-rgf-plugin-base", ">=0.8.0, <0.9.0")]
+    vec![
+        PluginDependency::new("inexor-rgf-plugin-base", ">=0.8.0, <0.9.0"),
+        PluginDependency::new("inexor-rgf-plugin-logical", ">=0.8.0, <0.9.0"),
+    ]
 }
 
 #[cfg(test)]
