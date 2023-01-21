@@ -1,0 +1,21 @@
+{
+  "namespace": "result",
+  "type_name": "result_any",
+  "description": "The entity returns data of any datatype",
+  "properties": [
+    {
+      "name": "result",
+      "description": "The result",
+      "data_type": "any",
+      "socket_type": "output",
+      "mutability": "immutable"
+    }
+  ],
+  "extensions": [
+    {
+      "namespace": "core",
+      "type_name": "component_category",
+      "extension": "result"
+    }
+  ]
+}

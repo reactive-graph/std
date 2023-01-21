@@ -1,0 +1,7 @@
+mutation {
+  dateTime {
+    utcTimestamp(id: "ddd1868a-0cb5-44b9-948d-45cff981a250") {
+      delete
+    }
+  }
+}

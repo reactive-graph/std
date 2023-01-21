@@ -1,0 +1,16 @@
+{
+  "namespace": "comparison",
+  "type_name": "comparison_numeric",
+  "properties": [
+    {
+      "name": "lhs",
+      "data_type": "number",
+      "socket_type": "input"
+    },
+    {
+      "name": "rhs",
+      "data_type": "number",
+      "socket_type": "input"
+    }
+  ]
+}

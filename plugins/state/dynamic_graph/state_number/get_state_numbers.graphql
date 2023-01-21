@@ -1,0 +1,9 @@
+query GetNumbers {
+  state {
+    stateNumber {
+      id
+      name
+      value
+    }
+  }
+}

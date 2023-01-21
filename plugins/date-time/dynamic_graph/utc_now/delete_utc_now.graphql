@@ -1,0 +1,7 @@
+mutation {
+  dateTime {
+    utcNow(id: "99825664-ff41-4d81-a197-4a918b5c8a48") {
+      delete
+    }
+  }
+}

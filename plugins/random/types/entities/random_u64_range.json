@@ -1,0 +1,32 @@
+{
+  "namespace": "random",
+  "type_name": "random_u64_range",
+  "description": "Random Unsigned Integer Within Range",
+  "components": [
+    {
+      "namespace": "trigger",
+      "type_name": "action"
+    },
+    {
+      "namespace": "random",
+      "type_name": "range"
+    },
+    {
+      "namespace": "result",
+      "type_name": "result_number"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "namespace": "metadata",
+      "type_name": "dublin-core",
+      "extension":{
+        "title": "Random Unsigned Integer Within Range",
+        "subject": "Random Unsigned Integer Within Range",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

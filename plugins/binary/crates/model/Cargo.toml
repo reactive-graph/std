@@ -1,0 +1,26 @@
+[package]
+name = "inexor-rgf-model-binary"
+description = "Inexor - Reactive Graph Flow - Model - Binary"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+data-url = { workspace = true }
+indradb-lib = { workspace = true }
+lazy_static = { workspace = true }
+paste = { workspace = true }
+serde = { workspace = true, features = [ "derive" ] }
+serde_json = { workspace = true }
+strum = { workspace = true, features = ["derive"] }
+strum_macros = { workspace = true }
+
+inexor-rgf-core-model = { workspace = true }
+inexor-rgf-core-reactive = { workspace = true }
+inexor-rgf-model-base = { path = "../../../base/crates/model" }
+inexor-rgf-model-file = { path = "../../../file/crates/model" }
+inexor-rgf-model-trigger = { path = "../../../trigger/crates/model" }
+
+[lib]
+crate-type = ["lib"]

@@ -1,0 +1,28 @@
+{
+  "namespace": "random",
+  "type_name": "range",
+  "description": "Range",
+  "properties": [
+    {
+      "name": "low",
+      "data_type": "number",
+      "socket_type": "input"
+    },
+    {
+      "name": "high",
+      "data_type": "number",
+      "socket_type": "input"
+    }
+  ],
+  "extensions": [
+    {
+      "namespace": "metadata",
+      "type_name": "dublin-core",
+      "extension":{
+        "title": "Range",
+        "subject": "Range",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

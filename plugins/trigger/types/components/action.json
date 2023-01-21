@@ -1,0 +1,36 @@
+{
+  "namespace": "trigger",
+  "type_name": "action",
+  "description": "An action can be triggered",
+  "properties": [
+    {
+      "name": "trigger",
+      "description": "On receiving a boolean trigger the action will be executed",
+      "data_type": "bool",
+      "socket_type": "input",
+      "extensions": [
+        {
+          "namespace": "ui",
+          "type_name": "widget",
+          "extension": "Trigger"
+        },
+        {
+          "namespace": "flow_editor",
+          "type_name": "socket",
+          "extension": {
+            "width": 60,
+            "height": 30,
+            "offset": 5
+          }
+        }
+      ]
+    }
+  ],
+  "extensions": [
+    {
+      "namespace": "core",
+      "type_name": "component_category",
+      "extension": "trigger"
+    }
+  ]
+}

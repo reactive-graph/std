@@ -1,0 +1,18 @@
+{
+  "namespace": "json",
+  "type_name": "load_json",
+  "description": "Loads a JSON file",
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "namespace": "metadata",
+      "type_name": "dublin-core",
+      "extension":{
+        "title": "Load JSON",
+        "subject": "Loads a JSON file",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

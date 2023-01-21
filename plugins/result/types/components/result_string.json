@@ -1,0 +1,21 @@
+{
+  "namespace": "result",
+  "type_name": "result_string",
+  "description": "The entity returns a string",
+  "properties": [
+    {
+      "name": "result",
+      "description": "The result",
+      "data_type": "string",
+      "socket_type": "output",
+      "mutability": "immutable"
+    }
+  ],
+  "extensions": [
+    {
+      "namespace": "core",
+      "type_name": "component_category",
+      "extension": "result"
+    }
+  ]
+}

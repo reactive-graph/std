@@ -1,0 +1,15 @@
+fragment UtcTimestamp on EntityInstance {
+  id
+  type {
+    namespace
+    name
+  }
+  properties(
+    names: [
+      "result"
+    ]
+  ) {
+    name
+    value
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "namespace": "random",
+  "type_name": "random_u64_pseudo",
+  "description": "Pseudo Random Unsigned Integer Number",
+  "components": [
+    {
+      "namespace": "trigger",
+      "type_name": "action"
+    },
+    {
+      "namespace": "random",
+      "type_name": "pseudo_number_generator"
+    },
+    {
+      "namespace": "result",
+      "type_name": "result_number"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "namespace": "metadata",
+      "type_name": "dublin-core",
+      "extension":{
+        "title": "Pseudo Random Unsigned Integer Number",
+        "subject": "Pseudo Random Unsigned Integer Number",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

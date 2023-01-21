@@ -1,0 +1,28 @@
+{
+  "namespace": "date_time",
+  "type_name": "utc_now",
+  "description": "Returns the current date as ISO8601",
+  "components": [
+    {
+      "namespace": "trigger",
+      "type_name": "action"
+    },
+    {
+      "namespace": "result",
+      "type_name": "result_string"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "namespace": "metadata",
+      "type_name": "dublin-core",
+      "extension":{
+        "title": "UTC Now",
+        "subject": "Returns the current date and time as ISO8601",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

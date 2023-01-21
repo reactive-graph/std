@@ -1,0 +1,21 @@
+{
+  "namespace": "result",
+  "type_name": "result_boolean",
+  "description": "The entity returns a boolean",
+  "properties": [
+    {
+      "name": "result",
+      "description": "The result",
+      "data_type": "bool",
+      "socket_type": "output",
+      "mutability": "immutable"
+    }
+  ],
+  "extensions": [
+    {
+      "namespace": "core",
+      "type_name": "component_category",
+      "extension": "result"
+    }
+  ]
+}

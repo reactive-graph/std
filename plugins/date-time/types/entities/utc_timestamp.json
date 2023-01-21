@@ -1,0 +1,28 @@
+{
+  "namespace": "date_time",
+  "type_name": "utc_timestamp",
+  "description": "Returns the current timestamp",
+  "components": [
+    {
+      "namespace": "trigger",
+      "type_name": "action"
+    },
+    {
+      "namespace": "result",
+      "type_name": "result_number"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "namespace": "metadata",
+      "type_name": "dublin-core",
+      "extension":{
+        "title": "UTC Timestamp",
+        "subject": "Returns the current timestamp",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

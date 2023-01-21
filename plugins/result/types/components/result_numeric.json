@@ -1,0 +1,21 @@
+{
+  "namespace": "result",
+  "type_name": "result_number",
+  "description": "The entity returns a number",
+  "properties": [
+    {
+      "name": "result",
+      "description": "The result",
+      "data_type": "number",
+      "socket_type": "output",
+      "mutability": "immutable"
+    }
+  ],
+  "extensions": [
+    {
+      "namespace": "core",
+      "type_name": "component_category",
+      "extension": "result"
+    }
+  ]
+}

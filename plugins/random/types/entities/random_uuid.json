@@ -1,0 +1,104 @@
+{
+  "namespace": "random",
+  "type_name": "random_uuid",
+  "description": "Random UUID",
+  "components": [
+    {
+      "namespace": "trigger",
+      "type_name": "action"
+    },
+    {
+      "namespace": "result",
+      "type_name": "result_string"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "namespace": "flow_editor",
+      "type_name": "palette",
+      "extension": {
+        "content": "Random UUID",
+        "styles":  {
+          "font-size": "12px",
+          "font-family": "Fira Code",
+          "padding": "5px"
+        }
+      }
+    },
+    {
+      "namespace": "flow_editor",
+      "type_name": "shape",
+      "extension": {
+        "width": 200,
+        "socket": {
+          "width": 60,
+          "height": 30,
+          "offset": 5
+        },
+        "offset": {
+          "top": "socket.height",
+          "bottom": "socket.height"
+        },
+        "elements": {
+          "title": {
+            "show": true,
+            "type": "text",
+            "content": "element.description",
+            "position": {
+              "left": 0,
+              "top": 0,
+              "width": "shape.width",
+              "height": "socket.height"
+            },
+            "styles": {
+              "font-size": "12px",
+              "fill": "black"
+            }
+          },
+          "symbol": {
+            "show": true,
+            "type": "text",
+            "content": "Random UUID",
+            "position": {
+              "left": 0,
+              "top": 0,
+              "width": "shape.width",
+              "height": "shape.height"
+            },
+            "styles": {
+              "font-family": "Fira Code",
+              "font-size": "40px",
+              "fill": "fuchsia"
+            }
+          },
+          "id": {
+            "show": true,
+            "type": "text",
+            "content": "shape.id",
+            "position": {
+              "left": 0,
+              "top": "shape.height-socket.height",
+              "width": "shape.width",
+              "height": "socket.height"
+            },
+            "styles": {
+              "font-size": "9px",
+              "fill": "black"
+            }
+          }
+        }
+      }
+    },
+    {
+      "namespace": "metadata",
+      "type_name": "dublin-core",
+      "extension":{
+        "title": "Random UUID",
+        "subject": "Random UUID",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

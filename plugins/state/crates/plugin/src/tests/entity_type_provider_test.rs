@@ -1,0 +1,18 @@
+use crate::model::NamespacedTypeGetter;
+use crate::plugins::EntityTypeProvider;
+use crate::providers::StateEntityTypeProviderImpl;
+
+#[test]
+fn entity_types_should_exist() {
+    let expected_entity_types = vec!["state_array", "state_boolean", "state_number", "state_object", "state_string"];
+    let entity_type_provider = StateEntityTypeProviderImpl {};
+    let entity_types = entity_type_provider.get_entity_types();
+    assert_eq!(expected_entity_types.len(), entity_types.len());
+    assert_eq!(
+        expected_entity_types.len(),
+        entity_types
+            .into_iter()
+            .filter(|entity_type| expected_entity_types.contains(&entity_type.type_name().as_str()))
+            .count()
+    );
+}
