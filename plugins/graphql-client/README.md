@@ -1,32 +1,11 @@
-# Inexor Reactive Graph Flow
+# Plugin GraphQL Client
 
-| Project             | Module | Sub-Module     | Functionality                                                        | Tests                                                                                                                                                                                                 |
-|---------------------|--------|----------------|----------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Reactive Graph Flow | Plugin | GraphQL Client | <img src="https://img.shields.io/badge/state-completed-brightgreen"> | [<img src="https://img.shields.io/codecov/c/github/inexorgame/inexor-rgf-plugin-graphql-client">](https://app.codecov.io/gh/inexorgame/inexor-rgf-plugin-graphql-client)  |
+Provides a client for sending GraphQL queries and mutations.
 
-### About this plugin
+## Platform Compatibility
 
-Visualizes the GraphQL schema.
-
-[<img src="https://img.shields.io/badge/Language-Rust-brightgreen">](https://www.rust-lang.org/)
-[<img src="https://img.shields.io/badge/Platforms-Linux%20%26%20Windows-brightgreen">]()
-[<img src="https://img.shields.io/github/workflow/status/inexorgame/inexor-rgf-plugin-graphql-client/Rust">](https://github.com/inexorgame/inexor-rgf-plugin-graphql-client/actions?query=workflow%3ARust)
-[<img src="https://img.shields.io/github/last-commit/inexorgame/inexor-rgf-plugin-graphql-client">]()
-[<img src="https://img.shields.io/github/languages/code-size/inexorgame/inexor-rgf-plugin-graphql-client">]()
-[<img src="https://img.shields.io/codecov/c/github/inexorgame/inexor-rgf-plugin-graphql-client">](https://app.codecov.io/gh/inexorgame/inexor-rgf-plugin-graphql-client)
-
-[<img src="https://img.shields.io/github/license/inexorgame/inexor-rgf-plugin-graphql-client">](https://github.com/inexorgame/inexor-rgf-plugin-graphql-client/blob/main/LICENSE)
-[<img src="https://img.shields.io/discord/698219248954376256?logo=discord">](https://discord.com/invite/acUW8k7)
-
-<img src="https://raw.githubusercontent.com/inexorgame/inexor-rgf-plugin-graphql-client/main/docs/images/screenshot1.png">
-
-### Thanks to
-
-* https://github.com/xd009642/tarpaulin
-* https://codecov.io/
-
-### Sponsors
-
-|                                                                                                                                                                                                                                        |           |                                                                   |
-|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|-------------------------------------------------------------------|
-| <a href="https://www.jetbrains.com/?from=github.com/inexorgame"><img align="right" width="100" height="100" src="https://raw.githubusercontent.com/inexorgame/inexor-rgf-plugin-graphql-client/main/docs/images/icon_CLion.svg"></a>   | JetBrains | Special thanks to JetBrains for providing us with CLion licenses! |
+| Platform | Compatibility |
+|----------|---------------|
+| Linux    | ✓             |
+| MacOS    | ✓             |
+| Windows  | ✓             |

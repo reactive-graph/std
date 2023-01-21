@@ -1,30 +1,14 @@
-# Inexor Reactive Graph Flow
+# Plugin Connector
 
-| Project             | Module | Sub-Module | Functionality                                                        | Tests                                                                                                                                                          |
-|---------------------|--------|------------|----------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Reactive Graph Flow | Plugin | Connector  | <img src="https://img.shields.io/badge/state-completed-brightgreen"> | [<img src="https://img.shields.io/codecov/c/github/inexorgame/inexor-rgf-plugin-connector">](https://app.codecov.io/gh/inexorgame/inexor-rgf-plugin-connector) |
+This plugin provides property connectors for propagate data from one property to another property.
 
-### About this plugin
-
-This plugin provides connectors.
-
-[<img src="https://img.shields.io/badge/Language-Rust-brightgreen">](https://www.rust-lang.org/)
-[<img src="https://img.shields.io/badge/Platforms-Linux%20%26%20Windows-brightgreen">]()
-[<img src="https://img.shields.io/github/actions/workflow/status/inexorgame/inexor-rgf-plugin-connector/rust.yml">](https://github.com/inexorgame/inexor-rgf-plugin-connector/actions?query=workflow%3ARust)
-[<img src="https://img.shields.io/github/last-commit/inexorgame/inexor-rgf-plugin-connector">]()
-[<img src="https://img.shields.io/github/languages/code-size/inexorgame/inexor-rgf-plugin-connector">]()
-[<img src="https://img.shields.io/codecov/c/github/inexorgame/inexor-rgf-plugin-connector">](https://app.codecov.io/gh/inexorgame/inexor-rgf-plugin-connector)
-
-[<img src="https://img.shields.io/github/license/inexorgame/inexor-rgf-plugin-connector">](https://github.com/inexorgame/inexor-rgf-plugin-connector/blob/main/LICENSE)
-[<img src="https://img.shields.io/discord/698219248954376256?logo=discord">](https://discord.com/invite/acUW8k7)
-
-#### User Stories
+## User Stories
 
 * As a developer or a flow editor I can connect and disconnect an inbound property of an entity instance with an
   outbound property of another entity instance
 * Changes on the inbound property results on changes of the outbound property
 
-#### What is a connector?
+## What is a connector?
 
 A connector connects a property of the outbound entity instance with a property of the inbound entity
 instance and propagates the changes of the value.
@@ -35,7 +19,7 @@ incoming value). Connectors of different types has different propagation functio
 The propagation function can only do simple things (like casting or logging) but in fact even these
 simple operations makes the control flow much simpler and much more readable.
 
-#### How does a connector work?
+## How does a connector work?
 
 The connector is a relation instance which connects two entity instances. The relation itself stores
 the names of the output property and the input property.
@@ -57,14 +41,6 @@ On destruction of the connector, the stream will be removed.
 
 ---
 
-#### Platform Compatibility
-
-| Platform | Compatibility |
-|----------|---------------|
-| Linux    | ✓             |
-| MacOS    | ✓             |
-| Windows  | ✓             |
-
 #### Components
 
 | Name                | Description                                                                             | Properties             | Data Type | Socket Type |
@@ -75,7 +51,7 @@ On destruction of the connector, the stream will be removed.
 |                     |                                                                                         | buffer                 | array     | none        |
 | propagation_counter | Counts connector propagations. This component can be applied on all types of connectors | propagation_count      | number    | none        |
 
-#### Relation Types
+## Relation Types
 
 | Name                            | Components | Description                                                                                        |
 |---------------------------------|------------|----------------------------------------------------------------------------------------------------|
@@ -94,20 +70,17 @@ On destruction of the connector, the stream will be removed.
 | increment_by_connector          | connector  | This connector adds the value of the outbound property to the value of the inbound property        |
 | decrement_by_connector          | connector  | This connector subtracts the value of the outbound property from the value of the inbound property |
 
-##### Future: More (useful) connectors
+## Future: More (useful) connectors
 
 | Name                | Components | Description                                                              |
 |---------------------|------------|--------------------------------------------------------------------------|
 | str_split_connector | connector  | A string is split into tokens. Propagates an JSON array of string tokens |
 | str_join_connector  | connector  | Joins an array of strings and propagates the resulting string            |
 
-### Thanks to
+## Platform Compatibility
 
-* https://github.com/xd009642/tarpaulin
-* https://codecov.io/
-
-### Sponsors
-
-|                                                                                                                                                                                                                                 |           |                                                                   |
-|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|-------------------------------------------------------------------|
-| <a href="https://www.jetbrains.com/?from=github.com/inexorgame"><img align="right" width="100" height="100" src="https://raw.githubusercontent.com/inexorgame/inexor-rgf-plugin-connector/main/docs/images/icon_CLion.svg"></a> | JetBrains | Special thanks to JetBrains for providing us with CLion licenses! |
+| Platform | Compatibility |
+|----------|---------------|
+| Linux    | ✓             |
+| MacOS    | ✓             |
+| Windows  | ✓             |
