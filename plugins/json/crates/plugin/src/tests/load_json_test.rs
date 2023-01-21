@@ -1,7 +1,7 @@
-use inexor_rgf_model_result::ResultObject;
+use std::path::PathBuf;
+
 use serde_json::json;
 use serde_json::to_string_pretty;
-use std::path::PathBuf;
 
 use crate::behaviour::component::load_json::LoadJsonFactory;
 use crate::builder::ReactiveEntityInstanceBuilder;
@@ -9,6 +9,7 @@ use crate::model_file::FileProperties::FILENAME;
 use crate::model_json::LoadJson;
 use crate::model_json::BEHAVIOUR_LOAD_JSON;
 use crate::model_json::ENTITY_TYPE_LOAD_JSON;
+use crate::model_result::ResultAny;
 use crate::model_result::ResultObjectProperties::RESULT;
 use crate::model_trigger::Action;
 use crate::model_trigger::ActionProperties::TRIGGER;
