@@ -29,11 +29,11 @@ jobs:
     - name: Install Yarn
       uses: borales/actions-yarn@v4
       with:
-        cmd: --cwd plugins/inexor-rgf-plugin-graphql-client/web install
+        cmd: --cwd plugins/graphql-client/web install
     - name: Install Yarn
       uses: borales/actions-yarn@v4
       with:
-        cmd: --cwd plugins/inexor-rgf-plugin-graphql-schema-visualization/web install
+        cmd: --cwd plugins/graphql-schema-visualization/web install
     - name: Build
       run: cargo build --verbose
     - name: Run tests
@@ -65,11 +65,11 @@ jobs:
       - name: Install Yarn
         uses: borales/actions-yarn@v4
         with:
-          cmd: --cwd plugins/inexor-rgf-plugin-graphql-client/web install
+          cmd: --cwd plugins/graphql-client/web install
       - name: Install Yarn
         uses: borales/actions-yarn@v4
         with:
-          cmd: --cwd plugins/inexor-rgf-plugin-graphql-schema-visualization/web install
+          cmd: --cwd plugins/graphql-schema-visualization/web install
       - uses: actions-rs/tarpaulin@v0.1
         with:
           args: --all-features
