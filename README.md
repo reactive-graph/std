@@ -1,5 +1,16 @@
 # Inexor - Reactive Graph Flow - Plugins
 
+[<img src="https://img.shields.io/badge/Language-Rust-brightgreen">](https://www.rust-lang.org/)
+[<img src="https://img.shields.io/badge/Platforms-Linux%20%26%20Windows-brightgreen">]()
+[<img src="https://img.shields.io/github/license/inexorgame/inexor-rgf-plugins">](https://github.com/inexorgame/inexor-rgf-plugins/blob/main/LICENSE)
+
+[<img src="https://img.shields.io/github/actions/workflow/status/inexorgame/inexor-rgf-plugins/rust.yml">](https://github.com/inexorgame/inexor-rgf-plugins/actions?query=workflow%3ARust)
+[<img src="https://img.shields.io/codecov/c/github/inexorgame/inexor-rgf-plugins">](https://app.codecov.io/gh/inexorgame/inexor-rgf-plugins)
+[<img src="https://img.shields.io/github/last-commit/inexorgame/inexor-rgf-plugins">]()
+
+[<img src="https://img.shields.io/discord/698219248954376256?logo=discord">](https://discord.com/invite/acUW8k7)
+
+
 ### About Inexor
 
 <a href="https://inexor.org/">
