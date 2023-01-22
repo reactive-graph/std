@@ -1,0 +1,8 @@
+mutation {
+  git {
+    repository(id: "efa93f40-eb66-4c1d-b0c8-5e0277e8dfae") {
+      # Only the entity instance is deleted (not the local repository)
+      delete
+    }
+  }
+}
