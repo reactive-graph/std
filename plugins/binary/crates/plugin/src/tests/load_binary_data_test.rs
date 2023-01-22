@@ -53,7 +53,7 @@ fn rx_load_binary_data_test() {
         assert_eq!("png", load_binary_data.subtype().unwrap());
 
         println!("{}", type_definition_path.display());
-        load_binary_data.filename(type_definition_path.to_str().unwrap());
+        load_binary_data.set_filename(type_definition_path.to_str().unwrap());
         let data_url = load_binary_data.get_data_url().unwrap();
         println!("{}...[size: {} bytes, {} chars]", data_url.split_at(50).0, data_url.len(), data_url.chars().count());
         assert!(data_url.len() > 0);
