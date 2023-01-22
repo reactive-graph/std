@@ -1,0 +1,29 @@
+{
+  "namespace": "http",
+  "type_name": "url",
+  "description": "A Uniform Resource Locator (URL), colloquially termed as a web address, is a reference to a web resource that specifies its location on a computer network and a mechanism for retrieving it.",
+  "properties": [
+    {
+      "name": "url",
+      "description": "Uniform Resource Locator",
+      "data_type": "string",
+      "socket_type": "input"
+    }
+  ],
+  "extensions": [
+    {
+      "namespace": "metadata",
+      "type_name": "dublin-core",
+      "extension":{
+        "title": "URL",
+        "subject": "A Uniform Resource Locator (URL), colloquially termed as a web address,[1] is a reference to a web resource that specifies its location on a computer network and a mechanism for retrieving it.",
+        "creator": "Hanack"
+      }
+    },
+    {
+      "namespace": "core",
+      "type_name": "component_category",
+      "extension": "http"
+    }
+  ]
+}

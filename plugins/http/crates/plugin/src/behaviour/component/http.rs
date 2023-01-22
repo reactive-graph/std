@@ -4,12 +4,12 @@ use serde_json::Value;
 use std::sync::Arc;
 
 use crate::model::*;
-use crate::model_http::HttpProperties::METHOD;
-use crate::model_http::HttpProperties::PAYLOAD;
-use crate::model_http::HttpProperties::REQUEST_HEADERS;
-use crate::model_http::HttpProperties::RESPONSE_HEADERS;
-use crate::model_http::HttpProperties::STATUS;
-use crate::model_http::HttpProperties::URL;
+use crate::model_http::RequestProperties::METHOD;
+use crate::model_http::RequestProperties::PAYLOAD;
+use crate::model_http::RequestProperties::REQUEST_HEADERS;
+use crate::model_http::ResponseProperties::RESPONSE_HEADERS;
+use crate::model_http::ResponseProperties::STATUS;
+use crate::model_http::UrlProperties::URL;
 use crate::model_result::ResultObjectProperties::RESULT;
 use crate::model_trigger::ActionProperties::TRIGGER;
 use crate::reactive::*;

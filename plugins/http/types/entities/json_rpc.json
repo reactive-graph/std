@@ -1,11 +1,15 @@
 {
   "namespace": "http",
   "type_name": "json_rpc",
-  "description": "Sends JSON-RPC request to a given URL",
+  "description": "Sends JSON-RPC request to a given URL and returns the result object",
   "components": [
     {
       "namespace": "http",
       "type_name": "json_rpc"
+    },
+    {
+      "namespace": "http",
+      "type_name": "url"
     },
     {
       "namespace": "trigger",

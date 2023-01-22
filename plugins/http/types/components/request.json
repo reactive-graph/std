@@ -1,0 +1,41 @@
+{
+  "namespace": "http",
+  "type_name": "request",
+  "description": "A HTTP request",
+  "properties": [
+    {
+      "name": "method",
+      "description": "The HTTP request method",
+      "data_type": "string",
+      "socket_type": "input"
+    },
+    {
+      "name": "request_headers",
+      "description": "The HTTP request headers",
+      "data_type": "object",
+      "socket_type": "input"
+    },
+    {
+      "name": "payload",
+      "description": "The HTTP request payload",
+      "data_type": "object",
+      "socket_type": "input"
+    }
+  ],
+  "extensions": [
+    {
+      "namespace": "metadata",
+      "type_name": "dublin-core",
+      "extension":{
+        "title": "HTTP Request",
+        "subject": "A HTTP request",
+        "creator": "Hanack"
+      }
+    },
+    {
+      "namespace": "core",
+      "type_name": "component_category",
+      "extension": "http"
+    }
+  ]
+}

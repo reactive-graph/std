@@ -1,0 +1,37 @@
+{
+  "namespace": "http",
+  "type_name": "response",
+  "description": "A HTTP response",
+  "properties": [
+    {
+      "name": "response_headers",
+      "description": "The HTTP response headers",
+      "data_type": "object",
+      "socket_type": "output",
+      "mutability": "immutable"
+    },
+    {
+      "name": "status",
+      "description": "The HTTP response status code",
+      "data_type": "number",
+      "socket_type": "output",
+      "mutability": "immutable"
+    }
+  ],
+  "extensions": [
+    {
+      "namespace": "metadata",
+      "type_name": "dublin-core",
+      "extension":{
+        "title": "HTTP Response",
+        "subject": "A HTTP response",
+        "creator": "Hanack"
+      }
+    },
+    {
+      "namespace": "core",
+      "type_name": "component_category",
+      "extension": "http"
+    }
+  ]
+}

@@ -77,8 +77,13 @@ interface Binary_SaveBinaryData_Component {
 interface Comparison_ComparisonGate_Component {
   _c__comparison__comparison_gate: ID
   lhs: JSON
-  result: Boolean
   rhs: JSON
+}
+
+interface Comparison_ComparisonNumeric_Component {
+  _c__comparison__comparison_numeric: ID
+  lhs: Float
+  rhs: Float
 }
 
 "Loads a configuration file"
@@ -155,7 +160,6 @@ interface Http_Http_Component {
   response_headers: JSON
   result: JSON
   status: Float
-  url: String
 }
 
 "Sends JSON-RPC request to a given URL"
@@ -166,28 +170,44 @@ interface Http_JsonRpc_Component {
   method: String
   params: JSON
   result: JSON
+}
+
+"A HTTP request"
+interface Http_Request_Component {
+  _c__http__request: ID
+  "The HTTP request method"
+  method: String
+  "The HTTP request payload"
+  payload: JSON
+  "The HTTP request headers"
+  request_headers: JSON
+}
+
+"A HTTP response"
+interface Http_Response_Component {
+  _c__http__response: ID
+  "The HTTP response headers"
+  response_headers: JSON
+  "The HTTP response status code"
+  status: Float
+}
+
+"A Uniform Resource Locator (URL), colloquially termed as a web address, is a reference to a web resource that specifies its location on a computer network and a mechanism for retrieving it."
+interface Http_Url_Component {
+  _c__http__url: ID
+  "Uniform Resource Locator"
   url: String
 }
 
 "Loads a JSON file"
 interface Json_LoadJson_Component {
   _c__json__load_json: ID
-  result: JSON
 }
 
 "Saves an object as JSON file"
 interface Json_SaveJson_Component {
   _c__json__save_json: ID
   payload: JSON
-}
-
-"An action can be triggered"
-interface Logical_Action_Component {
-  _c__logical__action: ID
-  "The result"
-  result: JSON
-  "On receiving a boolean trigger the action will be executed"
-  trigger: Boolean
 }
 
 "Depending on the given condition outputs a result"
@@ -197,13 +217,6 @@ interface Logical_Condition_Component {
   condition: Boolean
   "The result"
   result: JSON
-}
-
-"A generator sends a trigger"
-interface Logical_Generator_Component {
-  _c__logical__generator: ID
-  "Sends a boolean trigger"
-  trigger: Boolean
 }
 
 "Executes a logical operation on the inputs lhs and rhs and outputs the result"
@@ -273,10 +286,65 @@ interface Numeric_NumericOperation_Component {
   result: Float
 }
 
+"Pseudo Number Generator"
+interface Random_PseudoNumberGenerator_Component {
+  _c__random__pseudo_number_generator: ID
+  seed: Float
+}
+
+"Range"
+interface Random_Range_Component {
+  _c__random__range: ID
+  high: Float
+  low: Float
+}
+
 "Relations have a outbound entity and a inbound entity as well as components and properties,"
 interface Relation {
   instance_id: ID!
   key: ID!
+}
+
+"The entity returns data of any datatype"
+interface Result_ResultAny_Component {
+  _c__result__result_any: ID
+  "The result"
+  result: JSON
+}
+
+"The entity returns an array"
+interface Result_ResultArray_Component {
+  _c__result__result_array: ID
+  "The result"
+  result: JSON
+}
+
+"The entity returns a boolean"
+interface Result_ResultBoolean_Component {
+  _c__result__result_boolean: ID
+  "The result"
+  result: Boolean
+}
+
+"The entity returns a number"
+interface Result_ResultNumber_Component {
+  _c__result__result_number: ID
+  "The result"
+  result: Float
+}
+
+"The entity returns an object"
+interface Result_ResultObject_Component {
+  _c__result__result_object: ID
+  "The result"
+  result: JSON
+}
+
+"The entity returns a string"
+interface Result_ResultString_Component {
+  _c__result__result_string: ID
+  "The result"
+  result: String
 }
 
 "State of type array"
@@ -361,20 +429,23 @@ interface String_StringStringNumberGate_Component {
   rhs: String
 }
 
-"Executes a system command"
-interface SystemCommand_SystemCommand_Component {
-  _c__system_command__system_command: ID
-  command: String
-  current_dir: String
-  parameters: JSON
-  stderr: String
-  stdin: String
-  stdout: String
-}
-
 interface Taxonomy_Weighted_Component {
   _c__taxonomy__weighted: ID
   weight: Float
+}
+
+"An action can be triggered"
+interface Trigger_Action_Component {
+  _c__trigger__action: ID
+  "On receiving a boolean trigger the action will be executed"
+  trigger: Boolean
+}
+
+"A generator sends a trigger"
+interface Trigger_Generator_Component {
+  _c__trigger__generator: ID
+  "Sends a boolean trigger"
+  trigger: Boolean
 }
 
 "Value of type array"
@@ -416,7 +487,7 @@ interface Value_ValueString_Component {
 }
 
 "Any entity."
-union AllEntities = ArithmeticF64_Add_Entity | ArithmeticF64_Decrement_Entity | ArithmeticF64_Div_Entity | ArithmeticF64_Increment_Entity | ArithmeticF64_Max_Entity | ArithmeticF64_Min_Entity | ArithmeticF64_Mod_Entity | ArithmeticF64_Mul_Entity | ArithmeticF64_Sub_Entity | ArithmeticI64_Add_Entity | ArithmeticI64_Decrement_Entity | ArithmeticI64_Div_Entity | ArithmeticI64_Increment_Entity | ArithmeticI64_Max_Entity | ArithmeticI64_Min_Entity | ArithmeticI64_Mod_Entity | ArithmeticI64_Mul_Entity | ArithmeticI64_Sub_Entity | ArithmeticU64_Add_Entity | ArithmeticU64_Counter_Entity | ArithmeticU64_Decrement_Entity | ArithmeticU64_Div_Entity | ArithmeticU64_Increment_Entity | ArithmeticU64_Max_Entity | ArithmeticU64_Min_Entity | ArithmeticU64_Mod_Entity | ArithmeticU64_Mul_Entity | ArithmeticU64_Sub_Entity | Base_Comment_Entity | Binary_LoadBinaryData_Entity | Binary_SaveBinaryData_Entity | Comparison_Equals_Entity | Comparison_GreaterThanOrEquals_Entity | Comparison_GreaterThan_Entity | Comparison_LowerThanOrEquals_Entity | Comparison_LowerThan_Entity | Comparison_NotEquals_Entity | Config_ConfigFile_Entity | Core_Shutdown_Entity | Core_SystemEvent_Entity | Flow_GenericFlow_Entity | Http_Http_Entity | Http_JsonRpc_Entity | Json_ArrayContains_Entity | Json_ArrayGetByIndex_Entity | Json_ArrayLength_Entity | Json_ArrayPop_Entity | Json_ArrayPush_Entity | Json_ArrayReverse_Entity | Json_LoadJson_Entity | Json_ObjectGetProperty_Entity | Json_ObjectKeys_Entity | Json_ObjectRemoveProperty_Entity | Json_ObjectSetProperty_Entity | Json_SaveJson_Entity | Logical_And3_Entity | Logical_And_Entity | Logical_IfThenElse_Entity | Logical_Nand_Entity | Logical_Nor_Entity | Logical_Not_Entity | Logical_Or_Entity | Logical_Toggle_Entity | Logical_Trigger_Entity | Logical_Xnor_Entity | Logical_Xor_Entity | NumericF64_Abs_Entity | NumericF64_Acos_Entity | NumericF64_Acosh_Entity | NumericF64_Asin_Entity | NumericF64_Asinh_Entity | NumericF64_Atan2_Entity | NumericF64_Atan_Entity | NumericF64_Atanh_Entity | NumericF64_Cbrt_Entity | NumericF64_Ceil_Entity | NumericF64_Cos_Entity | NumericF64_Cosh_Entity | NumericF64_Exp2_Entity | NumericF64_Exp_Entity | NumericF64_Floor_Entity | NumericF64_Fract_Entity | NumericF64_Hypot_Entity | NumericF64_Ln_Entity | NumericF64_Log10_Entity | NumericF64_Log2_Entity | NumericF64_Log_Entity | NumericF64_Pow_Entity | NumericF64_Recip_Entity | NumericF64_Round_Entity | NumericF64_Signum_Entity | NumericF64_Sin_Entity | NumericF64_Sinh_Entity | NumericF64_Sqrt_Entity | NumericF64_Tan_Entity | NumericF64_Tanh_Entity | NumericF64_ToDegrees_Entity | NumericF64_ToRadians_Entity | NumericF64_Trunc_Entity | NumericI64_Abs_Entity | NumericI64_Signum_Entity | Random_RandomBool_Entity | Random_RandomF64Pseudo_Entity | Random_RandomF64Range_Entity | Random_RandomF64_Entity | Random_RandomI64Pseudo_Entity | Random_RandomI64Range_Entity | Random_RandomI64_Entity | Random_RandomString_Entity | Random_RandomU64Pseudo_Entity | Random_RandomU64Range_Entity | Random_RandomU64_Entity | Random_RandomUuid_Entity | State_StateArray_Entity | State_StateBoolean_Entity | State_StateNumber_Entity | State_StateObject_Entity | State_StateString_Entity | String_CamelCase_Entity | String_Capitalize_Entity | String_CharCountGraphemes_Entity | String_CharCount_Entity | String_ChopAfterLast_Entity | String_ChopAfter_Entity | String_ChopBeforeLast_Entity | String_ChopBefore_Entity | String_ChopRemovePrefix_Entity | String_ChopRemoveSuffix_Entity | String_Concat_Entity | String_Contains_Entity | String_CountSubstrings_Entity | String_CountUniqueWords_Entity | String_CountWords_Entity | String_Decapitalize_Entity | String_EndsWith_Entity | String_EscapeHtml_Entity | String_EscapeRegexp_Entity | String_IsAlphaDigit_Entity | String_IsAlpha_Entity | String_IsBlank_Entity | String_IsCamelCase_Entity | String_IsCapitalize_Entity | String_IsDecapitalize_Entity | String_IsDigit_Entity | String_IsEmpty_Entity | String_IsKebabCase_Entity | String_IsLowerFirst_Entity | String_IsLowercase_Entity | String_IsNumeric_Entity | String_IsPascalCase_Entity | String_IsShoutyKebabCase_Entity | String_IsShoutySnakeCase_Entity | String_IsSnakeCase_Entity | String_IsTitleCase_Entity | String_IsTrainCase_Entity | String_IsUpperFirst_Entity | String_IsUppercase_Entity | String_KebabCase_Entity | String_LowerFirst_Entity | String_Lowercase_Entity | String_PascalCase_Entity | String_Reverse_Entity | String_ShoutyKebabCase_Entity | String_ShoutySnakeCase_Entity | String_SnakeCase_Entity | String_StartsWith_Entity | String_StringLength_Entity | String_StripHtmlTags_Entity | String_SwapCase_Entity | String_Templating_Entity | String_TitleCase_Entity | String_TrainCase_Entity | String_TrimEnd_Entity | String_TrimStart_Entity | String_Trim_Entity | String_UnescapeHtml_Entity | String_UpperFirst_Entity | String_Uppercase_Entity | SystemCommand_SystemCommand_Entity | System_SystemEnv_Entity | Taxonomy_Category_Entity | Taxonomy_Tag_Entity | Value_ValueArray_Entity | Value_ValueBoolean_Entity | Value_ValueNumber_Entity | Value_ValueObject_Entity | Value_ValueString_Entity
+union AllEntities = ArithmeticF64_Add_Entity | ArithmeticF64_Decrement_Entity | ArithmeticF64_Div_Entity | ArithmeticF64_Increment_Entity | ArithmeticF64_Max_Entity | ArithmeticF64_Min_Entity | ArithmeticF64_Mod_Entity | ArithmeticF64_Mul_Entity | ArithmeticF64_Sub_Entity | ArithmeticI64_Add_Entity | ArithmeticI64_Decrement_Entity | ArithmeticI64_Div_Entity | ArithmeticI64_Increment_Entity | ArithmeticI64_Max_Entity | ArithmeticI64_Min_Entity | ArithmeticI64_Mod_Entity | ArithmeticI64_Mul_Entity | ArithmeticI64_Sub_Entity | ArithmeticU64_Add_Entity | ArithmeticU64_Counter_Entity | ArithmeticU64_Decrement_Entity | ArithmeticU64_Div_Entity | ArithmeticU64_Increment_Entity | ArithmeticU64_Max_Entity | ArithmeticU64_Min_Entity | ArithmeticU64_Mod_Entity | ArithmeticU64_Mul_Entity | ArithmeticU64_Sub_Entity | Base_Comment_Entity | Binary_LoadBinaryData_Entity | Binary_SaveBinaryData_Entity | Comparison_Equals_Entity | Comparison_GreaterThanOrEquals_Entity | Comparison_GreaterThan_Entity | Comparison_LowerThanOrEquals_Entity | Comparison_LowerThan_Entity | Comparison_NotEquals_Entity | Config_ConfigFile_Entity | Core_Shutdown_Entity | Core_SystemEvent_Entity | DateTime_UtcNow_Entity | DateTime_UtcTimestamp_Entity | Flow_GenericFlow_Entity | Http_Http_Entity | Http_JsonRpc_Entity | Json_ArrayContains_Entity | Json_ArrayGetByIndex_Entity | Json_ArrayLength_Entity | Json_ArrayPop_Entity | Json_ArrayPush_Entity | Json_ArrayReverse_Entity | Json_LoadJson_Entity | Json_ObjectGetProperty_Entity | Json_ObjectKeys_Entity | Json_ObjectRemoveProperty_Entity | Json_ObjectSetProperty_Entity | Json_SaveJson_Entity | Logical_And3_Entity | Logical_And_Entity | Logical_IfThenElse_Entity | Logical_Nand_Entity | Logical_Nor_Entity | Logical_Not_Entity | Logical_Or_Entity | Logical_Toggle_Entity | Logical_Trigger_Entity | Logical_Xnor_Entity | Logical_Xor_Entity | NumericF64_Abs_Entity | NumericF64_Acos_Entity | NumericF64_Acosh_Entity | NumericF64_Asin_Entity | NumericF64_Asinh_Entity | NumericF64_Atan2_Entity | NumericF64_Atan_Entity | NumericF64_Atanh_Entity | NumericF64_Cbrt_Entity | NumericF64_Ceil_Entity | NumericF64_Cos_Entity | NumericF64_Cosh_Entity | NumericF64_Exp2_Entity | NumericF64_Exp_Entity | NumericF64_Floor_Entity | NumericF64_Fract_Entity | NumericF64_Hypot_Entity | NumericF64_Ln_Entity | NumericF64_Log10_Entity | NumericF64_Log2_Entity | NumericF64_Log_Entity | NumericF64_Pow_Entity | NumericF64_Recip_Entity | NumericF64_Round_Entity | NumericF64_Signum_Entity | NumericF64_Sin_Entity | NumericF64_Sinh_Entity | NumericF64_Sqrt_Entity | NumericF64_Tan_Entity | NumericF64_Tanh_Entity | NumericF64_ToDegrees_Entity | NumericF64_ToRadians_Entity | NumericF64_Trunc_Entity | NumericI64_Abs_Entity | NumericI64_Signum_Entity | Random_RandomBool_Entity | Random_RandomF64Pseudo_Entity | Random_RandomF64Range_Entity | Random_RandomF64_Entity | Random_RandomI64Pseudo_Entity | Random_RandomI64Range_Entity | Random_RandomI64_Entity | Random_RandomString_Entity | Random_RandomU64Pseudo_Entity | Random_RandomU64Range_Entity | Random_RandomU64_Entity | Random_RandomUuid_Entity | State_StateArray_Entity | State_StateBoolean_Entity | State_StateNumber_Entity | State_StateObject_Entity | State_StateString_Entity | String_CamelCase_Entity | String_Capitalize_Entity | String_CharCountGraphemes_Entity | String_CharCount_Entity | String_ChopAfterLast_Entity | String_ChopAfter_Entity | String_ChopBeforeLast_Entity | String_ChopBefore_Entity | String_ChopRemovePrefix_Entity | String_ChopRemoveSuffix_Entity | String_Concat_Entity | String_Contains_Entity | String_CountSubstrings_Entity | String_CountUniqueWords_Entity | String_CountWords_Entity | String_Decapitalize_Entity | String_EndsWith_Entity | String_EscapeHtml_Entity | String_EscapeRegexp_Entity | String_IsAlphaDigit_Entity | String_IsAlpha_Entity | String_IsBlank_Entity | String_IsCamelCase_Entity | String_IsCapitalize_Entity | String_IsDecapitalize_Entity | String_IsDigit_Entity | String_IsEmpty_Entity | String_IsKebabCase_Entity | String_IsLowerFirst_Entity | String_IsLowercase_Entity | String_IsNumeric_Entity | String_IsPascalCase_Entity | String_IsShoutyKebabCase_Entity | String_IsShoutySnakeCase_Entity | String_IsSnakeCase_Entity | String_IsTitleCase_Entity | String_IsTrainCase_Entity | String_IsUpperFirst_Entity | String_IsUppercase_Entity | String_KebabCase_Entity | String_LowerFirst_Entity | String_Lowercase_Entity | String_PascalCase_Entity | String_Reverse_Entity | String_ShoutyKebabCase_Entity | String_ShoutySnakeCase_Entity | String_SnakeCase_Entity | String_StartsWith_Entity | String_StringLength_Entity | String_StripHtmlTags_Entity | String_SwapCase_Entity | String_Templating_Entity | String_TitleCase_Entity | String_TrainCase_Entity | String_TrimEnd_Entity | String_TrimStart_Entity | String_Trim_Entity | String_UnescapeHtml_Entity | String_UpperFirst_Entity | String_Uppercase_Entity | System_SystemEnv_Entity | Taxonomy_Category_Entity | Taxonomy_Tag_Entity | Value_ValueArray_Entity | Value_ValueBoolean_Entity | Value_ValueNumber_Entity | Value_ValueObject_Entity | Value_ValueString_Entity
 
 "Mutations for entities and relations on the namespace ArithmeticF64"
 type ArithmeticF64Mutations {
@@ -787,7 +858,7 @@ type ArithmeticU64Mutations {
   "If triggered the counter will be increased"
   counter(id: ID, ids: [ID!], label: String): ArithmeticU64_Counter_Entity_Mutations!
   createAdd(id: ID, lhs: Float!, result: Float, rhs: Float!): ArithmeticU64_Add_Entity!
-  createCounter(id: ID, result: Float!, trigger: Boolean!): ArithmeticU64_Counter_Entity!
+  createCounter(id: ID, result: Float, trigger: Boolean!): ArithmeticU64_Counter_Entity!
   createDecrement(id: ID, lhs: Float!, result: Float): ArithmeticU64_Decrement_Entity!
   createDiv(id: ID, lhs: Float!, result: Float, rhs: Float!): ArithmeticU64_Div_Entity!
   createIncrement(id: ID, lhs: Float!, result: Float): ArithmeticU64_Increment_Entity!
@@ -853,9 +924,11 @@ type ArithmeticU64_Add_Entity_Mutations {
 }
 
 "If triggered the counter will be increased"
-type ArithmeticU64_Counter_Entity implements Entity {
-  _c__logical__action: ID
+type ArithmeticU64_Counter_Entity implements Entity & Result_ResultNumber_Component & Trigger_Action_Component {
+  _c__result__result_number: ID
+  _c__trigger__action: ID
   id: ID!
+  "The result"
   result: Float
   "On receiving a boolean trigger the action will be executed"
   trigger: Boolean
@@ -863,7 +936,8 @@ type ArithmeticU64_Counter_Entity implements Entity {
 
 type ArithmeticU64_Counter_Entity_Mutations {
   delete: [ID!]!
-  update(result: Float, trigger: Boolean): [ArithmeticU64_Counter_Entity!]!
+  trigger: [ArithmeticU64_Counter_Entity!]!
+  update(trigger: Boolean): [ArithmeticU64_Counter_Entity!]!
 }
 
 "Decrements a unsigned integer number"
@@ -1017,8 +1091,8 @@ type Base_Comment_Entity_Mutations {
 
 "Mutations for entities and relations on the namespace Binary"
 type BinaryMutations {
-  createLoadBinaryData(data_url: String!, filename: String!, id: ID, name: String!, result: JSON, trigger: Boolean!): Binary_LoadBinaryData_Entity!
-  createSaveBinaryData(data_url: String!, filename: String!, id: ID, name: String!, result: JSON, trigger: Boolean!): Binary_SaveBinaryData_Entity!
+  createLoadBinaryData(data_url: String!, filename: String!, id: ID, name: String!, trigger: Boolean!): Binary_LoadBinaryData_Entity!
+  createSaveBinaryData(data_url: String!, filename: String!, id: ID, name: String!, trigger: Boolean!): Binary_SaveBinaryData_Entity!
   "Loads binary data"
   loadBinaryData(id: ID, ids: [ID!], label: String): Binary_LoadBinaryData_Entity_Mutations!
   "Saves binary data"
@@ -1039,50 +1113,48 @@ type BinaryNamespace {
 }
 
 "Loads binary data"
-type Binary_LoadBinaryData_Entity implements Base_Named_Component & Binary_BinaryData_Component & Binary_LoadBinaryData_Component & Entity & File_File_Component & Logical_Action_Component {
+type Binary_LoadBinaryData_Entity implements Base_Named_Component & Binary_BinaryData_Component & Binary_LoadBinaryData_Component & Entity & File_File_Component & Trigger_Action_Component {
   _c__base__named: ID
   _c__binary__binary_data: ID
   _c__binary__load_binary_data: ID
   _c__file__file: ID
-  _c__logical__action: ID
+  _c__trigger__action: ID
   data_url: String
   "The filename"
   filename: String
   id: ID!
   "The name of an entity or a relation"
   name: String
-  "The result"
-  result: JSON
   "On receiving a boolean trigger the action will be executed"
   trigger: Boolean
 }
 
 type Binary_LoadBinaryData_Entity_Mutations {
   delete: [ID!]!
+  trigger: [Binary_LoadBinaryData_Entity!]!
   update(data_url: String, filename: String, name: String, trigger: Boolean): [Binary_LoadBinaryData_Entity!]!
 }
 
 "Saves binary data"
-type Binary_SaveBinaryData_Entity implements Base_Named_Component & Binary_BinaryData_Component & Binary_SaveBinaryData_Component & Entity & File_File_Component & Logical_Action_Component {
+type Binary_SaveBinaryData_Entity implements Base_Named_Component & Binary_BinaryData_Component & Binary_SaveBinaryData_Component & Entity & File_File_Component & Trigger_Action_Component {
   _c__base__named: ID
   _c__binary__binary_data: ID
   _c__binary__save_binary_data: ID
   _c__file__file: ID
-  _c__logical__action: ID
+  _c__trigger__action: ID
   data_url: String
   "The filename"
   filename: String
   id: ID!
   "The name of an entity or a relation"
   name: String
-  "The result"
-  result: JSON
   "On receiving a boolean trigger the action will be executed"
   trigger: Boolean
 }
 
 type Binary_SaveBinaryData_Entity_Mutations {
   delete: [ID!]!
+  trigger: [Binary_SaveBinaryData_Entity!]!
   update(data_url: String, filename: String, name: String, trigger: Boolean): [Binary_SaveBinaryData_Entity!]!
 }
 
@@ -1111,6 +1183,7 @@ type ComparisonMutations {
 "Queries for components, entities and relations on the namespace Comparison"
 type ComparisonNamespace {
   comparisonGateComponent: [Comparison_ComparisonGate_Component!]!
+  comparisonNumericComponent: [Comparison_ComparisonNumeric_Component!]!
   "Checks if lhs is equal to rhs"
   equals(id: String, label: String): [Comparison_Equals_Entity!]!
   "Checks if lhs is greater than rhs"
@@ -1126,10 +1199,12 @@ type ComparisonNamespace {
 }
 
 "Checks if lhs is equal to rhs"
-type Comparison_Equals_Entity implements Comparison_ComparisonGate_Component & Entity {
+type Comparison_Equals_Entity implements Comparison_ComparisonGate_Component & Entity & Result_ResultBoolean_Component {
   _c__comparison__comparison_gate: ID
+  _c__result__result_boolean: ID
   id: ID!
   lhs: JSON
+  "The result"
   result: Boolean
   rhs: JSON
 }
@@ -1140,10 +1215,12 @@ type Comparison_Equals_Entity_Mutations {
 }
 
 "Checks if lhs is greater than or equal to rhs"
-type Comparison_GreaterThanOrEquals_Entity implements Entity {
-  _c__comparison__comparison_gate: ID
+type Comparison_GreaterThanOrEquals_Entity implements Comparison_ComparisonNumeric_Component & Entity & Result_ResultBoolean_Component {
+  _c__comparison__comparison_numeric: ID
+  _c__result__result_boolean: ID
   id: ID!
   lhs: Float
+  "The result"
   result: Boolean
   rhs: Float
 }
@@ -1154,10 +1231,12 @@ type Comparison_GreaterThanOrEquals_Entity_Mutations {
 }
 
 "Checks if lhs is greater than rhs"
-type Comparison_GreaterThan_Entity implements Entity {
-  _c__comparison__comparison_gate: ID
+type Comparison_GreaterThan_Entity implements Comparison_ComparisonNumeric_Component & Entity & Result_ResultBoolean_Component {
+  _c__comparison__comparison_numeric: ID
+  _c__result__result_boolean: ID
   id: ID!
   lhs: Float
+  "The result"
   result: Boolean
   rhs: Float
 }
@@ -1168,10 +1247,12 @@ type Comparison_GreaterThan_Entity_Mutations {
 }
 
 "Checks if lhs is lower than or equal to rhs"
-type Comparison_LowerThanOrEquals_Entity implements Entity {
-  _c__comparison__comparison_gate: ID
+type Comparison_LowerThanOrEquals_Entity implements Comparison_ComparisonNumeric_Component & Entity & Result_ResultBoolean_Component {
+  _c__comparison__comparison_numeric: ID
+  _c__result__result_boolean: ID
   id: ID!
   lhs: Float
+  "The result"
   result: Boolean
   rhs: Float
 }
@@ -1182,10 +1263,12 @@ type Comparison_LowerThanOrEquals_Entity_Mutations {
 }
 
 "Checks if lhs is lower than rhs"
-type Comparison_LowerThan_Entity implements Entity {
-  _c__comparison__comparison_gate: ID
+type Comparison_LowerThan_Entity implements Comparison_ComparisonNumeric_Component & Entity & Result_ResultBoolean_Component {
+  _c__comparison__comparison_numeric: ID
+  _c__result__result_boolean: ID
   id: ID!
   lhs: Float
+  "The result"
   result: Boolean
   rhs: Float
 }
@@ -1196,10 +1279,12 @@ type Comparison_LowerThan_Entity_Mutations {
 }
 
 "Checks if lhs not equal to rhs"
-type Comparison_NotEquals_Entity implements Comparison_ComparisonGate_Component & Entity {
+type Comparison_NotEquals_Entity implements Comparison_ComparisonGate_Component & Entity & Result_ResultBoolean_Component {
   _c__comparison__comparison_gate: ID
+  _c__result__result_boolean: ID
   id: ID!
   lhs: JSON
+  "The result"
   result: Boolean
   rhs: JSON
 }
@@ -1213,7 +1298,7 @@ type Comparison_NotEquals_Entity_Mutations {
 type ConfigMutations {
   "Loads a configuration file"
   configFile(id: ID, ids: [ID!], label: String): Config_ConfigFile_Entity_Mutations!
-  createConfigFile(filename: String!, id: ID, name: String!, result: JSON, trigger: Boolean!): Config_ConfigFile_Entity!
+  createConfigFile(filename: String!, id: ID, name: String!, result: JSON!, trigger: Boolean!): Config_ConfigFile_Entity!
 }
 
 "Queries for components, entities and relations on the namespace Config"
@@ -1225,17 +1310,16 @@ type ConfigNamespace {
 }
 
 "Loads a configuration file"
-type Config_ConfigFile_Entity implements Base_Named_Component & Entity & File_File_Component & Logical_Action_Component {
+type Config_ConfigFile_Entity implements Base_Named_Component & Config_ConfigFile_Component & Entity & File_File_Component & Trigger_Action_Component {
   _c__base__named: ID
   _c__config__config_file: ID
   _c__file__file: ID
-  _c__logical__action: ID
+  _c__trigger__action: ID
   "The filename"
   filename: String
   id: ID!
   "The name of an entity or a relation"
   name: String
-  "The result"
   result: JSON
   "On receiving a boolean trigger the action will be executed"
   trigger: Boolean
@@ -1243,7 +1327,8 @@ type Config_ConfigFile_Entity implements Base_Named_Component & Entity & File_Fi
 
 type Config_ConfigFile_Entity_Mutations {
   delete: [ID!]!
-  update(filename: String, name: String, trigger: Boolean): [Config_ConfigFile_Entity!]!
+  trigger: [Config_ConfigFile_Entity!]!
+  update(filename: String, name: String, result: JSON, trigger: Boolean): [Config_ConfigFile_Entity!]!
 }
 
 "Queries for components, entities and relations on the namespace Connector"
@@ -1465,7 +1550,7 @@ type Connector_TraceConnector_Relation implements Connector_Connector_Component 
 
 "Mutations for entities and relations on the namespace Core"
 type CoreMutations {
-  createShutdown(id: ID, label: String!, result: JSON, shutdown: Boolean!, trigger: Boolean!): Core_Shutdown_Entity!
+  createShutdown(id: ID, label: String!, shutdown: Boolean!, trigger: Boolean!): Core_Shutdown_Entity!
   createSystemEvent(event: JSON, id: ID, label: String!): Core_SystemEvent_Entity!
   shutdown(id: ID, ids: [ID!], label: String): Core_Shutdown_Entity_Mutations!
   "Events of the type system"
@@ -1483,19 +1568,18 @@ type CoreNamespace {
   systemEvent(id: String, label: String): [Core_SystemEvent_Entity!]!
 }
 
-type Core_Shutdown_Entity implements Core_Labeled_Component & Entity & Logical_Action_Component {
+type Core_Shutdown_Entity implements Core_Labeled_Component & Entity & Trigger_Action_Component {
   _c__core__labeled: ID
-  _c__logical__action: ID
+  _c__trigger__action: ID
   id: ID!
   label: String
-  "The result"
-  result: JSON
   shutdown: Boolean
   trigger: Boolean
 }
 
 type Core_Shutdown_Entity_Mutations {
   delete: [ID!]!
+  trigger: [Core_Shutdown_Entity!]!
   update(label: String, shutdown: Boolean, trigger: Boolean): [Core_Shutdown_Entity!]!
 }
 
@@ -1511,6 +1595,58 @@ type Core_SystemEvent_Entity implements Core_Event_Component & Core_Labeled_Comp
 type Core_SystemEvent_Entity_Mutations {
   delete: [ID!]!
   update(label: String): [Core_SystemEvent_Entity!]!
+}
+
+"Mutations for entities and relations on the namespace DateTime"
+type DateTimeMutations {
+  createUtcNow(id: ID, result: String, trigger: Boolean!): DateTime_UtcNow_Entity!
+  createUtcTimestamp(id: ID, result: Float, trigger: Boolean!): DateTime_UtcTimestamp_Entity!
+  "Returns the current date as ISO8601"
+  utcNow(id: ID, ids: [ID!], label: String): DateTime_UtcNow_Entity_Mutations!
+  "Returns the current timestamp"
+  utcTimestamp(id: ID, ids: [ID!], label: String): DateTime_UtcTimestamp_Entity_Mutations!
+}
+
+"Queries for components, entities and relations on the namespace DateTime"
+type DateTimeNamespace {
+  "Returns the current date as ISO8601"
+  utcNow(id: String, label: String): [DateTime_UtcNow_Entity!]!
+  "Returns the current timestamp"
+  utcTimestamp(id: String, label: String): [DateTime_UtcTimestamp_Entity!]!
+}
+
+"Returns the current date as ISO8601"
+type DateTime_UtcNow_Entity implements Entity & Result_ResultString_Component & Trigger_Action_Component {
+  _c__result__result_string: ID
+  _c__trigger__action: ID
+  id: ID!
+  "The result"
+  result: String
+  "On receiving a boolean trigger the action will be executed"
+  trigger: Boolean
+}
+
+type DateTime_UtcNow_Entity_Mutations {
+  delete: [ID!]!
+  trigger: [DateTime_UtcNow_Entity!]!
+  update(trigger: Boolean): [DateTime_UtcNow_Entity!]!
+}
+
+"Returns the current timestamp"
+type DateTime_UtcTimestamp_Entity implements Entity & Result_ResultNumber_Component & Trigger_Action_Component {
+  _c__result__result_number: ID
+  _c__trigger__action: ID
+  id: ID!
+  "The result"
+  result: Float
+  "On receiving a boolean trigger the action will be executed"
+  trigger: Boolean
+}
+
+type DateTime_UtcTimestamp_Entity_Mutations {
+  delete: [ID!]!
+  trigger: [DateTime_UtcTimestamp_Entity!]!
+  update(trigger: Boolean): [DateTime_UtcTimestamp_Entity!]!
 }
 
 "Queries for components, entities and relations on the namespace File"
@@ -1550,50 +1686,68 @@ type Flow_GenericFlow_Entity_Mutations {
 type HttpMutations {
   createHttp(id: ID, method: String!, payload: JSON!, request_headers: JSON!, response_headers: JSON, result: JSON, status: Float, trigger: Boolean!, url: String!): Http_Http_Entity!
   createJsonRpc(error: JSON, id: ID, json_rpc_version: String!, method: String!, params: JSON!, result: JSON, trigger: Boolean!, url: String!): Http_JsonRpc_Entity!
-  "Sends HTTP request to a given URL"
+  "Sends HTTP request to a given URL and returns the result object"
   http(id: ID, ids: [ID!], label: String): Http_Http_Entity_Mutations!
-  "Sends JSON-RPC request to a given URL"
+  "Sends JSON-RPC request to a given URL and returns the result object"
   jsonRpc(id: ID, ids: [ID!], label: String): Http_JsonRpc_Entity_Mutations!
 }
 
 "Queries for components, entities and relations on the namespace Http"
 type HttpNamespace {
-  "Sends HTTP request to a given URL"
+  "Sends HTTP request to a given URL and returns the result object"
   http(id: String, label: String): [Http_Http_Entity!]!
   "Sends HTTP request to a given URL"
   httpComponent: [Http_Http_Component!]!
-  "Sends JSON-RPC request to a given URL"
+  "Sends JSON-RPC request to a given URL and returns the result object"
   jsonRpc(id: String, label: String): [Http_JsonRpc_Entity!]!
   "Sends JSON-RPC request to a given URL"
   jsonRpcComponent: [Http_JsonRpc_Component!]!
+  "A HTTP request"
+  requestComponent: [Http_Request_Component!]!
+  "A HTTP response"
+  responseComponent: [Http_Response_Component!]!
+  "A Uniform Resource Locator (URL), colloquially termed as a web address, is a reference to a web resource that specifies its location on a computer network and a mechanism for retrieving it."
+  urlComponent: [Http_Url_Component!]!
 }
 
-"Sends HTTP request to a given URL"
-type Http_Http_Entity implements Entity & Http_Http_Component {
-  _c__http__http: ID
-  _c__logical__action: ID
+"Sends HTTP request to a given URL and returns the result object"
+type Http_Http_Entity implements Entity & Http_Request_Component & Http_Response_Component & Http_Url_Component & Result_ResultObject_Component & Trigger_Action_Component {
+  _c__http__request: ID
+  _c__http__response: ID
+  _c__http__url: ID
+  _c__result__result_object: ID
+  _c__trigger__action: ID
   id: ID!
-  "The HTTP method"
+  "The HTTP request method"
   method: String
+  "The HTTP request payload"
   payload: JSON
+  "The HTTP request headers"
   request_headers: JSON
+  "The HTTP response headers"
   response_headers: JSON
+  "The result"
   result: JSON
+  "The HTTP response status code"
   status: Float
   "On receiving a boolean trigger the action will be executed"
   trigger: Boolean
+  "Uniform Resource Locator"
   url: String
 }
 
 type Http_Http_Entity_Mutations {
   delete: [ID!]!
+  trigger: [Http_Http_Entity!]!
   update(method: String, payload: JSON, request_headers: JSON, trigger: Boolean, url: String): [Http_Http_Entity!]!
 }
 
-"Sends JSON-RPC request to a given URL"
-type Http_JsonRpc_Entity implements Entity & Http_JsonRpc_Component {
+"Sends JSON-RPC request to a given URL and returns the result object"
+type Http_JsonRpc_Entity implements Entity & Http_JsonRpc_Component & Http_Url_Component & Result_ResultObject_Component & Trigger_Action_Component {
   _c__http__json_rpc: ID
-  _c__logical__action: ID
+  _c__http__url: ID
+  _c__result__result_object: ID
+  _c__trigger__action: ID
   error: JSON
   id: ID!
   json_rpc_version: String
@@ -1602,11 +1756,13 @@ type Http_JsonRpc_Entity implements Entity & Http_JsonRpc_Component {
   result: JSON
   "On receiving a boolean trigger the action will be executed"
   trigger: Boolean
+  "Uniform Resource Locator"
   url: String
 }
 
 type Http_JsonRpc_Entity_Mutations {
   delete: [ID!]!
+  trigger: [Http_JsonRpc_Entity!]!
   update(json_rpc_version: String, method: String, params: JSON, trigger: Boolean, url: String): [Http_JsonRpc_Entity!]!
 }
 
@@ -1635,7 +1791,7 @@ type JsonMutations {
   createObjectKeys(id: ID, keys: [JSON!], name: String!, object: JSON!): Json_ObjectKeys_Entity!
   createObjectRemoveProperty(id: ID, name: String!, object: JSON!, property_name: String!, result: JSON): Json_ObjectRemoveProperty_Entity!
   createObjectSetProperty(id: ID, name: String!, object: JSON!, property_name: String!, result: JSON, value: JSON!): Json_ObjectSetProperty_Entity!
-  createSaveJson(filename: String!, id: ID, name: String!, payload: JSON!, result: JSON, trigger: Boolean!): Json_SaveJson_Entity!
+  createSaveJson(filename: String!, id: ID, name: String!, payload: JSON!, trigger: Boolean!): Json_SaveJson_Entity!
   "Loads a JSON file"
   loadJson(id: ID, ids: [ID!], label: String): Json_LoadJson_Entity_Mutations!
   "Object Get Property"
@@ -1777,11 +1933,12 @@ type Json_ArrayReverse_Entity_Mutations {
 }
 
 "Loads a JSON file"
-type Json_LoadJson_Entity implements Base_Named_Component & Entity & File_File_Component & Logical_Action_Component {
+type Json_LoadJson_Entity implements Base_Named_Component & Entity & File_File_Component & Json_LoadJson_Component & Result_ResultAny_Component & Trigger_Action_Component {
   _c__base__named: ID
   _c__file__file: ID
   _c__json__load_json: ID
-  _c__logical__action: ID
+  _c__result__result_any: ID
+  _c__trigger__action: ID
   "The filename"
   filename: String
   id: ID!
@@ -1795,6 +1952,7 @@ type Json_LoadJson_Entity implements Base_Named_Component & Entity & File_File_C
 
 type Json_LoadJson_Entity_Mutations {
   delete: [ID!]!
+  trigger: [Json_LoadJson_Entity!]!
   update(filename: String, name: String, trigger: Boolean): [Json_LoadJson_Entity!]!
 }
 
@@ -1863,25 +2021,24 @@ type Json_ObjectSetProperty_Entity_Mutations {
 }
 
 "Saves an object as JSON file"
-type Json_SaveJson_Entity implements Base_Named_Component & Entity & File_File_Component & Json_SaveJson_Component & Logical_Action_Component {
+type Json_SaveJson_Entity implements Base_Named_Component & Entity & File_File_Component & Json_SaveJson_Component & Trigger_Action_Component {
   _c__base__named: ID
   _c__file__file: ID
   _c__json__save_json: ID
-  _c__logical__action: ID
+  _c__trigger__action: ID
   "The filename"
   filename: String
   id: ID!
   "The name of an entity or a relation"
   name: String
   payload: JSON
-  "The result"
-  result: JSON
   "On receiving a boolean trigger the action will be executed"
   trigger: Boolean
 }
 
 type Json_SaveJson_Entity_Mutations {
   delete: [ID!]!
+  trigger: [Json_SaveJson_Entity!]!
   update(filename: String, name: String, payload: JSON, trigger: Boolean): [Json_SaveJson_Entity!]!
 }
 
@@ -1892,14 +2049,14 @@ type LogicalMutations {
   "An AND Gate with three inputs"
   and3(id: ID, ids: [ID!], label: String): Logical_And3_Entity_Mutations!
   createAnd(id: ID, lhs: Boolean!, result: Boolean, rhs: Boolean!): Logical_And_Entity!
-  createAnd3(id: ID, input1: Boolean!, input2: Boolean!, input3: Boolean!, result: Boolean!): Logical_And3_Entity!
+  createAnd3(id: ID, input1: Boolean!, input2: Boolean!, input3: Boolean!, result: Boolean): Logical_And3_Entity!
   createIfThenElse(condition: Boolean!, else_payload: JSON!, id: ID, result: JSON, then_payload: JSON!): Logical_IfThenElse_Entity!
   createNand(id: ID, lhs: Boolean!, result: Boolean, rhs: Boolean!): Logical_Nand_Entity!
   createNor(id: ID, lhs: Boolean!, result: Boolean, rhs: Boolean!): Logical_Nor_Entity!
   createNot(id: ID, lhs: Boolean!, result: Boolean): Logical_Not_Entity!
   createOr(id: ID, lhs: Boolean!, result: Boolean, rhs: Boolean!): Logical_Or_Entity!
-  createToggle(id: ID, result: Boolean!, trigger: Boolean!): Logical_Toggle_Entity!
-  createTrigger(id: ID, payload: JSON!, result: JSON, trigger: Boolean!): Logical_Trigger_Entity!
+  createToggle(id: ID, result: Boolean, trigger: Boolean!): Logical_Toggle_Entity!
+  createTrigger(id: ID, payload: JSON!, trigger: Boolean!): Logical_Trigger_Entity!
   createXnor(id: ID, lhs: Boolean!, result: Boolean, rhs: Boolean!): Logical_Xnor_Entity!
   createXor(id: ID, lhs: Boolean!, result: Boolean, rhs: Boolean!): Logical_Xor_Entity!
   "Each time it's triggered, either the then-payload or the else-payload gets propagated"
@@ -1924,16 +2081,12 @@ type LogicalMutations {
 
 "Queries for components, entities and relations on the namespace Logical"
 type LogicalNamespace {
-  "An action can be triggered"
-  actionComponent: [Logical_Action_Component!]!
   "AND"
   and(id: String, label: String): [Logical_And_Entity!]!
   "An AND Gate with three inputs"
   and3(id: String, label: String): [Logical_And3_Entity!]!
   "Depending on the given condition outputs a result"
   conditionComponent: [Logical_Condition_Component!]!
-  "A generator sends a trigger"
-  generatorComponent: [Logical_Generator_Component!]!
   "Each time it's triggered, either the then-payload or the else-payload gets propagated"
   ifThenElse(id: String, label: String): [Logical_IfThenElse_Entity!]!
   "Executes a logical operation on the inputs lhs and rhs and outputs the result"
@@ -1969,7 +2122,7 @@ type Logical_And3_Entity implements Entity {
 
 type Logical_And3_Entity_Mutations {
   delete: [ID!]!
-  update(input1: Boolean, input2: Boolean, input3: Boolean, result: Boolean): [Logical_And3_Entity!]!
+  update(input1: Boolean, input2: Boolean, input3: Boolean): [Logical_And3_Entity!]!
 }
 
 "AND"
@@ -2061,9 +2214,11 @@ type Logical_Or_Entity_Mutations {
 }
 
 "If triggered the state will toggled"
-type Logical_Toggle_Entity implements Entity {
-  _c__logical__action: ID
+type Logical_Toggle_Entity implements Entity & Result_ResultBoolean_Component & Trigger_Action_Component {
+  _c__result__result_boolean: ID
+  _c__trigger__action: ID
   id: ID!
+  "The result"
   result: Boolean
   "On receiving a boolean trigger the action will be executed"
   trigger: Boolean
@@ -2071,22 +2226,22 @@ type Logical_Toggle_Entity implements Entity {
 
 type Logical_Toggle_Entity_Mutations {
   delete: [ID!]!
-  update(result: Boolean, trigger: Boolean): [Logical_Toggle_Entity!]!
+  trigger: [Logical_Toggle_Entity!]!
+  update(trigger: Boolean): [Logical_Toggle_Entity!]!
 }
 
 "If triggered the payload will be copied to the output"
-type Logical_Trigger_Entity implements Entity & Logical_Action_Component {
-  _c__logical__action: ID
+type Logical_Trigger_Entity implements Entity & Trigger_Action_Component {
+  _c__trigger__action: ID
   id: ID!
   payload: JSON
-  "The result"
-  result: JSON
   "On receiving a boolean trigger the action will be executed"
   trigger: Boolean
 }
 
 type Logical_Trigger_Entity_Mutations {
   delete: [ID!]!
+  trigger: [Logical_Trigger_Entity!]!
   update(payload: JSON, trigger: Boolean): [Logical_Trigger_Entity!]!
 }
 
@@ -2134,6 +2289,7 @@ type Mutation {
   comparison: ComparisonMutations!
   config: ConfigMutations!
   core: CoreMutations!
+  dateTime: DateTimeMutations!
   flow: FlowMutations!
   http: HttpMutations!
   json: JsonMutations!
@@ -2144,7 +2300,6 @@ type Mutation {
   state: StateMutations!
   string: StringMutations!
   system: SystemMutations!
-  systemCommand: SystemCommandMutations!
   taxonomy: TaxonomyMutations!
   value: ValueMutations!
 }
@@ -2817,6 +2972,7 @@ type Query {
   config: ConfigNamespace!
   connector: ConnectorNamespace!
   core: CoreNamespace!
+  dateTime: DateTimeNamespace!
   file: FileNamespace!
   flow: FlowNamespace!
   http: HttpNamespace!
@@ -2827,11 +2983,12 @@ type Query {
   numericF64: NumericF64Namespace!
   numericI64: NumericI64Namespace!
   random: RandomNamespace!
+  result: ResultNamespace!
   state: StateNamespace!
   string: StringNamespace!
   system: SystemNamespace!
-  systemCommand: SystemCommandNamespace!
   taxonomy: TaxonomyNamespace!
+  trigger: TriggerNamespace!
   value: ValueNamespace!
 }
 
@@ -2877,6 +3034,8 @@ type RandomMutations {
 
 "Queries for components, entities and relations on the namespace Random"
 type RandomNamespace {
+  "Pseudo Number Generator"
+  pseudoNumberGeneratorComponent: [Random_PseudoNumberGenerator_Component!]!
   "Random Bool"
   randomBool(id: String, label: String): [Random_RandomBool_Entity!]!
   "Random Floating Point Number"
@@ -2901,12 +3060,16 @@ type RandomNamespace {
   randomU64Range(id: String, label: String): [Random_RandomU64Range_Entity!]!
   "Random UUID"
   randomUuid(id: String, label: String): [Random_RandomUuid_Entity!]!
+  "Range"
+  rangeComponent: [Random_Range_Component!]!
 }
 
 "Random Bool"
-type Random_RandomBool_Entity implements Entity {
-  _c__logical__action: ID
+type Random_RandomBool_Entity implements Entity & Result_ResultBoolean_Component & Trigger_Action_Component {
+  _c__result__result_boolean: ID
+  _c__trigger__action: ID
   id: ID!
+  "The result"
   result: Boolean
   "On receiving a boolean trigger the action will be executed"
   trigger: Boolean
@@ -2914,13 +3077,17 @@ type Random_RandomBool_Entity implements Entity {
 
 type Random_RandomBool_Entity_Mutations {
   delete: [ID!]!
+  trigger: [Random_RandomBool_Entity!]!
   update(trigger: Boolean): [Random_RandomBool_Entity!]!
 }
 
 "Pseudo Random Floating Point Number"
-type Random_RandomF64Pseudo_Entity implements Entity {
-  _c__logical__action: ID
+type Random_RandomF64Pseudo_Entity implements Entity & Random_PseudoNumberGenerator_Component & Result_ResultNumber_Component & Trigger_Action_Component {
+  _c__random__pseudo_number_generator: ID
+  _c__result__result_number: ID
+  _c__trigger__action: ID
   id: ID!
+  "The result"
   result: Float
   seed: Float
   "On receiving a boolean trigger the action will be executed"
@@ -2929,15 +3096,19 @@ type Random_RandomF64Pseudo_Entity implements Entity {
 
 type Random_RandomF64Pseudo_Entity_Mutations {
   delete: [ID!]!
+  trigger: [Random_RandomF64Pseudo_Entity!]!
   update(seed: Float, trigger: Boolean): [Random_RandomF64Pseudo_Entity!]!
 }
 
 "Random Floating Point Number Within Range"
-type Random_RandomF64Range_Entity implements Entity {
-  _c__logical__action: ID
+type Random_RandomF64Range_Entity implements Entity & Random_Range_Component & Result_ResultNumber_Component & Trigger_Action_Component {
+  _c__random__range: ID
+  _c__result__result_number: ID
+  _c__trigger__action: ID
   high: Float
   id: ID!
   low: Float
+  "The result"
   result: Float
   "On receiving a boolean trigger the action will be executed"
   trigger: Boolean
@@ -2945,13 +3116,16 @@ type Random_RandomF64Range_Entity implements Entity {
 
 type Random_RandomF64Range_Entity_Mutations {
   delete: [ID!]!
+  trigger: [Random_RandomF64Range_Entity!]!
   update(high: Float, low: Float, trigger: Boolean): [Random_RandomF64Range_Entity!]!
 }
 
 "Random Floating Point Number"
-type Random_RandomF64_Entity implements Entity {
-  _c__logical__action: ID
+type Random_RandomF64_Entity implements Entity & Result_ResultNumber_Component & Trigger_Action_Component {
+  _c__result__result_number: ID
+  _c__trigger__action: ID
   id: ID!
+  "The result"
   result: Float
   "On receiving a boolean trigger the action will be executed"
   trigger: Boolean
@@ -2959,13 +3133,17 @@ type Random_RandomF64_Entity implements Entity {
 
 type Random_RandomF64_Entity_Mutations {
   delete: [ID!]!
+  trigger: [Random_RandomF64_Entity!]!
   update(trigger: Boolean): [Random_RandomF64_Entity!]!
 }
 
 "Pseudo Random Signed Integer Number"
-type Random_RandomI64Pseudo_Entity implements Entity {
-  _c__logical__action: ID
+type Random_RandomI64Pseudo_Entity implements Entity & Random_PseudoNumberGenerator_Component & Result_ResultNumber_Component & Trigger_Action_Component {
+  _c__random__pseudo_number_generator: ID
+  _c__result__result_number: ID
+  _c__trigger__action: ID
   id: ID!
+  "The result"
   result: Float
   seed: Float
   "On receiving a boolean trigger the action will be executed"
@@ -2974,15 +3152,19 @@ type Random_RandomI64Pseudo_Entity implements Entity {
 
 type Random_RandomI64Pseudo_Entity_Mutations {
   delete: [ID!]!
+  trigger: [Random_RandomI64Pseudo_Entity!]!
   update(seed: Float, trigger: Boolean): [Random_RandomI64Pseudo_Entity!]!
 }
 
 "Random Signed Integer Within Range"
-type Random_RandomI64Range_Entity implements Entity {
-  _c__logical__action: ID
+type Random_RandomI64Range_Entity implements Entity & Random_Range_Component & Result_ResultNumber_Component & Trigger_Action_Component {
+  _c__random__range: ID
+  _c__result__result_number: ID
+  _c__trigger__action: ID
   high: Float
   id: ID!
   low: Float
+  "The result"
   result: Float
   "On receiving a boolean trigger the action will be executed"
   trigger: Boolean
@@ -2990,13 +3172,16 @@ type Random_RandomI64Range_Entity implements Entity {
 
 type Random_RandomI64Range_Entity_Mutations {
   delete: [ID!]!
+  trigger: [Random_RandomI64Range_Entity!]!
   update(high: Float, low: Float, trigger: Boolean): [Random_RandomI64Range_Entity!]!
 }
 
 "Random Signed Integer Number"
-type Random_RandomI64_Entity implements Entity {
-  _c__logical__action: ID
+type Random_RandomI64_Entity implements Entity & Result_ResultNumber_Component & Trigger_Action_Component {
+  _c__result__result_number: ID
+  _c__trigger__action: ID
   id: ID!
+  "The result"
   result: Float
   "On receiving a boolean trigger the action will be executed"
   trigger: Boolean
@@ -3004,14 +3189,17 @@ type Random_RandomI64_Entity implements Entity {
 
 type Random_RandomI64_Entity_Mutations {
   delete: [ID!]!
+  trigger: [Random_RandomI64_Entity!]!
   update(trigger: Boolean): [Random_RandomI64_Entity!]!
 }
 
 "Random String"
-type Random_RandomString_Entity implements Entity {
-  _c__logical__action: ID
+type Random_RandomString_Entity implements Entity & Result_ResultString_Component & Trigger_Action_Component {
+  _c__result__result_string: ID
+  _c__trigger__action: ID
   id: ID!
   length: Float
+  "The result"
   result: String
   "On receiving a boolean trigger the action will be executed"
   trigger: Boolean
@@ -3019,13 +3207,17 @@ type Random_RandomString_Entity implements Entity {
 
 type Random_RandomString_Entity_Mutations {
   delete: [ID!]!
+  trigger: [Random_RandomString_Entity!]!
   update(length: Float, trigger: Boolean): [Random_RandomString_Entity!]!
 }
 
 "Pseudo Random Unsigned Integer Number"
-type Random_RandomU64Pseudo_Entity implements Entity {
-  _c__logical__action: ID
+type Random_RandomU64Pseudo_Entity implements Entity & Random_PseudoNumberGenerator_Component & Result_ResultNumber_Component & Trigger_Action_Component {
+  _c__random__pseudo_number_generator: ID
+  _c__result__result_number: ID
+  _c__trigger__action: ID
   id: ID!
+  "The result"
   result: Float
   seed: Float
   "On receiving a boolean trigger the action will be executed"
@@ -3034,15 +3226,19 @@ type Random_RandomU64Pseudo_Entity implements Entity {
 
 type Random_RandomU64Pseudo_Entity_Mutations {
   delete: [ID!]!
+  trigger: [Random_RandomU64Pseudo_Entity!]!
   update(seed: Float, trigger: Boolean): [Random_RandomU64Pseudo_Entity!]!
 }
 
 "Random Unsigned Integer Within Range"
-type Random_RandomU64Range_Entity implements Entity {
-  _c__logical__action: ID
+type Random_RandomU64Range_Entity implements Entity & Random_Range_Component & Result_ResultNumber_Component & Trigger_Action_Component {
+  _c__random__range: ID
+  _c__result__result_number: ID
+  _c__trigger__action: ID
   high: Float
   id: ID!
   low: Float
+  "The result"
   result: Float
   "On receiving a boolean trigger the action will be executed"
   trigger: Boolean
@@ -3050,13 +3246,16 @@ type Random_RandomU64Range_Entity implements Entity {
 
 type Random_RandomU64Range_Entity_Mutations {
   delete: [ID!]!
+  trigger: [Random_RandomU64Range_Entity!]!
   update(high: Float, low: Float, trigger: Boolean): [Random_RandomU64Range_Entity!]!
 }
 
 "Random Unsigned Integer Number"
-type Random_RandomU64_Entity implements Entity {
-  _c__logical__action: ID
+type Random_RandomU64_Entity implements Entity & Result_ResultNumber_Component & Trigger_Action_Component {
+  _c__result__result_number: ID
+  _c__trigger__action: ID
   id: ID!
+  "The result"
   result: Float
   "On receiving a boolean trigger the action will be executed"
   trigger: Boolean
@@ -3064,13 +3263,16 @@ type Random_RandomU64_Entity implements Entity {
 
 type Random_RandomU64_Entity_Mutations {
   delete: [ID!]!
+  trigger: [Random_RandomU64_Entity!]!
   update(trigger: Boolean): [Random_RandomU64_Entity!]!
 }
 
 "Random UUID"
-type Random_RandomUuid_Entity implements Entity {
-  _c__logical__action: ID
+type Random_RandomUuid_Entity implements Entity & Result_ResultString_Component & Trigger_Action_Component {
+  _c__result__result_string: ID
+  _c__trigger__action: ID
   id: ID!
+  "The result"
   result: String
   "On receiving a boolean trigger the action will be executed"
   trigger: Boolean
@@ -3078,7 +3280,24 @@ type Random_RandomUuid_Entity implements Entity {
 
 type Random_RandomUuid_Entity_Mutations {
   delete: [ID!]!
+  trigger: [Random_RandomUuid_Entity!]!
   update(trigger: Boolean): [Random_RandomUuid_Entity!]!
+}
+
+"Queries for components, entities and relations on the namespace Result"
+type ResultNamespace {
+  "The entity returns data of any datatype"
+  resultAnyComponent: [Result_ResultAny_Component!]!
+  "The entity returns an array"
+  resultArrayComponent: [Result_ResultArray_Component!]!
+  "The entity returns a boolean"
+  resultBooleanComponent: [Result_ResultBoolean_Component!]!
+  "The entity returns a number"
+  resultNumberComponent: [Result_ResultNumber_Component!]!
+  "The entity returns an object"
+  resultObjectComponent: [Result_ResultObject_Component!]!
+  "The entity returns a string"
+  resultStringComponent: [Result_ResultString_Component!]!
 }
 
 "Mutations for entities and relations on the namespace State"
@@ -4323,42 +4542,6 @@ type String_Uppercase_Entity_Mutations {
   update(lhs: String): [String_Uppercase_Entity!]!
 }
 
-"Mutations for entities and relations on the namespace SystemCommand"
-type SystemCommandMutations {
-  createSystemCommand(command: String!, current_dir: String!, id: ID, name: String!, parameters: [JSON!]!, stderr: String!, stdin: String!, stdout: String!): SystemCommand_SystemCommand_Entity!
-  "Executes a system command"
-  systemCommand(id: ID, ids: [ID!], label: String): SystemCommand_SystemCommand_Entity_Mutations!
-}
-
-"Queries for components, entities and relations on the namespace SystemCommand"
-type SystemCommandNamespace {
-  "Executes a system command"
-  systemCommand(id: String, label: String): [SystemCommand_SystemCommand_Entity!]!
-  "Executes a system command"
-  systemCommandComponent: [SystemCommand_SystemCommand_Component!]!
-}
-
-"Executes a system command"
-type SystemCommand_SystemCommand_Entity implements Base_Named_Component & Entity & SystemCommand_SystemCommand_Component {
-  _c__base__named: ID
-  _c__logical__action: ID
-  _c__system_command__system_command: ID
-  command: String
-  current_dir: String
-  id: ID!
-  "The name of an entity or a relation"
-  name: String
-  parameters: JSON
-  stderr: String
-  stdin: String
-  stdout: String
-}
-
-type SystemCommand_SystemCommand_Entity_Mutations {
-  delete: [ID!]!
-  update(command: String, current_dir: String, name: String, parameters: [JSON!], stderr: String, stdin: String, stdout: String): [SystemCommand_SystemCommand_Entity!]!
-}
-
 "Mutations for entities and relations on the namespace System"
 type SystemMutations {
   createSystemEnv(id: ID, label: String!, name: String!, value: String): System_SystemEnv_Entity!
@@ -4497,6 +4680,14 @@ type Taxonomy_TaggedWith_Relation implements Core_Labeled_Component & Relation &
   "The entity which is tagged."
   tagged_entity: AllEntities!
   weight: Float
+}
+
+"Queries for components, entities and relations on the namespace Trigger"
+type TriggerNamespace {
+  "An action can be triggered"
+  actionComponent: [Trigger_Action_Component!]!
+  "A generator sends a trigger"
+  generatorComponent: [Trigger_Generator_Component!]!
 }
 
 "Mutations for entities and relations on the namespace Value"

@@ -1,0 +1,49 @@
+{
+  "namespace": "git",
+  "name": "repository",
+  "description": "Git repository",
+  "components": [
+    {
+      "namespace": "base",
+      "type_name": "named"
+    },
+    {
+      "namespace": "base",
+      "type_name": "describable"
+    },
+    {
+      "namespace": "url",
+      "type_name": "url"
+    },
+    {
+      "namespace": "file",
+      "type_name": "file"
+    },
+    {
+      "namespace": "trigger",
+      "type_name": "action"
+    }
+  ],
+  "properties": [
+    {
+      "name": "branch",
+      "data_type": "string",
+      "socket_type": "input"
+    },
+    {
+      "name": "branch",
+      "data_type": "string",
+      "socket_type": "input"
+    }
+  ],
+  "extensions": [
+    {
+      "name": "dublin-core",
+      "extension":{
+        "title": "Git Repository",
+        "subject": "Git Repository",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

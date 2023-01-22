@@ -1,11 +1,23 @@
 {
   "namespace": "http",
   "type_name": "http",
-  "description": "Sends HTTP request to a given URL",
+  "description": "Sends HTTP request to a given URL and returns the result object",
   "components": [
     {
       "namespace": "http",
       "type_name": "http"
+    },
+    {
+      "namespace": "http",
+      "type_name": "request"
+    },
+    {
+      "namespace": "http",
+      "type_name": "url"
+    },
+    {
+      "namespace": "http",
+      "type_name": "response"
     },
     {
       "namespace": "trigger",

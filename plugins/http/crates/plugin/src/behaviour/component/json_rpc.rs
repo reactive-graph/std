@@ -7,8 +7,8 @@ use crate::model_http::JsonRpcProperties::ERROR;
 use crate::model_http::JsonRpcProperties::JSON_RPC_VERSION;
 use crate::model_http::JsonRpcProperties::METHOD;
 use crate::model_http::JsonRpcProperties::PARAMS;
-use crate::model_http::JsonRpcProperties::RESULT;
-use crate::model_http::JsonRpcProperties::URL;
+use crate::model_http::UrlProperties::URL;
+use crate::model_result::ResultObjectProperties::RESULT;
 use crate::model_trigger::ActionProperties::TRIGGER;
 use crate::reactive::*;
 

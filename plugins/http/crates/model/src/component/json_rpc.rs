@@ -8,10 +8,8 @@ use crate::NAMESPACE_HTTP;
 properties!(
     JsonRpcProperties,
     (METHOD, "method", "POST"),
-    (URL, "url", ""),
     (JSON_RPC_VERSION, "json_rpc_version", "2.0"),
     (PARAMS, "params", {}),
-    (RESULT, "result", {}),
     (ERROR, "error", {})
 );
 
@@ -22,9 +20,7 @@ component_behaviour_ty!(COMPONENT_BEHAVIOUR_JSON_RPC, COMPONENT_JSON_RPC, BEHAVI
 component_model!(
     ComponentJsonRpc,
     set method string,
-    set url string,
-    set request_headers object,
-    set payload value,
-    get response_headers object,
-    get status u64
+    set json_rpc_version string,
+    set params object,
+    get error object
 );

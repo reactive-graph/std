@@ -9,11 +9,6 @@
       "socket_type": "input"
     },
     {
-      "name": "url",
-      "data_type": "string",
-      "socket_type": "input"
-    },
-    {
       "name": "json_rpc_version",
       "data_type": "string",
       "socket_type": "input"
