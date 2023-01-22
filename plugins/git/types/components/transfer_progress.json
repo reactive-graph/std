@@ -1,0 +1,53 @@
+{
+  "namespace": "git",
+  "type_name": "transfer_progress",
+  "description": "The transfer progress",
+  "properties": [
+    {
+      "name": "received_objects",
+      "data_type": "number",
+      "socket_type": "output"
+    },
+    {
+      "name": "total_objects",
+      "data_type": "number",
+      "socket_type": "output"
+    },
+    {
+      "name": "received_bytes",
+      "data_type": "number",
+      "socket_type": "output"
+    },
+    {
+      "name": "local_objects",
+      "data_type": "number",
+      "socket_type": "output"
+    },
+    {
+      "name": "total_deltas",
+      "data_type": "number",
+      "socket_type": "output"
+    },
+    {
+      "name": "indexed_deltas",
+      "data_type": "number",
+      "socket_type": "output"
+    },
+    {
+      "name": "indexed_objects",
+      "data_type": "number",
+      "socket_type": "output"
+    }
+  ],
+  "extensions": [
+    {
+      "namespace": "metadata",
+      "type_name": "dublin-core",
+      "extension":{
+        "title": "Transfer progress",
+        "subject": "The transfer progress",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+[package]
+name = "inexor-rgf-model-git"
+description = "Inexor - Reactive Graph Flow - Model - GIT"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+git2 = { workspace = true }
+indradb-lib = { workspace = true }
+lazy_static = { workspace = true }
+paste = { workspace = true }
+serde_json = { workspace = true }
+strum_macros = { workspace = true }
+
+inexor-rgf-core-model = { workspace = true }
+inexor-rgf-model-base = { path = "../../../base/crates/model" }
+inexor-rgf-model-file = { path = "../../../file/crates/model" }
+inexor-rgf-model-http = { path = "../../../http/crates/model" }
+inexor-rgf-model-trigger = { path = "../../../trigger/crates/model" }
+
+[lib]
+crate-type = ["lib"]

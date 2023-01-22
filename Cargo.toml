@@ -19,6 +19,8 @@ members = [
     "plugins/date-time/crates/plugin",
     "plugins/file/crates/model",
     "plugins/file/crates/plugin",
+    "plugins/git/crates/model",
+    "plugins/git/crates/plugin",
     "plugins/graphql-client",
     "plugins/graphql-schema-visualization",
     "plugins/http/crates/model",
@@ -63,6 +65,7 @@ chrono = "0.4"
 crossbeam = "0.8"
 dashmap = "5.4"
 data-url = "0.2"
+git2 = "0.16"
 http = "0.2"
 indradb-lib = "3"
 infer = "0.11"

@@ -1,0 +1,56 @@
+[package]
+name = "inexor-rgf-plugin-git"
+description = "Inexor - Reactive Graph Flow - Plugin - GIT"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+async-trait = { workspace = true }
+base64 = { workspace = true }
+dashmap = { workspace = true }
+git2 = { workspace = true }
+http = { workspace = true }
+indradb-lib = { workspace = true }
+infer = { workspace = true }
+lazy_static = { workspace = true }
+log = { workspace = true, features = ["std", "serde"] }
+log4rs = { workspace = true, features = ["console_appender", "file_appender", "toml_format"]}
+matchit = { workspace = true }
+mime_guess = { workspace = true }
+num-traits = { workspace = true }
+paste = { workspace = true }
+query_interface = { workspace = true }
+rust-embed = { workspace = true, features = ["debug-embed", "compression"] }
+serde = { workspace = true, features = [ "derive" ] }
+serde_json = { workspace = true }
+shellexpand = { workspace = true }
+strum = { workspace = true, features = ["derive"] }
+strum_macros = { workspace = true }
+uuid = { workspace = true, features = ["serde", "v4"] }
+
+inexor-rgf-core-di = { workspace = true, features = ["async"] }
+inexor-rgf-core-frp = { workspace = true }
+inexor-rgf-core-model = { workspace = true }
+inexor-rgf-core-reactive = { workspace = true }
+inexor-rgf-core-plugins = { workspace = true }
+inexor-rgf-model-base = { path = "../../../base/crates/model" }
+inexor-rgf-model-file = { path = "../../../file/crates/model" }
+inexor-rgf-model-git = { path = "../../crates/model" }
+inexor-rgf-model-http = { path = "../../../http/crates/model" }
+inexor-rgf-model-trigger = { path = "../../../trigger/crates/model" }
+
+[dev-dependencies]
+inexor-rgf-core-builder = { workspace = true }
+
+[lib]
+# Plugins use crate-type cdylib
+# https://doc.rust-lang.org/reference/linkage.html
+# https://users.rust-lang.org/t/what-is-the-difference-between-dylib-and-cdylib/28847/3
+crate-type = ["cdylib"]
+
+[package.metadata.cargo-post.dependencies]
+toml = "0.5"
+serde = { version = "1.0", features = [ "derive" ] }
+glob = "0.3"

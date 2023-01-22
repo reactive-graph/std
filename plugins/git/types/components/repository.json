@@ -1,44 +1,55 @@
 {
   "namespace": "git",
-  "name": "repository",
+  "type_name": "repository",
   "description": "Git repository",
-  "components": [
-    {
-      "namespace": "base",
-      "type_name": "named"
-    },
-    {
-      "namespace": "base",
-      "type_name": "describable"
-    },
-    {
-      "namespace": "url",
-      "type_name": "url"
-    },
-    {
-      "namespace": "file",
-      "type_name": "file"
-    },
-    {
-      "namespace": "trigger",
-      "type_name": "action"
-    }
-  ],
   "properties": [
     {
       "name": "branch",
+      "description": "The current branch name.",
       "data_type": "string",
       "socket_type": "input"
     },
     {
-      "name": "branch",
+      "name": "remote_name",
+      "description": "The name of the remote repository.",
       "data_type": "string",
+      "socket_type": "input"
+    },
+    {
+      "name": "remote_branch",
+      "description": "The branch of the remote repository.",
+      "data_type": "string",
+      "socket_type": "input"
+    },
+    {
+      "name": "merge_from",
+      "description": "Merges the given local branch into the current branch",
+      "data_type": "string",
+      "socket_type": "input"
+    },
+    {
+      "name": "fetch",
+      "description": "Fetches the remotes",
+      "data_type": "bool",
+      "socket_type": "input"
+    },
+    {
+      "name": "fast_forward",
+      "description": "Fast forward",
+      "data_type": "bool",
+      "socket_type": "input"
+    },
+    {
+      "name": "push",
+      "description": "Pushes the current branch to the remote",
+      "data_type": "bool",
       "socket_type": "input"
     }
   ],
   "extensions": [
     {
-      "name": "dublin-core",
+      "namespace": "metadata",
+      "type_name": "dublin-core",
       "extension":{
         "title": "Git Repository",
         "subject": "Git Repository",
