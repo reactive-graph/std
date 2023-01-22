@@ -9,5 +9,11 @@ component_ty!(COMPONENT_URL, NAMESPACE_HTTP, COMPONENT_NAME_URL, "url");
 
 component_model!(
     Url,
-    set url string,
+    data url string,
 );
+
+pub trait ParsedUrl: Url {
+    fn parse_url(&self) -> Option<url::Url> {
+        self.get_url().and_then(|url| url::Url::parse(&url).ok())
+    }
+}

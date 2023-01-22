@@ -2,6 +2,7 @@ use crate::model::entity_model;
 use crate::model::entity_ty;
 use crate::model_result::ResultObject;
 use crate::model_trigger::Action;
+use crate::ParsedUrl;
 use crate::Request;
 use crate::Response;
 use crate::Url;
@@ -13,5 +14,6 @@ entity_model!(Http);
 impl Request for Http {}
 impl Response for Http {}
 impl Url for Http {}
+impl ParsedUrl for Http {}
 impl Action for Http {}
 impl ResultObject for Http {}
