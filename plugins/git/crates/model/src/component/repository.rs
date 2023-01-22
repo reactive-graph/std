@@ -148,4 +148,27 @@ pub trait GitRepository: ComponentRepository + TransferProgress + FilePath + Url
             return;
         };
     }
+
+    fn git_checkout(&self, branch_name: String) {
+        let Some(repository) = self.open() else {
+            return;
+        };
+        let Ok(head) = repository.head() else {
+            return;
+        };
+        let Some(oid) = head.target() else {
+            return;
+        };
+        let Ok(commit) = repository.find_commit(oid) else {
+            return;
+        };
+        let Ok(branch) = repository.branch(&branch_name, &commit, false) else {
+            return;
+        };
+        let Ok(obj) = repository.revparse_single(&("refs/heads/".to_owned() + &branch_name)) else {
+            return;
+        };
+        repository.checkout_tree(&obj, None);
+        repository.set_head(&("refs/heads/".to_owned() + &branch_name));
+    }
 }

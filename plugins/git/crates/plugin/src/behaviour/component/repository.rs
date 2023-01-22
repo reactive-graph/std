@@ -75,6 +75,15 @@ impl BehaviourConnect<ReactiveEntityInstance> for RepositoryBehaviourTransitions
                 repository.git_fast_forward();
             }
         });
+        let reactive_instance = self.reactive_instance.clone();
+        self.property_observers.observe_with_handle(BRANCH.as_ref(), move |branch: &Value| {
+            if let Some(branch) = branch.as_str().map(str::to_string) {
+                let repository = crate::model_git::Repository::from(reactive_instance.clone());
+                if repository.exists() {
+                    repository.git_checkout(branch);
+                }
+            }
+        });
         Ok(())
     }
 }
