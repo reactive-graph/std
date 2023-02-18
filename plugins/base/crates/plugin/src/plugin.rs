@@ -5,20 +5,16 @@ use async_trait::async_trait;
 
 use crate::di::*;
 use crate::plugins::component_provider;
-use crate::plugins::entity_type_provider;
 use crate::plugins::flow_type_provider;
 use crate::plugins::plugin_context::PluginContext;
 use crate::plugins::ComponentProvider;
 use crate::plugins::ComponentProviderError;
-use crate::plugins::EntityTypeProvider;
-use crate::plugins::EntityTypeProviderError;
 use crate::plugins::FlowTypeProvider;
 use crate::plugins::FlowTypeProviderError;
 use crate::plugins::Plugin;
 use crate::plugins::PluginContextDeinitializationError;
 use crate::plugins::PluginContextInitializationError;
 use crate::providers::BaseComponentProviderImpl;
-use crate::providers::BaseEntityTypeProviderImpl;
 use crate::providers::BaseFlowTypeProviderImpl;
 
 #[wrapper]
@@ -35,7 +31,6 @@ pub trait BasePlugin: Plugin + Send + Sync {}
 #[module]
 pub struct BasePluginImpl {
     component_provider: Wrc<BaseComponentProviderImpl>,
-    entity_type_provider: Wrc<BaseEntityTypeProviderImpl>,
     flow_type_provider: Wrc<BaseFlowTypeProviderImpl>,
 
     context: PluginContextContainer,
@@ -61,10 +56,6 @@ impl Plugin for BasePluginImpl {
 
     fn get_component_provider(&self) -> Result<Option<Arc<dyn ComponentProvider>>, ComponentProviderError> {
         component_provider!(self.component_provider)
-    }
-
-    fn get_entity_type_provider(&self) -> Result<Option<Arc<dyn EntityTypeProvider>>, EntityTypeProviderError> {
-        entity_type_provider!(self.entity_type_provider)
     }
 
     fn get_flow_type_provider(&self) -> Result<Option<Arc<dyn FlowTypeProvider>>, FlowTypeProviderError> {
