@@ -1,0 +1,11 @@
+mutation {
+  taxonomy {
+    tag(name: "A") { # Get all tags with name A
+      update(name: "D") { # And update it's name to B
+        name # Finally, return the name, id and label
+        id
+        label
+      }
+    }
+  }
+}

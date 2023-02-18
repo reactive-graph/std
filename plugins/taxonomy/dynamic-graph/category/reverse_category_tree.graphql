@@ -1,0 +1,13 @@
+query CategoryTree {
+  taxonomy {
+    category(name: "C3") {
+      name
+      parent_categories {
+        name
+        parent_categories {
+          name
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+query GetTags {
+  taxonomy {
+    tag(name: "inexor") {
+      id
+      name
+      tagged_entities {
+        __typename
+      }
+    }
+  }
+}

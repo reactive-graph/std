@@ -1,0 +1,191 @@
+mutation {
+  taxonomy {
+    rootCategory: createCategory(
+      id: "04d5a07c-8584-4ac7-a017-438677401845"
+      name: "ROOT"
+      description: "The root category"
+    ) {
+      id
+    }
+    level1_A: createCategory(
+      id: "c711e67e-1158-4a47-8729-60289f394303"
+      name: "A"
+      description: "Level 1"
+    ) {
+      id
+    }
+    root_A: createHasSubcategory(
+      outboundId: "04d5a07c-8584-4ac7-a017-438677401845"
+      inboundId: "c711e67e-1158-4a47-8729-60289f394303"
+      instanceId: "root__a"
+      weight: 0.4
+    ) {
+      key
+    }
+    level1_B: createCategory(
+      id: "0d02a3d7-0f2f-4b64-91dd-fa3cc25e87d0"
+      name: "B"
+      description: "Level 1"
+    ) {
+      id
+    }
+    root_B: createHasSubcategory(
+      outboundId: "04d5a07c-8584-4ac7-a017-438677401845"
+      inboundId: "0d02a3d7-0f2f-4b64-91dd-fa3cc25e87d0"
+      instanceId: "root__b"
+      weight: 0.3
+    ) {
+      key
+    }
+    level1_C: createCategory(
+      id: "fe928ca7-7338-4378-bc0f-c368eb1771fb"
+      name: "C"
+      description: "Level 1"
+    ) {
+      id
+    }
+    root_C: createHasSubcategory(
+      outboundId: "04d5a07c-8584-4ac7-a017-438677401845"
+      inboundId: "fe928ca7-7338-4378-bc0f-c368eb1771fb"
+      instanceId: "root__c"
+      weight: 0.2
+    ) {
+      key
+    }
+    level2_A1: createCategory(
+      id: "bc54349c-60b1-4a89-896b-e8c422e03209"
+      name: "A1"
+      description: "Level 2"
+    ) {
+      id
+    }
+    A_A1: createHasSubcategory(
+      outboundId: "c711e67e-1158-4a47-8729-60289f394303"
+      inboundId: "bc54349c-60b1-4a89-896b-e8c422e03209"
+      instanceId: "a__a1"
+      weight: 0.6
+    ) {
+      key
+    }
+    level2_A2: createCategory(
+      id: "8b9da300-6446-425e-9db1-154988583e68"
+      name: "A2"
+      description: "Level 2"
+    ) {
+      id
+    }
+    A_A2: createHasSubcategory(
+      outboundId: "c711e67e-1158-4a47-8729-60289f394303"
+      inboundId: "8b9da300-6446-425e-9db1-154988583e68"
+      instanceId: "a__a2"
+      weight: 0.4
+    ) {
+      key
+    }
+    level2_A3: createCategory(
+      id: "96d20b00-7622-4b69-b054-a352249af6ac"
+      name: "A3"
+      description: "Level 2"
+    ) {
+      id
+    }
+    A_A3: createHasSubcategory(
+      outboundId: "c711e67e-1158-4a47-8729-60289f394303"
+      inboundId: "96d20b00-7622-4b69-b054-a352249af6ac"
+      instanceId: "a__a3"
+      weight: 0.2
+    ) {
+      key
+    }
+    level2_B1: createCategory(
+      id: "9da8af1f-1962-4820-9149-ddea616c0471"
+      name: "B1"
+      description: "Level 2"
+    ) {
+      id
+    }
+    B_B1: createHasSubcategory(
+      outboundId: "0d02a3d7-0f2f-4b64-91dd-fa3cc25e87d0"
+      inboundId: "9da8af1f-1962-4820-9149-ddea616c0471"
+      instanceId: "b__b1"
+      weight: 0.6
+    ) {
+      key
+    }
+    level2_B2: createCategory(
+      id: "1c24db07-cbca-491f-8abf-b04528c3143b"
+      name: "B2"
+      description: "Level 2"
+    ) {
+      id
+    }
+    B_B2: createHasSubcategory(
+      outboundId: "0d02a3d7-0f2f-4b64-91dd-fa3cc25e87d0"
+      inboundId: "1c24db07-cbca-491f-8abf-b04528c3143b"
+      instanceId: "b__b2"
+      weight: 0.4
+    ) {
+      key
+    }
+    level2_B3: createCategory(
+      id: "e06ff762-7445-41b8-a600-9c58f04a5a70"
+      name: "B3"
+      description: "Level 2"
+    ) {
+      id
+    }
+    B_B3: createHasSubcategory(
+      outboundId: "0d02a3d7-0f2f-4b64-91dd-fa3cc25e87d0"
+      inboundId: "e06ff762-7445-41b8-a600-9c58f04a5a70"
+      instanceId: "b__b3"
+      weight: 0.2
+    ) {
+      key
+    }
+    level2_C1: createCategory(
+      id: "3a486632-94b4-4a6b-b796-9da4753f45ef"
+      name: "C1"
+      description: "Level 2"
+    ) {
+      id
+    }
+    C_C1: createHasSubcategory(
+      outboundId: "fe928ca7-7338-4378-bc0f-c368eb1771fb"
+      inboundId: "3a486632-94b4-4a6b-b796-9da4753f45ef"
+      instanceId: "c__c1"
+      weight: 0.6
+    ) {
+      key
+    }
+    level2_C2: createCategory(
+      id: "0c075075-ff81-459e-a461-64f91306e7c6"
+      name: "C2"
+      description: "Level 2"
+    ) {
+      id
+    }
+    C_C2: createHasSubcategory(
+      outboundId: "fe928ca7-7338-4378-bc0f-c368eb1771fb"
+      inboundId: "0c075075-ff81-459e-a461-64f91306e7c6"
+      instanceId: "c__c2"
+      weight: 0.4
+    ) {
+      key
+    }
+    level2_C3: createCategory(
+      id: "08b5d4d4-7d2d-4cb3-9428-429fd518053f"
+      name: "C3"
+      description: "Level 2"
+    ) {
+      id
+    }
+    C_C3: createHasSubcategory(
+      outboundId: "fe928ca7-7338-4378-bc0f-c368eb1771fb"
+      inboundId: "08b5d4d4-7d2d-4cb3-9428-429fd518053f"
+      instanceId: "c__c3"
+      weight: 0.2
+    ) {
+      key
+    }
+  }
+}

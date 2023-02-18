@@ -1,0 +1,19 @@
+mutation {
+  taxonomy {
+    tagInexor: createTag(label: "/org/inexor/tags/inexor" name: "inexor") {
+      name
+      id
+      label
+    }
+    tagVulkan: createTag(label: "/org/inexor/tags/vulkan" name: "vulkan") {
+      name
+      id
+      label
+    }
+    tagRenderer: createTag(label: "/org/inexor/tags/renderer" name: "renderer") {
+      name
+      id
+      label
+    }
+  }
+}

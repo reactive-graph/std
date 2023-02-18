@@ -1,0 +1,12 @@
+query CategoryTree {
+  taxonomy {
+    category(name: "A") {
+      name
+      parent_categories { # One level up
+        sub_categories { # One level down
+          name
+        }
+      }
+    }
+  }
+}

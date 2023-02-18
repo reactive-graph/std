@@ -1,6 +1,6 @@
 query CategoryTree {
   taxonomy {
-    category {
+    category(name: "ROOT") {
       name
       sub_categories {
         name
