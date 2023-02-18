@@ -1,0 +1,59 @@
+{
+  "namespace": "color",
+  "type_name": "rgb_to_hsv",
+  "description": "Converts the color in RGB color space to HSV color space",
+  "components": [
+    {
+      "namespace": "color",
+      "type_name": "rgb"
+    },
+    {
+      "namespace": "color",
+      "type_name": "hs"
+    },
+    {
+      "namespace": "color",
+      "type_name": "brightness"
+    }
+  ],
+  "properties": [
+    {
+      "name": "red",
+      "description": "Red",
+      "data_type": "number",
+      "socket_type": "input"
+    },
+    {
+      "name": "green",
+      "description": "Green",
+      "data_type": "number",
+      "socket_type": "input"
+    },
+    {
+      "name": "blue",
+      "description": "Blue",
+      "data_type": "number",
+      "socket_type": "input"
+    },
+    {
+      "name": "hue",
+      "description": "The hue of the color, in degrees. Decides if it’s red, blue, purple, etc.",
+      "data_type": "number",
+      "socket_type": "output"
+    },
+    {
+      "name": "saturation",
+      "description": "The colorfulness of the color. 0.0 gives gray scale colors and 1.0 will give absolutely clear colors.",
+      "data_type": "number",
+      "socket_type": "output"
+    },
+    {
+      "name": "brightness",
+      "description": "Decides how bright the color will look. 0.0 will be black, and 1.0 will give a bright an clear color that goes towards white when saturation goes towards 0.0.",
+      "data_type": "number",
+      "socket_type": "output"
+    }
+  ],
+  "extensions": [
+  ]
+}

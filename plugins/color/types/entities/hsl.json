@@ -1,0 +1,19 @@
+{
+  "namespace": "color",
+  "type_name": "hsl",
+  "description": "The color in HSL color space (Hue, saturation, lightness).",
+  "components": [
+    {
+      "namespace": "color",
+      "type_name": "hs"
+    },
+    {
+      "namespace": "color",
+      "type_name": "lightness"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+  ]
+}

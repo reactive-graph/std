@@ -1,0 +1,19 @@
+{
+  "namespace": "color",
+  "type_name": "rgba",
+  "description": "The color in RGB color space with the alpha channel.",
+  "components": [
+    {
+      "namespace": "color",
+      "type_name": "rgb"
+    },
+    {
+      "namespace": "color",
+      "type_name": "alpha"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+  ]
+}

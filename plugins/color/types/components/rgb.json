@@ -1,0 +1,24 @@
+{
+  "namespace": "color",
+  "type_name": "rgb",
+  "description": "The color in RGB color space.",
+  "properties": [
+    {
+      "name": "red",
+      "description": "Red",
+      "data_type": "number"
+    },
+    {
+      "name": "green",
+      "description": "Green",
+      "data_type": "number"
+    },
+    {
+      "name": "blue",
+      "description": "Blue",
+      "data_type": "number"
+    }
+  ],
+  "extensions": [
+  ]
+}

@@ -1,0 +1,33 @@
+query {
+  instances {
+    entities(id: "f43d0424-f25f-49c0-8c8a-15340b82007c") {
+      id
+      label
+      type {
+        namespace
+        name
+      }
+      components {
+        namespace
+        name
+      }
+      behaviours {
+        namespace
+        name
+      }
+      properties(
+        names: [
+          "red"
+          "green"
+          "blue"
+          "hue"
+          "saturation"
+          "brightness"
+        ]
+      ) {
+        name
+        value
+      }
+    }
+  }
+}

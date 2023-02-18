@@ -1,0 +1,14 @@
+{
+  "namespace": "color",
+  "type_name": "lightness",
+  "description": "The lightness component",
+  "properties": [
+    {
+      "name": "lightness",
+      "description": "Decides how light the color will look. 0.0 will be black, 0.5 will give a clear color, and 1.0 will give white.",
+      "data_type": "number"
+    }
+  ],
+  "extensions": [
+  ]
+}

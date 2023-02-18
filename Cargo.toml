@@ -9,6 +9,8 @@ members = [
     "plugins/base/crates/plugin",
     "plugins/binary/crates/model",
     "plugins/binary/crates/plugin",
+    "plugins/color/crates/model",
+    "plugins/color/crates/plugin",
     "plugins/comparison/crates/model",
     "plugins/comparison/crates/plugin",
     "plugins/config/crates/model",
@@ -61,6 +63,8 @@ edition = "2021"
 license = "MIT"
 
 [workspace.dependencies]
+angle = "0.5"
+angular-units = "0.2.4"
 async-trait = "0.1"
 base64 = "0.20"
 chrono = "0.4"
@@ -80,6 +84,7 @@ mime_guess = "2.0"
 notify = "5.0"
 num-traits = "0.2"
 paste = "1.0"
+prisma = "0.1.1"
 quote = "1.0"
 query_interface = "0.3"
 rand = "0.8"

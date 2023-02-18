@@ -1,0 +1,9 @@
+fragment RgbToHsv on Color_RgbToHsv_Entity {
+  id
+  red
+  green
+  blue
+  hue
+  saturation
+  brightness
+}

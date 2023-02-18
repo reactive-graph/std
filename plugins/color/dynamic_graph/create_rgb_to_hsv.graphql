@@ -1,0 +1,15 @@
+mutation {
+  color {
+    createRgbToHsv(
+      id: "1411dd88-6ddc-43c1-bfeb-a4207a78d44c"
+      red: 1.0
+      green: 0
+      blue: 0.5
+      hue: 0
+      saturation: 0
+      brightness: 0
+    ) {
+      ...RgbToHsv
+    }
+  }
+}

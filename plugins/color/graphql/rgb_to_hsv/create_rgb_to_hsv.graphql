@@ -1,0 +1,55 @@
+mutation {
+  instances {
+    entities {
+      create(
+        type:  {
+          namespace: "color"
+          name: "rgb_to_hsv"
+        }
+        id: "f43d0424-f25f-49c0-8c8a-15340b82007c"
+        properties: [
+          {
+            name: "red"
+            value: 0.8
+          }
+          {
+            name: "green"
+            value: 0.1
+          }
+          {
+            name: "blue"
+            value: 0.4
+          }
+        ]
+      ) {
+        id
+        label
+        type {
+          namespace
+          name
+        }
+        components {
+          namespace
+          name
+        }
+        behaviours {
+          namespace
+          name
+        }
+        properties(
+          names: [
+            "red"
+            "green"
+            "blue"
+            "hue"
+            "saturation"
+            "brightness"
+          ]
+        ) {
+          name
+          value
+        }
+      }
+    }
+  }
+}

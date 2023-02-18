@@ -1,0 +1,14 @@
+{
+  "namespace": "color",
+  "type_name": "brightness",
+  "description": "The brightness component",
+  "properties": [
+    {
+      "name": "brightness",
+      "description": "Decides how bright the color will look. 0.0 will be black, and 1.0 will give a bright an clear color that goes towards white when saturation goes towards 0.0.",
+      "data_type": "number"
+    }
+  ],
+  "extensions": [
+  ]
+}

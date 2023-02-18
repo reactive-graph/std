@@ -1,0 +1,15 @@
+{
+  "namespace": "color",
+  "type_name": "rgb",
+  "description": "The color in RGB color space.",
+  "components": [
+    {
+      "namespace": "color",
+      "type_name": "rgb"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+  ]
+}

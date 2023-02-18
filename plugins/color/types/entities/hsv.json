@@ -1,0 +1,35 @@
+{
+  "namespace": "color",
+  "type_name": "hsv",
+  "description": "The color in HSV color space (Hue, saturation, value)",
+  "components": [
+    {
+      "namespace": "color",
+      "type_name": "hs"
+    },
+    {
+      "namespace": "color",
+      "type_name": "brightness"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "namespace": "metadata",
+      "type_name": "dublin-core",
+      "extension":{
+        "title": "The color in HSV color space (Hue, saturation, value)",
+        "subject": "HSV is defined by a hue (base color), saturation (color richness) and value (color intensity). HSV is modeled as a cylinder, however the underlying space is conical. This causes some level of distortion and a degeneracy at S=0 or V=0. Thus, while easy to reason about, it is not good for perceptual uniformity. It does an okay job with averaging colors or doing other math, but prefer the CIE spaces for uniform gradients.",
+        "creator": "Hanack"
+      }
+    },
+    {
+      "namespace": "documentation",
+      "type_name": "references",
+      "extension": [
+        "https://docs.rs/prisma/latest/prisma/struct.Hsv.html"
+      ]
+    }
+  ]
+}

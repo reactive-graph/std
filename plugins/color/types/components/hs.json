@@ -1,0 +1,19 @@
+{
+  "namespace": "color",
+  "type_name": "hs",
+  "description": "The HS components",
+  "properties": [
+    {
+      "name": "hue",
+      "description": "The hue of the color, in degrees. Decides if it’s red, blue, purple, etc.",
+      "data_type": "number"
+    },
+    {
+      "name": "saturation",
+      "description": "The colorfulness of the color. 0.0 gives gray scale colors and 1.0 will give absolutely clear colors.",
+      "data_type": "number"
+    }
+  ],
+  "extensions": [
+  ]
+}
