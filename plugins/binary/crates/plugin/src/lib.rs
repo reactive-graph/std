@@ -10,7 +10,6 @@ use std::sync::Arc;
 use inexor_rgf_core_di as di;
 use inexor_rgf_core_model as model;
 use inexor_rgf_core_plugins as plugins;
-use inexor_rgf_core_plugins::PluginDependency;
 use inexor_rgf_core_reactive as reactive;
 use inexor_rgf_model_binary as model_binary;
 use inexor_rgf_model_file as model_file;
@@ -22,6 +21,7 @@ use crate::di::Container;
 use crate::di::Provider;
 use crate::plugin::BinaryPlugin;
 use crate::plugins::Plugin;
+use crate::plugins::PluginDependency;
 use crate::plugins::PluginLoadingError;
 
 pub mod behaviour;

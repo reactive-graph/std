@@ -41,7 +41,7 @@ struct PropertyReference {
 }
 
 #[wrapper]
-pub struct PluginContextContainer(RwLock<Option<std::sync::Arc<dyn PluginContext>>>);
+pub struct PluginContextContainer(RwLock<Option<Arc<dyn PluginContext>>>);
 
 #[provides]
 fn create_empty_plugin_context_container() -> PluginContextContainer {
