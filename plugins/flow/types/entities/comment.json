@@ -1,0 +1,27 @@
+{
+  "namespace": "flow",
+  "type_name": "comment",
+  "description": "A simple comment",
+  "components": [
+    {
+      "namespace": "base",
+      "type_name": "named"
+    },
+    {
+      "namespace": "base",
+      "type_name": "describable"
+    },
+    {
+      "namespace": "flow",
+      "type_name": "flow_2d"
+    },
+    {
+      "namespace": "flow",
+      "type_name": "flow_3d"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+  ]
+}

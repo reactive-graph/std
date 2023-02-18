@@ -17,13 +17,13 @@
     },
     {
       "name": "f2dw",
-      "description": "The width in a 2D flow",
+      "description": "The width (x-axis) in a 2D flow",
       "data_type": "number",
       "socket_type": "none"
     },
     {
       "name": "f2dh",
-      "description": "The height in a 2D flow",
+      "description": "The height (y-axis) in a 2D flow",
       "data_type": "number",
       "socket_type": "none"
     }

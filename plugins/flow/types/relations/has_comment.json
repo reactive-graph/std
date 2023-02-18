@@ -1,0 +1,23 @@
+{
+  "namespace": "flow",
+  "type_name": "has_comment",
+  "description": "Any entity within a flow can be commented",
+  "outbound": {
+    "entity_type": {
+      "namespace": "*",
+      "type_name": "*"
+    }
+  },
+  "inbound": {
+    "entity_type": {
+      "namespace": "flow",
+      "type_name": "comment"
+    }
+  },
+  "components": [
+  ],
+  "properties": [
+  ],
+  "extensions": [
+  ]
+}

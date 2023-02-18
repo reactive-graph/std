@@ -1,0 +1,31 @@
+{
+  "namespace": "flow",
+  "type_name": "generic_flow",
+  "description": "A generic flow with a single input and a single output",
+  "components": [
+    {
+      "namespace": "base",
+      "type_name": "named"
+    },
+    {
+      "namespace": "base",
+      "type_name": "describable"
+    }
+  ],
+  "properties": [
+    {
+      "name": "input",
+      "description": "Flow input",
+      "socket_type": "input",
+      "data_type": "object"
+    },
+    {
+      "name": "output",
+      "description": "Flow output",
+      "socket_type": "output",
+      "data_type": "object"
+    }
+  ],
+  "extensions": [
+  ]
+}
