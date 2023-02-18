@@ -1,37 +1,36 @@
 use std::sync::Arc;
 use std::sync::RwLock;
 
-use crate::builder::EntityInstanceBuilder;
-use crate::builder::RelationInstanceBuilder;
-use crate::model::PropertyInstanceGetter;
-use crate::model::ReactiveEntityInstance;
-use crate::model_date_time::YearProperties::LEAP;
-use crate::model_date_time::YearProperties::YEAR;
-use crate::model_date_time::ENTITY_TYPE_YEAR;
-use crate::model_date_time::RELATION_TYPE_NEXT_YEAR;
 use async_trait::async_trait;
-use inexor_rgf_model_date_time::DayOfMonthProperties;
-use inexor_rgf_model_date_time::DayProperties::DAY_OF_MONTH;
-use inexor_rgf_model_date_time::DayProperties::ISO8601;
-use inexor_rgf_model_date_time::MonthOfYearProperties;
-use inexor_rgf_model_date_time::MonthProperties::MONTH_AND_YEAR;
-use inexor_rgf_model_date_time::MonthProperties::MONTH_OF_YEAR;
-use inexor_rgf_model_date_time::ENTITY_TYPE_DAY;
-use inexor_rgf_model_date_time::ENTITY_TYPE_MONTH;
-use inexor_rgf_model_date_time::RELATION_TYPE_DAY_OF_MONTH;
-use inexor_rgf_model_date_time::RELATION_TYPE_FIRST_DAY;
-use inexor_rgf_model_date_time::RELATION_TYPE_FIRST_MONTH;
-use inexor_rgf_model_date_time::RELATION_TYPE_LAST_DAY;
-use inexor_rgf_model_date_time::RELATION_TYPE_LAST_MONTH;
-use inexor_rgf_model_date_time::RELATION_TYPE_MONTH_OF_YEAR;
-use inexor_rgf_model_date_time::RELATION_TYPE_NEXT_DAY;
-use inexor_rgf_model_date_time::RELATION_TYPE_NEXT_MONTH;
-use log::info;
 use log::trace;
 use serde_json::json;
 
 use crate::api::TimeGraph;
+use crate::builder::EntityInstanceBuilder;
+use crate::builder::RelationInstanceBuilder;
 use crate::di::*;
+use crate::model::PropertyInstanceGetter;
+use crate::model::ReactiveEntityInstance;
+use crate::model_date_time::DayOfMonthProperties;
+use crate::model_date_time::DayProperties::DAY_OF_MONTH;
+use crate::model_date_time::DayProperties::ISO8601;
+use crate::model_date_time::MonthOfYearProperties;
+use crate::model_date_time::MonthProperties::MONTH_AND_YEAR;
+use crate::model_date_time::MonthProperties::MONTH_OF_YEAR;
+use crate::model_date_time::YearProperties::LEAP;
+use crate::model_date_time::YearProperties::YEAR;
+use crate::model_date_time::ENTITY_TYPE_DAY;
+use crate::model_date_time::ENTITY_TYPE_MONTH;
+use crate::model_date_time::ENTITY_TYPE_YEAR;
+use crate::model_date_time::RELATION_TYPE_DAY_OF_MONTH;
+use crate::model_date_time::RELATION_TYPE_FIRST_DAY;
+use crate::model_date_time::RELATION_TYPE_FIRST_MONTH;
+use crate::model_date_time::RELATION_TYPE_LAST_DAY;
+use crate::model_date_time::RELATION_TYPE_LAST_MONTH;
+use crate::model_date_time::RELATION_TYPE_MONTH_OF_YEAR;
+use crate::model_date_time::RELATION_TYPE_NEXT_DAY;
+use crate::model_date_time::RELATION_TYPE_NEXT_MONTH;
+use crate::model_date_time::RELATION_TYPE_NEXT_YEAR;
 use crate::plugins::PluginContext;
 
 #[wrapper]
@@ -106,7 +105,7 @@ fn create_next_year(context: &Arc<dyn PluginContext>, previous_year: &Option<Arc
     let instance_id = format!("{}__{}", previous_year.as_u64(YEAR).unwrap_or(0), next_year.as_u64(YEAR).unwrap_or(0));
     let relation_instance =
         RelationInstanceBuilder::new_unique_for_instance_id(previous_year.id, RELATION_TYPE_NEXT_YEAR.clone(), instance_id, next_year.id).build();
-    relation_instance_manager.create(relation_instance);
+    let _ = relation_instance_manager.create(relation_instance);
 }
 
 fn create_months(
@@ -177,7 +176,7 @@ fn create_month_of_year(context: &Arc<dyn PluginContext>, current_year: &Arc<Rea
     let relation_instance = RelationInstanceBuilder::new_unique_for_instance_id(current_year.id, RELATION_TYPE_MONTH_OF_YEAR.clone(), instance_id, month.id)
         .property(MonthOfYearProperties::MONTH_OF_YEAR, json!(month_of_year))
         .build();
-    relation_instance_manager.create(relation_instance);
+    let _ = relation_instance_manager.create(relation_instance);
 }
 
 fn create_first_month(context: &Arc<dyn PluginContext>, current_year: &Arc<ReactiveEntityInstance>, first_month: &Arc<ReactiveEntityInstance>) {
@@ -185,7 +184,7 @@ fn create_first_month(context: &Arc<dyn PluginContext>, current_year: &Arc<React
     let instance_id = format!("{:04}__{:02}", current_year.as_u64(YEAR).unwrap_or(0), first_month.as_u64(MONTH_OF_YEAR).unwrap_or(0));
     let relation_instance =
         RelationInstanceBuilder::new_unique_for_instance_id(current_year.id, RELATION_TYPE_FIRST_MONTH.clone(), instance_id, first_month.id).build();
-    relation_instance_manager.create(relation_instance);
+    let _ = relation_instance_manager.create(relation_instance);
 }
 
 fn create_last_month(context: &Arc<dyn PluginContext>, current_year: &Arc<ReactiveEntityInstance>, last_month: &Arc<ReactiveEntityInstance>) {
@@ -193,7 +192,7 @@ fn create_last_month(context: &Arc<dyn PluginContext>, current_year: &Arc<Reacti
     let instance_id = format!("{:04}__{:02}", current_year.as_u64(YEAR).unwrap_or(0), last_month.as_u64(MONTH_OF_YEAR).unwrap_or(0));
     let relation_instance =
         RelationInstanceBuilder::new_unique_for_instance_id(current_year.id, RELATION_TYPE_LAST_MONTH.clone(), instance_id, last_month.id).build();
-    relation_instance_manager.create(relation_instance);
+    let _ = relation_instance_manager.create(relation_instance);
 }
 
 fn create_next_month(context: &Arc<dyn PluginContext>, previous_month: &Option<Arc<ReactiveEntityInstance>>, next_month: &Arc<ReactiveEntityInstance>) {
@@ -208,7 +207,7 @@ fn create_next_month(context: &Arc<dyn PluginContext>, previous_month: &Option<A
     );
     let relation_instance =
         RelationInstanceBuilder::new_unique_for_instance_id(previous_month.id, RELATION_TYPE_NEXT_MONTH.clone(), instance_id, next_month.id).build();
-    relation_instance_manager.create(relation_instance);
+    let _ = relation_instance_manager.create(relation_instance);
 }
 
 fn create_days(
@@ -283,7 +282,7 @@ fn create_day_of_month(context: &Arc<dyn PluginContext>, current_month: &Arc<Rea
         RelationInstanceBuilder::new_unique_for_instance_id(current_month.id, RELATION_TYPE_DAY_OF_MONTH.clone(), instance_id, current_day.id)
             .property(DayOfMonthProperties::DAY_OF_MONTH, json!(day_of_month))
             .build();
-    relation_instance_manager.create(relation_instance);
+    let _ = relation_instance_manager.create(relation_instance);
 }
 
 fn create_first_day(context: &Arc<dyn PluginContext>, current_month: &Arc<ReactiveEntityInstance>, first_day: &Arc<ReactiveEntityInstance>) {
@@ -297,7 +296,7 @@ fn create_first_day(context: &Arc<dyn PluginContext>, current_month: &Arc<Reacti
     let instance_id = format!("{:04}__{:02}", month_and_year, day_of_month);
     let relation_instance =
         RelationInstanceBuilder::new_unique_for_instance_id(current_month.id, RELATION_TYPE_FIRST_DAY.clone(), instance_id, first_day.id).build();
-    relation_instance_manager.create(relation_instance);
+    let _ = relation_instance_manager.create(relation_instance);
 }
 
 fn create_last_day(context: &Arc<dyn PluginContext>, current_month: &Arc<ReactiveEntityInstance>, last_day: &Arc<ReactiveEntityInstance>) {
@@ -311,7 +310,7 @@ fn create_last_day(context: &Arc<dyn PluginContext>, current_month: &Arc<Reactiv
     let instance_id = format!("{:04}__{:02}", month_and_year, day_of_month);
     let relation_instance =
         RelationInstanceBuilder::new_unique_for_instance_id(current_month.id, RELATION_TYPE_LAST_DAY.clone(), instance_id, last_day.id).build();
-    relation_instance_manager.create(relation_instance);
+    let _ = relation_instance_manager.create(relation_instance);
 }
 
 fn create_next_day(context: &Arc<dyn PluginContext>, previous_day: &Option<Arc<ReactiveEntityInstance>>, next_day: &Arc<ReactiveEntityInstance>) {
@@ -322,7 +321,7 @@ fn create_next_day(context: &Arc<dyn PluginContext>, previous_day: &Option<Arc<R
     let instance_id = format!("{}__{}", previous_day.as_string(ISO8601).unwrap_or_default(), next_day.as_string(ISO8601).unwrap_or_default());
     let relation_instance =
         RelationInstanceBuilder::new_unique_for_instance_id(previous_day.id, RELATION_TYPE_NEXT_DAY.clone(), instance_id, next_day.id).build();
-    relation_instance_manager.create(relation_instance);
+    let _ = relation_instance_manager.create(relation_instance);
 }
 
 fn is_leap_year(year: u64) -> bool {
