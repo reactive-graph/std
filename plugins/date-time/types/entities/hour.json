@@ -1,0 +1,31 @@
+{
+  "namespace": "date_time",
+  "type_name": "hour",
+  "description": "Represents an hour in the time graph",
+  "components": [
+    {
+      "namespace": "core",
+      "type_name": "labeled"
+    }
+  ],
+  "properties": [
+    {
+      "name": "hour_of_day",
+      "description": "The nth hour of the day",
+      "data_type": "number",
+      "socket_type": "none",
+      "mutability": "immutable"
+    }
+  ],
+  "extensions": [
+    {
+      "namespace": "metadata",
+      "type_name": "dublin-core",
+      "extension": {
+        "title": "Hour",
+        "subject": "Represents an hour in the time graph",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

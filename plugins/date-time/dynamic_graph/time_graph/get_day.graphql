@@ -1,0 +1,22 @@
+query {
+  dateTime {
+    day(iso8601: "2023-01-01") {
+      id
+      day_of_month
+      iso8601
+      month {
+        month_of_year
+        month_and_year
+        year {
+          year
+        }
+      }
+      next_day {
+        iso8601
+      }
+      previous_day {
+        iso8601
+      }
+    }
+  }
+}

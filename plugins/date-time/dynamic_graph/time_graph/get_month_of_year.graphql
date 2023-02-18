@@ -1,0 +1,19 @@
+query {
+  dateTime {
+    monthOfYear {
+      month_of_year
+      instance_id
+      year {
+        id
+        label
+        year
+      }
+      month {
+        id
+        label
+        month_of_year
+        month_and_year
+      }
+    }
+  }
+}

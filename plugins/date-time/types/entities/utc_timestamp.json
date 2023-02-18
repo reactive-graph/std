@@ -18,7 +18,7 @@
     {
       "namespace": "metadata",
       "type_name": "dublin-core",
-      "extension":{
+      "extension": {
         "title": "UTC Timestamp",
         "subject": "Returns the current timestamp",
         "creator": "Hanack"

@@ -1,0 +1,47 @@
+{
+  "namespace": "date_time",
+  "type_name": "last_month",
+  "description": "The last month of the year",
+  "outbound": {
+    "entity_type": {
+      "namespace": "date_time",
+      "type_name": "year"
+    }
+  },
+  "inbound": {
+    "entity_type": {
+      "namespace": "date_time",
+      "type_name": "month"
+    }
+  },
+  "components": [
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "namespace": "dynamic_graph",
+      "type_name": "field_name",
+      "extension": {
+        "from_outbound_entity_to_relation": "",
+        "from_relation_to_outbound_entity": "year",
+        "from_inbound_entity_to_relation": "",
+        "from_relation_to_inbound_entity": "last_month",
+        "from_outbound_entity_to_inbound_entity": "last_month",
+        "from_inbound_entity_to_outbound_entity": ""
+      }
+    },
+    {
+      "namespace": "dynamic_graph",
+      "type_name": "field_description",
+      "extension": {
+        "from_outbound_entity_to_relation": "",
+        "from_relation_to_outbound_entity": "The year.",
+        "from_inbound_entity_to_relation": "",
+        "from_relation_to_inbound_entity": "The last month of the year.",
+        "from_outbound_entity_to_inbound_entity": "The last month of the year.",
+        "from_inbound_entity_to_outbound_entity": ""
+      }
+    }
+  ]
+}

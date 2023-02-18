@@ -1,0 +1,19 @@
+query {
+  dateTime {
+    year {
+      year
+      months {
+        month_of_year
+        days {
+          day_of_month
+        }
+        previous_month {
+          month_of_year
+        }
+        next_month {
+          month_of_year
+        }
+      }
+    }
+  }
+}

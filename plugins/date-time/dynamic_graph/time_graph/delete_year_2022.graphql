@@ -1,0 +1,15 @@
+mutation DeleteYear2022 {
+  dateTime {
+    year(year: 2022) {
+      delete
+    }
+  }
+}
+
+query GetAllYears {
+  dateTime {
+    year {
+      year
+    }
+  }
+}

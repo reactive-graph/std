@@ -1,0 +1,54 @@
+{
+  "namespace": "date_time",
+  "type_name": "month_of_year",
+  "description": "Month of the year",
+  "outbound": {
+    "entity_type": {
+      "namespace": "date_time",
+      "type_name": "year"
+    }
+  },
+  "inbound": {
+    "entity_type": {
+      "namespace": "date_time",
+      "type_name": "month"
+    }
+  },
+  "components": [
+  ],
+  "properties": [
+    {
+      "name": "month_of_year",
+      "description": "The nth month of the year.",
+      "data_type": "number",
+      "socket_type": "none",
+      "mutability": "immutable"
+    }
+  ],
+  "extensions": [
+    {
+      "namespace": "dynamic_graph",
+      "type_name": "field_name",
+      "extension": {
+        "from_outbound_entity_to_relation": "months_of_year",
+        "from_relation_to_outbound_entity": "year",
+        "from_inbound_entity_to_relation": "",
+        "from_relation_to_inbound_entity": "month",
+        "from_outbound_entity_to_inbound_entity": "months",
+        "from_inbound_entity_to_outbound_entity": "year"
+      }
+    },
+    {
+      "namespace": "dynamic_graph",
+      "type_name": "field_description",
+      "extension": {
+        "from_outbound_entity_to_relation": "Relates the year with the months.",
+        "from_relation_to_outbound_entity": "The year.",
+        "from_inbound_entity_to_relation": "",
+        "from_relation_to_inbound_entity": "The month.",
+        "from_outbound_entity_to_inbound_entity": "The months of this year.",
+        "from_inbound_entity_to_outbound_entity": "The year."
+      }
+    }
+  ]
+}

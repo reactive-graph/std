@@ -1,0 +1,47 @@
+{
+  "namespace": "date_time",
+  "type_name": "last_day",
+  "description": "The last day of the month",
+  "outbound": {
+    "entity_type": {
+      "namespace": "date_time",
+      "type_name": "month"
+    }
+  },
+  "inbound": {
+    "entity_type": {
+      "namespace": "date_time",
+      "type_name": "day"
+    }
+  },
+  "components": [
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "namespace": "dynamic_graph",
+      "type_name": "field_name",
+      "extension": {
+        "from_outbound_entity_to_relation": "",
+        "from_relation_to_outbound_entity": "month",
+        "from_inbound_entity_to_relation": "",
+        "from_relation_to_inbound_entity": "last_day",
+        "from_outbound_entity_to_inbound_entity": "last_day",
+        "from_inbound_entity_to_outbound_entity": ""
+      }
+    },
+    {
+      "namespace": "dynamic_graph",
+      "type_name": "field_description",
+      "extension": {
+        "from_outbound_entity_to_relation": "",
+        "from_relation_to_outbound_entity": "The month.",
+        "from_inbound_entity_to_relation": "",
+        "from_relation_to_inbound_entity": "The last day of the month.",
+        "from_outbound_entity_to_inbound_entity": "The last day of the month.",
+        "from_inbound_entity_to_outbound_entity": ""
+      }
+    }
+  ]
+}

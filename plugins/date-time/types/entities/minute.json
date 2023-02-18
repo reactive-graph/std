@@ -1,0 +1,31 @@
+{
+  "namespace": "date_time",
+  "type_name": "minute",
+  "description": "Represents a minute in the time graph",
+  "components": [
+    {
+      "namespace": "core",
+      "type_name": "labeled"
+    }
+  ],
+  "properties": [
+    {
+      "name": "minute",
+      "description": "The nth minute of the hour",
+      "data_type": "number",
+      "socket_type": "none",
+      "mutability": "immutable"
+    }
+  ],
+  "extensions": [
+    {
+      "namespace": "metadata",
+      "type_name": "dublin-core",
+      "extension": {
+        "title": "Minute",
+        "subject": "Represents a minute in the time graph",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

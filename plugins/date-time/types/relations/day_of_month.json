@@ -1,0 +1,54 @@
+{
+  "namespace": "date_time",
+  "type_name": "day_of_month",
+  "description": "Day of the month",
+  "outbound": {
+    "entity_type": {
+      "namespace": "date_time",
+      "type_name": "month"
+    }
+  },
+  "inbound": {
+    "entity_type": {
+      "namespace": "date_time",
+      "type_name": "day"
+    }
+  },
+  "components": [
+  ],
+  "properties": [
+    {
+      "name": "day_of_month",
+      "description": "The nth day of the month.",
+      "data_type": "number",
+      "socket_type": "none",
+      "mutability": "immutable"
+    }
+  ],
+  "extensions": [
+    {
+      "namespace": "dynamic_graph",
+      "type_name": "field_name",
+      "extension": {
+        "from_outbound_entity_to_relation": "days_of_month",
+        "from_relation_to_outbound_entity": "month",
+        "from_inbound_entity_to_relation": "",
+        "from_relation_to_inbound_entity": "day",
+        "from_outbound_entity_to_inbound_entity": "days",
+        "from_inbound_entity_to_outbound_entity": "month"
+      }
+    },
+    {
+      "namespace": "dynamic_graph",
+      "type_name": "field_description",
+      "extension": {
+        "from_outbound_entity_to_relation": "Relates the month with the days.",
+        "from_relation_to_outbound_entity": "The month.",
+        "from_inbound_entity_to_relation": "",
+        "from_relation_to_inbound_entity": "The day.",
+        "from_outbound_entity_to_inbound_entity": "The days of this month.",
+        "from_inbound_entity_to_outbound_entity": "The month."
+      }
+    }
+  ]
+}

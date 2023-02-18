@@ -1,0 +1,38 @@
+{
+  "namespace": "date_time",
+  "type_name": "day",
+  "description": "Represents a day in the time graph",
+  "components": [
+    {
+      "namespace": "core",
+      "type_name": "labeled"
+    }
+  ],
+  "properties": [
+    {
+      "name": "day_of_month",
+      "description": "The nth day of the month",
+      "data_type": "number",
+      "socket_type": "none",
+      "mutability": "immutable"
+    },
+    {
+      "name": "iso8601",
+      "description": "ISO8601 representation of the day",
+      "data_type": "string",
+      "socket_type": "none",
+      "mutability": "immutable"
+    }
+  ],
+  "extensions": [
+    {
+      "namespace": "metadata",
+      "type_name": "dublin-core",
+      "extension": {
+        "title": "Day",
+        "subject": "Represents a day in the time graph",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

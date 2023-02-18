@@ -7,6 +7,7 @@ extern crate query_interface;
 
 use std::sync::Arc;
 
+use inexor_rgf_core_builder as builder;
 use inexor_rgf_core_di as di;
 use inexor_rgf_core_model as model;
 use inexor_rgf_core_plugins as plugins;
@@ -24,7 +25,9 @@ use crate::plugin::DateTimePlugin;
 use crate::plugins::Plugin;
 use crate::plugins::PluginLoadingError;
 
+pub mod api;
 pub mod behaviour;
+pub mod implementation;
 pub mod plugin;
 pub mod providers;
 

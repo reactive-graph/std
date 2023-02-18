@@ -1,0 +1,32 @@
+mutation {
+  dateTime {
+    nextMonth202301_202302: createNextMonth(
+      outboundId: "8797b975-6d41-42b6-b1cd-ba6da8b9cc18"
+      inboundId: "87377611-626d-41f5-a613-5a115dba89ff"
+      instanceId: "2023-01__2023-02"
+    ) {
+      previous_month {
+        month_of_year
+        month_and_year
+      }
+      next_month {
+        month_of_year
+        month_and_year
+      }
+    }
+    nextMonth202302_202303: createNextMonth(
+      outboundId: "87377611-626d-41f5-a613-5a115dba89ff"
+      inboundId: "5f109e0b-8215-44f8-9a64-e3b6ea3cb10a"
+      instanceId: "2023-02__2023-03"
+    ) {
+      previous_month {
+        month_of_year
+        month_and_year
+      }
+      next_month {
+        month_of_year
+        month_and_year
+      }
+    }
+  }
+}

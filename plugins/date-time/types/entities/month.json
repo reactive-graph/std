@@ -1,0 +1,38 @@
+{
+  "namespace": "date_time",
+  "type_name": "month",
+  "description": "Represents a month in the time graph",
+  "components": [
+    {
+      "namespace": "core",
+      "type_name": "labeled"
+    }
+  ],
+  "properties": [
+    {
+      "name": "month_of_year",
+      "description": "The nth month of a year",
+      "data_type": "number",
+      "socket_type": "none",
+      "mutability": "immutable"
+    },
+    {
+      "name": "month_and_year",
+      "description": "String representation of the month and year",
+      "data_type": "string",
+      "socket_type": "none",
+      "mutability": "immutable"
+    }
+  ],
+  "extensions": [
+    {
+      "namespace": "metadata",
+      "type_name": "dublin-core",
+      "extension": {
+        "title": "Month",
+        "subject": "Represents a month in the time graph",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

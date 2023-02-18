@@ -1,0 +1,89 @@
+mutation {
+  dateTime {
+    moy202301: createMonthOfYear(
+      outboundId: "a922703e-5bbe-4a95-b2e6-f273c689e897"
+      inboundId: "8797b975-6d41-42b6-b1cd-ba6da8b9cc18"
+      instanceId: "2023__01"
+      month_of_year: 1
+    ) {
+      year {
+        year
+      }
+      month {
+        month_of_year
+        month_and_year
+      }
+    }
+    moy202302: createMonthOfYear(
+      outboundId: "a922703e-5bbe-4a95-b2e6-f273c689e897"
+      inboundId: "87377611-626d-41f5-a613-5a115dba89ff"
+      instanceId: "2023__02"
+      month_of_year: 2
+    ) {
+      year {
+        year
+      }
+      month {
+        month_of_year
+        month_and_year
+      }
+    }
+    moy202303: createMonthOfYear(
+      outboundId: "a922703e-5bbe-4a95-b2e6-f273c689e897"
+      inboundId: "5f109e0b-8215-44f8-9a64-e3b6ea3cb10a"
+      instanceId: "2023__03"
+      month_of_year: 3
+    ) {
+      year {
+        year
+      }
+      month {
+        month_of_year
+        month_and_year
+      }
+    }
+
+    moy202401: createMonthOfYear(
+      outboundId: "bf0287a8-d6db-4fb1-bc49-e50691fac42c"
+      inboundId: "9c3ae434-df60-4b8d-b278-0ecdddc0c95d"
+      instanceId: "2024__01"
+      month_of_year: 1
+    ) {
+      year {
+        year
+      }
+      month {
+        month_of_year
+        month_and_year
+      }
+    }
+    moy202402: createMonthOfYear(
+      outboundId: "bf0287a8-d6db-4fb1-bc49-e50691fac42c"
+      inboundId: "9fb3f9d7-e954-4e4f-8073-4ab17a0f1d64"
+      instanceId: "2024__02"
+      month_of_year: 2
+    ) {
+      year {
+        year
+      }
+      month {
+        month_of_year
+        month_and_year
+      }
+    }
+    moy202403: createMonthOfYear(
+      outboundId: "bf0287a8-d6db-4fb1-bc49-e50691fac42c"
+      inboundId: "48455a80-9857-46a9-8c75-efa7d1609aba"
+      instanceId: "2024__03"
+      month_of_year: 3
+    ) {
+      year {
+        year
+      }
+      month {
+        month_of_year
+        month_and_year
+      }
+    }
+  }
+}

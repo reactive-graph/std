@@ -1,0 +1,22 @@
+mutation {
+  dateTime {
+    day20230101: createDay(label: "/org/inexor/datetime/2023/01/01", iso8601: "2023-01-01", day_of_month: 1) {
+      id
+      label
+      iso8601
+      day_of_month
+    }
+    day20230102: createDay(label: "/org/inexor/datetime/2023/01/02", iso8601: "2023-01-02", day_of_month: 2) {
+      id
+      label
+      iso8601
+      day_of_month
+    }
+    day20230103: createDay(label: "/org/inexor/datetime/2023/01/03", iso8601: "2023-01-03", day_of_month: 3) {
+      id
+      label
+      iso8601
+      day_of_month
+    }
+  }
+}

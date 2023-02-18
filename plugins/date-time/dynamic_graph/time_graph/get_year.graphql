@@ -1,0 +1,27 @@
+query {
+  dateTime {
+    year(year: 2023) {
+      id
+      year
+      months {
+        month_of_year
+        month_and_year
+      }
+      next_year {
+        year
+      }
+      previous_year {
+        year
+      }
+      first_month {
+        month_and_year
+      }
+      last_month {
+        month_and_year
+      }
+      months {
+        month_and_year
+      }
+    }
+  }
+}

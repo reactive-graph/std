@@ -1,0 +1,19 @@
+query {
+  dateTime {
+    dayOfMonth {
+      instance_id
+      month {
+        id
+        label
+        month_of_year
+        month_and_year
+      }
+      day {
+        id
+        label
+        iso8601
+        day_of_month
+      }
+    }
+  }
+}

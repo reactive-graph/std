@@ -1,0 +1,9 @@
+query {
+  dateTime {
+    year {
+      months {
+        month_and_year
+      }
+    }
+  }
+}

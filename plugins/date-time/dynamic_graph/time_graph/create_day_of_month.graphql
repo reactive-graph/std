@@ -1,0 +1,64 @@
+mutation {
+  dateTime {
+    d20230101: createDayOfMonth(
+      outboundId: "26554085-545e-449c-b318-e3e81475c569"
+      inboundId: "9290f510-778c-4ed6-9389-27e673e281ee"
+      instanceId: "2023-01-01"
+      day_of_month: 1
+    ) {
+      key
+      month {
+        id
+        label
+        month_of_year
+        month_and_year
+      }
+      day {
+        id
+        label
+        day_of_month
+        iso8601
+      }
+    }
+    d20230102: createDayOfMonth(
+      outboundId: "26554085-545e-449c-b318-e3e81475c569"
+      inboundId: "9290f510-778c-4ed6-9389-27e673e281ee"
+      instanceId: "2023-01-01"
+      day_of_month: 1
+    ) {
+      key
+      month {
+        id
+        label
+        month_of_year
+        month_and_year
+      }
+      day {
+        id
+        label
+        day_of_month
+        iso8601
+      }
+    }
+    d20230101: createDayOfMonth(
+      outboundId: "26554085-545e-449c-b318-e3e81475c569"
+      inboundId: "9290f510-778c-4ed6-9389-27e673e281ee"
+      instanceId: "2023-01-01"
+      day_of_month: 1
+    ) {
+      key
+      month {
+        id
+        label
+        month_of_year
+        month_and_year
+      }
+      day {
+        id
+        label
+        day_of_month
+        iso8601
+      }
+    }
+  }
+}

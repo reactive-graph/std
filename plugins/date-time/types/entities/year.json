@@ -1,0 +1,38 @@
+{
+  "namespace": "date_time",
+  "type_name": "year",
+  "description": "Represents a year in the time graph",
+  "components": [
+    {
+      "namespace": "core",
+      "type_name": "labeled"
+    }
+  ],
+  "properties": [
+    {
+      "name": "year",
+      "description": "A year",
+      "data_type": "number",
+      "socket_type": "none",
+      "mutability": "immutable"
+    },
+    {
+      "name": "leap",
+      "description": "True, if the year is a leap year",
+      "data_type": "bool",
+      "socket_type": "none",
+      "mutability": "immutable"
+    }
+  ],
+  "extensions": [
+    {
+      "namespace": "metadata",
+      "type_name": "dublin-core",
+      "extension": {
+        "title": "Year",
+        "subject": "Represents a year in the time graph",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

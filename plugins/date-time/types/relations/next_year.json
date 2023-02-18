@@ -1,0 +1,47 @@
+{
+  "namespace": "date_time",
+  "type_name": "next_year",
+  "description": "The next year.",
+  "outbound": {
+    "entity_type": {
+      "namespace": "date_time",
+      "type_name": "year"
+    }
+  },
+  "inbound": {
+    "entity_type": {
+      "namespace": "date_time",
+      "type_name": "year"
+    }
+  },
+  "components": [
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "namespace": "dynamic_graph",
+      "type_name": "field_name",
+      "extension": {
+        "from_outbound_entity_to_relation": "",
+        "from_relation_to_outbound_entity": "previous_year",
+        "from_inbound_entity_to_relation": "",
+        "from_relation_to_inbound_entity": "next_year",
+        "from_outbound_entity_to_inbound_entity": "next_year",
+        "from_inbound_entity_to_outbound_entity": "previous_year"
+      }
+    },
+    {
+      "namespace": "dynamic_graph",
+      "type_name": "field_description",
+      "extension": {
+        "from_outbound_entity_to_relation": "",
+        "from_relation_to_outbound_entity": "The previous year.",
+        "from_inbound_entity_to_relation": "",
+        "from_relation_to_inbound_entity": "The next year.",
+        "from_outbound_entity_to_inbound_entity": "The next year.",
+        "from_inbound_entity_to_outbound_entity": "The previous year."
+      }
+    }
+  ]
+}
