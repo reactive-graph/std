@@ -19,6 +19,8 @@ members = [
     "plugins/date-time/crates/plugin",
     "plugins/file/crates/model",
     "plugins/file/crates/plugin",
+    "plugins/flow/crates/model",
+    "plugins/flow/crates/plugin",
     "plugins/git/crates/model",
     "plugins/git/crates/plugin",
     "plugins/graphql-client",
