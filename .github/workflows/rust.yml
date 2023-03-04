@@ -72,6 +72,7 @@ jobs:
           cmd: --cwd plugins/graphql-schema-visualization/web install
       - uses: actions-rs/tarpaulin@v0.1
         with:
+          version: 0.25.1
           args: --all-features
       # Note: closed-source code needs to provide a token,
       # but open source code does not.
