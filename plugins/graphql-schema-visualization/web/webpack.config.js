@@ -63,7 +63,7 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: './node_modules/graphql-voyager/dist/voyager.worker.js',
+          from: './node_modules/@guigiani/graphql-voyager/dist/voyager.worker.js',
         },
         {
           from: './assets',
