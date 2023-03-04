@@ -1,8 +1,8 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="yarn install graphql-client" type="js.build_tools.npm">
-    <package-json value="$PROJECT_DIR$/plugins/inexor-rgf-plugin-graphql-client/web/package.json" />
+    <package-json value="$PROJECT_DIR$/plugins/graphql-client/web/package.json" />
     <command value="install" />
-    <node-interpreter value="$USER_HOME$/.nvm/versions/node/v14.17.6/bin/node" />
+    <node-interpreter value="$USER_HOME$/.nvm/versions/node/v16.14.0/bin/node" />
     <package-manager value="yarn" />
     <envs />
     <method v="2" />
