@@ -425,6 +425,13 @@ type MutationEntityInstances {
   to other properties.
   """
   tick(id: UUID!): EntityInstance!
+  "Triggers the entity instance with the given id."
+  trigger(
+    "Triggers the entity instance with the given id."
+    id: UUID,
+    "Triggers the entity instance with the given label."
+    label: String
+  ): EntityInstance!
   "Updates the properties of the entity instance with the given id."
   update(
     "Adds the given components."
@@ -690,6 +697,7 @@ type Plugin {
   path: String!
   pluginApiVersion: String!
   rustcVersion: String!
+  shortName: String!
   state: String!
   stem: String!
   unsatisfiedDependencies: [Plugin!]!
