@@ -1,4 +1,6 @@
 {
+  "name": "inexor-rgf-plugin-graphql-client",
+  "license": "MIT",
   "scripts": {
     "build": "webpack",
     "start:dev": "webpack-dev-server --mode development --hot"
