@@ -4,11 +4,13 @@
   "properties": [
     {
       "name": "lhs",
+      "description": "The left hand side of the string operation",
       "data_type": "string",
       "socket_type": "input"
     },
     {
       "name": "result",
+      "description": "The result of the string operation",
       "data_type": "bool",
       "socket_type": "output",
       "mutability": "immutable"

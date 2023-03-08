@@ -5,11 +5,13 @@
   "properties": [
     {
       "name": "lhs",
+      "description": "The left hand side of the arithmetic operation",
       "data_type": "number",
       "socket_type": "input"
     },
     {
       "name": "result",
+      "description": "The result of the arithmetic operation",
       "data_type": "number",
       "socket_type": "output",
       "mutability": "immutable"
