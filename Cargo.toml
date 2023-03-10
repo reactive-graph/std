@@ -57,7 +57,7 @@ members = [
 ]
 
 [workspace.package]
-version = "0.8.0"
+version = "0.9.0"
 authors = ["Andreas Schaeffer <hanack@nooblounge.net>"]
 edition = "2021"
 license = "MIT"
@@ -105,12 +105,12 @@ url = "2.3"
 uuid = { version = "1.2", features = ["serde", "v4", "v5"] }
 voca_rs = "1"
 
-inexor-rgf-core-di = { version = "2.0", features = ["async"], git = "https://github.com/inexorgame/inexor-rgf-application.git" }
-inexor-rgf-core-frp = { git = "https://github.com/inexorgame/inexor-rgf-application.git" }
-inexor-rgf-core-model = { git = "https://github.com/inexorgame/inexor-rgf-application.git" }
-inexor-rgf-core-reactive = { git = "https://github.com/inexorgame/inexor-rgf-application.git" }
-inexor-rgf-core-plugins = { git = "https://github.com/inexorgame/inexor-rgf-application.git" }
-inexor-rgf-core-builder = { git = "https://github.com/inexorgame/inexor-rgf-application.git" }
+inexor-rgf-core-di = { version = "0.9.0", features = ["async"], git = "https://github.com/inexorgame/inexor-rgf-application.git" }
+inexor-rgf-core-frp = { version = "0.9.0", git = "https://github.com/inexorgame/inexor-rgf-application.git" }
+inexor-rgf-core-model = { version = "0.9.0", git = "https://github.com/inexorgame/inexor-rgf-application.git" }
+inexor-rgf-core-reactive = { version = "0.9.0", git = "https://github.com/inexorgame/inexor-rgf-application.git" }
+inexor-rgf-core-plugins = { version = "0.9.0", git = "https://github.com/inexorgame/inexor-rgf-application.git" }
+inexor-rgf-core-builder = { version = "0.9.0", git = "https://github.com/inexorgame/inexor-rgf-application.git" }
 
 [profile.dev]
 opt-level = 0
