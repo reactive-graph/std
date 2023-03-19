@@ -7,6 +7,7 @@ extern crate query_interface;
 
 use std::sync::Arc;
 
+use inexor_rgf_core_config as config;
 use inexor_rgf_core_di as di;
 use inexor_rgf_core_plugins as plugins;
 use log::error;

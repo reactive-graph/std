@@ -36,7 +36,7 @@ impl GraphQlClientWebResourceProviderImpl {
 impl GraphQlClientWebResourceProvider for GraphQlClientWebResourceProviderImpl {}
 
 impl WebResourceProvider for GraphQlClientWebResourceProviderImpl {
-    fn get_base_path(&self) -> String {
+    fn get_context_path(&self) -> String {
         String::from("graphql-client")
     }
 

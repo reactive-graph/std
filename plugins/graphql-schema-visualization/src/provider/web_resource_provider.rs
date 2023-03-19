@@ -36,7 +36,7 @@ impl GraphQlSchemaVisualizationWebResourceProviderImpl {
 impl GraphQlSchemaVisualizationWebResourceProvider for GraphQlSchemaVisualizationWebResourceProviderImpl {}
 
 impl WebResourceProvider for GraphQlSchemaVisualizationWebResourceProviderImpl {
-    fn get_base_path(&self) -> String {
+    fn get_context_path(&self) -> String {
         String::from("graphql-schema-visualization")
     }
 

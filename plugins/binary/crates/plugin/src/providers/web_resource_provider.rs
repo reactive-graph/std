@@ -187,7 +187,7 @@ impl BinaryWebResourceProvider for BinaryWebResourceProviderImpl {
 }
 
 impl WebResourceProvider for BinaryWebResourceProviderImpl {
-    fn get_base_path(&self) -> String {
+    fn get_context_path(&self) -> String {
         String::from("binary")
     }
 

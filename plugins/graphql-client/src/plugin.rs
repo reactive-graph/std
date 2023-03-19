@@ -4,6 +4,7 @@ use std::sync::RwLock;
 use async_trait::async_trait;
 use log::info;
 
+use crate::config::GraphQLServerConfig;
 use crate::di::*;
 use crate::plugins::plugin_context::PluginContext;
 use crate::plugins::web_resource_provider;
@@ -39,10 +40,23 @@ interfaces!(GraphQlClientPluginImpl: dyn Plugin);
 #[provides]
 impl GraphQlClientPlugin for GraphQlClientPluginImpl {}
 
+impl GraphQlClientPluginImpl {
+    fn get_graphql_server_config(&self) -> GraphQLServerConfig {
+        let guard = self.context.0.read().unwrap();
+        if let Some(context) = guard.clone() {
+            return context.get_config_manager().get_graphql_server_config();
+        }
+        GraphQLServerConfig::default()
+    }
+}
+
+#[async_trait]
 impl Plugin for GraphQlClientPluginImpl {
-    fn activate(&self) -> Result<(), PluginActivationError> {
-        let base_path = self.web_resource_provider.get_base_path().clone();
-        info!("\n    http://localhost:31415/{base_path}/graph\n    http://localhost:31415/{base_path}/dynamic-graph");
+    async fn activate(&self) -> Result<(), PluginActivationError> {
+        let config = self.get_graphql_server_config();
+        let context_path = self.web_resource_provider.get_context_path().clone();
+        let url = config.url();
+        info!("\n    {url}/{context_path}/graph\n    {url}/{context_path}/dynamic-graph",);
         Ok(())
     }
 

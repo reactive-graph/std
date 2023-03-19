@@ -4,6 +4,7 @@ use std::sync::RwLock;
 use async_trait::async_trait;
 use log::info;
 
+use crate::config::GraphQLServerConfig;
 use crate::di::*;
 use crate::plugins::plugin_context::PluginContext;
 use crate::plugins::web_resource_provider;
@@ -39,17 +40,30 @@ interfaces!(GraphQlSchemaVisualizationPluginImpl: dyn Plugin);
 #[provides]
 impl GraphQlSchemaVisualizationPlugin for GraphQlSchemaVisualizationPluginImpl {}
 
+impl GraphQlSchemaVisualizationPluginImpl {
+    fn get_graphql_server_config(&self) -> GraphQLServerConfig {
+        let guard = self.context.0.read().unwrap();
+        if let Some(context) = guard.clone() {
+            return context.get_config_manager().get_graphql_server_config();
+        }
+        GraphQLServerConfig::default()
+    }
+}
+
+#[async_trait]
 impl Plugin for GraphQlSchemaVisualizationPluginImpl {
-    fn activate(&self) -> Result<(), PluginActivationError> {
-        let base_path = self.web_resource_provider.get_base_path().clone();
+    async fn activate(&self) -> Result<(), PluginActivationError> {
+        let config = self.get_graphql_server_config();
+        let context_path = self.web_resource_provider.get_context_path().clone();
+        let url = config.url();
         info!(
             r"
-    http://localhost:31415/{base_path}/graph/query
-    http://localhost:31415/{base_path}/graph/mutation
-    http://localhost:31415/{base_path}/graph/subscription
-    http://localhost:31415/{base_path}/dynamic-graph/query
-    http://localhost:31415/{base_path}/dynamic-graph/mutation
-    http://localhost:31415/{base_path}/dynamic-graph/subscription
+    {url}/{context_path}/graph/query
+    {url}/{context_path}/graph/mutation
+    {url}/{context_path}/graph/subscription
+    {url}/{context_path}/dynamic-graph/query
+    {url}/{context_path}/dynamic-graph/mutation
+    {url}/{context_path}/dynamic-graph/subscription
         "
         );
         Ok(())
