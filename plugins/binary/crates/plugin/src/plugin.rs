@@ -58,8 +58,9 @@ interfaces!(BinaryPluginImpl: dyn Plugin);
 #[provides]
 impl BinaryPlugin for BinaryPluginImpl {}
 
+#[async_trait]
 impl Plugin for BinaryPluginImpl {
-    fn activate(&self) -> Result<(), PluginActivationError> {
+    async fn activate(&self) -> Result<(), PluginActivationError> {
         let guard = self.context.0.read().unwrap();
         if let Some(context) = guard.clone() {
             let entity_component_behaviour_registry = context.get_entity_component_behaviour_registry();
@@ -75,7 +76,7 @@ impl Plugin for BinaryPluginImpl {
         Ok(())
     }
 
-    fn deactivate(&self) -> Result<(), PluginDeactivationError> {
+    async fn deactivate(&self) -> Result<(), PluginDeactivationError> {
         let guard = self.context.0.read().unwrap();
         if let Some(context) = guard.clone() {
             let entity_component_behaviour_registry = context.get_entity_component_behaviour_registry();

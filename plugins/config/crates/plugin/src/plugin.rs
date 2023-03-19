@@ -1,9 +1,9 @@
 use std::sync::Arc;
 use std::sync::RwLock;
 
-use crate::behaviour::component::config_file::ConfigFileFactory;
 use async_trait::async_trait;
 
+use crate::behaviour::component::config_file::ConfigFileFactory;
 use crate::di::*;
 use crate::model_config::BEHAVIOUR_CONFIG_FILE;
 use crate::model_config::COMPONENT_BEHAVIOUR_CONFIG_FILE;
@@ -52,8 +52,9 @@ interfaces!(ConfigPluginImpl: dyn Plugin);
 #[provides]
 impl ConfigPlugin for ConfigPluginImpl {}
 
+#[async_trait]
 impl Plugin for ConfigPluginImpl {
-    fn activate(&self) -> Result<(), PluginActivationError> {
+    async fn activate(&self) -> Result<(), PluginActivationError> {
         let guard = self.context.0.read().unwrap();
         if let Some(context) = guard.clone() {
             let entity_component_behaviour_registry = context.get_entity_component_behaviour_registry();
@@ -64,7 +65,7 @@ impl Plugin for ConfigPluginImpl {
         }
         Ok(())
     }
-    fn deactivate(&self) -> Result<(), PluginDeactivationError> {
+    async fn deactivate(&self) -> Result<(), PluginDeactivationError> {
         let guard = self.context.0.read().unwrap();
         if let Some(context) = guard.clone() {
             let entity_component_behaviour_registry = context.get_entity_component_behaviour_registry();

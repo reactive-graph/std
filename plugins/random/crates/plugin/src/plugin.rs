@@ -1,3 +1,8 @@
+use std::sync::Arc;
+use std::sync::RwLock;
+
+use async_trait::async_trait;
+
 use crate::behaviour::entity::random_bool::RandomBoolFactory;
 use crate::behaviour::entity::random_f64::RandomF64Factory;
 use crate::behaviour::entity::random_f64_pseudo::RandomF64PseudoFactory;
@@ -10,6 +15,7 @@ use crate::behaviour::entity::random_u64::RandomU64Factory;
 use crate::behaviour::entity::random_u64_pseudo::RandomU64PseudoFactory;
 use crate::behaviour::entity::random_u64_range::RandomU64RangeFactory;
 use crate::behaviour::entity::random_uuid::RandomUuidFactory;
+use crate::di::*;
 use crate::model_random::BEHAVIOUR_RANDOM_BOOL;
 use crate::model_random::BEHAVIOUR_RANDOM_F64;
 use crate::model_random::BEHAVIOUR_RANDOM_F64_PSEUDO;
@@ -35,14 +41,10 @@ use crate::model_random::ENTITY_BEHAVIOUR_RANDOM_U64_PSEUDO;
 use crate::model_random::ENTITY_BEHAVIOUR_RANDOM_U64_RANGE;
 use crate::model_random::ENTITY_BEHAVIOUR_RANDOM_UUID;
 use crate::plugins::component_provider;
-use crate::plugins::ComponentProvider;
-use crate::plugins::ComponentProviderError;
-use std::sync::Arc;
-use std::sync::RwLock;
-
-use crate::di::*;
 use crate::plugins::entity_type_provider;
 use crate::plugins::plugin_context::PluginContext;
+use crate::plugins::ComponentProvider;
+use crate::plugins::ComponentProviderError;
 use crate::plugins::EntityTypeProvider;
 use crate::plugins::EntityTypeProviderError;
 use crate::plugins::Plugin;
@@ -78,8 +80,9 @@ interfaces!(RandomPluginImpl: dyn Plugin);
 #[provides]
 impl RandomPlugin for RandomPluginImpl {}
 
+#[async_trait]
 impl Plugin for RandomPluginImpl {
-    fn activate(&self) -> Result<(), PluginActivationError> {
+    async fn activate(&self) -> Result<(), PluginActivationError> {
         let guard = self.context.0.read().unwrap();
         if let Some(context) = guard.clone() {
             let entity_behaviour_registry = context.get_entity_behaviour_registry();
@@ -135,7 +138,7 @@ impl Plugin for RandomPluginImpl {
         Ok(())
     }
 
-    fn deactivate(&self) -> Result<(), PluginDeactivationError> {
+    async fn deactivate(&self) -> Result<(), PluginDeactivationError> {
         let guard = self.context.0.read().unwrap();
         if let Some(context) = guard.clone() {
             let entity_behaviour_registry = context.get_entity_behaviour_registry();

@@ -42,13 +42,14 @@ interfaces!(FilePluginImpl: dyn Plugin);
 #[provides]
 impl FilePlugin for FilePluginImpl {}
 
+#[async_trait]
 impl Plugin for FilePluginImpl {
-    fn activate(&self) -> Result<(), PluginActivationError> {
+    async fn activate(&self) -> Result<(), PluginActivationError> {
         self.runtime_manager.init();
         Ok(())
     }
 
-    fn deactivate(&self) -> Result<(), PluginDeactivationError> {
+    async fn deactivate(&self) -> Result<(), PluginDeactivationError> {
         self.runtime_manager.shutdown();
         Ok(())
     }

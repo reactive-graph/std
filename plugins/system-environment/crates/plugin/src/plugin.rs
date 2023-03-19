@@ -3,8 +3,9 @@ use std::sync::Arc;
 use std::sync::RwLock;
 
 use serde_json::json;
-
 use uuid::Uuid;
+
+use async_trait::async_trait;
 
 use crate::builder::EntityInstanceBuilder;
 use crate::di::*;
@@ -41,11 +42,13 @@ impl SystemEnvironmentPluginImpl {}
 
 interfaces!(SystemEnvironmentPluginImpl: dyn Plugin);
 
+#[async_trait]
 #[provides]
 impl SystemEnvironmentPlugin for SystemEnvironmentPluginImpl {}
 
+#[async_trait]
 impl Plugin for SystemEnvironmentPluginImpl {
-    fn activate(&self) -> Result<(), PluginActivationError> {
+    async fn activate(&self) -> Result<(), PluginActivationError> {
         let guard = self.context.0.read().unwrap();
         if let Some(context) = guard.clone() {
             let entity_instance_manager = context.get_entity_instance_manager();

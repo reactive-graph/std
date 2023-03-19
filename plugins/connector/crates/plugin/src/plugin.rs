@@ -53,8 +53,9 @@ interfaces!(ConnectorPluginImpl: dyn Plugin);
 #[provides]
 impl ConnectorPlugin for ConnectorPluginImpl {}
 
+#[async_trait]
 impl Plugin for ConnectorPluginImpl {
-    fn activate(&self) -> Result<(), PluginActivationError> {
+    async fn activate(&self) -> Result<(), PluginActivationError> {
         let guard = self.context.0.read().unwrap();
         if let Some(context) = guard.clone() {
             let relation_component_behaviour_registry = context.get_relation_component_behaviour_registry();
@@ -75,7 +76,7 @@ impl Plugin for ConnectorPluginImpl {
         Ok(())
     }
 
-    fn deactivate(&self) -> Result<(), PluginDeactivationError> {
+    async fn deactivate(&self) -> Result<(), PluginDeactivationError> {
         let guard = self.context.0.read().unwrap();
         if let Some(context) = guard.clone() {
             let relation_component_behaviour_registry = context.get_relation_component_behaviour_registry();

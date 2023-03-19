@@ -1,8 +1,10 @@
-use crate::behaviour::component::http::HttpFactory;
-use crate::behaviour::component::json_rpc::JsonRpcFactory;
 use std::sync::Arc;
 use std::sync::RwLock;
 
+use async_trait::async_trait;
+
+use crate::behaviour::component::http::HttpFactory;
+use crate::behaviour::component::json_rpc::JsonRpcFactory;
 use crate::di::*;
 use crate::model_http::BEHAVIOUR_HTTP;
 use crate::model_http::BEHAVIOUR_JSON_RPC;
@@ -48,10 +50,12 @@ impl HttpPluginImpl {}
 interfaces!(HttpPluginImpl: dyn Plugin);
 
 #[provides]
+#[async_trait]
 impl HttpPlugin for HttpPluginImpl {}
 
+#[async_trait]
 impl Plugin for HttpPluginImpl {
-    fn activate(&self) -> Result<(), PluginActivationError> {
+    async fn activate(&self) -> Result<(), PluginActivationError> {
         let guard = self.context.0.read().unwrap();
         if let Some(context) = guard.clone() {
             let entity_component_behaviour_registry = context.get_entity_component_behaviour_registry();
@@ -66,7 +70,7 @@ impl Plugin for HttpPluginImpl {
         Ok(())
     }
 
-    fn deactivate(&self) -> Result<(), PluginDeactivationError> {
+    async fn deactivate(&self) -> Result<(), PluginDeactivationError> {
         let guard = self.context.0.read().unwrap();
         if let Some(context) = guard.clone() {
             let entity_component_behaviour_registry = context.get_entity_component_behaviour_registry();

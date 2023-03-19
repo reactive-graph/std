@@ -1,6 +1,8 @@
 use std::sync::Arc;
 use std::sync::RwLock;
 
+use async_trait::async_trait;
+
 use crate::behaviour::component::load_json::LoadJsonFactory;
 use crate::behaviour::component::save_json::SaveJsonFactory;
 use crate::behaviour::entity::array_contains::ArrayContainsFactory;
@@ -74,11 +76,13 @@ impl JsonPluginImpl {}
 
 interfaces!(JsonPluginImpl: dyn Plugin);
 
+#[async_trait]
 #[provides]
 impl JsonPlugin for JsonPluginImpl {}
 
+#[async_trait]
 impl Plugin for JsonPluginImpl {
-    fn activate(&self) -> Result<(), PluginActivationError> {
+    async fn activate(&self) -> Result<(), PluginActivationError> {
         let guard = self.context.0.read().unwrap();
         if let Some(context) = guard.clone() {
             let entity_behaviour_registry = context.get_entity_behaviour_registry();
@@ -135,7 +139,7 @@ impl Plugin for JsonPluginImpl {
         Ok(())
     }
 
-    fn deactivate(&self) -> Result<(), PluginDeactivationError> {
+    async fn deactivate(&self) -> Result<(), PluginDeactivationError> {
         let guard = self.context.0.read().unwrap();
         if let Some(context) = guard.clone() {
             let entity_behaviour_registry = context.get_entity_behaviour_registry();

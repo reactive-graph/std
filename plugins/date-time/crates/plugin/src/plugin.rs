@@ -1,9 +1,9 @@
 use std::sync::Arc;
 use std::sync::RwLock;
 
-use crate::api::TimeGraph;
 use async_trait::async_trait;
 
+use crate::api::TimeGraph;
 use crate::behaviour::UtcNowFactory;
 use crate::behaviour::UtcTimestampFactory;
 use crate::di::*;
@@ -53,24 +53,27 @@ interfaces!(DateTimePluginImpl: dyn Plugin);
 #[provides]
 impl DateTimePlugin for DateTimePluginImpl {}
 
+#[async_trait]
 impl Plugin for DateTimePluginImpl {
-    fn activate(&self) -> Result<(), PluginActivationError> {
-        let guard = self.context.0.read().unwrap();
-        if let Some(context) = guard.clone() {
-            let entity_behaviour_registry = context.get_entity_behaviour_registry();
-            // Utc Timestamp
-            let factory = Arc::new(UtcTimestampFactory::new(BEHAVIOUR_UTC_TIMESTAMP.clone()));
-            entity_behaviour_registry.register(ENTITY_BEHAVIOUR_UTC_TIMESTAMP.clone(), factory);
-            // Utc Now
-            let factory = Arc::new(UtcNowFactory::new(BEHAVIOUR_UTC_NOW.clone()));
-            entity_behaviour_registry.register(ENTITY_BEHAVIOUR_UTC_NOW.clone(), factory);
+    async fn activate(&self) -> Result<(), PluginActivationError> {
+        {
+            let guard = self.context.0.read().unwrap();
+            if let Some(context) = guard.clone() {
+                let entity_behaviour_registry = context.get_entity_behaviour_registry();
+                // Utc Timestamp
+                let factory = Arc::new(UtcTimestampFactory::new(BEHAVIOUR_UTC_TIMESTAMP.clone()));
+                entity_behaviour_registry.register(ENTITY_BEHAVIOUR_UTC_TIMESTAMP.clone(), factory);
+                // Utc Now
+                let factory = Arc::new(UtcNowFactory::new(BEHAVIOUR_UTC_NOW.clone()));
+                entity_behaviour_registry.register(ENTITY_BEHAVIOUR_UTC_NOW.clone(), factory);
+            }
         }
-        self.time_graph.init();
+        self.time_graph.init().await;
         Ok(())
     }
 
-    fn deactivate(&self) -> Result<(), PluginDeactivationError> {
-        self.time_graph.shutdown();
+    async fn deactivate(&self) -> Result<(), PluginDeactivationError> {
+        self.time_graph.shutdown().await;
         let guard = self.context.0.read().unwrap();
         if let Some(context) = guard.clone() {
             let entity_behaviour_registry = context.get_entity_behaviour_registry();

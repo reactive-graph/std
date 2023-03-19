@@ -1,6 +1,8 @@
 use std::sync::Arc;
 use std::sync::RwLock;
 
+use async_trait::async_trait;
+
 use crate::behaviour::entity::string_bool_operation::StringBoolOperationFactory;
 use crate::behaviour::entity::string_bool_operation::STRING_BOOL_OPERATIONS;
 use crate::behaviour::entity::string_comparison::function::STRING_COMPARISONS;
@@ -56,8 +58,9 @@ interfaces!(StringPluginImpl: dyn Plugin);
 #[provides]
 impl StringPlugin for StringPluginImpl {}
 
+#[async_trait]
 impl Plugin for StringPluginImpl {
-    fn activate(&self) -> Result<(), PluginActivationError> {
+    async fn activate(&self) -> Result<(), PluginActivationError> {
         let guard = self.context.0.read().unwrap();
         if let Some(context) = guard.clone() {
             let entity_behaviour_registry = context.get_entity_behaviour_registry();
@@ -103,7 +106,7 @@ impl Plugin for StringPluginImpl {
         Ok(())
     }
 
-    fn deactivate(&self) -> Result<(), PluginDeactivationError> {
+    async fn deactivate(&self) -> Result<(), PluginDeactivationError> {
         let guard = self.context.0.read().unwrap();
         if let Some(context) = guard.clone() {
             let entity_behaviour_registry = context.get_entity_behaviour_registry();
