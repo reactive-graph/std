@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Install Plugin Color" type="CargoCommandRunConfiguration" factoryName="Cargo Command" folderName="Install">
-    <option name="command" value="post build --package=inexor-rgf-plugin-color" />
+  <configuration default="false" name="Install Plugin File" type="CargoCommandRunConfiguration" factoryName="Cargo Command" folderName="Install">
+    <option name="command" value="post build --package=inexor-rgf-plugin-file" />
     <option name="workingDirectory" value="file://$PROJECT_DIR$" />
     <option name="emulateTerminal" value="false" />
     <option name="channel" value="NIGHTLY" />
