@@ -5,12 +5,14 @@
   "properties": [
     {
       "name": "state",
+      "description": "A state of type array",
       "data_type": "array",
       "socket_type": "none",
       "mutability": "immutable"
     },
     {
       "name": "set_state",
+      "description": "Sets the state if and only if the new state is different",
       "data_type": "array",
       "socket_type": "input"
     }

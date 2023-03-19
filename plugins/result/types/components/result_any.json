@@ -5,7 +5,7 @@
   "properties": [
     {
       "name": "result",
-      "description": "The result",
+      "description": "A result which can be of any type",
       "data_type": "any",
       "socket_type": "output",
       "mutability": "immutable"

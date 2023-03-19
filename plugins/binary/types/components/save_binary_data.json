@@ -5,6 +5,7 @@
   "properties": [
     {
       "name": "data_url",
+      "description": "The data URL contains data items. The URLs are of the form: data:[<mediatype>][;base64],<data> See: https://www.rfc-editor.org/rfc/rfc2397",
       "data_type": "string",
       "socket_type": "input"
     }

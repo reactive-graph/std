@@ -5,6 +5,7 @@
   "properties": [
     {
       "name": "value",
+      "description": "A value of type array",
       "data_type": "array",
       "socket_type": "output"
     }

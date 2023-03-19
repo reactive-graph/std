@@ -5,6 +5,7 @@
   "properties": [
     {
       "name": "value",
+      "description": "A value of type string",
       "data_type": "string",
       "socket_type": "output"
     }

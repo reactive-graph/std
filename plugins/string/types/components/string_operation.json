@@ -4,11 +4,23 @@
   "properties": [
     {
       "name": "lhs",
+      "description": "The left hand side of the string operation",
       "data_type": "string",
-      "socket_type": "input"
+      "socket_type": "input",
+      "extensions": [
+        {
+          "namespace": "test",
+          "type_name": "test",
+          "description": "test test",
+          "extension": {
+            "hello": "World"
+          }
+        }
+      ]
     },
     {
       "name": "result",
+      "description": "The result of the string operation",
       "data_type": "string",
       "socket_type": "output",
       "mutability": "immutable"

@@ -5,7 +5,7 @@
   "properties": [
     {
       "name": "result",
-      "description": "The result",
+      "description": "A result of type array",
       "data_type": "array",
       "socket_type": "output",
       "mutability": "immutable"

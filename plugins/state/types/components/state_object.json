@@ -5,12 +5,14 @@
   "properties": [
     {
       "name": "state",
+      "description": "A state of type object",
       "data_type": "object",
       "socket_type": "none",
       "mutability": "immutable"
     },
     {
       "name": "set_state",
+      "description": "Sets the state if and only if the new state is different",
       "data_type": "object",
       "socket_type": "input"
     }

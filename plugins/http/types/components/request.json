@@ -5,13 +5,13 @@
   "properties": [
     {
       "name": "method",
-      "description": "The HTTP request method",
+      "description": "HTTP defines a set of request methods to indicate the desired action to be performed for a given resource.",
       "data_type": "string",
       "socket_type": "input"
     },
     {
       "name": "request_headers",
-      "description": "The HTTP request headers",
+      "description": "A request header is an HTTP header that can be used in an HTTP request to provide information about the request context, so that the server can tailor the response. For example, the Accept-* headers indicate the allowed and preferred formats of the response. Other headers can be used to supply authentication credentials (e.g. Authorization), to control caching, or to get information about the user agent or referrer, etc.",
       "data_type": "object",
       "socket_type": "input"
     },
