@@ -5,6 +5,7 @@
   "properties": [
     {
       "name": "seed",
+      "description": "The random number generator needs a number to start with (a seed value), to be able to generate a random number",
       "data_type": "number",
       "socket_type": "input"
     }
