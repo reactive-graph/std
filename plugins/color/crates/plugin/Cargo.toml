@@ -9,6 +9,7 @@ license.workspace = true
 [dependencies]
 angle = { workspace = true }
 angular-units = { workspace = true }
+async-trait = { workspace = true }
 log = { workspace = true, features = ["std", "serde"] }
 log4rs = { workspace = true, features = ["console_appender", "file_appender", "toml_format"]}
 paste = { workspace = true }

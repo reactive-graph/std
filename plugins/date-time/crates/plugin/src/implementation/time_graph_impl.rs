@@ -1,7 +1,9 @@
 use std::sync::Arc;
 use std::sync::RwLock;
+use std::time::Instant;
 
 use async_trait::async_trait;
+use log::info;
 use log::trace;
 use serde_json::json;
 
@@ -34,11 +36,11 @@ use crate::model_date_time::RELATION_TYPE_NEXT_YEAR;
 use crate::plugins::PluginContext;
 
 #[wrapper]
-pub struct PluginContextContainer(RwLock<Option<Arc<dyn PluginContext>>>);
+pub struct PluginContextContainer(Arc<RwLock<Option<Arc<dyn PluginContext>>>>);
 
 #[provides]
 fn create_empty_plugin_context_container() -> PluginContextContainer {
-    PluginContextContainer(RwLock::new(None))
+    PluginContextContainer(Arc::new(RwLock::new(None)))
 }
 
 #[component]
@@ -47,22 +49,29 @@ pub struct TimeGraphImpl {
 }
 
 impl TimeGraphImpl {
-    fn create_time_graph(&self) {
-        let guard = self.context.0.read().unwrap();
-        if let Some(context) = guard.clone() {
-            create_years(&context);
-        }
+    async fn create_time_graph(&self) {
+        let context = self.context.0.clone();
+        async_std::task::spawn(async move {
+            info!("Start generating time graph");
+            let start = Instant::now();
+            let guard = context.read().unwrap();
+            if let Some(context) = guard.clone() {
+                create_years(&context);
+                let duration = start.elapsed();
+                info!("Successfully generated time graph in {:?}", duration);
+            }
+        });
     }
 }
 
 #[async_trait]
 #[provides]
 impl TimeGraph for TimeGraphImpl {
-    fn init(&self) {
-        self.create_time_graph();
+    async fn init(&self) {
+        self.create_time_graph().await;
     }
 
-    fn shutdown(&self) {}
+    async fn shutdown(&self) {}
 
     fn set_context(&self, context: Arc<dyn PluginContext>) {
         self.context.0.write().unwrap().replace(context.clone());

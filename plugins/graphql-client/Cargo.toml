@@ -20,6 +20,7 @@ serde = { workspace = true, features = [ "derive" ] }
 serde_json = { workspace = true }
 uuid = { workspace = true, features = ["serde", "v4"] }
 
+inexor-rgf-core-config = { workspace = true }
 inexor-rgf-core-di = { workspace = true, features = ["async"] }
 inexor-rgf-core-frp = { workspace = true }
 inexor-rgf-core-model = { workspace = true }
