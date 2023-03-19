@@ -99,7 +99,7 @@ strum = { version = "0.24", features = ["derive"] }
 strum_macros = "0.24"
 tera = "1"
 tokio = { version = "1", features =  ["macros", "time", "rt", "rt-multi-thread"] }
-toml = "0.5"
+toml = "0.7"
 ureq = { version = "2.4", features = ["json"] }
 url = "2.3"
 uuid = { version = "1.2", features = ["serde", "v4", "v5"] }
