@@ -41,6 +41,9 @@ inexor-rgf-model-git = { path = "../../crates/model" }
 inexor-rgf-model-http = { path = "../../../http/crates/model" }
 inexor-rgf-model-trigger = { path = "../../../trigger/crates/model" }
 
+[target.'cfg(target = "armv7-unknown-linux-gnueabihf")'.dependencies]
+openssl = { version = "0.10", features = ["vendored"] }
+
 [dev-dependencies]
 inexor-rgf-core-builder = { workspace = true }
 
