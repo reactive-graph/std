@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Inexor - Reactive Graph Flow - GraphQL Schema Visualization</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/png" href="assets/image/favicon.png">
+        <link rel="stylesheet" href="assets/css/voyager.css" />
+        <style>
+            .loading-screen {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                z-index: 10;
+                background: black;
+                color: white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .loading-screen.styled {
+                display: flex;
+            }
+
+            .loading-screen .loading-screen-logo-container {
+                margin-bottom: 10px;
+                max-width: 500px;
+            }
+
+            .loading-screen .loading-screen-logo-container img {
+                max-width: 100%;
+                height: 500px;
+            }
+
+            .loading-screen .loading-screen-loading-indicator {
+                text-align: center;
+            }
+
+            .loading-screen .loading-indicator-dot {
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                margin: 3px;
+                background: black;
+                animation: 1.5s loading-indicator-blink infinite linear;
+            }
+
+            .loading-screen .loading-indicator-dot:nth-child(1) {
+                animation-delay: .5s;
+            }
+
+            .loading-screen .loading-indicator-dot:nth-child(2) {
+                animation-delay: 1s;
+            }
+
+            .loading-screen .loading-indicator-dot:nth-child(3) {
+                animation-delay: 1.5s;
+            }
+
+            @media (prefers-reduced-motion: no-preference) {
+                .inexor-logo {
+                    animation: inexor-logo-spin infinite 20s linear;
+                }
+            }
+
+            @keyframes inexor-logo-spin {
+                from {
+                    transform: rotate(0deg);
+                }
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div id="voyager">
+            <style>
+                .loading-screen {
+                    /*Prevents the loading screen from showing until CSS is downloaded*/
+                    display: none;
+                }
+            </style>
+            <div class="loading-screen styled">
+                <div class="loading-screen-inner">
+                    <div class="loading-screen-logo-container loading-screen-logo-container-inexor">
+                        <img src="assets/image/inexor.svg" class="inexor-logo" alt="Inexor">
+                    </div>
+                    <div class="loading-screen-loading-indicator">
+                        <span class="loading-indicator-dot"></span>
+                        <span class="loading-indicator-dot"></span>
+                        <span class="loading-indicator-dot"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/graphql-schema-visualization/main.js"></script>
+    </body>
+</html>

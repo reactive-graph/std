@@ -14,7 +14,7 @@ fn main() -> Result<()> {
         .unwrap()
         .run("build")
         .unwrap()
-        .target("web/dist/bundle")
+        .target("web/dist")
         .to_resource_dir()
         .build();
     println!("cargo:rerun-if-changed=web");

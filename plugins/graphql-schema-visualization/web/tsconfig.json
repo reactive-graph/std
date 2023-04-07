@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "module": "es2015",
+    "moduleResolution": "node",
+    "target": "es2021",
+    "noImplicitAny": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "noEmit": true,
+    "pretty": true,
+    "lib": ["es2022", "dom", "dom.iterable"],
+    "jsx": "react-jsx"
+  },
+  "exclude": ["node_modules", ".tmp", "dist", "demo-dist", "worker-dist"]
+}

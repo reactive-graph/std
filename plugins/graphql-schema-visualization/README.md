@@ -4,14 +4,14 @@ Visualizes the GraphQL schema.
 
 ## Overview
 
-| URL                                                                            | API           | Description   |
-|--------------------------------------------------------------------------------|---------------|---------------|
-| http://localhost:31415/graphql-schema-visualization/graph/query                | GraphQL       | Queries       |
-| http://localhost:31415/graphql-schema-visualization/graph/mutation             | GraphQL       | Mutations     |
-| http://localhost:31415/graphql-schema-visualization/graph/subscription         | GraphQL       | Subscriptions |
-| http://localhost:31415/graphql-schema-visualization/dynamic-graph/query        | Dynamic Graph | Queries       |
-| http://localhost:31415/graphql-schema-visualization/dynamic-graph/mutation     | Dynamic Graph | Mutations     |
-| http://localhost:31415/graphql-schema-visualization/dynamic-graph/subscription | Dynamic Graph | Subscriptions |
+| URL                                                                                                               | API           | Description   |
+|-------------------------------------------------------------------------------------------------------------------|---------------|---------------|
+| http://localhost:31415/graphql-schema-visualization/?rootType=Query&hideRoot=false                                | GraphQL       | Queries       |
+| http://localhost:31415/graphql-schema-visualization/?rootType=Mutation&hideRoot=false                             | GraphQL       | Mutations     |
+| http://localhost:31415/graphql-schema-visualization/?rootType=Subscription&hideRoot=false                         | GraphQL       | Subscriptions |
+| http://localhost:31415/graphql-schema-visualization/?rootType=Query&hideRoot=false&endpoint=/dynamic_graph        | Dynamic Graph | Queries       |
+| http://localhost:31415/graphql-schema-visualization/?rootType=Mutation&hideRoot=false&endpoint=/dynamic_graph     | Dynamic Graph | Mutations     |
+| http://localhost:31415/graphql-schema-visualization/?rootType=Subscription&hideRoot=false&endpoint=/dynamic_graph | Dynamic Graph | Subscriptions |
 
 ## GraphQL API
 

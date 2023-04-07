@@ -12,7 +12,7 @@ use rust_embed::RustEmbed;
 use std::borrow::Cow;
 
 #[derive(RustEmbed)]
-#[folder = "./web/dist/bundle"]
+#[folder = "./web/dist"]
 struct GraphQlSchemaVisualizationWebResourceAsset;
 
 #[async_trait]
@@ -42,20 +42,7 @@ impl WebResourceProvider for GraphQlSchemaVisualizationWebResourceProviderImpl {
 
     fn handle_web_resource(&self, path: String, _request: Request<HttpBody>) -> Result<Response<HttpBody>> {
         let path = match path.as_str() {
-            "" | "index.html" | "graph/query" | "graph/query/" | "graph/query.html" | "graph/query/index.html" => String::from("graph/query.html"),
-            "graph/mutation" | "graph/mutation/" | "graph/mutation.html" | "graph/mutation/index.html" => String::from("graph/mutation.html"),
-            "graph/subscription" | "graph/subscription/" | "graph/subscription.html" | "graph/subscription/index.html" => {
-                String::from("graph/subscription.html")
-            }
-            "dynamic-graph/query" | "dynamic-graph/query/" | "dynamic-graph/query.html" | "dynamic-graph/query/index.html" => {
-                String::from("dynamic-graph/query.html")
-            }
-            "dynamic-graph/mutation" | "dynamic-graph/mutation/" | "dynamic-graph/mutation.html" | "dynamic-graph/mutation/index.html" => {
-                String::from("dynamic-graph/mutation.html")
-            }
-            "dynamic-graph/subscription" | "dynamic-graph/subscription/" | "dynamic-graph/subscription.html" | "dynamic-graph/subscription/index.html" => {
-                String::from("dynamic-graph/subscription.html")
-            }
+            "" | "index.html" => String::from("index.html"),
             _ => path,
         };
         let asset = GraphQlSchemaVisualizationWebResourceAsset::get(path.as_ref());

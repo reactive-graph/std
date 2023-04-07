@@ -58,12 +58,12 @@ impl Plugin for GraphQlSchemaVisualizationPluginImpl {
         let url = config.url();
         info!(
             r"
-    {url}/{context_path}/graph/query
-    {url}/{context_path}/graph/mutation
-    {url}/{context_path}/graph/subscription
-    {url}/{context_path}/dynamic-graph/query
-    {url}/{context_path}/dynamic-graph/mutation
-    {url}/{context_path}/dynamic-graph/subscription
+    {url}/{context_path}/?rootType=Query&hideRoot=false&endpoint=/graphql
+    {url}/{context_path}/?rootType=Mutation&hideRoot=false&endpoint=/graphql
+    {url}/{context_path}/?rootType=Subscription&hideRoot=false&endpoint=/graphql
+    {url}/{context_path}/?rootType=Query&hideRoot=false&endpoint=/dynamic_graph
+    {url}/{context_path}/?rootType=Mutation&hideRoot=false&endpoint=/dynamic_graph
+    {url}/{context_path}/?rootType=Subscription&hideRoot=false&endpoint=/dynamic_graph
         "
         );
         Ok(())
