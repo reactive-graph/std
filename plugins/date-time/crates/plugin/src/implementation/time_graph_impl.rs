@@ -3,6 +3,7 @@ use std::sync::RwLock;
 use std::time::Instant;
 
 use async_trait::async_trait;
+use chrono::Datelike;
 use log::info;
 use log::trace;
 use serde_json::json;
@@ -82,7 +83,8 @@ fn create_years(context: &Arc<dyn PluginContext>) {
     let mut previous_year = None;
     let mut previous_year_last_month: Option<Arc<ReactiveEntityInstance>> = None;
     let mut previous_year_last_day: Option<Arc<ReactiveEntityInstance>> = None;
-    for year in 2022..2025u64 {
+    let current_year = chrono::Utc::now().year() as i64;
+    for year in current_year - 1..current_year + 1 {
         previous_year = match create_year(context, year) {
             Some(current_year) => {
                 create_next_year(context, &previous_year, &current_year);
@@ -96,7 +98,7 @@ fn create_years(context: &Arc<dyn PluginContext>) {
     }
 }
 
-fn create_year(context: &Arc<dyn PluginContext>, year: u64) -> Option<Arc<ReactiveEntityInstance>> {
+fn create_year(context: &Arc<dyn PluginContext>, year: i64) -> Option<Arc<ReactiveEntityInstance>> {
     trace!("Create year {}", year);
     let entity_instance_manager = context.get_entity_instance_manager();
     let entity_instance = EntityInstanceBuilder::new(ENTITY_TYPE_YEAR.clone())
@@ -111,7 +113,7 @@ fn create_next_year(context: &Arc<dyn PluginContext>, previous_year: &Option<Arc
         return;
     };
     let relation_instance_manager = context.get_relation_instance_manager();
-    let instance_id = format!("{}__{}", previous_year.as_u64(YEAR).unwrap_or(0), next_year.as_u64(YEAR).unwrap_or(0));
+    let instance_id = format!("{}__{}", previous_year.as_i64(YEAR).unwrap_or(0), next_year.as_i64(YEAR).unwrap_or(0));
     let relation_instance =
         RelationInstanceBuilder::new_unique_for_instance_id(previous_year.id, RELATION_TYPE_NEXT_YEAR.clone(), instance_id, next_year.id).build();
     let _ = relation_instance_manager.create(relation_instance);
@@ -123,7 +125,7 @@ fn create_months(
     previous_year_last_month: Option<Arc<ReactiveEntityInstance>>,
     previous_year_last_day: Option<Arc<ReactiveEntityInstance>>,
 ) -> (Option<Arc<ReactiveEntityInstance>>, Option<Arc<ReactiveEntityInstance>>) {
-    let Some(year) = current_year.as_u64(YEAR) else {
+    let Some(year) = current_year.as_i64(YEAR) else {
         return (None, None);
     };
     let mut previous_month = previous_year_last_month;
@@ -164,7 +166,7 @@ fn create_months(
     (previous_month, previous_month_last_day)
 }
 
-fn create_month(context: &Arc<dyn PluginContext>, year: u64, month: u64) -> Option<Arc<ReactiveEntityInstance>> {
+fn create_month(context: &Arc<dyn PluginContext>, year: i64, month: u64) -> Option<Arc<ReactiveEntityInstance>> {
     let entity_instance_manager = context.get_entity_instance_manager();
     let entity_instance = EntityInstanceBuilder::new(ENTITY_TYPE_MONTH.clone())
         .property(MONTH_OF_YEAR, json!(month))
@@ -174,7 +176,7 @@ fn create_month(context: &Arc<dyn PluginContext>, year: u64, month: u64) -> Opti
 }
 
 fn create_month_of_year(context: &Arc<dyn PluginContext>, current_year: &Arc<ReactiveEntityInstance>, month: &Arc<ReactiveEntityInstance>) {
-    let Some(year) = current_year.as_u64(YEAR) else {
+    let Some(year) = current_year.as_i64(YEAR) else {
         return;
     };
     let Some(month_of_year) = month.as_u64(MONTH_OF_YEAR) else {
@@ -190,7 +192,7 @@ fn create_month_of_year(context: &Arc<dyn PluginContext>, current_year: &Arc<Rea
 
 fn create_first_month(context: &Arc<dyn PluginContext>, current_year: &Arc<ReactiveEntityInstance>, first_month: &Arc<ReactiveEntityInstance>) {
     let relation_instance_manager = context.get_relation_instance_manager();
-    let instance_id = format!("{:04}__{:02}", current_year.as_u64(YEAR).unwrap_or(0), first_month.as_u64(MONTH_OF_YEAR).unwrap_or(0));
+    let instance_id = format!("{:04}__{:02}", current_year.as_i64(YEAR).unwrap_or(0), first_month.as_u64(MONTH_OF_YEAR).unwrap_or(0));
     let relation_instance =
         RelationInstanceBuilder::new_unique_for_instance_id(current_year.id, RELATION_TYPE_FIRST_MONTH.clone(), instance_id, first_month.id).build();
     let _ = relation_instance_manager.create(relation_instance);
@@ -198,7 +200,7 @@ fn create_first_month(context: &Arc<dyn PluginContext>, current_year: &Arc<React
 
 fn create_last_month(context: &Arc<dyn PluginContext>, current_year: &Arc<ReactiveEntityInstance>, last_month: &Arc<ReactiveEntityInstance>) {
     let relation_instance_manager = context.get_relation_instance_manager();
-    let instance_id = format!("{:04}__{:02}", current_year.as_u64(YEAR).unwrap_or(0), last_month.as_u64(MONTH_OF_YEAR).unwrap_or(0));
+    let instance_id = format!("{:04}__{:02}", current_year.as_i64(YEAR).unwrap_or(0), last_month.as_u64(MONTH_OF_YEAR).unwrap_or(0));
     let relation_instance =
         RelationInstanceBuilder::new_unique_for_instance_id(current_year.id, RELATION_TYPE_LAST_MONTH.clone(), instance_id, last_month.id).build();
     let _ = relation_instance_manager.create(relation_instance);
@@ -225,7 +227,7 @@ fn create_days(
     current_month: &Arc<ReactiveEntityInstance>,
     previous_month_last_day: Option<Arc<ReactiveEntityInstance>>,
 ) -> Option<Arc<ReactiveEntityInstance>> {
-    let Some(year) = current_year.as_u64(YEAR) else {
+    let Some(year) = current_year.as_i64(YEAR) else {
         return None;
     };
     let Some(month_of_year) = current_month.as_u64(MONTH_OF_YEAR) else {
@@ -268,7 +270,7 @@ fn create_days(
     previous_day
 }
 
-fn create_day(context: &Arc<dyn PluginContext>, year: u64, month: u64, day: u64) -> Option<Arc<ReactiveEntityInstance>> {
+fn create_day(context: &Arc<dyn PluginContext>, year: i64, month: u64, day: u64) -> Option<Arc<ReactiveEntityInstance>> {
     let iso8601 = format!("{:04}-{:02}-{:02}", year, month, day);
     let entity_instance_manager = context.get_entity_instance_manager();
     let entity_instance = EntityInstanceBuilder::new(ENTITY_TYPE_DAY.clone())
@@ -333,11 +335,11 @@ fn create_next_day(context: &Arc<dyn PluginContext>, previous_day: &Option<Arc<R
     let _ = relation_instance_manager.create(relation_instance);
 }
 
-fn is_leap_year(year: u64) -> bool {
+fn is_leap_year(year: i64) -> bool {
     year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)
 }
 
-fn last_day_of_month(year: u64, month: u64) -> Option<u64> {
+fn last_day_of_month(year: i64, month: u64) -> Option<u64> {
     match month {
         1 | 3 | 5 | 7 | 8 | 10 | 12 => Some(31),
         4 | 6 | 9 | 11 => Some(30),

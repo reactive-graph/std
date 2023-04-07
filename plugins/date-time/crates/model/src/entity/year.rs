@@ -9,6 +9,6 @@ entity_ty!(ENTITY_TYPE_YEAR, NAMESPACE_DATE_TIME, ENTITY_TYPE_NAME_YEAR, "year")
 
 entity_model!(
     Year,
-    get year u64,
+    get year i64,
     get leap bool
 );
