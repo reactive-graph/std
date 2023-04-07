@@ -31,6 +31,18 @@ jobs:
         with:
           toolchain: nightly
           override: true
+      - name: Setup Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install Yarn
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: --cwd plugins/graphql-client/web install
+      - name: Install Yarn
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: --cwd plugins/graphql-schema-visualization/web install
       - name: Build (Release Mode)
         uses: actions-rs/cargo@v1
         with:
