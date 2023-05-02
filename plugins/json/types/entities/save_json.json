@@ -8,7 +8,7 @@
       "name": "named"
     },
     {
-      "namespace": "trigger",
+      "namespace": "core",
       "name": "action"
     },
     {

@@ -12,7 +12,7 @@
       "type_name": "url"
     },
     {
-      "namespace": "trigger",
+      "namespace": "core",
       "type_name": "action"
     },
     {

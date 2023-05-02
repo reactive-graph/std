@@ -5,17 +5,13 @@ use async_trait::async_trait;
 
 use crate::di::*;
 use crate::plugins::component_provider;
-use crate::plugins::flow_type_provider;
 use crate::plugins::plugin_context::PluginContext;
 use crate::plugins::ComponentProvider;
 use crate::plugins::ComponentProviderError;
-use crate::plugins::FlowTypeProvider;
-use crate::plugins::FlowTypeProviderError;
 use crate::plugins::Plugin;
 use crate::plugins::PluginContextDeinitializationError;
 use crate::plugins::PluginContextInitializationError;
 use crate::providers::BaseComponentProviderImpl;
-use crate::providers::BaseFlowTypeProviderImpl;
 
 #[wrapper]
 pub struct PluginContextContainer(RwLock<Option<Arc<dyn PluginContext>>>);
@@ -31,7 +27,6 @@ pub trait BasePlugin: Plugin + Send + Sync {}
 #[module]
 pub struct BasePluginImpl {
     component_provider: Wrc<BaseComponentProviderImpl>,
-    flow_type_provider: Wrc<BaseFlowTypeProviderImpl>,
 
     context: PluginContextContainer,
 }
@@ -56,9 +51,5 @@ impl Plugin for BasePluginImpl {
 
     fn get_component_provider(&self) -> Result<Option<Arc<dyn ComponentProvider>>, ComponentProviderError> {
         component_provider!(self.component_provider)
-    }
-
-    fn get_flow_type_provider(&self) -> Result<Option<Arc<dyn FlowTypeProvider>>, FlowTypeProviderError> {
-        flow_type_provider!(self.flow_type_provider)
     }
 }

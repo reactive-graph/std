@@ -4,7 +4,7 @@ use crate::model::entity_model;
 use crate::model::entity_ty;
 use crate::model::properties;
 use crate::model_result::ResultString;
-use crate::model_trigger::Action;
+use crate::model_runtime::Action;
 use crate::NAMESPACE_RANDOM;
 
 properties!(RandomStringProperties, (LENGTH, "length", 10));

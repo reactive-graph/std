@@ -20,7 +20,7 @@
       "type_name": "response"
     },
     {
-      "namespace": "trigger",
+      "namespace": "core",
       "type_name": "action"
     },
     {

@@ -4,7 +4,7 @@
   "description": "Random Signed Integer Within Range",
   "components": [
     {
-      "namespace": "trigger",
+      "namespace": "core",
       "type_name": "action"
     },
     {

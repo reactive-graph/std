@@ -3,7 +3,7 @@ use crate::model::entity_behaviour_ty;
 use crate::model::entity_model;
 use crate::model::entity_ty;
 use crate::model_result::ResultNumberU64;
-use crate::model_trigger::Action;
+use crate::model_runtime::Action;
 use crate::NAMESPACE_RANDOM;
 
 entity_ty!(ENTITY_TYPE_RANDOM_U64, NAMESPACE_RANDOM, ENTITY_TYPE_NAME_RANDOM_U64, "random_u64");

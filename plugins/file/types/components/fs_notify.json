@@ -10,7 +10,7 @@
       "socket_type": "input"
     },
     {
-      "name": "trigger",
+      "name": "core",
       "description": "Triggers if the file with the given filename has been changed",
       "data_type": "bool",
       "socket_type": "output"

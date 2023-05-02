@@ -1,7 +1,7 @@
 use crate::model::entity_model;
 use crate::model::entity_ty;
 use crate::model_result::ResultObject;
-use crate::model_trigger::Action;
+use crate::model_runtime::Action;
 use crate::ComponentJsonRpc;
 use crate::ParsedUrl;
 use crate::Url;

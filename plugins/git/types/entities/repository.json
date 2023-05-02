@@ -24,7 +24,7 @@
       "type_name": "file"
     },
     {
-      "namespace": "trigger",
+      "namespace": "core",
       "type_name": "action"
     }
   ],

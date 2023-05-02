@@ -4,7 +4,7 @@
   "description": "Random Unsigned Integer Number",
   "components": [
     {
-      "namespace": "trigger",
+      "namespace": "core",
       "type_name": "action"
     },
     {

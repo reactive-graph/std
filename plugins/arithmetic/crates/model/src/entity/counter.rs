@@ -3,7 +3,7 @@ use crate::model::entity_behaviour_ty;
 use crate::model::entity_model;
 use crate::model::entity_ty;
 use crate::model_result::ResultNumberU64;
-use crate::model_trigger::Action;
+use crate::model_runtime::Action;
 use crate::NAMESPACE_ARITHMETIC_U64;
 
 // All properties are defined in the component(s)

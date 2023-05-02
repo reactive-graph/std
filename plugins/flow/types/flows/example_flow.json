@@ -1,6 +1,6 @@
 {
-  "namespace": "base",
-  "type_name": "example_flow",
+  "namespace": "flow",
+  "type_name": "example",
   "description": "Example Flow Type",
   "wrapper_entity_instance": {
     "namespace": "flow",

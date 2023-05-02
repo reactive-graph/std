@@ -4,7 +4,7 @@ use crate::model::entity_model;
 use crate::model::entity_ty;
 use crate::model::properties;
 use crate::model_result::ResultAny;
-use crate::model_trigger::Action;
+use crate::model_runtime::Action;
 use crate::NAMESPACE_LOGICAL;
 
 properties!(TriggerProperties, (PAYLOAD, "payload", 0));

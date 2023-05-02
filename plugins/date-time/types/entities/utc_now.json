@@ -4,7 +4,7 @@
   "description": "Returns the current date as ISO8601",
   "components": [
     {
-      "namespace": "trigger",
+      "namespace": "core",
       "type_name": "action"
     },
     {
