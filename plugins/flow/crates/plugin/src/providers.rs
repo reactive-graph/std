@@ -1,3 +1,3 @@
-crate::plugins::component_provider_impl!(Flow, "$CARGO_MANIFEST_DIR/../../types/components");
-crate::plugins::entity_type_provider_impl!(Flow, "$CARGO_MANIFEST_DIR/../../types/entities");
-crate::plugins::flow_type_provider_impl!(Flow, "$CARGO_MANIFEST_DIR/../../types/flows");
+crate::plugins::component_provider_impl!(Flow, "types/components");
+crate::plugins::entity_type_provider_impl!(Flow, "types/entities");
+crate::plugins::flow_type_provider_impl!(Flow, "types/flows");
