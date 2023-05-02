@@ -1,0 +1,53 @@
+name: Documentation
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - "crates/**/*.rs"
+      - "crates/**/Cargo.toml"
+      - "Cargo.toml"
+      - ".github/workflows/docs.yml"
+  pull_request:
+    branches: [ main ]
+    paths:
+      - "crates/**/*.rs"
+      - "crates/**/Cargo.toml"
+      - "Cargo.toml"
+      - ".github/workflows/docs.yml"
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  docs:
+    name: Documentation
+    runs-on: ubuntu-latest
+    steps:
+      - name: VCS Checkout
+        uses: actions/checkout@v3
+
+      - name: Install latest nightly
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: nightly
+          profile: minimal
+          override: true
+          components: rustfmt, rust-src
+
+      - name: Run cargo doc
+        uses: actions-rs/cargo@v1
+        with:
+          command: doc
+          args: --all --no-deps
+        env:
+          RUSTDOCFLAGS: --enable-index-page -Zunstable-options
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/main' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./target/doc
+          destination_dir: docs
+          # keep_files: true
