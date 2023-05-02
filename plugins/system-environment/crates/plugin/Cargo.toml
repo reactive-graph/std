@@ -22,7 +22,7 @@ inexor-rgf-core-di = { workspace = true, features = ["async"] }
 inexor-rgf-core-model = { workspace = true }
 inexor-rgf-core-reactive = { workspace = true }
 inexor-rgf-core-plugins = { workspace = true }
-inexor-rgf-model-system-environment = { path = "../../crates/model" }
+inexor-rgf-model-system-environment = { version = "0.9.1", path = "../../crates/model" }
 
 [dev-dependencies]
 

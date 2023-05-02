@@ -18,8 +18,8 @@ strum_macros = { workspace = true }
 
 inexor-rgf-core-model = { workspace = true }
 inexor-rgf-core-reactive = { workspace = true }
-inexor-rgf-model-trigger = { path = "../../../trigger/crates/model" }
-inexor-rgf-model-result = { path = "../../../result/crates/model" }
+inexor-rgf-model-result = { version = "0.9.1", path = "../../../result/crates/model" }
+inexor-rgf-model-runtime = { workspace = true }
 
 [lib]
 crate-type = ["lib"]

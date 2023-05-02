@@ -35,11 +35,11 @@ inexor-rgf-core-frp = { workspace = true }
 inexor-rgf-core-model = { workspace = true }
 inexor-rgf-core-reactive = { workspace = true }
 inexor-rgf-core-plugins = { workspace = true }
-inexor-rgf-model-base = { path = "../../../base/crates/model" }
-inexor-rgf-model-file = { path = "../../../file/crates/model" }
-inexor-rgf-model-git = { path = "../../crates/model" }
-inexor-rgf-model-http = { path = "../../../http/crates/model" }
-inexor-rgf-model-trigger = { path = "../../../trigger/crates/model" }
+inexor-rgf-model-base = { version = "0.9.1", path = "../../../base/crates/model" }
+inexor-rgf-model-file = { version = "0.9.1", path = "../../../file/crates/model" }
+inexor-rgf-model-git = { version = "0.9.1", path = "../../crates/model" }
+inexor-rgf-model-http = { version = "0.9.1", path = "../../../http/crates/model" }
+inexor-rgf-model-trigger = { version = "0.9.1", path = "../../../trigger/crates/model" }
 
 [target.'cfg(target = "armv7-unknown-linux-gnueabihf")'.dependencies]
 openssl = { version = "0.10", features = ["vendored"] }

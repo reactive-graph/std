@@ -17,8 +17,8 @@ serde_json = { workspace = true }
 inexor-rgf-core-di = { workspace = true, features = ["async"] }
 inexor-rgf-core-model = { workspace = true }
 inexor-rgf-core-plugins = { workspace = true }
-inexor-rgf-model-flow = { path = "../../crates/model" }
-inexor-rgf-model-base = { path = "../../../base/crates/model" }
+inexor-rgf-model-flow = { version = "0.9.1", path = "../../crates/model" }
+inexor-rgf-model-base = { version = "0.9.1", path = "../../../base/crates/model" }
 
 [dev-dependencies]
 inexor-rgf-core-builder = { workspace = true }

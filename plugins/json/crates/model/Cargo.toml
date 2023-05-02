@@ -13,10 +13,10 @@ serde_json = { workspace = true }
 strum_macros = { workspace = true }
 
 inexor-rgf-core-model = { workspace = true }
-inexor-rgf-model-base = { path = "../../../base/crates/model" }
-inexor-rgf-model-file = { path = "../../../file/crates/model" }
-inexor-rgf-model-result = { path = "../../../result/crates/model" }
-inexor-rgf-model-trigger = { path = "../../../trigger/crates/model" }
+inexor-rgf-model-base = { version = "0.9.1", path = "../../../base/crates/model" }
+inexor-rgf-model-file = { version = "0.9.1", path = "../../../file/crates/model" }
+inexor-rgf-model-result = { version = "0.9.1", path = "../../../result/crates/model" }
+inexor-rgf-model-trigger = { version = "0.9.1", path = "../../../trigger/crates/model" }
 
 [lib]
 crate-type = ["lib"]

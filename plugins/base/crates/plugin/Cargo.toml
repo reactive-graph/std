@@ -29,7 +29,7 @@ inexor-rgf-core-plugins = { workspace = true }
 
 [dev-dependencies]
 inexor-rgf-core-builder = { workspace = true }
-inexor-rgf-model-base = { path = "../../crates/model" }
+inexor-rgf-model-base = { version = "0.9.1", path = "../../crates/model" }
 
 [lib]
 # Plugins use crate-type cdylib

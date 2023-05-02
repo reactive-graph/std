@@ -14,7 +14,7 @@ serde_json = { workspace = true }
 strum_macros = { workspace = true }
 
 inexor-rgf-core-model = { workspace = true }
-inexor-rgf-model-base = { path = "../../../base/crates/model" }
+inexor-rgf-model-base = { version = "0.9.1", path = "../../../base/crates/model" }
 
 [lib]
 crate-type = ["lib"]
