@@ -1,1 +1,1 @@
-crate::plugins::component_provider_impl!(Trigger, "../../types/components");
+crate::plugins::component_provider_impl!(Trigger, "$CARGO_MANIFEST_DIR/../../types/components");

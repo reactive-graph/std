@@ -17,7 +17,7 @@ log4rs = { workspace = true, features = ["console_appender", "file_appender", "t
 paste = { workspace = true }
 prisma = { workspace = true }
 query_interface = { workspace = true }
-rust-embed = { workspace = true, features = ["debug-embed", "compression"] }
+rust-embed = { workspace = true, features = ["debug-embed", "interpolate-folder-path", "compression"] }
 serde_json = { workspace = true }
 
 inexor-rgf-core-di = { workspace = true, features = ["async"] }
