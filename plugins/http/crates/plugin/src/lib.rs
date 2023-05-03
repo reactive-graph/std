@@ -13,7 +13,7 @@ use inexor_rgf_core_plugins as plugins;
 use inexor_rgf_core_reactive as reactive;
 use inexor_rgf_model_http as model_http;
 use inexor_rgf_model_result as model_result;
-use inexor_rgf_model_trigger as model_trigger;
+use inexor_rgf_model_runtime as model_runtime;
 use log::error;
 
 use crate::di::profiles;

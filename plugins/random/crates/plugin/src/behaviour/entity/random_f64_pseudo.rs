@@ -7,7 +7,7 @@ use serde_json::Value;
 use crate::model::*;
 use crate::model_random::PseudoNumberGeneratorProperties::SEED;
 use crate::model_result::ResultNumberF64Properties::RESULT;
-use crate::model_trigger::ActionProperties::TRIGGER;
+use crate::model_runtime::ActionProperties::TRIGGER;
 use crate::reactive::*;
 
 entity_behaviour!(

@@ -35,9 +35,9 @@ inexor-rgf-core-frp = { workspace = true }
 inexor-rgf-core-model = { workspace = true }
 inexor-rgf-core-reactive = { workspace = true }
 inexor-rgf-core-plugins = { workspace = true }
+inexor-rgf-model-runtime = { workspace = true }
 inexor-rgf-model-date-time = { version = "0.9.1", path = "../../crates/model" }
 inexor-rgf-model-result = { version = "0.9.1", path = "../../../result/crates/model" }
-inexor-rgf-model-trigger = { version = "0.9.1", path = "../../../trigger/crates/model" }
 
 [dev-dependencies]
 inexor-rgf-core-builder = { workspace = true }

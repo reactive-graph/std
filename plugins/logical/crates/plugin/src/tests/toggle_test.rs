@@ -10,9 +10,9 @@ use crate::model_logical::ENTITY_TYPE_TOGGLE;
 use crate::model_logical::NAMESPACE_LOGICAL;
 use crate::model_result::ResultBoolean;
 use crate::model_result::ResultBooleanProperties::RESULT;
-use crate::model_trigger::Action;
-use crate::model_trigger::ActionProperties::TRIGGER;
-use crate::model_trigger::COMPONENT_ACTION;
+use crate::model_runtime::Action;
+use crate::model_runtime::ActionProperties::TRIGGER;
+use crate::model_runtime::COMPONENT_ACTION;
 use crate::reactive::BehaviourFactory;
 
 #[test]

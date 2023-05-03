@@ -5,7 +5,7 @@ use std::path::Path;
 use crate::model::*;
 use crate::model_file::FileProperties::FILENAME;
 use crate::model_result::ResultObjectProperties::RESULT;
-use crate::model_trigger::ActionProperties::TRIGGER;
+use crate::model_runtime::ActionProperties::TRIGGER;
 use crate::reactive::*;
 
 entity_behaviour!(ConfigFile, ConfigFileFactory, ConfigFileFsm, ConfigFileBehaviourTransitions, ConfigFileValidator);

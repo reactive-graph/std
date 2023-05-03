@@ -6,7 +6,7 @@ use serde_json::Value;
 use crate::model::*;
 use crate::model_file::FileProperties::FILENAME;
 use crate::model_result::ResultAnyProperties::RESULT;
-use crate::model_trigger::ActionProperties::TRIGGER;
+use crate::model_runtime::ActionProperties::TRIGGER;
 use crate::reactive::*;
 
 entity_behaviour!(LoadJson, LoadJsonFactory, LoadJsonFsm, LoadJsonBehaviourTransitions, LoadJsonValidator);

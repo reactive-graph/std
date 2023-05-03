@@ -4,7 +4,7 @@ use serde_json::Value;
 
 use crate::model::*;
 use crate::model_result::ResultNumberI64Properties::RESULT;
-use crate::model_trigger::ActionProperties::TRIGGER;
+use crate::model_runtime::ActionProperties::TRIGGER;
 use crate::reactive::*;
 
 entity_behaviour!(RandomI64, RandomI64Factory, RandomI64Fsm, RandomI64BehaviourTransitions, RandomI64Validator);

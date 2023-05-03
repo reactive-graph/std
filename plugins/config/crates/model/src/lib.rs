@@ -7,6 +7,6 @@ pub mod entity;
 use inexor_rgf_core_model as model;
 use inexor_rgf_model_file as model_file;
 use inexor_rgf_model_result as model_result;
-use inexor_rgf_model_trigger as model_trigger;
+use inexor_rgf_model_runtime as model_runtime;
 
 pub const NAMESPACE_CONFIG: &str = "config";

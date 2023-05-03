@@ -17,7 +17,7 @@ use tokio::runtime::Handle;
 
 use crate::model::*;
 use crate::model_file::FileProperties::FILENAME;
-use crate::model_trigger::ActionProperties::TRIGGER;
+use crate::model_runtime::ActionProperties::TRIGGER;
 use crate::reactive::*;
 
 entity_behaviour!(FsNotify, FsNotifyFactory, FsNotifyFsm, FsNotifyBehaviourTransitions, FsNotifyValidator);

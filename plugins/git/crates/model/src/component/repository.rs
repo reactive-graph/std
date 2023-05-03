@@ -169,6 +169,6 @@ pub trait GitRepository: ComponentRepository + TransferProgress + FilePath + Url
             return;
         };
         repository.checkout_tree(&obj, None);
-        repository.set_head(&("refs/heads/".to_owned() + &branch_name));
+        let _ = repository.set_head(&("refs/heads/".to_owned() + &branch_name));
     }
 }

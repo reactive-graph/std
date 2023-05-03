@@ -3,7 +3,7 @@ use serde_json::Value;
 use crate::model::*;
 use crate::model_logical::TriggerProperties::PAYLOAD;
 use crate::model_result::ResultAnyProperties::RESULT;
-use crate::model_trigger::ActionProperties::TRIGGER;
+use crate::model_runtime::ActionProperties::TRIGGER;
 use crate::reactive::*;
 
 entity_behaviour!(Trigger, TriggerFactory, TriggerFsm, TriggerBehaviourTransitions, TriggerValidator);

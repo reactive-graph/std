@@ -11,15 +11,15 @@ use crate::model_json::BEHAVIOUR_LOAD_JSON;
 use crate::model_json::ENTITY_TYPE_LOAD_JSON;
 use crate::model_result::ResultAny;
 use crate::model_result::ResultObjectProperties::RESULT;
-use crate::model_trigger::Action;
-use crate::model_trigger::ActionProperties::TRIGGER;
+use crate::model_runtime::Action;
+use crate::model_runtime::ActionProperties::TRIGGER;
 use crate::reactive::BehaviourFactory;
 use crate::reactive::BehaviourState;
 
 #[test]
 fn rx_load_json_test() {
     let mut path = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
-    path.push("../../types/components/load_json.json");
+    path.push("types/components/load_json.json");
     path = path.canonicalize().unwrap();
 
     let reactive_instance = ReactiveEntityInstanceBuilder::new(ENTITY_TYPE_LOAD_JSON.clone())

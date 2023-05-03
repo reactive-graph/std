@@ -12,11 +12,10 @@ use inexor_rgf_core_model as model;
 use inexor_rgf_core_plugins as plugins;
 use inexor_rgf_core_plugins::PluginDependency;
 use inexor_rgf_core_reactive as reactive;
-use inexor_rgf_model_base as model_base;
 use inexor_rgf_model_file as model_file;
 use inexor_rgf_model_git as model_git;
 use inexor_rgf_model_http as model_http;
-use inexor_rgf_model_trigger as model_trigger;
+use inexor_rgf_model_runtime as model_runtime;
 use log::error;
 
 use crate::di::profiles;

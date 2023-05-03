@@ -9,7 +9,7 @@ use crate::model_http::JsonRpcProperties::METHOD;
 use crate::model_http::JsonRpcProperties::PARAMS;
 use crate::model_http::UrlProperties::URL;
 use crate::model_result::ResultObjectProperties::RESULT;
-use crate::model_trigger::ActionProperties::TRIGGER;
+use crate::model_runtime::ActionProperties::TRIGGER;
 use crate::reactive::*;
 
 entity_behaviour!(JsonRpc, JsonRpcFactory, JsonRpcFsm, JsonRpcBehaviourTransitions, JsonRpcValidator);

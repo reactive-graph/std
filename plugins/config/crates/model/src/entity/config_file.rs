@@ -2,7 +2,7 @@ use crate::model::entity_model;
 use crate::model::entity_ty;
 use crate::model_file::File;
 use crate::model_result::ResultObject;
-use crate::model_trigger::Action;
+use crate::model_runtime::Action;
 use crate::NAMESPACE_CONFIG;
 
 // All properties are defined in the component(s)

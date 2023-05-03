@@ -3,7 +3,7 @@ use crate::model::entity_ty;
 use crate::model_base::Named;
 use crate::model_file::File;
 use crate::model_result::ResultAny;
-use crate::model_trigger::Action;
+use crate::model_runtime::Action;
 use crate::ComponentLoadJson;
 use crate::NAMESPACE_JSON;
 

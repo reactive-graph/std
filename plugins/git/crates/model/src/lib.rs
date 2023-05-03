@@ -8,6 +8,6 @@ use inexor_rgf_core_model as model;
 use inexor_rgf_model_base as model_base;
 use inexor_rgf_model_file as model_file;
 use inexor_rgf_model_http as model_http;
-use inexor_rgf_model_trigger as model_trigger;
+use inexor_rgf_model_runtime as model_runtime;
 
 pub const NAMESPACE_GIT: &str = "git";

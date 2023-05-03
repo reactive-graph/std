@@ -4,7 +4,7 @@ use uuid::Uuid;
 
 use crate::model::*;
 use crate::model_result::ResultStringProperties::RESULT;
-use crate::model_trigger::ActionProperties::TRIGGER;
+use crate::model_runtime::ActionProperties::TRIGGER;
 use crate::reactive::*;
 
 entity_behaviour!(RandomUuid, RandomUuidFactory, RandomUuidFsm, RandomUuidBehaviourTransitions, RandomUuidValidator);

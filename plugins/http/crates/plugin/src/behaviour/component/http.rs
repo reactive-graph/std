@@ -11,7 +11,7 @@ use crate::model_http::ResponseProperties::RESPONSE_HEADERS;
 use crate::model_http::ResponseProperties::STATUS;
 use crate::model_http::UrlProperties::URL;
 use crate::model_result::ResultObjectProperties::RESULT;
-use crate::model_trigger::ActionProperties::TRIGGER;
+use crate::model_runtime::ActionProperties::TRIGGER;
 use crate::reactive::*;
 
 entity_behaviour!(Http, HttpFactory, HttpFsm, HttpBehaviourTransitions, HttpValidator);

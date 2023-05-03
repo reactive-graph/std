@@ -12,7 +12,7 @@ use inexor_rgf_core_reactive as reactive;
 use inexor_rgf_model_config as model_config;
 use inexor_rgf_model_file as model_file;
 use inexor_rgf_model_result as model_result;
-use inexor_rgf_model_trigger as model_trigger;
+use inexor_rgf_model_runtime as model_runtime;
 
 use log::error;
 

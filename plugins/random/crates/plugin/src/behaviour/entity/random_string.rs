@@ -4,7 +4,7 @@ use serde_json::Value;
 use crate::model::*;
 use crate::model_random::RandomStringProperties::LENGTH;
 use crate::model_result::ResultStringProperties::RESULT;
-use crate::model_trigger::ActionProperties::TRIGGER;
+use crate::model_runtime::ActionProperties::TRIGGER;
 use crate::reactive::*;
 
 pub const CHARSET: &str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";

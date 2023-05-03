@@ -5,8 +5,8 @@ use crate::model_random::BEHAVIOUR_RANDOM_U64;
 use crate::model_random::ENTITY_TYPE_RANDOM_U64;
 use crate::model_result::ResultNumberU64;
 use crate::model_result::ResultNumberU64Properties::RESULT;
-use crate::model_trigger::Action;
-use crate::model_trigger::ActionProperties::TRIGGER;
+use crate::model_runtime::Action;
+use crate::model_runtime::ActionProperties::TRIGGER;
 use crate::reactive::BehaviourFactory;
 use crate::reactive::BehaviourState;
 

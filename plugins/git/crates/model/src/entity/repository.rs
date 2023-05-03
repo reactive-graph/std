@@ -6,7 +6,7 @@ use crate::model_file::File;
 use crate::model_file::FilePath;
 use crate::model_http::ParsedUrl;
 use crate::model_http::Url;
-use crate::model_trigger::Action;
+use crate::model_runtime::Action;
 use crate::ComponentRepository;
 use crate::GitRepository;
 use crate::TransferProgress;
