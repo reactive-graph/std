@@ -9,14 +9,11 @@ use crate::model_config::BEHAVIOUR_CONFIG_FILE;
 use crate::model_config::COMPONENT_BEHAVIOUR_CONFIG_FILE;
 use crate::plugins::component_provider;
 use crate::plugins::entity_type_provider;
-use crate::plugins::flow_instance_provider;
 use crate::plugins::plugin_context::PluginContext;
 use crate::plugins::ComponentProvider;
 use crate::plugins::ComponentProviderError;
 use crate::plugins::EntityTypeProvider;
 use crate::plugins::EntityTypeProviderError;
-use crate::plugins::FlowInstanceProvider;
-use crate::plugins::FlowInstanceProviderError;
 use crate::plugins::Plugin;
 use crate::plugins::PluginActivationError;
 use crate::plugins::PluginContextDeinitializationError;
@@ -24,7 +21,6 @@ use crate::plugins::PluginContextInitializationError;
 use crate::plugins::PluginDeactivationError;
 use crate::providers::ConfigComponentProviderImpl;
 use crate::providers::ConfigEntityTypeProviderImpl;
-use crate::providers::ConfigFlowInstanceProviderImpl;
 
 #[wrapper]
 pub struct PluginContextContainer(RwLock<Option<Arc<dyn PluginContext>>>);
@@ -41,7 +37,6 @@ pub trait ConfigPlugin: Plugin + Send + Sync {}
 pub struct ConfigPluginImpl {
     component_provider: Wrc<ConfigComponentProviderImpl>,
     entity_type_provider: Wrc<ConfigEntityTypeProviderImpl>,
-    flow_instance_provider: Wrc<ConfigFlowInstanceProviderImpl>,
 
     context: PluginContextContainer,
 }
@@ -91,9 +86,5 @@ impl Plugin for ConfigPluginImpl {
 
     fn get_entity_type_provider(&self) -> Result<Option<Arc<dyn EntityTypeProvider>>, EntityTypeProviderError> {
         entity_type_provider!(self.entity_type_provider)
-    }
-
-    fn get_flow_instance_provider(&self) -> Result<Option<Arc<dyn FlowInstanceProvider>>, FlowInstanceProviderError> {
-        flow_instance_provider!(self.flow_instance_provider)
     }
 }
