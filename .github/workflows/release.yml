@@ -42,6 +42,11 @@ jobs:
           crate: cargo-workspaces
           version: latest
           use-tool-cache: true
+      - name: Set environment variables
+        run: |
+          echo "WEB_RESOURCE_DIR=$CARGO_MANIFEST_DIR" >> $GITHUB_ENV |
+          echo "CARGO_MANIFEST_DIR: $CARGO_MANIFEST_DIR" |
+          echo "WEB_RESOURCE_DIR: $WEB_RESOURCE_DIR"
       - name: Publish on crates.io
         uses: actions-rs/cargo@v1
         with:
