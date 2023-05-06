@@ -44,9 +44,9 @@ jobs:
           use-tool-cache: true
       - name: Set environment variables
         run: |
-          echo "WORKSPACE_ROOT_MANIFEST_DIR=$CARGO_MANIFEST_DIR" >> $GITHUB_ENV |
-          echo "CARGO_MANIFEST_DIR: $CARGO_MANIFEST_DIR" |
-          echo "CARGO_PKG_NAME: $CARGO_PKG_NAME" |
+          echo "WORKSPACE_ROOT_MANIFEST_DIR=$CARGO_MANIFEST_DIR" >> $GITHUB_ENV
+      - name: Print environment variables
+        run: |
           echo "WORKSPACE_ROOT_MANIFEST_DIR: $WORKSPACE_ROOT_MANIFEST_DIR"
       - name: Publish on crates.io
         uses: actions-rs/cargo@v1
