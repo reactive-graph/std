@@ -8,7 +8,11 @@ fn main() -> Result<()> {
     println!("CARGO_MANIFEST_DIR={}", cargo_manifest_dir);
     let web_resource_root_path = match env::var("WORKSPACE_ROOT_MANIFEST_DIR") {
         Ok(workspace_root_manifest_dir) => {
-            let cargo_pkg_name = env::var("CARGO_PKG_NAME").expect("Missing env var CARGO_PKG_NAME");
+            let cargo_pkg_name = env::var("CARGO_PKG_NAME")
+                .expect("Missing env var CARGO_PKG_NAME")
+                .strip_prefix("inexor-rgf-plugin-")
+                .expect("Failed to strip prefix")
+                .to_string();
             let yarn_location = Path::new(&workspace_root_manifest_dir)
                 .join("plugins")
                 .join(cargo_pkg_name)
