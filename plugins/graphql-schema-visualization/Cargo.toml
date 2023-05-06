@@ -8,6 +8,9 @@ license.workspace = true
 repository.workspace = true
 readme = "../../README.md"
 
+exclude = [ "web/node_modules" ]
+include = [ "web/dist/**" ]
+
 [dependencies]
 async-trait = { workspace = true }
 http = { workspace = true }
