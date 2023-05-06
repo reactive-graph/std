@@ -18,6 +18,8 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
+  SCCACHE_GHA_ENABLED: "true"
+  RUSTC_WRAPPER: "sccache"
 
 jobs:
   lint:
@@ -44,6 +46,8 @@ jobs:
         uses: borales/actions-yarn@v4
         with:
           cmd: --cwd plugins/graphql-schema-visualization/web install
+      - name: Run sccache-cache
+        uses: mozilla-actions/sccache-action@v0.0.3
       - name: Run cargo clippy
         uses: actions-rs/cargo@v1
         with:
