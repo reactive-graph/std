@@ -50,7 +50,7 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: workspaces
-          args: publish --from-git
+          args: publish --from-git --allow-dirty
         env:
           CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
           VERGEN_IDEMPOTENT: true
