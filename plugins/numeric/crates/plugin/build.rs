@@ -1,3 +1,3 @@
 fn main() {
-    println!("cargo:rerun-if-changed=../../types");
+    println!("cargo:rerun-if-changed=types");
 }
