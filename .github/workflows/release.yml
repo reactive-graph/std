@@ -13,6 +13,16 @@ env:
   WORKSPACE_ROOT_MANIFEST_DIR: "/home/runner/work/inexor-rgf-plugins/inexor-rgf-plugins"
 
 jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: VCS Checkout
+        uses: actions/checkout@v3
+      - name: Create GitHub Release
+        uses: taiki-e/create-gh-release-action@v1
+        with:
+          changelog: CHANGELOG.md
+          token: ${{ secrets.GITHUB_TOKEN }}
   crates-io:
     name: Publish on crates.io
     runs-on: ubuntu-latest
