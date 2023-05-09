@@ -8,6 +8,13 @@ license.workspace = true
 repository.workspace = true
 readme = "../../../../README.md"
 
+[package.metadata.deb]
+name = "libinexor-rgf-plugin-metadata"
+depends = "inexor-rgf"
+assets = [
+    ["target/release/libinexor_rgf_plugin_metadata.so", "usr/share/inexor-rgf/default/plugins/installed/libinexor_rgf_plugin_metadata.so", "755"],
+]
+
 [dependencies]
 log = { workspace = true, features = ["std", "serde"] }
 log4rs = { workspace = true, features = ["console_appender", "file_appender", "toml_format"]}

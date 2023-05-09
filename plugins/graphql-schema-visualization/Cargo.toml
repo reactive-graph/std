@@ -10,6 +10,13 @@ readme = "../../README.md"
 
 exclude = [ "web/node_modules" ]
 
+[package.metadata.deb]
+name = "libinexor-rgf-plugin-graphql-schema-visualization"
+depends = "inexor-rgf"
+assets = [
+    ["target/release/libinexor_rgf_plugin_graphql_schema_visualization.so", "usr/share/inexor-rgf/default/plugins/installed/libinexor_rgf_plugin_graphql_schema_visualization.so", "755"],
+]
+
 [dependencies]
 async-trait = { workspace = true }
 http = { workspace = true }

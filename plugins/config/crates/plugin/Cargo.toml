@@ -8,6 +8,13 @@ license.workspace = true
 repository.workspace = true
 readme = "../../../../README.md"
 
+[package.metadata.deb]
+name = "libinexor-rgf-plugin-config"
+depends = "inexor-rgf"
+assets = [
+    ["target/release/libinexor_rgf_plugin_config.so", "usr/share/inexor-rgf/default/plugins/installed/libinexor_rgf_plugin_config.so", "755"],
+]
+
 [dependencies]
 async-trait = { workspace = true }
 dashmap = { workspace = true }
