@@ -10,7 +10,7 @@ readme = "../../../../README.md"
 
 [package.metadata.deb]
 name = "libinexor-rgf-plugin-numeric"
-depends = "inexor-rgf"
+depends = "inexor-rgf, libinexor-rgf-plugin-base, libinexor-rgf-plugin-value, libinexor-rgf-plugin-result"
 assets = [
     ["target/release/libinexor_rgf_plugin_numeric.so", "usr/share/inexor-rgf/default/plugins/installed/libinexor_rgf_plugin_numeric.so", "755"],
 ]
