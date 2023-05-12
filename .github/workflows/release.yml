@@ -23,6 +23,69 @@ jobs:
         with:
           changelog: CHANGELOG.md
           token: ${{ secrets.GITHUB_TOKEN }}
+  upload-assets:
+    strategy:
+      matrix:
+        include:
+          # Tier 1
+          - target: x86_64-unknown-linux-gnu
+            os: ubuntu-latest
+          # Tier 1
+          - target: aarch64-unknown-linux-gnu
+            os: ubuntu-latest
+          # Tier 2
+          - target: armv7-unknown-linux-gnueabihf
+            os: ubuntu-latest
+          # Tier 1
+          - target: x86_64-apple-darwin
+            os: macos-latest
+          # Tier 2
+          - target: aarch64-apple-darwin
+            os: macos-latest
+          # Universal macOS binary is supported as universal-apple-darwin.
+          - target: universal-apple-darwin
+            os: macos-latest
+          # Tier 1
+          - target: x86_64-pc-windows-msvc
+            os: windows-latest
+          # Tier 2
+          # - target: aarch64-pc-windows-msvc
+          #   os: windows-latest
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: VCS Checkout
+        uses: actions/checkout@v3
+      # Required by arm targets
+      - name: Install packages
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: pkg-config openssl libssl-dev
+          version: 1.1
+        if: matrix.os == 'ubuntu-latest'
+      - name: Setup Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install Yarn
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: --cwd plugins/graphql-client/web install
+      - name: Install Yarn
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: --cwd plugins/graphql-schema-visualization/web install
+      - name: Upload Rust Binary
+        uses: taiki-e/upload-rust-binary-action@v1
+        with:
+          bin: libinexor_rgf_plugin_standalone
+          target: ${{ matrix.target }}
+          include: LICENSE.md,README.md,CHANGELOG.md,config,plugins
+          tar: unix
+          zip: windows
+          leading_dir: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          VERGEN_IDEMPOTENT: true
   crates-io:
     name: Publish on crates.io
     runs-on: ubuntu-latest
@@ -70,7 +133,7 @@ jobs:
       matrix:
         include:
           - target: x86_64-unknown-linux-gnu
-            os: ubuntu-latest
+            os: ubuntu-20.04
           - target: aarch64-unknown-linux-gnu
             os: ubuntu-20.04
           - target: armv7-unknown-linux-gnueabihf
