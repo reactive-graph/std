@@ -9,7 +9,7 @@ repository.workspace = true
 readme = "../../../../README.md"
 
 [package.metadata.deb]
-name = "libinexor-rgf-plugin-system_environment"
+name = "libinexor-rgf-plugin-system-environment"
 depends = "inexor-rgf, libinexor-rgf-plugin-base, libinexor-rgf-plugin-value"
 assets = [
     ["target/release/libinexor_rgf_plugin_system_environment.so", "usr/share/inexor-rgf/default/plugins/installed/libinexor_rgf_plugin_system_environment.so", "755"],
