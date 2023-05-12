@@ -142,6 +142,11 @@ jobs:
     steps:
       - name: VCS Checkout
         uses: actions/checkout@v3
+      - name: Get version number from git tag
+        id: tag
+        uses: devops-actions/action-get-tag@v1.0.1
+        with:
+          strip_v: true
       - name: Install aarch64 packages
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
@@ -186,57 +191,57 @@ jobs:
         run: |
           # It's important to change into the plugin directory and building each package
           cd ./plugins/arithmetic/crates/plugin
-          cargo deb -p inexor-rgf-plugin-arithmetic --target=${{ matrix.target }}
+          cargo deb -p inexor-rgf-plugin-arithmetic --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../base/crates/plugin
-          cargo deb -p inexor-rgf-plugin-base --target=${{ matrix.target }}
+          cargo deb -p inexor-rgf-plugin-base --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../binary/crates/plugin
-          cargo deb -p inexor-rgf-plugin-binary --target=${{ matrix.target }}
+          cargo deb -p inexor-rgf-plugin-binary --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../color/crates/plugin
-          cargo deb -p inexor-rgf-plugin-color --target=${{ matrix.target }}
+          cargo deb -p inexor-rgf-plugin-color --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../comparison/crates/plugin
-          cargo deb -p inexor-rgf-plugin-comparison --target=${{ matrix.target }}
+          cargo deb -p inexor-rgf-plugin-comparison --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../config/crates/plugin
-          cargo deb -p inexor-rgf-plugin-config --target=${{ matrix.target }}
+          cargo deb -p inexor-rgf-plugin-config --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../connector/crates/plugin
-          cargo deb -p inexor-rgf-plugin-connector --target=${{ matrix.target }}
+          cargo deb -p inexor-rgf-plugin-connector --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../date-time/crates/plugin
-          cargo deb -p inexor-rgf-plugin-date-time --target=${{ matrix.target }}
+          cargo deb -p inexor-rgf-plugin-date-time --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../file/crates/plugin
-          cargo deb -p inexor-rgf-plugin-file --target=${{ matrix.target }}
+          cargo deb -p inexor-rgf-plugin-file --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../flow/crates/plugin
-          cargo deb -p inexor-rgf-plugin-flow --target=${{ matrix.target }}
+          cargo deb -p inexor-rgf-plugin-flow --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../git/crates/plugin
-          cargo deb -p inexor-rgf-plugin-git --target=${{ matrix.target }}
+          cargo deb -p inexor-rgf-plugin-git --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../http/crates/plugin
-          cargo deb -p inexor-rgf-plugin-http --target=${{ matrix.target }}
+          cargo deb -p inexor-rgf-plugin-http --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../json/crates/plugin
-          cargo deb -p inexor-rgf-plugin-json --target=${{ matrix.target }}
+          cargo deb -p inexor-rgf-plugin-json --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../logical/crates/plugin
-          cargo deb -p inexor-rgf-plugin-logical --target=${{ matrix.target }}
+          cargo deb -p inexor-rgf-plugin-logical --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../metadata/crates/plugin
-          cargo deb -p inexor-rgf-plugin-metadata --target=${{ matrix.target }}
+          cargo deb -p inexor-rgf-plugin-metadata --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../numeric/crates/plugin
-          cargo deb -p inexor-rgf-plugin-numeric --target=${{ matrix.target }}
+          cargo deb -p inexor-rgf-plugin-numeric --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../random/crates/plugin
-          cargo deb -p inexor-rgf-plugin-random --target=${{ matrix.target }}
+          cargo deb -p inexor-rgf-plugin-random --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../result/crates/plugin
-          cargo deb -p inexor-rgf-plugin-result --target=${{ matrix.target }}
+          cargo deb -p inexor-rgf-plugin-result --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../state/crates/plugin
-          cargo deb -p inexor-rgf-plugin-state --target=${{ matrix.target }}
+          cargo deb -p inexor-rgf-plugin-state --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../string/crates/plugin
-          cargo deb -p inexor-rgf-plugin-string --target=${{ matrix.target }}
+          cargo deb -p inexor-rgf-plugin-string --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../system-environment/crates/plugin
-          cargo deb -p inexor-rgf-plugin-system-environment --target=${{ matrix.target }}
+          cargo deb -p inexor-rgf-plugin-system-environment --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../taxonomy/crates/plugin
-          cargo deb -p inexor-rgf-plugin-taxonomy --target=${{ matrix.target }}
+          cargo deb -p inexor-rgf-plugin-taxonomy --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../trigger/crates/plugin
-          cargo deb -p inexor-rgf-plugin-trigger --target=${{ matrix.target }}
+          cargo deb -p inexor-rgf-plugin-trigger --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../value/crates/plugin
-          cargo deb -p inexor-rgf-plugin-value --target=${{ matrix.target }}
+          cargo deb -p inexor-rgf-plugin-value --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../graphql-client
-          cargo deb -p inexor-rgf-plugin-graphql-client --target=${{ matrix.target }}
+          cargo deb -p inexor-rgf-plugin-graphql-client --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../graphql-schema-visualization
-          cargo deb -p inexor-rgf-plugin-graphql-schema-visualization --target=${{ matrix.target }}
+          cargo deb -p inexor-rgf-plugin-graphql-schema-visualization --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
         env:
           VERGEN_IDEMPOTENT: true
       - name: Upload debian package to release
