@@ -6,6 +6,10 @@
     {
       "namespace": "base",
       "name": "named"
+    },
+    {
+      "namespace": "result",
+      "type_name": "result_array"
     }
   ],
   "properties": [
@@ -13,12 +17,6 @@
       "name": "array",
       "data_type": "array",
       "socket_type": "input"
-    },
-    {
-      "name": "result",
-      "data_type": "array",
-      "socket_type": "output",
-      "mutability": "immutable"
     },
     {
       "name": "value",

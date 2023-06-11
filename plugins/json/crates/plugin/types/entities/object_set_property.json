@@ -6,6 +6,10 @@
     {
       "namespace": "base",
       "name": "named"
+    },
+    {
+      "namespace": "result",
+      "type_name": "result_object"
     }
   ],
   "properties": [
@@ -23,12 +27,6 @@
       "name": "value",
       "data_type": "any",
       "socket_type": "input"
-    },
-    {
-      "name": "result",
-      "data_type": "object",
-      "socket_type": "output",
-      "mutability": "immutable"
     }
   ],
   "extensions": [

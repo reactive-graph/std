@@ -6,6 +6,10 @@
     {
       "namespace": "base",
       "name": "named"
+    },
+    {
+      "namespace": "result",
+      "type_name": "result_boolean"
     }
   ],
   "properties": [
@@ -18,12 +22,6 @@
       "name": "search",
       "data_type": "any",
       "socket_type": "input"
-    },
-    {
-      "name": "result",
-      "data_type": "bool",
-      "socket_type": "output",
-      "mutability": "immutable"
     }
   ],
   "extensions": [
