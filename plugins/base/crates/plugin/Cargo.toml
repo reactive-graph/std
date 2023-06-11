@@ -47,6 +47,6 @@ inexor-rgf-model-base = { version = "0.9.1", path = "../../crates/model" }
 crate-type = ["cdylib"]
 
 [package.metadata.cargo-post.dependencies]
-toml = "0.5"
+toml = "0.7"
 serde = { version = "1.0", features = [ "derive" ] }
 glob = "0.3"
