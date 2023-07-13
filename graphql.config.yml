@@ -1,0 +1,23 @@
+projects:
+  default:
+    schema: ./graphql/schema.graphql
+    include: ./plugins/*/graphql/**/*.graphql
+    extensions:
+      endpoints:
+        Inexor GraphQL http:
+          url: http://localhost:31415/graphql
+          introspect: true
+        Inexor GraphQL https:
+          url: https://localhost:31415/graphql
+          introspect: true
+  dynamicGraph:
+    schema: ./dynamic_graph/schema.graphql
+    include: ./plugins/*/dynamic_graph/**/*.graphql
+    extensions:
+      endpoints:
+        Inexor Dynamic Graph http:
+          url: http://localhost:31415/dynamic_graph
+          introspect: true
+        Inexor Dynamic Graph https:
+          url: https://localhost:31415/dynamic_graph
+          introspect: true
