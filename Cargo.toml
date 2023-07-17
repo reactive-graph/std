@@ -79,6 +79,7 @@ git2 = "0.16"
 http = "0.2"
 indradb-lib = "3"
 infer = "0.13"
+json5 = "0.4"
 lazy_static = "1.4"
 license = "3.0"
 log = { version = "0.4", features = ["std", "serde"] }
