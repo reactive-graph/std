@@ -16,6 +16,10 @@
       "name": "file"
     },
     {
+      "namespace": "result",
+      "name": "result_object"
+    },
+    {
       "namespace": "config",
       "name": "config_file"
     }
