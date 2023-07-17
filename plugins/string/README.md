@@ -6,24 +6,24 @@ This plugin provides string manipulation entities.
 
 | Name                      | Property | Data Type | Socket Type |
 |---------------------------|----------|-----------|-------------|
-||
+|
 | string_bool_operation     | lhs      | string    | input       |
 |                           | result   | bool      | output      |
-||
+|
 | string_comparison         | lhs      | string    | input       |
 |                           | rhs      | string    | input       |
 |                           | result   | bool      | output      |
-||
+|
 | string_gate               | lhs      | string    | input       |
 |                           | rhs      | string    | input       |
 |                           | result   | string    | output      |
-||
+|
 | string_number_operation   | lhs      | string    | input       |
 |                           | result   | number    | output      |
-||
+|
 | string_operation          | lhs      | string    | input       |
 |                           | result   | string    | output      |
-||
+|
 | string_string_number_gate | lhs      | string    | input       |
 |                           | rhs      | string    | input       |
 |                           | result   | number    | output      |
