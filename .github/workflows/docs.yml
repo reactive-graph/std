@@ -33,6 +33,18 @@ jobs:
           profile: minimal
           override: true
           components: rustfmt, rust-src
+      - name: Setup Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install Yarn
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: --cwd plugins/graphql-client/web install
+      - name: Install Yarn
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: --cwd plugins/graphql-schema-visualization/web install
       - name: Run sccache-cache
         uses: mozilla-actions/sccache-action@v0.0.3
       - name: Run cargo doc
