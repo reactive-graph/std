@@ -123,31 +123,31 @@ voca_rs = "1"
 
 ### Prefer git over crates.io for development
 
-#inexor-rgf-behaviour = { version = "0.10.0", git = "https://github.com/inexorgame/inexor-rgf-application.git", branch = "feature/0.10.0/refactoring" }
-#inexor-rgf-behaviour-api = { version = "0.10.0", git = "https://github.com/inexorgame/inexor-rgf-application.git", branch = "feature/0.10.0/refactoring" }
-#inexor-rgf-config = { version = "0.10.0", git = "https://github.com/inexorgame/inexor-rgf-application.git", branch = "feature/0.10.0/refactoring" }
-#inexor-rgf-graph = { version = "0.10.0", git = "https://github.com/inexorgame/inexor-rgf-application.git", branch = "feature/0.10.0/refactoring" }
-#inexor-rgf-model-runtime = { version = "0.10.0", git = "https://github.com/inexorgame/inexor-rgf-application.git", branch = "feature/0.10.0/refactoring" }
-#inexor-rgf-plugin-api = { version = "0.10.0", git = "https://github.com/inexorgame/inexor-rgf-application.git", branch = "feature/0.10.0/refactoring" }
-#inexor-rgf-plugin-derive = { version = "0.10.0", git = "https://github.com/inexorgame/inexor-rgf-application.git", branch = "feature/0.10.0/refactoring" }
-#inexor-rgf-reactive = { version = "0.10.0", git = "https://github.com/inexorgame/inexor-rgf-application.git", branch = "feature/0.10.0/refactoring" }
-#inexor-rgf-reactive-api = { version = "0.10.0", git = "https://github.com/inexorgame/inexor-rgf-application.git", branch = "feature/0.10.0/refactoring" }
-#inexor-rgf-rt-api = { version = "0.10.0", git = "https://github.com/inexorgame/inexor-rgf-application.git", branch = "feature/0.10.0/refactoring" }
-#inexor-rgf-test-utils = { version = "0.10.0", git = "https://github.com/inexorgame/inexor-rgf-application.git", branch = "feature/0.10.0/refactoring" }
+inexor-rgf-behaviour = { version = "0.10.0", git = "https://github.com/inexorgame/inexor-rgf-application.git", branch = "feature/0.10.0/refactoring" }
+inexor-rgf-behaviour-api = { version = "0.10.0", git = "https://github.com/inexorgame/inexor-rgf-application.git", branch = "feature/0.10.0/refactoring" }
+inexor-rgf-config = { version = "0.10.0", git = "https://github.com/inexorgame/inexor-rgf-application.git", branch = "feature/0.10.0/refactoring" }
+inexor-rgf-graph = { version = "0.10.0", git = "https://github.com/inexorgame/inexor-rgf-application.git", branch = "feature/0.10.0/refactoring" }
+inexor-rgf-model-runtime = { version = "0.10.0", git = "https://github.com/inexorgame/inexor-rgf-application.git", branch = "feature/0.10.0/refactoring" }
+inexor-rgf-plugin-api = { version = "0.10.0", git = "https://github.com/inexorgame/inexor-rgf-application.git", branch = "feature/0.10.0/refactoring" }
+inexor-rgf-plugin-derive = { version = "0.10.0", git = "https://github.com/inexorgame/inexor-rgf-application.git", branch = "feature/0.10.0/refactoring" }
+inexor-rgf-reactive = { version = "0.10.0", git = "https://github.com/inexorgame/inexor-rgf-application.git", branch = "feature/0.10.0/refactoring" }
+inexor-rgf-reactive-api = { version = "0.10.0", git = "https://github.com/inexorgame/inexor-rgf-application.git", branch = "feature/0.10.0/refactoring" }
+inexor-rgf-rt-api = { version = "0.10.0", git = "https://github.com/inexorgame/inexor-rgf-application.git", branch = "feature/0.10.0/refactoring" }
+inexor-rgf-test-utils = { version = "0.10.0", git = "https://github.com/inexorgame/inexor-rgf-application.git", branch = "feature/0.10.0/refactoring" }
 
-###
+### Prefer local over git for local development
 
-inexor-rgf-behaviour = { version = "0.10.0", path = "../inexor-rgf/crates/behaviour" }
-inexor-rgf-behaviour-api = { version = "0.10.0", path = "../inexor-rgf/crates/behaviour-api" }
-inexor-rgf-config = { version = "0.10.0", path = "../inexor-rgf/crates/config" }
-inexor-rgf-graph = { version = "0.10.0", path = "../inexor-rgf/crates/graph" }
-inexor-rgf-model-runtime = { version = "0.10.0", path = "../inexor-rgf/crates/model/runtime" }
-inexor-rgf-plugin-api = { version = "0.10.0", path = "../inexor-rgf/crates/plugin-api" }
-inexor-rgf-plugin-derive = { version = "0.10.0", path = "../inexor-rgf/crates/plugin-derive" }
-inexor-rgf-reactive = { version = "0.10.0", path = "../inexor-rgf/crates/reactive" }
-inexor-rgf-reactive-api = { version = "0.10.0", path = "../inexor-rgf/crates/reactive-api" }
-inexor-rgf-rt-api = { version = "0.10.0", path = "../inexor-rgf/crates/runtime-api" }
-inexor-rgf-test-utils = { version = "0.10.0", path = "../inexor-rgf/crates/test-utils" }
+#inexor-rgf-behaviour = { version = "0.10.0", path = "../inexor-rgf/crates/behaviour" }
+#inexor-rgf-behaviour-api = { version = "0.10.0", path = "../inexor-rgf/crates/behaviour-api" }
+#inexor-rgf-config = { version = "0.10.0", path = "../inexor-rgf/crates/config" }
+#inexor-rgf-graph = { version = "0.10.0", path = "../inexor-rgf/crates/graph" }
+#inexor-rgf-model-runtime = { version = "0.10.0", path = "../inexor-rgf/crates/model/runtime" }
+#inexor-rgf-plugin-api = { version = "0.10.0", path = "../inexor-rgf/crates/plugin-api" }
+#inexor-rgf-plugin-derive = { version = "0.10.0", path = "../inexor-rgf/crates/plugin-derive" }
+#inexor-rgf-reactive = { version = "0.10.0", path = "../inexor-rgf/crates/reactive" }
+#inexor-rgf-reactive-api = { version = "0.10.0", path = "../inexor-rgf/crates/reactive-api" }
+#inexor-rgf-rt-api = { version = "0.10.0", path = "../inexor-rgf/crates/runtime-api" }
+#inexor-rgf-test-utils = { version = "0.10.0", path = "../inexor-rgf/crates/test-utils" }
 
 [profile.dev]
 opt-level = 0
