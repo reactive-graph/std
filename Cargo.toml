@@ -29,7 +29,7 @@ members = [
     "plugins/graphql-schema-visualization",
     "plugins/http/crates/model",
     "plugins/http/crates/plugin",
-    "plugins/i18n/crates/model",
+#    "plugins/i18n/crates/model",
 #    "plugins/i18n/crates/plugin",
     "plugins/json/crates/model",
     "plugins/json/crates/plugin",
