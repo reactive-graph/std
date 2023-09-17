@@ -2,15 +2,22 @@ use std::fs::File;
 use std::io::Read;
 use std::path::Path;
 
+use base64::engine::general_purpose::STANDARD;
+use base64::Engine;
+use inexor_rgf_behaviour::entity_behaviour;
+use inexor_rgf_behaviour::PropertyObserverContainer;
+use inexor_rgf_behaviour_api::behaviour_validator;
+use inexor_rgf_behaviour_api::prelude::*;
+use inexor_rgf_graph::prelude::*;
+use inexor_rgf_model_runtime::ActionProperties::TRIGGER;
+use inexor_rgf_reactive::ReactiveEntity;
 use mime_guess::from_path;
 use serde_json::json;
 use serde_json::Value;
+use uuid::Uuid;
 
-use crate::model::*;
-use crate::model_binary::BinaryDataProperties::DATA_URL;
-use crate::model_file::FileProperties::FILENAME;
-use crate::model_runtime::ActionProperties::TRIGGER;
-use crate::reactive::*;
+use inexor_rgf_model_binary::BinaryDataProperties::DATA_URL;
+use inexor_rgf_model_file::FileProperties::FILENAME;
 
 entity_behaviour!(
     LoadBinaryData,
@@ -20,9 +27,9 @@ entity_behaviour!(
     LoadBinaryDataValidator
 );
 
-behaviour_validator!(LoadBinaryDataValidator, ReactiveEntityInstance, TRIGGER.as_ref(), FILENAME.as_ref(), DATA_URL.as_ref());
+behaviour_validator!(LoadBinaryDataValidator, Uuid, ReactiveEntity, TRIGGER.as_ref(), FILENAME.as_ref(), DATA_URL.as_ref());
 
-impl BehaviourInit<ReactiveEntityInstance> for LoadBinaryDataBehaviourTransitions {
+impl BehaviourInit<Uuid, ReactiveEntity> for LoadBinaryDataBehaviourTransitions {
     fn init(&self) -> Result<(), BehaviourInitializationFailed> {
         if self.reactive_instance.as_bool(TRIGGER).unwrap_or(false) {
             if let Some(value) = self.reactive_instance.as_string(FILENAME).and_then(load_binary_data) {
@@ -33,7 +40,7 @@ impl BehaviourInit<ReactiveEntityInstance> for LoadBinaryDataBehaviourTransition
     }
 }
 
-impl BehaviourConnect<ReactiveEntityInstance> for LoadBinaryDataBehaviourTransitions {
+impl BehaviourConnect<Uuid, ReactiveEntity> for LoadBinaryDataBehaviourTransitions {
     fn connect(&self) -> Result<(), BehaviourConnectFailed> {
         let reactive_instance = self.reactive_instance.clone();
         self.property_observers.observe_with_handle(TRIGGER.as_ref(), move |trigger: &Value| {
@@ -55,8 +62,8 @@ impl BehaviourConnect<ReactiveEntityInstance> for LoadBinaryDataBehaviourTransit
     }
 }
 
-impl BehaviourShutdown<ReactiveEntityInstance> for LoadBinaryDataBehaviourTransitions {}
-impl BehaviourTransitions<ReactiveEntityInstance> for LoadBinaryDataBehaviourTransitions {}
+impl BehaviourShutdown<Uuid, ReactiveEntity> for LoadBinaryDataBehaviourTransitions {}
+impl BehaviourTransitions<Uuid, ReactiveEntity> for LoadBinaryDataBehaviourTransitions {}
 
 fn load_binary_data(filename: String) -> Option<Value> {
     let filename = shellexpand::tilde(&filename);
@@ -67,6 +74,6 @@ fn load_binary_data(filename: String) -> Option<Value> {
         infer::get(&buffer)
             .map(|kind| kind.mime_type().to_string())
             .or_else(|| from_path(path).first().map(|x| x.to_string()))
-            .map(|mime_type| json!(format!("data:{};base64,{}", mime_type, base64::encode(&buffer))))
+            .map(|mime_type| json!(format!("data:{};base64,{}", mime_type, STANDARD.encode(&buffer))))
     })
 }

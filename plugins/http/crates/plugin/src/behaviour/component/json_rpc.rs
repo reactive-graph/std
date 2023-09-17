@@ -1,22 +1,29 @@
-use log::error;
+use inexor_rgf_behaviour::entity_behaviour;
+use inexor_rgf_behaviour::PropertyObserverContainer;
+use inexor_rgf_behaviour_api::behaviour_validator;
+use inexor_rgf_behaviour_api::prelude::*;
+use inexor_rgf_graph::prelude::*;
+use inexor_rgf_reactive::ReactiveEntity;
 use serde_json::json;
 use serde_json::Value;
+use uuid::Uuid;
 
-use crate::model::*;
-use crate::model_http::JsonRpcProperties::ERROR;
-use crate::model_http::JsonRpcProperties::JSON_RPC_VERSION;
-use crate::model_http::JsonRpcProperties::METHOD;
-use crate::model_http::JsonRpcProperties::PARAMS;
-use crate::model_http::UrlProperties::URL;
-use crate::model_result::ResultObjectProperties::RESULT;
-use crate::model_runtime::ActionProperties::TRIGGER;
-use crate::reactive::*;
+use log::error;
+
+use inexor_rgf_model_http::JsonRpcProperties::ERROR;
+use inexor_rgf_model_http::JsonRpcProperties::JSON_RPC_VERSION;
+use inexor_rgf_model_http::JsonRpcProperties::METHOD;
+use inexor_rgf_model_http::JsonRpcProperties::PARAMS;
+use inexor_rgf_model_http::UrlProperties::URL;
+use inexor_rgf_model_result::ResultObjectProperties::RESULT;
+use inexor_rgf_model_runtime::ActionProperties::TRIGGER;
 
 entity_behaviour!(JsonRpc, JsonRpcFactory, JsonRpcFsm, JsonRpcBehaviourTransitions, JsonRpcValidator);
 
 behaviour_validator!(
     JsonRpcValidator,
-    ReactiveEntityInstance,
+    Uuid,
+    ReactiveEntity,
     METHOD.as_ref(),
     JSON_RPC_VERSION.as_ref(),
     PARAMS.as_ref(),
@@ -25,9 +32,9 @@ behaviour_validator!(
     URL.as_ref()
 );
 
-impl BehaviourInit<ReactiveEntityInstance> for JsonRpcBehaviourTransitions {}
+impl BehaviourInit<Uuid, ReactiveEntity> for JsonRpcBehaviourTransitions {}
 
-impl BehaviourConnect<ReactiveEntityInstance> for JsonRpcBehaviourTransitions {
+impl BehaviourConnect<Uuid, ReactiveEntity> for JsonRpcBehaviourTransitions {
     fn connect(&self) -> Result<(), BehaviourConnectFailed> {
         let reactive_instance = self.reactive_instance.clone();
         self.property_observers.observe_with_handle(TRIGGER.as_ref(), move |trigger: &Value| {
@@ -90,5 +97,5 @@ impl BehaviourConnect<ReactiveEntityInstance> for JsonRpcBehaviourTransitions {
     }
 }
 
-impl BehaviourShutdown<ReactiveEntityInstance> for JsonRpcBehaviourTransitions {}
-impl BehaviourTransitions<ReactiveEntityInstance> for JsonRpcBehaviourTransitions {}
+impl BehaviourShutdown<Uuid, ReactiveEntity> for JsonRpcBehaviourTransitions {}
+impl BehaviourTransitions<Uuid, ReactiveEntity> for JsonRpcBehaviourTransitions {}

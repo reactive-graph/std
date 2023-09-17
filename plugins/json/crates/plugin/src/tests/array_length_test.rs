@@ -1,12 +1,12 @@
+use inexor_rgf_model_json::ArrayLength;
+use inexor_rgf_model_json::ArrayLengthProperties::ARRAY;
+use inexor_rgf_model_json::ArrayLengthProperties::LENGTH;
+use inexor_rgf_model_json::BEHAVIOUR_ARRAY_LENGTH;
+use inexor_rgf_model_json::ENTITY_TYPE_ARRAY_LENGTH;
 use serde_json::json;
 
 use crate::behaviour::entity::array_length::ArrayLengthFactory;
 use crate::builder::ReactiveEntityInstanceBuilder;
-use crate::model_json::ArrayLength;
-use crate::model_json::ArrayLengthProperties::ARRAY;
-use crate::model_json::ArrayLengthProperties::LENGTH;
-use crate::model_json::BEHAVIOUR_ARRAY_LENGTH;
-use crate::model_json::ENTITY_TYPE_ARRAY_LENGTH;
 use crate::reactive::BehaviourFactory;
 use crate::reactive::BehaviourState;
 

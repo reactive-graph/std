@@ -1,9 +1,9 @@
-use crate::model::component_ty;
-use crate::model::entity_model;
-use crate::model::properties;
-use crate::model_result::ResultNumberF64;
-use crate::model_result::ResultNumberI64;
 use crate::NAMESPACE_NUMERIC;
+use inexor_rgf_graph::component_ty;
+use inexor_rgf_graph::properties;
+use inexor_rgf_model_result::ResultNumberF64;
+use inexor_rgf_model_result::ResultNumberI64;
+use inexor_rgf_reactive_api::entity_model;
 
 properties!(NumericGateProperties, (LHS, "lhs", 0.0), (RHS, "rhs", 0.0));
 

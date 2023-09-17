@@ -1,112 +1,76 @@
-use std::sync::Arc;
-use std::sync::RwLock;
-
-use async_trait::async_trait;
+use inexor_rgf_plugin_api::prelude::plugin::*;
+use inexor_rgf_plugin_api::prelude::providers::*;
+use inexor_rgf_plugin_api::EntityComponentBehaviourRegistry;
+use inexor_rgf_plugin_api::WebResourceManager;
 
 use crate::behaviour::component::load_binary_data::LoadBinaryDataFactory;
 use crate::behaviour::component::save_binary_data::SaveBinaryDataFactory;
-use crate::di::*;
-use crate::model_binary::BEHAVIOUR_LOAD_BINARY_DATA;
-use crate::model_binary::BEHAVIOUR_SAVE_BINARY_DATA;
-use crate::model_binary::COMPONENT_BEHAVIOUR_LOAD_BINARY_DATA;
-use crate::model_binary::COMPONENT_BEHAVIOUR_SAVE_BINARY_DATA;
-use crate::plugins::component_provider;
-use crate::plugins::entity_type_provider;
-use crate::plugins::plugin_context::PluginContext;
-use crate::plugins::web_resource_provider;
-use crate::plugins::ComponentProvider;
-use crate::plugins::ComponentProviderError;
-use crate::plugins::EntityTypeProvider;
-use crate::plugins::EntityTypeProviderError;
-use crate::plugins::Plugin;
-use crate::plugins::PluginActivationError;
-use crate::plugins::PluginContextDeinitializationError;
-use crate::plugins::PluginContextInitializationError;
-use crate::plugins::PluginDeactivationError;
-use crate::plugins::WebResourceProvider;
-use crate::plugins::WebResourceProviderError;
-use crate::providers::BinaryComponentProviderImpl;
-use crate::providers::BinaryEntityTypeProviderImpl;
-use crate::providers::BinaryWebResourceProvider;
-use crate::providers::BinaryWebResourceProviderImpl;
+use inexor_rgf_model_binary::BEHAVIOUR_LOAD_BINARY_DATA;
+use inexor_rgf_model_binary::BEHAVIOUR_SAVE_BINARY_DATA;
+use inexor_rgf_model_binary::COMPONENT_BEHAVIOUR_LOAD_BINARY_DATA;
+use inexor_rgf_model_binary::COMPONENT_BEHAVIOUR_SAVE_BINARY_DATA;
 
-#[wrapper]
-pub struct PluginContextContainer(RwLock<Option<Arc<dyn PluginContext>>>);
+export_plugin!({
+    "dependencies": [
+        { "name": "inexor-rgf-plugin-base", "version": ">=0.10.0, <0.11.0" },
+        { "name": "inexor-rgf-plugin-file", "version": ">=0.10.0, <0.11.0" },
+        { "name": "inexor-rgf-plugin-trigger", "version": ">=0.10.0, <0.11.0" }
+    ]
+});
 
-#[provides]
-fn create_empty_plugin_context_container() -> PluginContextContainer {
-    PluginContextContainer(RwLock::new(None))
-}
-
-#[async_trait]
+#[injectable]
 pub trait BinaryPlugin: Plugin + Send + Sync {}
 
-#[module]
+#[derive(Component)]
 pub struct BinaryPluginImpl {
-    component_provider: Wrc<BinaryComponentProviderImpl>,
-    entity_type_provider: Wrc<BinaryEntityTypeProviderImpl>,
-    web_resource_provider: Wrc<BinaryWebResourceProviderImpl>,
+    component_provider: Arc<dyn TypeProvider<Components> + Send + Sync>,
 
-    context: PluginContextContainer,
+    #[component(default = "component_provider_registry")]
+    component_provider_registry: Arc<dyn ComponentProviderRegistry + Send + Sync>,
+
+    entity_types_provider: Arc<dyn TypeProvider<EntityTypes> + Send + Sync>,
+
+    #[component(default = "entity_types_provider_registry")]
+    entity_type_provider_registry: Arc<dyn EntityTypeProviderRegistry + Send + Sync>,
+
+    #[component(default = "entity_component_behaviour_registry")]
+    entity_component_behaviour_registry: Arc<dyn EntityComponentBehaviourRegistry + Send + Sync>,
+
+    web_resource_provider: Arc<dyn WebResourceProvider + Send + Sync>,
+
+    #[component(default = "web_resource_manager")]
+    web_resource_manager: Arc<dyn WebResourceManager + Send + Sync>,
 }
 
-impl BinaryPluginImpl {}
-
-interfaces!(BinaryPluginImpl: dyn Plugin);
-
 #[async_trait]
-#[provides]
-impl BinaryPlugin for BinaryPluginImpl {}
-
-#[async_trait]
+#[component_alias]
 impl Plugin for BinaryPluginImpl {
     async fn activate(&self) -> Result<(), PluginActivationError> {
-        let guard = self.context.0.read().unwrap();
-        if let Some(context) = guard.clone() {
-            let entity_component_behaviour_registry = context.get_entity_component_behaviour_registry();
+        self.component_provider_registry.register_provider(self.component_provider.clone()).await;
+        self.entity_type_provider_registry.register_provider(self.entity_types_provider.clone()).await;
 
-            // Load Binary Data
-            let factory = Arc::new(LoadBinaryDataFactory::new(BEHAVIOUR_LOAD_BINARY_DATA.clone()));
-            entity_component_behaviour_registry.register(COMPONENT_BEHAVIOUR_LOAD_BINARY_DATA.clone(), factory);
+        // Load Binary Data
+        let factory = Arc::new(LoadBinaryDataFactory::new(BEHAVIOUR_LOAD_BINARY_DATA.clone()));
+        self.entity_component_behaviour_registry
+            .register(COMPONENT_BEHAVIOUR_LOAD_BINARY_DATA.clone(), factory)
+            .await;
 
-            // Save Binary Data
-            let factory = Arc::new(SaveBinaryDataFactory::new(BEHAVIOUR_SAVE_BINARY_DATA.clone()));
-            entity_component_behaviour_registry.register(COMPONENT_BEHAVIOUR_SAVE_BINARY_DATA.clone(), factory);
-        }
+        // Save Binary Data
+        let factory = Arc::new(SaveBinaryDataFactory::new(BEHAVIOUR_SAVE_BINARY_DATA.clone()));
+        self.entity_component_behaviour_registry
+            .register(COMPONENT_BEHAVIOUR_SAVE_BINARY_DATA.clone(), factory)
+            .await;
+        self.web_resource_manager.register_provider(self.web_resource_provider.clone()).await;
+
         Ok(())
     }
 
     async fn deactivate(&self) -> Result<(), PluginDeactivationError> {
-        let guard = self.context.0.read().unwrap();
-        if let Some(context) = guard.clone() {
-            let entity_component_behaviour_registry = context.get_entity_component_behaviour_registry();
-            entity_component_behaviour_registry.unregister(&COMPONENT_BEHAVIOUR_LOAD_BINARY_DATA);
-            entity_component_behaviour_registry.unregister(&COMPONENT_BEHAVIOUR_SAVE_BINARY_DATA);
-        }
+        self.web_resource_manager.unregister_provider(self.web_resource_provider.id()).await;
+        self.entity_component_behaviour_registry.unregister(&COMPONENT_BEHAVIOUR_SAVE_BINARY_DATA).await;
+        self.entity_component_behaviour_registry.unregister(&COMPONENT_BEHAVIOUR_LOAD_BINARY_DATA).await;
+        self.entity_type_provider_registry.unregister_provider(self.entity_types_provider.id()).await;
+        self.component_provider_registry.unregister_provider(self.component_provider.id()).await;
         Ok(())
-    }
-
-    fn set_context(&self, context: Arc<dyn PluginContext>) -> Result<(), PluginContextInitializationError> {
-        self.context.0.write().unwrap().replace(context.clone());
-        self.web_resource_provider.set_context(context.clone());
-        Ok(())
-    }
-
-    fn remove_context(&self) -> Result<(), PluginContextDeinitializationError> {
-        let mut writer = self.context.0.write().unwrap();
-        *writer = None;
-        Ok(())
-    }
-
-    fn get_component_provider(&self) -> Result<Option<Arc<dyn ComponentProvider>>, ComponentProviderError> {
-        component_provider!(self.component_provider)
-    }
-
-    fn get_entity_type_provider(&self) -> Result<Option<Arc<dyn EntityTypeProvider>>, EntityTypeProviderError> {
-        entity_type_provider!(self.entity_type_provider)
-    }
-
-    fn get_web_resource_provider(&self) -> Result<Option<Arc<dyn WebResourceProvider>>, WebResourceProviderError> {
-        web_resource_provider!(self.web_resource_provider)
     }
 }

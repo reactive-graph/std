@@ -1,24 +1,30 @@
+use inexor_rgf_behaviour::entity_behaviour;
+use inexor_rgf_behaviour::PropertyObserverContainer;
+use inexor_rgf_behaviour_api::behaviour_validator;
+use inexor_rgf_behaviour_api::prelude::*;
+use inexor_rgf_graph::prelude::*;
+use inexor_rgf_reactive::ReactiveEntity;
 use serde_json::Value;
+use uuid::Uuid;
 
-use crate::model::*;
-use crate::model_logical::ConditionProperties::CONDITION;
-use crate::model_logical::IfThenElseProperties::ELSE_PAYLOAD;
-use crate::model_logical::IfThenElseProperties::THEN_PAYLOAD;
-use crate::model_result::ResultAnyProperties::RESULT;
-use crate::reactive::*;
+use inexor_rgf_model_logical::ConditionProperties::CONDITION;
+use inexor_rgf_model_logical::IfThenElseProperties::ELSE_PAYLOAD;
+use inexor_rgf_model_logical::IfThenElseProperties::THEN_PAYLOAD;
+use inexor_rgf_model_result::ResultAnyProperties::RESULT;
 
 entity_behaviour!(IfThenElse, IfThenElseFactory, IfThenElseFsm, IfThenElseBehaviourTransitions, IfThenElseValidator);
 
 behaviour_validator!(
     IfThenElseValidator,
-    ReactiveEntityInstance,
+    Uuid,
+    ReactiveEntity,
     CONDITION.as_ref(),
     THEN_PAYLOAD.as_ref(),
     ELSE_PAYLOAD.as_ref(),
     RESULT.as_ref()
 );
 
-impl BehaviourInit<ReactiveEntityInstance> for IfThenElseBehaviourTransitions {
+impl BehaviourInit<Uuid, ReactiveEntity> for IfThenElseBehaviourTransitions {
     fn init(&self) -> Result<(), BehaviourInitializationFailed> {
         let condition = self
             .reactive_instance
@@ -33,7 +39,7 @@ impl BehaviourInit<ReactiveEntityInstance> for IfThenElseBehaviourTransitions {
     }
 }
 
-impl BehaviourConnect<ReactiveEntityInstance> for IfThenElseBehaviourTransitions {
+impl BehaviourConnect<Uuid, ReactiveEntity> for IfThenElseBehaviourTransitions {
     fn connect(&self) -> Result<(), BehaviourConnectFailed> {
         let reactive_instance = self.reactive_instance.clone();
         self.property_observers.observe_with_handle(CONDITION.as_ref(), move |v: &Value| {
@@ -50,5 +56,5 @@ impl BehaviourConnect<ReactiveEntityInstance> for IfThenElseBehaviourTransitions
     }
 }
 
-impl BehaviourShutdown<ReactiveEntityInstance> for IfThenElseBehaviourTransitions {}
-impl BehaviourTransitions<ReactiveEntityInstance> for IfThenElseBehaviourTransitions {}
+impl BehaviourShutdown<Uuid, ReactiveEntity> for IfThenElseBehaviourTransitions {}
+impl BehaviourTransitions<Uuid, ReactiveEntity> for IfThenElseBehaviourTransitions {}

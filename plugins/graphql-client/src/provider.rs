@@ -1,52 +1,50 @@
-use crate::di::*;
-use crate::plugins::HttpBody;
-use crate::plugins::WebResourceProvider;
+use std::borrow::Cow;
+use std::sync::LazyLock;
+
 use async_trait::async_trait;
 use http::header::CONTENT_TYPE;
 use http::Request;
 use http::Response;
-use http::Result;
 use http::StatusCode;
+use inexor_rgf_plugin_api::prelude::plugin::*;
+use inexor_rgf_plugin_api::HttpBody;
+use inexor_rgf_plugin_api::WebResourceProvider;
 use mime_guess::from_path;
-use rust_embed::RustEmbed;
-use std::borrow::Cow;
+use uuid::Uuid;
 
-#[derive(RustEmbed)]
-#[folder = "./web/dist/bundle"]
-struct GraphQlClientWebResourceAsset;
+const CONTEXT_PATH: &str = "graphql-client";
 
-#[async_trait]
-pub trait GraphQlClientWebResourceProvider: WebResourceProvider + Send + Sync {}
+static ID: LazyLock<Uuid> = LazyLock::new(Uuid::new_v4);
 
-#[derive(Clone)]
-pub struct GraphQlClientWebResourceProviderImpl {}
+mod embedded_resources {
+    use rust_embed::RustEmbed;
 
-interfaces!(GraphQlClientWebResourceProviderImpl: dyn WebResourceProvider);
-
-#[component]
-impl GraphQlClientWebResourceProviderImpl {
-    #[provides]
-    fn new() -> Self {
-        Self {}
-    }
+    #[derive(RustEmbed)]
+    #[folder = "./web/dist/bundle"]
+    pub(crate) struct GraphQlClientWebResourceAsset;
 }
 
-#[async_trait]
-#[provides]
-impl GraphQlClientWebResourceProvider for GraphQlClientWebResourceProviderImpl {}
+#[derive(Component)]
+pub struct GraphQlClientWebResourceProvider {}
 
-impl WebResourceProvider for GraphQlClientWebResourceProviderImpl {
-    fn get_context_path(&self) -> String {
-        String::from("graphql-client")
+#[async_trait]
+#[component_alias]
+impl WebResourceProvider for GraphQlClientWebResourceProvider {
+    fn id(&self) -> Uuid {
+        ID.clone()
     }
 
-    fn handle_web_resource(&self, path: String, _request: Request<HttpBody>) -> Result<Response<HttpBody>> {
+    fn get_context_path(&self) -> String {
+        CONTEXT_PATH.to_string()
+    }
+
+    async fn handle_web_resource(&self, path: String, _request: Request<HttpBody>) -> http::Result<Response<HttpBody>> {
         let path = match path.as_str() {
             "" | "index.html" | "graph.html" | "graph" => String::from("graph.html"),
             "dynamic-graph.html" | "dynamic-graph" => String::from("dynamic-graph.html"),
             _ => path,
         };
-        let asset = GraphQlClientWebResourceAsset::get(path.as_ref());
+        let asset = embedded_resources::GraphQlClientWebResourceAsset::get(path.as_ref());
         match asset {
             Some(asset) => {
                 let body: HttpBody = match asset.data {

@@ -1,2 +1,9 @@
-crate::plugins::component_provider_impl!(Connector, "types/components");
-crate::plugins::relation_type_provider_impl!(Connector, "types/relations");
+use inexor_rgf_plugin_api::prelude::providers::*;
+
+#[derive(TypeProvider, Component)]
+#[type_provider(tys = "Components", path = "types/components")]
+pub struct ConnectorComponentsProvider {}
+
+#[derive(TypeProvider, Component)]
+#[type_provider(tys = "RelationTypes", path = "types/relations")]
+pub struct ConnectorRelationTypesProvider {}

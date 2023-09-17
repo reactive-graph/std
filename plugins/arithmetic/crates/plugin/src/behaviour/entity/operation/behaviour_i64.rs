@@ -1,24 +1,18 @@
-use crate::behaviour::as_i64;
+use inexor_rgf_behaviour::entity_behaviour;
+use inexor_rgf_behaviour::PropertyObserverContainer;
+use inexor_rgf_behaviour_api::behaviour_validator;
+use inexor_rgf_behaviour_api::prelude::*;
+use inexor_rgf_graph::prelude::*;
+use inexor_rgf_reactive::ReactiveEntity;
 use serde_json::json;
 use serde_json::Value;
+use uuid::Uuid;
 
+use inexor_rgf_model_arithmetic::ArithmeticOperationProperties::LHS;
+use inexor_rgf_model_arithmetic::ArithmeticOperationProperties::RESULT;
+
+use crate::behaviour::as_i64;
 use crate::behaviour::entity::operation::function::ArithmeticOperationI64Function;
-
-use crate::model::PropertyInstanceSetter;
-use crate::model::ReactiveEntityInstance;
-use crate::model_arithmetic::ArithmeticOperationProperties::LHS;
-use crate::model_arithmetic::ArithmeticOperationProperties::RESULT;
-use crate::reactive::behaviour_validator;
-use crate::reactive::entity_behaviour;
-use crate::reactive::BehaviourConnect;
-use crate::reactive::BehaviourConnectFailed;
-use crate::reactive::BehaviourDisconnect;
-use crate::reactive::BehaviourFsm;
-use crate::reactive::BehaviourInit;
-use crate::reactive::BehaviourInitializationFailed;
-use crate::reactive::BehaviourShutdown;
-use crate::reactive::BehaviourTransitions;
-use crate::reactive::PropertyObserverContainer;
 
 entity_behaviour!(
     ArithmeticOperationI64,
@@ -30,9 +24,9 @@ entity_behaviour!(
     ArithmeticOperationI64Function
 );
 
-behaviour_validator!(ArithmeticOperationI64Validator, ReactiveEntityInstance, LHS.as_ref(), RESULT.as_ref());
+behaviour_validator!(ArithmeticOperationI64Validator, Uuid, ReactiveEntity, LHS.as_ref(), RESULT.as_ref());
 
-impl BehaviourInit<ReactiveEntityInstance> for ArithmeticOperationI64BehaviourTransitions {
+impl BehaviourInit<Uuid, ReactiveEntity> for ArithmeticOperationI64BehaviourTransitions {
     fn init(&self) -> Result<(), BehaviourInitializationFailed> {
         let lhs = self.reactive_instance.get(LHS).and_then(as_i64).ok_or(BehaviourInitializationFailed {})?;
         let f = self.f;
@@ -41,7 +35,7 @@ impl BehaviourInit<ReactiveEntityInstance> for ArithmeticOperationI64BehaviourTr
     }
 }
 
-impl BehaviourConnect<ReactiveEntityInstance> for ArithmeticOperationI64BehaviourTransitions {
+impl BehaviourConnect<Uuid, ReactiveEntity> for ArithmeticOperationI64BehaviourTransitions {
     fn connect(&self) -> Result<(), BehaviourConnectFailed> {
         let reactive_instance = self.property_observers.reactive_instance.clone();
         let f = self.f;
@@ -56,5 +50,5 @@ impl BehaviourConnect<ReactiveEntityInstance> for ArithmeticOperationI64Behaviou
     }
 }
 
-impl BehaviourShutdown<ReactiveEntityInstance> for ArithmeticOperationI64BehaviourTransitions {}
-impl BehaviourTransitions<ReactiveEntityInstance> for ArithmeticOperationI64BehaviourTransitions {}
+impl BehaviourShutdown<Uuid, ReactiveEntity> for ArithmeticOperationI64BehaviourTransitions {}
+impl BehaviourTransitions<Uuid, ReactiveEntity> for ArithmeticOperationI64BehaviourTransitions {}

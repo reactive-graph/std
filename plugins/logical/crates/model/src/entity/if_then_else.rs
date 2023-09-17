@@ -1,11 +1,11 @@
-use crate::model::behaviour_ty;
-use crate::model::entity_behaviour_ty;
-use crate::model::entity_model;
-use crate::model::entity_ty;
-use crate::model::properties;
-use crate::model_result::ResultAny;
+use crate::behaviour_api::behaviour_ty;
+use crate::behaviour_api::entity_behaviour_ty;
 use crate::Condition;
 use crate::NAMESPACE_LOGICAL;
+use inexor_rgf_graph::entity_ty;
+use inexor_rgf_graph::properties;
+use inexor_rgf_model_result::ResultAny;
+use inexor_rgf_reactive_api::entity_model;
 
 properties!(IfThenElseProperties, (THEN_PAYLOAD, "then_payload", 0), (ELSE_PAYLOAD, "else_payload", 0));
 

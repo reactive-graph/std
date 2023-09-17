@@ -1,2 +1,9 @@
-crate::plugins::entity_type_provider_impl!(DateTime, "types/entities");
-crate::plugins::relation_type_provider_impl!(DateTime, "types/relations");
+use inexor_rgf_plugin_api::prelude::providers::*;
+
+#[derive(TypeProvider, Component)]
+#[type_provider(tys = "Components", path = "types/components")]
+pub struct DateTimeComponentsProvider {}
+
+#[derive(TypeProvider, Component)]
+#[type_provider(tys = "EntityTypes", path = "types/entities")]
+pub struct DateTimeEntityTypesProvider {}

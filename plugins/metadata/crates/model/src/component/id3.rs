@@ -1,7 +1,7 @@
-use crate::model::component_model;
-use crate::model::component_ty;
-use crate::model::properties;
 use crate::NAMESPACE_METADATA;
+use inexor_rgf_graph::component_model;
+use inexor_rgf_graph::component_ty;
+use inexor_rgf_graph::properties;
 
 properties!(Id3Properties, (ID3_TALB, "id3_talb", ""));
 

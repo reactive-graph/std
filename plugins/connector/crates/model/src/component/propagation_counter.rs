@@ -1,8 +1,8 @@
-use crate::model::behaviour_ty;
-use crate::model::component_behaviour_ty;
-use crate::model::component_ty;
-use crate::model::properties;
+use crate::behaviour_api::behaviour_ty;
+use crate::behaviour_api::component_behaviour_ty;
 use crate::NAMESPACE_CONNECTOR;
+use inexor_rgf_graph::component_ty;
+use inexor_rgf_graph::properties;
 
 properties!(PropagationCounterProperties, (PROPAGATION_COUNT, "propagation_count", 0));
 

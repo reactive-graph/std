@@ -1,11 +1,16 @@
+use inexor_rgf_behaviour::entity_behaviour;
+use inexor_rgf_behaviour::PropertyObserverContainer;
+use inexor_rgf_behaviour_api::behaviour_validator;
+use inexor_rgf_behaviour_api::prelude::*;
+use inexor_rgf_graph::prelude::*;
+use inexor_rgf_reactive::ReactiveEntity;
 use serde_json::Value;
+use uuid::Uuid;
 
-use crate::model::*;
-use crate::model_json::ObjectSetPropertyProperties::OBJECT;
-use crate::model_json::ObjectSetPropertyProperties::PROPERTY_NAME;
-use crate::model_json::ObjectSetPropertyProperties::VALUE;
-use crate::model_result::ResultAnyProperties::RESULT;
-use crate::reactive::*;
+use inexor_rgf_model_json::ObjectSetPropertyProperties::OBJECT;
+use inexor_rgf_model_json::ObjectSetPropertyProperties::PROPERTY_NAME;
+use inexor_rgf_model_json::ObjectSetPropertyProperties::VALUE;
+use inexor_rgf_model_result::ResultAnyProperties::RESULT;
 
 entity_behaviour!(
     ObjectSetProperty,
@@ -17,14 +22,15 @@ entity_behaviour!(
 
 behaviour_validator!(
     ObjectSetPropertyValidator,
-    ReactiveEntityInstance,
+    Uuid,
+    ReactiveEntity,
     OBJECT.as_ref(),
     RESULT.as_ref(),
     VALUE.as_ref(),
     PROPERTY_NAME.as_ref()
 );
 
-impl BehaviourInit<ReactiveEntityInstance> for ObjectSetPropertyBehaviourTransitions {
+impl BehaviourInit<Uuid, ReactiveEntity> for ObjectSetPropertyBehaviourTransitions {
     fn init(&self) -> Result<(), BehaviourInitializationFailed> {
         if let Some(mut object) = self.reactive_instance.as_object(OBJECT) {
             if let Some(property_name) = self.reactive_instance.as_string(PROPERTY_NAME) {
@@ -42,7 +48,7 @@ impl BehaviourInit<ReactiveEntityInstance> for ObjectSetPropertyBehaviourTransit
     }
 }
 
-impl BehaviourConnect<ReactiveEntityInstance> for ObjectSetPropertyBehaviourTransitions {
+impl BehaviourConnect<Uuid, ReactiveEntity> for ObjectSetPropertyBehaviourTransitions {
     fn connect(&self) -> Result<(), BehaviourConnectFailed> {
         let reactive_instance = self.reactive_instance.clone();
         self.property_observers.observe_with_handle(OBJECT.as_ref(), move |object: &Value| {
@@ -92,5 +98,5 @@ impl BehaviourConnect<ReactiveEntityInstance> for ObjectSetPropertyBehaviourTran
     }
 }
 
-impl BehaviourShutdown<ReactiveEntityInstance> for ObjectSetPropertyBehaviourTransitions {}
-impl BehaviourTransitions<ReactiveEntityInstance> for ObjectSetPropertyBehaviourTransitions {}
+impl BehaviourShutdown<Uuid, ReactiveEntity> for ObjectSetPropertyBehaviourTransitions {}
+impl BehaviourTransitions<Uuid, ReactiveEntity> for ObjectSetPropertyBehaviourTransitions {}

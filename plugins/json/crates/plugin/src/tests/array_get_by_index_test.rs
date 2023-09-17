@@ -1,14 +1,14 @@
+use inexor_rgf_model_json::ArrayGetByIndex;
+use inexor_rgf_model_json::ArrayGetByIndexProperties::ARRAY;
+use inexor_rgf_model_json::ArrayGetByIndexProperties::INDEX;
+use inexor_rgf_model_json::BEHAVIOUR_ARRAY_GET_BY_INDEX;
+use inexor_rgf_model_json::ENTITY_TYPE_ARRAY_GET_BY_INDEX;
+use inexor_rgf_model_result::ResultAny;
+use inexor_rgf_model_result::ResultAnyProperties::RESULT;
 use serde_json::json;
 
 use crate::behaviour::entity::array_get_by_index::ArrayGetByIndexFactory;
 use crate::builder::ReactiveEntityInstanceBuilder;
-use crate::model_json::ArrayGetByIndex;
-use crate::model_json::ArrayGetByIndexProperties::ARRAY;
-use crate::model_json::ArrayGetByIndexProperties::INDEX;
-use crate::model_json::BEHAVIOUR_ARRAY_GET_BY_INDEX;
-use crate::model_json::ENTITY_TYPE_ARRAY_GET_BY_INDEX;
-use crate::model_result::ResultAny;
-use crate::model_result::ResultAnyProperties::RESULT;
 use crate::reactive::BehaviourFactory;
 use crate::reactive::BehaviourState;
 

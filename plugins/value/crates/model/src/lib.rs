@@ -1,9 +1,11 @@
-pub use component::*;
-pub use entity_type::*;
+#![feature(lazy_cell)]
+#![feature(unboxed_closures)]
+#![feature(fn_traits)]
+
+pub use component::value::*;
+pub use entity_type::value::*;
 
 pub mod component;
 pub mod entity_type;
-
-use inexor_rgf_core_model as model;
 
 pub const NAMESPACE_VALUE: &str = "value";

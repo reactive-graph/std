@@ -1,7 +1,7 @@
-use crate::model::entity_model;
-use crate::model::entity_ty;
-use crate::model::properties;
 use crate::NAMESPACE_DATE_TIME;
+use inexor_rgf_graph::entity_ty;
+use inexor_rgf_graph::properties;
+use inexor_rgf_reactive_api::entity_model;
 
 properties!(YearProperties, (YEAR, "year", 0), (LEAP, "leap", false));
 

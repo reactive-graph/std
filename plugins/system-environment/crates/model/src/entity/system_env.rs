@@ -1,11 +1,11 @@
-use crate::model::entity_model;
-use crate::model::entity_ty;
 use crate::NAMESPACE_SYSTEM_ENVIRONMENT;
+use inexor_rgf_graph::entity_ty;
+use inexor_rgf_reactive_api::entity_model;
 
-entity_ty!(ENTITY_TYPE_SYSTEM_ENV, NAMESPACE_SYSTEM_ENVIRONMENT, ENTITY_TYPE_NAME_SYSTEM_ENV, "system_env");
+entity_ty!(ENTITY_TYPE_SYSTEM_ENV_VAR, NAMESPACE_SYSTEM_ENVIRONMENT, ENTITY_TYPE_NAME_SYSTEM_ENV, "env_var");
 
 entity_model!(
-    SystemEnv,
+    EnvVar,
     get value string,
     get label string
 );

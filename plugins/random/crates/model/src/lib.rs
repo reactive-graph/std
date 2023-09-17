@@ -1,11 +1,11 @@
+#![feature(lazy_cell)]
+
 pub use component::*;
 pub use entity::*;
 
 pub mod component;
 pub mod entity;
 
-use inexor_rgf_core_model as model;
-use inexor_rgf_model_result as model_result;
-use inexor_rgf_model_runtime as model_runtime;
+use inexor_rgf_behaviour_api as behaviour_api;
 
 pub const NAMESPACE_RANDOM: &str = "random";

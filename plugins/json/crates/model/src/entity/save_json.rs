@@ -1,10 +1,10 @@
-use crate::model::entity_model;
-use crate::model::entity_ty;
-use crate::model_base::Named;
-use crate::model_file::File;
-use crate::model_runtime::Action;
 use crate::ComponentSaveJson;
 use crate::NAMESPACE_JSON;
+use inexor_rgf_graph::entity_ty;
+use inexor_rgf_model_base::Named;
+use inexor_rgf_model_file::File;
+use inexor_rgf_model_runtime::Action;
+use inexor_rgf_reactive_api::entity_model;
 
 // All properties are defined in the component(s)
 

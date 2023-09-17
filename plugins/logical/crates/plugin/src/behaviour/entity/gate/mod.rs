@@ -1,24 +1,17 @@
+use inexor_rgf_behaviour::entity_behaviour;
+use inexor_rgf_behaviour::PropertyObserverContainer;
+use inexor_rgf_behaviour_api::behaviour_validator;
+use inexor_rgf_behaviour_api::prelude::*;
+use inexor_rgf_graph::prelude::*;
+use inexor_rgf_reactive::ReactiveEntity;
 use serde_json::json;
+use uuid::Uuid;
 
 pub use function::LogicalGateFunction;
-pub use function::LOGICAL_GATES;
 
-use crate::model::PropertyInstanceSetter;
-use crate::model::ReactiveEntityInstance;
-use crate::model_logical::LogicalGateProperties::LHS;
-use crate::model_logical::LogicalGateProperties::RHS;
-use crate::model_result::ResultBooleanProperties::RESULT;
-use crate::reactive::behaviour_validator;
-use crate::reactive::entity_behaviour;
-use crate::reactive::BehaviourConnect;
-use crate::reactive::BehaviourConnectFailed;
-use crate::reactive::BehaviourDisconnect;
-use crate::reactive::BehaviourFsm;
-use crate::reactive::BehaviourInit;
-use crate::reactive::BehaviourInitializationFailed;
-use crate::reactive::BehaviourShutdown;
-use crate::reactive::BehaviourTransitions;
-use crate::reactive::PropertyObserverContainer;
+use inexor_rgf_model_logical::LogicalGateProperties::LHS;
+use inexor_rgf_model_logical::LogicalGateProperties::RHS;
+use inexor_rgf_model_result::ResultBooleanProperties::RESULT;
 
 pub mod function;
 
@@ -32,9 +25,9 @@ entity_behaviour!(
     LogicalGateFunction
 );
 
-behaviour_validator!(LogicalGateValidator, ReactiveEntityInstance, LHS.as_ref(), RHS.as_ref(), RESULT.as_ref());
+behaviour_validator!(LogicalGateValidator, Uuid, ReactiveEntity, LHS.as_ref(), RHS.as_ref(), RESULT.as_ref());
 
-impl BehaviourInit<ReactiveEntityInstance> for LogicalGateBehaviourTransitions {
+impl BehaviourInit<Uuid, ReactiveEntity> for LogicalGateBehaviourTransitions {
     fn init(&self) -> Result<(), BehaviourInitializationFailed> {
         let lhs = self
             .reactive_instance
@@ -53,7 +46,7 @@ impl BehaviourInit<ReactiveEntityInstance> for LogicalGateBehaviourTransitions {
     }
 }
 
-impl BehaviourConnect<ReactiveEntityInstance> for LogicalGateBehaviourTransitions {
+impl BehaviourConnect<Uuid, ReactiveEntity> for LogicalGateBehaviourTransitions {
     fn connect(&self) -> Result<(), BehaviourConnectFailed> {
         let reactive_instance = self.reactive_instance.clone();
         let f = self.f;
@@ -76,5 +69,5 @@ impl BehaviourConnect<ReactiveEntityInstance> for LogicalGateBehaviourTransition
         Ok(())
     }
 }
-impl BehaviourShutdown<ReactiveEntityInstance> for LogicalGateBehaviourTransitions {}
-impl BehaviourTransitions<ReactiveEntityInstance> for LogicalGateBehaviourTransitions {}
+impl BehaviourShutdown<Uuid, ReactiveEntity> for LogicalGateBehaviourTransitions {}
+impl BehaviourTransitions<Uuid, ReactiveEntity> for LogicalGateBehaviourTransitions {}

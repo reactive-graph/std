@@ -1,25 +1,18 @@
+use inexor_rgf_behaviour::entity_behaviour;
+use inexor_rgf_behaviour::PropertyObserverContainer;
+use inexor_rgf_behaviour_api::behaviour_validator;
+use inexor_rgf_behaviour_api::prelude::*;
+use inexor_rgf_graph::prelude::*;
+use inexor_rgf_reactive::ReactiveEntity;
 use serde_json::json;
 use serde_json::Value;
+use uuid::Uuid;
 
 pub use function::StringComparisonFunction;
-pub use function::STRING_COMPARISONS;
 
-use crate::model::PropertyInstanceSetter;
-use crate::model::ReactiveEntityInstance;
-use crate::model_result::ResultBooleanProperties::RESULT;
-use crate::model_string::StringComparisonProperties::LHS;
-use crate::model_string::StringComparisonProperties::RHS;
-use crate::reactive::behaviour_validator;
-use crate::reactive::entity_behaviour;
-use crate::reactive::BehaviourConnect;
-use crate::reactive::BehaviourConnectFailed;
-use crate::reactive::BehaviourDisconnect;
-use crate::reactive::BehaviourFsm;
-use crate::reactive::BehaviourInit;
-use crate::reactive::BehaviourInitializationFailed;
-use crate::reactive::BehaviourShutdown;
-use crate::reactive::BehaviourTransitions;
-use crate::reactive::PropertyObserverContainer;
+use inexor_rgf_model_result::ResultBooleanProperties::RESULT;
+use inexor_rgf_model_string::StringComparisonProperties::LHS;
+use inexor_rgf_model_string::StringComparisonProperties::RHS;
 
 pub mod function;
 
@@ -33,9 +26,9 @@ entity_behaviour!(
     StringComparisonFunction
 );
 
-behaviour_validator!(StringComparisonValidator, ReactiveEntityInstance, LHS.as_ref(), RESULT.as_ref());
+behaviour_validator!(StringComparisonValidator, Uuid, ReactiveEntity, LHS.as_ref(), RESULT.as_ref());
 
-impl BehaviourInit<ReactiveEntityInstance> for StringComparisonBehaviourTransitions {
+impl BehaviourInit<Uuid, ReactiveEntity> for StringComparisonBehaviourTransitions {
     fn init(&self) -> Result<(), BehaviourInitializationFailed> {
         let lhs = self
             .reactive_instance
@@ -53,7 +46,7 @@ impl BehaviourInit<ReactiveEntityInstance> for StringComparisonBehaviourTransiti
     }
 }
 
-impl BehaviourConnect<ReactiveEntityInstance> for StringComparisonBehaviourTransitions {
+impl BehaviourConnect<Uuid, ReactiveEntity> for StringComparisonBehaviourTransitions {
     fn connect(&self) -> Result<(), BehaviourConnectFailed> {
         let reactive_instance = self.reactive_instance.clone();
         let f = self.f;
@@ -77,5 +70,5 @@ impl BehaviourConnect<ReactiveEntityInstance> for StringComparisonBehaviourTrans
     }
 }
 
-impl BehaviourShutdown<ReactiveEntityInstance> for StringComparisonBehaviourTransitions {}
-impl BehaviourTransitions<ReactiveEntityInstance> for StringComparisonBehaviourTransitions {}
+impl BehaviourShutdown<Uuid, ReactiveEntity> for StringComparisonBehaviourTransitions {}
+impl BehaviourTransitions<Uuid, ReactiveEntity> for StringComparisonBehaviourTransitions {}

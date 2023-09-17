@@ -1,2 +1,9 @@
-crate::plugins::component_provider_impl!(Config, "types/components");
-crate::plugins::entity_type_provider_impl!(Config, "types/entities");
+use inexor_rgf_plugin_api::prelude::providers::*;
+
+#[derive(TypeProvider, Component)]
+#[type_provider(tys = "Components", path = "types/components")]
+pub struct ConfigComponentsProvider {}
+
+#[derive(TypeProvider, Component)]
+#[type_provider(tys = "EntityTypes", path = "types/entities")]
+pub struct ConfigEntityTypesProvider {}

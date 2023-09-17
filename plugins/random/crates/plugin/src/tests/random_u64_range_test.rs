@@ -1,17 +1,17 @@
 use crate::behaviour::entity::random_u64_range::RandomU64RangeFactory;
 use crate::builder::ReactiveEntityInstanceBuilder;
-use crate::model_random::RandomU64Range;
-use crate::model_random::RangeU64;
-use crate::model_random::RangeU64Properties::HIGH;
-use crate::model_random::RangeU64Properties::LOW;
-use crate::model_random::BEHAVIOUR_RANDOM_U64_RANGE;
-use crate::model_random::ENTITY_TYPE_RANDOM_U64_RANGE;
-use crate::model_result::ResultNumberU64;
-use crate::model_result::ResultNumberU64Properties::RESULT;
-use crate::model_runtime::Action;
-use crate::model_runtime::ActionProperties::TRIGGER;
 use crate::reactive::BehaviourFactory;
 use crate::reactive::BehaviourState;
+use inexor_rgf_model_random::RandomU64Range;
+use inexor_rgf_model_random::RangeU64;
+use inexor_rgf_model_random::RangeU64Properties::HIGH;
+use inexor_rgf_model_random::RangeU64Properties::LOW;
+use inexor_rgf_model_random::BEHAVIOUR_RANDOM_U64_RANGE;
+use inexor_rgf_model_random::ENTITY_TYPE_RANDOM_U64_RANGE;
+use inexor_rgf_model_result::ResultNumberU64;
+use inexor_rgf_model_result::ResultNumberU64Properties::RESULT;
+use inexor_rgf_model_runtime::Action;
+use inexor_rgf_model_runtime::ActionProperties::TRIGGER;
 
 #[test]
 fn random_u64_range_test() {

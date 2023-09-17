@@ -1,10 +1,15 @@
+use inexor_rgf_behaviour::entity_behaviour;
+use inexor_rgf_behaviour::PropertyObserverContainer;
+use inexor_rgf_behaviour_api::behaviour_validator;
+use inexor_rgf_behaviour_api::prelude::*;
+use inexor_rgf_graph::prelude::*;
+use inexor_rgf_reactive::ReactiveEntity;
 use serde_json::Value;
+use uuid::Uuid;
 
-use crate::model::*;
-use crate::model_json::ObjectGetPropertyProperties::OBJECT;
-use crate::model_json::ObjectGetPropertyProperties::PROPERTY_NAME;
-use crate::model_result::ResultAnyProperties::RESULT;
-use crate::reactive::*;
+use inexor_rgf_model_json::ObjectGetPropertyProperties::OBJECT;
+use inexor_rgf_model_json::ObjectGetPropertyProperties::PROPERTY_NAME;
+use inexor_rgf_model_result::ResultAnyProperties::RESULT;
 
 entity_behaviour!(
     ObjectGetProperty,
@@ -14,9 +19,9 @@ entity_behaviour!(
     ObjectGetPropertyValidator
 );
 
-behaviour_validator!(ObjectGetPropertyValidator, ReactiveEntityInstance, OBJECT.as_ref(), RESULT.as_ref(), PROPERTY_NAME.as_ref());
+behaviour_validator!(ObjectGetPropertyValidator, Uuid, ReactiveEntity, OBJECT.as_ref(), RESULT.as_ref(), PROPERTY_NAME.as_ref());
 
-impl BehaviourInit<ReactiveEntityInstance> for ObjectGetPropertyBehaviourTransitions {
+impl BehaviourInit<Uuid, ReactiveEntity> for ObjectGetPropertyBehaviourTransitions {
     fn init(&self) -> Result<(), BehaviourInitializationFailed> {
         if let Some(object) = self.reactive_instance.get(OBJECT) {
             if let Some(property_name) = self.reactive_instance.get(PROPERTY_NAME) {
@@ -29,7 +34,7 @@ impl BehaviourInit<ReactiveEntityInstance> for ObjectGetPropertyBehaviourTransit
     }
 }
 
-impl BehaviourConnect<ReactiveEntityInstance> for ObjectGetPropertyBehaviourTransitions {
+impl BehaviourConnect<Uuid, ReactiveEntity> for ObjectGetPropertyBehaviourTransitions {
     fn connect(&self) -> Result<(), BehaviourConnectFailed> {
         let reactive_instance = self.reactive_instance.clone();
         self.property_observers.observe_with_handle(OBJECT.as_ref(), move |object: &Value| {
@@ -52,8 +57,8 @@ impl BehaviourConnect<ReactiveEntityInstance> for ObjectGetPropertyBehaviourTran
     }
 }
 
-impl BehaviourShutdown<ReactiveEntityInstance> for ObjectGetPropertyBehaviourTransitions {}
-impl BehaviourTransitions<ReactiveEntityInstance> for ObjectGetPropertyBehaviourTransitions {}
+impl BehaviourShutdown<Uuid, ReactiveEntity> for ObjectGetPropertyBehaviourTransitions {}
+impl BehaviourTransitions<Uuid, ReactiveEntity> for ObjectGetPropertyBehaviourTransitions {}
 
 fn get_property_by_name(object: &Value, property_name: &Value) -> Option<Value> {
     match property_name.as_str() {
@@ -73,13 +78,13 @@ fn get_property_by_name(object: &Value, property_name: &Value) -> Option<Value> 
 // use std::convert::AsRef;
 // use std::sync::Arc;
 //
-// use crate::model::{PropertyInstanceGetter, PropertyInstanceSetter};
+// use inexor_rgf_graph::{PropertyInstanceGetter, PropertyInstanceSetter};
 // use crate::reactive::BehaviourCreationError;
 // use log::{error, trace};
 // use serde_json::Value;
 //
 // use crate::behaviour::entity::ObjectGetPropertyProperties;
-// use crate::model::ReactiveEntityInstance;
+// use inexor_rgf_graph::ReactiveEntityInstance;
 // use crate::reactive::entity::Disconnectable;
 //
 // pub const OBJECT_GET_PROPERTY: &'static str = "object_get_property";

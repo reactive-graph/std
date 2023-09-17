@@ -1,115 +1,85 @@
-use std::sync::Arc;
-use std::sync::RwLock;
-
-use async_trait::async_trait;
-
 use crate::behaviour::component::PropagationCounterFactory;
-use crate::behaviour::relation::complex_connector::function::COMPLEX_CONNECTOR_BEHAVIOURS;
-use crate::behaviour::relation::complex_connector::ComplexConnectorFactory;
-use crate::behaviour::relation::connector::ConnectorFactory;
+use inexor_rgf_model_connector::BEHAVIOUR_PROPAGATION_COUNTER;
+use inexor_rgf_model_connector::COMPONENT_BEHAVIOUR_PROPAGATION_COUNTER;
+use inexor_rgf_plugin_api::prelude::plugin::*;
+use inexor_rgf_plugin_api::prelude::providers::*;
+use inexor_rgf_plugin_api::RelationBehaviourRegistry;
+use inexor_rgf_plugin_api::RelationComponentBehaviourRegistry;
+
+use crate::behaviour::relation::complex_connector::COMPLEX_CONNECTOR_BEHAVIOURS;
 use crate::behaviour::relation::connector::CONNECTOR_BEHAVIOURS;
-use crate::di::*;
-use crate::model::ComponentBehaviourTypeId;
-use crate::model::RelationBehaviourTypeId;
-use crate::model_connector::BEHAVIOUR_PROPAGATION_COUNTER;
-use crate::model_connector::COMPONENT_BEHAVIOUR_PROPAGATION_COUNTER;
-use crate::plugins::component_provider;
-use crate::plugins::plugin_context::PluginContext;
-use crate::plugins::relation_type_provider;
-use crate::plugins::ComponentProvider;
-use crate::plugins::ComponentProviderError;
-use crate::plugins::Plugin;
-use crate::plugins::PluginActivationError;
-use crate::plugins::PluginContextDeinitializationError;
-use crate::plugins::PluginContextInitializationError;
-use crate::plugins::PluginDeactivationError;
-use crate::plugins::RelationTypeProvider;
-use crate::plugins::RelationTypeProviderError;
-use crate::providers::ConnectorComponentProviderImpl;
-use crate::providers::ConnectorRelationTypeProviderImpl;
 
-#[wrapper]
-pub struct PluginContextContainer(RwLock<Option<Arc<dyn PluginContext>>>);
+export_plugin!({
+    "dependencies": [
+        { "name": "inexor-rgf-plugin-base", "version": ">=0.10.0, <0.11.0" }
+    ]
+});
 
-#[provides]
-fn create_empty_plugin_context_container() -> PluginContextContainer {
-    PluginContextContainer(RwLock::new(None))
+#[injectable]
+pub trait ValuePlugin: Plugin + Send + Sync {}
+
+#[derive(Component)]
+pub struct ValuePluginImpl {
+    component_provider: Arc<dyn TypeProvider<Components> + Send + Sync>,
+
+    #[component(default = "component_provider_registry")]
+    component_provider_registry: Arc<dyn ComponentProviderRegistry + Send + Sync>,
+
+    relation_types_provider: Arc<dyn TypeProvider<RelationTypes> + Send + Sync>,
+
+    #[component(default = "relation_types_provider_registry")]
+    relation_type_provider_registry: Arc<dyn RelationTypeProviderRegistry + Send + Sync>,
+
+    #[component(default = "relation_behaviour_registry")]
+    relation_behaviour_registry: Arc<dyn RelationBehaviourRegistry + Send + Sync>,
+
+    #[component(default = "relation_component_behaviour_registry")]
+    relation_component_behaviour_registry: Arc<dyn RelationComponentBehaviourRegistry + Send + Sync>,
 }
 
 #[async_trait]
-pub trait ConnectorPlugin: Plugin + Send + Sync {}
-
-#[module]
-pub struct ConnectorPluginImpl {
-    component_provider: Wrc<ConnectorComponentProviderImpl>,
-    relation_type_provider: Wrc<ConnectorRelationTypeProviderImpl>,
-
-    context: PluginContextContainer,
-}
-
-interfaces!(ConnectorPluginImpl: dyn Plugin);
-
-#[async_trait]
-#[provides]
-impl ConnectorPlugin for ConnectorPluginImpl {}
-
-#[async_trait]
-impl Plugin for ConnectorPluginImpl {
+#[component_alias]
+impl Plugin for ValuePluginImpl {
     async fn activate(&self) -> Result<(), PluginActivationError> {
-        let guard = self.context.0.read().unwrap();
-        if let Some(context) = guard.clone() {
-            let relation_component_behaviour_registry = context.get_relation_component_behaviour_registry();
-            let relation_behaviour_registry = context.get_relation_behaviour_registry();
-            // PropagationCounter
-            let factory = Arc::new(PropagationCounterFactory::new(BEHAVIOUR_PROPAGATION_COUNTER.clone()));
-            relation_component_behaviour_registry.register(COMPONENT_BEHAVIOUR_PROPAGATION_COUNTER.clone(), factory);
-            // Connector
-            for (behaviour_ty, f) in CONNECTOR_BEHAVIOURS.iter() {
-                relation_behaviour_registry.register(RelationBehaviourTypeId::from(behaviour_ty), Arc::new(ConnectorFactory::new(behaviour_ty.clone(), *f)));
-            }
-            // Complex Connector
-            for (behaviour_ty, f) in COMPLEX_CONNECTOR_BEHAVIOURS.iter() {
-                relation_behaviour_registry
-                    .register(RelationBehaviourTypeId::from(behaviour_ty), Arc::new(ComplexConnectorFactory::new(behaviour_ty.clone(), *f)));
-            }
-        }
+        self.component_provider_registry.register_provider(self.component_provider.clone()).await;
+        self.relation_type_provider_registry
+            .register_provider(self.relation_types_provider.clone())
+            .await;
+
+        // Connector
+        self.relation_behaviour_registry.register_all(&CONNECTOR_BEHAVIOURS.get_factories()).await;
+
+        // Complex Connector
+        self.relation_behaviour_registry
+            .register_all(&COMPLEX_CONNECTOR_BEHAVIOURS.get_factories())
+            .await;
+
+        // PropagationCounter
+        let factory = Arc::new(PropagationCounterFactory::new(BEHAVIOUR_PROPAGATION_COUNTER.clone()));
+        self.relation_component_behaviour_registry
+            .register(COMPONENT_BEHAVIOUR_PROPAGATION_COUNTER.clone(), factory)
+            .await;
+
         Ok(())
     }
 
     async fn deactivate(&self) -> Result<(), PluginDeactivationError> {
-        let guard = self.context.0.read().unwrap();
-        if let Some(context) = guard.clone() {
-            let relation_component_behaviour_registry = context.get_relation_component_behaviour_registry();
-            // PropagationCounter
-            relation_component_behaviour_registry.unregister(&COMPONENT_BEHAVIOUR_PROPAGATION_COUNTER);
-            // Connector
-            for behaviour_ty in CONNECTOR_BEHAVIOURS.keys() {
-                relation_component_behaviour_registry.unregister(&ComponentBehaviourTypeId::from(behaviour_ty));
-            }
-            // Complex Connector
-            for behaviour_ty in COMPLEX_CONNECTOR_BEHAVIOURS.keys() {
-                relation_component_behaviour_registry.unregister(&ComponentBehaviourTypeId::from(behaviour_ty));
-            }
-        }
+        self.relation_component_behaviour_registry
+            .unregister(&COMPONENT_BEHAVIOUR_PROPAGATION_COUNTER)
+            .await;
+
+        self.relation_behaviour_registry
+            .unregister_all(&COMPLEX_CONNECTOR_BEHAVIOURS.to_relation_behaviour_tys())
+            .await;
+
+        self.relation_behaviour_registry
+            .unregister_all(&CONNECTOR_BEHAVIOURS.to_relation_behaviour_tys())
+            .await;
+
+        self.relation_type_provider_registry
+            .unregister_provider(self.relation_types_provider.id())
+            .await;
+        self.component_provider_registry.unregister_provider(self.component_provider.id()).await;
         Ok(())
-    }
-
-    fn set_context(&self, context: Arc<dyn PluginContext>) -> Result<(), PluginContextInitializationError> {
-        self.context.0.write().unwrap().replace(context);
-        Ok(())
-    }
-
-    fn remove_context(&self) -> Result<(), PluginContextDeinitializationError> {
-        let mut writer = self.context.0.write().unwrap();
-        *writer = None;
-        Ok(())
-    }
-
-    fn get_component_provider(&self) -> Result<Option<Arc<dyn ComponentProvider>>, ComponentProviderError> {
-        component_provider!(self.component_provider)
-    }
-
-    fn get_relation_type_provider(&self) -> Result<Option<Arc<dyn RelationTypeProvider>>, RelationTypeProviderError> {
-        relation_type_provider!(self.relation_type_provider)
     }
 }

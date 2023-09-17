@@ -1,26 +1,32 @@
+use inexor_rgf_behaviour::entity_behaviour;
+use inexor_rgf_behaviour::PropertyObserverContainer;
+use inexor_rgf_behaviour_api::behaviour_validator;
+use inexor_rgf_behaviour_api::prelude::*;
+use inexor_rgf_graph::prelude::*;
+use inexor_rgf_reactive::ReactiveEntity;
+use serde_json::json;
+use serde_json::Value;
+use uuid::Uuid;
+
 use angular_units::Deg;
 use prisma::FromColor;
 use prisma::Hsv;
-use serde_json::json;
-use serde_json::Value;
-use std::sync::Arc;
 
-use crate::model::*;
-use crate::model_color::BrightnessProperties::BRIGHTNESS;
-use crate::model_color::HueSaturationProperties::HUE;
-use crate::model_color::HueSaturationProperties::SATURATION;
-use crate::model_color::Rgb;
-use crate::model_color::RgbProperties::BLUE;
-use crate::model_color::RgbProperties::GREEN;
-use crate::model_color::RgbProperties::RED;
-use crate::model_color::TypedRgbComponent;
-use crate::reactive::*;
+use inexor_rgf_model_color::BrightnessProperties::BRIGHTNESS;
+use inexor_rgf_model_color::HueSaturationProperties::HUE;
+use inexor_rgf_model_color::HueSaturationProperties::SATURATION;
+use inexor_rgf_model_color::Rgb;
+use inexor_rgf_model_color::RgbProperties::BLUE;
+use inexor_rgf_model_color::RgbProperties::GREEN;
+use inexor_rgf_model_color::RgbProperties::RED;
+use inexor_rgf_model_color::TypedRgbComponent;
 
 entity_behaviour!(RgbToHsv, RgbToHsvFactory, RgbToHsvFsm, RgbToHsvBehaviourTransitions, RgbToHsvValidator);
 
 behaviour_validator!(
     RgbToHsvValidator,
-    ReactiveEntityInstance,
+    Uuid,
+    ReactiveEntity,
     HUE.as_ref(),
     SATURATION.as_ref(),
     BRIGHTNESS.as_ref(),
@@ -29,14 +35,14 @@ behaviour_validator!(
     BLUE.as_ref()
 );
 
-impl BehaviourInit<ReactiveEntityInstance> for RgbToHsvBehaviourTransitions {
+impl BehaviourInit<Uuid, ReactiveEntity> for RgbToHsvBehaviourTransitions {
     fn init(&self) -> Result<(), BehaviourInitializationFailed> {
         convert_rgb_to_hsv(self.reactive_instance.clone());
         Ok(())
     }
 }
 
-impl BehaviourConnect<ReactiveEntityInstance> for RgbToHsvBehaviourTransitions {
+impl BehaviourConnect<Uuid, ReactiveEntity> for RgbToHsvBehaviourTransitions {
     fn connect(&self) -> Result<(), BehaviourConnectFailed> {
         let reactive_instance = self.reactive_instance.clone();
         self.property_observers.observe_with_handle(RED.as_ref(), move |_: &Value| {
@@ -54,10 +60,10 @@ impl BehaviourConnect<ReactiveEntityInstance> for RgbToHsvBehaviourTransitions {
     }
 }
 
-impl BehaviourShutdown<ReactiveEntityInstance> for RgbToHsvBehaviourTransitions {}
-impl BehaviourTransitions<ReactiveEntityInstance> for RgbToHsvBehaviourTransitions {}
+impl BehaviourShutdown<Uuid, ReactiveEntity> for RgbToHsvBehaviourTransitions {}
+impl BehaviourTransitions<Uuid, ReactiveEntity> for RgbToHsvBehaviourTransitions {}
 
-fn convert_rgb_to_hsv(reactive_instance: Arc<ReactiveEntityInstance>) {
+fn convert_rgb_to_hsv(reactive_instance: ReactiveEntity) {
     let rgb_to_hsv = Rgb::from(reactive_instance);
     if let Some(rgb) = rgb_to_hsv.rgb() {
         let hsv: Hsv<f64, Deg<f64>> = Hsv::from_color(&rgb);

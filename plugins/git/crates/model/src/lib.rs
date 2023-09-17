@@ -1,13 +1,12 @@
-pub use component::*;
-pub use entity::*;
+#![feature(lazy_cell)]
+
+pub use component::repository::*;
+pub use component::transfer_progress::*;
+pub use entity::repository::*;
 
 pub mod component;
 pub mod entity;
 
-use inexor_rgf_core_model as model;
-use inexor_rgf_model_base as model_base;
-use inexor_rgf_model_file as model_file;
-use inexor_rgf_model_http as model_http;
-use inexor_rgf_model_runtime as model_runtime;
+use inexor_rgf_behaviour_api as behaviour_api;
 
 pub const NAMESPACE_GIT: &str = "git";

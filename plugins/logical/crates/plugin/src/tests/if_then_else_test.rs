@@ -2,20 +2,20 @@ use serde_json::json;
 
 use crate::behaviour::entity::if_then_else::IfThenElseFactory;
 use crate::builder::ReactiveEntityInstanceBuilder;
-use crate::model::NamespacedTypeGetter;
-use crate::model_logical::Condition;
-use crate::model_logical::ConditionProperties::CONDITION;
-use crate::model_logical::IfThenElse;
-use crate::model_logical::IfThenElseProperties::ELSE_PAYLOAD;
-use crate::model_logical::IfThenElseProperties::THEN_PAYLOAD;
-use crate::model_logical::BEHAVIOUR_IF_THEN_ELSE;
-use crate::model_logical::COMPONENT_CONDITION;
-use crate::model_logical::ENTITY_TYPE_IF_THEN_ELSE;
-use crate::model_logical::ENTITY_TYPE_NAME_IF_THEN_ELSE;
-use crate::model_logical::NAMESPACE_LOGICAL;
-use crate::model_result::ResultAny;
-use crate::model_result::ResultAnyProperties::RESULT;
 use crate::reactive::BehaviourFactory;
+use inexor_rgf_graph::NamespacedTypeGetter;
+use inexor_rgf_model_logical::Condition;
+use inexor_rgf_model_logical::ConditionProperties::CONDITION;
+use inexor_rgf_model_logical::IfThenElse;
+use inexor_rgf_model_logical::IfThenElseProperties::ELSE_PAYLOAD;
+use inexor_rgf_model_logical::IfThenElseProperties::THEN_PAYLOAD;
+use inexor_rgf_model_logical::BEHAVIOUR_IF_THEN_ELSE;
+use inexor_rgf_model_logical::COMPONENT_CONDITION;
+use inexor_rgf_model_logical::ENTITY_TYPE_IF_THEN_ELSE;
+use inexor_rgf_model_logical::ENTITY_TYPE_NAME_IF_THEN_ELSE;
+use inexor_rgf_model_logical::NAMESPACE_LOGICAL;
+use inexor_rgf_model_result::ResultAny;
+use inexor_rgf_model_result::ResultAnyProperties::RESULT;
 
 #[test]
 fn if_then_else_test() {

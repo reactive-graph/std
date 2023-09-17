@@ -7,19 +7,19 @@ use crate::behaviour::entity::operation::behaviour_f64::NumericOperationF64Facto
 use crate::behaviour::entity::operation::function::NUMERIC_OPERATIONS_F64;
 use crate::behaviour::entity::operation::function::NUMERIC_OPERATIONS_I64;
 use crate::builder::ReactiveEntityInstanceBuilder;
-use crate::model::BehaviourTypeId;
-use crate::model::EntityTypeId;
-use crate::model::NamespacedTypeGetter;
-use crate::model::PropertyInstanceGetter;
-use crate::model::PropertyInstanceSetter;
-use crate::model::ReactiveEntityInstance;
 use crate::model_numeric::NumericOperationF64;
 use crate::model_numeric::NumericOperationProperties;
 use crate::model_numeric::COMPONENT_NUMERIC_OPERATION;
 use crate::model_numeric::NAMESPACE_NUMERIC_F64;
 use crate::model_numeric::NAMESPACE_NUMERIC_I64;
-use crate::model_result::ResultNumberF64Properties;
 use crate::reactive::BehaviourFactory;
+use inexor_rgf_graph::BehaviourTypeId;
+use inexor_rgf_graph::EntityTypeId;
+use inexor_rgf_graph::NamespacedTypeGetter;
+use inexor_rgf_graph::PropertyInstanceGetter;
+use inexor_rgf_graph::PropertyInstanceSetter;
+use inexor_rgf_graph::ReactiveEntityInstance;
+use inexor_rgf_model_result::ResultNumberF64Properties;
 
 const LHS: NumericOperationProperties = NumericOperationProperties::LHS;
 const RESULT: ResultNumberF64Properties = ResultNumberF64Properties::RESULT;
@@ -98,12 +98,4 @@ fn rx_sin_test() {
     // The behaviour has been dropped (no more changes)
     rx_sin.lhs(0.0);
     assert_eq!(1.0, rx_sin.result().unwrap());
-}
-
-pub fn numeric_operation(entity_ty: &EntityTypeId) -> Arc<ReactiveEntityInstance> {
-    ReactiveEntityInstanceBuilder::new(entity_ty.clone())
-        .property(LHS, json!(0.0))
-        .property(RESULT, json!(0.0))
-        .component(COMPONENT_NUMERIC_OPERATION.clone())
-        .build()
 }

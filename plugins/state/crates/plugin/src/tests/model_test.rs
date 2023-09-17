@@ -2,8 +2,6 @@ use serde_json::json;
 
 use crate::behaviour::component::StateFactory;
 use crate::builder::ReactiveEntityInstanceBuilder;
-use crate::model::BehaviourTypeId;
-use crate::model::NamespacedType;
 use crate::model_state::SetStateBoolean;
 use crate::model_state::StateBoolean;
 use crate::model_state::StateProperties::SET_STATE;
@@ -14,6 +12,8 @@ use crate::model_value::GetValueBoolean;
 use crate::model_value::ValueProperties::VALUE;
 use crate::model_value::COMPONENT_VALUE;
 use crate::reactive::BehaviourFactory;
+use inexor_rgf_graph::BehaviourTypeId;
+use inexor_rgf_graph::NamespacedType;
 
 #[test]
 fn state_bool_test() {

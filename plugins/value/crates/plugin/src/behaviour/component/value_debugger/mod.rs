@@ -1,11 +1,14 @@
+use inexor_rgf_behaviour::entity_behaviour;
+use inexor_rgf_behaviour_api::behaviour_validator;
+use inexor_rgf_behaviour_api::prelude::*;
+use inexor_rgf_graph::prelude::*;
+use inexor_rgf_reactive::ReactiveEntity;
 use log::debug;
 use serde_json::Value;
+use uuid::Uuid;
 
 pub use functions::*;
-
-use crate::model::*;
-use crate::model_value::*;
-use crate::reactive::*;
+use inexor_rgf_model_value::ValueProperties;
 
 pub mod functions;
 
@@ -19,11 +22,11 @@ entity_behaviour!(
     ValueDebuggerFunction
 );
 
-behaviour_validator!(ValueDebuggerValidator, ReactiveEntityInstance, ValueProperties::VALUE.as_ref());
+behaviour_validator!(ValueDebuggerValidator, Uuid, ReactiveEntity, ValueProperties::VALUE.as_ref());
 
-impl BehaviourInit<ReactiveEntityInstance> for ValueDebuggerBehaviourTransitions {}
+impl BehaviourInit<Uuid, ReactiveEntity> for ValueDebuggerBehaviourTransitions {}
 
-impl BehaviourConnect<ReactiveEntityInstance> for ValueDebuggerBehaviourTransitions {
+impl BehaviourConnect<Uuid, ReactiveEntity> for ValueDebuggerBehaviourTransitions {
     fn connect(&self) -> Result<(), BehaviourConnectFailed> {
         let f = self.f;
         self.property_observers
@@ -33,5 +36,5 @@ impl BehaviourConnect<ReactiveEntityInstance> for ValueDebuggerBehaviourTransiti
     }
 }
 
-impl BehaviourShutdown<ReactiveEntityInstance> for ValueDebuggerBehaviourTransitions {}
-impl BehaviourTransitions<ReactiveEntityInstance> for ValueDebuggerBehaviourTransitions {}
+impl BehaviourShutdown<Uuid, ReactiveEntity> for ValueDebuggerBehaviourTransitions {}
+impl BehaviourTransitions<Uuid, ReactiveEntity> for ValueDebuggerBehaviourTransitions {}

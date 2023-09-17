@@ -1,12 +1,14 @@
-pub use component::*;
-pub use entity::*;
+#![feature(lazy_cell)]
+
+pub use component::binary_data::*;
+pub use component::load_binary_data::*;
+pub use component::save_binary_data::*;
+pub use entity::load_binary_data::*;
+pub use entity::save_binary_data::*;
 
 pub mod component;
 pub mod entity;
 
-use inexor_rgf_core_model as model;
-use inexor_rgf_model_base as model_base;
-use inexor_rgf_model_file as model_file;
-use inexor_rgf_model_runtime as model_runtime;
+use inexor_rgf_behaviour_api as behaviour_api;
 
 pub const NAMESPACE_BINARY: &str = "binary";

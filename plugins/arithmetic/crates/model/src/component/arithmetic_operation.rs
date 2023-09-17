@@ -1,7 +1,7 @@
-use crate::model::component_ty;
-use crate::model::entity_model;
-use crate::model::properties;
 use crate::NAMESPACE_ARITHMETIC;
+use inexor_rgf_graph::component_ty;
+use inexor_rgf_graph::properties;
+use inexor_rgf_reactive_api::entity_model;
 
 properties!(ArithmeticOperationProperties, (LHS, "lhs", false), (RESULT, "result", false));
 

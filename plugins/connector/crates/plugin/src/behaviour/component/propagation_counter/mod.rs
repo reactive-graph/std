@@ -1,11 +1,13 @@
+use inexor_rgf_behaviour::relation_behaviour;
+use inexor_rgf_behaviour::PropertyObserverContainer;
+use inexor_rgf_behaviour_api::behaviour_validator;
+use inexor_rgf_behaviour_api::prelude::*;
+use inexor_rgf_graph::prelude::*;
+use inexor_rgf_reactive::ReactiveRelation;
 use serde_json::json;
 
-use crate::model::PropertyInstanceGetter;
-use crate::model::PropertyInstanceSetter;
-use crate::model::ReactiveRelationInstance;
-use crate::model_connector::ConnectorProperties::OUTBOUND_PROPERTY_NAME;
-use crate::model_connector::PropagationCounterProperties::PROPAGATION_COUNT;
-use crate::reactive::*;
+use inexor_rgf_model_connector::ConnectorProperties::OUTBOUND_PROPERTY_NAME;
+use inexor_rgf_model_connector::PropagationCounterProperties::PROPAGATION_COUNT;
 
 relation_behaviour!(
     PropagationCounter,
@@ -17,7 +19,8 @@ relation_behaviour!(
 
 behaviour_validator!(
     PropagationCounterValidator,
-    ReactiveRelationInstance,
+    RelationInstanceId,
+    ReactiveRelation,
     OUTBOUND_PROPERTY_NAME.as_ref(),
     PROPAGATION_COUNT.as_ref()
 );
@@ -28,11 +31,11 @@ impl PropagationCounterBehaviourTransitions {
     }
 }
 
-impl BehaviourInit<ReactiveRelationInstance> for PropagationCounterBehaviourTransitions {}
+impl BehaviourInit<RelationInstanceId, ReactiveRelation> for PropagationCounterBehaviourTransitions {}
 
-impl BehaviourShutdown<ReactiveRelationInstance> for PropagationCounterBehaviourTransitions {}
+impl BehaviourShutdown<RelationInstanceId, ReactiveRelation> for PropagationCounterBehaviourTransitions {}
 
-impl BehaviourConnect<ReactiveRelationInstance> for PropagationCounterBehaviourTransitions {
+impl BehaviourConnect<RelationInstanceId, ReactiveRelation> for PropagationCounterBehaviourTransitions {
     fn connect(&self) -> Result<(), BehaviourConnectFailed> {
         let outbound_property_name = self.get_outbound_property_name().ok_or(BehaviourConnectFailed {})?;
         let reactive_instance = self.reactive_instance.clone();
@@ -46,4 +49,4 @@ impl BehaviourConnect<ReactiveRelationInstance> for PropagationCounterBehaviourT
     }
 }
 
-impl BehaviourTransitions<ReactiveRelationInstance> for PropagationCounterBehaviourTransitions {}
+impl BehaviourTransitions<RelationInstanceId, ReactiveRelation> for PropagationCounterBehaviourTransitions {}

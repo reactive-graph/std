@@ -1,14 +1,14 @@
 use crate::behaviour::entity::random_u64::RandomU64Factory;
 use crate::builder::ReactiveEntityInstanceBuilder;
-use crate::model_random::RandomU64;
-use crate::model_random::BEHAVIOUR_RANDOM_U64;
-use crate::model_random::ENTITY_TYPE_RANDOM_U64;
-use crate::model_result::ResultNumberU64;
-use crate::model_result::ResultNumberU64Properties::RESULT;
-use crate::model_runtime::Action;
-use crate::model_runtime::ActionProperties::TRIGGER;
 use crate::reactive::BehaviourFactory;
 use crate::reactive::BehaviourState;
+use inexor_rgf_model_random::RandomU64;
+use inexor_rgf_model_random::BEHAVIOUR_RANDOM_U64;
+use inexor_rgf_model_random::ENTITY_TYPE_RANDOM_U64;
+use inexor_rgf_model_result::ResultNumberU64;
+use inexor_rgf_model_result::ResultNumberU64Properties::RESULT;
+use inexor_rgf_model_runtime::Action;
+use inexor_rgf_model_runtime::ActionProperties::TRIGGER;
 
 #[test]
 fn random_u64_test() {

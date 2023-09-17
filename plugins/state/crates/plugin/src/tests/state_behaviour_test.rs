@@ -8,12 +8,12 @@ use uuid::Uuid;
 use crate::behaviour::component::StateFactory;
 use crate::behaviour::component::STATE_BEHAVIOURS;
 use crate::builder::ReactiveEntityInstanceBuilder;
-use crate::model::EntityTypeId;
-use crate::model::NamespacedType;
-use crate::model::PropertyInstanceSetter;
 use crate::model_state::StateProperties;
 use crate::model_value::ValueProperties;
 use crate::reactive::BehaviourFactory;
+use inexor_rgf_graph::EntityTypeId;
+use inexor_rgf_graph::NamespacedType;
+use inexor_rgf_graph::PropertyInstanceSetter;
 
 #[test]
 fn state_behaviour_test() {

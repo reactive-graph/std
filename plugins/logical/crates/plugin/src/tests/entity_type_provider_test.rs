@@ -1,7 +1,7 @@
-use crate::model::EntityTypeId;
-use crate::model_logical::NAMESPACE_LOGICAL;
 use crate::plugins::EntityTypeProvider;
 use crate::providers::LogicalEntityTypeProviderImpl;
+use inexor_rgf_graph::EntityTypeId;
+use inexor_rgf_model_logical::NAMESPACE_LOGICAL;
 
 #[test]
 fn entity_types_should_exist() {

@@ -1,19 +1,24 @@
 use std::sync::Arc;
+use std::sync::LazyLock;
 use std::thread;
 use std::time::Duration;
 
+use inexor_rgf_behaviour::relation::function::RelationBehaviourFunctions;
+use inexor_rgf_behaviour::relation::function::RelationBehaviourFunctionsStorage;
+use inexor_rgf_behaviour::relation::RelationBehaviourFactoryCreator;
+use inexor_rgf_graph::PropertyInstanceGetter;
+use inexor_rgf_graph::PropertyInstanceSetter;
+use inexor_rgf_reactive::ReactiveRelation;
 use serde_json::json;
 use serde_json::Value;
 
-use crate::model::PropertyInstanceGetter;
-use crate::model::PropertyInstanceSetter;
-use crate::model::ReactiveRelationInstance;
-use crate::model_connector::BufferProperties::BUFFER;
-use crate::model_connector::BufferProperties::BUFFER_SIZE;
-use crate::model_connector::NAMESPACE_CONNECTOR;
-use crate::reactive::behaviour_functions;
+use inexor_rgf_model_connector::BufferProperties::BUFFER;
+use inexor_rgf_model_connector::BufferProperties::BUFFER_SIZE;
+use inexor_rgf_model_connector::NAMESPACE_CONNECTOR;
 
-pub type ComplexConnectorFunction = fn(Value, String, Arc<ReactiveRelationInstance>);
+use crate::behaviour::relation::complex_connector::ComplexConnectorFactory;
+
+pub type ComplexConnectorFunction = fn(Value, String, ReactiveRelation);
 
 pub const FN_DELAY_CONNECTOR: ComplexConnectorFunction = |new_value, inbound_property_name, relation_instance| {
     let delay_in_millis = relation_instance.get("delay").and_then(|v| v.as_u64()).unwrap_or(10);
@@ -89,15 +94,16 @@ pub const FN_DECREMENT_BY_CONNECTOR: ComplexConnectorFunction = |decrement_by, i
     }
 };
 
-behaviour_functions!(
-    COMPLEX_CONNECTOR_BEHAVIOURS,
-    ComplexConnectorFunction,
-    NAMESPACE_CONNECTOR,
-    ("delay_connector", FN_DELAY_CONNECTOR),
-    ("debounce_connector", FN_DEBOUNCE_CONNECTOR),
-    ("buffered_fifo_connector", FN_BUFFERED_FIFO_CONNECTOR),
-    ("numeric_interpolation_connector", FN_NUMERIC_INTERPOLATION_CONNECTOR),
-    ("threaded_connector", FN_THREADED_CONNECTOR),
-    ("increment_by_connector", FN_INCREMENT_BY_CONNECTOR),
-    ("decrement_by_connector", FN_DECREMENT_BY_CONNECTOR)
-);
+const FACTORY_CREATOR: RelationBehaviourFactoryCreator<ComplexConnectorFunction> = |ty, f| Arc::new(ComplexConnectorFactory::new(ty.clone(), f));
+
+pub static COMPLEX_CONNECTOR_BEHAVIOURS: RelationBehaviourFunctionsStorage<ComplexConnectorFunction> = LazyLock::new(|| {
+    RelationBehaviourFunctions::<ComplexConnectorFunction>::with_namespace(NAMESPACE_CONNECTOR, FACTORY_CREATOR)
+        .behaviour("delay_connector", FN_DELAY_CONNECTOR)
+        .behaviour("debounce_connector", FN_DEBOUNCE_CONNECTOR)
+        .behaviour("buffered_fifo_connector", FN_BUFFERED_FIFO_CONNECTOR)
+        .behaviour("numeric_interpolation_connector", FN_NUMERIC_INTERPOLATION_CONNECTOR)
+        .behaviour("threaded_connector", FN_THREADED_CONNECTOR)
+        .behaviour("increment_by_connector", FN_INCREMENT_BY_CONNECTOR)
+        .behaviour("decrement_by_connector", FN_DECREMENT_BY_CONNECTOR)
+        .get()
+});

@@ -1,14 +1,14 @@
+use inexor_rgf_model_json::ArrayContains;
+use inexor_rgf_model_json::ArrayContainsProperties::ARRAY;
+use inexor_rgf_model_json::ArrayContainsProperties::SEARCH;
+use inexor_rgf_model_json::BEHAVIOUR_ARRAY_CONTAINS;
+use inexor_rgf_model_json::ENTITY_TYPE_ARRAY_CONTAINS;
+use inexor_rgf_model_result::ResultBoolean;
+use inexor_rgf_model_result::ResultBooleanProperties::RESULT;
 use serde_json::json;
 
 use crate::behaviour::entity::array_contains::ArrayContainsFactory;
 use crate::builder::ReactiveEntityInstanceBuilder;
-use crate::model_json::ArrayContains;
-use crate::model_json::ArrayContainsProperties::ARRAY;
-use crate::model_json::ArrayContainsProperties::SEARCH;
-use crate::model_json::BEHAVIOUR_ARRAY_CONTAINS;
-use crate::model_json::ENTITY_TYPE_ARRAY_CONTAINS;
-use crate::model_result::ResultBoolean;
-use crate::model_result::ResultBooleanProperties::RESULT;
 use crate::reactive::BehaviourFactory;
 use crate::reactive::BehaviourState;
 

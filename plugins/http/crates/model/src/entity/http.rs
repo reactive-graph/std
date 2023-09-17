@@ -1,12 +1,12 @@
-use crate::model::entity_model;
-use crate::model::entity_ty;
-use crate::model_result::ResultObject;
-use crate::model_runtime::Action;
 use crate::ParsedUrl;
 use crate::Request;
 use crate::Response;
 use crate::Url;
 use crate::NAMESPACE_HTTP;
+use inexor_rgf_graph::entity_ty;
+use inexor_rgf_model_result::ResultObject;
+use inexor_rgf_model_runtime::Action;
+use inexor_rgf_reactive_api::entity_model;
 
 entity_ty!(ENTITY_TYPE_HTTP, NAMESPACE_HTTP, ENTITY_TYPE_NAME_HTTP, "http");
 

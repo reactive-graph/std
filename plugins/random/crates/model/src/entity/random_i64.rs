@@ -1,10 +1,10 @@
-use crate::model::behaviour_ty;
-use crate::model::entity_behaviour_ty;
-use crate::model::entity_model;
-use crate::model::entity_ty;
-use crate::model_result::ResultNumberI64;
-use crate::model_runtime::Action;
+use crate::behaviour_api::behaviour_ty;
+use crate::behaviour_api::entity_behaviour_ty;
 use crate::NAMESPACE_RANDOM;
+use inexor_rgf_graph::entity_ty;
+use inexor_rgf_model_result::ResultNumberI64;
+use inexor_rgf_model_runtime::Action;
+use inexor_rgf_reactive_api::entity_model;
 
 entity_ty!(ENTITY_TYPE_RANDOM_I64, NAMESPACE_RANDOM, ENTITY_TYPE_NAME_RANDOM_I64, "random_i64");
 behaviour_ty!(BEHAVIOUR_RANDOM_I64, NAMESPACE_RANDOM, BEHAVIOUR_NAME_RANDOM_I64, "random_i64");

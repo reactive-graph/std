@@ -1,8 +1,16 @@
+use std::sync::Arc;
+use std::sync::LazyLock;
+
+use inexor_rgf_behaviour::entity::EntityBehaviourFactoryCreator;
+use inexor_rgf_behaviour::entity::EntityBehaviourFunctions;
+use inexor_rgf_behaviour::entity::EntityBehaviourFunctionsStorage;
+
+use inexor_rgf_model_numeric::NAMESPACE_NUMERIC_F64;
+
+use crate::behaviour::entity::gate::behaviour_f64::NumericGateF64Factory;
+
 use serde_json::json;
 use serde_json::Value;
-
-use crate::model_numeric::NAMESPACE_NUMERIC_F64;
-use crate::reactive::behaviour_functions;
 
 pub type NumericGateFunction<T> = fn(T, T) -> Value;
 pub type NumericGateF64Function = NumericGateFunction<f64>;
@@ -12,12 +20,28 @@ pub const FN_HYPOT_F64: NumericGateF64Function = |lhs, rhs| json!(lhs.hypot(rhs)
 pub const FN_LOG_F64: NumericGateF64Function = |lhs, rhs| json!(lhs.log(rhs));
 pub const FN_POW_F64: NumericGateF64Function = |lhs, rhs| json!(lhs.powf(rhs));
 
-behaviour_functions!(
-    NUMERIC_GATES_F64,
-    NumericGateF64Function,
-    NAMESPACE_NUMERIC_F64,
-    ("atan2", FN_ATAN2_F64),
-    ("hypot", FN_HYPOT_F64),
-    ("log", FN_POW_F64),
-    ("pow", FN_POW_F64)
-);
+const FACTORY_CREATOR_F64: EntityBehaviourFactoryCreator<NumericGateF64Function> = |ty, f| Arc::new(NumericGateF64Factory::new(ty.clone(), f));
+
+pub static NUMERIC_GATES_F64: EntityBehaviourFunctionsStorage<NumericGateF64Function> = LazyLock::new(|| {
+    EntityBehaviourFunctions::<NumericGateF64Function>::with_namespace(NAMESPACE_NUMERIC_F64, FACTORY_CREATOR_F64)
+        .behaviour("atan2", FN_ATAN2_F64)
+        .behaviour("hypot", FN_HYPOT_F64)
+        .behaviour("log", FN_POW_F64)
+        .behaviour("pow", FN_POW_F64)
+        .get()
+});
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn numeric_gate_function_test() {
+        let lhs: f64 = 0.5;
+        let rhs: f64 = 0.5;
+        assert_eq!(lhs.atan2(rhs), FN_ATAN2_F64(lhs, rhs));
+        assert_eq!(lhs.hypot(rhs), FN_HYPOT_F64(lhs, rhs));
+        assert_eq!(lhs.log(rhs), FN_LOG_F64(lhs, rhs));
+        assert_eq!(lhs.powf(rhs), FN_POW_F64(lhs, rhs));
+    }
+}

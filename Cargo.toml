@@ -29,6 +29,8 @@ members = [
     "plugins/graphql-schema-visualization",
     "plugins/http/crates/model",
     "plugins/http/crates/plugin",
+    "plugins/i18n/crates/model",
+#    "plugins/i18n/crates/plugin",
     "plugins/json/crates/model",
     "plugins/json/crates/plugin",
     "plugins/logical/crates/model",
@@ -58,7 +60,7 @@ members = [
 resolver = "2"
 
 [workspace.package]
-version = "0.9.1"
+version = "0.10.0"
 authors = ["Andreas Schaeffer <hanack@nooblounge.net>"]
 edition = "2021"
 license = "MIT"
@@ -69,24 +71,28 @@ keywords = ["graph", "reactive", "control-flow", "inexor"]
 [workspace.dependencies]
 angle = "0.5"
 angular-units = "0.2.4"
+async-std = "1.12"
 async-trait = "0.1"
 base64 = "0.21"
 chrono = "0.4"
 crossbeam = "0.8"
 dashmap = "5.4"
-data-url = "0.2"
-git2 = "0.16"
+data-url = "0.3"
+default-test = "0.1"
+fluent-bundle = "0.15"
+fluent-templates = "0.8"
+git2 = "0.18"
 http = "0.2"
-indradb-lib = "3"
-infer = "0.13"
+humantime = "2.1"
+infer = "0.15"
 json5 = "0.4"
 lazy_static = "1.4"
 license = "3.0"
 log = { version = "0.4", features = ["std", "serde"] }
-log4rs = { version = "1.2", features = ["console_appender", "file_appender", "toml_format"]}
+log4rs = { version = "1.2", features = [ "console_appender", "file_appender", "toml_format" ]}
 matchit = "0.7"
 mime_guess = "2.0"
-notify = "5.0"
+notify = { version = "6.1", features = [ "serde", "crossbeam-channel" ] }
 num-traits = "0.2"
 paste = "1.0"
 prisma = "0.1.1"
@@ -95,42 +101,53 @@ query_interface = "0.3"
 rand = "0.8"
 rand_chacha = "0.3"
 random-string = "1.0"
-rust-embed = { version = "6.6", features = ["debug-embed", "compression"] }
+rust-embed = { version = "8.0", features = ["debug-embed", "compression"] }
 semver = "1.0"
 serde = { version = "1.0", features = [ "derive" ] }
 serde_json = "1.0"
+springtime = "1.0"
+springtime-di = { version = "1.0", default-features = false, features = [ "threadsafe", "derive" ] }
+springtime-di-derive = "0.3"
 shellexpand = "3.0"
-strum = { version = "0.24", features = ["derive"] }
-strum_macros = "0.24"
+strum = { version = "0.25", features = ["derive"] }
+strum_macros = "0.25"
 tera = "1"
-tokio = { version = "1", features =  ["macros", "time", "rt", "rt-multi-thread"] }
-toml = "0.7"
-ureq = { version = "2.4", features = ["json"] }
+thiserror = "1.0"
+tokio = { version = "1", features =  [ "macros", "time", "rt", "rt-multi-thread" ] }
+toml = "0.8"
+unic-langid = "0.9"
+ureq = { version = "2.4", features = [ "json" ] }
 url = "2.3"
-uuid = { version = "1.2", features = ["serde", "v4", "v5"] }
+uuid = { version = "1.2", features = [ "serde", "v4", "v5" ] }
 voca_rs = "1"
 
 ### Prefer git over crates.io for development
 
-inexor-rgf-core-config = { version = "0.9.1", git = "https://github.com/inexorgame/inexor-rgf-application.git" }
-inexor-rgf-core-di = { version = "0.9.1", features = ["async"], git = "https://github.com/inexorgame/inexor-rgf-application.git" }
-inexor-rgf-core-frp = { version = "0.9.1", git = "https://github.com/inexorgame/inexor-rgf-application.git" }
-inexor-rgf-core-model = { version = "0.9.1", git = "https://github.com/inexorgame/inexor-rgf-application.git" }
-inexor-rgf-core-reactive = { version = "0.9.1", git = "https://github.com/inexorgame/inexor-rgf-application.git" }
-inexor-rgf-core-plugins = { version = "0.9.1", git = "https://github.com/inexorgame/inexor-rgf-application.git" }
-inexor-rgf-core-builder = { version = "0.9.1", git = "https://github.com/inexorgame/inexor-rgf-application.git" }
-inexor-rgf-model-runtime = { version = "0.9.1", git = "https://github.com/inexorgame/inexor-rgf-application.git" }
+#inexor-rgf-behaviour = { version = "0.10.0", git = "https://github.com/inexorgame/inexor-rgf-application.git", branch = "feature/0.10.0/refactoring" }
+#inexor-rgf-behaviour-api = { version = "0.10.0", git = "https://github.com/inexorgame/inexor-rgf-application.git", branch = "feature/0.10.0/refactoring" }
+#inexor-rgf-config = { version = "0.10.0", git = "https://github.com/inexorgame/inexor-rgf-application.git", branch = "feature/0.10.0/refactoring" }
+#inexor-rgf-graph = { version = "0.10.0", git = "https://github.com/inexorgame/inexor-rgf-application.git", branch = "feature/0.10.0/refactoring" }
+#inexor-rgf-model-runtime = { version = "0.10.0", git = "https://github.com/inexorgame/inexor-rgf-application.git", branch = "feature/0.10.0/refactoring" }
+#inexor-rgf-plugin-api = { version = "0.10.0", git = "https://github.com/inexorgame/inexor-rgf-application.git", branch = "feature/0.10.0/refactoring" }
+#inexor-rgf-plugin-derive = { version = "0.10.0", git = "https://github.com/inexorgame/inexor-rgf-application.git", branch = "feature/0.10.0/refactoring" }
+#inexor-rgf-reactive = { version = "0.10.0", git = "https://github.com/inexorgame/inexor-rgf-application.git", branch = "feature/0.10.0/refactoring" }
+#inexor-rgf-reactive-api = { version = "0.10.0", git = "https://github.com/inexorgame/inexor-rgf-application.git", branch = "feature/0.10.0/refactoring" }
+#inexor-rgf-rt-api = { version = "0.10.0", git = "https://github.com/inexorgame/inexor-rgf-application.git", branch = "feature/0.10.0/refactoring" }
+#inexor-rgf-test-utils = { version = "0.10.0", git = "https://github.com/inexorgame/inexor-rgf-application.git", branch = "feature/0.10.0/refactoring" }
 
 ###
 
-#inexor-rgf-core-config = { version = "0.9.1", path = "../inexor-rgf/crates/core/config" }
-#inexor-rgf-core-di = { version = "0.9.1", features = ["async"], path = "../inexor-rgf/crates/core/di" }
-#inexor-rgf-core-frp = { version = "0.9.1", path = "../inexor-rgf/crates/core/frp" }
-#inexor-rgf-core-model = { version = "0.9.1", path = "../inexor-rgf/crates/core/model" }
-#inexor-rgf-core-reactive = { version = "0.9.1", path = "../inexor-rgf/crates/core/reactive" }
-#inexor-rgf-core-plugins = { version = "0.9.1", path = "../inexor-rgf/crates/core/plugins" }
-#inexor-rgf-core-builder = { version = "0.9.1", path = "../inexor-rgf/crates/core/builder" }
-#inexor-rgf-model-runtime = { version = "0.9.1", path = "../inexor-rgf/crates/model/runtime" }
+inexor-rgf-behaviour = { version = "0.10.0", path = "../inexor-rgf/crates/behaviour" }
+inexor-rgf-behaviour-api = { version = "0.10.0", path = "../inexor-rgf/crates/behaviour-api" }
+inexor-rgf-config = { version = "0.10.0", path = "../inexor-rgf/crates/config" }
+inexor-rgf-graph = { version = "0.10.0", path = "../inexor-rgf/crates/graph" }
+inexor-rgf-model-runtime = { version = "0.10.0", path = "../inexor-rgf/crates/model/runtime" }
+inexor-rgf-plugin-api = { version = "0.10.0", path = "../inexor-rgf/crates/plugin-api" }
+inexor-rgf-plugin-derive = { version = "0.10.0", path = "../inexor-rgf/crates/plugin-derive" }
+inexor-rgf-reactive = { version = "0.10.0", path = "../inexor-rgf/crates/reactive" }
+inexor-rgf-reactive-api = { version = "0.10.0", path = "../inexor-rgf/crates/reactive-api" }
+inexor-rgf-rt-api = { version = "0.10.0", path = "../inexor-rgf/crates/runtime-api" }
+inexor-rgf-test-utils = { version = "0.10.0", path = "../inexor-rgf/crates/test-utils" }
 
 [profile.dev]
 opt-level = 0

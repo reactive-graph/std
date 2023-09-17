@@ -1,16 +1,21 @@
+use inexor_rgf_behaviour::entity_behaviour;
+use inexor_rgf_behaviour::PropertyObserverContainer;
+use inexor_rgf_behaviour_api::behaviour_validator;
+use inexor_rgf_behaviour_api::prelude::*;
+use inexor_rgf_graph::prelude::*;
+use inexor_rgf_reactive::ReactiveEntity;
 use serde_json::json;
 use serde_json::Value;
+use uuid::Uuid;
 
-use crate::model::*;
-use crate::model_result::ResultNumberU64Properties::RESULT;
-use crate::model_runtime::ActionProperties::TRIGGER;
-use crate::reactive::*;
+use inexor_rgf_model_result::ResultNumberU64Properties::RESULT;
+use inexor_rgf_model_runtime::ActionProperties::TRIGGER;
 
 entity_behaviour!(UtcNow, UtcNowFactory, UtcNowFsm, UtcNowBehaviourTransitions, UtcNowValidator);
 
-behaviour_validator!(UtcNowValidator, ReactiveEntityInstance, TRIGGER.as_ref(), RESULT.as_ref());
+behaviour_validator!(UtcNowValidator, Uuid, ReactiveEntity, TRIGGER.as_ref(), RESULT.as_ref());
 
-impl BehaviourInit<ReactiveEntityInstance> for UtcNowBehaviourTransitions {
+impl BehaviourInit<Uuid, ReactiveEntity> for UtcNowBehaviourTransitions {
     fn init(&self) -> Result<(), BehaviourInitializationFailed> {
         if let Some(trigger) = self.reactive_instance.get(TRIGGER) {
             if trigger.as_bool().unwrap_or(false) {
@@ -21,7 +26,7 @@ impl BehaviourInit<ReactiveEntityInstance> for UtcNowBehaviourTransitions {
     }
 }
 
-impl BehaviourConnect<ReactiveEntityInstance> for UtcNowBehaviourTransitions {
+impl BehaviourConnect<Uuid, ReactiveEntity> for UtcNowBehaviourTransitions {
     fn connect(&self) -> Result<(), BehaviourConnectFailed> {
         let reactive_instance = self.reactive_instance.clone();
         self.property_observers.observe_with_handle(TRIGGER.as_ref(), move |trigger: &Value| {
@@ -34,5 +39,5 @@ impl BehaviourConnect<ReactiveEntityInstance> for UtcNowBehaviourTransitions {
     }
 }
 
-impl BehaviourShutdown<ReactiveEntityInstance> for UtcNowBehaviourTransitions {}
-impl BehaviourTransitions<ReactiveEntityInstance> for UtcNowBehaviourTransitions {}
+impl BehaviourShutdown<Uuid, ReactiveEntity> for UtcNowBehaviourTransitions {}
+impl BehaviourTransitions<Uuid, ReactiveEntity> for UtcNowBehaviourTransitions {}

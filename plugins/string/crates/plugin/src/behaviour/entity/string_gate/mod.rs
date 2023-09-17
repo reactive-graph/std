@@ -1,25 +1,19 @@
+use inexor_rgf_behaviour::entity_behaviour;
+use inexor_rgf_behaviour::PropertyObserverContainer;
+use inexor_rgf_behaviour_api::behaviour_validator;
+use inexor_rgf_behaviour_api::prelude::*;
+use inexor_rgf_graph::prelude::*;
+use inexor_rgf_reactive::ReactiveEntity;
 use serde_json::json;
 use serde_json::Value;
+use uuid::Uuid;
 
 pub use function::StringGateFunction;
 pub use function::STRING_GATES;
 
-use crate::model::PropertyInstanceSetter;
-use crate::model::ReactiveEntityInstance;
-use crate::model_result::ResultStringProperties::RESULT;
-use crate::model_string::StringGateProperties::LHS;
-use crate::model_string::StringGateProperties::RHS;
-use crate::reactive::behaviour_validator;
-use crate::reactive::entity_behaviour;
-use crate::reactive::BehaviourConnect;
-use crate::reactive::BehaviourConnectFailed;
-use crate::reactive::BehaviourDisconnect;
-use crate::reactive::BehaviourFsm;
-use crate::reactive::BehaviourInit;
-use crate::reactive::BehaviourInitializationFailed;
-use crate::reactive::BehaviourShutdown;
-use crate::reactive::BehaviourTransitions;
-use crate::reactive::PropertyObserverContainer;
+use inexor_rgf_model_result::ResultBooleanProperties::RESULT;
+use inexor_rgf_model_string::StringGateProperties::LHS;
+use inexor_rgf_model_string::StringGateProperties::RHS;
 
 pub mod function;
 
@@ -33,9 +27,9 @@ entity_behaviour!(
     StringGateFunction
 );
 
-behaviour_validator!(StringGateValidator, ReactiveEntityInstance, LHS.as_ref(), RESULT.as_ref());
+behaviour_validator!(StringGateValidator, Uuid, ReactiveEntity, LHS.as_ref(), RESULT.as_ref());
 
-impl BehaviourInit<ReactiveEntityInstance> for StringGateBehaviourTransitions {
+impl BehaviourInit<Uuid, ReactiveEntity> for StringGateBehaviourTransitions {
     fn init(&self) -> Result<(), BehaviourInitializationFailed> {
         let lhs = self
             .reactive_instance
@@ -53,7 +47,7 @@ impl BehaviourInit<ReactiveEntityInstance> for StringGateBehaviourTransitions {
     }
 }
 
-impl BehaviourConnect<ReactiveEntityInstance> for StringGateBehaviourTransitions {
+impl BehaviourConnect<Uuid, ReactiveEntity> for StringGateBehaviourTransitions {
     fn connect(&self) -> Result<(), BehaviourConnectFailed> {
         let reactive_instance = self.reactive_instance.clone();
         let f = self.f;
@@ -77,5 +71,5 @@ impl BehaviourConnect<ReactiveEntityInstance> for StringGateBehaviourTransitions
     }
 }
 
-impl BehaviourShutdown<ReactiveEntityInstance> for StringGateBehaviourTransitions {}
-impl BehaviourTransitions<ReactiveEntityInstance> for StringGateBehaviourTransitions {}
+impl BehaviourShutdown<Uuid, ReactiveEntity> for StringGateBehaviourTransitions {}
+impl BehaviourTransitions<Uuid, ReactiveEntity> for StringGateBehaviourTransitions {}

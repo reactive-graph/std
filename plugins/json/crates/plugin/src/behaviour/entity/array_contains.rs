@@ -1,11 +1,16 @@
+use inexor_rgf_behaviour::entity_behaviour;
+use inexor_rgf_behaviour::PropertyObserverContainer;
+use inexor_rgf_behaviour_api::behaviour_validator;
+use inexor_rgf_behaviour_api::prelude::*;
+use inexor_rgf_graph::prelude::*;
+use inexor_rgf_reactive::ReactiveEntity;
 use serde_json::json;
 use serde_json::Value;
+use uuid::Uuid;
 
-use crate::model::*;
-use crate::model_json::ArrayContainsProperties::ARRAY;
-use crate::model_json::ArrayContainsProperties::SEARCH;
-use crate::model_result::ResultArrayProperties::RESULT;
-use crate::reactive::*;
+use inexor_rgf_model_json::ArrayContainsProperties::ARRAY;
+use inexor_rgf_model_json::ArrayContainsProperties::SEARCH;
+use inexor_rgf_model_result::ResultArrayProperties::RESULT;
 
 entity_behaviour!(
     ArrayContains,
@@ -15,9 +20,9 @@ entity_behaviour!(
     ArrayContainsValidator
 );
 
-behaviour_validator!(ArrayContainsValidator, ReactiveEntityInstance, ARRAY.as_ref(), RESULT.as_ref(), SEARCH.as_ref());
+behaviour_validator!(ArrayContainsValidator, Uuid, ReactiveEntity, ARRAY.as_ref(), RESULT.as_ref(), SEARCH.as_ref());
 
-impl BehaviourInit<ReactiveEntityInstance> for ArrayContainsBehaviourTransitions {
+impl BehaviourInit<Uuid, ReactiveEntity> for ArrayContainsBehaviourTransitions {
     fn init(&self) -> Result<(), BehaviourInitializationFailed> {
         if let Some(array) = self.reactive_instance.get(ARRAY) {
             if let Some(search) = self.reactive_instance.get(SEARCH) {
@@ -30,7 +35,7 @@ impl BehaviourInit<ReactiveEntityInstance> for ArrayContainsBehaviourTransitions
     }
 }
 
-impl BehaviourConnect<ReactiveEntityInstance> for ArrayContainsBehaviourTransitions {
+impl BehaviourConnect<Uuid, ReactiveEntity> for ArrayContainsBehaviourTransitions {
     fn connect(&self) -> Result<(), BehaviourConnectFailed> {
         let reactive_instance = self.reactive_instance.clone();
         self.property_observers.observe_with_handle(ARRAY.as_ref(), move |array: &Value| {
@@ -52,8 +57,8 @@ impl BehaviourConnect<ReactiveEntityInstance> for ArrayContainsBehaviourTransiti
     }
 }
 
-impl BehaviourShutdown<ReactiveEntityInstance> for ArrayContainsBehaviourTransitions {}
-impl BehaviourTransitions<ReactiveEntityInstance> for ArrayContainsBehaviourTransitions {}
+impl BehaviourShutdown<Uuid, ReactiveEntity> for ArrayContainsBehaviourTransitions {}
+impl BehaviourTransitions<Uuid, ReactiveEntity> for ArrayContainsBehaviourTransitions {}
 
 fn array_contains(array: &Value, search: &Value) -> Option<Value> {
     match array.as_array() {

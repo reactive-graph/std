@@ -1,24 +1,17 @@
+use inexor_rgf_behaviour::entity_behaviour;
+use inexor_rgf_behaviour::PropertyObserverContainer;
+use inexor_rgf_behaviour_api::behaviour_validator;
+use inexor_rgf_behaviour_api::prelude::*;
+use inexor_rgf_graph::prelude::*;
+use inexor_rgf_reactive::ReactiveEntity;
 use serde_json::json;
 use serde_json::Value;
+use uuid::Uuid;
 
 pub use function::LogicalOperationFunction;
-pub use function::LOGICAL_OPERATIONS;
 
-use crate::model::PropertyInstanceSetter;
-use crate::model::ReactiveEntityInstance;
-use crate::model_logical::LogicalOperationProperties::LHS;
-use crate::model_result::ResultBooleanProperties::RESULT;
-use crate::reactive::behaviour_validator;
-use crate::reactive::entity_behaviour;
-use crate::reactive::BehaviourConnect;
-use crate::reactive::BehaviourConnectFailed;
-use crate::reactive::BehaviourDisconnect;
-use crate::reactive::BehaviourFsm;
-use crate::reactive::BehaviourInit;
-use crate::reactive::BehaviourInitializationFailed;
-use crate::reactive::BehaviourShutdown;
-use crate::reactive::BehaviourTransitions;
-use crate::reactive::PropertyObserverContainer;
+use inexor_rgf_model_logical::LogicalOperationProperties::LHS;
+use inexor_rgf_model_result::ResultBooleanProperties::RESULT;
 
 pub mod function;
 
@@ -32,9 +25,9 @@ entity_behaviour!(
     LogicalOperationFunction
 );
 
-behaviour_validator!(LogicalOperationValidator, ReactiveEntityInstance, LHS.as_ref(), RESULT.as_ref());
+behaviour_validator!(LogicalOperationValidator, Uuid, ReactiveEntity, LHS.as_ref(), RESULT.as_ref());
 
-impl BehaviourInit<ReactiveEntityInstance> for LogicalOperationBehaviourTransitions {
+impl BehaviourInit<Uuid, ReactiveEntity> for LogicalOperationBehaviourTransitions {
     fn init(&self) -> Result<(), BehaviourInitializationFailed> {
         let lhs = self
             .reactive_instance
@@ -47,7 +40,7 @@ impl BehaviourInit<ReactiveEntityInstance> for LogicalOperationBehaviourTransiti
     }
 }
 
-impl BehaviourConnect<ReactiveEntityInstance> for LogicalOperationBehaviourTransitions {
+impl BehaviourConnect<Uuid, ReactiveEntity> for LogicalOperationBehaviourTransitions {
     fn connect(&self) -> Result<(), BehaviourConnectFailed> {
         let reactive_instance = self.reactive_instance.clone();
         let f = self.f;
@@ -60,5 +53,5 @@ impl BehaviourConnect<ReactiveEntityInstance> for LogicalOperationBehaviourTrans
     }
 }
 
-impl BehaviourShutdown<ReactiveEntityInstance> for LogicalOperationBehaviourTransitions {}
-impl BehaviourTransitions<ReactiveEntityInstance> for LogicalOperationBehaviourTransitions {}
+impl BehaviourShutdown<Uuid, ReactiveEntity> for LogicalOperationBehaviourTransitions {}
+impl BehaviourTransitions<Uuid, ReactiveEntity> for LogicalOperationBehaviourTransitions {}

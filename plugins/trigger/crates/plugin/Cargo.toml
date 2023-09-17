@@ -16,20 +16,15 @@ assets = [
 ]
 
 [dependencies]
+async-trait = { workspace = true }
 log = { workspace = true, features = ["std", "serde"] }
 log4rs = { workspace = true, features = ["console_appender", "file_appender", "toml_format"]}
-paste = { workspace = true }
-query_interface = { workspace = true }
 rust-embed = { workspace = true, features = ["debug-embed", "compression"] }
-serde_json = { workspace = true }
+springtime-di = { workspace = true, default-features = false, features = [ "threadsafe", "derive" ] }
 
-inexor-rgf-core-di = { workspace = true, features = ["async"] }
-inexor-rgf-core-model = { workspace = true }
-inexor-rgf-core-plugins = { workspace = true }
-inexor-rgf-model-trigger = { version = "0.9.1", path = "../../crates/model" }
-
-[dev-dependencies]
-inexor-rgf-core-builder = { workspace = true }
+inexor-rgf-graph = { workspace = true }
+inexor-rgf-plugin-api = { workspace = true, features = [ "json5", "toml" ] }
+inexor-rgf-model-trigger = { version = "0.10.0", path = "../../crates/model" }
 
 [lib]
 # Plugins use crate-type cdylib

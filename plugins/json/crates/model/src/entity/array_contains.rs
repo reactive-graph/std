@@ -1,11 +1,13 @@
-use crate::model::behaviour_ty;
-use crate::model::entity_behaviour_ty;
-use crate::model::entity_model;
-use crate::model::entity_ty;
-use crate::model::properties;
-use crate::NAMESPACE_JSON;
-use inexor_rgf_model_result::ResultBoolean;
+use inexor_rgf_graph::entity_ty;
+use inexor_rgf_graph::properties;
+use inexor_rgf_reactive_api::entity_model;
 use serde_json::json;
+
+use inexor_rgf_model_result::ResultBoolean;
+
+use crate::behaviour_api::behaviour_ty;
+use crate::behaviour_api::entity_behaviour_ty;
+use crate::NAMESPACE_JSON;
 
 properties!(ArrayContainsProperties, (ARRAY, "array", json!([])), (SEARCH, "search", false));
 

@@ -1,8 +1,21 @@
-use crate::model_logical::NAMESPACE_LOGICAL;
-use crate::reactive::behaviour_functions;
+use std::sync::Arc;
+use std::sync::LazyLock;
+
+use inexor_rgf_behaviour::entity::EntityBehaviourFactoryCreator;
+use inexor_rgf_behaviour::entity::EntityBehaviourFunctions;
+use inexor_rgf_behaviour::entity::EntityBehaviourFunctionsStorage;
+
+use crate::behaviour::entity::operation::LogicalOperationFactory;
+use inexor_rgf_model_logical::NAMESPACE_LOGICAL;
 
 pub type LogicalOperationFunction = fn(bool) -> bool;
 
 pub const FN_NOT: LogicalOperationFunction = |lhs| !lhs;
 
-behaviour_functions!(LOGICAL_OPERATIONS, LogicalOperationFunction, NAMESPACE_LOGICAL, ("not", FN_NOT));
+const FACTORY_CREATOR: EntityBehaviourFactoryCreator<LogicalOperationFunction> = |ty, f| Arc::new(LogicalOperationFactory::new(ty.clone(), f));
+
+pub static LOGICAL_OPERATIONS: EntityBehaviourFunctionsStorage<LogicalOperationFunction> = LazyLock::new(|| {
+    EntityBehaviourFunctions::<LogicalOperationFunction>::with_namespace(NAMESPACE_LOGICAL, FACTORY_CREATOR)
+        .behaviour("not", FN_NOT)
+        .get()
+});

@@ -9,7 +9,6 @@ repository.workspace = true
 readme = "../../../../README.md"
 
 [dependencies]
-indradb-lib = { workspace = true }
 lazy_static = { workspace = true }
 paste = { workspace = true }
 serde = { workspace = true, features = [ "derive" ] }
@@ -17,8 +16,10 @@ serde_json = { workspace = true }
 strum = { workspace = true, features = ["derive"] }
 strum_macros = { workspace = true }
 
-inexor-rgf-core-model = { workspace = true }
-inexor-rgf-core-reactive = { workspace = true }
+inexor-rgf-graph = { workspace = true }
+inexor-rgf-reactive = { workspace = true }
+inexor-rgf-reactive-api = { workspace = true }
+inexor-rgf-behaviour-api = { workspace = true }
 inexor-rgf-model-runtime = { workspace = true }
 
 [lib]

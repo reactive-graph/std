@@ -1,16 +1,21 @@
+use inexor_rgf_behaviour::entity_behaviour;
+use inexor_rgf_behaviour::PropertyObserverContainer;
+use inexor_rgf_behaviour_api::behaviour_validator;
+use inexor_rgf_behaviour_api::prelude::*;
+use inexor_rgf_graph::prelude::*;
+use inexor_rgf_reactive::ReactiveEntity;
 use serde_json::Value;
+use uuid::Uuid;
 
-use crate::model::*;
-use crate::model_json::ArrayPopProperties::ARRAY;
-use crate::model_json::ArrayPopProperties::VALUE;
-use crate::model_result::ResultArrayProperties::RESULT;
-use crate::reactive::*;
+use inexor_rgf_model_json::ArrayPopProperties::ARRAY;
+use inexor_rgf_model_json::ArrayPopProperties::VALUE;
+use inexor_rgf_model_result::ResultArrayProperties::RESULT;
 
 entity_behaviour!(ArrayPop, ArrayPopFactory, ArrayPopFsm, ArrayPopBehaviourTransitions, ArrayPopValidator);
 
-behaviour_validator!(ArrayPopValidator, ReactiveEntityInstance, ARRAY.as_ref(), RESULT.as_ref(), VALUE.as_ref());
+behaviour_validator!(ArrayPopValidator, Uuid, ReactiveEntity, ARRAY.as_ref(), RESULT.as_ref(), VALUE.as_ref());
 
-impl BehaviourInit<ReactiveEntityInstance> for ArrayPopBehaviourTransitions {
+impl BehaviourInit<Uuid, ReactiveEntity> for ArrayPopBehaviourTransitions {
     fn init(&self) -> Result<(), BehaviourInitializationFailed> {
         if let Some(array) = self.reactive_instance.get(ARRAY) {
             let (result, value) = pop_array(&array);
@@ -23,7 +28,7 @@ impl BehaviourInit<ReactiveEntityInstance> for ArrayPopBehaviourTransitions {
     }
 }
 
-impl BehaviourConnect<ReactiveEntityInstance> for ArrayPopBehaviourTransitions {
+impl BehaviourConnect<Uuid, ReactiveEntity> for ArrayPopBehaviourTransitions {
     fn connect(&self) -> Result<(), BehaviourConnectFailed> {
         let reactive_instance = self.reactive_instance.clone();
         self.property_observers.observe_with_handle(ARRAY.as_ref(), move |array: &Value| {
@@ -37,8 +42,8 @@ impl BehaviourConnect<ReactiveEntityInstance> for ArrayPopBehaviourTransitions {
     }
 }
 
-impl BehaviourShutdown<ReactiveEntityInstance> for ArrayPopBehaviourTransitions {}
-impl BehaviourTransitions<ReactiveEntityInstance> for ArrayPopBehaviourTransitions {}
+impl BehaviourShutdown<Uuid, ReactiveEntity> for ArrayPopBehaviourTransitions {}
+impl BehaviourTransitions<Uuid, ReactiveEntity> for ArrayPopBehaviourTransitions {}
 
 fn pop_array(array: &Value) -> (Value, Option<Value>) {
     match array.as_array() {

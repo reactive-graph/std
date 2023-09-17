@@ -2,13 +2,20 @@ use std::fs::OpenOptions;
 use std::io::Write;
 use std::path::Path;
 
+use base64::engine::general_purpose::STANDARD;
+use base64::Engine;
+use inexor_rgf_behaviour::entity_behaviour;
+use inexor_rgf_behaviour::PropertyObserverContainer;
+use inexor_rgf_behaviour_api::behaviour_validator;
+use inexor_rgf_behaviour_api::prelude::*;
+use inexor_rgf_graph::prelude::*;
+use inexor_rgf_model_runtime::ActionProperties::TRIGGER;
+use inexor_rgf_reactive::ReactiveEntity;
 use serde_json::Value;
+use uuid::Uuid;
 
-use crate::model::*;
-use crate::model_binary::BinaryDataProperties::DATA_URL;
-use crate::model_file::FileProperties::FILENAME;
-use crate::model_runtime::ActionProperties::TRIGGER;
-use crate::reactive::*;
+use inexor_rgf_model_binary::BinaryDataProperties::DATA_URL;
+use inexor_rgf_model_file::FileProperties::FILENAME;
 
 entity_behaviour!(
     SaveBinaryData,
@@ -18,11 +25,11 @@ entity_behaviour!(
     SaveBinaryDataValidator
 );
 
-behaviour_validator!(SaveBinaryDataValidator, ReactiveEntityInstance, TRIGGER.as_ref(), FILENAME.as_ref(), DATA_URL.as_ref());
+behaviour_validator!(SaveBinaryDataValidator, Uuid, ReactiveEntity, TRIGGER.as_ref(), FILENAME.as_ref(), DATA_URL.as_ref());
 
-impl BehaviourInit<ReactiveEntityInstance> for SaveBinaryDataBehaviourTransitions {}
+impl BehaviourInit<Uuid, ReactiveEntity> for SaveBinaryDataBehaviourTransitions {}
 
-impl BehaviourConnect<ReactiveEntityInstance> for SaveBinaryDataBehaviourTransitions {
+impl BehaviourConnect<Uuid, ReactiveEntity> for SaveBinaryDataBehaviourTransitions {
     fn connect(&self) -> Result<(), BehaviourConnectFailed> {
         let reactive_instance = self.reactive_instance.clone();
         self.property_observers.observe_with_handle(TRIGGER.as_ref(), move |trigger: &Value| {
@@ -39,7 +46,7 @@ impl BehaviourConnect<ReactiveEntityInstance> for SaveBinaryDataBehaviourTransit
                     let mut parts = data_url.splitn(2, ',');
                     let _part_data_url_prefix = parts.next();
                     let bytes = match parts.next() {
-                        Some(part_base64_encoded_data) => match base64::decode(part_base64_encoded_data) {
+                        Some(part_base64_encoded_data) => match STANDARD.decode(part_base64_encoded_data) {
                             Ok(bytes) => Some(bytes),
                             Err(_) => None,
                         },
@@ -60,5 +67,5 @@ impl BehaviourConnect<ReactiveEntityInstance> for SaveBinaryDataBehaviourTransit
     }
 }
 
-impl BehaviourShutdown<ReactiveEntityInstance> for SaveBinaryDataBehaviourTransitions {}
-impl BehaviourTransitions<ReactiveEntityInstance> for SaveBinaryDataBehaviourTransitions {}
+impl BehaviourShutdown<Uuid, ReactiveEntity> for SaveBinaryDataBehaviourTransitions {}
+impl BehaviourTransitions<Uuid, ReactiveEntity> for SaveBinaryDataBehaviourTransitions {}

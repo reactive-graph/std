@@ -1,6 +1,6 @@
-use crate::model::NamespacedTypeGetter;
 use crate::plugins::EntityTypeProvider;
 use crate::providers::StateEntityTypeProviderImpl;
+use inexor_rgf_graph::NamespacedTypeGetter;
 
 #[test]
 fn entity_types_should_exist() {

@@ -1,18 +1,23 @@
+use inexor_rgf_behaviour::entity_behaviour;
+use inexor_rgf_behaviour::PropertyObserverContainer;
+use inexor_rgf_behaviour_api::behaviour_validator;
+use inexor_rgf_behaviour_api::prelude::*;
+use inexor_rgf_graph::prelude::*;
+use inexor_rgf_reactive::ReactiveEntity;
 use serde_json::Value;
+use uuid::Uuid;
 
-use crate::model::*;
-use crate::model_logical::TriggerProperties::PAYLOAD;
-use crate::model_result::ResultAnyProperties::RESULT;
-use crate::model_runtime::ActionProperties::TRIGGER;
-use crate::reactive::*;
+use inexor_rgf_model_logical::TriggerProperties::PAYLOAD;
+use inexor_rgf_model_result::ResultAnyProperties::RESULT;
+use inexor_rgf_model_runtime::ActionProperties::TRIGGER;
 
 entity_behaviour!(Trigger, TriggerFactory, TriggerFsm, TriggerBehaviourTransitions, TriggerValidator);
 
-behaviour_validator!(TriggerValidator, ReactiveEntityInstance, TRIGGER.as_ref(), RESULT.as_ref(), PAYLOAD.as_ref());
+behaviour_validator!(TriggerValidator, Uuid, ReactiveEntity, TRIGGER.as_ref(), RESULT.as_ref(), PAYLOAD.as_ref());
 
-impl BehaviourInit<ReactiveEntityInstance> for TriggerBehaviourTransitions {}
+impl BehaviourInit<Uuid, ReactiveEntity> for TriggerBehaviourTransitions {}
 
-impl BehaviourConnect<ReactiveEntityInstance> for TriggerBehaviourTransitions {
+impl BehaviourConnect<Uuid, ReactiveEntity> for TriggerBehaviourTransitions {
     fn connect(&self) -> Result<(), BehaviourConnectFailed> {
         let reactive_instance = self.property_observers.reactive_instance.clone();
         self.property_observers.observe_with_handle(TRIGGER.as_ref(), move |trigger: &Value| {
@@ -27,5 +32,5 @@ impl BehaviourConnect<ReactiveEntityInstance> for TriggerBehaviourTransitions {
     }
 }
 
-impl BehaviourShutdown<ReactiveEntityInstance> for TriggerBehaviourTransitions {}
-impl BehaviourTransitions<ReactiveEntityInstance> for TriggerBehaviourTransitions {}
+impl BehaviourShutdown<Uuid, ReactiveEntity> for TriggerBehaviourTransitions {}
+impl BehaviourTransitions<Uuid, ReactiveEntity> for TriggerBehaviourTransitions {}

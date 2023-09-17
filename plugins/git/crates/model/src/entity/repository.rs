@@ -1,16 +1,16 @@
-use crate::model::entity_model;
-use crate::model::entity_ty;
-use crate::model_base::Describable;
-use crate::model_base::Named;
-use crate::model_file::File;
-use crate::model_file::FilePath;
-use crate::model_http::ParsedUrl;
-use crate::model_http::Url;
-use crate::model_runtime::Action;
 use crate::ComponentRepository;
 use crate::GitRepository;
 use crate::TransferProgress;
 use crate::NAMESPACE_GIT;
+use inexor_rgf_graph::entity_ty;
+use inexor_rgf_model_base::Describable;
+use inexor_rgf_model_base::Named;
+use inexor_rgf_model_file::File;
+use inexor_rgf_model_file::FilePath;
+use inexor_rgf_model_http::ParsedUrl;
+use inexor_rgf_model_http::Url;
+use inexor_rgf_model_runtime::Action;
+use inexor_rgf_reactive_api::entity_model;
 
 // All properties are defined in the component(s)
 

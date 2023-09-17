@@ -2,17 +2,17 @@ use serde_json::json;
 
 use crate::behaviour::relation::connector::ConnectorFactory;
 use crate::behaviour::relation::connector::CONNECTOR_BEHAVIOURS;
-use crate::model::BehaviourTypeId;
-use crate::model::PropertyInstanceGetter;
-use crate::model::PropertyInstanceSetter;
-use crate::model::ReactivePropertyContainer;
-use crate::model::RelationTypeId;
-use crate::model_connector::NAMESPACE_CONNECTOR;
 use crate::reactive::BehaviourFactory;
 use crate::reactive::BehaviourState;
 use crate::tests::utils::create_connector;
 use crate::tests::utils::create_random_entity_instance;
 use crate::tests::utils::r_string;
+use inexor_rgf_graph::BehaviourTypeId;
+use inexor_rgf_graph::PropertyInstanceGetter;
+use inexor_rgf_graph::PropertyInstanceSetter;
+use inexor_rgf_graph::ReactivePropertyContainer;
+use inexor_rgf_graph::RelationTypeId;
+use inexor_rgf_model_connector::NAMESPACE_CONNECTOR;
 
 pub static TYPE_NAME_DEFAULT_CONNECTOR: &str = "default_connector";
 

@@ -1,17 +1,17 @@
 use crate::behaviour::entity::string_gate::StringGateFactory;
 use crate::behaviour::entity::string_gate::STRING_GATES;
 use crate::builder::ReactiveEntityInstanceBuilder;
-use crate::model::BehaviourTypeId;
-use crate::model::EntityTypeId;
-use crate::model_result::ResultString;
-use crate::model_result::ResultStringProperties::RESULT;
 use crate::model_string::StringGate;
 use crate::model_string::StringGateProperties::LHS;
 use crate::model_string::StringGateProperties::RHS;
 use crate::model_string::COMPONENT_STRING_GATE;
-use crate::model_string::NAMESPACE_STRING;
 use crate::reactive::BehaviourFactory;
 use crate::reactive::BehaviourState;
+use inexor_rgf_graph::BehaviourTypeId;
+use inexor_rgf_graph::EntityTypeId;
+use inexor_rgf_model_result::ResultString;
+use inexor_rgf_model_result::ResultStringProperties::RESULT;
+use inexor_rgf_model_string::NAMESPACE_STRING;
 
 #[test]
 fn rx_concat_test() {
