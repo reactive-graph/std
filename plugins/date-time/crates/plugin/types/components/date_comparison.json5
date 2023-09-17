@@ -1,0 +1,32 @@
+{
+  "namespace": "date_time",
+  "type_name": "date_comparison",
+  "description": "Returns true if both dates are equal",
+  "properties": [
+    {
+      // rfc3339
+      "name": "lhs",
+      "description": "ISO8601 representation of the date",
+      "data_type": "string",
+      "socket_type": "input"
+    },
+    {
+      // rfc3339
+      "name": "rhs",
+      "description": "ISO8601 representation of the date",
+      "data_type": "string",
+      "socket_type": "input"
+    }
+  ],
+  "extensions": [
+    {
+      "namespace": "metadata",
+      "type_name": "dublin-core",
+      "extension": {
+        "title": "Date Comparison",
+        "subject": "Compares two dates in ISO8601 representation",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

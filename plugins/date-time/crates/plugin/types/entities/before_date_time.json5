@@ -1,0 +1,32 @@
+{
+  "namespace": "date_time",
+  "type_name": "before_date_time",
+  "description": "Returns true if the first date-time is before the other date-time",
+  "components": [
+    {
+      "namespace": "core",
+      "type_name": "labeled"
+    },
+    {
+      "namespace": "date_time",
+      "type_name": "date_comparison"
+    },
+    {
+      "namespace": "result",
+      "type_name": "result_boolean"
+    }
+  ],
+  "properties": [
+  ],
+  "extensions": [
+    {
+      "namespace": "metadata",
+      "type_name": "dublin-core",
+      "extension": {
+        "title": "Equals Date",
+        "subject": "Returns true if the first date-time is before the other date-time",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}
