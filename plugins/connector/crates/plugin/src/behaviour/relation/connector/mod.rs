@@ -1,24 +1,16 @@
+use inexor_rgf_behaviour::relation_behaviour;
+use inexor_rgf_behaviour::PropertyObserverContainer;
+use inexor_rgf_behaviour_api::prelude::*;
+use inexor_rgf_graph::prelude::*;
+use inexor_rgf_reactive::ReactiveRelation;
 use serde_json::Value;
 
 pub use function::ConnectorFunction;
 pub use function::CONNECTOR_BEHAVIOURS;
+use inexor_rgf_model_connector::ConnectorProperties::INBOUND_PROPERTY_NAME;
+use inexor_rgf_model_connector::ConnectorProperties::OUTBOUND_PROPERTY_NAME;
 
 use crate::behaviour::relation::connector::validator::ConnectorValidator;
-use crate::model::PropertyInstanceGetter;
-use crate::model::PropertyInstanceSetter;
-use crate::model::ReactiveRelationInstance;
-use crate::model_connector::ConnectorProperties::INBOUND_PROPERTY_NAME;
-use crate::model_connector::ConnectorProperties::OUTBOUND_PROPERTY_NAME;
-use crate::reactive::relation_behaviour;
-use crate::reactive::BehaviourConnect;
-use crate::reactive::BehaviourConnectFailed;
-use crate::reactive::BehaviourDisconnect;
-use crate::reactive::BehaviourFsm;
-use crate::reactive::BehaviourInit;
-use crate::reactive::BehaviourInitializationFailed;
-use crate::reactive::BehaviourShutdown;
-use crate::reactive::BehaviourTransitions;
-use crate::reactive::PropertyObserverContainer;
 
 pub mod function;
 pub mod validator;
@@ -43,7 +35,7 @@ impl ConnectorBehaviourTransitions {
     }
 }
 
-impl BehaviourInit<ReactiveRelationInstance> for ConnectorBehaviourTransitions {
+impl BehaviourInit<RelationInstanceId, ReactiveRelation> for ConnectorBehaviourTransitions {
     fn init(&self) -> Result<(), BehaviourInitializationFailed> {
         let outbound_property_name = self.get_outbound_property_name().ok_or(BehaviourInitializationFailed {})?;
         let inbound_property_name = self.get_inbound_property_name().ok_or(BehaviourInitializationFailed {})?;
@@ -58,9 +50,9 @@ impl BehaviourInit<ReactiveRelationInstance> for ConnectorBehaviourTransitions {
     }
 }
 
-impl BehaviourShutdown<ReactiveRelationInstance> for ConnectorBehaviourTransitions {}
+impl BehaviourShutdown<RelationInstanceId, ReactiveRelation> for ConnectorBehaviourTransitions {}
 
-impl BehaviourConnect<ReactiveRelationInstance> for ConnectorBehaviourTransitions {
+impl BehaviourConnect<RelationInstanceId, ReactiveRelation> for ConnectorBehaviourTransitions {
     fn connect(&self) -> Result<(), BehaviourConnectFailed> {
         let outbound_property_name = self.get_outbound_property_name().ok_or(BehaviourConnectFailed {})?;
         let inbound_property_name = self.get_inbound_property_name().ok_or(BehaviourConnectFailed {})?;
@@ -74,4 +66,4 @@ impl BehaviourConnect<ReactiveRelationInstance> for ConnectorBehaviourTransition
     }
 }
 
-impl BehaviourTransitions<ReactiveRelationInstance> for ConnectorBehaviourTransitions {}
+impl BehaviourTransitions<RelationInstanceId, ReactiveRelation> for ConnectorBehaviourTransitions {}

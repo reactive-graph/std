@@ -1,7 +1,5 @@
 use crate::behaviour::entity::templating::TemplatingFactory;
 use crate::builder::ReactiveEntityInstanceBuilder;
-use crate::model_result::ResultString;
-use crate::model_result::ResultStringProperties::RESULT;
 use crate::model_string::Templating;
 use crate::model_string::TemplatingProperties::CONTEXT;
 use crate::model_string::TemplatingProperties::TEMPLATE;
@@ -10,6 +8,8 @@ use crate::model_string::COMPONENT_STRING_GATE;
 use crate::model_string::ENTITY_TYPE_TEMPLATING;
 use crate::reactive::BehaviourFactory;
 use crate::reactive::BehaviourState;
+use inexor_rgf_model_result::ResultString;
+use inexor_rgf_model_result::ResultStringProperties::RESULT;
 use serde_json::json;
 
 #[test]

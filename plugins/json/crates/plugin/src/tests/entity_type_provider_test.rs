@@ -1,17 +1,17 @@
-use crate::model_json::ENTITY_TYPE_ARRAY_CONTAINS;
-use crate::model_json::ENTITY_TYPE_ARRAY_GET_BY_INDEX;
-use crate::model_json::ENTITY_TYPE_ARRAY_LENGTH;
-use crate::model_json::ENTITY_TYPE_ARRAY_POP;
-use crate::model_json::ENTITY_TYPE_ARRAY_PUSH;
-use crate::model_json::ENTITY_TYPE_ARRAY_REVERSE;
-use crate::model_json::ENTITY_TYPE_LOAD_JSON;
-use crate::model_json::ENTITY_TYPE_OBJECT_GET_PROPERTY;
-use crate::model_json::ENTITY_TYPE_OBJECT_KEYS;
-use crate::model_json::ENTITY_TYPE_OBJECT_REMOVE_PROPERTY;
-use crate::model_json::ENTITY_TYPE_OBJECT_SET_PROPERTY;
-use crate::model_json::ENTITY_TYPE_SAVE_JSON;
 use crate::plugins::EntityTypeProvider;
 use crate::providers::JsonEntityTypeProviderImpl;
+use inexor_rgf_model_json::ENTITY_TYPE_ARRAY_CONTAINS;
+use inexor_rgf_model_json::ENTITY_TYPE_ARRAY_GET_BY_INDEX;
+use inexor_rgf_model_json::ENTITY_TYPE_ARRAY_LENGTH;
+use inexor_rgf_model_json::ENTITY_TYPE_ARRAY_POP;
+use inexor_rgf_model_json::ENTITY_TYPE_ARRAY_PUSH;
+use inexor_rgf_model_json::ENTITY_TYPE_ARRAY_REVERSE;
+use inexor_rgf_model_json::ENTITY_TYPE_LOAD_JSON;
+use inexor_rgf_model_json::ENTITY_TYPE_OBJECT_GET_PROPERTY;
+use inexor_rgf_model_json::ENTITY_TYPE_OBJECT_KEYS;
+use inexor_rgf_model_json::ENTITY_TYPE_OBJECT_REMOVE_PROPERTY;
+use inexor_rgf_model_json::ENTITY_TYPE_OBJECT_SET_PROPERTY;
+use inexor_rgf_model_json::ENTITY_TYPE_SAVE_JSON;
 
 #[test]
 fn entity_types_should_exist() {

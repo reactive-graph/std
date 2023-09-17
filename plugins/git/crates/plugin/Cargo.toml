@@ -21,43 +21,40 @@ base64 = { workspace = true }
 dashmap = { workspace = true }
 git2 = { workspace = true }
 http = { workspace = true }
-indradb-lib = { workspace = true }
 infer = { workspace = true }
-lazy_static = { workspace = true }
 log = { workspace = true, features = ["std", "serde"] }
 log4rs = { workspace = true, features = ["console_appender", "file_appender", "toml_format"]}
 matchit = { workspace = true }
 mime_guess = { workspace = true }
-num-traits = { workspace = true }
-paste = { workspace = true }
-query_interface = { workspace = true }
 rust-embed = { workspace = true, features = ["debug-embed", "compression"] }
 serde = { workspace = true, features = [ "derive" ] }
 serde_json = { workspace = true }
 shellexpand = { workspace = true }
-strum = { workspace = true, features = ["derive"] }
-strum_macros = { workspace = true }
+springtime-di = { workspace = true, default-features = false, features = [ "threadsafe", "derive" ] }
 uuid = { workspace = true, features = ["serde", "v4"] }
 
-inexor-rgf-core-di = { workspace = true, features = ["async"] }
-inexor-rgf-core-frp = { workspace = true }
-inexor-rgf-core-model = { workspace = true }
-inexor-rgf-core-reactive = { workspace = true }
-inexor-rgf-core-plugins = { workspace = true }
+inexor-rgf-graph = { workspace = true }
+inexor-rgf-behaviour = { workspace = true }
+inexor-rgf-behaviour-api = { workspace = true }
+inexor-rgf-reactive = { workspace = true }
+inexor-rgf-reactive-api = { workspace = true }
+inexor-rgf-plugin-api = { workspace = true, features = [ "json5", "toml" ] }
 inexor-rgf-model-runtime = { workspace = true }
-inexor-rgf-model-base = { version = "0.9.1", path = "../../../base/crates/model" }
-inexor-rgf-model-file = { version = "0.9.1", path = "../../../file/crates/model" }
-inexor-rgf-model-git = { version = "0.9.1", path = "../../crates/model" }
-inexor-rgf-model-http = { version = "0.9.1", path = "../../../http/crates/model" }
+inexor-rgf-model-base = { version = "0.10.0", path = "../../../base/crates/model" }
+inexor-rgf-model-file = { version = "0.10.0", path = "../../../file/crates/model" }
+inexor-rgf-model-git = { version = "0.10.0", path = "../../crates/model" }
+inexor-rgf-model-http = { version = "0.10.0", path = "../../../http/crates/model" }
+
+[dev-dependencies]
+default-test = { workspace = true }
+inexor-rgf-graph = { workspace = true, features = ["test"] }
+inexor-rgf-test-utils = { workspace = true }
 
 [target.'cfg(target = "armv7-unknown-linux-gnueabihf")'.dependencies]
 openssl = { version = "0.10", features = ["vendored"] }
 
 [target.'cfg(target = "aarch64-unknown-linux-gnu")'.dependencies]
 openssl = { version = "0.10", features = ["vendored"] }
-
-[dev-dependencies]
-inexor-rgf-core-builder = { workspace = true }
 
 [lib]
 # Plugins use crate-type cdylib

@@ -1,12 +1,18 @@
 use std::clone::Clone;
+use std::sync::Arc;
+use std::sync::LazyLock;
 
+use inexor_rgf_behaviour::relation::function::RelationBehaviourFunctions;
+use inexor_rgf_behaviour::relation::function::RelationBehaviourFunctionsStorage;
+use inexor_rgf_behaviour::relation::RelationBehaviourFactoryCreator;
 use log::debug;
 use log::trace;
 use serde_json::json;
 use serde_json::Value;
 
-use crate::model_connector::*;
-use crate::reactive::behaviour_functions;
+use inexor_rgf_model_connector::*;
+
+use crate::behaviour::relation::connector::ConnectorFactory;
 
 pub type ConnectorFunction = fn(&Value) -> Value;
 
@@ -58,14 +64,15 @@ pub const FN_TRACE_CONNECTOR: ConnectorFunction = |v| {
     v.clone()
 };
 
-behaviour_functions!(
-    CONNECTOR_BEHAVIOURS,
-    ConnectorFunction,
-    NAMESPACE_CONNECTOR,
-    ("debug_connector", FN_DEBUG_CONNECTOR),
-    ("default_connector", FN_DEFAULT_CONNECTOR),
-    ("parse_float_connector", FN_PARSE_FLOAT_CONNECTOR),
-    ("parse_int_connector", FN_PARSE_INT_CONNECTOR),
-    ("to_string_connector", FN_TO_STRING_CONNECTOR),
-    ("trace_connector", FN_TRACE_CONNECTOR)
-);
+const FACTORY_CREATOR: RelationBehaviourFactoryCreator<ConnectorFunction> = |ty, f| Arc::new(ConnectorFactory::new(ty.clone(), f));
+
+pub static CONNECTOR_BEHAVIOURS: RelationBehaviourFunctionsStorage<ConnectorFunction> = LazyLock::new(|| {
+    RelationBehaviourFunctions::<ConnectorFunction>::with_namespace(NAMESPACE_CONNECTOR, FACTORY_CREATOR)
+        .behaviour("debug_connector", FN_DEBUG_CONNECTOR)
+        .behaviour("default_connector", FN_DEFAULT_CONNECTOR)
+        .behaviour("parse_float_connector", FN_PARSE_FLOAT_CONNECTOR)
+        .behaviour("parse_int_connector", FN_PARSE_INT_CONNECTOR)
+        .behaviour("to_string_connector", FN_TO_STRING_CONNECTOR)
+        .behaviour("trace_connector", FN_TRACE_CONNECTOR)
+        .get()
+});

@@ -1,10 +1,17 @@
+use std::sync::Arc;
+use std::sync::LazyLock;
+
+use inexor_rgf_behaviour::entity::EntityBehaviourFactoryCreator;
+use inexor_rgf_behaviour::entity::EntityBehaviourFunctions;
+use inexor_rgf_behaviour::entity::EntityBehaviourFunctionsStorage;
 use voca_rs::case;
 use voca_rs::escape;
 use voca_rs::manipulate;
 use voca_rs::strip;
 
-use crate::model_string::NAMESPACE_STRING;
-use crate::reactive::behaviour_functions;
+use inexor_rgf_model_string::NAMESPACE_STRING;
+
+use crate::behaviour::entity::string_operation::StringOperationFactory;
 
 pub type StringOperationFunction = fn(String) -> String;
 
@@ -32,31 +39,32 @@ pub const FN_UNESCAPE_HTML: StringOperationFunction = |lhs: String| escape::unes
 pub const FN_UPPER_FIRST: StringOperationFunction = |lhs: String| case::upper_first(lhs.as_str());
 pub const FN_UPPERCASE: StringOperationFunction = |lhs: String| lhs.to_uppercase();
 
-behaviour_functions!(
-    STRING_OPERATIONS,
-    StringOperationFunction,
-    NAMESPACE_STRING,
-    ("camel_case", FN_CAMEL_CASE),
-    ("capitalize", FN_CAPITALIZE),
-    ("decapitalize", FN_DECAPITALIZE),
-    ("escape_html", FN_ESCAPE_HTML),
-    ("escape_regexp", FN_ESCAPE_REGEXP),
-    ("kebab_case", FN_KEBAB_CASE),
-    ("lower_first", FN_LOWER_FIRST),
-    ("lowercase", FN_LOWERCASE),
-    ("pascal_case", FN_PASCAL_CASE),
-    ("reverse", FN_REVERSE),
-    ("shouty_kebab_case", FN_SHOUTY_KEBAB_CASE),
-    ("shouty_snake_case", FN_SHOUTY_SNAKE_CASE),
-    ("snake_case", FN_SNAKE_CASE),
-    ("strip_html_tags", FN_STRIP_HTML_TAGS),
-    ("swap_case", FN_SWAP_CASE),
-    ("title_case", FN_TITLE_CASE),
-    ("train_case", FN_TRAIN_CASE),
-    ("trim", FN_TRIM),
-    ("trim_start", FN_TRIM_START),
-    ("trim_end", FN_TRIM_END),
-    ("unescape_html", FN_UNESCAPE_HTML),
-    ("upper_first", FN_UPPER_FIRST),
-    ("uppercase", FN_UPPERCASE)
-);
+const FACTORY_CREATOR: EntityBehaviourFactoryCreator<StringOperationFunction> = |ty, f| Arc::new(StringOperationFactory::new(ty.clone(), f));
+
+pub static STRING_OPERATIONS: EntityBehaviourFunctionsStorage<StringOperationFunction> = LazyLock::new(|| {
+    EntityBehaviourFunctions::<StringOperationFunction>::with_namespace(NAMESPACE_STRING, FACTORY_CREATOR)
+        .behaviour("camel_case", FN_CAMEL_CASE)
+        .behaviour("capitalize", FN_CAPITALIZE)
+        .behaviour("decapitalize", FN_DECAPITALIZE)
+        .behaviour("escape_html", FN_ESCAPE_HTML)
+        .behaviour("escape_regexp", FN_ESCAPE_REGEXP)
+        .behaviour("kebab_case", FN_KEBAB_CASE)
+        .behaviour("lower_first", FN_LOWER_FIRST)
+        .behaviour("lowercase", FN_LOWERCASE)
+        .behaviour("pascal_case", FN_PASCAL_CASE)
+        .behaviour("reverse", FN_REVERSE)
+        .behaviour("shouty_kebab_case", FN_SHOUTY_KEBAB_CASE)
+        .behaviour("shouty_snake_case", FN_SHOUTY_SNAKE_CASE)
+        .behaviour("snake_case", FN_SNAKE_CASE)
+        .behaviour("strip_html_tags", FN_STRIP_HTML_TAGS)
+        .behaviour("swap_case", FN_SWAP_CASE)
+        .behaviour("title_case", FN_TITLE_CASE)
+        .behaviour("train_case", FN_TRAIN_CASE)
+        .behaviour("trim", FN_TRIM)
+        .behaviour("trim_start", FN_TRIM_START)
+        .behaviour("trim_end", FN_TRIM_END)
+        .behaviour("unescape_html", FN_UNESCAPE_HTML)
+        .behaviour("upper_first", FN_UPPER_FIRST)
+        .behaviour("uppercase", FN_UPPERCASE)
+        .get()
+});

@@ -1,6 +1,14 @@
-use crate::model_numeric::NAMESPACE_NUMERIC_F64;
-use crate::model_numeric::NAMESPACE_NUMERIC_I64;
-use crate::reactive::behaviour_functions;
+use inexor_rgf_model_numeric::NAMESPACE_NUMERIC_F64;
+use inexor_rgf_model_numeric::NAMESPACE_NUMERIC_I64;
+
+use std::sync::Arc;
+use std::sync::LazyLock;
+
+use crate::behaviour::entity::operation::behaviour_f64::NumericOperationF64Factory;
+use crate::behaviour::entity::operation::behaviour_i64::NumericOperationI64Factory;
+use inexor_rgf_behaviour::entity::EntityBehaviourFactoryCreator;
+use inexor_rgf_behaviour::entity::EntityBehaviourFunctions;
+use inexor_rgf_behaviour::entity::EntityBehaviourFunctionsStorage;
 
 pub type NumericOperationFunction<I, O> = fn(I) -> O;
 pub type NumericOperationF64Function = NumericOperationFunction<f64, f64>;
@@ -36,42 +44,80 @@ pub const FN_TRUNC_F64: NumericOperationF64Function = |lhs: f64| lhs.trunc();
 pub const FN_ABS_I64: NumericOperationI64Function = |lhs: i64| lhs.abs();
 pub const FN_SIGNUM_I64: NumericOperationI64Function = |lhs: i64| lhs.signum();
 
-behaviour_functions!(
-    NUMERIC_OPERATIONS_F64,
-    NumericOperationF64Function,
-    NAMESPACE_NUMERIC_F64,
-    ("abs", FN_ABS_F64),
-    ("acos", FN_ACOS_F64),
-    ("asin", FN_ASIN_F64),
-    ("atan", FN_ATAN_F64),
-    ("cbrt", FN_CBRT_F64),
-    ("ceil", FN_CEIL_F64),
-    ("cos", FN_COS_F64),
-    ("cosh", FN_COSH_F64),
-    ("exp", FN_EXP_F64),
-    ("exp2", FN_EXP2_F64),
-    ("floor", FN_FLOOR_F64),
-    ("fract", FN_FRACT_F64),
-    ("ln", FN_LN_F64),
-    ("log2", FN_LOG2_F64),
-    ("log10", FN_LOG10_F64),
-    ("recip", FN_RECIP_F64),
-    ("round", FN_ROUND_F64),
-    ("signum", FN_SIGNUM_F64),
-    ("sin", FN_SIN_F64),
-    ("sinh", FN_SINH_F64),
-    ("sqrt", FN_SQRT_F64),
-    ("tan", FN_TAN_F64),
-    ("tanh", FN_TANH_F64),
-    ("to_degrees", FN_TO_DEGREES_F64),
-    ("to_radians", FN_TO_RADIANS_F64),
-    ("trunc", FN_TRUNC_F64)
-);
+const FACTORY_CREATOR_F64: EntityBehaviourFactoryCreator<NumericOperationF64Function> = |ty, f| Arc::new(NumericOperationF64Factory::new(ty.clone(), f));
+const FACTORY_CREATOR_I64: EntityBehaviourFactoryCreator<NumericOperationI64Function> = |ty, f| Arc::new(NumericOperationI64Factory::new(ty.clone(), f));
 
-behaviour_functions!(
-    NUMERIC_OPERATIONS_I64,
-    NumericOperationI64Function,
-    NAMESPACE_NUMERIC_I64,
-    ("abs", FN_ABS_I64),
-    ("signum", FN_SIGNUM_I64)
-);
+pub static NUMERIC_OPERATIONS_F64: EntityBehaviourFunctionsStorage<NumericOperationF64Function> = LazyLock::new(|| {
+    EntityBehaviourFunctions::<NumericOperationF64Function>::with_namespace(NAMESPACE_NUMERIC_F64, FACTORY_CREATOR_F64)
+        .behaviour("abs", FN_ABS_F64)
+        .behaviour("acos", FN_ACOS_F64)
+        .behaviour("asin", FN_ASIN_F64)
+        .behaviour("atan", FN_ATAN_F64)
+        .behaviour("cbrt", FN_CBRT_F64)
+        .behaviour("ceil", FN_CEIL_F64)
+        .behaviour("cos", FN_COS_F64)
+        .behaviour("cosh", FN_COSH_F64)
+        .behaviour("exp", FN_EXP_F64)
+        .behaviour("exp2", FN_EXP2_F64)
+        .behaviour("floor", FN_FLOOR_F64)
+        .behaviour("fract", FN_FRACT_F64)
+        .behaviour("ln", FN_LN_F64)
+        .behaviour("log2", FN_LOG2_F64)
+        .behaviour("log10", FN_LOG10_F64)
+        .behaviour("recip", FN_RECIP_F64)
+        .behaviour("round", FN_ROUND_F64)
+        .behaviour("signum", FN_SIGNUM_F64)
+        .behaviour("sin", FN_SIN_F64)
+        .behaviour("sinh", FN_SINH_F64)
+        .behaviour("sqrt", FN_SQRT_F64)
+        .behaviour("tan", FN_TAN_F64)
+        .behaviour("tanh", FN_TANH_F64)
+        .behaviour("to_degrees", FN_TO_DEGREES_F64)
+        .behaviour("to_radians", FN_TO_RADIANS_F64)
+        .behaviour("trunc", FN_TRUNC_F64)
+        .get()
+});
+
+pub static NUMERIC_OPERATIONS_I64: EntityBehaviourFunctionsStorage<NumericOperationI64Function> = LazyLock::new(|| {
+    EntityBehaviourFunctions::<NumericOperationI64Function>::with_namespace(NAMESPACE_NUMERIC_I64, FACTORY_CREATOR_I64)
+        .behaviour("abs", FN_ABS_I64)
+        .behaviour("signum", FN_SIGNUM_I64)
+        .get()
+});
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn numeric_operation_function_test() {
+        let nv: f64 = -0.5;
+        let pv: f64 = 0.5;
+        assert_eq!(nv.abs(), FN_ABS_F64(nv));
+        assert_eq!(pv.acos(), FN_ACOS_F64(pv));
+        assert_eq!(nv.asin(), FN_ASIN_F64(nv));
+        assert_eq!(nv.atan(), FN_ATAN_F64(nv));
+        assert_eq!(nv.cbrt(), FN_CBRT_F64(nv));
+        assert_eq!(nv.ceil(), FN_CEIL_F64(nv));
+        assert_eq!(nv.cos(), FN_COS_F64(nv));
+        assert_eq!(nv.cosh(), FN_COSH_F64(nv));
+        assert_eq!(nv.exp(), FN_EXP_F64(nv));
+        assert_eq!(nv.exp2(), FN_EXP2_F64(nv));
+        assert_eq!(nv.floor(), FN_FLOOR_F64(nv));
+        assert_eq!(nv.fract(), FN_FRACT_F64(nv));
+        assert_eq!(pv.ln(), FN_LN_F64(pv));
+        assert_eq!(pv.log2(), FN_LOG2_F64(pv));
+        assert_eq!(pv.log10(), FN_LOG10_F64(pv));
+        assert_eq!(nv.recip(), FN_RECIP_F64(nv));
+        assert_eq!(nv.round(), FN_ROUND_F64(nv));
+        assert_eq!(nv.signum(), FN_SIGNUM_F64(nv));
+        assert_eq!(nv.sin(), FN_SIN_F64(nv));
+        assert_eq!(nv.sinh(), FN_SINH_F64(nv));
+        assert_eq!(pv.sqrt(), FN_SQRT_F64(pv));
+        assert_eq!(nv.tan(), FN_TAN_F64(nv));
+        assert_eq!(nv.tanh(), FN_TANH_F64(nv));
+        assert_eq!(nv.to_degrees(), FN_TO_DEGREES_F64(nv));
+        assert_eq!(nv.to_radians(), FN_TO_RADIANS_F64(nv));
+        assert_eq!(nv.trunc(), FN_TRUNC_F64(nv));
+    }
+}

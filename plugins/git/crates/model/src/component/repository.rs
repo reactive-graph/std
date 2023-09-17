@@ -5,15 +5,15 @@ use git2::FetchOptions;
 use git2::RemoteCallbacks;
 use git2::Repository;
 
-use crate::model::behaviour_ty;
-use crate::model::component_behaviour_ty;
-use crate::model::component_model;
-use crate::model::component_ty;
-use crate::model::properties;
-use crate::model_file::FilePath;
-use crate::model_http::Url;
+use crate::behaviour_api::behaviour_ty;
+use crate::behaviour_api::component_behaviour_ty;
 use crate::TransferProgress;
 use crate::NAMESPACE_GIT;
+use inexor_rgf_graph::component_model;
+use inexor_rgf_graph::component_ty;
+use inexor_rgf_graph::properties;
+use inexor_rgf_model_file::FilePath;
+use inexor_rgf_model_http::Url;
 
 properties!(
     RepositoryProperties,
@@ -61,7 +61,7 @@ pub trait GitRepository: ComponentRepository + TransferProgress + FilePath + Url
         let Some(remote_branch) = self.get_remote_branch() else {
             return;
         };
-        let Some(repository)  = self.open() else {
+        let Some(repository) = self.open() else {
             return;
         };
         let Ok(mut remote) = repository.find_remote(&remote_name) else {
@@ -86,7 +86,7 @@ pub trait GitRepository: ComponentRepository + TransferProgress + FilePath + Url
     }
 
     fn git_fast_forward(&self) {
-        let Some(repository)  = self.open() else {
+        let Some(repository) = self.open() else {
             return;
         };
         let Ok(fetch_head) = repository.find_reference("FETCH_HEAD") else {
@@ -144,7 +144,8 @@ pub trait GitRepository: ComponentRepository + TransferProgress + FilePath + Url
         let Ok(_repository) = RepoBuilder::new()
             .fetch_options(fetch_options)
             .with_checkout(checkout_builder)
-            .clone(url.as_str(), &local_path) else {
+            .clone(url.as_str(), &local_path)
+        else {
             return;
         };
     }
@@ -162,13 +163,13 @@ pub trait GitRepository: ComponentRepository + TransferProgress + FilePath + Url
         let Ok(commit) = repository.find_commit(oid) else {
             return;
         };
-        let Ok(branch) = repository.branch(&branch_name, &commit, false) else {
+        let Ok(_branch) = repository.branch(&branch_name, &commit, false) else {
             return;
         };
         let Ok(obj) = repository.revparse_single(&("refs/heads/".to_owned() + &branch_name)) else {
             return;
         };
-        repository.checkout_tree(&obj, None);
+        let _ = repository.checkout_tree(&obj, None);
         let _ = repository.set_head(&("refs/heads/".to_owned() + &branch_name));
     }
 }

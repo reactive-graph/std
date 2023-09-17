@@ -3,12 +3,12 @@ use std::sync::Arc;
 use inexor_rgf_core_builder::ReactiveRelationInstanceBuilder;
 use serde_json::json;
 
-use crate::model::ReactiveEntityInstance;
-use crate::model::ReactiveRelationInstance;
-use crate::model::RelationInstanceTypeId;
-use crate::model::RelationTypeId;
-use crate::model_connector::ConnectorProperties::INBOUND_PROPERTY_NAME;
-use crate::model_connector::ConnectorProperties::OUTBOUND_PROPERTY_NAME;
+use inexor_rgf_graph::ReactiveEntityInstance;
+use inexor_rgf_graph::ReactiveRelationInstance;
+use inexor_rgf_graph::RelationInstanceTypeId;
+use inexor_rgf_graph::RelationTypeId;
+use inexor_rgf_model_connector::ConnectorProperties::INBOUND_PROPERTY_NAME;
+use inexor_rgf_model_connector::ConnectorProperties::OUTBOUND_PROPERTY_NAME;
 
 pub fn create_connector<S: Into<String>>(
     outbound: Arc<ReactiveEntityInstance>,

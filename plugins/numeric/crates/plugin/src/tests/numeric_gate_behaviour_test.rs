@@ -6,10 +6,10 @@ use crate::behaviour::entity::gate::function::*;
 use crate::behaviour::entity::gate::properties::NumericGateProperties;
 use crate::behaviour::entity::gate::NumericGate;
 use crate::builder::ReactiveEntityInstanceBuilder;
-use crate::model::ReactiveEntityInstance;
 use crate::reactive::BehaviourCreationError;
 use crate::reactive::Gate;
 use crate::reactive::Operation;
+use inexor_rgf_graph::ReactiveEntityInstance;
 
 #[test]
 fn numeric_operation_behaviour_test() {

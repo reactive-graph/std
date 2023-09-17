@@ -1,23 +1,30 @@
-use inexor_rgf_model_git::RepositoryProperties::FAST_FORWARD;
+use inexor_rgf_behaviour::entity_behaviour;
+use inexor_rgf_behaviour::PropertyObserverContainer;
+use inexor_rgf_behaviour_api::behaviour_validator;
+use inexor_rgf_behaviour_api::prelude::*;
+use inexor_rgf_graph::prelude::*;
+use inexor_rgf_reactive::ReactiveEntity;
 use serde_json::Value;
+use uuid::Uuid;
 
-use crate::model::*;
-use crate::model_file::FileProperties::FILENAME;
-use crate::model_git::GitRepository;
-use crate::model_git::RepositoryProperties::BRANCH;
-use crate::model_git::RepositoryProperties::FETCH;
-use crate::model_git::RepositoryProperties::PUSH;
-use crate::model_git::RepositoryProperties::REMOTE_BRANCH;
-use crate::model_git::RepositoryProperties::REMOTE_NAME;
-use crate::model_http::UrlProperties::URL;
-use crate::model_runtime::ActionProperties::TRIGGER;
-use crate::reactive::*;
+use inexor_rgf_model_git::RepositoryProperties::FAST_FORWARD;
+
+use inexor_rgf_model_file::FileProperties::FILENAME;
+use inexor_rgf_model_git::GitRepository;
+use inexor_rgf_model_git::RepositoryProperties::BRANCH;
+use inexor_rgf_model_git::RepositoryProperties::FETCH;
+// use inexor_rgf_model_git::RepositoryProperties::PUSH;
+use inexor_rgf_model_git::RepositoryProperties::REMOTE_BRANCH;
+use inexor_rgf_model_git::RepositoryProperties::REMOTE_NAME;
+use inexor_rgf_model_http::UrlProperties::URL;
+use inexor_rgf_model_runtime::ActionProperties::TRIGGER;
 
 entity_behaviour!(Repository, RepositoryFactory, RepositoryFsm, RepositoryBehaviourTransitions, RepositoryValidator);
 
 behaviour_validator!(
     RepositoryValidator,
-    ReactiveEntityInstance,
+    Uuid,
+    ReactiveEntity,
     TRIGGER.as_ref(),
     URL.as_ref(),
     FILENAME.as_ref(),
@@ -27,9 +34,9 @@ behaviour_validator!(
     TRIGGER.as_ref()
 );
 
-impl BehaviourInit<ReactiveEntityInstance> for RepositoryBehaviourTransitions {
+impl BehaviourInit<Uuid, ReactiveEntity> for RepositoryBehaviourTransitions {
     fn init(&self) -> Result<(), BehaviourInitializationFailed> {
-        let repository = crate::model_git::Repository::from(self.reactive_instance.clone());
+        let repository = inexor_rgf_model_git::Repository::from(self.reactive_instance.clone());
         if repository.as_bool(TRIGGER).unwrap_or(false) {
             if repository.exists() {
                 repository.git_fetch_and_fast_forward();
@@ -41,14 +48,14 @@ impl BehaviourInit<ReactiveEntityInstance> for RepositoryBehaviourTransitions {
     }
 }
 
-impl BehaviourConnect<ReactiveEntityInstance> for RepositoryBehaviourTransitions {
+impl BehaviourConnect<Uuid, ReactiveEntity> for RepositoryBehaviourTransitions {
     fn connect(&self) -> Result<(), BehaviourConnectFailed> {
         let reactive_instance = self.reactive_instance.clone();
         self.property_observers.observe_with_handle(TRIGGER.as_ref(), move |trigger: &Value| {
             if !trigger.as_bool().unwrap_or(false) {
                 return;
             }
-            let repository = crate::model_git::Repository::from(reactive_instance.clone());
+            let repository = inexor_rgf_model_git::Repository::from(reactive_instance.clone());
             if repository.exists() {
                 repository.git_fetch_and_fast_forward();
             } else {
@@ -60,7 +67,7 @@ impl BehaviourConnect<ReactiveEntityInstance> for RepositoryBehaviourTransitions
             if !fetch.as_bool().unwrap_or(false) {
                 return;
             }
-            let repository = crate::model_git::Repository::from(reactive_instance.clone());
+            let repository = inexor_rgf_model_git::Repository::from(reactive_instance.clone());
             if repository.exists() {
                 repository.git_fetch();
             }
@@ -70,7 +77,7 @@ impl BehaviourConnect<ReactiveEntityInstance> for RepositoryBehaviourTransitions
             if !fast_forward.as_bool().unwrap_or(false) {
                 return;
             }
-            let repository = crate::model_git::Repository::from(reactive_instance.clone());
+            let repository = inexor_rgf_model_git::Repository::from(reactive_instance.clone());
             if repository.exists() {
                 repository.git_fast_forward();
             }
@@ -78,7 +85,7 @@ impl BehaviourConnect<ReactiveEntityInstance> for RepositoryBehaviourTransitions
         let reactive_instance = self.reactive_instance.clone();
         self.property_observers.observe_with_handle(BRANCH.as_ref(), move |branch: &Value| {
             if let Some(branch) = branch.as_str().map(str::to_string) {
-                let repository = crate::model_git::Repository::from(reactive_instance.clone());
+                let repository = inexor_rgf_model_git::Repository::from(reactive_instance.clone());
                 if repository.exists() {
                     repository.git_checkout(branch);
                 }
@@ -88,5 +95,5 @@ impl BehaviourConnect<ReactiveEntityInstance> for RepositoryBehaviourTransitions
     }
 }
 
-impl BehaviourShutdown<ReactiveEntityInstance> for RepositoryBehaviourTransitions {}
-impl BehaviourTransitions<ReactiveEntityInstance> for RepositoryBehaviourTransitions {}
+impl BehaviourShutdown<Uuid, ReactiveEntity> for RepositoryBehaviourTransitions {}
+impl BehaviourTransitions<Uuid, ReactiveEntity> for RepositoryBehaviourTransitions {}

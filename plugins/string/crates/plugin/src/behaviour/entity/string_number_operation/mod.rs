@@ -1,24 +1,18 @@
+use inexor_rgf_behaviour::entity_behaviour;
+use inexor_rgf_behaviour::PropertyObserverContainer;
+use inexor_rgf_behaviour_api::behaviour_validator;
+use inexor_rgf_behaviour_api::prelude::*;
+use inexor_rgf_graph::prelude::*;
+use inexor_rgf_reactive::ReactiveEntity;
 use serde_json::json;
 use serde_json::Value;
+use uuid::Uuid;
 
 pub use function::StringNumberFunction;
 pub use function::STRING_NUMBER_OPERATIONS;
 
-use crate::model::PropertyInstanceSetter;
-use crate::model::ReactiveEntityInstance;
-use crate::model_result::ResultNumberU64Properties::RESULT;
-use crate::model_string::StringNumberOperationProperties::LHS;
-use crate::reactive::behaviour_validator;
-use crate::reactive::entity_behaviour;
-use crate::reactive::BehaviourConnect;
-use crate::reactive::BehaviourConnectFailed;
-use crate::reactive::BehaviourDisconnect;
-use crate::reactive::BehaviourFsm;
-use crate::reactive::BehaviourInit;
-use crate::reactive::BehaviourInitializationFailed;
-use crate::reactive::BehaviourShutdown;
-use crate::reactive::BehaviourTransitions;
-use crate::reactive::PropertyObserverContainer;
+use inexor_rgf_model_result::ResultNumberU64Properties::RESULT;
+use inexor_rgf_model_string::StringNumberOperationProperties::LHS;
 
 pub mod function;
 
@@ -32,9 +26,9 @@ entity_behaviour!(
     StringNumberFunction
 );
 
-behaviour_validator!(StringNumberOperationValidator, ReactiveEntityInstance, LHS.as_ref(), RESULT.as_ref());
+behaviour_validator!(StringNumberOperationValidator, Uuid, ReactiveEntity, LHS.as_ref(), RESULT.as_ref());
 
-impl BehaviourInit<ReactiveEntityInstance> for StringNumberOperationBehaviourTransitions {
+impl BehaviourInit<Uuid, ReactiveEntity> for StringNumberOperationBehaviourTransitions {
     fn init(&self) -> Result<(), BehaviourInitializationFailed> {
         let lhs = self
             .reactive_instance
@@ -47,7 +41,7 @@ impl BehaviourInit<ReactiveEntityInstance> for StringNumberOperationBehaviourTra
     }
 }
 
-impl BehaviourConnect<ReactiveEntityInstance> for StringNumberOperationBehaviourTransitions {
+impl BehaviourConnect<Uuid, ReactiveEntity> for StringNumberOperationBehaviourTransitions {
     fn connect(&self) -> Result<(), BehaviourConnectFailed> {
         let reactive_instance = self.property_observers.reactive_instance.clone();
         let f = self.f;
@@ -60,5 +54,5 @@ impl BehaviourConnect<ReactiveEntityInstance> for StringNumberOperationBehaviour
     }
 }
 
-impl BehaviourShutdown<ReactiveEntityInstance> for StringNumberOperationBehaviourTransitions {}
-impl BehaviourTransitions<ReactiveEntityInstance> for StringNumberOperationBehaviourTransitions {}
+impl BehaviourShutdown<Uuid, ReactiveEntity> for StringNumberOperationBehaviourTransitions {}
+impl BehaviourTransitions<Uuid, ReactiveEntity> for StringNumberOperationBehaviourTransitions {}

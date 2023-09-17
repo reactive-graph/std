@@ -1,21 +1,17 @@
+use inexor_rgf_behaviour::entity_behaviour;
+use inexor_rgf_behaviour::PropertyObserverContainer;
+use inexor_rgf_behaviour_api::behaviour_validator;
+use inexor_rgf_behaviour_api::prelude::*;
+use inexor_rgf_graph::prelude::*;
+use inexor_rgf_reactive::ReactiveEntity;
+use uuid::Uuid;
+
+use inexor_rgf_model_numeric::NumericGateProperties::LHS;
+use inexor_rgf_model_numeric::NumericGateProperties::RHS;
+use inexor_rgf_model_result::ResultNumberF64Properties::RESULT;
+
 use crate::behaviour::as_f64;
 use crate::behaviour::entity::gate::function::NumericGateF64Function;
-use crate::model::PropertyInstanceSetter;
-use crate::model::ReactiveEntityInstance;
-use crate::model_numeric::NumericGateProperties::LHS;
-use crate::model_numeric::NumericGateProperties::RHS;
-use crate::model_result::ResultNumberF64Properties::RESULT;
-use crate::reactive::behaviour_validator;
-use crate::reactive::entity_behaviour;
-use crate::reactive::BehaviourConnect;
-use crate::reactive::BehaviourConnectFailed;
-use crate::reactive::BehaviourDisconnect;
-use crate::reactive::BehaviourFsm;
-use crate::reactive::BehaviourInit;
-use crate::reactive::BehaviourInitializationFailed;
-use crate::reactive::BehaviourShutdown;
-use crate::reactive::BehaviourTransitions;
-use crate::reactive::PropertyObserverContainer;
 
 entity_behaviour!(
     NumericGateF64,
@@ -27,9 +23,9 @@ entity_behaviour!(
     NumericGateF64Function
 );
 
-behaviour_validator!(NumericGateF64Validator, ReactiveEntityInstance, LHS.as_ref(), RHS.as_ref(), RESULT.as_ref());
+behaviour_validator!(NumericGateF64Validator, Uuid, ReactiveEntity, LHS.as_ref(), RHS.as_ref(), RESULT.as_ref());
 
-impl BehaviourInit<ReactiveEntityInstance> for NumericGateF64BehaviourTransitions {
+impl BehaviourInit<Uuid, ReactiveEntity> for NumericGateF64BehaviourTransitions {
     fn init(&self) -> Result<(), BehaviourInitializationFailed> {
         let lhs = self.reactive_instance.get(LHS).and_then(as_f64).ok_or(BehaviourInitializationFailed {})?;
         let rhs = self.reactive_instance.get(RHS).and_then(as_f64).ok_or(BehaviourInitializationFailed {})?;
@@ -40,7 +36,7 @@ impl BehaviourInit<ReactiveEntityInstance> for NumericGateF64BehaviourTransition
     }
 }
 
-impl BehaviourConnect<ReactiveEntityInstance> for NumericGateF64BehaviourTransitions {
+impl BehaviourConnect<Uuid, ReactiveEntity> for NumericGateF64BehaviourTransitions {
     fn connect(&self) -> Result<(), BehaviourConnectFailed> {
         let reactive_instance = self.reactive_instance.clone();
         let f = self.f;
@@ -64,5 +60,51 @@ impl BehaviourConnect<ReactiveEntityInstance> for NumericGateF64BehaviourTransit
         Ok(())
     }
 }
-impl BehaviourShutdown<ReactiveEntityInstance> for NumericGateF64BehaviourTransitions {}
-impl BehaviourTransitions<ReactiveEntityInstance> for NumericGateF64BehaviourTransitions {}
+impl BehaviourShutdown<Uuid, ReactiveEntity> for NumericGateF64BehaviourTransitions {}
+impl BehaviourTransitions<Uuid, ReactiveEntity> for NumericGateF64BehaviourTransitions {}
+
+// #[cfg(test)]
+// mod tests {
+//     use inexor_rgf_behaviour_api::BehaviourCreationError;
+//     use serde_json::json;
+//
+//     use crate::behaviour::entity::gate::function::*;
+//     use inexor_rgf_graph::prelude::*;
+//     use inexor_rgf_reactive::ReactiveEntity;
+//     use inexor_rgf_model_numeric::NumericGateF64;
+//     use inexor_rgf_model_numeric::NumericGateProperties;
+//     use inexor_rgf_reactive_api::prelude::*;
+//     use crate::behaviour::entity::gate::tests::numeric_gate;
+//
+//     #[test]
+//     fn numeric_operation_behaviour_test() {
+//         let lhs: f64 = 0.5;
+//         let rhs: f64 = 0.5;
+//
+//         assert_eq!(lhs.atan2(rhs), test_numeric_gate_behaviour(FN_ATAN2_F64, lhs, rhs).unwrap());
+//         assert_eq!(lhs.hypot(rhs), test_numeric_gate_behaviour(FN_HYPOT_F64, lhs, rhs).unwrap());
+//         assert_eq!(lhs.log(rhs), test_numeric_gate_behaviour(FN_LOG_F64, lhs, rhs).unwrap());
+//         assert_eq!(lhs.powf(rhs), test_numeric_gate_behaviour(FN_POW_F64, lhs, rhs).unwrap());
+//     }
+//
+//     fn test_numeric_gate_behaviour(f: NumericGateFunction<f64>, lhs: f64, rhs: f64) -> Option<f64> {
+//         let b = create_numeric_gate_behaviour(f).unwrap();
+//         b.lhs(lhs);
+//         b.rhs(rhs);
+//         b.result()
+//     }
+//
+//     fn create_numeric_gate_behaviour(f: NumericGateFunction<f64>) -> Result<NumericGateF64, BehaviourCreationError> {
+//
+//         let numeric_gate = create_numeric_gate_entity();
+//         NumericGateF64::from(numeric_gate("numeric", "abs"), f)
+//     }
+//
+//     fn create_numeric_gate_entity() -> ReactiveEntity {
+//         ReactiveEntityInstanceBuilder::new("numeric", "abs")
+//             .property(NumericGateProperties::LHS.as_ref(), json!(NumericGateProperties::LHS.default_value()))
+//             .property(NumericGateProperties::RHS.as_ref(), json!(NumericGateProperties::RHS.default_value()))
+//             .property(NumericGateProperties::RESULT.as_ref(), json!(NumericGateProperties::RESULT.default_value()))
+//             .build()
+//     }
+// }

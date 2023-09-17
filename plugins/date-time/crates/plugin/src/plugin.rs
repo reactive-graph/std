@@ -1,105 +1,77 @@
-use std::sync::Arc;
-use std::sync::RwLock;
+use inexor_rgf_plugin_api::prelude::plugin::*;
+use inexor_rgf_plugin_api::prelude::providers::*;
+use inexor_rgf_plugin_api::EntityBehaviourRegistry;
 
-use async_trait::async_trait;
+use inexor_rgf_model_date_time::BEHAVIOUR_UTC_NOW;
+use inexor_rgf_model_date_time::BEHAVIOUR_UTC_TIMESTAMP;
+use inexor_rgf_model_date_time::ENTITY_BEHAVIOUR_UTC_NOW;
+use inexor_rgf_model_date_time::ENTITY_BEHAVIOUR_UTC_TIMESTAMP;
 
 use crate::api::TimeGraph;
 use crate::behaviour::UtcNowFactory;
 use crate::behaviour::UtcTimestampFactory;
-use crate::di::*;
-use crate::model_date_time::BEHAVIOUR_UTC_NOW;
-use crate::model_date_time::BEHAVIOUR_UTC_TIMESTAMP;
-use crate::model_date_time::ENTITY_BEHAVIOUR_UTC_NOW;
-use crate::model_date_time::ENTITY_BEHAVIOUR_UTC_TIMESTAMP;
-use crate::plugins::entity_type_provider;
-use crate::plugins::plugin_context::PluginContext;
-use crate::plugins::relation_type_provider;
-use crate::plugins::EntityTypeProvider;
-use crate::plugins::EntityTypeProviderError;
-use crate::plugins::Plugin;
-use crate::plugins::PluginActivationError;
-use crate::plugins::PluginContextDeinitializationError;
-use crate::plugins::PluginContextInitializationError;
-use crate::plugins::PluginDeactivationError;
-use crate::plugins::RelationTypeProvider;
-use crate::plugins::RelationTypeProviderError;
-use crate::providers::DateTimeEntityTypeProviderImpl;
-use crate::providers::DateTimeRelationTypeProviderImpl;
 
-#[wrapper]
-pub struct PluginContextContainer(RwLock<Option<Arc<dyn PluginContext>>>);
+export_plugin!({
+    "dependencies": [
+        { "name": "inexor-rgf-plugin-base", "version": ">=0.10.0, <0.11.0" },
+        { "name": "inexor-rgf-plugin-result", "version": ">=0.10.0, <0.11.0" },
+        { "name": "inexor-rgf-plugin-trigger", "version": ">=0.10.0, <0.11.0" }
+    ]
+});
 
-#[provides]
-fn create_empty_plugin_context_container() -> PluginContextContainer {
-    PluginContextContainer(RwLock::new(None))
-}
-
-#[async_trait]
+#[injectable]
 pub trait DateTimePlugin: Plugin + Send + Sync {}
 
-#[module]
+#[derive(Component)]
 pub struct DateTimePluginImpl {
-    entity_type_provider: Wrc<DateTimeEntityTypeProviderImpl>,
-    relation_type_provider: Wrc<DateTimeRelationTypeProviderImpl>,
-    time_graph: Wrc<dyn TimeGraph>,
-    context: PluginContextContainer,
+    component_provider: Arc<dyn TypeProvider<Components> + Send + Sync>,
+
+    #[component(default = "component_provider_registry")]
+    component_provider_registry: Arc<dyn ComponentProviderRegistry + Send + Sync>,
+
+    entity_types_provider: Arc<dyn TypeProvider<EntityTypes> + Send + Sync>,
+
+    #[component(default = "entity_types_provider_registry")]
+    entity_type_provider_registry: Arc<dyn EntityTypeProviderRegistry + Send + Sync>,
+
+    #[component(default = "entity_behaviour_registry")]
+    entity_behaviour_registry: Arc<dyn EntityBehaviourRegistry + Send + Sync>,
+
+    time_graph: Arc<dyn TimeGraph + Send + Sync>,
 }
 
-impl DateTimePluginImpl {}
-
-interfaces!(DateTimePluginImpl: dyn Plugin);
-
 #[async_trait]
-#[provides]
-impl DateTimePlugin for DateTimePluginImpl {}
-
-#[async_trait]
+#[component_alias]
 impl Plugin for DateTimePluginImpl {
     async fn activate(&self) -> Result<(), PluginActivationError> {
-        {
-            let guard = self.context.0.read().unwrap();
-            if let Some(context) = guard.clone() {
-                let entity_behaviour_registry = context.get_entity_behaviour_registry();
-                // Utc Timestamp
-                let factory = Arc::new(UtcTimestampFactory::new(BEHAVIOUR_UTC_TIMESTAMP.clone()));
-                entity_behaviour_registry.register(ENTITY_BEHAVIOUR_UTC_TIMESTAMP.clone(), factory);
-                // Utc Now
-                let factory = Arc::new(UtcNowFactory::new(BEHAVIOUR_UTC_NOW.clone()));
-                entity_behaviour_registry.register(ENTITY_BEHAVIOUR_UTC_NOW.clone(), factory);
-            }
-        }
+        self.component_provider_registry.register_provider(self.component_provider.clone()).await;
+        self.entity_type_provider_registry.register_provider(self.entity_types_provider.clone()).await;
+        // Utc Timestamp
+        let factory = Arc::new(UtcTimestampFactory::new(BEHAVIOUR_UTC_TIMESTAMP.clone()));
+        self.entity_behaviour_registry.register(ENTITY_BEHAVIOUR_UTC_TIMESTAMP.clone(), factory).await;
+        // Utc Now
+        let factory = Arc::new(UtcNowFactory::new(BEHAVIOUR_UTC_NOW.clone()));
+        self.entity_behaviour_registry.register(ENTITY_BEHAVIOUR_UTC_NOW.clone(), factory).await;
+
         self.time_graph.init().await;
+
+        let time_graph = self.time_graph.clone();
+
+        async_std::task::spawn(async move {
+            time_graph.init().await;
+        });
+
         Ok(())
     }
 
     async fn deactivate(&self) -> Result<(), PluginDeactivationError> {
         self.time_graph.shutdown().await;
-        let guard = self.context.0.read().unwrap();
-        if let Some(context) = guard.clone() {
-            let entity_behaviour_registry = context.get_entity_behaviour_registry();
-            entity_behaviour_registry.unregister(&ENTITY_BEHAVIOUR_UTC_TIMESTAMP);
-            entity_behaviour_registry.unregister(&ENTITY_BEHAVIOUR_UTC_NOW);
-        }
+
+        self.entity_behaviour_registry.unregister(&ENTITY_BEHAVIOUR_UTC_TIMESTAMP).await;
+        self.entity_behaviour_registry.unregister(&ENTITY_BEHAVIOUR_UTC_NOW).await;
+
+        self.entity_type_provider_registry.unregister_provider(self.entity_types_provider.id()).await;
+        self.component_provider_registry.unregister_provider(self.component_provider.id()).await;
         Ok(())
-    }
-
-    fn set_context(&self, context: Arc<dyn PluginContext>) -> Result<(), PluginContextInitializationError> {
-        self.context.0.write().unwrap().replace(context.clone());
-        self.time_graph.set_context(context.clone());
-        Ok(())
-    }
-
-    fn remove_context(&self) -> Result<(), PluginContextDeinitializationError> {
-        let mut writer = self.context.0.write().unwrap();
-        *writer = None;
-        Ok(())
-    }
-
-    fn get_entity_type_provider(&self) -> Result<Option<Arc<dyn EntityTypeProvider>>, EntityTypeProviderError> {
-        entity_type_provider!(self.entity_type_provider)
-    }
-
-    fn get_relation_type_provider(&self) -> Result<Option<Arc<dyn RelationTypeProvider>>, RelationTypeProviderError> {
-        relation_type_provider!(self.relation_type_provider)
     }
 }

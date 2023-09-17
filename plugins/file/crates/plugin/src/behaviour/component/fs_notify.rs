@@ -1,72 +1,70 @@
+use inexor_rgf_behaviour::entity_behaviour;
+use inexor_rgf_behaviour_api::behaviour_validator;
+use inexor_rgf_behaviour_api::prelude::*;
+use inexor_rgf_graph::prelude::*;
+use inexor_rgf_reactive::ReactiveEntity;
+use log::trace;
+use serde_json::json;
+use uuid::Uuid;
+
+use inexor_rgf_model_file::FileProperties::FILENAME;
+use inexor_rgf_model_runtime::ActionProperties::TRIGGER;
+
 use std::path::Path;
-use std::sync::Arc;
 use std::time::Duration;
 
 use crossbeam::channel::unbounded;
-use crossbeam::channel::Sender;
-use log::error;
-use log::trace;
 use notify::Config;
 use notify::Event;
 use notify::RecommendedWatcher;
 use notify::RecursiveMode;
 use notify::Watcher;
-use serde_json::json;
-use serde_json::Value;
-use tokio::runtime::Handle;
-
-use crate::model::*;
-use crate::model_file::FileProperties::FILENAME;
-use crate::model_runtime::ActionProperties::TRIGGER;
-use crate::reactive::*;
 
 entity_behaviour!(FsNotify, FsNotifyFactory, FsNotifyFsm, FsNotifyBehaviourTransitions, FsNotifyValidator);
 
-behaviour_validator!(FsNotifyValidator, ReactiveEntityInstance, TRIGGER.as_ref(), FILENAME.as_ref());
+behaviour_validator!(FsNotifyValidator, Uuid, ReactiveEntity, TRIGGER.as_ref(), FILENAME.as_ref());
 
-impl BehaviourInit<ReactiveEntityInstance> for FsNotifyBehaviourTransitions {}
+impl BehaviourInit<Uuid, ReactiveEntity> for FsNotifyBehaviourTransitions {}
 
-impl BehaviourConnect<ReactiveEntityInstance> for FsNotifyBehaviourTransitions {
+impl BehaviourConnect<Uuid, ReactiveEntity> for FsNotifyBehaviourTransitions {
     fn connect(&self) -> Result<(), BehaviourConnectFailed> {
         if let Some(filename) = self.reactive_instance.get(FILENAME).and_then(|v| v.as_str().map(String::from)) {
             let filename = shellexpand::tilde(&filename);
             let path = Path::new(filename.as_ref()).to_owned();
 
-            // TODO: Dieses Behaviour ist entscheidend für die Asset-Library-Funktionalität
-            // TODO: Zu lösende Probleme:
-            // TODO: - Die Tokio-Runtime muss in die Factory übergeben werden können
-            // TODO: - Thread-Stopper muss während des Disconnects aufgerufen werden, den Disconnect kann man aber noch nicht überschreiben.
-
+            // TODO: disconnect -> stopper
             // let (stopper_tx, stopper_rx) = unbounded();
-            // let (notify_tx, notify_rx) = unbounded();
-            //
-            // let mut watcher: RecommendedWatcher = RecommendedWatcher::new(
-            //     move |result: Result<Event, notify::Error>| {
-            //         let _ = notify_tx.send(result);
-            //     },
-            //     Config::default(),
-            // )
-            // .map_err(|_| BehaviourConnectFailed {})?;
-            // watcher.watch(&path, RecursiveMode::NonRecursive).map_err(|_| BehaviourConnectFailed {})?;
-            //
-            // TODO: woher bekommt man die runtime?
-            //     let reactive_instance = self.reactive_instance.clone();
-            //     runtime.spawn(async move {
-            //         loop {
-            //             if let Ok(Ok(_notify_event)) = notify_rx.try_recv() {
-            //                 trace!("{:?} has changed", &path);
-            //                 reactive_instance.set(TRIGGER, json!(true));
-            //             }
-            //             match stopper_rx.try_recv() {
-            //                 // Stop thread
-            //                 Ok(_) => break,
-            //                 Err(_) => std::thread::sleep(Duration::from_millis(1000)),
-            //             }
-            //         }
-            //         if let Err(err) = watcher.unwatch(&path) {
-            //             error!("Failed to unwatch {:?}: {:?}", &path, err);
-            //         }
-            //     });
+            let (notify_tx, notify_rx) = unbounded();
+
+            let mut watcher: RecommendedWatcher = RecommendedWatcher::new(
+                move |result: Result<Event, notify::Error>| {
+                    let _ = notify_tx.send(result);
+                },
+                Config::default(),
+            )
+            .map_err(|_| BehaviourConnectFailed {})?;
+            watcher.watch(&path, RecursiveMode::NonRecursive).map_err(|_| BehaviourConnectFailed {})?;
+
+            let reactive_instance = self.reactive_instance.clone();
+            async_std::task::spawn(async move {
+                loop {
+                    if let Ok(Ok(_notify_event)) = notify_rx.try_recv() {
+                        trace!("{:?} has changed", &path);
+                        reactive_instance.set(TRIGGER, json!(true));
+                    }
+                    async_std::task::sleep(Duration::from_millis(1000)).await;
+                    // TODO: disconnect -> stopper
+                    // match stopper_rx.try_recv() {
+                    //     // Stop thread
+                    //     Ok(_) => break,
+                    //     Err(_) => std::thread::sleep(Duration::from_millis(1000)),
+                    // }
+                }
+                // TODO: disconnect -> unwatch
+                // if let Err(err) = watcher.unwatch(&path) {
+                //     error!("Failed to unwatch {:?}: {:?}", &path, err);
+                // }
+            });
         }
 
         // let reactive_instance = self.reactive_instance.clone();
@@ -99,14 +97,14 @@ impl BehaviourConnect<ReactiveEntityInstance> for FsNotifyBehaviourTransitions {
 //     }
 // }
 
-impl BehaviourShutdown<ReactiveEntityInstance> for FsNotifyBehaviourTransitions {}
+impl BehaviourShutdown<Uuid, ReactiveEntity> for FsNotifyBehaviourTransitions {}
 
-impl BehaviourTransitions<ReactiveEntityInstance> for FsNotifyBehaviourTransitions {}
+impl BehaviourTransitions<Uuid, ReactiveEntity> for FsNotifyBehaviourTransitions {}
 
 //
 // use crate::behaviour::component::FsNotifyProperties;
-// use crate::model::PropertyInstanceSetter;
-// use crate::model::ReactiveEntityInstance;
+// use inexor_rgf_graph::PropertyInstanceSetter;
+// use inexor_rgf_graph::ReactiveEntityInstance;
 // use crate::reactive::entity::Disconnectable;
 // use crate::reactive::BehaviourCreationError;
 //

@@ -1,15 +1,15 @@
 use crate::behaviour::entity::random_string::RandomStringFactory;
 use crate::builder::ReactiveEntityInstanceBuilder;
-use crate::model_random::RandomString;
-use crate::model_random::RandomStringProperties::LENGTH;
-use crate::model_random::BEHAVIOUR_RANDOM_STRING;
-use crate::model_random::ENTITY_TYPE_RANDOM_STRING;
-use crate::model_result::ResultString;
-use crate::model_result::ResultStringProperties::RESULT;
-use crate::model_runtime::Action;
-use crate::model_runtime::ActionProperties::TRIGGER;
 use crate::reactive::BehaviourFactory;
 use crate::reactive::BehaviourState;
+use inexor_rgf_model_random::RandomString;
+use inexor_rgf_model_random::RandomStringProperties::LENGTH;
+use inexor_rgf_model_random::BEHAVIOUR_RANDOM_STRING;
+use inexor_rgf_model_random::ENTITY_TYPE_RANDOM_STRING;
+use inexor_rgf_model_result::ResultString;
+use inexor_rgf_model_result::ResultStringProperties::RESULT;
+use inexor_rgf_model_runtime::Action;
+use inexor_rgf_model_runtime::ActionProperties::TRIGGER;
 
 #[test]
 fn random_string_test() {

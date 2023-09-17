@@ -1,6 +1,6 @@
 {
-  "namespace": "system",
-  "type_name": "system_env",
+  "namespace": "system_environment",
+  "type_name": "env_var",
   "description": "System Environment Variable",
   "components": [
     {

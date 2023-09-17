@@ -1,55 +1,26 @@
-use std::sync::Arc;
-use std::sync::RwLock;
+use inexor_rgf_plugin_api::prelude::plugin::*;
+use inexor_rgf_plugin_api::prelude::providers::*;
 
-use async_trait::async_trait;
+export_plugin!();
 
-use crate::di::*;
-use crate::plugins::component_provider;
-use crate::plugins::plugin_context::PluginContext;
-use crate::plugins::ComponentProvider;
-use crate::plugins::ComponentProviderError;
-use crate::plugins::Plugin;
-use crate::plugins::PluginContextDeinitializationError;
-use crate::plugins::PluginContextInitializationError;
-use crate::providers::BaseComponentProviderImpl;
-
-#[wrapper]
-pub struct PluginContextContainer(RwLock<Option<Arc<dyn PluginContext>>>);
-
-#[provides]
-fn create_empty_plugin_context_container() -> PluginContextContainer {
-    PluginContextContainer(RwLock::new(None))
-}
-
-#[async_trait]
-pub trait BasePlugin: Plugin + Send + Sync {}
-
-#[module]
+#[derive(Component)]
 pub struct BasePluginImpl {
-    component_provider: Wrc<BaseComponentProviderImpl>,
+    component_provider: Arc<dyn TypeProvider<Components> + Send + Sync>,
 
-    context: PluginContextContainer,
+    #[component(default = "component_provider_registry")]
+    component_provider_registry: Arc<dyn ComponentProviderRegistry + Send + Sync>,
 }
 
-interfaces!(BasePluginImpl: dyn Plugin);
-
 #[async_trait]
-#[provides]
-impl BasePlugin for BasePluginImpl {}
-
+#[component_alias]
 impl Plugin for BasePluginImpl {
-    fn set_context(&self, context: Arc<dyn PluginContext>) -> Result<(), PluginContextInitializationError> {
-        self.context.0.write().unwrap().replace(context);
+    async fn activate(&self) -> Result<(), PluginActivationError> {
+        self.component_provider_registry.register_provider(self.component_provider.clone()).await;
         Ok(())
     }
 
-    fn remove_context(&self) -> Result<(), PluginContextDeinitializationError> {
-        let mut writer = self.context.0.write().unwrap();
-        *writer = None;
+    async fn deactivate(&self) -> Result<(), PluginDeactivationError> {
+        self.component_provider_registry.unregister_provider(self.component_provider.id()).await;
         Ok(())
-    }
-
-    fn get_component_provider(&self) -> Result<Option<Arc<dyn ComponentProvider>>, ComponentProviderError> {
-        component_provider!(self.component_provider)
     }
 }

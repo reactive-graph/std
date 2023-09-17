@@ -1,9 +1,9 @@
 use std::path::PathBuf;
 
-use crate::model::component_model;
-use crate::model::component_ty;
-use crate::model::properties;
 use crate::NAMESPACE_FILE;
+use inexor_rgf_graph::component_model;
+use inexor_rgf_graph::component_ty;
+use inexor_rgf_graph::properties;
 
 properties!(FileProperties, (FILENAME, "filename", ""));
 

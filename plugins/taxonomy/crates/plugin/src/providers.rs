@@ -1,3 +1,13 @@
-crate::plugins::component_provider_impl!(Taxonomy, "types/components");
-crate::plugins::entity_type_provider_impl!(Taxonomy, "types/entities");
-crate::plugins::relation_type_provider_impl!(Taxonomy, "types/relations");
+use inexor_rgf_plugin_api::prelude::providers::*;
+
+#[derive(TypeProvider, Component)]
+#[type_provider(tys = "Components", path = "types/components")]
+pub struct TaxonomyComponentsProvider {}
+
+#[derive(TypeProvider, Component)]
+#[type_provider(tys = "EntityTypes", path = "types/entities")]
+pub struct TaxonomyEntityTypesProvider {}
+
+#[derive(TypeProvider, Component)]
+#[type_provider(tys = "RelationTypes", path = "types/relations")]
+pub struct TaxonomyRelationTypesProvider {}

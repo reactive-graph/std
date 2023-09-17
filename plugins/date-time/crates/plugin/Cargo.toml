@@ -16,38 +16,35 @@ assets = [
 ]
 
 [dependencies]
+async-std = { workspace = true }
 async-trait = { workspace = true }
-async-std = "1.12"
 chrono = { workspace = true }
 dashmap = { workspace = true }
-indradb-lib = { workspace = true }
+humantime = { workspace = true }
 infer = { workspace = true }
 lazy_static = { workspace = true }
 log = { workspace = true, features = ["std", "serde"] }
 log4rs = { workspace = true, features = ["console_appender", "file_appender", "toml_format"]}
-num-traits = { workspace = true }
-paste = { workspace = true }
-query_interface = { workspace = true }
 rust-embed = { workspace = true, features = ["debug-embed", "compression"] }
 serde = { workspace = true, features = [ "derive" ] }
 serde_json = { workspace = true }
-strum = { workspace = true, features = ["derive"] }
-strum_macros = { workspace = true }
-tokio = { workspace = true, features =  ["macros", "time", "rt", "rt-multi-thread"] }
+springtime-di = { workspace = true, default-features = false, features = [ "threadsafe", "derive" ] }
 uuid = { workspace = true, features = ["serde", "v4"] }
 
-inexor-rgf-core-builder = { workspace = true }
-inexor-rgf-core-di = { workspace = true, features = ["async"] }
-inexor-rgf-core-frp = { workspace = true }
-inexor-rgf-core-model = { workspace = true }
-inexor-rgf-core-reactive = { workspace = true }
-inexor-rgf-core-plugins = { workspace = true }
+inexor-rgf-graph = { workspace = true }
+inexor-rgf-behaviour = { workspace = true }
+inexor-rgf-behaviour-api = { workspace = true }
+inexor-rgf-reactive = { workspace = true }
+inexor-rgf-reactive-api = { workspace = true }
+inexor-rgf-plugin-api = { workspace = true, features = [ "json5", "toml" ] }
 inexor-rgf-model-runtime = { workspace = true }
-inexor-rgf-model-date-time = { version = "0.9.1", path = "../../crates/model" }
-inexor-rgf-model-result = { version = "0.9.1", path = "../../../result/crates/model" }
+inexor-rgf-model-date-time = { version = "0.10.0", path = "../../crates/model" }
+inexor-rgf-model-result = { version = "0.10.0", path = "../../../result/crates/model" }
 
 [dev-dependencies]
-inexor-rgf-core-builder = { workspace = true }
+default-test = { workspace = true }
+inexor-rgf-graph = { workspace = true, features = ["test"] }
+inexor-rgf-test-utils = { workspace = true }
 
 [lib]
 # Plugins use crate-type cdylib

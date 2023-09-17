@@ -1,5 +1,3 @@
-use crate::model::entity_model;
-use crate::model::entity_ty;
 use crate::model_value::GetValue;
 use crate::model_value::GetValueArray;
 use crate::model_value::GetValueBoolean;
@@ -13,6 +11,8 @@ use crate::SetStateNumber;
 use crate::SetStateObject;
 use crate::SetStateString;
 use crate::NAMESPACE_STATE;
+use inexor_rgf_graph::entity_ty;
+use inexor_rgf_reactive_api::entity_model;
 
 entity_ty!(ENTITY_TYPE_STATE_BOOLEAN, NAMESPACE_STATE, ENTITY_TYPE_NAME_STATE_BOOLEAN, "state_boolean");
 entity_ty!(ENTITY_TYPE_STATE_NUMBER, NAMESPACE_STATE, ENTITY_TYPE_NAME_STATE_NUMBER, "state_number");

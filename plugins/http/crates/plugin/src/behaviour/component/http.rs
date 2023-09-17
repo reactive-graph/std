@@ -1,24 +1,30 @@
-use log::error;
+use inexor_rgf_behaviour::entity_behaviour;
+use inexor_rgf_behaviour::PropertyObserverContainer;
+use inexor_rgf_behaviour_api::behaviour_validator;
+use inexor_rgf_behaviour_api::prelude::*;
+use inexor_rgf_graph::prelude::*;
+use inexor_rgf_reactive::ReactiveEntity;
 use serde_json::json;
 use serde_json::Value;
-use std::sync::Arc;
+use uuid::Uuid;
 
-use crate::model::*;
-use crate::model_http::RequestProperties::METHOD;
-use crate::model_http::RequestProperties::PAYLOAD;
-use crate::model_http::RequestProperties::REQUEST_HEADERS;
-use crate::model_http::ResponseProperties::RESPONSE_HEADERS;
-use crate::model_http::ResponseProperties::STATUS;
-use crate::model_http::UrlProperties::URL;
-use crate::model_result::ResultObjectProperties::RESULT;
-use crate::model_runtime::ActionProperties::TRIGGER;
-use crate::reactive::*;
+use log::error;
+
+use inexor_rgf_model_http::RequestProperties::METHOD;
+use inexor_rgf_model_http::RequestProperties::PAYLOAD;
+use inexor_rgf_model_http::RequestProperties::REQUEST_HEADERS;
+use inexor_rgf_model_http::ResponseProperties::RESPONSE_HEADERS;
+use inexor_rgf_model_http::ResponseProperties::STATUS;
+use inexor_rgf_model_http::UrlProperties::URL;
+use inexor_rgf_model_result::ResultObjectProperties::RESULT;
+use inexor_rgf_model_runtime::ActionProperties::TRIGGER;
 
 entity_behaviour!(Http, HttpFactory, HttpFsm, HttpBehaviourTransitions, HttpValidator);
 
 behaviour_validator!(
     HttpValidator,
-    ReactiveEntityInstance,
+    Uuid,
+    ReactiveEntity,
     METHOD.as_ref(),
     PAYLOAD.as_ref(),
     REQUEST_HEADERS.as_ref(),
@@ -28,7 +34,7 @@ behaviour_validator!(
     URL.as_ref()
 );
 
-impl BehaviourInit<ReactiveEntityInstance> for HttpBehaviourTransitions {
+impl BehaviourInit<Uuid, ReactiveEntity> for HttpBehaviourTransitions {
     fn init(&self) -> Result<(), BehaviourInitializationFailed> {
         if self.reactive_instance.as_bool(TRIGGER).unwrap_or(false) {
             send_request(&self.reactive_instance);
@@ -37,7 +43,7 @@ impl BehaviourInit<ReactiveEntityInstance> for HttpBehaviourTransitions {
     }
 }
 
-impl BehaviourConnect<ReactiveEntityInstance> for HttpBehaviourTransitions {
+impl BehaviourConnect<Uuid, ReactiveEntity> for HttpBehaviourTransitions {
     fn connect(&self) -> Result<(), BehaviourConnectFailed> {
         let reactive_instance = self.reactive_instance.clone();
         self.property_observers.observe_with_handle(TRIGGER.as_ref(), move |trigger: &Value| {
@@ -50,10 +56,10 @@ impl BehaviourConnect<ReactiveEntityInstance> for HttpBehaviourTransitions {
     }
 }
 
-impl BehaviourShutdown<ReactiveEntityInstance> for HttpBehaviourTransitions {}
-impl BehaviourTransitions<ReactiveEntityInstance> for HttpBehaviourTransitions {}
+impl BehaviourShutdown<Uuid, ReactiveEntity> for HttpBehaviourTransitions {}
+impl BehaviourTransitions<Uuid, ReactiveEntity> for HttpBehaviourTransitions {}
 
-fn send_request(reactive_instance: &Arc<ReactiveEntityInstance>) {
+fn send_request(reactive_instance: &ReactiveEntity) {
     let Some(method) = reactive_instance.as_string(METHOD) else {
         return;
     };

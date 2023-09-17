@@ -1,17 +1,14 @@
-use crate::model::PropertyInstanceGetter;
-use crate::model::ReactiveRelationInstance;
-use crate::model_connector::ConnectorProperties::INBOUND_PROPERTY_NAME;
-use crate::model_connector::ConnectorProperties::OUTBOUND_PROPERTY_NAME;
-use crate::reactive::behaviour_validator;
-use crate::reactive::BehaviourPropertyInvalid;
-use crate::reactive::BehaviourPropertyValidator;
-use crate::reactive::BehaviourReactiveInstanceContainer;
-use crate::reactive::BehaviourValidator;
-use crate::reactive::RelationPropertyValidator;
+use inexor_rgf_behaviour::RelationPropertyValidator;
+use inexor_rgf_behaviour_api::behaviour_validator;
+use inexor_rgf_behaviour_api::prelude::*;
+use inexor_rgf_graph::prelude::*;
+use inexor_rgf_model_connector::ConnectorProperties::INBOUND_PROPERTY_NAME;
+use inexor_rgf_model_connector::ConnectorProperties::OUTBOUND_PROPERTY_NAME;
+use inexor_rgf_reactive::ReactiveRelation;
 
-behaviour_validator!(ComplexConnectorValidator, ReactiveRelationInstance);
+behaviour_validator!(ComplexConnectorValidator, RelationInstanceId, ReactiveRelation);
 
-impl BehaviourPropertyValidator<ReactiveRelationInstance> for ComplexConnectorValidator {
+impl BehaviourPropertyValidator<RelationInstanceId, ReactiveRelation> for ComplexConnectorValidator {
     fn validate_properties(&self) -> Result<(), BehaviourPropertyInvalid> {
         self.validate_property(OUTBOUND_PROPERTY_NAME.as_ref())?;
         self.validate_property(INBOUND_PROPERTY_NAME.as_ref())?;

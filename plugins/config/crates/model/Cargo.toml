@@ -9,18 +9,19 @@ repository.workspace = true
 readme = "../../../../README.md"
 
 [dependencies]
-indradb-lib = { workspace = true }
 lazy_static = { workspace = true }
 serde = { workspace = true, features = [ "derive" ] }
 serde_json = { workspace = true }
 strum = { workspace = true, features = ["derive"] }
 strum_macros = { workspace = true }
 
-inexor-rgf-core-model = { workspace = true }
-inexor-rgf-core-reactive = { workspace = true }
+inexor-rgf-graph = { workspace = true }
+inexor-rgf-reactive = { workspace = true }
+inexor-rgf-reactive-api = { workspace = true }
 inexor-rgf-model-runtime = { workspace = true }
-inexor-rgf-model-file = { version = "0.9.1", path = "../../../file/crates/model" }
-inexor-rgf-model-result = { version = "0.9.1", path = "../../../result/crates/model" }
+inexor-rgf-model-file = { version = "0.10.0", path = "../../../file/crates/model" }
+inexor-rgf-model-result = { version = "0.10.0", path = "../../../result/crates/model" }
+inexor-rgf-behaviour-api = { workspace = true }
 
 [lib]
 crate-type = ["lib"]

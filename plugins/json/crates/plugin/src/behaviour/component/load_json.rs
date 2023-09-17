@@ -1,19 +1,24 @@
 use std::fs::File;
 use std::path::Path;
 
+use inexor_rgf_behaviour::entity_behaviour;
+use inexor_rgf_behaviour::PropertyObserverContainer;
+use inexor_rgf_behaviour_api::behaviour_validator;
+use inexor_rgf_behaviour_api::prelude::*;
+use inexor_rgf_graph::prelude::*;
+use inexor_rgf_model_runtime::ActionProperties::TRIGGER;
+use inexor_rgf_reactive::ReactiveEntity;
 use serde_json::Value;
+use uuid::Uuid;
 
-use crate::model::*;
-use crate::model_file::FileProperties::FILENAME;
-use crate::model_result::ResultAnyProperties::RESULT;
-use crate::model_runtime::ActionProperties::TRIGGER;
-use crate::reactive::*;
+use inexor_rgf_model_file::FileProperties::FILENAME;
+use inexor_rgf_model_result::ResultAnyProperties::RESULT;
 
 entity_behaviour!(LoadJson, LoadJsonFactory, LoadJsonFsm, LoadJsonBehaviourTransitions, LoadJsonValidator);
 
-behaviour_validator!(LoadJsonValidator, ReactiveEntityInstance, TRIGGER.as_ref(), RESULT.as_ref());
+behaviour_validator!(LoadJsonValidator, Uuid, ReactiveEntity, TRIGGER.as_ref(), RESULT.as_ref());
 
-impl BehaviourInit<ReactiveEntityInstance> for LoadJsonBehaviourTransitions {
+impl BehaviourInit<Uuid, ReactiveEntity> for LoadJsonBehaviourTransitions {
     fn init(&self) -> Result<(), BehaviourInitializationFailed> {
         if self.reactive_instance.as_bool(TRIGGER).unwrap_or(false) {
             if let Some(filename) = self.reactive_instance.as_string(FILENAME) {
@@ -26,7 +31,7 @@ impl BehaviourInit<ReactiveEntityInstance> for LoadJsonBehaviourTransitions {
     }
 }
 
-impl BehaviourConnect<ReactiveEntityInstance> for LoadJsonBehaviourTransitions {
+impl BehaviourConnect<Uuid, ReactiveEntity> for LoadJsonBehaviourTransitions {
     fn connect(&self) -> Result<(), BehaviourConnectFailed> {
         let reactive_instance = self.reactive_instance.clone();
         self.property_observers.observe_with_handle(TRIGGER.as_ref(), move |trigger: &Value| {
@@ -43,8 +48,8 @@ impl BehaviourConnect<ReactiveEntityInstance> for LoadJsonBehaviourTransitions {
     }
 }
 
-impl BehaviourShutdown<ReactiveEntityInstance> for LoadJsonBehaviourTransitions {}
-impl BehaviourTransitions<ReactiveEntityInstance> for LoadJsonBehaviourTransitions {}
+impl BehaviourShutdown<Uuid, ReactiveEntity> for LoadJsonBehaviourTransitions {}
+impl BehaviourTransitions<Uuid, ReactiveEntity> for LoadJsonBehaviourTransitions {}
 
 fn load_json(filename: String) -> Option<Value> {
     match File::open(Path::new(shellexpand::tilde(&filename).as_ref())) {

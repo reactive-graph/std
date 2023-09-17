@@ -1,13 +1,13 @@
+use inexor_rgf_model_json::ArrayReverse;
+use inexor_rgf_model_json::ArrayReverseProperties::ARRAY;
+use inexor_rgf_model_json::BEHAVIOUR_ARRAY_REVERSE;
+use inexor_rgf_model_json::ENTITY_TYPE_ARRAY_REVERSE;
+use inexor_rgf_model_result::ResultArray;
+use inexor_rgf_model_result::ResultArrayProperties::RESULT;
 use serde_json::json;
 
 use crate::behaviour::entity::array_reverse::ArrayReverseFactory;
 use crate::builder::ReactiveEntityInstanceBuilder;
-use crate::model_json::ArrayReverse;
-use crate::model_json::ArrayReverseProperties::ARRAY;
-use crate::model_json::BEHAVIOUR_ARRAY_REVERSE;
-use crate::model_json::ENTITY_TYPE_ARRAY_REVERSE;
-use crate::model_result::ResultArray;
-use crate::model_result::ResultArrayProperties::RESULT;
 use crate::reactive::BehaviourFactory;
 use crate::reactive::BehaviourState;
 

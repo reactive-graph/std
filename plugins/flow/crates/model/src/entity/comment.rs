@@ -1,7 +1,9 @@
-use crate::model::entity_model;
-use crate::model::entity_ty;
-use crate::model_base::Describable;
-use crate::model_base::Named;
+use inexor_rgf_graph::entity_ty;
+use inexor_rgf_reactive_api::entity_model;
+
+use inexor_rgf_model_base::Describable;
+use inexor_rgf_model_base::Named;
+
 use crate::NAMESPACE_FLOW;
 
 entity_ty!(ENTITY_TYPE_COMMENT, NAMESPACE_FLOW, ENTITY_TYPE_NAME_COMMENT, "comment");

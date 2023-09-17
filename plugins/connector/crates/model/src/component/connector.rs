@@ -1,6 +1,7 @@
-use crate::model::component_ty;
-use crate::model::properties;
-use crate::model::relation_model;
+use inexor_rgf_graph::component_ty;
+use inexor_rgf_graph::properties;
+use inexor_rgf_reactive_api::relation_model;
+
 use crate::NAMESPACE_CONNECTOR;
 
 properties!(

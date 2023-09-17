@@ -19,9 +19,8 @@ assets = [
 
 [dependencies]
 async-trait = { workspace = true }
+dashmap = { workspace = true }
 http = { workspace = true }
-indradb-lib = { workspace = true }
-lazy_static = { workspace = true }
 log = { workspace = true, features = ["std", "serde"] }
 log4rs = { workspace = true, features = ["console_appender", "file_appender", "toml_format"] }
 mime_guess = { workspace = true }
@@ -29,13 +28,13 @@ query_interface = { workspace = true }
 rust-embed = { workspace = true, features = ["debug-embed", "compression"] }
 serde = { workspace = true, features = [ "derive" ] }
 serde_json = { workspace = true }
+springtime-di = { workspace = true, default-features = false, features = [ "threadsafe", "derive" ] }
 uuid = { workspace = true }
 
-inexor-rgf-core-config = { workspace = true }
-inexor-rgf-core-di = { workspace = true, features = ["async"] }
-inexor-rgf-core-frp = { workspace = true }
-inexor-rgf-core-model = { workspace = true }
-inexor-rgf-core-plugins = { workspace = true }
+inexor-rgf-config = { workspace = true }
+
+inexor-rgf-graph = { workspace = true }
+inexor-rgf-plugin-api = { workspace = true }
 
 [build-dependencies]
 static-files = "0.2.3"

@@ -1,22 +1,17 @@
+use inexor_rgf_behaviour::entity_behaviour;
+use inexor_rgf_behaviour::PropertyObserverContainer;
+use inexor_rgf_behaviour_api::behaviour_validator;
+use inexor_rgf_behaviour_api::prelude::*;
+use inexor_rgf_graph::prelude::*;
+use inexor_rgf_reactive::ReactiveEntity;
 use serde_json::json;
+use uuid::Uuid;
+
+use inexor_rgf_model_comparison::ComparisonGateProperties::LHS;
+use inexor_rgf_model_comparison::ComparisonGateProperties::RHS;
+use inexor_rgf_model_result::ResultBooleanProperties::RESULT;
 
 use crate::behaviour::entity::gate::function::ComparisonGateFunction;
-use crate::model::PropertyInstanceSetter;
-use crate::model::ReactiveEntityInstance;
-use crate::model_comparison::ComparisonGateProperties::LHS;
-use crate::model_comparison::ComparisonGateProperties::RHS;
-use crate::model_result::ResultBooleanProperties::RESULT;
-use crate::reactive::behaviour_validator;
-use crate::reactive::entity_behaviour;
-use crate::reactive::BehaviourConnect;
-use crate::reactive::BehaviourConnectFailed;
-use crate::reactive::BehaviourDisconnect;
-use crate::reactive::BehaviourFsm;
-use crate::reactive::BehaviourInit;
-use crate::reactive::BehaviourInitializationFailed;
-use crate::reactive::BehaviourShutdown;
-use crate::reactive::BehaviourTransitions;
-use crate::reactive::PropertyObserverContainer;
 
 entity_behaviour!(
     ComparisonGate,
@@ -28,9 +23,9 @@ entity_behaviour!(
     ComparisonGateFunction
 );
 
-behaviour_validator!(ComparisonGateValidator, ReactiveEntityInstance, LHS.as_ref(), RHS.as_ref(), RESULT.as_ref());
+behaviour_validator!(ComparisonGateValidator, Uuid, ReactiveEntity, LHS.as_ref(), RHS.as_ref(), RESULT.as_ref());
 
-impl BehaviourInit<ReactiveEntityInstance> for ComparisonGateBehaviourTransitions {
+impl BehaviourInit<Uuid, ReactiveEntity> for ComparisonGateBehaviourTransitions {
     fn init(&self) -> Result<(), BehaviourInitializationFailed> {
         let lhs = self.reactive_instance.get(LHS).ok_or(BehaviourInitializationFailed {})?;
         let rhs = self.reactive_instance.get(RHS).ok_or(BehaviourInitializationFailed {})?;
@@ -41,7 +36,7 @@ impl BehaviourInit<ReactiveEntityInstance> for ComparisonGateBehaviourTransition
     }
 }
 
-impl BehaviourConnect<ReactiveEntityInstance> for ComparisonGateBehaviourTransitions {
+impl BehaviourConnect<Uuid, ReactiveEntity> for ComparisonGateBehaviourTransitions {
     fn connect(&self) -> Result<(), BehaviourConnectFailed> {
         let reactive_instance = self.reactive_instance.clone();
         let f = self.f;
@@ -60,5 +55,5 @@ impl BehaviourConnect<ReactiveEntityInstance> for ComparisonGateBehaviourTransit
         Ok(())
     }
 }
-impl BehaviourShutdown<ReactiveEntityInstance> for ComparisonGateBehaviourTransitions {}
-impl BehaviourTransitions<ReactiveEntityInstance> for ComparisonGateBehaviourTransitions {}
+impl BehaviourShutdown<Uuid, ReactiveEntity> for ComparisonGateBehaviourTransitions {}
+impl BehaviourTransitions<Uuid, ReactiveEntity> for ComparisonGateBehaviourTransitions {}

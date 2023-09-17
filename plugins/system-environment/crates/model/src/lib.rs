@@ -1,4 +1,3 @@
-use inexor_rgf_core_model as model;
 use uuid::Uuid;
 
 pub use entity::*;

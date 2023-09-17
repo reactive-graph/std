@@ -1,5 +1,5 @@
 use crate::behaviour::relation::connector::CONNECTOR_BEHAVIOURS;
-use crate::model::NamespacedTypeGetter;
+use inexor_rgf_graph::NamespacedTypeGetter;
 
 #[test]
 fn propagation_function_test() {

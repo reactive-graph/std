@@ -1,14 +1,14 @@
 use crate::behaviour::entity::random_bool::RandomBoolFactory;
 use crate::builder::ReactiveEntityInstanceBuilder;
-use crate::model_random::RandomBool;
-use crate::model_random::BEHAVIOUR_RANDOM_BOOL;
-use crate::model_random::ENTITY_TYPE_RANDOM_BOOL;
-use crate::model_result::ResultBooleanProperties::RESULT;
-use crate::model_runtime::Action;
-use crate::model_runtime::ActionProperties::TRIGGER;
 use crate::reactive::BehaviourFactory;
 use crate::reactive::BehaviourState;
+use inexor_rgf_model_random::RandomBool;
+use inexor_rgf_model_random::BEHAVIOUR_RANDOM_BOOL;
+use inexor_rgf_model_random::ENTITY_TYPE_RANDOM_BOOL;
 use inexor_rgf_model_result::ResultBoolean;
+use inexor_rgf_model_result::ResultBooleanProperties::RESULT;
+use inexor_rgf_model_runtime::Action;
+use inexor_rgf_model_runtime::ActionProperties::TRIGGER;
 
 #[test]
 fn random_bool_test() {

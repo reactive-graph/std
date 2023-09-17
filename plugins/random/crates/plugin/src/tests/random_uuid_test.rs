@@ -1,14 +1,14 @@
 use crate::behaviour::entity::random_uuid::RandomUuidFactory;
 use crate::builder::ReactiveEntityInstanceBuilder;
-use crate::model_random::RandomUuid;
-use crate::model_random::BEHAVIOUR_RANDOM_UUID;
-use crate::model_random::ENTITY_TYPE_RANDOM_UUID;
-use crate::model_result::ResultString;
-use crate::model_result::ResultStringProperties::RESULT;
-use crate::model_runtime::Action;
-use crate::model_runtime::ActionProperties::TRIGGER;
 use crate::reactive::BehaviourFactory;
 use crate::reactive::BehaviourState;
+use inexor_rgf_model_random::RandomUuid;
+use inexor_rgf_model_random::BEHAVIOUR_RANDOM_UUID;
+use inexor_rgf_model_random::ENTITY_TYPE_RANDOM_UUID;
+use inexor_rgf_model_result::ResultString;
+use inexor_rgf_model_result::ResultStringProperties::RESULT;
+use inexor_rgf_model_runtime::Action;
+use inexor_rgf_model_runtime::ActionProperties::TRIGGER;
 
 #[test]
 fn random_uuid_test() {

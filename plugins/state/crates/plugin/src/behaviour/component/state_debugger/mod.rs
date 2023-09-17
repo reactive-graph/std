@@ -1,20 +1,16 @@
+use inexor_rgf_behaviour::entity_behaviour;
+use inexor_rgf_behaviour::PropertyObserverContainer;
+use inexor_rgf_behaviour_api::behaviour_validator;
+use inexor_rgf_behaviour_api::prelude::*;
+use inexor_rgf_reactive::ReactiveEntity;
 use log::debug;
 use serde_json::Value;
+use uuid::Uuid;
 
 pub use functions::*;
-
-use crate::model::*;
-use crate::model_state::*;
-use crate::reactive::behaviour_validator;
-use crate::reactive::entity_behaviour;
-use crate::reactive::BehaviourConnect;
-use crate::reactive::BehaviourConnectFailed;
-use crate::reactive::BehaviourDisconnect;
-use crate::reactive::BehaviourFsm;
-use crate::reactive::BehaviourInit;
-use crate::reactive::BehaviourShutdown;
-use crate::reactive::BehaviourTransitions;
-use crate::reactive::PropertyObserverContainer;
+use inexor_rgf_graph::PropertyInstanceGetter;
+use inexor_rgf_graph::PropertyInstanceSetter;
+use inexor_rgf_model_state::StateProperties;
 
 pub mod functions;
 
@@ -28,11 +24,11 @@ entity_behaviour!(
     StateDebuggerFunction
 );
 
-behaviour_validator!(StateDebuggerValidator, ReactiveEntityInstance, StateProperties::STATE.as_ref());
+behaviour_validator!(StateDebuggerValidator, Uuid, ReactiveEntity, StateProperties::STATE.as_ref());
 
-impl BehaviourInit<ReactiveEntityInstance> for StateDebuggerBehaviourTransitions {}
+impl BehaviourInit<Uuid, ReactiveEntity> for StateDebuggerBehaviourTransitions {}
 
-impl BehaviourConnect<ReactiveEntityInstance> for StateDebuggerBehaviourTransitions {
+impl BehaviourConnect<Uuid, ReactiveEntity> for StateDebuggerBehaviourTransitions {
     fn connect(&self) -> Result<(), BehaviourConnectFailed> {
         let reactive_instance = self.property_observers.reactive_instance.clone();
         let f = self.f;
@@ -43,5 +39,5 @@ impl BehaviourConnect<ReactiveEntityInstance> for StateDebuggerBehaviourTransiti
     }
 }
 
-impl BehaviourShutdown<ReactiveEntityInstance> for StateDebuggerBehaviourTransitions {}
-impl BehaviourTransitions<ReactiveEntityInstance> for StateDebuggerBehaviourTransitions {}
+impl BehaviourShutdown<Uuid, ReactiveEntity> for StateDebuggerBehaviourTransitions {}
+impl BehaviourTransitions<Uuid, ReactiveEntity> for StateDebuggerBehaviourTransitions {}

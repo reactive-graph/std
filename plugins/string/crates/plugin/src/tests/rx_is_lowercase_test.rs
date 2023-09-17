@@ -1,16 +1,16 @@
 use crate::behaviour::entity::string_bool_operation::StringBoolOperationFactory;
 use crate::behaviour::entity::string_bool_operation::STRING_BOOL_OPERATIONS;
 use crate::builder::ReactiveEntityInstanceBuilder;
-use crate::model::BehaviourTypeId;
-use crate::model::EntityTypeId;
-use crate::model_result::ResultBoolean;
-use crate::model_result::ResultBooleanProperties::RESULT;
 use crate::model_string::StringBoolOperation;
 use crate::model_string::StringBoolOperationProperties::LHS;
 use crate::model_string::COMPONENT_STRING_BOOL_OPERATION;
-use crate::model_string::NAMESPACE_STRING;
 use crate::reactive::BehaviourFactory;
 use crate::reactive::BehaviourState;
+use inexor_rgf_graph::BehaviourTypeId;
+use inexor_rgf_graph::EntityTypeId;
+use inexor_rgf_model_result::ResultBoolean;
+use inexor_rgf_model_result::ResultBooleanProperties::RESULT;
+use inexor_rgf_model_string::NAMESPACE_STRING;
 
 #[test]
 fn rx_is_lowercase_test() {

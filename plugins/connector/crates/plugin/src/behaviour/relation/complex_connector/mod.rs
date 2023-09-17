@@ -1,23 +1,16 @@
+use inexor_rgf_behaviour::relation_behaviour;
+use inexor_rgf_behaviour::PropertyObserverContainer;
+use inexor_rgf_behaviour_api::prelude::*;
+use inexor_rgf_graph::prelude::*;
+use inexor_rgf_reactive::ReactiveRelation;
 use serde_json::Value;
 
 pub use function::ComplexConnectorFunction;
 pub use function::COMPLEX_CONNECTOR_BEHAVIOURS;
+use inexor_rgf_model_connector::ConnectorProperties::INBOUND_PROPERTY_NAME;
+use inexor_rgf_model_connector::ConnectorProperties::OUTBOUND_PROPERTY_NAME;
 
 use crate::behaviour::relation::complex_connector::validator::ComplexConnectorValidator;
-use crate::model::PropertyInstanceGetter;
-use crate::model::PropertyInstanceSetter;
-use crate::model::ReactiveRelationInstance;
-use crate::model_connector::ConnectorProperties::INBOUND_PROPERTY_NAME;
-use crate::model_connector::ConnectorProperties::OUTBOUND_PROPERTY_NAME;
-use crate::reactive::relation_behaviour;
-use crate::reactive::BehaviourConnect;
-use crate::reactive::BehaviourConnectFailed;
-use crate::reactive::BehaviourDisconnect;
-use crate::reactive::BehaviourFsm;
-use crate::reactive::BehaviourInit;
-use crate::reactive::BehaviourShutdown;
-use crate::reactive::BehaviourTransitions;
-use crate::reactive::PropertyObserverContainer;
 
 pub mod function;
 pub mod validator;
@@ -42,11 +35,11 @@ impl ComplexConnectorBehaviourTransitions {
     }
 }
 
-impl BehaviourInit<ReactiveRelationInstance> for ComplexConnectorBehaviourTransitions {}
+impl BehaviourInit<RelationInstanceId, ReactiveRelation> for ComplexConnectorBehaviourTransitions {}
 
-impl BehaviourShutdown<ReactiveRelationInstance> for ComplexConnectorBehaviourTransitions {}
+impl BehaviourShutdown<RelationInstanceId, ReactiveRelation> for ComplexConnectorBehaviourTransitions {}
 
-impl BehaviourConnect<ReactiveRelationInstance> for ComplexConnectorBehaviourTransitions {
+impl BehaviourConnect<RelationInstanceId, ReactiveRelation> for ComplexConnectorBehaviourTransitions {
     fn connect(&self) -> Result<(), BehaviourConnectFailed> {
         let outbound_property_name = self.get_outbound_property_name().ok_or(BehaviourConnectFailed {})?;
         let inbound_property_name = self.get_inbound_property_name().ok_or(BehaviourConnectFailed {})?;
@@ -61,4 +54,4 @@ impl BehaviourConnect<ReactiveRelationInstance> for ComplexConnectorBehaviourTra
     }
 }
 
-impl BehaviourTransitions<ReactiveRelationInstance> for ComplexConnectorBehaviourTransitions {}
+impl BehaviourTransitions<RelationInstanceId, ReactiveRelation> for ComplexConnectorBehaviourTransitions {}

@@ -1,34 +1,50 @@
+use std::sync::Arc;
+use std::sync::LazyLock;
+
+use inexor_rgf_behaviour::entity::EntityBehaviourFactories;
+use inexor_rgf_behaviour::entity_behaviour;
+use inexor_rgf_behaviour::PropertyObserverContainer;
+use inexor_rgf_behaviour_api::behaviour_validator;
+use inexor_rgf_behaviour_api::prelude::*;
+use inexor_rgf_graph::prelude::*;
+use inexor_rgf_reactive::ReactiveEntity;
+use inexor_rgf_reactive_api::prelude::*;
 use serde_json::Value;
+use uuid::Uuid;
 
-use crate::model::PropertyInstanceGetter;
-use crate::model::PropertyInstanceSetter;
-use crate::model::ReactiveBehaviourContainer;
-use crate::model::ReactiveEntityInstance;
-use crate::model_state::*;
+use inexor_rgf_model_state::NAMESPACE_STATE;
+
+use crate::model_state::StateProperties;
 use crate::model_value::*;
-use crate::reactive::*;
 
-behaviour_types!(
-    STATE_BEHAVIOURS,
-    NAMESPACE_STATE,
-    "state_array",
-    "state_boolean",
-    "state_number",
-    "state_object",
-    "state_string"
-);
+pub static STATE_BEHAVIOURS: LazyLock<BehaviourTypeIds> = LazyLock::new(|| {
+    BehaviourTypeIds::with_namespace(NAMESPACE_STATE)
+        .ty("state_array")
+        .ty("state_boolean")
+        .ty("state_number")
+        .ty("state_object")
+        .ty("state_string")
+        .into()
+});
+
+pub static STATE_FACTORIES: LazyLock<EntityBehaviourFactories> = LazyLock::new(|| {
+    STATE_BEHAVIOURS.iter().fold(EntityBehaviourFactories::new(), |factories, behaviour_ty| {
+        factories.factory(Arc::new(StateFactory::new(behaviour_ty.clone())))
+    })
+});
 
 entity_behaviour!(State, StateFactory, StateFsm, StateBehaviourTransitions, StateValidator);
 
 behaviour_validator!(
     StateValidator,
-    ReactiveEntityInstance,
+    Uuid,
+    ReactiveEntity,
     StateProperties::STATE.as_ref(),
     StateProperties::SET_STATE.as_ref(),
     ValueProperties::VALUE.as_ref()
 );
 
-impl BehaviourInit<ReactiveEntityInstance> for StateBehaviourTransitions {
+impl BehaviourInit<Uuid, ReactiveEntity> for StateBehaviourTransitions {
     fn init(&self) -> Result<(), BehaviourInitializationFailed> {
         // If value and state are not equal propagate the state, initially
         let state = self.get(StateProperties::STATE.as_ref()).ok_or(BehaviourInitializationFailed {})?;
@@ -40,9 +56,9 @@ impl BehaviourInit<ReactiveEntityInstance> for StateBehaviourTransitions {
     }
 }
 
-impl BehaviourShutdown<ReactiveEntityInstance> for StateBehaviourTransitions {}
+impl BehaviourShutdown<Uuid, ReactiveEntity> for StateBehaviourTransitions {}
 
-impl BehaviourConnect<ReactiveEntityInstance> for StateBehaviourTransitions {
+impl BehaviourConnect<Uuid, ReactiveEntity> for StateBehaviourTransitions {
     fn connect(&self) -> Result<(), BehaviourConnectFailed> {
         let reactive_instance = self.property_observers.reactive_instance.clone();
         self.property_observers
@@ -63,4 +79,4 @@ impl BehaviourConnect<ReactiveEntityInstance> for StateBehaviourTransitions {
     }
 }
 
-impl BehaviourTransitions<ReactiveEntityInstance> for StateBehaviourTransitions {}
+impl BehaviourTransitions<Uuid, ReactiveEntity> for StateBehaviourTransitions {}

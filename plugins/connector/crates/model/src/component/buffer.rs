@@ -1,6 +1,6 @@
-use crate::model::component_ty;
-use crate::model::properties;
 use crate::NAMESPACE_CONNECTOR;
+use inexor_rgf_graph::component_ty;
+use inexor_rgf_graph::properties;
 
 properties!(BufferProperties, (BUFFER_SIZE, "buffer_size", 10), (BUFFER, "buffer", Vec::<serde_json::Value>::new()));
 

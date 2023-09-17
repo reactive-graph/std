@@ -1,17 +1,17 @@
 use crate::behaviour::entity::string_comparison::StringComparisonFactory;
 use crate::behaviour::entity::string_comparison::STRING_COMPARISONS;
 use crate::builder::ReactiveEntityInstanceBuilder;
-use crate::model::BehaviourTypeId;
-use crate::model::EntityTypeId;
-use crate::model_result::ResultBoolean;
-use crate::model_result::ResultBooleanProperties::RESULT;
 use crate::model_string::StringComparison;
 use crate::model_string::StringComparisonProperties::LHS;
 use crate::model_string::StringComparisonProperties::RHS;
 use crate::model_string::COMPONENT_STRING_COMPARISON;
-use crate::model_string::NAMESPACE_STRING;
 use crate::reactive::BehaviourFactory;
 use crate::reactive::BehaviourState;
+use inexor_rgf_graph::BehaviourTypeId;
+use inexor_rgf_graph::EntityTypeId;
+use inexor_rgf_model_result::ResultBoolean;
+use inexor_rgf_model_result::ResultBooleanProperties::RESULT;
+use inexor_rgf_model_string::NAMESPACE_STRING;
 
 #[test]
 fn rx_contains_test() {

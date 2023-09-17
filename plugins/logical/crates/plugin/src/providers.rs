@@ -1,3 +1,13 @@
-crate::plugins::component_provider_impl!(Logical, "types/components");
-crate::plugins::entity_type_provider_impl!(Logical, "types/entities");
-crate::plugins::flow_type_provider_impl!(Logical, "types/flows");
+use inexor_rgf_plugin_api::prelude::providers::*;
+
+#[derive(TypeProvider, Component)]
+#[type_provider(tys = "Components", path = "types/components")]
+pub struct LogicalComponentsProvider {}
+
+#[derive(TypeProvider, Component)]
+#[type_provider(tys = "EntityTypes", path = "types/entities")]
+pub struct LogicalEntityTypesProvider {}
+
+#[derive(TypeProvider, Component)]
+#[type_provider(tys = "FlowTypes", path = "types/flows")]
+pub struct LogicalFlowTypesProvider {}

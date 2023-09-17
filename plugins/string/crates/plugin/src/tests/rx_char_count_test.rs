@@ -1,16 +1,16 @@
 use crate::behaviour::entity::string_number_operation::StringNumberOperationFactory;
 use crate::behaviour::entity::string_number_operation::STRING_NUMBER_OPERATIONS;
 use crate::builder::ReactiveEntityInstanceBuilder;
-use crate::model::BehaviourTypeId;
-use crate::model::EntityTypeId;
-use crate::model_result::ResultNumberU64;
-use crate::model_result::ResultNumberU64Properties::RESULT;
 use crate::model_string::StringNumberOperation;
 use crate::model_string::StringNumberOperationProperties::LHS;
 use crate::model_string::COMPONENT_STRING_NUMBER_OPERATION;
-use crate::model_string::NAMESPACE_STRING;
 use crate::reactive::BehaviourFactory;
 use crate::reactive::BehaviourState;
+use inexor_rgf_graph::BehaviourTypeId;
+use inexor_rgf_graph::EntityTypeId;
+use inexor_rgf_model_result::ResultNumberU64;
+use inexor_rgf_model_result::ResultNumberU64Properties::RESULT;
+use inexor_rgf_model_string::NAMESPACE_STRING;
 
 #[test]
 fn rx_char_count_test() {

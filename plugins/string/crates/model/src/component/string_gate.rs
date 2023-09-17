@@ -1,8 +1,8 @@
-use crate::model::component_ty;
-use crate::model::entity_model;
-use crate::model::properties;
-use crate::model_result::ResultString;
 use crate::NAMESPACE_STRING;
+use inexor_rgf_graph::component_ty;
+use inexor_rgf_graph::properties;
+use inexor_rgf_model_result::ResultString;
+use inexor_rgf_reactive_api::entity_model;
 
 properties!(StringGateProperties, (LHS, "lhs", ""), (RHS, "rhs", ""));
 

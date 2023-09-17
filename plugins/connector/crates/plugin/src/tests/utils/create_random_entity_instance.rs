@@ -3,8 +3,8 @@ use std::sync::Arc;
 
 use serde_json::json;
 
-use crate::model::ReactiveEntityInstance;
 use crate::tests::utils::r_string;
+use inexor_rgf_graph::ReactiveEntityInstance;
 
 pub fn create_random_entity_instance<S: Into<String>>(property_name: S) -> Arc<ReactiveEntityInstance> {
     ReactiveEntityInstanceBuilder::new_from_type(r_string(), r_string())

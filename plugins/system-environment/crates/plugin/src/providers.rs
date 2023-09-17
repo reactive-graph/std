@@ -1,1 +1,5 @@
-crate::plugins::entity_type_provider_impl!(SystemEnvironment, "types/entities");
+use inexor_rgf_plugin_api::prelude::providers::*;
+
+#[derive(TypeProvider, Component)]
+#[type_provider(tys = "EntityTypes", path = "types/entities")]
+pub struct SystemEnvironmentEntityTypesProvider {}

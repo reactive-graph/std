@@ -1,11 +1,12 @@
-use crate::model::entity_model;
-use crate::model::entity_ty;
-use crate::DataValue;
-use crate::DataValueArray;
-use crate::DataValueBoolean;
-use crate::DataValueNumber;
-use crate::DataValueObject;
-use crate::DataValueString;
+use inexor_rgf_graph::entity_ty;
+use inexor_rgf_reactive_api::entity_model;
+
+use crate::component::value::DataValue;
+use crate::component::value::DataValueArray;
+use crate::component::value::DataValueBoolean;
+use crate::component::value::DataValueNumber;
+use crate::component::value::DataValueObject;
+use crate::component::value::DataValueString;
 use crate::NAMESPACE_VALUE;
 
 entity_ty!(ENTITY_TYPE_VALUE_BOOLEAN, NAMESPACE_VALUE, ENTITY_TYPE_NAME_VALUE_BOOLEAN, "value_boolean");

@@ -1,12 +1,12 @@
 use serde_json::json;
 
-use crate::model::behaviour_ty;
-use crate::model::entity_behaviour_ty;
-use crate::model::entity_model;
-use crate::model::entity_ty;
-use crate::model::properties;
-use crate::model_result::ResultString;
+use crate::behaviour_api::behaviour_ty;
+use crate::behaviour_api::entity_behaviour_ty;
 use crate::NAMESPACE_STRING;
+use inexor_rgf_graph::entity_ty;
+use inexor_rgf_graph::properties;
+use inexor_rgf_model_result::ResultString;
+use inexor_rgf_reactive_api::entity_model;
 
 properties!(TemplatingProperties, (TEMPLATE, "template", ""), (CONTEXT, "context", json!({})));
 

@@ -5,16 +5,16 @@ use serde_json::to_string_pretty;
 
 use crate::behaviour::component::load_json::LoadJsonFactory;
 use crate::builder::ReactiveEntityInstanceBuilder;
-use crate::model_file::FileProperties::FILENAME;
-use crate::model_json::LoadJson;
-use crate::model_json::BEHAVIOUR_LOAD_JSON;
-use crate::model_json::ENTITY_TYPE_LOAD_JSON;
-use crate::model_result::ResultAny;
-use crate::model_result::ResultObjectProperties::RESULT;
-use crate::model_runtime::Action;
-use crate::model_runtime::ActionProperties::TRIGGER;
 use crate::reactive::BehaviourFactory;
 use crate::reactive::BehaviourState;
+use inexor_rgf_model_file::FileProperties::FILENAME;
+use inexor_rgf_model_json::LoadJson;
+use inexor_rgf_model_json::BEHAVIOUR_LOAD_JSON;
+use inexor_rgf_model_json::ENTITY_TYPE_LOAD_JSON;
+use inexor_rgf_model_result::ResultAny;
+use inexor_rgf_model_result::ResultObjectProperties::RESULT;
+use inexor_rgf_model_runtime::Action;
+use inexor_rgf_model_runtime::ActionProperties::TRIGGER;
 
 #[test]
 fn rx_load_json_test() {

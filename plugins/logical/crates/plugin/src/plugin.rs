@@ -1,137 +1,85 @@
-use std::sync::Arc;
-use std::sync::RwLock;
+use inexor_rgf_plugin_api::prelude::plugin::*;
+use inexor_rgf_plugin_api::prelude::providers::*;
+use inexor_rgf_plugin_api::EntityBehaviourRegistry;
 
-use async_trait::async_trait;
+use inexor_rgf_model_logical::BEHAVIOUR_IF_THEN_ELSE;
+use inexor_rgf_model_logical::BEHAVIOUR_TOGGLE;
+use inexor_rgf_model_logical::BEHAVIOUR_TRIGGER;
+use inexor_rgf_model_logical::ENTITY_BEHAVIOUR_IF_THEN_ELSE;
+use inexor_rgf_model_logical::ENTITY_BEHAVIOUR_TOGGLE;
+use inexor_rgf_model_logical::ENTITY_BEHAVIOUR_TRIGGER;
 
-use crate::behaviour::entity::gate::LogicalGateFactory;
-use crate::behaviour::entity::gate::LOGICAL_GATES;
+use crate::behaviour::entity::gate::function::LOGICAL_GATES;
 use crate::behaviour::entity::if_then_else::IfThenElseFactory;
-use crate::behaviour::entity::operation::LogicalOperationFactory;
-use crate::behaviour::entity::operation::LOGICAL_OPERATIONS;
+use crate::behaviour::entity::operation::function::LOGICAL_OPERATIONS;
 use crate::behaviour::entity::toggle::ToggleFactory;
 use crate::behaviour::entity::trigger::TriggerFactory;
-use crate::di::*;
-use crate::model::EntityBehaviourTypeId;
-use crate::model_logical::BEHAVIOUR_IF_THEN_ELSE;
-use crate::model_logical::BEHAVIOUR_TOGGLE;
-use crate::model_logical::BEHAVIOUR_TRIGGER;
-use crate::model_logical::ENTITY_BEHAVIOUR_IF_THEN_ELSE;
-use crate::model_logical::ENTITY_BEHAVIOUR_TOGGLE;
-use crate::model_logical::ENTITY_BEHAVIOUR_TRIGGER;
-use crate::plugins::component_provider;
-use crate::plugins::entity_type_provider;
-use crate::plugins::flow_type_provider;
-use crate::plugins::plugin_context::PluginContext;
-use crate::plugins::ComponentProvider;
-use crate::plugins::ComponentProviderError;
-use crate::plugins::EntityTypeProvider;
-use crate::plugins::EntityTypeProviderError;
-use crate::plugins::FlowTypeProvider;
-use crate::plugins::FlowTypeProviderError;
-use crate::plugins::Plugin;
-use crate::plugins::PluginActivationError;
-use crate::plugins::PluginContextDeinitializationError;
-use crate::plugins::PluginContextInitializationError;
-use crate::plugins::PluginDeactivationError;
-use crate::providers::LogicalComponentProviderImpl;
-use crate::providers::LogicalEntityTypeProviderImpl;
-use crate::providers::LogicalFlowTypeProviderImpl;
 
-#[wrapper]
-pub struct PluginContextContainer(RwLock<Option<Arc<dyn PluginContext>>>);
+export_plugin!({
+    "dependencies": [
+        { "name": "inexor-rgf-plugin-base", "version": ">=0.10.0, <0.11.0" },
+        { "name": "inexor-rgf-plugin-trigger", "version": ">=0.10.0, <0.11.0" },
+        { "name": "inexor-rgf-plugin-result", "version": ">=0.10.0, <0.11.0" },
+        { "name": "inexor-rgf-plugin-connector", "version": ">=0.10.0, <0.11.0" }
+    ]
+});
 
-#[provides]
-fn create_empty_plugin_context_container() -> PluginContextContainer {
-    PluginContextContainer(RwLock::new(None))
-}
-
-#[async_trait]
+#[injectable]
 pub trait LogicalPlugin: Plugin + Send + Sync {}
 
-#[module]
+#[derive(Component)]
 pub struct LogicalPluginImpl {
-    component_provider: Wrc<LogicalComponentProviderImpl>,
-    entity_type_provider: Wrc<LogicalEntityTypeProviderImpl>,
-    flow_type_provider: Wrc<LogicalFlowTypeProviderImpl>,
+    component_provider: Arc<dyn TypeProvider<Components> + Send + Sync>,
 
-    context: PluginContextContainer,
+    #[component(default = "component_provider_registry")]
+    component_provider_registry: Arc<dyn ComponentProviderRegistry + Send + Sync>,
+
+    entity_types_provider: Arc<dyn TypeProvider<EntityTypes> + Send + Sync>,
+
+    #[component(default = "entity_types_provider_registry")]
+    entity_type_provider_registry: Arc<dyn EntityTypeProviderRegistry + Send + Sync>,
+
+    #[component(default = "entity_behaviour_registry")]
+    entity_behaviour_registry: Arc<dyn EntityBehaviourRegistry + Send + Sync>,
 }
 
-interfaces!(LogicalPluginImpl: dyn Plugin);
-
 #[async_trait]
-#[provides]
-impl LogicalPlugin for LogicalPluginImpl {}
-
-#[async_trait]
+#[component_alias]
 impl Plugin for LogicalPluginImpl {
     async fn activate(&self) -> Result<(), PluginActivationError> {
-        let guard = self.context.0.read().unwrap();
-        if let Some(context) = guard.clone() {
-            let entity_behaviour_registry = context.get_entity_behaviour_registry();
+        self.component_provider_registry.register_provider(self.component_provider.clone()).await;
+        self.entity_type_provider_registry.register_provider(self.entity_types_provider.clone()).await;
 
-            // If Then Else
-            let factory = Arc::new(IfThenElseFactory::new(BEHAVIOUR_IF_THEN_ELSE.clone()));
-            entity_behaviour_registry.register(ENTITY_BEHAVIOUR_IF_THEN_ELSE.clone(), factory);
+        // If Then Else
+        let factory = Arc::new(IfThenElseFactory::new(BEHAVIOUR_IF_THEN_ELSE.clone()));
+        self.entity_behaviour_registry.register(ENTITY_BEHAVIOUR_IF_THEN_ELSE.clone(), factory).await;
 
-            // Toggle
-            let factory = Arc::new(ToggleFactory::new(BEHAVIOUR_TOGGLE.clone()));
-            entity_behaviour_registry.register(ENTITY_BEHAVIOUR_TOGGLE.clone(), factory);
+        // Toggle
+        let factory = Arc::new(ToggleFactory::new(BEHAVIOUR_TOGGLE.clone()));
+        self.entity_behaviour_registry.register(ENTITY_BEHAVIOUR_TOGGLE.clone(), factory).await;
 
-            // Trigger
-            let factory = Arc::new(TriggerFactory::new(BEHAVIOUR_TRIGGER.clone()));
-            entity_behaviour_registry.register(ENTITY_BEHAVIOUR_TRIGGER.clone(), factory);
+        // Trigger
+        let factory = Arc::new(TriggerFactory::new(BEHAVIOUR_TRIGGER.clone()));
+        self.entity_behaviour_registry.register(ENTITY_BEHAVIOUR_TRIGGER.clone(), factory).await;
 
-            // Logical operations
-            for (behaviour_ty, f) in LOGICAL_OPERATIONS.iter() {
-                entity_behaviour_registry.register(EntityBehaviourTypeId::from(behaviour_ty), Arc::new(LogicalOperationFactory::new(behaviour_ty.clone(), *f)));
-            }
+        // Logical operations
+        self.entity_behaviour_registry.register_all(&LOGICAL_OPERATIONS.get_factories()).await;
+        self.entity_behaviour_registry.register_all(&LOGICAL_GATES.get_factories()).await;
 
-            // Logical gates
-            for (behaviour_ty, f) in LOGICAL_GATES.iter() {
-                entity_behaviour_registry.register(EntityBehaviourTypeId::from(behaviour_ty), Arc::new(LogicalGateFactory::new(behaviour_ty.clone(), *f)));
-            }
-        }
         Ok(())
     }
 
     async fn deactivate(&self) -> Result<(), PluginDeactivationError> {
-        let guard = self.context.0.read().unwrap();
-        if let Some(context) = guard.clone() {
-            let entity_behaviour_registry = context.get_entity_behaviour_registry();
-            entity_behaviour_registry.unregister(&ENTITY_BEHAVIOUR_IF_THEN_ELSE);
-            entity_behaviour_registry.unregister(&ENTITY_BEHAVIOUR_TOGGLE);
-            entity_behaviour_registry.unregister(&ENTITY_BEHAVIOUR_TRIGGER);
-            for behaviour_ty in LOGICAL_OPERATIONS.keys() {
-                entity_behaviour_registry.unregister(&EntityBehaviourTypeId::from(behaviour_ty));
-            }
-            for behaviour_ty in LOGICAL_GATES.keys() {
-                entity_behaviour_registry.unregister(&EntityBehaviourTypeId::from(behaviour_ty));
-            }
-        }
+        self.entity_behaviour_registry.unregister_all(&LOGICAL_GATES.to_entity_behaviour_tys()).await;
+        self.entity_behaviour_registry
+            .unregister_all(&LOGICAL_OPERATIONS.to_entity_behaviour_tys())
+            .await;
+        self.entity_behaviour_registry.unregister(&ENTITY_BEHAVIOUR_TRIGGER).await;
+        self.entity_behaviour_registry.unregister(&ENTITY_BEHAVIOUR_TOGGLE).await;
+        self.entity_behaviour_registry.unregister(&ENTITY_BEHAVIOUR_IF_THEN_ELSE).await;
+
+        self.entity_type_provider_registry.unregister_provider(self.entity_types_provider.id()).await;
+        self.component_provider_registry.unregister_provider(self.component_provider.id()).await;
         Ok(())
-    }
-
-    fn set_context(&self, context: Arc<dyn PluginContext>) -> Result<(), PluginContextInitializationError> {
-        self.context.0.write().unwrap().replace(context);
-        Ok(())
-    }
-
-    fn remove_context(&self) -> Result<(), PluginContextDeinitializationError> {
-        let mut writer = self.context.0.write().unwrap();
-        *writer = None;
-        Ok(())
-    }
-
-    fn get_component_provider(&self) -> Result<Option<Arc<dyn ComponentProvider>>, ComponentProviderError> {
-        component_provider!(self.component_provider)
-    }
-
-    fn get_entity_type_provider(&self) -> Result<Option<Arc<dyn EntityTypeProvider>>, EntityTypeProviderError> {
-        entity_type_provider!(self.entity_type_provider)
-    }
-
-    fn get_flow_type_provider(&self) -> Result<Option<Arc<dyn FlowTypeProvider>>, FlowTypeProviderError> {
-        flow_type_provider!(self.flow_type_provider)
     }
 }

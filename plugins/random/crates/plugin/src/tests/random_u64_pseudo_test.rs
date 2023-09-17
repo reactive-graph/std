@@ -1,16 +1,16 @@
 use crate::behaviour::entity::random_u64_pseudo::RandomU64PseudoFactory;
 use crate::builder::ReactiveEntityInstanceBuilder;
-use crate::model_random::PseudoNumberGenerator;
-use crate::model_random::PseudoNumberGeneratorProperties::SEED;
-use crate::model_random::RandomU64Pseudo;
-use crate::model_random::BEHAVIOUR_RANDOM_U64_PSEUDO;
-use crate::model_random::ENTITY_TYPE_RANDOM_U64_PSEUDO;
-use crate::model_result::ResultNumberU64;
-use crate::model_result::ResultNumberU64Properties::RESULT;
-use crate::model_runtime::Action;
-use crate::model_runtime::ActionProperties::TRIGGER;
 use crate::reactive::BehaviourFactory;
 use crate::reactive::BehaviourState;
+use inexor_rgf_model_random::PseudoNumberGenerator;
+use inexor_rgf_model_random::PseudoNumberGeneratorProperties::SEED;
+use inexor_rgf_model_random::RandomU64Pseudo;
+use inexor_rgf_model_random::BEHAVIOUR_RANDOM_U64_PSEUDO;
+use inexor_rgf_model_random::ENTITY_TYPE_RANDOM_U64_PSEUDO;
+use inexor_rgf_model_result::ResultNumberU64;
+use inexor_rgf_model_result::ResultNumberU64Properties::RESULT;
+use inexor_rgf_model_runtime::Action;
+use inexor_rgf_model_runtime::ActionProperties::TRIGGER;
 
 #[test]
 fn random_u64_pseudo_test() {
