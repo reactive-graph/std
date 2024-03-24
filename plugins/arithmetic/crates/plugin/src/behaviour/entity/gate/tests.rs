@@ -1,7 +1,7 @@
-use inexor_rgf_behaviour_api::prelude::*;
+use inexor_rgf_behaviour_model_api::prelude::*;
 use inexor_rgf_graph::prelude::*;
-use inexor_rgf_reactive::ReactiveEntity;
-use inexor_rgf_reactive::ReactiveProperties;
+use inexor_rgf_reactive_model_impl::ReactiveEntity;
+use inexor_rgf_reactive_model_impl::ReactiveProperties;
 use serde_json::json;
 use uuid::Uuid;
 

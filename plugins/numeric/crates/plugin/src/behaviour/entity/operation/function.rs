@@ -6,9 +6,9 @@ use std::sync::LazyLock;
 
 use crate::behaviour::entity::operation::behaviour_f64::NumericOperationF64Factory;
 use crate::behaviour::entity::operation::behaviour_i64::NumericOperationI64Factory;
-use inexor_rgf_behaviour::entity::EntityBehaviourFactoryCreator;
-use inexor_rgf_behaviour::entity::EntityBehaviourFunctions;
-use inexor_rgf_behaviour::entity::EntityBehaviourFunctionsStorage;
+use inexor_rgf_behaviour_model_impl::entity::EntityBehaviourFactoryCreator;
+use inexor_rgf_behaviour_model_impl::entity::EntityBehaviourFunctions;
+use inexor_rgf_behaviour_model_impl::entity::EntityBehaviourFunctionsStorage;
 
 pub type NumericOperationFunction<I, O> = fn(I) -> O;
 pub type NumericOperationF64Function = NumericOperationFunction<f64, f64>;

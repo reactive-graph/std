@@ -12,18 +12,18 @@ readme = "../../../../README.md"
 data-url = { workspace = true }
 lazy_static = { workspace = true }
 paste = { workspace = true }
-serde = { workspace = true, features = [ "derive" ] }
+serde = { workspace = true, features = ["derive"] }
 serde_json = { workspace = true }
-strum = { workspace = true, features = ["derive"] }
 strum_macros = { workspace = true }
 
+inexor-rgf-behaviour-model-api = { workspace = true }
 inexor-rgf-graph = { workspace = true }
-inexor-rgf-reactive = { workspace = true }
-inexor-rgf-reactive-api = { workspace = true }
-inexor-rgf-model-runtime = { workspace = true }
+inexor-rgf-reactive-model-api = { workspace = true }
+inexor-rgf-reactive-model-impl = { workspace = true }
+inexor-rgf-runtime-model = { workspace = true }
+
 inexor-rgf-model-base = { version = "0.10.0", path = "../../../base/crates/model" }
 inexor-rgf-model-file = { version = "0.10.0", path = "../../../file/crates/model" }
-inexor-rgf-behaviour-api = { workspace = true }
 
 [lib]
 crate-type = ["lib"]

@@ -10,19 +10,19 @@ readme = "../../../../README.md"
 
 [dependencies]
 lazy_static = { workspace = true }
-paste = { workspace = true }
-serde = { workspace = true, features = [ "derive" ] }
+serde = { workspace = true, features = ["derive"] }
 serde_json = { workspace = true }
-strum = { workspace = true, features = ["derive"] }
 strum_macros = { workspace = true }
 uuid = { workspace = true, features = ["serde", "v4"] }
 
 inexor-rgf-graph = { workspace = true }
-inexor-rgf-reactive = { workspace = true }
-inexor-rgf-reactive-api = { workspace = true }
+inexor-rgf-behaviour-model-api = { workspace = true }
+inexor-rgf-reactive-model-api = { workspace = true }
+inexor-rgf-reactive-model-impl = { workspace = true }
+inexor-rgf-reactive-service-api = { workspace = true, features = ["derive"] }
+inexor-rgf-runtime-model = { workspace = true }
+
 inexor-rgf-model-result = { version = "0.10.0", path = "../../../result/crates/model" }
-inexor-rgf-model-runtime = { workspace = true }
-inexor-rgf-behaviour-api = { workspace = true }
 
 [dev-dependencies]
 default-test = { workspace = true }

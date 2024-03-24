@@ -1,9 +1,8 @@
-use inexor_rgf_behaviour::entity_behaviour;
-use inexor_rgf_behaviour::PropertyObserverContainer;
-use inexor_rgf_behaviour_api::behaviour_validator;
-use inexor_rgf_behaviour_api::prelude::*;
+use inexor_rgf_behaviour_model_api::behaviour_validator;
+use inexor_rgf_behaviour_model_api::prelude::*;
+use inexor_rgf_behaviour_model_impl::entity_behaviour;
 use inexor_rgf_graph::prelude::*;
-use inexor_rgf_reactive::ReactiveEntity;
+use inexor_rgf_reactive_model_impl::ReactiveEntity;
 use uuid::Uuid;
 
 use inexor_rgf_model_numeric::NumericGateProperties::LHS;
@@ -70,7 +69,7 @@ impl BehaviourTransitions<Uuid, ReactiveEntity> for NumericGateF64BehaviourTrans
 //
 //     use crate::behaviour::entity::gate::function::*;
 //     use inexor_rgf_graph::prelude::*;
-//     use inexor_rgf_reactive::ReactiveEntity;
+//     use inexor_rgf_reactive_model_impl::ReactiveEntity;
 //     use inexor_rgf_model_numeric::NumericGateF64;
 //     use inexor_rgf_model_numeric::NumericGateProperties;
 //     use inexor_rgf_reactive_api::prelude::*;

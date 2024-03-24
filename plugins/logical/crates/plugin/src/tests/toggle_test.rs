@@ -11,9 +11,9 @@ use inexor_rgf_model_logical::ENTITY_TYPE_TOGGLE;
 use inexor_rgf_model_logical::NAMESPACE_LOGICAL;
 use inexor_rgf_model_result::ResultBoolean;
 use inexor_rgf_model_result::ResultBooleanProperties::RESULT;
-use inexor_rgf_model_runtime::Action;
-use inexor_rgf_model_runtime::ActionProperties::TRIGGER;
 use inexor_rgf_model_runtime::COMPONENT_ACTION;
+use inexor_rgf_runtime_model::Action;
+use inexor_rgf_runtime_model::ActionProperties::TRIGGER;
 
 #[test]
 fn toggle_test() {

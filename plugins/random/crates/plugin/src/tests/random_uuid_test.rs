@@ -7,8 +7,8 @@ use inexor_rgf_model_random::BEHAVIOUR_RANDOM_UUID;
 use inexor_rgf_model_random::ENTITY_TYPE_RANDOM_UUID;
 use inexor_rgf_model_result::ResultString;
 use inexor_rgf_model_result::ResultStringProperties::RESULT;
-use inexor_rgf_model_runtime::Action;
-use inexor_rgf_model_runtime::ActionProperties::TRIGGER;
+use inexor_rgf_runtime_model::Action;
+use inexor_rgf_runtime_model::ActionProperties::TRIGGER;
 
 #[test]
 fn random_uuid_test() {

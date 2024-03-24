@@ -9,11 +9,7 @@ repository.workspace = true
 readme = "../../../../README.md"
 
 [dependencies]
-lazy_static = { workspace = true }
-license = { workspace = true }
-paste = { workspace = true }
-semver = { workspace = true }
-serde = { workspace = true, features = [ "derive" ] }
+serde = { workspace = true, features = ["derive"] }
 serde_json = { workspace = true }
 strum_macros = { workspace = true }
 

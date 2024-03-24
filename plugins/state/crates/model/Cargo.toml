@@ -9,16 +9,16 @@ repository.workspace = true
 readme = "../../../../README.md"
 
 [dependencies]
-lazy_static = { workspace = true }
 paste = { workspace = true }
-serde = { workspace = true, features = [ "derive" ] }
+serde = { workspace = true, features = ["derive"] }
 serde_json = { workspace = true }
-strum = { workspace = true, features = ["derive"] }
 strum_macros = { workspace = true }
 
 inexor-rgf-graph = { workspace = true }
-inexor-rgf-reactive = { workspace = true }
-inexor-rgf-reactive-api = { workspace = true }
+inexor-rgf-reactive-model-api = { workspace = true }
+inexor-rgf-reactive-model-impl = { workspace = true }
+inexor-rgf-reactive-service-api = { workspace = true, features = ["derive"] }
+
 inexor-rgf-model-value = { version = "0.10.0", path = "../../../value/crates/model" }
 
 [lib]

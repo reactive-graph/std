@@ -1,9 +1,8 @@
-use inexor_rgf_behaviour::entity_behaviour;
-use inexor_rgf_behaviour::PropertyObserverContainer;
-use inexor_rgf_behaviour_api::behaviour_validator;
-use inexor_rgf_behaviour_api::prelude::*;
+use inexor_rgf_behaviour_model_api::behaviour_validator;
+use inexor_rgf_behaviour_model_api::prelude::*;
+use inexor_rgf_behaviour_model_impl::entity_behaviour;
 use inexor_rgf_graph::prelude::*;
-use inexor_rgf_reactive::ReactiveEntity;
+use inexor_rgf_reactive_model_impl::ReactiveEntity;
 use serde_json::Value;
 use uuid::Uuid;
 
@@ -17,7 +16,7 @@ use inexor_rgf_model_git::RepositoryProperties::FETCH;
 use inexor_rgf_model_git::RepositoryProperties::REMOTE_BRANCH;
 use inexor_rgf_model_git::RepositoryProperties::REMOTE_NAME;
 use inexor_rgf_model_http::UrlProperties::URL;
-use inexor_rgf_model_runtime::ActionProperties::TRIGGER;
+use inexor_rgf_runtime_model::ActionProperties::TRIGGER;
 
 entity_behaviour!(Repository, RepositoryFactory, RepositoryFsm, RepositoryBehaviourTransitions, RepositoryValidator);
 

@@ -24,8 +24,9 @@ rust-embed = { workspace = true, features = ["debug-embed", "compression"] }
 springtime-di = { workspace = true, default-features = false, features = [ "threadsafe", "derive" ] }
 uuid = { workspace = true, features = ["serde", "v4"] }
 
+inexor-rgf-plugin-api = { workspace = true }
+inexor-rgf-type-system-api = { workspace = true }
 inexor-rgf-graph = { workspace = true }
-inexor-rgf-plugin-api = { workspace = true, features = [ "json5", "toml" ] }
 
 [dev-dependencies]
 inexor-rgf-model-base = { version = "0.10.0", path = "../../crates/model" }

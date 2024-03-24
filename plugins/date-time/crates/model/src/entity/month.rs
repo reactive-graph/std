@@ -1,7 +1,7 @@
 use crate::NAMESPACE_DATE_TIME;
 use inexor_rgf_graph::entity_ty;
 use inexor_rgf_graph::properties;
-use inexor_rgf_reactive_api::entity_model;
+use inexor_rgf_reactive_model_api::entity_model;
 
 properties!(MonthProperties, (MONTH_OF_YEAR, "month_of_year", 0), (MONTH_AND_YEAR, "month_and_year", ""));
 

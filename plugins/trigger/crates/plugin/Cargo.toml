@@ -18,13 +18,13 @@ assets = [
 [dependencies]
 async-trait = { workspace = true }
 log = { workspace = true, features = ["std", "serde"] }
-log4rs = { workspace = true, features = ["console_appender", "file_appender", "toml_format"]}
+log4rs = { workspace = true, features = ["console_appender", "file_appender", "toml_format"] }
 rust-embed = { workspace = true, features = ["debug-embed", "compression"] }
-springtime-di = { workspace = true, default-features = false, features = [ "threadsafe", "derive" ] }
+springtime-di = { workspace = true, default-features = false, features = ["threadsafe", "derive"] }
 
 inexor-rgf-graph = { workspace = true }
-inexor-rgf-plugin-api = { workspace = true, features = [ "json5", "toml" ] }
-inexor-rgf-model-trigger = { version = "0.10.0", path = "../../crates/model" }
+inexor-rgf-plugin-api = { workspace = true }
+inexor-rgf-type-system-api = { workspace = true }
 
 [lib]
 # Plugins use crate-type cdylib
@@ -34,5 +34,5 @@ crate-type = ["cdylib"]
 
 [package.metadata.cargo-post.dependencies]
 toml = "0.7"
-serde = { version = "1.0", features = [ "derive" ] }
+serde = { version = "1.0", features = ["derive"] }
 glob = "0.3"

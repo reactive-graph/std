@@ -1,6 +1,6 @@
-use crate::behaviour_api::behaviour_ty;
-use crate::behaviour_api::component_behaviour_ty;
 use crate::NAMESPACE_BINARY;
+use inexor_rgf_behaviour_model_api::behaviour_ty;
+use inexor_rgf_behaviour_model_api::component_behaviour_ty;
 use inexor_rgf_graph::component_ty;
 
 component_ty!(COMPONENT_SAVE_BINARY_DATA, NAMESPACE_BINARY, COMPONENT_NAME_SAVE_BINARY_DATA, "save_binary_data");

@@ -2,7 +2,7 @@ use crate::NAMESPACE_STRING;
 use inexor_rgf_graph::component_ty;
 use inexor_rgf_graph::properties;
 use inexor_rgf_model_result::ResultString;
-use inexor_rgf_reactive_api::entity_model;
+use inexor_rgf_reactive_model_api::entity_model;
 
 properties!(StringGateProperties, (LHS, "lhs", ""), (RHS, "rhs", ""));
 

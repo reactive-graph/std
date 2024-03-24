@@ -1,6 +1,6 @@
-use crate::behaviour_api::behaviour_ty;
-use crate::behaviour_api::component_behaviour_ty;
 use crate::NAMESPACE_CONNECTOR;
+use inexor_rgf_behaviour_model_api::behaviour_ty;
+use inexor_rgf_behaviour_model_api::component_behaviour_ty;
 use inexor_rgf_graph::component_ty;
 use inexor_rgf_graph::properties;
 

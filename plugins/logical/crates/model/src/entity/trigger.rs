@@ -1,11 +1,11 @@
-use crate::behaviour_api::behaviour_ty;
-use crate::behaviour_api::entity_behaviour_ty;
 use crate::NAMESPACE_LOGICAL;
+use inexor_rgf_behaviour_model_api::behaviour_ty;
+use inexor_rgf_behaviour_model_api::entity_behaviour_ty;
 use inexor_rgf_graph::entity_ty;
 use inexor_rgf_graph::properties;
 use inexor_rgf_model_result::ResultAny;
-use inexor_rgf_model_runtime::Action;
-use inexor_rgf_reactive_api::entity_model;
+use inexor_rgf_reactive_model_api::entity_model;
+use inexor_rgf_runtime_model::Action;
 
 properties!(TriggerProperties, (PAYLOAD, "payload", 0));
 

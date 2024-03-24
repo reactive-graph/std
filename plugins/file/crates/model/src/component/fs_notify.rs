@@ -1,9 +1,10 @@
-use crate::NAMESPACE_FILE;
-use inexor_rgf_behaviour_api::behaviour_ty;
-use inexor_rgf_behaviour_api::component_behaviour_ty;
+use inexor_rgf_behaviour_model_api::behaviour_ty;
+use inexor_rgf_behaviour_model_api::component_behaviour_ty;
 use inexor_rgf_graph::component_ty;
-use inexor_rgf_model_runtime::Action;
-use inexor_rgf_reactive_api::entity_model;
+use inexor_rgf_reactive_model_api::entity_model;
+use inexor_rgf_runtime_model::Action;
+
+use crate::NAMESPACE_FILE;
 
 component_ty!(COMPONENT_FS_NOTIFY, NAMESPACE_FILE, COMPONENT_NAME_FS_NOTIFY, "fs_notify");
 behaviour_ty!(BEHAVIOUR_FS_NOTIFY, NAMESPACE_FILE, BEHAVIOUR_NAME_FS_NOTIFY, "fs_notify");

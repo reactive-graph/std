@@ -1,9 +1,8 @@
-use inexor_rgf_behaviour::entity_behaviour;
-use inexor_rgf_behaviour::PropertyObserverContainer;
-use inexor_rgf_behaviour_api::behaviour_validator;
-use inexor_rgf_behaviour_api::prelude::*;
+use inexor_rgf_behaviour_model_api::behaviour_validator;
+use inexor_rgf_behaviour_model_api::prelude::*;
+use inexor_rgf_behaviour_model_impl::entity_behaviour;
 use inexor_rgf_graph::prelude::*;
-use inexor_rgf_reactive::ReactiveEntity;
+use inexor_rgf_reactive_model_impl::ReactiveEntity;
 use serde_json::json;
 use uuid::Uuid;
 
@@ -72,11 +71,11 @@ impl BehaviourTransitions<Uuid, ReactiveEntity> for ArithmeticGateF64BehaviourTr
 mod tests {
     use std::sync::Arc;
 
-    use inexor_rgf_behaviour_api::prelude::*;
+    use inexor_rgf_behaviour_model_api::prelude::*;
     use inexor_rgf_graph::prelude::*;
-    use inexor_rgf_reactive::ReactiveEntity;
-    use inexor_rgf_reactive::ReactiveProperties;
-    use inexor_rgf_reactive_api::prelude::*;
+    use inexor_rgf_reactive_model_api::ReactiveInstanceContainer;
+    use inexor_rgf_reactive_model_impl::ReactiveEntity;
+    use inexor_rgf_reactive_model_impl::ReactiveProperties;
     use serde_json::json;
     use uuid::Uuid;
 

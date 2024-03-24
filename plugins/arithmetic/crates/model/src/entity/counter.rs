@@ -1,12 +1,13 @@
+use inexor_rgf_behaviour_model_api::behaviour_ty;
+use inexor_rgf_behaviour_model_api::entity_behaviour_ty;
 use inexor_rgf_graph::entity_ty;
-use inexor_rgf_reactive_api::entity_model;
-use inexor_rgf_reactive_api::reactive_entity;
+use inexor_rgf_reactive_model_api::entity_model;
+use inexor_rgf_reactive_service_api::reactive_entity;
+use inexor_rgf_runtime_model::Action;
 
-use crate::behaviour_api::behaviour_ty;
-use crate::behaviour_api::entity_behaviour_ty;
-use crate::NAMESPACE_ARITHMETIC_U64;
 use inexor_rgf_model_result::ResultNumberU64;
-use inexor_rgf_model_runtime::Action;
+
+use crate::NAMESPACE_ARITHMETIC_U64;
 
 // All properties are defined in the component(s)
 

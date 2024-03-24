@@ -4,7 +4,7 @@ use crate::builder::ReactiveEntityInstanceBuilder;
 use crate::model_metadata::DublinCore;
 use crate::model_metadata::COMPONENT_DUBLIN_CORE;
 use crate::model_metadata::NAMESPACE_METADATA;
-use inexor_rgf_reactive_api::entity_model;
+use inexor_rgf_reactive_model_api::entity_model;
 
 entity_model!(MetaData);
 impl DublinCore for MetaData {}

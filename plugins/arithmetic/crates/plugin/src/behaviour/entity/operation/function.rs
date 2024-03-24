@@ -8,9 +8,9 @@ use std::sync::LazyLock;
 use crate::behaviour::entity::operation::behaviour_f64::ArithmeticOperationF64Factory;
 use crate::behaviour::entity::operation::behaviour_i64::ArithmeticOperationI64Factory;
 use crate::behaviour::entity::operation::behaviour_u64::ArithmeticOperationU64Factory;
-use inexor_rgf_behaviour::entity::EntityBehaviourFactoryCreator;
-use inexor_rgf_behaviour::entity::EntityBehaviourFunctions;
-use inexor_rgf_behaviour::entity::EntityBehaviourFunctionsStorage;
+use inexor_rgf_behaviour_model_impl::entity::EntityBehaviourFactoryCreator;
+use inexor_rgf_behaviour_model_impl::entity::EntityBehaviourFunctions;
+use inexor_rgf_behaviour_model_impl::entity::EntityBehaviourFunctionsStorage;
 
 pub type ArithmeticOperationFunction<T> = fn(T) -> T;
 pub type ArithmeticOperationF64Function = ArithmeticOperationFunction<f64>;
