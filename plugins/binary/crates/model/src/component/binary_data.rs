@@ -1,7 +1,7 @@
 use data_url::DataUrl;
 
-use crate::behaviour_api::behaviour_ty;
 use crate::NAMESPACE_BINARY;
+use inexor_rgf_behaviour_model_api::behaviour_ty;
 use inexor_rgf_graph::component_model;
 use inexor_rgf_graph::component_ty;
 use inexor_rgf_graph::properties;

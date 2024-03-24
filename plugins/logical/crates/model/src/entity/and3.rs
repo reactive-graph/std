@@ -3,7 +3,7 @@ use inexor_rgf_graph::entity_ty;
 use inexor_rgf_graph::flow_ty;
 use inexor_rgf_graph::properties;
 use inexor_rgf_model_result::ResultBoolean;
-use inexor_rgf_reactive_api::entity_model;
+use inexor_rgf_reactive_model_api::entity_model;
 
 properties!(And3Properties, (INPUT_1, "input1", false), (INPUT_2, "input2", false), (INPUT_3, "input3", false));
 

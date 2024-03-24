@@ -1,8 +1,7 @@
-use inexor_rgf_behaviour::relation_behaviour;
-use inexor_rgf_behaviour::PropertyObserverContainer;
-use inexor_rgf_behaviour_api::prelude::*;
+use inexor_rgf_behaviour_model_api::prelude::*;
+use inexor_rgf_behaviour_model_impl::relation_behaviour;
 use inexor_rgf_graph::prelude::*;
-use inexor_rgf_reactive::ReactiveRelation;
+use inexor_rgf_reactive_model_impl::ReactiveRelation;
 use serde_json::Value;
 
 pub use function::ComplexConnectorFunction;

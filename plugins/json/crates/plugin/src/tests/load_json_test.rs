@@ -13,8 +13,8 @@ use inexor_rgf_model_json::BEHAVIOUR_LOAD_JSON;
 use inexor_rgf_model_json::ENTITY_TYPE_LOAD_JSON;
 use inexor_rgf_model_result::ResultAny;
 use inexor_rgf_model_result::ResultObjectProperties::RESULT;
-use inexor_rgf_model_runtime::Action;
-use inexor_rgf_model_runtime::ActionProperties::TRIGGER;
+use inexor_rgf_runtime_model::Action;
+use inexor_rgf_runtime_model::ActionProperties::TRIGGER;
 
 #[test]
 fn rx_load_json_test() {

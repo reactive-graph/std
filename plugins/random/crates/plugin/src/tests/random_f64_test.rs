@@ -7,8 +7,8 @@ use inexor_rgf_model_random::BEHAVIOUR_RANDOM_F64;
 use inexor_rgf_model_random::ENTITY_TYPE_RANDOM_F64;
 use inexor_rgf_model_result::ResultNumberF64;
 use inexor_rgf_model_result::ResultNumberF64Properties::RESULT;
-use inexor_rgf_model_runtime::Action;
-use inexor_rgf_model_runtime::ActionProperties::TRIGGER;
+use inexor_rgf_runtime_model::Action;
+use inexor_rgf_runtime_model::ActionProperties::TRIGGER;
 
 #[test]
 fn random_f64_test() {

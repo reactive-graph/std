@@ -3,12 +3,12 @@ use std::sync::LazyLock;
 use std::thread;
 use std::time::Duration;
 
-use inexor_rgf_behaviour::relation::function::RelationBehaviourFunctions;
-use inexor_rgf_behaviour::relation::function::RelationBehaviourFunctionsStorage;
-use inexor_rgf_behaviour::relation::RelationBehaviourFactoryCreator;
+use inexor_rgf_behaviour_model_impl::relation::function::RelationBehaviourFunctions;
+use inexor_rgf_behaviour_model_impl::relation::function::RelationBehaviourFunctionsStorage;
+use inexor_rgf_behaviour_model_impl::relation::RelationBehaviourFactoryCreator;
 use inexor_rgf_graph::PropertyInstanceGetter;
 use inexor_rgf_graph::PropertyInstanceSetter;
-use inexor_rgf_reactive::ReactiveRelation;
+use inexor_rgf_reactive_model_impl::ReactiveRelation;
 use serde_json::json;
 use serde_json::Value;
 

@@ -19,7 +19,7 @@ use inexor_rgf_model_base::COMPONENT_LICENSED;
 use inexor_rgf_model_base::COMPONENT_NAMED;
 use inexor_rgf_model_base::COMPONENT_VERSIONED;
 use inexor_rgf_model_base::NAMESPACE_BASE;
-use inexor_rgf_reactive_api::entity_model;
+use inexor_rgf_reactive_model_api::entity_model;
 
 // An empty model
 entity_model!(ExampleNamed);

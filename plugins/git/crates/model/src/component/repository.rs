@@ -5,10 +5,10 @@ use git2::FetchOptions;
 use git2::RemoteCallbacks;
 use git2::Repository;
 
-use crate::behaviour_api::behaviour_ty;
-use crate::behaviour_api::component_behaviour_ty;
 use crate::TransferProgress;
 use crate::NAMESPACE_GIT;
+use inexor_rgf_behaviour_model_api::behaviour_ty;
+use inexor_rgf_behaviour_model_api::component_behaviour_ty;
 use inexor_rgf_graph::component_model;
 use inexor_rgf_graph::component_ty;
 use inexor_rgf_graph::properties;

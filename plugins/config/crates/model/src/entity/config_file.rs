@@ -2,8 +2,8 @@ use crate::NAMESPACE_CONFIG;
 use inexor_rgf_graph::entity_ty;
 use inexor_rgf_model_file::File;
 use inexor_rgf_model_result::ResultObject;
-use inexor_rgf_model_runtime::Action;
-use inexor_rgf_reactive_api::entity_model;
+use inexor_rgf_reactive_model_api::entity_model;
+use inexor_rgf_runtime_model::Action;
 
 // All properties are defined in the component(s)
 

@@ -13,12 +13,13 @@ lazy_static = { workspace = true }
 serde_json = { workspace = true }
 strum_macros = { workspace = true }
 
+inexor-rgf-behaviour-model-api = { workspace = true }
 inexor-rgf-graph = { workspace = true }
+inexor-rgf-reactive-model-api = { workspace = true }
+inexor-rgf-reactive-model-impl = { workspace = true }
+inexor-rgf-runtime-model = { workspace = true }
+
 inexor-rgf-model-result = { version = "0.10.0", path = "../../../result/crates/model" }
-inexor-rgf-model-runtime = { workspace = true }
-inexor-rgf-reactive = { workspace = true }
-inexor-rgf-reactive-api = { workspace = true }
-inexor-rgf-behaviour-api = { workspace = true }
 
 [lib]
 crate-type = ["lib"]

@@ -9,14 +9,17 @@ repository.workspace = true
 readme = "../../../../README.md"
 
 [dependencies]
-lazy_static = { workspace = true }
 serde_json = { workspace = true }
-strum_macros = { workspace = true }
 uuid = { workspace = true, features = ["serde", "v4", "v5"] }
 
 inexor-rgf-graph = { workspace = true }
-inexor-rgf-reactive = { workspace = true }
-inexor-rgf-reactive-api = { workspace = true }
+inexor-rgf-reactive-model-api = { workspace = true }
+inexor-rgf-reactive-model-impl = { workspace = true }
+
+[dev-dependencies]
+default-test = { workspace = true }
+inexor-rgf-graph = { workspace = true, features = ["test"] }
+inexor-rgf-test-utils = { workspace = true }
 
 [lib]
 crate-type = ["lib"]

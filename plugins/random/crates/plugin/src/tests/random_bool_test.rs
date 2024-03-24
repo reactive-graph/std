@@ -7,8 +7,8 @@ use inexor_rgf_model_random::BEHAVIOUR_RANDOM_BOOL;
 use inexor_rgf_model_random::ENTITY_TYPE_RANDOM_BOOL;
 use inexor_rgf_model_result::ResultBoolean;
 use inexor_rgf_model_result::ResultBooleanProperties::RESULT;
-use inexor_rgf_model_runtime::Action;
-use inexor_rgf_model_runtime::ActionProperties::TRIGGER;
+use inexor_rgf_runtime_model::Action;
+use inexor_rgf_runtime_model::ActionProperties::TRIGGER;
 
 #[test]
 fn random_bool_test() {

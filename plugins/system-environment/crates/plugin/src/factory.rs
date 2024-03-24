@@ -4,12 +4,12 @@ use std::sync::Arc;
 use std::sync::LazyLock;
 
 use inexor_rgf_graph::prelude::*;
-use inexor_rgf_model_runtime::LabeledProperties::LABEL;
-use inexor_rgf_model_runtime::COMPONENT_LABELED;
 use inexor_rgf_plugin_api::prelude::plugin::*;
-use inexor_rgf_reactive::ReactiveEntity;
-use inexor_rgf_reactive::ReactiveProperties;
-use inexor_rgf_rt_api::ReactiveEntityRegistrationError;
+use inexor_rgf_reactive_model_impl::ReactiveEntity;
+use inexor_rgf_reactive_model_impl::ReactiveProperties;
+use inexor_rgf_reactive_service_api::ReactiveEntityRegistrationError;
+use inexor_rgf_runtime_model::LabeledProperties::LABEL;
+use inexor_rgf_runtime_model::COMPONENT_LABELED;
 use log::info;
 use serde_json::json;
 use thiserror::Error;
@@ -23,7 +23,7 @@ use inexor_rgf_model_value::COMPONENT_VALUE;
 use crate::model_system_environment::ENTITY_TYPE_SYSTEM_ENV_VAR;
 use crate::model_system_environment::NAMESPACE_SYSTEM_ENVIRONMENT_ID;
 
-const SYSTEM_ENV_COMPONENTS: LazyLock<ComponentTypeIds> = LazyLock::new(|| {
+static SYSTEM_ENV_COMPONENTS: LazyLock<ComponentTypeIds> = LazyLock::new(|| {
     ComponentTypeIds::new()
         .component(COMPONENT_LABELED.clone())
         .component(COMPONENT_VALUE.clone())

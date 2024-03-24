@@ -32,9 +32,9 @@ use inexor_rgf_model_date_time::RELATION_TYPE_MONTH_OF_YEAR;
 use inexor_rgf_model_date_time::RELATION_TYPE_NEXT_DAY;
 use inexor_rgf_model_date_time::RELATION_TYPE_NEXT_MONTH;
 use inexor_rgf_model_date_time::RELATION_TYPE_NEXT_YEAR;
-use inexor_rgf_reactive::ReactiveEntity;
-use inexor_rgf_reactive::ReactiveProperties;
-use inexor_rgf_reactive::ReactiveRelation;
+use inexor_rgf_reactive_model_impl::ReactiveEntity;
+use inexor_rgf_reactive_model_impl::ReactiveProperties;
+use inexor_rgf_reactive_model_impl::ReactiveRelation;
 use uuid::Uuid;
 
 #[derive(Component)]

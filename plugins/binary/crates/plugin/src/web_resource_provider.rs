@@ -102,7 +102,7 @@ impl BinaryWebResourceProvider {
         if let EntityInstanceReference::Id(id) = property_reference.entity_instance {
             if let Some(entity_instance) = self.entity_instance_manager.get(id) {
                 if let Some(mime_type) = infer::get(bytes) {
-                    let data_as_base64 = STANDARD.encode(&bytes);
+                    let data_as_base64 = STANDARD.encode(bytes);
                     let data_url = json!(format!("data:{};base64,{}", mime_type, data_as_base64));
                     entity_instance.set(property_reference.property_name, data_url);
                 }

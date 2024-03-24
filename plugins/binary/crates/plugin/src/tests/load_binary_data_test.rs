@@ -14,8 +14,8 @@ use crate::reactive::BehaviourFactory;
 use crate::reactive::BehaviourState;
 use inexor_rgf_model_file::File;
 use inexor_rgf_model_file::FileProperties::FILENAME;
-use inexor_rgf_model_runtime::Action;
-use inexor_rgf_model_runtime::ActionProperties::TRIGGER;
+use inexor_rgf_runtime_model::Action;
+use inexor_rgf_runtime_model::ActionProperties::TRIGGER;
 
 #[test]
 fn rx_load_binary_data_test() {

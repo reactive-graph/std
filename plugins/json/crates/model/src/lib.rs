@@ -1,7 +1,5 @@
 #![feature(lazy_cell)]
 
-use inexor_rgf_behaviour_api as behaviour_api;
-
 pub use component::load_json::*;
 pub use component::save_json::*;
 pub use entity::array_contains::*;

@@ -3,7 +3,7 @@ use inexor_rgf_graph::component_ty;
 use inexor_rgf_graph::properties;
 use inexor_rgf_model_result::ResultNumberF64;
 use inexor_rgf_model_result::ResultNumberI64;
-use inexor_rgf_reactive_api::entity_model;
+use inexor_rgf_reactive_model_api::entity_model;
 
 properties!(NumericOperationProperties, (LHS, "lhs", 0.0));
 

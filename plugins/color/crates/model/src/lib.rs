@@ -1,7 +1,5 @@
 #![feature(lazy_cell)]
 
-use inexor_rgf_behaviour_api as behaviour_api;
-
 pub use component::alpha::*;
 pub use component::brightness::*;
 pub use component::hs::*;

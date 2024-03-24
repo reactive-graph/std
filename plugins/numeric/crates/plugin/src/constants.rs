@@ -1,11 +1,11 @@
 use std::collections::HashMap;
+use std::sync::LazyLock;
 use uuid::Uuid;
 
-// TODO: define a unique namespace for Inexor RGF
-pub static NAMESPACE_NUMERIC: Uuid = Uuid::from_u128(0x6ba7b8109dad11d180b400c04fd430c8);
+pub static UUID_NAMESPACE_NUMERIC_CONSTANTS: Uuid = Uuid::from_u128(0x6ba7b8109dad11d180b400c04fd430c8);
 
-lazy_static! {
-    pub static ref NUMERIC_CONSTANTS: HashMap<&'static str, f64> = vec![
+pub static NUMERIC_CONSTANTS: LazyLock<HashMap<&'static str, f64>> = LazyLock::new(|| {
+    vec![
         ("E", std::f64::consts::E),
         ("FRAC_1_PI", std::f64::consts::FRAC_1_PI),
         ("FRAC_1_SQRT_2", std::f64::consts::FRAC_1_SQRT_2),
@@ -27,5 +27,5 @@ lazy_static! {
         ("TAU", std::f64::consts::TAU),
     ]
     .into_iter()
-    .collect();
-}
+    .collect()
+});

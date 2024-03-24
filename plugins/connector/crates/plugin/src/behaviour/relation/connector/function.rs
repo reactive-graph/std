@@ -2,9 +2,9 @@ use std::clone::Clone;
 use std::sync::Arc;
 use std::sync::LazyLock;
 
-use inexor_rgf_behaviour::relation::function::RelationBehaviourFunctions;
-use inexor_rgf_behaviour::relation::function::RelationBehaviourFunctionsStorage;
-use inexor_rgf_behaviour::relation::RelationBehaviourFactoryCreator;
+use inexor_rgf_behaviour_model_impl::relation::function::RelationBehaviourFunctions;
+use inexor_rgf_behaviour_model_impl::relation::function::RelationBehaviourFunctionsStorage;
+use inexor_rgf_behaviour_model_impl::relation::RelationBehaviourFactoryCreator;
 use log::debug;
 use log::trace;
 use serde_json::json;

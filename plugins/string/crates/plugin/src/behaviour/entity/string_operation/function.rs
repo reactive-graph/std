@@ -1,9 +1,9 @@
 use std::sync::Arc;
 use std::sync::LazyLock;
 
-use inexor_rgf_behaviour::entity::EntityBehaviourFactoryCreator;
-use inexor_rgf_behaviour::entity::EntityBehaviourFunctions;
-use inexor_rgf_behaviour::entity::EntityBehaviourFunctionsStorage;
+use inexor_rgf_behaviour_model_impl::entity::EntityBehaviourFactoryCreator;
+use inexor_rgf_behaviour_model_impl::entity::EntityBehaviourFunctions;
+use inexor_rgf_behaviour_model_impl::entity::EntityBehaviourFunctionsStorage;
 use voca_rs::case;
 use voca_rs::escape;
 use voca_rs::manipulate;

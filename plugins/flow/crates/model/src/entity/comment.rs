@@ -1,5 +1,5 @@
 use inexor_rgf_graph::entity_ty;
-use inexor_rgf_reactive_api::entity_model;
+use inexor_rgf_reactive_model_api::entity_model;
 
 use inexor_rgf_model_base::Describable;
 use inexor_rgf_model_base::Named;
