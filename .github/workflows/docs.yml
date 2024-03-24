@@ -4,8 +4,8 @@ on:
   push:
     branches: [ main ]
     paths:
-      - "crates/**/*.rs"
-      - "crates/**/Cargo.toml"
+      - "plugins/*/crates/**/*.rs"
+      - "plugins/**/crates/**/Cargo.toml"
       - "Cargo.toml"
       - ".github/workflows/docs.yml"
   pull_request:
