@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"static":["ENTITY_TYPE_ID__VALUE__VALUE_STRING"],"struct":["ValueString"]};

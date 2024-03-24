@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["COMPONENT_NAME_CONNECTOR"],"enum":["ConnectorProperties"],"static":["COMPONENT_CONNECTOR"],"struct":["Connector"]};

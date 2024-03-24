@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["ENTITY_TYPE_NAME_COMMENT"],"static":["ENTITY_TYPE_COMMENT"],"struct":["Comment"]};

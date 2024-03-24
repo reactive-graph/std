@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["COMPONENT_NAME_RANGE"],"enum":["RangeF64Properties","RangeI64Properties","RangeU64Properties"],"static":["COMPONENT_RANGE"],"trait":["RangeF64","RangeI64","RangeU64"]};

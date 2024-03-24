@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["ENTITY_TYPE_NAME_CONFIG_FILE"],"static":["ENTITY_TYPE_CONFIG_FILE"],"struct":["ConfigFile"]};

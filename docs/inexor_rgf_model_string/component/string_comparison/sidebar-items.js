@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["COMPONENT_NAME_STRING_COMPARISON"],"enum":["StringComparisonProperties"],"static":["COMPONENT_STRING_COMPARISON"],"struct":["StringComparison"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["COMPONENT_NAME_VALUE"],"enum":["ValueProperties"],"static":["COMPONENT_VALUE"],"trait":["DataValue","DataValueArray","DataValueBoolean","DataValueNumber","DataValueObject","DataValueString","GetValue","GetValueArray","GetValueBoolean","GetValueNumber","GetValueObject","GetValueString"]};

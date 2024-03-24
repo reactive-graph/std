@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["FN_COUNT_SUBSTRINGS","FN_COUNT_UNIQUE_WORDS","FN_COUNT_WORDS"],"static":["STRING_STRING_NUMBER_GATES"],"type":["StringStringNumberFunction"]};

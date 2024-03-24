@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["FN_CHAR_COUNT","FN_CHAR_COUNT_GRAPHEMES","FN_STRING_LENGTH"],"static":["STRING_NUMBER_OPERATIONS"],"type":["StringNumberFunction"]};

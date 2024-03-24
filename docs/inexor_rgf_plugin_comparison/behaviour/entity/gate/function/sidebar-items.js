@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["FN_EQUALS","FN_GREATER_THAN","FN_GREATER_THAN_OR_EQUALS","FN_LOWER_THAN","FN_LOWER_THAN_OR_EQUALS","FN_NOT_EQUALS"],"static":["COMPARISON_GATES"],"type":["ComparisonGateFunction"]};

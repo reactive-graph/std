@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["categorized_as","has_subcategory","tagged_with"]};

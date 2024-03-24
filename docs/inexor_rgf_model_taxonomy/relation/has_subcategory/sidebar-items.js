@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["RELATION_TYPE_NAME_HAS_SUBCATEGORY"],"static":["RELATION_TYPE_HAS_SUBCATEGORY"],"struct":["HasSubcategory"]};

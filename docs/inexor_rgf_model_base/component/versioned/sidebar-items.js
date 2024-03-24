@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["COMPONENT_NAME_VERSIONED"],"enum":["VersionedProperties"],"static":["COMPONENT_VERSIONED"],"trait":["SemVer","Versioned"]};

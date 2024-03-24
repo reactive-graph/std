@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["COMPONENT_NAME_NUMERIC_GATE"],"enum":["NumericGateProperties"],"static":["COMPONENT_NUMERIC_GATE"],"struct":["NumericGateF64","NumericGateI64"]};

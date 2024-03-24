@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["COMPONENT_NAME_STATE"],"enum":["StateProperties"],"static":["COMPONENT_STATE"],"trait":["SetState","SetStateArray","SetStateBoolean","SetStateNumber","SetStateObject","SetStateString"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["COMPONENT_NAME_ID3"],"enum":["Id3Properties"],"static":["COMPONENT_ID3"],"trait":["Id3"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["COMPONENT_NAME_GENERATOR"],"enum":["GeneratorProperties"],"static":["COMPONENT_GENERATOR"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["flow_2d","flow_3d"]};

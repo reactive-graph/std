@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["COMPONENT_NAME_DESCRIBABLE"],"enum":["DescribableProperties"],"static":["COMPONENT_DESCRIBABLE"],"trait":["Describable"]};

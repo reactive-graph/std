@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["hsv_to_rgb","rgb_to_hsv"]};

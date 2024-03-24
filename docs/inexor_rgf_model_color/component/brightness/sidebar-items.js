@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["COMPONENT_NAME_BRIGHTNESS"],"enum":["BrightnessProperties"],"static":["COMPONENT_BRIGHTNESS"],"trait":["Brightness"]};

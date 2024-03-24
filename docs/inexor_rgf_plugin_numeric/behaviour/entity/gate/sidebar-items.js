@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["behaviour_f64","function"]};

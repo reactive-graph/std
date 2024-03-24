@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["FN_CONTAINS","FN_ENDS_WITH","FN_STARTS_WITH"],"static":["STRING_COMPARISONS"],"type":["StringComparisonFunction"]};

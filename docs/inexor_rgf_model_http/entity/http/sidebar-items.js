@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["ENTITY_TYPE_NAME_HTTP"],"static":["ENTITY_TYPE_HTTP"],"struct":["Http"]};

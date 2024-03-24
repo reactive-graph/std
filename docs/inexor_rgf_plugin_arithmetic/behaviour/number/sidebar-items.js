@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["as_f64","as_i64","as_u64"]};

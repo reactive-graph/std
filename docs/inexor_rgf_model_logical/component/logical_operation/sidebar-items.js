@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["COMPONENT_NAME_LOGICAL_OPERATION"],"enum":["LogicalOperationProperties"],"static":["COMPONENT_LOGICAL_OPERATION"],"struct":["LogicalOperation"]};

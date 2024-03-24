@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["COMPONENT_NAME_RESULT_ANY"],"enum":["ResultAnyProperties"],"static":["COMPONENT_RESULT_ANY"],"trait":["ResultAny"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["COMPONENT_NAME_NUMERIC_OPERATION"],"enum":["NumericOperationProperties"],"static":["COMPONENT_NUMERIC_OPERATION"],"struct":["NumericOperationF64","NumericOperationI64"]};

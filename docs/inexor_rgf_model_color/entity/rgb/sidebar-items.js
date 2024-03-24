@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["ENTITY_TYPE_NAME_RGB"],"static":["ENTITY_TYPE_RGB"],"struct":["Rgb"]};

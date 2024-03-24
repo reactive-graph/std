@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["COMPONENT_NAME_BUFFER"],"enum":["BufferProperties"],"static":["COMPONENT_BUFFER"]};

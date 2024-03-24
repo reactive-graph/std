@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["RELATION_TYPE_NAME_MONTH_OF_YEAR"],"enum":["MonthOfYearProperties"],"static":["RELATION_TYPE_MONTH_OF_YEAR"],"struct":["MonthOfYear"]};

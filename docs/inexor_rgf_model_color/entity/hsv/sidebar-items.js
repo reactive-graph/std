@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["ENTITY_TYPE_NAME_HSV"],"static":["ENTITY_TYPE_HSV"],"struct":["Hsv"],"trait":["TypedHsv"]};

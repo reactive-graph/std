@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["RELATION_TYPE_NAME_CATEGORIZED_AS"],"static":["RELATION_TYPE_CATEGORIZED_AS"],"struct":["CategorizedAs"]};

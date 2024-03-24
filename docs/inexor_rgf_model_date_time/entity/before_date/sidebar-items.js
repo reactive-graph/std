@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["ENTITY_TYPE_NAME_BEFORE_DATE"],"static":["ENTITY_TYPE_BEFORE_DATE"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["COMPONENT_NAME_WEIGHTED"],"enum":["WeightedProperties"],"static":["COMPONENT_WEIGHTED"],"trait":["Weighted"]};

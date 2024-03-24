@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["COMPONENT_NAME_STRING_OPERATION"],"enum":["StringOperationProperties"],"static":["COMPONENT_STRING_OPERATION"],"struct":["StringOperation"]};

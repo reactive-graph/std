@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"struct":["TaxonomyComponentsProvider","TaxonomyEntityTypesProvider","TaxonomyRelationTypesProvider"]};

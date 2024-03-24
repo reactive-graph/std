@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["COMPONENT_NAME_CONDITION"],"enum":["ConditionProperties"],"static":["COMPONENT_CONDITION"],"trait":["Condition"]};

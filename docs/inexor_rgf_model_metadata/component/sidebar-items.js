@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["dublin_core","id3"]};

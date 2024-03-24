@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["ENTITY_TYPE_NAME_HOUR"],"enum":["HourProperties"],"static":["ENTITY_TYPE_HOUR"],"struct":["Hour"]};

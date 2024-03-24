@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["ENTITY_TYPE_NAME_CATEGORY"],"static":["ENTITY_TYPE_CATEGORY"],"struct":["Category"]};

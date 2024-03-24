@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["FN_AND","FN_NAND","FN_NOR","FN_OR","FN_XNOR","FN_XOR"],"static":["LOGICAL_GATES"],"type":["LogicalGateFunction"]};

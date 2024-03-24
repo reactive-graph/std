@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["ENTITY_TYPE_NAME_LOAD_BINARY_DATA"],"static":["ENTITY_TYPE_LOAD_BINARY_DATA"],"struct":["LoadBinaryData"]};

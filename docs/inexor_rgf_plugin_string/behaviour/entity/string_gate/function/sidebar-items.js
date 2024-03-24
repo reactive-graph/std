@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["FN_BEFORE","FN_BEFORE_LAST","FN_CHOP_AFTER","FN_CHOP_AFTER_LAST","FN_CONCAT","FN_REMOVE_PREFIX","FN_REMOVE_SUFFIX"],"static":["STRING_GATES"],"type":["StringGateFunction"]};

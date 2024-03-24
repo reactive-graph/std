@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["COMPONENT_NAME_RESPONSE"],"enum":["ResponseProperties"],"static":["COMPONENT_RESPONSE"],"trait":["Response"]};

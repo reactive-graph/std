@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["NAMESPACE_VALUE"],"mod":["component","entity_type"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["RELATION_TYPE_NAME_NEXT_DAY"],"static":["RELATION_TYPE_NEXT_DAY"],"struct":["NextDay"]};

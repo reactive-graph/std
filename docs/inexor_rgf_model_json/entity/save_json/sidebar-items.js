@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["ENTITY_TYPE_NAME_SAVE_JSON"],"static":["ENTITY_TYPE_SAVE_JSON"],"struct":["SaveJson"]};

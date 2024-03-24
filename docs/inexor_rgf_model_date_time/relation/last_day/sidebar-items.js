@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["RELATION_TYPE_NAME_LAST_DAY"],"static":["RELATION_TYPE_LAST_DAY"],"struct":["LastDay"]};

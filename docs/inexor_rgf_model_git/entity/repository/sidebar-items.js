@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["ENTITY_TYPE_NAME_REPOSITORY"],"static":["ENTITY_TYPE_REPOSITORY"],"struct":["Repository"]};

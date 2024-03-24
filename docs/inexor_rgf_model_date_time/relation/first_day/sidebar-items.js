@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["RELATION_TYPE_NAME_FIRST_DAY"],"static":["RELATION_TYPE_FIRST_DAY"],"struct":["FirstDay"]};

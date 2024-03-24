@@ -1,0 +1,5 @@
+(function() {var implementors = {
+"inexor_rgf_model_flow":[["impl Describable for <a class=\"struct\" href=\"inexor_rgf_model_flow/entity/comment/struct.Comment.html\" title=\"struct inexor_rgf_model_flow::entity::comment::Comment\">Comment</a>"]],
+"inexor_rgf_model_git":[["impl <a class=\"trait\" href=\"inexor_rgf_model_base/component/describable/trait.Describable.html\" title=\"trait inexor_rgf_model_base::component::describable::Describable\">Describable</a> for <a class=\"struct\" href=\"inexor_rgf_model_git/entity/repository/struct.Repository.html\" title=\"struct inexor_rgf_model_git::entity::repository::Repository\">Repository</a>"]],
+"inexor_rgf_model_taxonomy":[["impl Describable for <a class=\"struct\" href=\"inexor_rgf_model_taxonomy/entity/category/struct.Category.html\" title=\"struct inexor_rgf_model_taxonomy::entity::category::Category\">Category</a>"]]
+};if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

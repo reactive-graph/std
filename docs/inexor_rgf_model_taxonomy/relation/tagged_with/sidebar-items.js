@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["RELATION_TYPE_NAME_TAGGED_WITH"],"static":["RELATION_TYPE_TAGGED_WITH"],"struct":["TaggedWith"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["COMPONENT_NAME_LOGICAL_GATE"],"enum":["LogicalGateProperties"],"static":["COMPONENT_LOGICAL_GATE"],"struct":["LogicalGate"]};
