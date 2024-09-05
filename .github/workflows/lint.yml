@@ -27,12 +27,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: VCS Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Install latest nightly
-        uses: actions-rs/toolchain@v1
+        uses: dtolnay/rust-toolchain@master
         with:
-          toolchain: nightly
-          override: true
+          toolchain: nightly-2024-08-19
           components: clippy
       - name: Setup Node.js 18
         uses: actions/setup-node@v3
@@ -46,9 +45,9 @@ jobs:
         uses: borales/actions-yarn@v4
         with:
           cmd: --cwd plugins/graphql-schema-visualization/web install
+      - name: Cache dependencies
+        uses: Swatinem/rust-cache@v2
       - name: Run sccache-cache
-        uses: mozilla-actions/sccache-action@v0.0.3
+        uses: mozilla-actions/sccache-action@v0.0.5
       - name: Run cargo clippy
-        uses: actions-rs/cargo@v1
-        with:
-          command: clippy
+        run: cargo clippy
