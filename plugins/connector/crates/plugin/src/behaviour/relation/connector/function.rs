@@ -2,11 +2,11 @@ use std::clone::Clone;
 use std::sync::Arc;
 use std::sync::LazyLock;
 
+use log::debug;
+use log::trace;
 use reactive_graph_behaviour_model_impl::relation::function::RelationBehaviourFunctions;
 use reactive_graph_behaviour_model_impl::relation::function::RelationBehaviourFunctionsStorage;
 use reactive_graph_behaviour_model_impl::relation::RelationBehaviourFactoryCreator;
-use log::debug;
-use log::trace;
 use serde_json::json;
 use serde_json::Value;
 

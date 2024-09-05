@@ -1,12 +1,12 @@
 use std::sync::Arc;
 use std::sync::LazyLock;
 
+use log::debug;
+use log::trace;
 use reactive_graph_behaviour_model_impl::entity::EntityBehaviourFactoryCreator;
 use reactive_graph_behaviour_model_impl::entity::EntityBehaviourFunctions;
 use reactive_graph_behaviour_model_impl::entity::EntityBehaviourFunctionsStorage;
 use reactive_graph_reactive_model_impl::ReactiveEntity;
-use log::debug;
-use log::trace;
 use serde_json::Value;
 
 use reactive_graph_model_state::NAMESPACE_STATE;

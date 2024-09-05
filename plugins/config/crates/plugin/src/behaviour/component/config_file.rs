@@ -1,12 +1,12 @@
 use std::path::Path;
 
+use log::error;
 use reactive_graph_behaviour_model_api::behaviour_validator;
 use reactive_graph_behaviour_model_api::prelude::*;
 use reactive_graph_behaviour_model_impl::entity_behaviour;
 use reactive_graph_graph::prelude::*;
 use reactive_graph_reactive_model_impl::ReactiveEntity;
 use reactive_graph_runtime_model::ActionProperties::TRIGGER;
-use log::error;
 use serde_json::Value;
 use uuid::Uuid;
 
