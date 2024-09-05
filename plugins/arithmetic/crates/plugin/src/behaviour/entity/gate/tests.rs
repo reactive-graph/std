@@ -1,14 +1,14 @@
-use inexor_rgf_behaviour_model_api::prelude::*;
-use inexor_rgf_graph::prelude::*;
-use inexor_rgf_reactive_model_impl::ReactiveEntity;
-use inexor_rgf_reactive_model_impl::ReactiveProperties;
+use reactive_graph_behaviour_model_api::prelude::*;
+use reactive_graph_graph::prelude::*;
+use reactive_graph_reactive_model_impl::ReactiveEntity;
+use reactive_graph_reactive_model_impl::ReactiveProperties;
 use serde_json::json;
 use uuid::Uuid;
 
-use inexor_rgf_model_arithmetic::ArithmeticGateF64;
-use inexor_rgf_model_arithmetic::ArithmeticGateProperties;
-use inexor_rgf_model_arithmetic::COMPONENT_ARITHMETIC_GATE;
-use inexor_rgf_model_arithmetic::NAMESPACE_ARITHMETIC_F64;
+use reactive_graph_model_arithmetic::ArithmeticGateF64;
+use reactive_graph_model_arithmetic::ArithmeticGateProperties;
+use reactive_graph_model_arithmetic::COMPONENT_ARITHMETIC_GATE;
+use reactive_graph_model_arithmetic::NAMESPACE_ARITHMETIC_F64;
 
 use crate::behaviour::entity::gate::behaviour_f64::ArithmeticGateF64Factory;
 use crate::behaviour::entity::gate::function::ARITHMETIC_GATES_F64;

@@ -6,16 +6,16 @@ pub mod function;
 
 #[cfg(test)]
 pub mod tests {
-    use inexor_rgf_graph::prelude::*;
-    use inexor_rgf_reactive_model_impl::ReactiveEntity;
-    use inexor_rgf_reactive_model_impl::ReactiveProperties;
+    use reactive_graph_graph::prelude::*;
+    use reactive_graph_reactive_model_impl::ReactiveEntity;
+    use reactive_graph_reactive_model_impl::ReactiveProperties;
     use serde_json::json;
     use uuid::Uuid;
 
-    use inexor_rgf_model_numeric::NumericOperationProperties::LHS;
-    use inexor_rgf_model_numeric::COMPONENT_NUMERIC_OPERATION;
-    use inexor_rgf_model_result::ResultNumberF64Properties::RESULT;
-    use inexor_rgf_model_result::COMPONENT_RESULT_NUMBER;
+    use reactive_graph_model_numeric::NumericOperationProperties::LHS;
+    use reactive_graph_model_numeric::COMPONENT_NUMERIC_OPERATION;
+    use reactive_graph_model_result::ResultNumberF64Properties::RESULT;
+    use reactive_graph_model_result::COMPONENT_RESULT_NUMBER;
 
     pub fn numeric_operation(ty: &EntityTypeId) -> ReactiveEntity {
         let id = Uuid::new_v4();

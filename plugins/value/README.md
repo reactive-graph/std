@@ -1,4 +1,4 @@
-# Plugin `inexor-rgf-plugin-value`
+# Plugin `reactive-graph-plugin-value`
 
 ### About this plugin
 
@@ -15,16 +15,16 @@ There are entity types for each data type.
 
 #### Components
 
-| *Component*            | *Properties* | *Data Type* | *Socket Type* | Description                           |
-|------------------------|--------------|-------------|---------------|---------------------------------------|
-| value_boolean          | value        | boolean     | output        | A boolean value                       |
-| value_number           | value        | number      | output        | A numeric value                       |
-| value_string           | value        | string      | output        | A string value                        |
-| value_array            | value        | array       | output        | A array value                         |
-| value_object           | value        | object      | output        | A object value                        | 
-|                        |
-| value_debugger_debug   |              |             |               | Debugger for values (log level debug) |
-| value_debugger_trace   |              |             |               | Debugger for values (log level trace) |
+| *Component*          | *Properties* | *Data Type* | *Socket Type* | Description                           |
+|----------------------|--------------|-------------|---------------|---------------------------------------|
+| value_boolean        | value        | boolean     | output        | A boolean value                       |
+| value_number         | value        | number      | output        | A numeric value                       |
+| value_string         | value        | string      | output        | A string value                        |
+| value_array          | value        | array       | output        | A array value                         |
+| value_object         | value        | object      | output        | A object value                        | 
+|                      |
+| value_debugger_debug |              |             |               | Debugger for values (log level debug) |
+| value_debugger_trace |              |             |               | Debugger for values (log level trace) |
 
 #### Entity Types
 

@@ -1,16 +1,16 @@
-use inexor_rgf_behaviour_model_api::behaviour_validator;
-use inexor_rgf_behaviour_model_api::prelude::*;
-use inexor_rgf_behaviour_model_impl::entity_behaviour;
+use reactive_graph_behaviour_model_api::behaviour_validator;
+use reactive_graph_behaviour_model_api::prelude::*;
+use reactive_graph_behaviour_model_impl::entity_behaviour;
 
-use inexor_rgf_graph::prelude::*;
-use inexor_rgf_reactive_model_impl::ReactiveEntity;
+use reactive_graph_graph::prelude::*;
+use reactive_graph_reactive_model_impl::ReactiveEntity;
 use serde_json::json;
 use serde_json::Value;
 use uuid::Uuid;
 
 use function::StringBoolFunction;
-use inexor_rgf_model_result::ResultBooleanProperties::RESULT;
-use inexor_rgf_model_string::StringBoolOperationProperties::LHS;
+use reactive_graph_model_result::ResultBooleanProperties::RESULT;
+use reactive_graph_model_string::StringBoolOperationProperties::LHS;
 
 pub mod function;
 

@@ -1,5 +1,5 @@
-use inexor_rgf_graph::entity_ty;
-use inexor_rgf_reactive_model_api::entity_model;
+use reactive_graph_graph::entity_ty;
+use reactive_graph_reactive_model_api::entity_model;
 
 use crate::component::value::DataValue;
 use crate::component::value::DataValueArray;

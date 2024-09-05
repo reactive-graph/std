@@ -12,8 +12,8 @@ use crate::model_value::GetValueBoolean;
 use crate::model_value::ValueProperties::VALUE;
 use crate::model_value::COMPONENT_VALUE;
 use crate::reactive::BehaviourFactory;
-use inexor_rgf_graph::BehaviourTypeId;
-use inexor_rgf_graph::NamespacedType;
+use reactive_graph_graph::BehaviourTypeId;
+use reactive_graph_graph::NamespacedType;
 
 #[test]
 fn state_bool_test() {

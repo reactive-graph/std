@@ -7,13 +7,13 @@ use git2::Repository;
 
 use crate::TransferProgress;
 use crate::NAMESPACE_GIT;
-use inexor_rgf_behaviour_model_api::behaviour_ty;
-use inexor_rgf_behaviour_model_api::component_behaviour_ty;
-use inexor_rgf_graph::component_model;
-use inexor_rgf_graph::component_ty;
-use inexor_rgf_graph::properties;
-use inexor_rgf_model_file::FilePath;
-use inexor_rgf_model_http::Url;
+use reactive_graph_behaviour_model_api::behaviour_ty;
+use reactive_graph_behaviour_model_api::component_behaviour_ty;
+use reactive_graph_graph::component_model;
+use reactive_graph_graph::component_ty;
+use reactive_graph_graph::properties;
+use reactive_graph_model_file::FilePath;
+use reactive_graph_model_http::Url;
 
 properties!(
     RepositoryProperties,

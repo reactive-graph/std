@@ -5,17 +5,17 @@ use crate::behaviour::entity::gate::function::ARITHMETIC_GATES_U64;
 use crate::behaviour::entity::operation::function::ARITHMETIC_OPERATIONS_F64;
 use crate::behaviour::entity::operation::function::ARITHMETIC_OPERATIONS_I64;
 use crate::behaviour::entity::operation::function::ARITHMETIC_OPERATIONS_U64;
-use inexor_rgf_model_arithmetic::BEHAVIOUR_COUNTER;
-use inexor_rgf_model_arithmetic::ENTITY_BEHAVIOUR_COUNTER;
-use inexor_rgf_plugin_api::prelude::plugin::*;
-use inexor_rgf_plugin_api::prelude::providers::*;
-use inexor_rgf_plugin_api::EntityBehaviourRegistry;
+use reactive_graph_model_arithmetic::BEHAVIOUR_COUNTER;
+use reactive_graph_model_arithmetic::ENTITY_BEHAVIOUR_COUNTER;
+use reactive_graph_plugin_api::prelude::plugin::*;
+use reactive_graph_plugin_api::prelude::providers::*;
+use reactive_graph_plugin_api::EntityBehaviourRegistry;
 
 export_plugin!({
     "dependencies": [
-        { "name": "inexor-rgf-plugin-base", "version": ">=0.10.0, <0.11.0" }
-        { "name": "inexor-rgf-plugin-trigger", "version": ">=0.10.0, <0.11.0" }
-        { "name": "inexor-rgf-plugin-result", "version": ">=0.10.0, <0.11.0" }
+        { "name": "reactive-graph-plugin-base", "version": ">=0.10.0, <0.11.0" }
+        { "name": "reactive-graph-plugin-trigger", "version": ">=0.10.0, <0.11.0" }
+        { "name": "reactive-graph-plugin-result", "version": ">=0.10.0, <0.11.0" }
     ]
 });
 

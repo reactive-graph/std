@@ -1,6 +1,6 @@
 [package]
-name = "inexor-rgf-plugin-graphql-schema-visualization"
-description = "Inexor - Reactive Graph Flow - Plugin - GraphQL Schema Visualization"
+name = "reactive-graph-plugin-graphql-schema-visualization"
+description = "Reactive Graph - Plugin - GraphQL Schema Visualization"
 version.workspace = true
 authors.workspace = true
 edition.workspace = true
@@ -11,10 +11,10 @@ readme = "../../README.md"
 exclude = ["web/node_modules"]
 
 [package.metadata.deb]
-name = "libinexor-rgf-plugin-graphql-schema-visualization"
-depends = "inexor-rgf"
+name = "libreactive-graph-plugin-graphql-schema-visualization"
+depends = "reactive-graph"
 assets = [
-    ["target/release/libinexor_rgf_plugin_graphql_schema_visualization.so", "usr/share/inexor-rgf/default/plugins/installed/libinexor_rgf_plugin_graphql_schema_visualization.so", "755"],
+    ["target/release/libreactive_graph_plugin_graphql_schema_visualization.so", "usr/share/reactive-graph/default/plugins/installed/libreactive_graph_plugin_graphql_schema_visualization.so", "755"],
 ]
 
 [dependencies]
@@ -30,9 +30,9 @@ serde_json = { workspace = true }
 springtime-di = { workspace = true, default-features = false, features = ["threadsafe", "derive"] }
 uuid = { workspace = true }
 
-inexor-rgf-config-model = { workspace = true }
-inexor-rgf-graph = { workspace = true }
-inexor-rgf-plugin-api = { workspace = true }
+reactive-graph-config-model = { workspace = true }
+reactive-graph-graph = { workspace = true }
+reactive-graph-plugin-api = { workspace = true }
 
 [build-dependencies]
 static-files = "0.2.3"

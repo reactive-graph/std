@@ -1,14 +1,14 @@
-use inexor_rgf_graph::entity_ty;
-use inexor_rgf_graph::properties;
-use inexor_rgf_reactive_model_api::entity_model;
+use reactive_graph_reactive_model_api::entity_model;
+use reactive_graph_graph::entity_ty;
+use reactive_graph_graph::properties;
 use serde_json::json;
 use serde_json::Value;
 
-use inexor_rgf_model_result::ResultArray;
+use reactive_graph_model_result::ResultArray;
 
 use crate::NAMESPACE_JSON;
-use inexor_rgf_behaviour_model_api::behaviour_ty;
-use inexor_rgf_behaviour_model_api::entity_behaviour_ty;
+use reactive_graph_behaviour_model_api::behaviour_ty;
+use reactive_graph_behaviour_model_api::entity_behaviour_ty;
 
 properties!(ArrayPushProperties, (ARRAY, "array", json!([])), (VALUE, "value", Value::Null));
 

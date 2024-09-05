@@ -1,6 +1,6 @@
 [package]
-name = "inexor-rgf-model-system-environment"
-description = "Inexor - Reactive Graph Flow - Model - System Environment"
+name = "reactive-graph-model-system-environment"
+description = "Reactive Graph - Model - System Environment"
 version.workspace = true
 authors.workspace = true
 edition.workspace = true
@@ -12,14 +12,14 @@ readme = "../../../../README.md"
 serde_json = { workspace = true }
 uuid = { workspace = true, features = ["serde", "v4", "v5"] }
 
-inexor-rgf-graph = { workspace = true }
-inexor-rgf-reactive-model-api = { workspace = true }
-inexor-rgf-reactive-model-impl = { workspace = true }
+reactive-graph-graph = { workspace = true }
+reactive-graph-reactive-model-api = { workspace = true }
+reactive-graph-reactive-model-impl = { workspace = true }
 
 [dev-dependencies]
 default-test = { workspace = true }
-inexor-rgf-graph = { workspace = true, features = ["test"] }
-inexor-rgf-test-utils = { workspace = true }
+reactive-graph-graph = { workspace = true, features = ["test"] }
+reactive-graph-test-utils = { workspace = true }
 
 [lib]
 crate-type = ["lib"]

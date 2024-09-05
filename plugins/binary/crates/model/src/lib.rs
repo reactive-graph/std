@@ -1,5 +1,3 @@
-#![feature(lazy_cell)]
-
 pub use component::binary_data::*;
 pub use component::load_binary_data::*;
 pub use component::save_binary_data::*;

@@ -1,21 +1,21 @@
-use inexor_rgf_behaviour_model_api::behaviour_validator;
-use inexor_rgf_behaviour_model_api::prelude::*;
-use inexor_rgf_behaviour_model_impl::entity_behaviour;
-use inexor_rgf_graph::prelude::*;
-use inexor_rgf_reactive_model_impl::ReactiveEntity;
+use reactive_graph_behaviour_model_api::behaviour_validator;
+use reactive_graph_behaviour_model_api::prelude::*;
+use reactive_graph_behaviour_model_impl::entity_behaviour;
+use reactive_graph_reactive_model_impl::ReactiveEntity;
+use reactive_graph_graph::prelude::*;
 use serde_json::json;
 use serde_json::Value;
 use uuid::Uuid;
 
 use log::error;
 
-use inexor_rgf_model_http::JsonRpcProperties::ERROR;
-use inexor_rgf_model_http::JsonRpcProperties::JSON_RPC_VERSION;
-use inexor_rgf_model_http::JsonRpcProperties::METHOD;
-use inexor_rgf_model_http::JsonRpcProperties::PARAMS;
-use inexor_rgf_model_http::UrlProperties::URL;
-use inexor_rgf_model_result::ResultObjectProperties::RESULT;
-use inexor_rgf_runtime_model::ActionProperties::TRIGGER;
+use reactive_graph_model_http::JsonRpcProperties::ERROR;
+use reactive_graph_model_http::JsonRpcProperties::JSON_RPC_VERSION;
+use reactive_graph_model_http::JsonRpcProperties::METHOD;
+use reactive_graph_model_http::JsonRpcProperties::PARAMS;
+use reactive_graph_model_http::UrlProperties::URL;
+use reactive_graph_model_result::ResultObjectProperties::RESULT;
+use reactive_graph_runtime_model::ActionProperties::TRIGGER;
 
 entity_behaviour!(JsonRpc, JsonRpcFactory, JsonRpcFsm, JsonRpcBehaviourTransitions, JsonRpcValidator);
 

@@ -1,5 +1,3 @@
-#![feature(lazy_cell)]
-
 use uuid::Uuid;
 
 pub use entity::*;

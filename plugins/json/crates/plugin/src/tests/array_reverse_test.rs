@@ -1,9 +1,9 @@
-use inexor_rgf_model_json::ArrayReverse;
-use inexor_rgf_model_json::ArrayReverseProperties::ARRAY;
-use inexor_rgf_model_json::BEHAVIOUR_ARRAY_REVERSE;
-use inexor_rgf_model_json::ENTITY_TYPE_ARRAY_REVERSE;
-use inexor_rgf_model_result::ResultArray;
-use inexor_rgf_model_result::ResultArrayProperties::RESULT;
+use reactive_graph_model_json::ArrayReverse;
+use reactive_graph_model_json::ArrayReverseProperties::ARRAY;
+use reactive_graph_model_json::BEHAVIOUR_ARRAY_REVERSE;
+use reactive_graph_model_json::ENTITY_TYPE_ARRAY_REVERSE;
+use reactive_graph_model_result::ResultArray;
+use reactive_graph_model_result::ResultArrayProperties::RESULT;
 use serde_json::json;
 
 use crate::behaviour::entity::array_reverse::ArrayReverseFactory;

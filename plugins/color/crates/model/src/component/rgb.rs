@@ -1,9 +1,9 @@
 use prisma::Rgb;
 
 use crate::NAMESPACE_COLOR;
-use inexor_rgf_graph::component_model;
-use inexor_rgf_graph::component_ty;
-use inexor_rgf_graph::properties;
+use reactive_graph_graph::component_model;
+use reactive_graph_graph::component_ty;
+use reactive_graph_graph::properties;
 
 properties!(RgbProperties, (RED, "red", 0.0), (GREEN, "green", 0.0), (BLUE, "blue", 0.0));
 

@@ -1,14 +1,14 @@
-use inexor_rgf_behaviour_model_api::behaviour_validator;
-use inexor_rgf_behaviour_model_api::prelude::*;
-use inexor_rgf_behaviour_model_impl::entity_behaviour;
-use inexor_rgf_graph::prelude::*;
-use inexor_rgf_reactive_model_impl::ReactiveEntity;
+use reactive_graph_behaviour_model_api::behaviour_validator;
+use reactive_graph_behaviour_model_api::prelude::*;
+use reactive_graph_behaviour_model_impl::entity_behaviour;
+use reactive_graph_graph::prelude::*;
+use reactive_graph_reactive_model_impl::ReactiveEntity;
 use serde_json::json;
 use serde_json::Value;
 use uuid::Uuid;
 
-use inexor_rgf_model_numeric::NumericOperationProperties::LHS;
-use inexor_rgf_model_result::ResultNumberF64Properties::RESULT;
+use reactive_graph_model_numeric::NumericOperationProperties::LHS;
+use reactive_graph_model_result::ResultNumberF64Properties::RESULT;
 
 use crate::behaviour::as_f64;
 use crate::behaviour::entity::operation::function::NumericOperationF64Function;
@@ -55,14 +55,14 @@ impl BehaviourTransitions<Uuid, ReactiveEntity> for NumericOperationF64Behaviour
 mod tests {
     use std::sync::Arc;
 
-    use inexor_rgf_behaviour_model_api::BehaviourFactory;
-    use inexor_rgf_behaviour_model_api::BehaviourFsm;
-    use inexor_rgf_behaviour_model_api::BehaviourTypeId;
-    use inexor_rgf_graph::prelude::*;
-    use inexor_rgf_reactive_model_impl::ReactiveEntity;
+    use reactive_graph_behaviour_model_api::BehaviourFactory;
+    use reactive_graph_behaviour_model_api::BehaviourFsm;
+    use reactive_graph_behaviour_model_api::BehaviourTypeId;
+    use reactive_graph_graph::prelude::*;
+    use reactive_graph_reactive_model_impl::ReactiveEntity;
     use uuid::Uuid;
 
-    use inexor_rgf_model_numeric::NumericOperationF64;
+    use reactive_graph_model_numeric::NumericOperationF64;
 
     use crate::behaviour::entity::operation::behaviour_f64::NumericOperationF64Factory;
     use crate::behaviour::entity::operation::function::*;

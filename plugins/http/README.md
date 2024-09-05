@@ -6,7 +6,7 @@ With this plugin it's possible to integrate external services into your home aut
 
 ## Type System
 
-<img src="https://raw.githubusercontent.com/inexorgame/inexor-rgf-plugin-http/main/docs/images/type_system.png">
+<img src="https://raw.githubusercontent.com/reactive-graph/plugins-core/main/docs/images/type_system.png">
 
 ## Entity Types
 
@@ -28,9 +28,9 @@ With this plugin it's possible to integrate external services into your home aut
 
 ## Entity Behaviours
 
-| Name | Description                                                                                                                                                                           |
-|------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Http | Sends a HTTP request with the given HTTP method to the given URL entity using the given headers and payload.<br/>The trigger is the property `payload` even if there is no payload.   |
+| Name | Description                                                                                                                                                                         |
+|------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Http | Sends a HTTP request with the given HTTP method to the given URL entity using the given headers and payload.<br/>The trigger is the property `payload` even if there is no payload. |
 
 ## Platform Compatibility
 

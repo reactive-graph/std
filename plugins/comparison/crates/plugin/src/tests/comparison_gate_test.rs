@@ -1,5 +1,5 @@
-use inexor_rgf_model_comparison::ComparisonGate;
-use inexor_rgf_model_result::ResultBoolean;
+use reactive_graph_model_comparison::ComparisonGate;
+use reactive_graph_model_result::ResultBoolean;
 use serde_json::json;
 
 use crate::behaviour::entity::gate::behaviour::ComparisonGateFactory;
@@ -7,13 +7,13 @@ use crate::behaviour::entity::gate::COMPARISON_GATES;
 use crate::builder::ReactiveEntityInstanceBuilder;
 use crate::reactive::BehaviourFactory;
 use crate::reactive::BehaviourState;
-use inexor_rgf_graph::BehaviourTypeId;
-use inexor_rgf_graph::EntityTypeId;
-use inexor_rgf_graph::PropertyInstanceGetter;
-use inexor_rgf_graph::PropertyInstanceSetter;
-use inexor_rgf_model_comparison::ComparisonGateProperties;
-use inexor_rgf_model_comparison::NAMESPACE_COMPARISON;
-use inexor_rgf_model_result::ResultBooleanProperties;
+use reactive_graph_graph::BehaviourTypeId;
+use reactive_graph_graph::EntityTypeId;
+use reactive_graph_graph::PropertyInstanceGetter;
+use reactive_graph_graph::PropertyInstanceSetter;
+use reactive_graph_model_comparison::ComparisonGateProperties;
+use reactive_graph_model_comparison::NAMESPACE_COMPARISON;
+use reactive_graph_model_result::ResultBooleanProperties;
 
 const LHS: ComparisonGateProperties = ComparisonGateProperties::LHS;
 const RHS: ComparisonGateProperties = ComparisonGateProperties::RHS;

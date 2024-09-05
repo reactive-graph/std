@@ -1,21 +1,21 @@
-use inexor_rgf_behaviour_model_api::behaviour_validator;
-use inexor_rgf_behaviour_model_api::BehaviourConnect;
-use inexor_rgf_behaviour_model_api::BehaviourConnectFailed;
-use inexor_rgf_behaviour_model_api::BehaviourDisconnect;
-use inexor_rgf_behaviour_model_api::BehaviourFsm;
-use inexor_rgf_behaviour_model_api::BehaviourInit;
-use inexor_rgf_behaviour_model_api::BehaviourShutdown;
-use inexor_rgf_behaviour_model_api::BehaviourTransitions;
-use inexor_rgf_behaviour_model_api::PropertyObserverContainer;
-use inexor_rgf_behaviour_model_impl::entity_behaviour;
-use inexor_rgf_graph::prelude::*;
-use inexor_rgf_reactive_model_impl::ReactiveEntity;
 use log::debug;
+use reactive_graph_behaviour_model_api::behaviour_validator;
+use reactive_graph_behaviour_model_api::BehaviourConnect;
+use reactive_graph_behaviour_model_api::BehaviourConnectFailed;
+use reactive_graph_behaviour_model_api::BehaviourDisconnect;
+use reactive_graph_behaviour_model_api::BehaviourFsm;
+use reactive_graph_behaviour_model_api::BehaviourInit;
+use reactive_graph_behaviour_model_api::BehaviourShutdown;
+use reactive_graph_behaviour_model_api::BehaviourTransitions;
+use reactive_graph_behaviour_model_api::PropertyObserverContainer;
+use reactive_graph_behaviour_model_impl::entity_behaviour;
+use reactive_graph_graph::prelude::*;
+use reactive_graph_reactive_model_impl::ReactiveEntity;
 use serde_json::Value;
 use uuid::Uuid;
 
 pub use functions::*;
-use inexor_rgf_model_value::ValueProperties;
+use reactive_graph_model_value::ValueProperties;
 
 pub mod functions;
 

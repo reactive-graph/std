@@ -4,17 +4,17 @@ use std::path::Path;
 
 use base64::engine::general_purpose::STANDARD;
 use base64::Engine;
-use inexor_rgf_behaviour_model_api::behaviour_validator;
-use inexor_rgf_behaviour_model_api::prelude::*;
-use inexor_rgf_behaviour_model_impl::entity_behaviour;
-use inexor_rgf_graph::prelude::*;
-use inexor_rgf_reactive_model_impl::ReactiveEntity;
-use inexor_rgf_runtime_model::ActionProperties::TRIGGER;
+use reactive_graph_behaviour_model_api::behaviour_validator;
+use reactive_graph_behaviour_model_api::prelude::*;
+use reactive_graph_behaviour_model_impl::entity_behaviour;
+use reactive_graph_graph::prelude::*;
+use reactive_graph_reactive_model_impl::ReactiveEntity;
+use reactive_graph_runtime_model::ActionProperties::TRIGGER;
 use serde_json::Value;
 use uuid::Uuid;
 
-use inexor_rgf_model_binary::BinaryDataProperties::DATA_URL;
-use inexor_rgf_model_file::FileProperties::FILENAME;
+use reactive_graph_model_binary::BinaryDataProperties::DATA_URL;
+use reactive_graph_model_file::FileProperties::FILENAME;
 
 entity_behaviour!(
     SaveBinaryData,

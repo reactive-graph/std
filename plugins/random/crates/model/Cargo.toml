@@ -1,6 +1,6 @@
 [package]
-name = "inexor-rgf-model-random"
-description = "Inexor - Reactive Graph Flow - Model - Random"
+name = "reactive-graph-model-random"
+description = "Reactive Graph - Model - Random"
 version.workspace = true
 authors.workspace = true
 edition.workspace = true
@@ -13,13 +13,13 @@ lazy_static = { workspace = true }
 serde_json = { workspace = true }
 strum_macros = { workspace = true }
 
-inexor-rgf-behaviour-model-api = { workspace = true }
-inexor-rgf-graph = { workspace = true }
-inexor-rgf-reactive-model-api = { workspace = true }
-inexor-rgf-reactive-model-impl = { workspace = true }
-inexor-rgf-runtime-model = { workspace = true }
+reactive-graph-behaviour-model-api = { workspace = true }
+reactive-graph-graph = { workspace = true }
+reactive-graph-reactive-model-api = { workspace = true }
+reactive-graph-reactive-model-impl = { workspace = true }
+reactive-graph-runtime-model = { workspace = true }
 
-inexor-rgf-model-result = { version = "0.10.0", path = "../../../result/crates/model" }
+reactive-graph-model-result = { version = "0.10.0", path = "../../../result/crates/model" }
 
 [lib]
 crate-type = ["lib"]

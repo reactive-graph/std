@@ -1,18 +1,18 @@
-use inexor_rgf_behaviour_model_api::behaviour_validator;
-use inexor_rgf_behaviour_model_api::prelude::*;
-use inexor_rgf_behaviour_model_impl::entity_behaviour;
-use inexor_rgf_graph::prelude::*;
-use inexor_rgf_reactive_model_impl::ReactiveEntity;
 use log::error;
+use reactive_graph_behaviour_model_api::behaviour_validator;
+use reactive_graph_behaviour_model_api::prelude::*;
+use reactive_graph_behaviour_model_impl::entity_behaviour;
+use reactive_graph_graph::prelude::*;
+use reactive_graph_reactive_model_impl::ReactiveEntity;
 use serde_json::json;
 use serde_json::Value;
 use tera::Context;
 use tera::Tera;
 use uuid::Uuid;
 
-use inexor_rgf_model_result::ResultStringProperties::RESULT;
-use inexor_rgf_model_string::TemplatingProperties::CONTEXT;
-use inexor_rgf_model_string::TemplatingProperties::TEMPLATE;
+use reactive_graph_model_result::ResultStringProperties::RESULT;
+use reactive_graph_model_string::TemplatingProperties::CONTEXT;
+use reactive_graph_model_string::TemplatingProperties::TEMPLATE;
 
 entity_behaviour!(Templating, TemplatingFactory, TemplatingFsm, TemplatingBehaviourTransitions, TemplatingValidator);
 

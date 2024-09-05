@@ -1,7 +1,7 @@
 {
   "dependencies": [
     {
-      "name": "inexor-rgf-plugin-base",
+      "name": "reactive-graph-plugin-base",
       "version": ">=0.10.0, <0.11.0"
     }
   ]

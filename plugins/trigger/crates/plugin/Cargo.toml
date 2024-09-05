@@ -1,6 +1,6 @@
 [package]
-name = "inexor-rgf-plugin-trigger"
-description = "Inexor - Reactive Graph Flow - Plugin - Trigger"
+name = "reactive-graph-plugin-trigger"
+description = "Reactive Graph - Plugin - Trigger"
 version.workspace = true
 authors.workspace = true
 edition.workspace = true
@@ -9,10 +9,10 @@ repository.workspace = true
 readme = "../../../../README.md"
 
 [package.metadata.deb]
-name = "libinexor-rgf-plugin-trigger"
-depends = "inexor-rgf, libinexor-rgf-plugin-base"
+name = "libreactive-graph-plugin-trigger"
+depends = "reactive-graph, libreactive-graph-plugin-base"
 assets = [
-    ["target/release/libinexor_rgf_plugin_trigger.so", "usr/share/inexor-rgf/default/plugins/installed/libinexor_rgf_plugin_trigger.so", "755"],
+    ["target/release/libreactive_graph_plugin_trigger.so", "usr/share/reactive-graph/default/plugins/installed/libreactive_graph_plugin_trigger.so", "755"],
 ]
 
 [dependencies]
@@ -22,9 +22,9 @@ log4rs = { workspace = true, features = ["console_appender", "file_appender", "t
 rust-embed = { workspace = true, features = ["debug-embed", "compression"] }
 springtime-di = { workspace = true, default-features = false, features = ["threadsafe", "derive"] }
 
-inexor-rgf-graph = { workspace = true }
-inexor-rgf-plugin-api = { workspace = true }
-inexor-rgf-type-system-api = { workspace = true }
+reactive-graph-graph = { workspace = true }
+reactive-graph-plugin-api = { workspace = true }
+reactive-graph-type-system-api = { workspace = true }
 
 [lib]
 # Plugins use crate-type cdylib

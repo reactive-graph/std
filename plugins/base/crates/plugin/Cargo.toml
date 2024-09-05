@@ -1,6 +1,6 @@
 [package]
-name = "inexor-rgf-plugin-base"
-description = "Inexor - Reactive Graph Flow - Plugin - Base"
+name = "reactive-graph-plugin-base"
+description = "Reactive Graph - Plugin - Base"
 version.workspace = true
 authors.workspace = true
 edition.workspace = true
@@ -9,27 +9,27 @@ repository.workspace = true
 readme = "../../../../README.md"
 
 [package.metadata.deb]
-name = "libinexor-rgf-plugin-base"
-depends = "inexor-rgf"
+name = "libreactive-graph-plugin-base"
+depends = "reactive-graph"
 assets = [
-    ["target/release/libinexor_rgf_plugin_base.so", "usr/share/inexor-rgf/default/plugins/installed/libinexor_rgf_plugin_base.so", "755"],
+    ["target/release/libreactive_graph_plugin_base.so", "usr/share/reactive-graph/default/plugins/installed/libreactive_graph_plugin_base.so", "755"],
 ]
 
 [dependencies]
 async-trait = { workspace = true }
 dashmap = { workspace = true }
 log = { workspace = true, features = ["std", "serde"] }
-log4rs = { workspace = true, features = ["console_appender", "file_appender", "toml_format"]}
+log4rs = { workspace = true, features = ["console_appender", "file_appender", "toml_format"] }
 rust-embed = { workspace = true, features = ["debug-embed", "compression"] }
-springtime-di = { workspace = true, default-features = false, features = [ "threadsafe", "derive" ] }
+springtime-di = { workspace = true, default-features = false, features = ["threadsafe", "derive"] }
 uuid = { workspace = true, features = ["serde", "v4"] }
 
-inexor-rgf-plugin-api = { workspace = true }
-inexor-rgf-type-system-api = { workspace = true }
-inexor-rgf-graph = { workspace = true }
+reactive-graph-plugin-api = { workspace = true }
+reactive-graph-type-system-api = { workspace = true }
+reactive-graph-graph = { workspace = true }
 
 [dev-dependencies]
-inexor-rgf-model-base = { version = "0.10.0", path = "../../crates/model" }
+reactive-graph-model-base = { version = "0.10.0", path = "../../crates/model" }
 
 [lib]
 # Plugins use crate-type cdylib
@@ -39,5 +39,5 @@ crate-type = ["cdylib"]
 
 [package.metadata.cargo-post.dependencies]
 toml = "0.7"
-serde = { version = "1.0", features = [ "derive" ] }
+serde = { version = "1.0", features = ["derive"] }
 glob = "0.3"

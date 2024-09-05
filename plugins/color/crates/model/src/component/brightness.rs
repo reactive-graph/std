@@ -1,7 +1,7 @@
 use crate::NAMESPACE_COLOR;
-use inexor_rgf_graph::component_model;
-use inexor_rgf_graph::component_ty;
-use inexor_rgf_graph::properties;
+use reactive_graph_graph::component_model;
+use reactive_graph_graph::component_ty;
+use reactive_graph_graph::properties;
 
 properties!(BrightnessProperties, (BRIGHTNESS, "brightness", 0.0));
 

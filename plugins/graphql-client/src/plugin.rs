@@ -1,6 +1,6 @@
-use inexor_rgf_plugin_api::prelude::plugin::*;
-use inexor_rgf_plugin_api::ConfigManager;
-use inexor_rgf_plugin_api::WebResourceManager;
+use reactive_graph_plugin_api::prelude::plugin::*;
+use reactive_graph_plugin_api::ConfigManager;
+use reactive_graph_plugin_api::WebResourceManager;
 use log::info;
 
 export_plugin!();

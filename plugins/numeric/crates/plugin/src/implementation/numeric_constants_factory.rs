@@ -2,19 +2,19 @@ use std::ops::Deref;
 use std::sync::Arc;
 
 use async_trait::async_trait;
-use inexor_rgf_graph::prelude::*;
-use inexor_rgf_plugin_api::component_alias;
-use inexor_rgf_plugin_api::Component;
-use inexor_rgf_plugin_api::EntityInstanceManager;
-use inexor_rgf_plugin_api::EntityTypeManager;
-use inexor_rgf_reactive_model_impl::ReactiveEntity;
-use inexor_rgf_reactive_model_impl::ReactiveProperties;
+use reactive_graph_graph::prelude::*;
+use reactive_graph_plugin_api::component_alias;
+use reactive_graph_plugin_api::Component;
+use reactive_graph_plugin_api::EntityInstanceManager;
+use reactive_graph_plugin_api::EntityTypeManager;
+use reactive_graph_reactive_model_impl::ReactiveEntity;
+use reactive_graph_reactive_model_impl::ReactiveProperties;
 use log::debug;
 use log::error;
 use serde_json::json;
 use uuid::Uuid;
 
-use inexor_rgf_model_value::ENTITY_TYPE_VALUE_NUMBER;
+use reactive_graph_model_value::ENTITY_TYPE_VALUE_NUMBER;
 
 use crate::api::numeric_constants_factory::NumericConstantsFactory;
 use crate::constants::NUMERIC_CONSTANTS;

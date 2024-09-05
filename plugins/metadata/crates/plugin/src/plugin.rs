@@ -1,10 +1,10 @@
-use inexor_rgf_plugin_api::prelude::plugin::*;
-use inexor_rgf_plugin_api::prelude::providers::*;
+use reactive_graph_plugin_api::prelude::plugin::*;
+use reactive_graph_plugin_api::prelude::providers::*;
 
 export_plugin!({
     "dependencies": [
-        { "name": "inexor-rgf-plugin-base", "version": ">=0.10.0, <0.11.0" },
-        { "name": "inexor-rgf-plugin-taxonomy", "version": ">=0.10.0, <0.11.0" }
+        { "name": "reactive-graph-plugin-base", "version": ">=0.10.0, <0.11.0" },
+        { "name": "reactive-graph-plugin-taxonomy", "version": ">=0.10.0, <0.11.0" }
     ]
 });
 

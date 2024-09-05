@@ -1,5 +1,5 @@
-use inexor_rgf_plugin_api::prelude::plugin::*;
-use inexor_rgf_plugin_api::prelude::providers::*;
+use reactive_graph_plugin_api::prelude::plugin::*;
+use reactive_graph_plugin_api::prelude::providers::*;
 
 export_plugin!();
 

@@ -1,8 +1,8 @@
-use inexor_rgf_behaviour_model_api::behaviour_ty;
-use inexor_rgf_behaviour_model_api::component_behaviour_ty;
-use inexor_rgf_graph::component_ty;
-use inexor_rgf_reactive_model_api::entity_model;
-use inexor_rgf_runtime_model::Action;
+use reactive_graph_behaviour_model_api::behaviour_ty;
+use reactive_graph_behaviour_model_api::component_behaviour_ty;
+use reactive_graph_graph::component_ty;
+use reactive_graph_reactive_model_api::entity_model;
+use reactive_graph_runtime_model::Action;
 
 use crate::NAMESPACE_FILE;
 

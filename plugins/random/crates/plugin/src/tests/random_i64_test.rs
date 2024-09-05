@@ -2,13 +2,13 @@ use crate::behaviour::entity::random_i64::RandomI64Factory;
 use crate::builder::ReactiveEntityInstanceBuilder;
 use crate::reactive::BehaviourFactory;
 use crate::reactive::BehaviourState;
-use inexor_rgf_model_random::RandomI64;
-use inexor_rgf_model_random::BEHAVIOUR_RANDOM_I64;
-use inexor_rgf_model_random::ENTITY_TYPE_RANDOM_I64;
-use inexor_rgf_model_result::ResultNumberI64;
-use inexor_rgf_model_result::ResultNumberI64Properties::RESULT;
-use inexor_rgf_runtime_model::Action;
-use inexor_rgf_runtime_model::ActionProperties::TRIGGER;
+use reactive_graph_model_random::RandomI64;
+use reactive_graph_model_random::BEHAVIOUR_RANDOM_I64;
+use reactive_graph_model_random::ENTITY_TYPE_RANDOM_I64;
+use reactive_graph_model_result::ResultNumberI64;
+use reactive_graph_model_result::ResultNumberI64Properties::RESULT;
+use reactive_graph_runtime_model::Action;
+use reactive_graph_runtime_model::ActionProperties::TRIGGER;
 
 #[test]
 fn random_i64_test() {

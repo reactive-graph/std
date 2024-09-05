@@ -1,10 +1,10 @@
-use inexor_rgf_model_metadata::DublinCoreProperties;
+use reactive_graph_model_metadata::DublinCoreProperties;
 
 use crate::builder::ReactiveEntityInstanceBuilder;
 use crate::model_metadata::DublinCore;
 use crate::model_metadata::COMPONENT_DUBLIN_CORE;
 use crate::model_metadata::NAMESPACE_METADATA;
-use inexor_rgf_reactive_model_api::entity_model;
+use reactive_graph_reactive_model_api::entity_model;
 
 entity_model!(MetaData);
 impl DublinCore for MetaData {}

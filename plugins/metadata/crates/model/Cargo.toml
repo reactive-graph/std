@@ -1,6 +1,6 @@
 [package]
-name = "inexor-rgf-model-metadata"
-description = "Inexor - Reactive Graph Flow - Model - Metadata"
+name = "reactive-graph-model-metadata"
+description = "Reactive Graph - Model - Metadata"
 version.workspace = true
 authors.workspace = true
 edition.workspace = true
@@ -13,7 +13,7 @@ paste = { workspace = true }
 serde_json = { workspace = true }
 strum_macros = { workspace = true }
 
-inexor-rgf-graph = { workspace = true }
+reactive-graph-graph = { workspace = true }
 
 [lib]
 crate-type = ["lib"]

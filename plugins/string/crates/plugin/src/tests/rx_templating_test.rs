@@ -8,8 +8,8 @@ use crate::model_string::COMPONENT_STRING_GATE;
 use crate::model_string::ENTITY_TYPE_TEMPLATING;
 use crate::reactive::BehaviourFactory;
 use crate::reactive::BehaviourState;
-use inexor_rgf_model_result::ResultString;
-use inexor_rgf_model_result::ResultStringProperties::RESULT;
+use reactive_graph_model_result::ResultString;
+use reactive_graph_model_result::ResultStringProperties::RESULT;
 use serde_json::json;
 
 #[test]

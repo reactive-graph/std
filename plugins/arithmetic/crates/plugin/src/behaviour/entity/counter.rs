@@ -1,14 +1,14 @@
-use inexor_rgf_behaviour_model_api::behaviour_validator;
-use inexor_rgf_behaviour_model_api::prelude::*;
-use inexor_rgf_behaviour_model_impl::entity_behaviour;
-use inexor_rgf_graph::prelude::*;
-use inexor_rgf_reactive_model_impl::ReactiveEntity;
+use reactive_graph_behaviour_model_api::behaviour_validator;
+use reactive_graph_behaviour_model_api::prelude::*;
+use reactive_graph_behaviour_model_impl::entity_behaviour;
+use reactive_graph_graph::prelude::*;
+use reactive_graph_reactive_model_impl::ReactiveEntity;
 use serde_json::json;
 use serde_json::Value;
 use uuid::Uuid;
 
-use inexor_rgf_model_result::ResultNumberU64Properties::RESULT;
-use inexor_rgf_runtime_model::ActionProperties::TRIGGER;
+use reactive_graph_model_result::ResultNumberU64Properties::RESULT;
+use reactive_graph_runtime_model::ActionProperties::TRIGGER;
 
 entity_behaviour!(Counter, CounterFactory, CounterFsm, CounterBehaviourTransitions, CounterValidator);
 
@@ -46,13 +46,13 @@ mod tests {
     use serde_json::json;
 
     use crate::behaviour::entity::counter::CounterFactory;
-    use inexor_rgf_model_arithmetic::Counter1;
-    use inexor_rgf_model_arithmetic::BEHAVIOUR_COUNTER;
-    use inexor_rgf_model_arithmetic::ENTITY_TYPE_COUNTER;
-    use inexor_rgf_model_result::ResultNumberU64Properties::RESULT;
-    use inexor_rgf_reactive_model_api::ReactiveInstanceContainer;
-    use inexor_rgf_reactive_model_impl::ReactiveProperties;
-    use inexor_rgf_runtime_model::ActionProperties::TRIGGER;
+    use reactive_graph_model_arithmetic::Counter1;
+    use reactive_graph_model_arithmetic::BEHAVIOUR_COUNTER;
+    use reactive_graph_model_arithmetic::ENTITY_TYPE_COUNTER;
+    use reactive_graph_model_result::ResultNumberU64Properties::RESULT;
+    use reactive_graph_reactive_model_api::ReactiveInstanceContainer;
+    use reactive_graph_reactive_model_impl::ReactiveProperties;
+    use reactive_graph_runtime_model::ActionProperties::TRIGGER;
 
     #[test]
     fn rx_counter_test() {

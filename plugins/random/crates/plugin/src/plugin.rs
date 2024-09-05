@@ -10,39 +10,39 @@ use crate::behaviour::entity::random_u64::RandomU64Factory;
 use crate::behaviour::entity::random_u64_pseudo::RandomU64PseudoFactory;
 use crate::behaviour::entity::random_u64_range::RandomU64RangeFactory;
 use crate::behaviour::entity::random_uuid::RandomUuidFactory;
-use inexor_rgf_model_random::BEHAVIOUR_RANDOM_BOOL;
-use inexor_rgf_model_random::BEHAVIOUR_RANDOM_F64;
-use inexor_rgf_model_random::BEHAVIOUR_RANDOM_F64_PSEUDO;
-use inexor_rgf_model_random::BEHAVIOUR_RANDOM_F64_RANGE;
-use inexor_rgf_model_random::BEHAVIOUR_RANDOM_I64;
-use inexor_rgf_model_random::BEHAVIOUR_RANDOM_I64_PSEUDO;
-use inexor_rgf_model_random::BEHAVIOUR_RANDOM_I64_RANGE;
-use inexor_rgf_model_random::BEHAVIOUR_RANDOM_STRING;
-use inexor_rgf_model_random::BEHAVIOUR_RANDOM_U64;
-use inexor_rgf_model_random::BEHAVIOUR_RANDOM_U64_PSEUDO;
-use inexor_rgf_model_random::BEHAVIOUR_RANDOM_U64_RANGE;
-use inexor_rgf_model_random::BEHAVIOUR_RANDOM_UUID;
-use inexor_rgf_model_random::ENTITY_BEHAVIOUR_RANDOM_BOOL;
-use inexor_rgf_model_random::ENTITY_BEHAVIOUR_RANDOM_F64;
-use inexor_rgf_model_random::ENTITY_BEHAVIOUR_RANDOM_F64_PSEUDO;
-use inexor_rgf_model_random::ENTITY_BEHAVIOUR_RANDOM_F64_RANGE;
-use inexor_rgf_model_random::ENTITY_BEHAVIOUR_RANDOM_I64;
-use inexor_rgf_model_random::ENTITY_BEHAVIOUR_RANDOM_I64_PSEUDO;
-use inexor_rgf_model_random::ENTITY_BEHAVIOUR_RANDOM_I64_RANGE;
-use inexor_rgf_model_random::ENTITY_BEHAVIOUR_RANDOM_STRING;
-use inexor_rgf_model_random::ENTITY_BEHAVIOUR_RANDOM_U64;
-use inexor_rgf_model_random::ENTITY_BEHAVIOUR_RANDOM_U64_PSEUDO;
-use inexor_rgf_model_random::ENTITY_BEHAVIOUR_RANDOM_U64_RANGE;
-use inexor_rgf_model_random::ENTITY_BEHAVIOUR_RANDOM_UUID;
-use inexor_rgf_plugin_api::prelude::plugin::*;
-use inexor_rgf_plugin_api::prelude::providers::*;
-use inexor_rgf_plugin_api::EntityBehaviourRegistry;
+use reactive_graph_model_random::BEHAVIOUR_RANDOM_BOOL;
+use reactive_graph_model_random::BEHAVIOUR_RANDOM_F64;
+use reactive_graph_model_random::BEHAVIOUR_RANDOM_F64_PSEUDO;
+use reactive_graph_model_random::BEHAVIOUR_RANDOM_F64_RANGE;
+use reactive_graph_model_random::BEHAVIOUR_RANDOM_I64;
+use reactive_graph_model_random::BEHAVIOUR_RANDOM_I64_PSEUDO;
+use reactive_graph_model_random::BEHAVIOUR_RANDOM_I64_RANGE;
+use reactive_graph_model_random::BEHAVIOUR_RANDOM_STRING;
+use reactive_graph_model_random::BEHAVIOUR_RANDOM_U64;
+use reactive_graph_model_random::BEHAVIOUR_RANDOM_U64_PSEUDO;
+use reactive_graph_model_random::BEHAVIOUR_RANDOM_U64_RANGE;
+use reactive_graph_model_random::BEHAVIOUR_RANDOM_UUID;
+use reactive_graph_model_random::ENTITY_BEHAVIOUR_RANDOM_BOOL;
+use reactive_graph_model_random::ENTITY_BEHAVIOUR_RANDOM_F64;
+use reactive_graph_model_random::ENTITY_BEHAVIOUR_RANDOM_F64_PSEUDO;
+use reactive_graph_model_random::ENTITY_BEHAVIOUR_RANDOM_F64_RANGE;
+use reactive_graph_model_random::ENTITY_BEHAVIOUR_RANDOM_I64;
+use reactive_graph_model_random::ENTITY_BEHAVIOUR_RANDOM_I64_PSEUDO;
+use reactive_graph_model_random::ENTITY_BEHAVIOUR_RANDOM_I64_RANGE;
+use reactive_graph_model_random::ENTITY_BEHAVIOUR_RANDOM_STRING;
+use reactive_graph_model_random::ENTITY_BEHAVIOUR_RANDOM_U64;
+use reactive_graph_model_random::ENTITY_BEHAVIOUR_RANDOM_U64_PSEUDO;
+use reactive_graph_model_random::ENTITY_BEHAVIOUR_RANDOM_U64_RANGE;
+use reactive_graph_model_random::ENTITY_BEHAVIOUR_RANDOM_UUID;
+use reactive_graph_plugin_api::prelude::plugin::*;
+use reactive_graph_plugin_api::prelude::providers::*;
+use reactive_graph_plugin_api::EntityBehaviourRegistry;
 
 export_plugin!({
     "dependencies": [
-        { "name": "inexor-rgf-plugin-base", "version": ">=0.10.0, <0.11.0" },
-        { "name": "inexor-rgf-plugin-result", "version": ">=0.10.0, <0.11.0" },
-        { "name": "inexor-rgf-plugin-trigger", "version": ">=0.10.0, <0.11.0" }
+        { "name": "reactive-graph-plugin-base", "version": ">=0.10.0, <0.11.0" },
+        { "name": "reactive-graph-plugin-result", "version": ">=0.10.0, <0.11.0" },
+        { "name": "reactive-graph-plugin-trigger", "version": ">=0.10.0, <0.11.0" }
     ]
 });
 

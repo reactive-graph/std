@@ -1,5 +1,3 @@
-#![feature(associated_type_bounds)]
-#![feature(lazy_cell)]
 #![feature(register_tool)]
 #![register_tool(tarpaulin)]
 
@@ -15,8 +13,8 @@ pub mod providers;
 //
 // use std::sync::Arc;
 //
-// use inexor_rgf_core_di as di;
-// use inexor_rgf_plugin_api as plugins;
+// use reactive_graph_core_di as di;
+// use reactive_graph_plugin_api as plugins;
 // use log::error;
 //
 // use crate::di::profiles;
@@ -65,11 +63,11 @@ pub mod providers;
 //
 // #[allow(improper_ctypes_definitions)]
 // extern "C" fn get_dependencies() -> Vec<PluginDependency> {
-//     vec![PluginDependency::new("inexor-rgf-plugin-base", ">=0.9.0, <0.10.0")]
+//     vec![PluginDependency::new("reactive-graph-plugin-base", ">=0.9.0, <0.10.0")]
 // }
 //
 // #[cfg(test)]
-// use inexor_rgf_core_builder as builder;
+// use reactive_graph_core_builder as builder;
 //
 // #[cfg(test)]
 // #[tarpaulin::ignore]

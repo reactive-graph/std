@@ -6,11 +6,11 @@ use crate::model_string::StringNumberOperationProperties::LHS;
 use crate::model_string::COMPONENT_STRING_NUMBER_OPERATION;
 use crate::reactive::BehaviourFactory;
 use crate::reactive::BehaviourState;
-use inexor_rgf_graph::BehaviourTypeId;
-use inexor_rgf_graph::EntityTypeId;
-use inexor_rgf_model_result::ResultNumberU64;
-use inexor_rgf_model_result::ResultNumberU64Properties::RESULT;
-use inexor_rgf_model_string::NAMESPACE_STRING;
+use reactive_graph_graph::BehaviourTypeId;
+use reactive_graph_graph::EntityTypeId;
+use reactive_graph_model_result::ResultNumberU64;
+use reactive_graph_model_result::ResultNumberU64Properties::RESULT;
+use reactive_graph_model_string::NAMESPACE_STRING;
 
 #[test]
 fn rx_char_count_test() {

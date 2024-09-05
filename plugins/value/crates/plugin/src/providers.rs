@@ -1,4 +1,4 @@
-use inexor_rgf_plugin_api::prelude::providers::*;
+use reactive_graph_plugin_api::prelude::providers::*;
 
 #[derive(TypeProvider, Component)]
 #[type_provider(tys = "Components", path = "types/components")]
@@ -10,9 +10,9 @@ pub struct ValueEntityTypesProvider {}
 
 #[cfg(test)]
 mod tests {
-    use inexor_rgf_graph::prelude::*;
+    use reactive_graph_graph::prelude::*;
 
-    use inexor_rgf_model_value::NAMESPACE_VALUE;
+    use reactive_graph_model_value::NAMESPACE_VALUE;
 
     use super::*;
 

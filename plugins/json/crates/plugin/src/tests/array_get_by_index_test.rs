@@ -1,10 +1,10 @@
-use inexor_rgf_model_json::ArrayGetByIndex;
-use inexor_rgf_model_json::ArrayGetByIndexProperties::ARRAY;
-use inexor_rgf_model_json::ArrayGetByIndexProperties::INDEX;
-use inexor_rgf_model_json::BEHAVIOUR_ARRAY_GET_BY_INDEX;
-use inexor_rgf_model_json::ENTITY_TYPE_ARRAY_GET_BY_INDEX;
-use inexor_rgf_model_result::ResultAny;
-use inexor_rgf_model_result::ResultAnyProperties::RESULT;
+use reactive_graph_model_json::ArrayGetByIndex;
+use reactive_graph_model_json::ArrayGetByIndexProperties::ARRAY;
+use reactive_graph_model_json::ArrayGetByIndexProperties::INDEX;
+use reactive_graph_model_json::BEHAVIOUR_ARRAY_GET_BY_INDEX;
+use reactive_graph_model_json::ENTITY_TYPE_ARRAY_GET_BY_INDEX;
+use reactive_graph_model_result::ResultAny;
+use reactive_graph_model_result::ResultAnyProperties::RESULT;
 use serde_json::json;
 
 use crate::behaviour::entity::array_get_by_index::ArrayGetByIndexFactory;

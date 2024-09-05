@@ -1,22 +1,22 @@
-use inexor_rgf_behaviour_model_api::behaviour_validator;
-use inexor_rgf_behaviour_model_api::prelude::*;
-use inexor_rgf_behaviour_model_impl::entity_behaviour;
-use inexor_rgf_graph::prelude::*;
-use inexor_rgf_reactive_model_impl::ReactiveEntity;
+use reactive_graph_behaviour_model_api::behaviour_validator;
+use reactive_graph_behaviour_model_api::prelude::*;
+use reactive_graph_behaviour_model_impl::entity_behaviour;
+use reactive_graph_graph::prelude::*;
+use reactive_graph_reactive_model_impl::ReactiveEntity;
 use serde_json::Value;
 use uuid::Uuid;
 
-use inexor_rgf_model_git::RepositoryProperties::FAST_FORWARD;
+use reactive_graph_model_git::RepositoryProperties::FAST_FORWARD;
 
-use inexor_rgf_model_file::FileProperties::FILENAME;
-use inexor_rgf_model_git::GitRepository;
-use inexor_rgf_model_git::RepositoryProperties::BRANCH;
-use inexor_rgf_model_git::RepositoryProperties::FETCH;
-// use inexor_rgf_model_git::RepositoryProperties::PUSH;
-use inexor_rgf_model_git::RepositoryProperties::REMOTE_BRANCH;
-use inexor_rgf_model_git::RepositoryProperties::REMOTE_NAME;
-use inexor_rgf_model_http::UrlProperties::URL;
-use inexor_rgf_runtime_model::ActionProperties::TRIGGER;
+use reactive_graph_model_file::FileProperties::FILENAME;
+use reactive_graph_model_git::GitRepository;
+use reactive_graph_model_git::RepositoryProperties::BRANCH;
+use reactive_graph_model_git::RepositoryProperties::FETCH;
+// use reactive_graph_model_git::RepositoryProperties::PUSH;
+use reactive_graph_model_git::RepositoryProperties::REMOTE_BRANCH;
+use reactive_graph_model_git::RepositoryProperties::REMOTE_NAME;
+use reactive_graph_model_http::UrlProperties::URL;
+use reactive_graph_runtime_model::ActionProperties::TRIGGER;
 
 entity_behaviour!(Repository, RepositoryFactory, RepositoryFsm, RepositoryBehaviourTransitions, RepositoryValidator);
 
@@ -35,7 +35,7 @@ behaviour_validator!(
 
 impl BehaviourInit<Uuid, ReactiveEntity> for RepositoryBehaviourTransitions {
     fn init(&self) -> Result<(), BehaviourInitializationFailed> {
-        let repository = inexor_rgf_model_git::Repository::from(self.reactive_instance.clone());
+        let repository = reactive_graph_model_git::Repository::from(self.reactive_instance.clone());
         if repository.as_bool(TRIGGER).unwrap_or(false) {
             if repository.exists() {
                 repository.git_fetch_and_fast_forward();
@@ -54,7 +54,7 @@ impl BehaviourConnect<Uuid, ReactiveEntity> for RepositoryBehaviourTransitions {
             if !trigger.as_bool().unwrap_or(false) {
                 return;
             }
-            let repository = inexor_rgf_model_git::Repository::from(reactive_instance.clone());
+            let repository = reactive_graph_model_git::Repository::from(reactive_instance.clone());
             if repository.exists() {
                 repository.git_fetch_and_fast_forward();
             } else {
@@ -66,7 +66,7 @@ impl BehaviourConnect<Uuid, ReactiveEntity> for RepositoryBehaviourTransitions {
             if !fetch.as_bool().unwrap_or(false) {
                 return;
             }
-            let repository = inexor_rgf_model_git::Repository::from(reactive_instance.clone());
+            let repository = reactive_graph_model_git::Repository::from(reactive_instance.clone());
             if repository.exists() {
                 repository.git_fetch();
             }
@@ -76,7 +76,7 @@ impl BehaviourConnect<Uuid, ReactiveEntity> for RepositoryBehaviourTransitions {
             if !fast_forward.as_bool().unwrap_or(false) {
                 return;
             }
-            let repository = inexor_rgf_model_git::Repository::from(reactive_instance.clone());
+            let repository = reactive_graph_model_git::Repository::from(reactive_instance.clone());
             if repository.exists() {
                 repository.git_fast_forward();
             }
@@ -84,7 +84,7 @@ impl BehaviourConnect<Uuid, ReactiveEntity> for RepositoryBehaviourTransitions {
         let reactive_instance = self.reactive_instance.clone();
         self.property_observers.observe_with_handle(BRANCH.as_ref(), move |branch: &Value| {
             if let Some(branch) = branch.as_str().map(str::to_string) {
-                let repository = inexor_rgf_model_git::Repository::from(reactive_instance.clone());
+                let repository = reactive_graph_model_git::Repository::from(reactive_instance.clone());
                 if repository.exists() {
                     repository.git_checkout(branch);
                 }

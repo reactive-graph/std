@@ -3,17 +3,17 @@ use serde_json::json;
 use crate::behaviour::entity::toggle::ToggleFactory;
 use crate::builder::ReactiveEntityInstanceBuilder;
 use crate::reactive::BehaviourFactory;
-use inexor_rgf_graph::NamespacedTypeGetter;
-use inexor_rgf_model_logical::Toggle;
-use inexor_rgf_model_logical::BEHAVIOUR_TOGGLE;
-use inexor_rgf_model_logical::ENTITY_TYPE_NAME_TOGGLE;
-use inexor_rgf_model_logical::ENTITY_TYPE_TOGGLE;
-use inexor_rgf_model_logical::NAMESPACE_LOGICAL;
-use inexor_rgf_model_result::ResultBoolean;
-use inexor_rgf_model_result::ResultBooleanProperties::RESULT;
-use inexor_rgf_model_runtime::COMPONENT_ACTION;
-use inexor_rgf_runtime_model::Action;
-use inexor_rgf_runtime_model::ActionProperties::TRIGGER;
+use reactive_graph_graph::NamespacedTypeGetter;
+use reactive_graph_model_logical::Toggle;
+use reactive_graph_model_logical::BEHAVIOUR_TOGGLE;
+use reactive_graph_model_logical::ENTITY_TYPE_NAME_TOGGLE;
+use reactive_graph_model_logical::ENTITY_TYPE_TOGGLE;
+use reactive_graph_model_logical::NAMESPACE_LOGICAL;
+use reactive_graph_model_result::ResultBoolean;
+use reactive_graph_model_result::ResultBooleanProperties::RESULT;
+use reactive_graph_model_runtime::COMPONENT_ACTION;
+use reactive_graph_runtime_model::Action;
+use reactive_graph_runtime_model::ActionProperties::TRIGGER;
 
 #[test]
 fn toggle_test() {

@@ -1,13 +1,13 @@
-use inexor_rgf_plugin_api::prelude::plugin::*;
-use inexor_rgf_plugin_api::prelude::providers::*;
-use inexor_rgf_plugin_api::EntityBehaviourRegistry;
+use reactive_graph_plugin_api::prelude::plugin::*;
+use reactive_graph_plugin_api::prelude::providers::*;
+use reactive_graph_plugin_api::EntityBehaviourRegistry;
 
-use inexor_rgf_model_logical::BEHAVIOUR_IF_THEN_ELSE;
-use inexor_rgf_model_logical::BEHAVIOUR_TOGGLE;
-use inexor_rgf_model_logical::BEHAVIOUR_TRIGGER;
-use inexor_rgf_model_logical::ENTITY_BEHAVIOUR_IF_THEN_ELSE;
-use inexor_rgf_model_logical::ENTITY_BEHAVIOUR_TOGGLE;
-use inexor_rgf_model_logical::ENTITY_BEHAVIOUR_TRIGGER;
+use reactive_graph_model_logical::BEHAVIOUR_IF_THEN_ELSE;
+use reactive_graph_model_logical::BEHAVIOUR_TOGGLE;
+use reactive_graph_model_logical::BEHAVIOUR_TRIGGER;
+use reactive_graph_model_logical::ENTITY_BEHAVIOUR_IF_THEN_ELSE;
+use reactive_graph_model_logical::ENTITY_BEHAVIOUR_TOGGLE;
+use reactive_graph_model_logical::ENTITY_BEHAVIOUR_TRIGGER;
 
 use crate::behaviour::entity::gate::function::LOGICAL_GATES;
 use crate::behaviour::entity::if_then_else::IfThenElseFactory;
@@ -17,10 +17,10 @@ use crate::behaviour::entity::trigger::TriggerFactory;
 
 export_plugin!({
     "dependencies": [
-        { "name": "inexor-rgf-plugin-base", "version": ">=0.10.0, <0.11.0" },
-        { "name": "inexor-rgf-plugin-trigger", "version": ">=0.10.0, <0.11.0" },
-        { "name": "inexor-rgf-plugin-result", "version": ">=0.10.0, <0.11.0" },
-        { "name": "inexor-rgf-plugin-connector", "version": ">=0.10.0, <0.11.0" }
+        { "name": "reactive-graph-plugin-base", "version": ">=0.10.0, <0.11.0" },
+        { "name": "reactive-graph-plugin-trigger", "version": ">=0.10.0, <0.11.0" },
+        { "name": "reactive-graph-plugin-result", "version": ">=0.10.0, <0.11.0" },
+        { "name": "reactive-graph-plugin-connector", "version": ">=0.10.0, <0.11.0" }
     ]
 });
 

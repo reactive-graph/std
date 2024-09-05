@@ -1,12 +1,12 @@
 use std::sync::Arc;
 use std::sync::LazyLock;
 
-use inexor_rgf_behaviour_model_impl::entity::EntityBehaviourFactoryCreator;
-use inexor_rgf_behaviour_model_impl::entity::EntityBehaviourFunctions;
-use inexor_rgf_behaviour_model_impl::entity::EntityBehaviourFunctionsStorage;
+use reactive_graph_behaviour_model_impl::entity::EntityBehaviourFactoryCreator;
+use reactive_graph_behaviour_model_impl::entity::EntityBehaviourFunctions;
+use reactive_graph_behaviour_model_impl::entity::EntityBehaviourFunctionsStorage;
 
 use crate::behaviour::entity::operation::LogicalOperationFactory;
-use inexor_rgf_model_logical::NAMESPACE_LOGICAL;
+use reactive_graph_model_logical::NAMESPACE_LOGICAL;
 
 pub type LogicalOperationFunction = fn(bool) -> bool;
 

@@ -6,10 +6,10 @@ use http::header::CONTENT_TYPE;
 use http::Request;
 use http::Response;
 use http::StatusCode;
-use inexor_rgf_plugin_api::prelude::plugin::*;
-use inexor_rgf_plugin_api::HttpBody;
-use inexor_rgf_plugin_api::WebResourceProvider;
 use mime_guess::from_path;
+use reactive_graph_plugin_api::prelude::plugin::*;
+use reactive_graph_plugin_api::HttpBody;
+use reactive_graph_plugin_api::WebResourceProvider;
 use uuid::Uuid;
 
 const CONTEXT_PATH: &str = "graphql-client";

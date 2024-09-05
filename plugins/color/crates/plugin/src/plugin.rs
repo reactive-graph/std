@@ -1,17 +1,17 @@
-use inexor_rgf_plugin_api::prelude::plugin::*;
-use inexor_rgf_plugin_api::prelude::providers::*;
-use inexor_rgf_plugin_api::EntityBehaviourRegistry;
+use reactive_graph_plugin_api::prelude::plugin::*;
+use reactive_graph_plugin_api::prelude::providers::*;
+use reactive_graph_plugin_api::EntityBehaviourRegistry;
 
 use crate::behaviour::entity::hsv_to_rgb::HsvToRgbFactory;
 use crate::behaviour::entity::rgb_to_hsv::RgbToHsvFactory;
-use inexor_rgf_model_color::BEHAVIOUR_HSV_TO_RGB;
-use inexor_rgf_model_color::BEHAVIOUR_RGB_TO_HSV;
-use inexor_rgf_model_color::ENTITY_BEHAVIOUR_HSV_TO_RGB;
-use inexor_rgf_model_color::ENTITY_BEHAVIOUR_RGB_TO_HSV;
+use reactive_graph_model_color::BEHAVIOUR_HSV_TO_RGB;
+use reactive_graph_model_color::BEHAVIOUR_RGB_TO_HSV;
+use reactive_graph_model_color::ENTITY_BEHAVIOUR_HSV_TO_RGB;
+use reactive_graph_model_color::ENTITY_BEHAVIOUR_RGB_TO_HSV;
 
 export_plugin!({
     "dependencies": [
-        { "name": "inexor-rgf-plugin-base", "version": ">=0.10.0, <0.11.0" }
+        { "name": "reactive-graph-plugin-base", "version": ">=0.10.0, <0.11.0" }
     ]
 });
 

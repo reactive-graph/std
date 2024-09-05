@@ -1,6 +1,6 @@
 [package]
-name = "inexor-rgf-plugin-arithmetic"
-description = "Inexor - Reactive Graph Flow - Plugin - Arithmetic"
+name = "reactive-graph-plugin-arithmetic"
+description = "Reactive Graph - Plugin - Arithmetic"
 version.workspace = true
 authors.workspace = true
 edition.workspace = true
@@ -9,10 +9,10 @@ repository.workspace = true
 readme = "../../../../README.md"
 
 [package.metadata.deb]
-name = "libinexor-rgf-plugin-arithmetic"
-depends = "inexor-rgf, libinexor-rgf-plugin-base, libinexor-rgf-plugin-trigger, libinexor-rgf-plugin-result"
+name = "libreactive-graph-plugin-arithmetic"
+depends = "reactive-graph, libreactive-graph-plugin-base, libreactive-graph-plugin-trigger, libreactive-graph-plugin-result"
 assets = [
-    ["target/release/libinexor_rgf_plugin_arithmetic.so", "usr/share/inexor-rgf/default/plugins/installed/libinexor_rgf_plugin_arithmetic.so", "755"],
+    ["target/release/libreactive_graph_plugin_arithmetic.so", "usr/share/reactive-graph/default/plugins/installed/libreactive_graph_plugin_arithmetic.so", "755"],
 ]
 
 [dependencies]
@@ -27,23 +27,23 @@ serde_json = { workspace = true }
 springtime-di = { workspace = true, default-features = false, features = ["threadsafe", "derive"] }
 uuid = { workspace = true, features = ["serde", "v4"] }
 
-inexor-rgf-plugin-api = { workspace = true }
-inexor-rgf-type-system-api = { workspace = true }
-inexor-rgf-graph = { workspace = true }
-inexor-rgf-reactive-model-api = { workspace = true }
-inexor-rgf-reactive-model-impl = { workspace = true }
-inexor-rgf-reactive-service-api = { workspace = true, features = ["derive"] }
-inexor-rgf-behaviour-model-api = { workspace = true }
-inexor-rgf-behaviour-model-impl = { workspace = true }
-inexor-rgf-runtime-model = { workspace = true }
+reactive-graph-plugin-api = { workspace = true }
+reactive-graph-type-system-api = { workspace = true }
+reactive-graph-graph = { workspace = true }
+reactive-graph-reactive-model-api = { workspace = true }
+reactive-graph-reactive-model-impl = { workspace = true }
+reactive-graph-reactive-service-api = { workspace = true, features = ["derive"] }
+reactive-graph-behaviour-model-api = { workspace = true }
+reactive-graph-behaviour-model-impl = { workspace = true }
+reactive-graph-runtime-model = { workspace = true }
 
-inexor-rgf-model-arithmetic = { version = "0.10.0", path = "../../crates/model" }
-inexor-rgf-model-result = { version = "0.10.0", path = "../../../result/crates/model" }
+reactive-graph-model-arithmetic = { version = "0.10.0", path = "../../crates/model" }
+reactive-graph-model-result = { version = "0.10.0", path = "../../../result/crates/model" }
 
 [dev-dependencies]
 default-test = { workspace = true }
-inexor-rgf-graph = { workspace = true, features = ["test"] }
-inexor-rgf-test-utils = { workspace = true }
+reactive-graph-graph = { workspace = true, features = ["test"] }
+reactive-graph-test-utils = { workspace = true }
 
 [lib]
 # Plugins use crate-type cdylib

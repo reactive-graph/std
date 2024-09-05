@@ -1,17 +1,17 @@
 use std::sync::Arc;
 use std::sync::LazyLock;
 
-use inexor_rgf_behaviour_model_api::behaviour_validator;
-use inexor_rgf_behaviour_model_api::prelude::*;
-use inexor_rgf_behaviour_model_impl::entity::EntityBehaviourFactories;
-use inexor_rgf_behaviour_model_impl::entity_behaviour;
-use inexor_rgf_graph::prelude::*;
-use inexor_rgf_reactive_model_api::ReactiveInstanceContainer;
-use inexor_rgf_reactive_model_impl::ReactiveEntity;
+use reactive_graph_behaviour_model_api::behaviour_validator;
+use reactive_graph_behaviour_model_api::prelude::*;
+use reactive_graph_behaviour_model_impl::entity::EntityBehaviourFactories;
+use reactive_graph_behaviour_model_impl::entity_behaviour;
+use reactive_graph_graph::prelude::*;
+use reactive_graph_reactive_model_api::ReactiveInstanceContainer;
+use reactive_graph_reactive_model_impl::ReactiveEntity;
 use serde_json::Value;
 use uuid::Uuid;
 
-use inexor_rgf_model_state::NAMESPACE_STATE;
+use reactive_graph_model_state::NAMESPACE_STATE;
 
 use crate::model_state::StateProperties;
 use crate::model_value::*;

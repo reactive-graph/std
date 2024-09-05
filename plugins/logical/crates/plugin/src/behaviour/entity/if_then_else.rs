@@ -1,15 +1,15 @@
-use inexor_rgf_behaviour_model_api::behaviour_validator;
-use inexor_rgf_behaviour_model_api::prelude::*;
-use inexor_rgf_behaviour_model_impl::entity_behaviour;
-use inexor_rgf_graph::prelude::*;
-use inexor_rgf_reactive_model_impl::ReactiveEntity;
+use reactive_graph_behaviour_model_api::behaviour_validator;
+use reactive_graph_behaviour_model_api::prelude::*;
+use reactive_graph_behaviour_model_impl::entity_behaviour;
+use reactive_graph_graph::prelude::*;
+use reactive_graph_reactive_model_impl::ReactiveEntity;
 use serde_json::Value;
 use uuid::Uuid;
 
-use inexor_rgf_model_logical::ConditionProperties::CONDITION;
-use inexor_rgf_model_logical::IfThenElseProperties::ELSE_PAYLOAD;
-use inexor_rgf_model_logical::IfThenElseProperties::THEN_PAYLOAD;
-use inexor_rgf_model_result::ResultAnyProperties::RESULT;
+use reactive_graph_model_logical::ConditionProperties::CONDITION;
+use reactive_graph_model_logical::IfThenElseProperties::ELSE_PAYLOAD;
+use reactive_graph_model_logical::IfThenElseProperties::THEN_PAYLOAD;
+use reactive_graph_model_result::ResultAnyProperties::RESULT;
 
 entity_behaviour!(IfThenElse, IfThenElseFactory, IfThenElseFsm, IfThenElseBehaviourTransitions, IfThenElseValidator);
 

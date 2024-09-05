@@ -1,7 +1,7 @@
 use crate::NAMESPACE_RANDOM;
-use inexor_rgf_graph::component_model;
-use inexor_rgf_graph::component_ty;
-use inexor_rgf_graph::properties;
+use reactive_graph_graph::component_model;
+use reactive_graph_graph::component_ty;
+use reactive_graph_graph::properties;
 
 properties!(RangeF64Properties, (LOW, "low", 0.0), (HIGH, "high", 1.0));
 properties!(RangeI64Properties, (LOW, "low", -100), (HIGH, "high", 100));

@@ -1,6 +1,6 @@
 [package]
-name = "inexor-rgf-model-trigger"
-description = "Inexor - Reactive Graph Flow - Model - Trigger"
+name = "reactive-graph-model-trigger"
+description = "Reactive Graph - Model - Trigger"
 version.workspace = true
 authors.workspace = true
 edition.workspace = true
@@ -13,7 +13,7 @@ serde = { workspace = true, features = ["derive"] }
 serde_json = { workspace = true }
 strum_macros = { workspace = true }
 
-inexor-rgf-graph = { workspace = true }
+reactive-graph-graph = { workspace = true }
 
 [lib]
 crate-type = ["lib"]

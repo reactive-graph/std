@@ -6,11 +6,11 @@ use crate::model_string::StringBoolOperationProperties::LHS;
 use crate::model_string::COMPONENT_STRING_BOOL_OPERATION;
 use crate::reactive::BehaviourFactory;
 use crate::reactive::BehaviourState;
-use inexor_rgf_graph::BehaviourTypeId;
-use inexor_rgf_graph::EntityTypeId;
-use inexor_rgf_model_result::ResultBoolean;
-use inexor_rgf_model_result::ResultBooleanProperties::RESULT;
-use inexor_rgf_model_string::NAMESPACE_STRING;
+use reactive_graph_graph::BehaviourTypeId;
+use reactive_graph_graph::EntityTypeId;
+use reactive_graph_model_result::ResultBoolean;
+use reactive_graph_model_result::ResultBooleanProperties::RESULT;
+use reactive_graph_model_string::NAMESPACE_STRING;
 
 #[test]
 fn rx_is_lowercase_test() {

@@ -1,4 +1,4 @@
-use inexor_rgf_plugin_api::prelude::providers::*;
+use reactive_graph_plugin_api::prelude::providers::*;
 
 #[derive(TypeProvider, Component)]
 #[type_provider(tys = "Components", path = "types/components")]
@@ -10,12 +10,12 @@ pub struct ArithmeticEntityTypesProvider {}
 
 #[cfg(test)]
 mod tests {
-    use inexor_rgf_graph::prelude::*;
+    use reactive_graph_graph::prelude::*;
 
-    use inexor_rgf_model_arithmetic::NAMESPACE_ARITHMETIC;
-    use inexor_rgf_model_arithmetic::NAMESPACE_ARITHMETIC_F64;
-    use inexor_rgf_model_arithmetic::NAMESPACE_ARITHMETIC_I64;
-    use inexor_rgf_model_arithmetic::NAMESPACE_ARITHMETIC_U64;
+    use reactive_graph_model_arithmetic::NAMESPACE_ARITHMETIC;
+    use reactive_graph_model_arithmetic::NAMESPACE_ARITHMETIC_F64;
+    use reactive_graph_model_arithmetic::NAMESPACE_ARITHMETIC_I64;
+    use reactive_graph_model_arithmetic::NAMESPACE_ARITHMETIC_U64;
 
     use super::*;
 

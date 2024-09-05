@@ -1,8 +1,8 @@
-use inexor_rgf_behaviour_model_api::behaviour_validator;
-use inexor_rgf_behaviour_model_api::prelude::*;
-use inexor_rgf_behaviour_model_impl::entity_behaviour;
-use inexor_rgf_graph::prelude::*;
-use inexor_rgf_reactive_model_impl::ReactiveEntity;
+use reactive_graph_behaviour_model_api::behaviour_validator;
+use reactive_graph_behaviour_model_api::prelude::*;
+use reactive_graph_behaviour_model_impl::entity_behaviour;
+use reactive_graph_graph::prelude::*;
+use reactive_graph_reactive_model_impl::ReactiveEntity;
 use serde_json::json;
 use serde_json::Value;
 use uuid::Uuid;
@@ -11,14 +11,14 @@ use angular_units::Deg;
 use prisma::FromColor;
 use prisma::Hsv;
 
-use inexor_rgf_model_color::BrightnessProperties::BRIGHTNESS;
-use inexor_rgf_model_color::HueSaturationProperties::HUE;
-use inexor_rgf_model_color::HueSaturationProperties::SATURATION;
-use inexor_rgf_model_color::Rgb;
-use inexor_rgf_model_color::RgbProperties::BLUE;
-use inexor_rgf_model_color::RgbProperties::GREEN;
-use inexor_rgf_model_color::RgbProperties::RED;
-use inexor_rgf_model_color::TypedRgbComponent;
+use reactive_graph_model_color::BrightnessProperties::BRIGHTNESS;
+use reactive_graph_model_color::HueSaturationProperties::HUE;
+use reactive_graph_model_color::HueSaturationProperties::SATURATION;
+use reactive_graph_model_color::Rgb;
+use reactive_graph_model_color::RgbProperties::BLUE;
+use reactive_graph_model_color::RgbProperties::GREEN;
+use reactive_graph_model_color::RgbProperties::RED;
+use reactive_graph_model_color::TypedRgbComponent;
 
 entity_behaviour!(RgbToHsv, RgbToHsvFactory, RgbToHsvFsm, RgbToHsvBehaviourTransitions, RgbToHsvValidator);
 

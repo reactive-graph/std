@@ -1,6 +1,6 @@
 [package]
-name = "inexor-rgf-model-numeric"
-description = "Inexor - Reactive Graph Flow - Model - Numeric"
+name = "reactive-graph-model-numeric"
+description = "Reactive Graph - Model - Numeric"
 version.workspace = true
 authors.workspace = true
 edition.workspace = true
@@ -13,11 +13,11 @@ serde = { workspace = true, features = ["derive"] }
 serde_json = { workspace = true }
 strum_macros = { workspace = true }
 
-inexor-rgf-graph = { workspace = true }
-inexor-rgf-reactive-model-api = { workspace = true }
-inexor-rgf-reactive-model-impl = { workspace = true }
+reactive-graph-graph = { workspace = true }
+reactive-graph-reactive-model-api = { workspace = true }
+reactive-graph-reactive-model-impl = { workspace = true }
 
-inexor-rgf-model-result = { version = "0.10.0", path = "../../../result/crates/model" }
+reactive-graph-model-result = { version = "0.10.0", path = "../../../result/crates/model" }
 
 [lib]
 crate-type = ["lib"]

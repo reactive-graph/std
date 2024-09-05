@@ -10,7 +10,7 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
-  WORKSPACE_ROOT_MANIFEST_DIR: "/home/runner/work/inexor-rgf-plugins/inexor-rgf-plugins"
+  WORKSPACE_ROOT_MANIFEST_DIR: "/home/runner/work/plugins-core/plugins-core"
 
 jobs:
   create-release:
@@ -23,69 +23,69 @@ jobs:
         with:
           changelog: CHANGELOG.md
           token: ${{ secrets.GITHUB_TOKEN }}
-#  upload-assets:
-#    strategy:
-#      matrix:
-#        include:
-#          # Tier 1
-#          - target: x86_64-unknown-linux-gnu
-#            os: ubuntu-latest
-#          # Tier 1
-#          - target: aarch64-unknown-linux-gnu
-#            os: ubuntu-latest
-#          # Tier 2
-#          - target: armv7-unknown-linux-gnueabihf
-#            os: ubuntu-latest
-#          # Tier 1
-#          - target: x86_64-apple-darwin
-#            os: macos-latest
-#          # Tier 2
-#          - target: aarch64-apple-darwin
-#            os: macos-latest
-#          # Universal macOS binary is supported as universal-apple-darwin.
-#          - target: universal-apple-darwin
-#            os: macos-latest
-#          # Tier 1
-#          - target: x86_64-pc-windows-msvc
-#            os: windows-latest
-#          # Tier 2
-#          # - target: aarch64-pc-windows-msvc
-#          #   os: windows-latest
-#    runs-on: ${{ matrix.os }}
-#    steps:
-#      - name: VCS Checkout
-#        uses: actions/checkout@v3
-#      # Required by arm targets
-#      - name: Install packages
-#        uses: awalsh128/cache-apt-pkgs-action@latest
-#        with:
-#          packages: pkg-config openssl libssl-dev
-#          version: 1.1
-#        if: matrix.os == 'ubuntu-latest'
-#      - name: Setup Node.js 18
-#        uses: actions/setup-node@v3
-#        with:
-#          node-version: 18
-#      - name: Install Yarn
-#        uses: borales/actions-yarn@v4
-#        with:
-#          cmd: --cwd plugins/graphql-client/web install
-#      - name: Install Yarn
-#        uses: borales/actions-yarn@v4
-#        with:
-#          cmd: --cwd plugins/graphql-schema-visualization/web install
-#      - name: Upload Rust Binary
-#        uses: taiki-e/upload-rust-binary-action@v1
-#        with:
-#          bin: libinexor_rgf_plugin_standalone
-#          target: ${{ matrix.target }}
-#          include: LICENSE.md,README.md,CHANGELOG.md,config,plugins
-#          tar: unix
-#          zip: windows
-#          leading_dir: true
-#          token: ${{ secrets.GITHUB_TOKEN }}
-#        env:
-#          VERGEN_IDEMPOTENT: true
+  #  upload-assets:
+  #    strategy:
+  #      matrix:
+  #        include:
+  #          # Tier 1
+  #          - target: x86_64-unknown-linux-gnu
+  #            os: ubuntu-latest
+  #          # Tier 1
+  #          - target: aarch64-unknown-linux-gnu
+  #            os: ubuntu-latest
+  #          # Tier 2
+  #          - target: armv7-unknown-linux-gnueabihf
+  #            os: ubuntu-latest
+  #          # Tier 1
+  #          - target: x86_64-apple-darwin
+  #            os: macos-latest
+  #          # Tier 2
+  #          - target: aarch64-apple-darwin
+  #            os: macos-latest
+  #          # Universal macOS binary is supported as universal-apple-darwin.
+  #          - target: universal-apple-darwin
+  #            os: macos-latest
+  #          # Tier 1
+  #          - target: x86_64-pc-windows-msvc
+  #            os: windows-latest
+  #          # Tier 2
+  #          # - target: aarch64-pc-windows-msvc
+  #          #   os: windows-latest
+  #    runs-on: ${{ matrix.os }}
+  #    steps:
+  #      - name: VCS Checkout
+  #        uses: actions/checkout@v3
+  #      # Required by arm targets
+  #      - name: Install packages
+  #        uses: awalsh128/cache-apt-pkgs-action@latest
+  #        with:
+  #          packages: pkg-config openssl libssl-dev
+  #          version: 1.1
+  #        if: matrix.os == 'ubuntu-latest'
+  #      - name: Setup Node.js 18
+  #        uses: actions/setup-node@v3
+  #        with:
+  #          node-version: 18
+  #      - name: Install Yarn
+  #        uses: borales/actions-yarn@v4
+  #        with:
+  #          cmd: --cwd plugins/graphql-client/web install
+  #      - name: Install Yarn
+  #        uses: borales/actions-yarn@v4
+  #        with:
+  #          cmd: --cwd plugins/graphql-schema-visualization/web install
+  #      - name: Upload Rust Binary
+  #        uses: taiki-e/upload-rust-binary-action@v1
+  #        with:
+  #          bin: libinexor_rgf_plugin_standalone
+  #          target: ${{ matrix.target }}
+  #          include: LICENSE.md,README.md,CHANGELOG.md,config,plugins
+  #          tar: unix
+  #          zip: windows
+  #          leading_dir: true
+  #          token: ${{ secrets.GITHUB_TOKEN }}
+  #        env:
+  #          VERGEN_IDEMPOTENT: true
   crates-io:
     name: Publish on crates.io
     runs-on: ubuntu-latest
@@ -191,63 +191,65 @@ jobs:
         run: |
           # It's important to change into the plugin directory and building each package
           cd ./plugins/arithmetic/crates/plugin
-          cargo deb -p inexor-rgf-plugin-arithmetic --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
+          cargo deb -p reactive-graph-plugin-arithmetic --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../base/crates/plugin
-          cargo deb -p inexor-rgf-plugin-base --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
+          cargo deb -p reactive-graph-plugin-base --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../binary/crates/plugin
-          cargo deb -p inexor-rgf-plugin-binary --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
+          cargo deb -p reactive-graph-plugin-binary --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../color/crates/plugin
-          cargo deb -p inexor-rgf-plugin-color --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
+          cargo deb -p reactive-graph-plugin-color --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../comparison/crates/plugin
-          cargo deb -p inexor-rgf-plugin-comparison --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
+          cargo deb -p reactive-graph-plugin-comparison --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../config/crates/plugin
-          cargo deb -p inexor-rgf-plugin-config --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
+          cargo deb -p reactive-graph-plugin-config --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../connector/crates/plugin
-          cargo deb -p inexor-rgf-plugin-connector --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
+          cargo deb -p reactive-graph-plugin-connector --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../date-time/crates/plugin
-          cargo deb -p inexor-rgf-plugin-date-time --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
+          cargo deb -p reactive-graph-plugin-date-time --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../file/crates/plugin
-          cargo deb -p inexor-rgf-plugin-file --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
+          cargo deb -p reactive-graph-plugin-file --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../flow/crates/plugin
-          cargo deb -p inexor-rgf-plugin-flow --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
+          cargo deb -p reactive-graph-plugin-flow --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../git/crates/plugin
-          cargo deb -p inexor-rgf-plugin-git --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
+          cargo deb -p reactive-graph-plugin-git --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../http/crates/plugin
-          cargo deb -p inexor-rgf-plugin-http --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
+          cargo deb -p reactive-graph-plugin-http --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
+          # cd ../../../i18n/crates/plugin
+          # cargo deb -p reactive-graph-plugin-i18n --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../json/crates/plugin
-          cargo deb -p inexor-rgf-plugin-json --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
+          cargo deb -p reactive-graph-plugin-json --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../logical/crates/plugin
-          cargo deb -p inexor-rgf-plugin-logical --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
+          cargo deb -p reactive-graph-plugin-logical --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../metadata/crates/plugin
-          cargo deb -p inexor-rgf-plugin-metadata --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
+          cargo deb -p reactive-graph-plugin-metadata --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../numeric/crates/plugin
-          cargo deb -p inexor-rgf-plugin-numeric --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
+          cargo deb -p reactive-graph-plugin-numeric --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../random/crates/plugin
-          cargo deb -p inexor-rgf-plugin-random --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
+          cargo deb -p reactive-graph-plugin-random --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../result/crates/plugin
-          cargo deb -p inexor-rgf-plugin-result --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
+          cargo deb -p reactive-graph-plugin-result --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../state/crates/plugin
-          cargo deb -p inexor-rgf-plugin-state --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
+          cargo deb -p reactive-graph-plugin-state --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../string/crates/plugin
-          cargo deb -p inexor-rgf-plugin-string --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
+          cargo deb -p reactive-graph-plugin-string --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../system-environment/crates/plugin
-          cargo deb -p inexor-rgf-plugin-system-environment --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
+          cargo deb -p reactive-graph-plugin-system-environment --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../taxonomy/crates/plugin
-          cargo deb -p inexor-rgf-plugin-taxonomy --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
+          cargo deb -p reactive-graph-plugin-taxonomy --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../trigger/crates/plugin
-          cargo deb -p inexor-rgf-plugin-trigger --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
+          cargo deb -p reactive-graph-plugin-trigger --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../value/crates/plugin
-          cargo deb -p inexor-rgf-plugin-value --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
+          cargo deb -p reactive-graph-plugin-value --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../graphql-client
-          cargo deb -p inexor-rgf-plugin-graphql-client --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
+          cargo deb -p reactive-graph-plugin-graphql-client --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../graphql-schema-visualization
-          cargo deb -p inexor-rgf-plugin-graphql-schema-visualization --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
+          cargo deb -p reactive-graph-plugin-graphql-schema-visualization --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
         env:
           VERGEN_IDEMPOTENT: true
       - name: Upload debian package to release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: target/${{ matrix.target }}/debian/libinexor-rgf-plugin-*_*_*.deb
+          file: target/${{ matrix.target }}/debian/libreactive-graph-plugin-*_*_*.deb
           file_glob: true
           tag: ${{ github.ref }}

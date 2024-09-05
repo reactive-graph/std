@@ -3,22 +3,22 @@ use std::ops::Deref;
 use std::sync::Arc;
 use std::sync::LazyLock;
 
-use inexor_rgf_graph::prelude::*;
-use inexor_rgf_plugin_api::prelude::plugin::*;
-use inexor_rgf_reactive_model_impl::ReactiveEntity;
-use inexor_rgf_reactive_model_impl::ReactiveProperties;
-use inexor_rgf_reactive_service_api::ReactiveEntityRegistrationError;
-use inexor_rgf_runtime_model::LabeledProperties::LABEL;
-use inexor_rgf_runtime_model::COMPONENT_LABELED;
 use log::info;
+use reactive_graph_graph::prelude::*;
+use reactive_graph_plugin_api::prelude::plugin::*;
+use reactive_graph_reactive_model_impl::ReactiveEntity;
+use reactive_graph_reactive_model_impl::ReactiveProperties;
+use reactive_graph_reactive_service_api::ReactiveEntityRegistrationError;
+use reactive_graph_runtime_model::LabeledProperties::LABEL;
+use reactive_graph_runtime_model::COMPONENT_LABELED;
 use serde_json::json;
 use thiserror::Error;
 use uuid::Uuid;
 
-use inexor_rgf_model_base::NamedProperties::NAME;
-use inexor_rgf_model_base::COMPONENT_NAMED;
-use inexor_rgf_model_value::ValueProperties::VALUE;
-use inexor_rgf_model_value::COMPONENT_VALUE;
+use reactive_graph_model_base::NamedProperties::NAME;
+use reactive_graph_model_base::COMPONENT_NAMED;
+use reactive_graph_model_value::ValueProperties::VALUE;
+use reactive_graph_model_value::COMPONENT_VALUE;
 
 use crate::model_system_environment::ENTITY_TYPE_SYSTEM_ENV_VAR;
 use crate::model_system_environment::NAMESPACE_SYSTEM_ENVIRONMENT_ID;

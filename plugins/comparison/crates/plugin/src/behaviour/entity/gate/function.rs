@@ -1,13 +1,13 @@
 use std::sync::Arc;
 use std::sync::LazyLock;
 
-use inexor_rgf_behaviour_model_impl::entity::EntityBehaviourFactoryCreator;
-use inexor_rgf_behaviour_model_impl::entity::EntityBehaviourFunctions;
-use inexor_rgf_behaviour_model_impl::entity::EntityBehaviourFunctionsStorage;
+use reactive_graph_behaviour_model_impl::entity::EntityBehaviourFactoryCreator;
+use reactive_graph_behaviour_model_impl::entity::EntityBehaviourFunctions;
+use reactive_graph_behaviour_model_impl::entity::EntityBehaviourFunctionsStorage;
 use serde_json::json;
 use serde_json::Value;
 
-use inexor_rgf_model_comparison::NAMESPACE_COMPARISON;
+use reactive_graph_model_comparison::NAMESPACE_COMPARISON;
 
 use crate::behaviour::entity::gate::behaviour::ComparisonGateFactory;
 

@@ -1,5 +1,3 @@
-#![feature(associated_type_bounds)]
-#![feature(lazy_cell)]
 #![feature(register_tool)]
 #![register_tool(tarpaulin)]
 
@@ -16,12 +14,12 @@ pub mod providers;
 //
 // use std::sync::Arc;
 //
-// use inexor_rgf_core_di as di;
-// use inexor_rgf_graph as model;
-// use inexor_rgf_model_result as model_result;
-// use inexor_rgf_model_string as model_string;
-// use inexor_rgf_plugin_api as plugins;
-// use inexor_rgf_reactive as reactive;
+// use reactive_graph_core_di as di;
+// use reactive_graph_graph as model;
+// use reactive_graph_model_result as model_result;
+// use reactive_graph_model_string as model_string;
+// use reactive_graph_plugin_api as plugins;
+// use reactive_graph_reactive as reactive;
 // use log::error;
 //
 // use crate::di::profiles;
@@ -72,13 +70,13 @@ pub mod providers;
 // #[allow(improper_ctypes_definitions)]
 // extern "C" fn get_dependencies() -> Vec<PluginDependency> {
 //     vec![
-//         PluginDependency::new("inexor-rgf-plugin-base", ">=0.9.0, <0.10.0"),
-//         PluginDependency::new("inexor-rgf-plugin-result", ">=0.9.0, <0.10.0"),
+//         PluginDependency::new("reactive-graph-plugin-base", ">=0.9.0, <0.10.0"),
+//         PluginDependency::new("reactive-graph-plugin-result", ">=0.9.0, <0.10.0"),
 //     ]
 // }
 //
 // #[cfg(test)]
-// use inexor_rgf_core_builder as builder;
+// use reactive_graph_core_builder as builder;
 //
 // #[cfg(test)]
 // #[tarpaulin::ignore]
