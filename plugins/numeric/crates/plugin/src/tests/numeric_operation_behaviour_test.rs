@@ -6,10 +6,10 @@
 // use crate::reactive::BehaviourFactory;
 // use crate::reactive::BehaviourFsm;
 // use crate::tests::numeric_operation_test::numeric_operation;
-// use inexor_rgf_graph::BehaviourTypeId;
-// use inexor_rgf_graph::EntityTypeId;
-// use inexor_rgf_graph::NamespacedTypeGetter;
-// use inexor_rgf_graph::ReactiveEntityInstance;
+// use reactive_graph_graph::BehaviourTypeId;
+// use reactive_graph_graph::EntityTypeId;
+// use reactive_graph_graph::NamespacedTypeGetter;
+// use reactive_graph_graph::ReactiveEntityInstance;
 //
 // #[test]
 // fn numeric_operation_behaviour_test() {

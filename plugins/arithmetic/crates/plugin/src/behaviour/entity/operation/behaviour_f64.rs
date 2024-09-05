@@ -1,14 +1,14 @@
-use inexor_rgf_behaviour_model_api::behaviour_validator;
-use inexor_rgf_behaviour_model_api::prelude::*;
-use inexor_rgf_behaviour_model_impl::entity_behaviour;
-use inexor_rgf_graph::prelude::*;
-use inexor_rgf_reactive_model_impl::ReactiveEntity;
+use reactive_graph_behaviour_model_api::behaviour_validator;
+use reactive_graph_behaviour_model_api::prelude::*;
+use reactive_graph_behaviour_model_impl::entity_behaviour;
+use reactive_graph_graph::prelude::*;
+use reactive_graph_reactive_model_impl::ReactiveEntity;
 use serde_json::json;
 use serde_json::Value;
 use uuid::Uuid;
 
-use inexor_rgf_model_arithmetic::ArithmeticOperationProperties::LHS;
-use inexor_rgf_model_arithmetic::ArithmeticOperationProperties::RESULT;
+use reactive_graph_model_arithmetic::ArithmeticOperationProperties::LHS;
+use reactive_graph_model_arithmetic::ArithmeticOperationProperties::RESULT;
 
 use crate::behaviour::as_f64;
 use crate::behaviour::entity::operation::function::ArithmeticOperationF64Function;
@@ -54,17 +54,17 @@ impl BehaviourTransitions<Uuid, ReactiveEntity> for ArithmeticOperationF64Behavi
 mod tests {
     use std::sync::Arc;
 
-    use inexor_rgf_behaviour_model_api::prelude::*;
-    use inexor_rgf_graph::prelude::*;
-    use inexor_rgf_reactive_model_api::ReactiveInstanceContainer;
-    // use inexor_rgf_reactive_api::prelude::*;
-    use inexor_rgf_reactive_model_impl::ReactiveEntity;
-    use inexor_rgf_reactive_model_impl::ReactiveProperties;
+    use reactive_graph_behaviour_model_api::prelude::*;
+    use reactive_graph_graph::prelude::*;
+    use reactive_graph_reactive_model_api::ReactiveInstanceContainer;
+    // use reactive_graph_reactive_api::prelude::*;
+    use reactive_graph_reactive_model_impl::ReactiveEntity;
+    use reactive_graph_reactive_model_impl::ReactiveProperties;
     use serde_json::json;
     use uuid::Uuid;
 
-    use inexor_rgf_model_arithmetic::ArithmeticOperationProperties;
-    use inexor_rgf_model_arithmetic::NAMESPACE_ARITHMETIC_F64;
+    use reactive_graph_model_arithmetic::ArithmeticOperationProperties;
+    use reactive_graph_model_arithmetic::NAMESPACE_ARITHMETIC_F64;
 
     use crate::behaviour::entity::operation::behaviour_f64::ArithmeticOperationF64;
     use crate::behaviour::entity::operation::function::*;
@@ -85,7 +85,7 @@ mod tests {
         let ty = EntityTypeId::new_from_type(NAMESPACE_ARITHMETIC_F64, type_name);
         let behaviour = create_arithmetic_operation_behaviour(ty, f);
         let reactive_instance = behaviour.get_reactive_instance();
-        let arithmetic_operation = inexor_rgf_model_arithmetic::ArithmeticOperationF64::from(reactive_instance.clone());
+        let arithmetic_operation = reactive_graph_model_arithmetic::ArithmeticOperationF64::from(reactive_instance.clone());
         arithmetic_operation.lhs(v);
         arithmetic_operation.result().expect("Result is not of type f64")
     }

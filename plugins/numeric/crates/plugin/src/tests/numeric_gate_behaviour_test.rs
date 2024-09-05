@@ -9,7 +9,7 @@ use crate::builder::ReactiveEntityInstanceBuilder;
 use crate::reactive::BehaviourCreationError;
 use crate::reactive::Gate;
 use crate::reactive::Operation;
-use inexor_rgf_graph::ReactiveEntityInstance;
+use reactive_graph_graph::ReactiveEntityInstance;
 
 #[test]
 fn numeric_operation_behaviour_test() {

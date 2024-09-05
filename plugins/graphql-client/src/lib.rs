@@ -1,4 +1,3 @@
-#![feature(lazy_cell)]
 #![feature(register_tool)]
 #![register_tool(tarpaulin)]
 #![allow(clippy::map_entry)]
@@ -11,9 +10,9 @@ pub mod provider;
 //
 // use std::sync::Arc;
 //
-// use inexor_rgf_config as config;
-// use inexor_rgf_core_di as di;
-// use inexor_rgf_plugin_api as plugins;
+// use reactive_graph_config as config;
+// use reactive_graph_core_di as di;
+// use reactive_graph_plugin_api as plugins;
 // use log::error;
 //
 // use crate::di::profiles;

@@ -1,6 +1,6 @@
 [package]
-name = "inexor-rgf-model-arithmetic"
-description = "Inexor - Reactive Graph Flow - Model - Arithmetic"
+name = "reactive-graph-model-arithmetic"
+description = "Reactive Graph - Model - Arithmetic"
 version.workspace = true
 authors.workspace = true
 edition.workspace = true
@@ -15,19 +15,19 @@ serde_json = { workspace = true }
 strum_macros = { workspace = true }
 uuid = { workspace = true, features = ["serde", "v4"] }
 
-inexor-rgf-graph = { workspace = true }
-inexor-rgf-behaviour-model-api = { workspace = true }
-inexor-rgf-reactive-model-api = { workspace = true }
-inexor-rgf-reactive-model-impl = { workspace = true }
-inexor-rgf-reactive-service-api = { workspace = true, features = ["derive"] }
-inexor-rgf-runtime-model = { workspace = true }
+reactive-graph-graph = { workspace = true }
+reactive-graph-behaviour-model-api = { workspace = true }
+reactive-graph-reactive-model-api = { workspace = true }
+reactive-graph-reactive-model-impl = { workspace = true }
+reactive-graph-reactive-service-api = { workspace = true, features = ["derive"] }
+reactive-graph-runtime-model = { workspace = true }
 
-inexor-rgf-model-result = { version = "0.10.0", path = "../../../result/crates/model" }
+reactive-graph-model-result = { version = "0.10.0", path = "../../../result/crates/model" }
 
 [dev-dependencies]
 default-test = { workspace = true }
-inexor-rgf-graph = { workspace = true, features = ["test"] }
-inexor-rgf-test-utils = { workspace = true }
+reactive-graph-graph = { workspace = true, features = ["test"] }
+reactive-graph-test-utils = { workspace = true }
 
 [lib]
 crate-type = ["lib"]

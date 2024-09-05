@@ -1,5 +1,3 @@
-#![feature(lazy_cell)]
-
 pub use component::load_json::*;
 pub use component::save_json::*;
 pub use entity::array_contains::*;

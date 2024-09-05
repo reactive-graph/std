@@ -1,8 +1,8 @@
-use inexor_rgf_model_string::BEHAVIOUR_TEMPLATING;
-use inexor_rgf_model_string::ENTITY_BEHAVIOUR_TEMPLATING;
-use inexor_rgf_plugin_api::prelude::plugin::*;
-use inexor_rgf_plugin_api::prelude::providers::*;
-use inexor_rgf_plugin_api::EntityBehaviourRegistry;
+use reactive_graph_model_string::BEHAVIOUR_TEMPLATING;
+use reactive_graph_model_string::ENTITY_BEHAVIOUR_TEMPLATING;
+use reactive_graph_plugin_api::prelude::plugin::*;
+use reactive_graph_plugin_api::prelude::providers::*;
+use reactive_graph_plugin_api::EntityBehaviourRegistry;
 
 use crate::behaviour::entity::string_bool_operation::function::STRING_BOOL_OPERATIONS;
 use crate::behaviour::entity::string_comparison::function::STRING_COMPARISONS;
@@ -13,8 +13,8 @@ use crate::behaviour::entity::templating::TemplatingFactory;
 
 export_plugin!({
     "dependencies": [
-        { "name": "inexor-rgf-plugin-base", "version": ">=0.10.0, <0.11.0" },
-        { "name": "inexor-rgf-plugin-result", "version": ">=0.10.0, <0.11.0" }
+        { "name": "reactive-graph-plugin-base", "version": ">=0.10.0, <0.11.0" },
+        { "name": "reactive-graph-plugin-result", "version": ">=0.10.0, <0.11.0" }
     ]
 });
 
@@ -108,7 +108,7 @@ impl Plugin for StringPluginImpl {
 // use crate::plugins::PluginDeactivationError;
 // use crate::providers::StringComponentProviderImpl;
 // use crate::providers::StringEntityTypeProviderImpl;
-// use inexor_rgf_graph::EntityBehaviourTypeId;
+// use reactive_graph_graph::EntityBehaviourTypeId;
 //
 // #[wrapper]
 // pub struct PluginContextContainer(RwLock<Option<Arc<dyn PluginContext>>>);

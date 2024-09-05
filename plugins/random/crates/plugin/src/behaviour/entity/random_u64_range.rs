@@ -1,19 +1,19 @@
 use std::ops::Range;
 
-use inexor_rgf_behaviour_model_api::behaviour_validator;
-use inexor_rgf_behaviour_model_api::prelude::*;
-use inexor_rgf_behaviour_model_impl::entity_behaviour;
-use inexor_rgf_graph::prelude::*;
-use inexor_rgf_reactive_model_impl::ReactiveEntity;
-use inexor_rgf_runtime_model::ActionProperties::TRIGGER;
+use reactive_graph_behaviour_model_api::behaviour_validator;
+use reactive_graph_behaviour_model_api::prelude::*;
+use reactive_graph_behaviour_model_impl::entity_behaviour;
+use reactive_graph_graph::prelude::*;
+use reactive_graph_reactive_model_impl::ReactiveEntity;
+use reactive_graph_runtime_model::ActionProperties::TRIGGER;
 use rand::Rng;
 use serde_json::json;
 use serde_json::Value;
 use uuid::Uuid;
 
-use inexor_rgf_model_random::RangeU64Properties::HIGH;
-use inexor_rgf_model_random::RangeU64Properties::LOW;
-use inexor_rgf_model_result::ResultNumberU64Properties::RESULT;
+use reactive_graph_model_random::RangeU64Properties::HIGH;
+use reactive_graph_model_random::RangeU64Properties::LOW;
+use reactive_graph_model_result::ResultNumberU64Properties::RESULT;
 
 entity_behaviour!(
     RandomU64Range,

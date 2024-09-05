@@ -1,6 +1,6 @@
 [package]
-name = "inexor-rgf-plugin-state"
-description = "Inexor - Reactive Graph Flow - Plugin - State"
+name = "reactive-graph-plugin-state"
+description = "Reactive Graph - Plugin - State"
 version.workspace = true
 authors.workspace = true
 edition.workspace = true
@@ -9,10 +9,10 @@ repository.workspace = true
 readme = "../../../../README.md"
 
 [package.metadata.deb]
-name = "libinexor-rgf-plugin-state"
-depends = "inexor-rgf, libinexor-rgf-plugin-base, libinexor-rgf-plugin-value"
+name = "libreactive-graph-plugin-state"
+depends = "reactive-graph, libreactive-graph-plugin-base, libreactive-graph-plugin-value"
 assets = [
-    ["target/release/libinexor_rgf_plugin_state.so", "usr/share/inexor-rgf/default/plugins/installed/libinexor_rgf_plugin_state.so", "755"],
+    ["target/release/libreactive_graph_plugin_state.so", "usr/share/reactive-graph/default/plugins/installed/libreactive_graph_plugin_state.so", "755"],
 ]
 
 [dependencies]
@@ -26,18 +26,18 @@ serde_json = { workspace = true }
 springtime-di = { workspace = true, default-features = false, features = ["threadsafe", "derive"] }
 uuid = { workspace = true, features = ["serde", "v4"] }
 
-inexor-rgf-behaviour-model-api = { workspace = true }
-inexor-rgf-behaviour-model-impl = { workspace = true }
-inexor-rgf-graph = { workspace = true }
-inexor-rgf-plugin-api = { workspace = true }
-inexor-rgf-reactive-model-api = { workspace = true }
-inexor-rgf-reactive-model-impl = { workspace = true }
-inexor-rgf-reactive-service-api = { workspace = true, features = ["derive"] }
-inexor-rgf-type-system-api = { workspace = true }
+reactive-graph-behaviour-model-api = { workspace = true }
+reactive-graph-behaviour-model-impl = { workspace = true }
+reactive-graph-graph = { workspace = true }
+reactive-graph-plugin-api = { workspace = true }
+reactive-graph-reactive-model-api = { workspace = true }
+reactive-graph-reactive-model-impl = { workspace = true }
+reactive-graph-reactive-service-api = { workspace = true, features = ["derive"] }
+reactive-graph-type-system-api = { workspace = true }
 
 
-inexor-rgf-model-value = { version = "0.10.0", path = "../../../value/crates/model" }
-inexor-rgf-model-state = { version = "0.10.0", path = "../../crates/model" }
+reactive-graph-model-value = { version = "0.10.0", path = "../../../value/crates/model" }
+reactive-graph-model-state = { version = "0.10.0", path = "../../crates/model" }
 
 [lib]
 # Plugins use crate-type cdylib

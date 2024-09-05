@@ -1,5 +1,3 @@
-#![feature(lazy_cell)]
-
 pub use component::alpha::*;
 pub use component::brightness::*;
 pub use component::hs::*;

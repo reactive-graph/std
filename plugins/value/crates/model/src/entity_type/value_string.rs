@@ -1,4 +1,4 @@
-use inexor_rgf_reactive_service_api::reactive_entity;
+use reactive_graph_reactive_service_api::reactive_entity;
 
 #[reactive_entity(namespace = "value", type_name = "value_string")]
 pub struct ValueString {

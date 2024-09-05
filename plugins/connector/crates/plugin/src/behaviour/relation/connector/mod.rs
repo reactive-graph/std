@@ -1,13 +1,13 @@
-use inexor_rgf_behaviour_model_api::prelude::*;
-use inexor_rgf_behaviour_model_impl::relation_behaviour;
-use inexor_rgf_graph::prelude::*;
-use inexor_rgf_reactive_model_impl::ReactiveRelation;
+use reactive_graph_behaviour_model_api::prelude::*;
+use reactive_graph_behaviour_model_impl::relation_behaviour;
+use reactive_graph_graph::prelude::*;
+use reactive_graph_reactive_model_impl::ReactiveRelation;
 use serde_json::Value;
 
 pub use function::ConnectorFunction;
 pub use function::CONNECTOR_BEHAVIOURS;
-use inexor_rgf_model_connector::ConnectorProperties::INBOUND_PROPERTY_NAME;
-use inexor_rgf_model_connector::ConnectorProperties::OUTBOUND_PROPERTY_NAME;
+use reactive_graph_model_connector::ConnectorProperties::INBOUND_PROPERTY_NAME;
+use reactive_graph_model_connector::ConnectorProperties::OUTBOUND_PROPERTY_NAME;
 
 use crate::behaviour::relation::connector::validator::ConnectorValidator;
 

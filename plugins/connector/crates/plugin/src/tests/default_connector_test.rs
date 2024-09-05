@@ -7,12 +7,12 @@ use crate::reactive::BehaviourState;
 use crate::tests::utils::create_connector;
 use crate::tests::utils::create_random_entity_instance;
 use crate::tests::utils::r_string;
-use inexor_rgf_graph::BehaviourTypeId;
-use inexor_rgf_graph::PropertyInstanceGetter;
-use inexor_rgf_graph::PropertyInstanceSetter;
-use inexor_rgf_graph::ReactivePropertyContainer;
-use inexor_rgf_graph::RelationTypeId;
-use inexor_rgf_model_connector::NAMESPACE_CONNECTOR;
+use reactive_graph_graph::BehaviourTypeId;
+use reactive_graph_graph::PropertyInstanceGetter;
+use reactive_graph_graph::PropertyInstanceSetter;
+use reactive_graph_graph::ReactivePropertyContainer;
+use reactive_graph_graph::RelationTypeId;
+use reactive_graph_model_connector::NAMESPACE_CONNECTOR;
 
 pub static TYPE_NAME_DEFAULT_CONNECTOR: &str = "default_connector";
 

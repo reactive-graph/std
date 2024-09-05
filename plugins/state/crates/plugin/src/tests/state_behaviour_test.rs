@@ -11,9 +11,9 @@ use crate::builder::ReactiveEntityInstanceBuilder;
 use crate::model_state::StateProperties;
 use crate::model_value::ValueProperties;
 use crate::reactive::BehaviourFactory;
-use inexor_rgf_graph::EntityTypeId;
-use inexor_rgf_graph::NamespacedType;
-use inexor_rgf_graph::PropertyInstanceSetter;
+use reactive_graph_graph::EntityTypeId;
+use reactive_graph_graph::NamespacedType;
+use reactive_graph_graph::PropertyInstanceSetter;
 
 #[test]
 fn state_behaviour_test() {

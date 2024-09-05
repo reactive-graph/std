@@ -1,5 +1,5 @@
 {
-  "name": "inexor-rgf-plugin-graphql-client",
+  "name": "reactive-graph-plugin-graphql-client",
   "license": "MIT",
   "scripts": {
     "build": "webpack",

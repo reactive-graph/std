@@ -1,14 +1,14 @@
-use inexor_rgf_behaviour_model_api::behaviour_validator;
-use inexor_rgf_behaviour_model_api::prelude::*;
-use inexor_rgf_behaviour_model_impl::entity_behaviour;
-use inexor_rgf_graph::prelude::*;
-use inexor_rgf_reactive_model_impl::ReactiveEntity;
+use reactive_graph_behaviour_model_api::behaviour_validator;
+use reactive_graph_behaviour_model_api::prelude::*;
+use reactive_graph_behaviour_model_impl::entity_behaviour;
+use reactive_graph_graph::prelude::*;
+use reactive_graph_reactive_model_impl::ReactiveEntity;
 use serde_json::Value;
 use uuid::Uuid;
 
-use inexor_rgf_model_json::ArrayPopProperties::ARRAY;
-use inexor_rgf_model_json::ArrayPopProperties::VALUE;
-use inexor_rgf_model_result::ResultArrayProperties::RESULT;
+use reactive_graph_model_json::ArrayPopProperties::ARRAY;
+use reactive_graph_model_json::ArrayPopProperties::VALUE;
+use reactive_graph_model_result::ResultArrayProperties::RESULT;
 
 entity_behaviour!(ArrayPop, ArrayPopFactory, ArrayPopFsm, ArrayPopBehaviourTransitions, ArrayPopValidator);
 

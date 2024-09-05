@@ -1,8 +1,8 @@
 use crate::behaviour::entity::string_comparison::StringComparisonFactory;
-use inexor_rgf_behaviour_model_impl::entity::EntityBehaviourFactoryCreator;
-use inexor_rgf_behaviour_model_impl::entity::EntityBehaviourFunctions;
-use inexor_rgf_behaviour_model_impl::entity::EntityBehaviourFunctionsStorage;
-use inexor_rgf_model_string::NAMESPACE_STRING;
+use reactive_graph_behaviour_model_impl::entity::EntityBehaviourFactoryCreator;
+use reactive_graph_behaviour_model_impl::entity::EntityBehaviourFunctions;
+use reactive_graph_behaviour_model_impl::entity::EntityBehaviourFunctionsStorage;
+use reactive_graph_model_string::NAMESPACE_STRING;
 use std::sync::Arc;
 use std::sync::LazyLock;
 

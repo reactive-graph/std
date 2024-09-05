@@ -1,4 +1,3 @@
-#![feature(lazy_cell)]
 #![feature(unboxed_closures)]
 #![feature(fn_traits)]
 

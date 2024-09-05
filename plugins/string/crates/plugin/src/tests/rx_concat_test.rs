@@ -7,11 +7,11 @@ use crate::model_string::StringGateProperties::RHS;
 use crate::model_string::COMPONENT_STRING_GATE;
 use crate::reactive::BehaviourFactory;
 use crate::reactive::BehaviourState;
-use inexor_rgf_graph::BehaviourTypeId;
-use inexor_rgf_graph::EntityTypeId;
-use inexor_rgf_model_result::ResultString;
-use inexor_rgf_model_result::ResultStringProperties::RESULT;
-use inexor_rgf_model_string::NAMESPACE_STRING;
+use reactive_graph_graph::BehaviourTypeId;
+use reactive_graph_graph::EntityTypeId;
+use reactive_graph_model_result::ResultString;
+use reactive_graph_model_result::ResultStringProperties::RESULT;
+use reactive_graph_model_string::NAMESPACE_STRING;
 
 #[test]
 fn rx_concat_test() {

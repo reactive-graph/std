@@ -1,5 +1,5 @@
 use async_trait::async_trait;
-use inexor_rgf_plugin_api::injectable;
+use reactive_graph_plugin_api::injectable;
 
 #[injectable]
 #[async_trait]

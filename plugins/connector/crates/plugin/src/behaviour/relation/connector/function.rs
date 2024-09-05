@@ -2,15 +2,15 @@ use std::clone::Clone;
 use std::sync::Arc;
 use std::sync::LazyLock;
 
-use inexor_rgf_behaviour_model_impl::relation::function::RelationBehaviourFunctions;
-use inexor_rgf_behaviour_model_impl::relation::function::RelationBehaviourFunctionsStorage;
-use inexor_rgf_behaviour_model_impl::relation::RelationBehaviourFactoryCreator;
+use reactive_graph_behaviour_model_impl::relation::function::RelationBehaviourFunctions;
+use reactive_graph_behaviour_model_impl::relation::function::RelationBehaviourFunctionsStorage;
+use reactive_graph_behaviour_model_impl::relation::RelationBehaviourFactoryCreator;
 use log::debug;
 use log::trace;
 use serde_json::json;
 use serde_json::Value;
 
-use inexor_rgf_model_connector::*;
+use reactive_graph_model_connector::*;
 
 use crate::behaviour::relation::connector::ConnectorFactory;
 

@@ -1,7 +1,7 @@
 use crate::NAMESPACE_CONFIG;
-use inexor_rgf_behaviour_model_api::behaviour_ty;
-use inexor_rgf_behaviour_model_api::component_behaviour_ty;
-use inexor_rgf_graph::component_ty;
+use reactive_graph_behaviour_model_api::behaviour_ty;
+use reactive_graph_behaviour_model_api::component_behaviour_ty;
+use reactive_graph_graph::component_ty;
 
 // All properties are defined in the component(s)
 

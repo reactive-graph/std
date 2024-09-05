@@ -1,14 +1,14 @@
-use inexor_rgf_model_numeric::NAMESPACE_NUMERIC_F64;
-use inexor_rgf_model_numeric::NAMESPACE_NUMERIC_I64;
+use reactive_graph_model_numeric::NAMESPACE_NUMERIC_F64;
+use reactive_graph_model_numeric::NAMESPACE_NUMERIC_I64;
 
 use std::sync::Arc;
 use std::sync::LazyLock;
 
 use crate::behaviour::entity::operation::behaviour_f64::NumericOperationF64Factory;
 use crate::behaviour::entity::operation::behaviour_i64::NumericOperationI64Factory;
-use inexor_rgf_behaviour_model_impl::entity::EntityBehaviourFactoryCreator;
-use inexor_rgf_behaviour_model_impl::entity::EntityBehaviourFunctions;
-use inexor_rgf_behaviour_model_impl::entity::EntityBehaviourFunctionsStorage;
+use reactive_graph_behaviour_model_impl::entity::EntityBehaviourFactoryCreator;
+use reactive_graph_behaviour_model_impl::entity::EntityBehaviourFunctions;
+use reactive_graph_behaviour_model_impl::entity::EntityBehaviourFunctionsStorage;
 
 pub type NumericOperationFunction<I, O> = fn(I) -> O;
 pub type NumericOperationF64Function = NumericOperationFunction<f64, f64>;

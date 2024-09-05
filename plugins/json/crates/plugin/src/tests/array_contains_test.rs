@@ -1,10 +1,10 @@
-use inexor_rgf_model_json::ArrayContains;
-use inexor_rgf_model_json::ArrayContainsProperties::ARRAY;
-use inexor_rgf_model_json::ArrayContainsProperties::SEARCH;
-use inexor_rgf_model_json::BEHAVIOUR_ARRAY_CONTAINS;
-use inexor_rgf_model_json::ENTITY_TYPE_ARRAY_CONTAINS;
-use inexor_rgf_model_result::ResultBoolean;
-use inexor_rgf_model_result::ResultBooleanProperties::RESULT;
+use reactive_graph_model_json::ArrayContains;
+use reactive_graph_model_json::ArrayContainsProperties::ARRAY;
+use reactive_graph_model_json::ArrayContainsProperties::SEARCH;
+use reactive_graph_model_json::BEHAVIOUR_ARRAY_CONTAINS;
+use reactive_graph_model_json::ENTITY_TYPE_ARRAY_CONTAINS;
+use reactive_graph_model_result::ResultBoolean;
+use reactive_graph_model_result::ResultBooleanProperties::RESULT;
 use serde_json::json;
 
 use crate::behaviour::entity::array_contains::ArrayContainsFactory;

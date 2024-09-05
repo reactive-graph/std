@@ -1,14 +1,14 @@
-use inexor_rgf_behaviour_model_api::behaviour_validator;
-use inexor_rgf_behaviour_model_api::prelude::*;
-use inexor_rgf_behaviour_model_impl::entity_behaviour;
-use inexor_rgf_graph::prelude::*;
-use inexor_rgf_reactive_model_impl::ReactiveEntity;
+use reactive_graph_behaviour_model_api::behaviour_validator;
+use reactive_graph_behaviour_model_api::prelude::*;
+use reactive_graph_behaviour_model_impl::entity_behaviour;
+use reactive_graph_graph::prelude::*;
+use reactive_graph_reactive_model_impl::ReactiveEntity;
 use serde_json::json;
 use uuid::Uuid;
 
-use inexor_rgf_model_arithmetic::ArithmeticGateProperties::LHS;
-use inexor_rgf_model_arithmetic::ArithmeticGateProperties::RESULT;
-use inexor_rgf_model_arithmetic::ArithmeticGateProperties::RHS;
+use reactive_graph_model_arithmetic::ArithmeticGateProperties::LHS;
+use reactive_graph_model_arithmetic::ArithmeticGateProperties::RESULT;
+use reactive_graph_model_arithmetic::ArithmeticGateProperties::RHS;
 
 use crate::behaviour::as_f64;
 use crate::behaviour::entity::gate::function::ArithmeticGateF64Function;
@@ -71,16 +71,16 @@ impl BehaviourTransitions<Uuid, ReactiveEntity> for ArithmeticGateF64BehaviourTr
 mod tests {
     use std::sync::Arc;
 
-    use inexor_rgf_behaviour_model_api::prelude::*;
-    use inexor_rgf_graph::prelude::*;
-    use inexor_rgf_reactive_model_api::ReactiveInstanceContainer;
-    use inexor_rgf_reactive_model_impl::ReactiveEntity;
-    use inexor_rgf_reactive_model_impl::ReactiveProperties;
+    use reactive_graph_behaviour_model_api::prelude::*;
+    use reactive_graph_graph::prelude::*;
+    use reactive_graph_reactive_model_api::ReactiveInstanceContainer;
+    use reactive_graph_reactive_model_impl::ReactiveEntity;
+    use reactive_graph_reactive_model_impl::ReactiveProperties;
     use serde_json::json;
     use uuid::Uuid;
 
-    use inexor_rgf_model_arithmetic::ArithmeticGateProperties;
-    use inexor_rgf_model_arithmetic::NAMESPACE_ARITHMETIC_F64;
+    use reactive_graph_model_arithmetic::ArithmeticGateProperties;
+    use reactive_graph_model_arithmetic::NAMESPACE_ARITHMETIC_F64;
 
     use crate::behaviour::entity::gate::behaviour_f64::ArithmeticGateF64;
     use crate::behaviour::entity::gate::function::*;
@@ -114,7 +114,7 @@ mod tests {
         let ty = EntityTypeId::new_from_type(NAMESPACE_ARITHMETIC_F64, type_name);
         let behaviour = create_arithmetic_gate_f64_behaviour(ty, f).unwrap();
         let reactive_instance = behaviour.get_reactive_instance();
-        let arithmetic_gate = inexor_rgf_model_arithmetic::ArithmeticGateF64::from(reactive_instance.clone());
+        let arithmetic_gate = reactive_graph_model_arithmetic::ArithmeticGateF64::from(reactive_instance.clone());
         arithmetic_gate.lhs(lhs);
         arithmetic_gate.rhs(rhs);
         arithmetic_gate.result().expect("Result is not of type f64")

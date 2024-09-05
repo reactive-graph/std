@@ -1,5 +1,3 @@
-#![feature(lazy_cell)]
-
 pub use component::repository::*;
 pub use component::transfer_progress::*;
 pub use entity::repository::*;

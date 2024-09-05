@@ -11,12 +11,12 @@
 // use crate::model_arithmetic::NAMESPACE_ARITHMETIC_F64;
 // use crate::reactive::BehaviourFactory;
 // use crate::reactive::BehaviourState;
-// use inexor_rgf_graph::BehaviourTypeId;
-// use inexor_rgf_graph::EntityTypeId;
-// use inexor_rgf_graph::NamespacedTypeGetter;
-// use inexor_rgf_graph::PropertyInstanceGetter;
-// use inexor_rgf_graph::PropertyInstanceSetter;
-// use inexor_rgf_graph::ReactiveEntityInstance;
+// use reactive_graph_graph::BehaviourTypeId;
+// use reactive_graph_graph::EntityTypeId;
+// use reactive_graph_graph::NamespacedTypeGetter;
+// use reactive_graph_graph::PropertyInstanceGetter;
+// use reactive_graph_graph::PropertyInstanceSetter;
+// use reactive_graph_graph::ReactiveEntityInstance;
 //
 // const LHS: ArithmeticGateProperties = ArithmeticGateProperties::LHS;
 // const RHS: ArithmeticGateProperties = ArithmeticGateProperties::RHS;

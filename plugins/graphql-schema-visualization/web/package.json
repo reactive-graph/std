@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "inexor-rgf-plugin-graphql-schema-visualization",
+  "name": "reactive-graph-plugin-graphql-schema-visualization",
   "description": "Bundles GraphQL Voyager as Inexor RGF Plugin",
   "license": "MIT",
   "scripts": {

@@ -1,6 +1,6 @@
 [package]
-name = "inexor-rgf-model-git"
-description = "Inexor - Reactive Graph Flow - Model - GIT"
+name = "reactive-graph-model-git"
+description = "Reactive Graph - Model - GIT"
 version.workspace = true
 authors.workspace = true
 edition.workspace = true
@@ -15,15 +15,15 @@ paste = { workspace = true }
 serde_json = { workspace = true }
 strum_macros = { workspace = true }
 
-inexor-rgf-behaviour-model-api = { workspace = true }
-inexor-rgf-graph = { workspace = true }
-inexor-rgf-reactive-model-api = { workspace = true }
-inexor-rgf-reactive-model-impl = { workspace = true }
-inexor-rgf-runtime-model = { workspace = true }
+reactive-graph-behaviour-model-api = { workspace = true }
+reactive-graph-graph = { workspace = true }
+reactive-graph-reactive-model-api = { workspace = true }
+reactive-graph-reactive-model-impl = { workspace = true }
+reactive-graph-runtime-model = { workspace = true }
 
-inexor-rgf-model-base = { version = "0.10.0", path = "../../../base/crates/model" }
-inexor-rgf-model-file = { version = "0.10.0", path = "../../../file/crates/model" }
-inexor-rgf-model-http = { version = "0.10.0", path = "../../../http/crates/model" }
+reactive-graph-model-base = { version = "0.10.0", path = "../../../base/crates/model" }
+reactive-graph-model-file = { version = "0.10.0", path = "../../../file/crates/model" }
+reactive-graph-model-http = { version = "0.10.0", path = "../../../http/crates/model" }
 
 [lib]
 crate-type = ["lib"]

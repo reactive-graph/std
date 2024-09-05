@@ -1,6 +1,6 @@
 use crate::plugins::ComponentProvider;
 use crate::providers::JsonComponentProviderImpl;
-use inexor_rgf_graph::NamespacedTypeGetter;
+use reactive_graph_graph::NamespacedTypeGetter;
 
 #[test]
 fn components_should_exist() {

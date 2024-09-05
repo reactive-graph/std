@@ -1,20 +1,20 @@
-use inexor_rgf_plugin_api::prelude::plugin::*;
-use inexor_rgf_plugin_api::prelude::providers::*;
-use inexor_rgf_plugin_api::EntityComponentBehaviourRegistry;
-use inexor_rgf_plugin_api::WebResourceManager;
+use reactive_graph_plugin_api::prelude::plugin::*;
+use reactive_graph_plugin_api::prelude::providers::*;
+use reactive_graph_plugin_api::EntityComponentBehaviourRegistry;
+use reactive_graph_plugin_api::WebResourceManager;
 
 use crate::behaviour::component::load_binary_data::LoadBinaryDataFactory;
 use crate::behaviour::component::save_binary_data::SaveBinaryDataFactory;
-use inexor_rgf_model_binary::BEHAVIOUR_LOAD_BINARY_DATA;
-use inexor_rgf_model_binary::BEHAVIOUR_SAVE_BINARY_DATA;
-use inexor_rgf_model_binary::COMPONENT_BEHAVIOUR_LOAD_BINARY_DATA;
-use inexor_rgf_model_binary::COMPONENT_BEHAVIOUR_SAVE_BINARY_DATA;
+use reactive_graph_model_binary::BEHAVIOUR_LOAD_BINARY_DATA;
+use reactive_graph_model_binary::BEHAVIOUR_SAVE_BINARY_DATA;
+use reactive_graph_model_binary::COMPONENT_BEHAVIOUR_LOAD_BINARY_DATA;
+use reactive_graph_model_binary::COMPONENT_BEHAVIOUR_SAVE_BINARY_DATA;
 
 export_plugin!({
     "dependencies": [
-        { "name": "inexor-rgf-plugin-base", "version": ">=0.10.0, <0.11.0" },
-        { "name": "inexor-rgf-plugin-file", "version": ">=0.10.0, <0.11.0" },
-        { "name": "inexor-rgf-plugin-trigger", "version": ">=0.10.0, <0.11.0" }
+        { "name": "reactive-graph-plugin-base", "version": ">=0.10.0, <0.11.0" },
+        { "name": "reactive-graph-plugin-file", "version": ">=0.10.0, <0.11.0" },
+        { "name": "reactive-graph-plugin-trigger", "version": ">=0.10.0, <0.11.0" }
     ]
 });
 

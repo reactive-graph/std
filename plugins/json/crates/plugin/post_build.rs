@@ -15,7 +15,7 @@ fn main() {
             match deployment {
                 Ok(deployment) => {
                     let mut crate_out_dir = env::var("CRATE_OUT_DIR").unwrap();
-                    crate_out_dir.push_str("/libinexor_rgf_plugin_json.*");
+                    crate_out_dir.push_str("/libreactive_graph_plugin_json.*");
                     for target_dir in deployment.target_dirs {
                         for entry in glob::glob(crate_out_dir.as_str()).unwrap() {
                             if let Ok(source_path) = entry {

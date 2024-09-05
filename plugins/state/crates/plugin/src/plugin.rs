@@ -1,7 +1,7 @@
 use std::ops::Deref;
 
-use inexor_rgf_plugin_api::prelude::plugin::*;
-use inexor_rgf_plugin_api::prelude::providers::*;
+use reactive_graph_plugin_api::prelude::plugin::*;
+use reactive_graph_plugin_api::prelude::providers::*;
 
 use crate::behaviour::component::state::STATE_BEHAVIOURS;
 use crate::behaviour::component::state::STATE_FACTORIES;
@@ -9,8 +9,8 @@ use crate::behaviour::component::state_debugger::STATE_DEBUGGER_BEHAVIOURS;
 
 export_plugin!({
     "dependencies": [
-        { "name": "inexor-rgf-plugin-base", "version": ">=0.10.0, <0.11.0" },
-        { "name": "inexor-rgf-plugin-value", "version": ">=0.10.0, <0.11.0" }
+        { "name": "reactive-graph-plugin-base", "version": ">=0.10.0, <0.11.0" },
+        { "name": "reactive-graph-plugin-value", "version": ">=0.10.0, <0.11.0" }
     ]
 });
 

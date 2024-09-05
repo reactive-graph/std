@@ -1,5 +1,3 @@
-#![feature(lazy_cell)]
-
 pub use component::http::*;
 pub use component::json_rpc::*;
 pub use component::request::*;

@@ -5,10 +5,10 @@
 // use crate::model_arithmetic::Counter;
 // use crate::model_arithmetic::BEHAVIOUR_COUNTER;
 // use crate::model_arithmetic::ENTITY_TYPE_COUNTER;
-// use inexor_rgf_model_result::ResultNumberU64;
-// use inexor_rgf_model_result::ResultNumberU64Properties::RESULT;
-// use inexor_rgf_runtime_model::Action;
-// use inexor_rgf_runtime_model::ActionProperties::TRIGGER;
+// use reactive_graph_model_result::ResultNumberU64;
+// use reactive_graph_model_result::ResultNumberU64Properties::RESULT;
+// use reactive_graph_runtime_model::Action;
+// use reactive_graph_runtime_model::ActionProperties::TRIGGER;
 // use crate::reactive::BehaviourFactory;
 // use crate::reactive::BehaviourState;
 //

@@ -1,14 +1,14 @@
 use std::sync::Arc;
 use std::sync::LazyLock;
 
-use inexor_rgf_behaviour_model_impl::entity::EntityBehaviourFactoryCreator;
-use inexor_rgf_behaviour_model_impl::entity::EntityBehaviourFunctions;
-use inexor_rgf_behaviour_model_impl::entity::EntityBehaviourFunctionsStorage;
 use log::debug;
 use log::trace;
+use reactive_graph_behaviour_model_impl::entity::EntityBehaviourFactoryCreator;
+use reactive_graph_behaviour_model_impl::entity::EntityBehaviourFunctions;
+use reactive_graph_behaviour_model_impl::entity::EntityBehaviourFunctionsStorage;
 use serde_json::Value;
 
-use inexor_rgf_model_value::NAMESPACE_VALUE;
+use reactive_graph_model_value::NAMESPACE_VALUE;
 
 use crate::behaviour::component::value_debugger::ValueDebuggerFactory;
 

@@ -1,7 +1,7 @@
 use crate::NAMESPACE_DATE_TIME;
-use inexor_rgf_graph::properties;
-use inexor_rgf_graph::relation_ty;
-use inexor_rgf_reactive_model_api::relation_model;
+use reactive_graph_graph::properties;
+use reactive_graph_graph::relation_ty;
+use reactive_graph_reactive_model_api::relation_model;
 
 properties!(DayOfMonthProperties, (DAY_OF_MONTH, "day_of_month", 0));
 

@@ -1,4 +1,4 @@
-use inexor_rgf_plugin_api::prelude::providers::*;
+use reactive_graph_plugin_api::prelude::providers::*;
 
 /// Reads component type definitions from json or toml files.
 ///
@@ -13,9 +13,9 @@ pub struct BaseComponentsProvider {}
 #[cfg(test)]
 mod tests {
     use super::*;
-    use inexor_rgf_graph::ComponentTypeId;
-    use inexor_rgf_graph::ComponentTypeIds;
-    use inexor_rgf_plugin_api::TypeProvider;
+    use reactive_graph_graph::ComponentTypeId;
+    use reactive_graph_graph::ComponentTypeIds;
+    use reactive_graph_plugin_api::TypeProvider;
 
     #[test]
     fn components_should_exist() {

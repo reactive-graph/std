@@ -1,5 +1,3 @@
-#![feature(lazy_cell)]
-
 pub use component::config_file::*;
 pub use entity::config_file::*;
 

@@ -12,10 +12,10 @@ use crate::model_binary::BEHAVIOUR_LOAD_BINARY_DATA;
 use crate::model_binary::ENTITY_TYPE_LOAD_BINARY_DATA;
 use crate::reactive::BehaviourFactory;
 use crate::reactive::BehaviourState;
-use inexor_rgf_model_file::File;
-use inexor_rgf_model_file::FileProperties::FILENAME;
-use inexor_rgf_runtime_model::Action;
-use inexor_rgf_runtime_model::ActionProperties::TRIGGER;
+use reactive_graph_model_file::File;
+use reactive_graph_model_file::FileProperties::FILENAME;
+use reactive_graph_runtime_model::Action;
+use reactive_graph_runtime_model::ActionProperties::TRIGGER;
 
 #[test]
 fn rx_load_binary_data_test() {

@@ -1,14 +1,14 @@
-use inexor_rgf_behaviour_model_api::behaviour_validator;
-use inexor_rgf_behaviour_model_api::prelude::*;
-use inexor_rgf_behaviour_model_impl::entity_behaviour;
-use inexor_rgf_graph::prelude::*;
-use inexor_rgf_reactive_model_impl::ReactiveEntity;
+use reactive_graph_behaviour_model_api::behaviour_validator;
+use reactive_graph_behaviour_model_api::prelude::*;
+use reactive_graph_behaviour_model_impl::entity_behaviour;
+use reactive_graph_graph::prelude::*;
+use reactive_graph_reactive_model_impl::ReactiveEntity;
 use log::trace;
 use serde_json::json;
 use uuid::Uuid;
 
-use inexor_rgf_model_file::FileProperties::FILENAME;
-use inexor_rgf_runtime_model::ActionProperties::TRIGGER;
+use reactive_graph_model_file::FileProperties::FILENAME;
+use reactive_graph_runtime_model::ActionProperties::TRIGGER;
 
 use std::path::Path;
 use std::time::Duration;
@@ -103,8 +103,8 @@ impl BehaviourTransitions<Uuid, ReactiveEntity> for FsNotifyBehaviourTransitions
 
 //
 // use crate::behaviour::component::FsNotifyProperties;
-// use inexor_rgf_graph::PropertyInstanceSetter;
-// use inexor_rgf_graph::ReactiveEntityInstance;
+// use reactive_graph_graph::PropertyInstanceSetter;
+// use reactive_graph_graph::ReactiveEntityInstance;
 // use crate::reactive::entity::Disconnectable;
 // use crate::reactive::BehaviourCreationError;
 //

@@ -9,17 +9,17 @@
 
 <div align="center" style="text-align: center">
 
-[<img src="https://img.shields.io/badge/book-master-yellow">](https://inexorgame.github.io/inexor-rgf-application/book/)
-[<img src="https://img.shields.io/badge/api-master-yellow">](https://inexorgame.github.io/inexor-rgf-application/docs/)
+[<img src="https://img.shields.io/badge/book-master-yellow">](https://docs.reactive-graph.io/book/)
+[<img src="https://img.shields.io/badge/api-master-yellow">](https://docs.reactive-graph.io/docs/)
 
 [<img src="https://img.shields.io/badge/Language-Rust-brightgreen">](https://www.rust-lang.org/)
 [<img src="https://img.shields.io/badge/Platforms-Linux%20%26%20Windows-brightgreen">]()
-[<img src="https://img.shields.io/github/license/inexorgame/inexor-rgf-plugins">](https://github.com/inexorgame/inexor-rgf-plugins/blob/main/LICENSE)
+[<img src="https://img.shields.io/github/license/reactive-graph/plugins-core">](https://github.com/reactive-graph/plugins-core/blob/main/LICENSE)
 
-[![Build](https://github.com/inexorgame/inexor-rgf-plugins/actions/workflows/rust.yml/badge.svg)](https://github.com/inexorgame/inexor-rgf-plugins/actions/workflows/rust.yml)
-[![Formatting](https://github.com/inexorgame/inexor-rgf-plugins/actions/workflows/fmt.yml/badge.svg)](https://github.com/inexorgame/inexor-rgf-plugins/actions/workflows/fmt.yml)
-[![Clippy](https://github.com/inexorgame/inexor-rgf-plugins/actions/workflows/lint.yml/badge.svg)](https://github.com/inexorgame/inexor-rgf-plugins/actions/workflows/lint.yml)
-[<img src="https://img.shields.io/codecov/c/github/inexorgame/inexor-rgf-plugins">](https://app.codecov.io/gh/inexorgame/inexor-rgf-plugins)
+[![Build](https://github.com/reactive-graph/plugins-core/actions/workflows/rust.yml/badge.svg)](https://github.com/reactive-graph/plugins-core/actions/workflows/rust.yml)
+[![Formatting](https://github.com/reactive-graph/plugins-core/actions/workflows/fmt.yml/badge.svg)](https://github.com/reactive-graph/plugins-core/actions/workflows/fmt.yml)
+[![Clippy](https://github.com/reactive-graph/plugins-core/actions/workflows/lint.yml/badge.svg)](https://github.com/reactive-graph/plugins-core/actions/workflows/lint.yml)
+[<img src="https://img.shields.io/codecov/c/github/reactive-graph/plugins-core">](https://app.codecov.io/gh/reactive-graph/plugins-core)
 
 [<img src="https://img.shields.io/discord/698219248954376256?logo=discord">](https://discord.com/invite/acUW8k7)
 
@@ -32,33 +32,33 @@
 
 In this repository you'll find the essential plugins which are necessary or useful for all use cases.
 
-| Name                                                                              | Description                                |
-|-----------------------------------------------------------------------------------|--------------------------------------------|
-| [Arithmetic](./plugins/arithmetic/README.md)                                      | Provides arithmetic gates and operations   |
-| [Base](./plugins/base/README.md)                                                  | Provides basic components and entity types |
-| [Binary](./plugins/binary/README.md)                                              | Handles binary data                        |
-| [Color](./plugins/color/README.md)                                                | Colors and colorspace transformations      |
-| [Comparison](./plugins/comparison/README.md)                                      | Provides comparison gates                  |
-| [Config](./plugins/config/README.md)                                              | Load configuration files                   |
-| [Connector](./plugins/connector/README.md)                                        | Provides property connectors               |
-| [Date Time](./plugins/date-time/README.md)                                        | Date and Time, Durations and calculation   |
-| [File](./plugins/file/README.md)                                                  | File representation                        |
-| [Git](./plugins/git/README.md)                                                    | Git VCS operations                         |
-| [GraphQL Client](./plugins/graphql-client/README.md)                              | GraphQL client                             |
-| [GraphQL Schema Visualization](./plugins/graphql-schema-visualization/README.md)  | Visualization of the GraphQL schema        |
-| [HTTP](./plugins/http/README.md)                                                  | HTTP and JSONRPC                           |
-| [JSON](./plugins/json/README.md)                                                  | Handles JSON arrays and objects            |
-| [Logical](./plugins/logical/README.md)                                            | Provides logical operations                |
-| [Meta Data](./plugins/metadata/README.md)                                         | Meta Data - Dublin Core, EXIF              |
-| [Numeric](./plugins/numeric/README.md)                                            | Numeric operations                         |
-| [Random](./plugins/random/README.md)                                              | Generate random numbers                    |
-| [Result](./plugins/result/README.md)                                              | Result components                          |
-| [State](./plugins/state/README.md)                                                | Debounced states                           |
-| [String](./plugins/string/README.md)                                              | Provides string operations                 |
-| [System Environment](./plugins/system-environment/README.md)                      | Provides environment variables             |
-| [Taxonomy](./plugins/taxonomy/README.md)                                          | Taxonomy - categories and tags             |
-| [Trigger](./plugins/trigger/README.md)                                            | Triggers and actions                       |
-| [Value](./plugins/value/README.md)                                                | Values and state management                |
+| Name                                                                             | Description                                |
+|----------------------------------------------------------------------------------|--------------------------------------------|
+| [Arithmetic](./plugins/arithmetic/README.md)                                     | Provides arithmetic gates and operations   |
+| [Base](./plugins/base/README.md)                                                 | Provides basic components and entity types |
+| [Binary](./plugins/binary/README.md)                                             | Handles binary data                        |
+| [Color](./plugins/color/README.md)                                               | Colors and colorspace transformations      |
+| [Comparison](./plugins/comparison/README.md)                                     | Provides comparison gates                  |
+| [Config](./plugins/config/README.md)                                             | Load configuration files                   |
+| [Connector](./plugins/connector/README.md)                                       | Provides property connectors               |
+| [Date Time](./plugins/date-time/README.md)                                       | Date and Time, Durations and calculation   |
+| [File](./plugins/file/README.md)                                                 | File representation                        |
+| [Git](./plugins/git/README.md)                                                   | Git VCS operations                         |
+| [GraphQL Client](./plugins/graphql-client/README.md)                             | GraphQL client                             |
+| [GraphQL Schema Visualization](./plugins/graphql-schema-visualization/README.md) | Visualization of the GraphQL schema        |
+| [HTTP](./plugins/http/README.md)                                                 | HTTP and JSONRPC                           |
+| [JSON](./plugins/json/README.md)                                                 | Handles JSON arrays and objects            |
+| [Logical](./plugins/logical/README.md)                                           | Provides logical operations                |
+| [Meta Data](./plugins/metadata/README.md)                                        | Meta Data - Dublin Core, EXIF              |
+| [Numeric](./plugins/numeric/README.md)                                           | Numeric operations                         |
+| [Random](./plugins/random/README.md)                                             | Generate random numbers                    |
+| [Result](./plugins/result/README.md)                                             | Result components                          |
+| [State](./plugins/state/README.md)                                               | Debounced states                           |
+| [String](./plugins/string/README.md)                                             | Provides string operations                 |
+| [System Environment](./plugins/system-environment/README.md)                     | Provides environment variables             |
+| [Taxonomy](./plugins/taxonomy/README.md)                                         | Taxonomy - categories and tags             |
+| [Trigger](./plugins/trigger/README.md)                                           | Triggers and actions                       |
+| [Value](./plugins/value/README.md)                                               | Values and state management                |
 
 </div>
 
@@ -71,7 +71,7 @@ In this repository you'll find the essential plugins which are necessary or usef
 
 ```shell
 target_dirs = [
-  "../inexor-rgf-application/plugins/deploy"
+  "../reactive-graph/plugins/deploy"
 ]
 ```
 
@@ -79,7 +79,7 @@ target_dirs = [
 
 ```shell
 cargo build
-cargo post build --package=inexor-rgf-plugin-date-time
+cargo post build --package=reactive-graph-plugin-date-time
 ```
 
 #### Install all plugins of this repository at once
@@ -251,13 +251,13 @@ emitter. The possibilities for this are endless and want to be used!
 
 <div align="center" style="text-align: center">
 
-[Build Instructions](https://inexorgame.github.io/inexor-rgf-application/book/Development_Build.html)
+[Build Instructions](https://docs.reactive-graph.io/book/Development_Build.html)
 
-[Data Model](https://inexorgame.github.io/inexor-rgf-application/book/Model.html)
+[Data Model](https://docs.reactive-graph.io/book/Model.html)
 
-[GraphQL API](https://inexorgame.github.io/inexor-rgf-application/book/GraphQL_API.html)
+[GraphQL API](https://docs.reactive-graph.io/book/GraphQL_API.html)
 
-[Dynamic Graph API](https://inexorgame.github.io/inexor-rgf-application/book/Dynamic_Graph_API.html)
+[Dynamic Graph API](https://docs.reactive-graph.io/book/Dynamic_Graph_API.html)
 
 </div>
 
@@ -266,7 +266,7 @@ emitter. The possibilities for this are endless and want to be used!
 
 <div align="center" style="text-align: center">
 
-[Configuration](https://inexorgame.github.io/inexor-rgf-application/book/Configuration.html)
+[Configuration](https://docs.reactive-graph.io/book/Configuration.html)
 
 </div>
 
@@ -275,11 +275,11 @@ emitter. The possibilities for this are endless and want to be used!
 
 <div style="background-color: #333333; padding: 10px 50px; font-size: 12pt;">
 
-| Name                                       | Description                | State                              |
-|--------------------------------------------|----------------------------|------------------------------------|
-| [Scheduler](./plugins/scheduler/README.md) | Timers and scheduled jobs  | TODO: upgrade to newest plugin API |
+| Name                                       | Description               | State                              |
+|--------------------------------------------|---------------------------|------------------------------------|
+| [Scheduler](./plugins/scheduler/README.md) | Timers and scheduled jobs | TODO: upgrade to newest plugin API |
 
-#### `inexor-rgf-plugins-network`
+#### `reactive-graph-plugins-network`
 
 | Name                                   | Description                |
 |----------------------------------------|----------------------------|
@@ -296,10 +296,10 @@ emitter. The possibilities for this are endless and want to be used!
 
 #### `inexor-rgf-plugins-smart`
 
-| Name                                                 | Description                                |
-|------------------------------------------------------|--------------------------------------------|
-| [Input Device](./plugins/input-device/README.md)     | Input device handling                      |
-| [System Command](./plugins/system-command/README.md) | Executes OS commands                       |
+| Name                                                 | Description           |
+|------------------------------------------------------|-----------------------|
+| [Input Device](./plugins/input-device/README.md)     | Input device handling |
+| [System Command](./plugins/system-command/README.md) | Executes OS commands  |
 
 #### `inexor-rgf-plugins-desktop`
 
@@ -319,7 +319,7 @@ emitter. The possibilities for this are endless and want to be used!
 <div align="center" style="text-align: center">
 
 <a href="https://www.jetbrains.com/?from=github.com/inexorgame">
-<img src="https://raw.githubusercontent.com/inexorgame/inexor-rgf-application/main/docs/images/icon_CLion.svg" style="width: 30%; height: 30%;">
+<img src="https://raw.githubusercontent.com/reactive-graph/reactive-graph/main/docs/images/icon_CLion.svg" style="width: 30%; height: 30%;">
 </a>
 
 _Special thanks to JetBrains for providing us with CLion licenses!_

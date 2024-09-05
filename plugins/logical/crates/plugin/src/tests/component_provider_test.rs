@@ -1,7 +1,7 @@
 use crate::plugins::ComponentProvider;
 use crate::providers::LogicalComponentProviderImpl;
-use inexor_rgf_graph::ComponentTypeId;
-use inexor_rgf_model_logical::NAMESPACE_LOGICAL;
+use reactive_graph_graph::ComponentTypeId;
+use reactive_graph_model_logical::NAMESPACE_LOGICAL;
 
 #[test]
 fn components_should_exist() {

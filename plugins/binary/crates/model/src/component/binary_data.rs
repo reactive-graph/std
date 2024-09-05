@@ -1,10 +1,10 @@
 use data_url::DataUrl;
 
 use crate::NAMESPACE_BINARY;
-use inexor_rgf_behaviour_model_api::behaviour_ty;
-use inexor_rgf_graph::component_model;
-use inexor_rgf_graph::component_ty;
-use inexor_rgf_graph::properties;
+use reactive_graph_behaviour_model_api::behaviour_ty;
+use reactive_graph_graph::component_model;
+use reactive_graph_graph::component_ty;
+use reactive_graph_graph::properties;
 
 properties!(BinaryDataProperties, (DATA_URL, "data_url", ""));
 

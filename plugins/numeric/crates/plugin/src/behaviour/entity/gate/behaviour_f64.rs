@@ -1,13 +1,13 @@
-use inexor_rgf_behaviour_model_api::behaviour_validator;
-use inexor_rgf_behaviour_model_api::prelude::*;
-use inexor_rgf_behaviour_model_impl::entity_behaviour;
-use inexor_rgf_graph::prelude::*;
-use inexor_rgf_reactive_model_impl::ReactiveEntity;
+use reactive_graph_behaviour_model_api::behaviour_validator;
+use reactive_graph_behaviour_model_api::prelude::*;
+use reactive_graph_behaviour_model_impl::entity_behaviour;
+use reactive_graph_graph::prelude::*;
+use reactive_graph_reactive_model_impl::ReactiveEntity;
 use uuid::Uuid;
 
-use inexor_rgf_model_numeric::NumericGateProperties::LHS;
-use inexor_rgf_model_numeric::NumericGateProperties::RHS;
-use inexor_rgf_model_result::ResultNumberF64Properties::RESULT;
+use reactive_graph_model_numeric::NumericGateProperties::LHS;
+use reactive_graph_model_numeric::NumericGateProperties::RHS;
+use reactive_graph_model_result::ResultNumberF64Properties::RESULT;
 
 use crate::behaviour::as_f64;
 use crate::behaviour::entity::gate::function::NumericGateF64Function;
@@ -64,15 +64,15 @@ impl BehaviourTransitions<Uuid, ReactiveEntity> for NumericGateF64BehaviourTrans
 
 // #[cfg(test)]
 // mod tests {
-//     use inexor_rgf_behaviour_api::BehaviourCreationError;
+//     use reactive_graph_behaviour_api::BehaviourCreationError;
 //     use serde_json::json;
 //
 //     use crate::behaviour::entity::gate::function::*;
-//     use inexor_rgf_graph::prelude::*;
-//     use inexor_rgf_reactive_model_impl::ReactiveEntity;
-//     use inexor_rgf_model_numeric::NumericGateF64;
-//     use inexor_rgf_model_numeric::NumericGateProperties;
-//     use inexor_rgf_reactive_api::prelude::*;
+//     use reactive_graph_graph::prelude::*;
+//     use reactive_graph_reactive_model_impl::ReactiveEntity;
+//     use reactive_graph_model_numeric::NumericGateF64;
+//     use reactive_graph_model_numeric::NumericGateProperties;
+//     use reactive_graph_reactive_api::prelude::*;
 //     use crate::behaviour::entity::gate::tests::numeric_gate;
 //
 //     #[test]

@@ -1,14 +1,14 @@
-use inexor_rgf_behaviour_model_api::behaviour_validator;
-use inexor_rgf_behaviour_model_api::prelude::*;
-use inexor_rgf_behaviour_model_impl::entity_behaviour;
-use inexor_rgf_graph::prelude::*;
-use inexor_rgf_reactive_model_impl::ReactiveEntity;
+use reactive_graph_behaviour_model_api::behaviour_validator;
+use reactive_graph_behaviour_model_api::prelude::*;
+use reactive_graph_behaviour_model_impl::entity_behaviour;
+use reactive_graph_graph::prelude::*;
+use reactive_graph_reactive_model_impl::ReactiveEntity;
 use serde_json::Value;
 use uuid::Uuid;
 
-use inexor_rgf_model_json::ObjectGetPropertyProperties::OBJECT;
-use inexor_rgf_model_json::ObjectGetPropertyProperties::PROPERTY_NAME;
-use inexor_rgf_model_result::ResultAnyProperties::RESULT;
+use reactive_graph_model_json::ObjectGetPropertyProperties::OBJECT;
+use reactive_graph_model_json::ObjectGetPropertyProperties::PROPERTY_NAME;
+use reactive_graph_model_result::ResultAnyProperties::RESULT;
 
 entity_behaviour!(
     ObjectGetProperty,
@@ -77,13 +77,13 @@ fn get_property_by_name(object: &Value, property_name: &Value) -> Option<Value> 
 // use std::convert::AsRef;
 // use std::sync::Arc;
 //
-// use inexor_rgf_graph::{PropertyInstanceGetter, PropertyInstanceSetter};
+// use reactive_graph_graph::{PropertyInstanceGetter, PropertyInstanceSetter};
 // use crate::reactive::BehaviourCreationError;
 // use log::{error, trace};
 // use serde_json::Value;
 //
 // use crate::behaviour::entity::ObjectGetPropertyProperties;
-// use inexor_rgf_graph::ReactiveEntityInstance;
+// use reactive_graph_graph::ReactiveEntityInstance;
 // use crate::reactive::entity::Disconnectable;
 //
 // pub const OBJECT_GET_PROPERTY: &'static str = "object_get_property";

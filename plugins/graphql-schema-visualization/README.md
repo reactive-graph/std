@@ -25,15 +25,15 @@ The GraphQL API allows low level access to the *Reactive Graph Flow*:
 
 ## Queries
 
-<img src="https://raw.githubusercontent.com/inexorgame/inexor-rgf-plugins/main/docs/images/graphql/queries.png">
+<img src="https://raw.githubusercontent.com/reactive-graph/plugins-core/main/docs/images/graphql/queries.png">
 
 ## Mutations
 
-<img src="https://raw.githubusercontent.com/inexorgame/inexor-rgf-plugins/main/docs/images/graphql/mutations.png">
+<img src="https://raw.githubusercontent.com/reactive-graph/plugins-core/main/docs/images/graphql/mutations.png">
 
 ## Subscriptions
 
-<img src="https://raw.githubusercontent.com/inexorgame/inexor-rgf-plugins/main/docs/images/graphql/subscriptions.png">
+<img src="https://raw.githubusercontent.com/reactive-graph/plugins-core/main/docs/images/graphql/subscriptions.png">
 
 ## Dynamic Graph API
 
@@ -46,15 +46,15 @@ system and provides type safe access to:
 
 ## Queries
 
-<img src="https://raw.githubusercontent.com/inexorgame/inexor-rgf-plugins/main/docs/images/dynamic-graph/queries.png">
+<img src="https://raw.githubusercontent.com/reactive-graph/plugins-core/main/docs/images/dynamic-graph/queries.png">
 
 ## Mutations
 
-<img src="https://raw.githubusercontent.com/inexorgame/inexor-rgf-plugins/main/docs/images/dynamic-graph/mutations.png">
+<img src="https://raw.githubusercontent.com/reactive-graph/plugins-core/main/docs/images/dynamic-graph/mutations.png">
 
 ## Subscriptions
 
-<img src="https://raw.githubusercontent.com/inexorgame/inexor-rgf-plugins/main/docs/images/dynamic-graph/subscriptions.png">
+<img src="https://raw.githubusercontent.com/reactive-graph/plugins-core/main/docs/images/dynamic-graph/subscriptions.png">
 
 ## Platform Compatibility
 

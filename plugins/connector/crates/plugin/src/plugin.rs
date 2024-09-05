@@ -1,17 +1,17 @@
 use crate::behaviour::component::PropagationCounterFactory;
-use inexor_rgf_model_connector::BEHAVIOUR_PROPAGATION_COUNTER;
-use inexor_rgf_model_connector::COMPONENT_BEHAVIOUR_PROPAGATION_COUNTER;
-use inexor_rgf_plugin_api::prelude::plugin::*;
-use inexor_rgf_plugin_api::prelude::providers::*;
-use inexor_rgf_plugin_api::RelationBehaviourRegistry;
-use inexor_rgf_plugin_api::RelationComponentBehaviourRegistry;
+use reactive_graph_model_connector::BEHAVIOUR_PROPAGATION_COUNTER;
+use reactive_graph_model_connector::COMPONENT_BEHAVIOUR_PROPAGATION_COUNTER;
+use reactive_graph_plugin_api::prelude::plugin::*;
+use reactive_graph_plugin_api::prelude::providers::*;
+use reactive_graph_plugin_api::RelationBehaviourRegistry;
+use reactive_graph_plugin_api::RelationComponentBehaviourRegistry;
 
 use crate::behaviour::relation::complex_connector::COMPLEX_CONNECTOR_BEHAVIOURS;
 use crate::behaviour::relation::connector::CONNECTOR_BEHAVIOURS;
 
 export_plugin!({
     "dependencies": [
-        { "name": "inexor-rgf-plugin-base", "version": ">=0.10.0, <0.11.0" }
+        { "name": "reactive-graph-plugin-base", "version": ">=0.10.0, <0.11.0" }
     ]
 });
 

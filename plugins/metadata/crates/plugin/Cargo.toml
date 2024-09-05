@@ -1,6 +1,6 @@
 [package]
-name = "inexor-rgf-plugin-metadata"
-description = "Inexor - Reactive Graph Flow - Plugin - Metadata"
+name = "reactive-graph-plugin-metadata"
+description = "Reactive Graph - Plugin - Metadata"
 version.workspace = true
 authors.workspace = true
 edition.workspace = true
@@ -9,10 +9,10 @@ repository.workspace = true
 readme = "../../../../README.md"
 
 [package.metadata.deb]
-name = "libinexor-rgf-plugin-metadata"
-depends = "inexor-rgf, libinexor-rgf-plugin-taxonomy"
+name = "libreactive-graph-plugin-metadata"
+depends = "reactive-graph, libreactive-graph-plugin-taxonomy"
 assets = [
-    ["target/release/libinexor_rgf_plugin_metadata.so", "usr/share/inexor-rgf/default/plugins/installed/libinexor_rgf_plugin_metadata.so", "755"],
+    ["target/release/libreactive_graph_plugin_metadata.so", "usr/share/reactive-graph/default/plugins/installed/libreactive_graph_plugin_metadata.so", "755"],
 ]
 
 [dependencies]
@@ -24,14 +24,14 @@ rust-embed = { workspace = true, features = ["debug-embed", "compression"] }
 serde_json = { workspace = true }
 springtime-di = { workspace = true, default-features = false, features = ["threadsafe", "derive"] }
 
-inexor-rgf-graph = { workspace = true }
-inexor-rgf-plugin-api = { workspace = true }
-inexor-rgf-type-system-api = { workspace = true }
+reactive-graph-graph = { workspace = true }
+reactive-graph-plugin-api = { workspace = true }
+reactive-graph-type-system-api = { workspace = true }
 
 [dev-dependencies]
 default-test = { workspace = true }
-inexor-rgf-graph = { workspace = true, features = ["test"] }
-inexor-rgf-test-utils = { workspace = true }
+reactive-graph-graph = { workspace = true, features = ["test"] }
+reactive-graph-test-utils = { workspace = true }
 
 [lib]
 # Plugins use crate-type cdylib

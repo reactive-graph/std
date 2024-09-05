@@ -1,16 +1,16 @@
 use crate::behaviour::component::config_file::ConfigFileFactory;
-use inexor_rgf_model_config::BEHAVIOUR_CONFIG_FILE;
-use inexor_rgf_model_config::COMPONENT_BEHAVIOUR_CONFIG_FILE;
-use inexor_rgf_plugin_api::prelude::plugin::*;
-use inexor_rgf_plugin_api::prelude::providers::*;
-use inexor_rgf_plugin_api::EntityComponentBehaviourRegistry;
+use reactive_graph_model_config::BEHAVIOUR_CONFIG_FILE;
+use reactive_graph_model_config::COMPONENT_BEHAVIOUR_CONFIG_FILE;
+use reactive_graph_plugin_api::prelude::plugin::*;
+use reactive_graph_plugin_api::prelude::providers::*;
+use reactive_graph_plugin_api::EntityComponentBehaviourRegistry;
 
 export_plugin!({
     "dependencies": [
-        { "name": "inexor-rgf-plugin-base", "version": ">=0.10.0, <0.11.0" },
-        { "name": "inexor-rgf-plugin-file", "version": ">=0.10.0, <0.11.0" },
-        { "name": "inexor-rgf-plugin-trigger", "version": ">=0.10.0, <0.11.0" },
-        { "name": "inexor-rgf-plugin-result", "version": ">=0.10.0, <0.11.0" }
+        { "name": "reactive-graph-plugin-base", "version": ">=0.10.0, <0.11.0" },
+        { "name": "reactive-graph-plugin-file", "version": ">=0.10.0, <0.11.0" },
+        { "name": "reactive-graph-plugin-trigger", "version": ">=0.10.0, <0.11.0" },
+        { "name": "reactive-graph-plugin-result", "version": ">=0.10.0, <0.11.0" }
     ]
 });
 
