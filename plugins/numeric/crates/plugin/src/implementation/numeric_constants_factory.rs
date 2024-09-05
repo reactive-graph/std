@@ -2,6 +2,8 @@ use std::ops::Deref;
 use std::sync::Arc;
 
 use async_trait::async_trait;
+use log::debug;
+use log::error;
 use reactive_graph_graph::prelude::*;
 use reactive_graph_plugin_api::component_alias;
 use reactive_graph_plugin_api::Component;
@@ -9,8 +11,6 @@ use reactive_graph_plugin_api::EntityInstanceManager;
 use reactive_graph_plugin_api::EntityTypeManager;
 use reactive_graph_reactive_model_impl::ReactiveEntity;
 use reactive_graph_reactive_model_impl::ReactiveProperties;
-use log::debug;
-use log::error;
 use serde_json::json;
 use uuid::Uuid;
 

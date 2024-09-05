@@ -1,8 +1,8 @@
+use log::debug;
 use reactive_graph_behaviour_model_api::behaviour_validator;
 use reactive_graph_behaviour_model_api::prelude::*;
 use reactive_graph_behaviour_model_impl::entity_behaviour;
 use reactive_graph_reactive_model_impl::ReactiveEntity;
-use log::debug;
 use serde_json::Value;
 use uuid::Uuid;
 
