@@ -1,0 +1,1 @@
+searchState.loadedDescShard("reactive_graph_model_system_environment", 0, "Returns the argument unchanged.\nCalls <code>U::from(self)</code>.")
