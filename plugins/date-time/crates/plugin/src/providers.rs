@@ -7,3 +7,7 @@ pub struct DateTimeComponentsProvider {}
 #[derive(TypeProvider, Component)]
 #[type_provider(tys = "EntityTypes", path = "types/entities")]
 pub struct DateTimeEntityTypesProvider {}
+
+#[derive(TypeProvider, Component)]
+#[type_provider(tys = "RelationTypes", path = "types/relations")]
+pub struct DateTimeRelationTypesProvider {}

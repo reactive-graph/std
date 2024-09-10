@@ -37,6 +37,11 @@ pub struct DateTimePluginImpl {
     #[component(default = "entity_behaviour_registry")]
     entity_behaviour_registry: Arc<dyn EntityBehaviourRegistry + Send + Sync>,
 
+    relation_types_provider: Arc<dyn TypeProvider<RelationTypes> + Send + Sync>,
+
+    #[component(default = "relation_types_provider_registry")]
+    relation_type_provider_registry: Arc<dyn RelationTypeProviderRegistry + Send + Sync>,
+
     time_graph: Arc<dyn TimeGraph + Send + Sync>,
 }
 
@@ -46,6 +51,9 @@ impl Plugin for DateTimePluginImpl {
     async fn activate(&self) -> Result<(), PluginActivationError> {
         self.component_provider_registry.register_provider(self.component_provider.clone()).await;
         self.entity_type_provider_registry.register_provider(self.entity_types_provider.clone()).await;
+        self.relation_type_provider_registry
+            .register_provider(self.relation_types_provider.clone())
+            .await;
         // Utc Timestamp
         let factory = Arc::new(UtcTimestampFactory::new(BEHAVIOUR_UTC_TIMESTAMP.clone()));
         self.entity_behaviour_registry.register(ENTITY_BEHAVIOUR_UTC_TIMESTAMP.clone(), factory).await;
@@ -70,6 +78,9 @@ impl Plugin for DateTimePluginImpl {
         self.entity_behaviour_registry.unregister(&ENTITY_BEHAVIOUR_UTC_TIMESTAMP).await;
         self.entity_behaviour_registry.unregister(&ENTITY_BEHAVIOUR_UTC_NOW).await;
 
+        self.relation_type_provider_registry
+            .unregister_provider(self.relation_types_provider.id())
+            .await;
         self.entity_type_provider_registry.unregister_provider(self.entity_types_provider.id()).await;
         self.component_provider_registry.unregister_provider(self.component_provider.id()).await;
         Ok(())
