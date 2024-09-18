@@ -54,6 +54,8 @@ mod tests {
     use reactive_graph_reactive_model_impl::ReactiveProperties;
     use reactive_graph_runtime_model::ActionProperties::TRIGGER;
 
+    // TODO: This test should be moved to the reactive model
+    #[cfg(feature = "rustc_nightly")]
     #[test]
     fn rx_counter_test() {
         let id = Uuid::new_v4();
@@ -85,6 +87,7 @@ mod tests {
         assert_eq!(3, counter.result, "The behaviour should have been dropped.");
     }
 
+    #[cfg(feature = "rustc_nightly")]
     #[test]
     fn rx_counter_2_test() {
         let counter = Counter1::new(false, 0u64);

@@ -1,6 +1,4 @@
-#![feature(register_tool)]
-#![feature(once_cell_try)]
-#![register_tool(tarpaulin)]
+// #![feature(once_cell_try)]
 #![allow(clippy::map_entry)]
 
 pub mod plugin;

@@ -40,16 +40,26 @@ reactive-graph-runtime-model = { workspace = true }
 reactive-graph-model-arithmetic = { version = "0.10.0", path = "../../crates/model" }
 reactive-graph-model-result = { version = "0.10.0", path = "../../../result/crates/model" }
 
+[build-dependencies]
+rustc_version = { workspace = true }
+
 [dev-dependencies]
 default-test = { workspace = true }
 reactive-graph-graph = { workspace = true, features = ["test"] }
 reactive-graph-test-utils = { workspace = true }
+
+[features]
+default = []
+rustc_nightly = []
 
 [lib]
 # Plugins use crate-type cdylib
 # https://doc.rust-lang.org/reference/linkage.html
 # https://users.rust-lang.org/t/what-is-the-difference-between-dylib-and-cdylib/28847/3
 crate-type = ["cdylib"]
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(rustc_nightly)'] }
 
 [package.metadata.cargo-post.dependencies]
 toml = "0.8"
