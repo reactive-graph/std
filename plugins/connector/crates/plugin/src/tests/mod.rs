@@ -1,5 +1,5 @@
 mod default_connector_test;
 mod function_test;
 
-#[tarpaulin::ignore]
+#[cfg(not(tarpaulin_include))]
 mod utils;
