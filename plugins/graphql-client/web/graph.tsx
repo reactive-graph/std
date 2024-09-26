@@ -57,7 +57,7 @@ const entityInstancesQueryWindow: AltairWindowOptions = {
 }
 
 const renderOptions: RenderOptions = {
-    initialName: 'Inexor RGF Graph',
+    initialName: 'Reactive Graph',
     endpointURL,
     subscriptionsEndpoint: endpointURL,
     preserveState: false,
@@ -66,7 +66,7 @@ const renderOptions: RenderOptions = {
         'disablePushNotification': true,
         'schema.reloadOnStart': true,
         'plugin.list': [
-          'altair-graphql-plugin-graphql-explorer'
+            'altair-graphql-plugin-graphql-explorer'
         ]
     },
     initialQuery: entityTypesQuery,
