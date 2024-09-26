@@ -4,10 +4,10 @@ projects:
     include: ./plugins/*/graphql/**/*.graphql
     extensions:
       endpoints:
-        Inexor GraphQL http:
+        ReactiveGraph@http:
           url: http://localhost:31415/graphql
           introspect: true
-        Inexor GraphQL https:
+        ReactiveGraph@https:
           url: https://localhost:31415/graphql
           introspect: true
   dynamicGraph:
@@ -15,9 +15,9 @@ projects:
     include: ./plugins/*/dynamic_graph/**/*.graphql
     extensions:
       endpoints:
-        Inexor Dynamic Graph http:
+        DynamicGraph@http:
           url: http://localhost:31415/dynamic_graph
           introspect: true
-        Inexor Dynamic Graph https:
+        DynamicGraph@https:
           url: https://localhost:31415/dynamic_graph
           introspect: true
