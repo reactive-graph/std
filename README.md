@@ -84,25 +84,3 @@ cargo post build --package=reactive-graph-plugin-date-time
 cargo build
 cargo post build --package=deployment-all
 ```
-
-<h2 align="center" style="text-align: center;">Further Plugins</h2>
-
-| Name                                       | Description               | State                              |
-|--------------------------------------------|---------------------------|------------------------------------|
-| [Scheduler](./plugins/scheduler/README.md) | Timers and scheduled jobs | TODO: upgrade to newest plugin API |
-
-#### `inexor-rgf-plugins-smart`
-
-| Name                                                 | Description           |
-|------------------------------------------------------|-----------------------|
-| [Input Device](./plugins/input-device/README.md)     | Input device handling |
-| [System Command](./plugins/system-command/README.md) | Executes OS commands  |
-
-#### `inexor-rgf-plugins-desktop`
-
-| Name                                             | Description                  |
-|--------------------------------------------------|------------------------------|
-| [DBUS](./plugins/dbus/README.md)                 | Integrates with linux dbus   |
-| [Free Desktop](./plugins/free-desktop/README.md) | Integrates with free desktop |
-| [Notification](./plugins/notification/README.md) | Create desktop notifications |
-| [Tray](./plugins/tray/README.md)                 | Integrates with the tray     |
