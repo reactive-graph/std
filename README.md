@@ -2,8 +2,7 @@
   <a href="https://www,reactive-graph.io/"><img src="https://raw.githubusercontent.com/reactive-graph/design/main/public/logo/rendered/malachite/reactive-graph-400x400.png" alt="Reactive Graph"></a>
 </div>
 
-
-<h1 align="center" style="text-align: center;">Inexor Reactive Graph Flow</h1>
+<h1 align="center" style="text-align: center;">Standard Library</h1>
 
 <div align="center" style="text-align: center">
 
