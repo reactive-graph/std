@@ -16,7 +16,7 @@ Cargo.lock
 cobertura.xml
 tarpaulin-report.html
 
-# Exclude CLIon / IntelliJ project files
+# Exclude IDE project files
 .idea
 
 **/node_modules
