@@ -2,7 +2,19 @@
   <a href="https://www,reactive-graph.io/"><img src="https://raw.githubusercontent.com/reactive-graph/design/main/public/logo/rendered/malachite/reactive-graph-400x400.png" alt="Reactive Graph"></a>
 </div>
 
-<h1 align="center" style="text-align: center;">Standard Library</h1>
+<h2 align="center">
+    <a href="https://std.reactive-graph.io/">std.reactive-graph.io</a>
+</h2>
+
+<p align="center">
+This repository contains the standard library for the <a href="https://github.com/reactive-graph/reactive-graph">Reactive Graph</a>.
+</p>
+
+<p align="center">
+  <a href="https://github.com/reactive-graph/reactive-graph">Reactive Graph</a> is a <b>reactive runtime</b> based on a <b>graph database</b>, empowering everyone to build reliable and efficient software.
+</p>
+
+<hr>
 
 <div align="center" style="text-align: center">
 
