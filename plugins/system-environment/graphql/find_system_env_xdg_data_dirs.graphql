@@ -1,6 +1,6 @@
 query findSystemEnvXdgDataDirs {
   instances {
-    entities(label: "/org/inexor/system/env/xdg_data_dirs") {
+    entities(label: "/io/reactive-graph/system/env/xdg_data_dirs") {
       id
       label
       type {

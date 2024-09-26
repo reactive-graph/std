@@ -2,7 +2,7 @@ mutation {
   dateTime {
     jan2023: createMonth(
       id: "8797b975-6d41-42b6-b1cd-ba6da8b9cc18"
-      label: "/org/inexor/datetime/2023/01"
+      label: "/io/reactive-graph/datetime/2023/01"
       month_and_year: "2023-01"
       month_of_year: 1
     ) {
@@ -13,7 +13,7 @@ mutation {
     }
     feb2023: createMonth(
       id: "87377611-626d-41f5-a613-5a115dba89ff"
-      label: "/org/inexor/datetime/2023/02"
+      label: "/io/reactive-graph/datetime/2023/02"
       month_and_year: "2023-02"
       month_of_year: 2
     ) {
@@ -24,7 +24,7 @@ mutation {
     }
     mar2023: createMonth(
       id: "5f109e0b-8215-44f8-9a64-e3b6ea3cb10a"
-      label: "/org/inexor/datetime/2023/03"
+      label: "/io/reactive-graph/datetime/2023/03"
       month_and_year: "2023-03"
       month_of_year: 3
     ) {
@@ -36,7 +36,7 @@ mutation {
 
     jan2024: createMonth(
       id: "9c3ae434-df60-4b8d-b278-0ecdddc0c95d"
-      label: "/org/inexor/datetime/2024/01"
+      label: "/io/reactive-graph/datetime/2024/01"
       month_and_year: "2024-01"
       month_of_year: 1
     ) {
@@ -47,7 +47,7 @@ mutation {
     }
     feb2024: createMonth(
       id: "9fb3f9d7-e954-4e4f-8073-4ab17a0f1d64"
-      label: "/org/inexor/datetime/2024/02"
+      label: "/io/reactive-graph/datetime/2024/02"
       month_and_year: "2024-02"
       month_of_year: 2
     ) {
@@ -58,7 +58,7 @@ mutation {
     }
     mar2024: createMonth(
       id: "48455a80-9857-46a9-8c75-efa7d1609aba"
-      label: "/org/inexor/datetime/2024/03"
+      label: "/io/reactive-graph/datetime/2024/03"
       month_and_year: "2024-03"
       month_of_year: 3
     ) {

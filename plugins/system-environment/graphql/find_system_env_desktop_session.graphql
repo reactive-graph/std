@@ -1,6 +1,6 @@
 query findSystemEnvDesktopSession {
   instances {
-    entities(label: "/org/inexor/system/env/desktop_session") {
+    entities(label: "/io/reactive-graph/system/env/desktop_session") {
       id
       label
       type {

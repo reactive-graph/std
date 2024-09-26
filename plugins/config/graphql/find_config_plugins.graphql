@@ -1,6 +1,6 @@
 query findConfigByLabel {
   instances {
-    entities(label: "/org/inexor/system/config/plugins") {
+    entities(label: "/io/reactive-graph/system/config/plugins") {
       id
       type {
         namespace

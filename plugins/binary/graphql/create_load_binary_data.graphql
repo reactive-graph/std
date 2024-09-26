@@ -10,7 +10,7 @@ mutation {
         properties: [
           {
             name: "label"
-            value: "/org/inexor/logo/:property"
+            value: "/io/reactive-graph/logo/:property"
           }
           {
             name: "filename"
