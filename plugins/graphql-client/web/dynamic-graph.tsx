@@ -25,7 +25,7 @@ const addQueryWindow: AltairWindowOptions = {
 }
 
 const renderOptions: RenderOptions = {
-    initialName: 'Inexor RGF Dynamic Graph',
+    initialName: 'Dynamic Graph',
     endpointURL,
     preserveState: false,
     initialSettings: {
@@ -33,7 +33,7 @@ const renderOptions: RenderOptions = {
         'disablePushNotification': true,
         'schema.reloadOnStart': true,
         'plugin.list': [
-          'altair-graphql-plugin-graphql-explorer'
+            'altair-graphql-plugin-graphql-explorer'
         ]
     },
     initialWindows: [
