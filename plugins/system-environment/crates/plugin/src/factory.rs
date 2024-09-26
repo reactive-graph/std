@@ -64,7 +64,7 @@ impl SystemEnvironmentReactiveEntityFactory {
                 continue;
             }
             let mut properties = properties.clone();
-            properties.set(LABEL, json!(format!("/org/inexor/system/env/{}", name.clone().to_lowercase())));
+            properties.set(LABEL, json!(format!("/io/reactive-graph/system/env/{}", name.clone().to_lowercase())));
             properties.set(VALUE, json!(value));
             properties.set(NAME, json!(name.clone()));
             let properties = ReactiveProperties::new_with_id_from_properties(id, properties);
