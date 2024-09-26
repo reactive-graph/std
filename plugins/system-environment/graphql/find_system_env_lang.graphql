@@ -1,6 +1,6 @@
 query findSystemEnvLang {
   instances {
-    entities(label: "/org/inexor/system/env/lang") {
+    entities(label: "/io/reactive-graph/system/env/lang") {
       id
       label
       type {

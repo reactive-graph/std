@@ -2,7 +2,7 @@ mutation {
   dateTime {
     y2022: createYear(
       id: "f1b30e3e-0953-4525-adee-b8794ed1f7e8"
-      label: "/org/inexor/datetime/2022"
+      label: "/io/reactive-graph/datetime/2022"
       year: 2022,
       leap: false
     ) {
@@ -12,7 +12,7 @@ mutation {
     }
     y2023: createYear(
       id: "a922703e-5bbe-4a95-b2e6-f273c689e897"
-      label: "/org/inexor/datetime/2023"
+      label: "/io/reactive-graph/datetime/2023"
       year: 2023,
       leap: false
     ) {
@@ -22,7 +22,7 @@ mutation {
     }
     y2024: createYear(
       id: "bf0287a8-d6db-4fb1-bc49-e50691fac42c"
-      label: "/org/inexor/datetime/2024"
+      label: "/io/reactive-graph/datetime/2024"
       year: 2024,
       leap: true
     ) {

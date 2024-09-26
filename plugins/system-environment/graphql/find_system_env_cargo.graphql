@@ -1,6 +1,6 @@
 query findSystemEnvCargo {
   instances {
-    entities(label: "/org/inexor/system/env/cargo") {
+    entities(label: "/io/reactive-graph/system/env/cargo") {
       id
       label
       type {

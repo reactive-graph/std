@@ -1,6 +1,6 @@
 query findSystemEnvDisplay {
   instances {
-    entities(label: "/org/inexor/system/env/display") {
+    entities(label: "/io/reactive-graph/system/env/display") {
       id
       label
       type {

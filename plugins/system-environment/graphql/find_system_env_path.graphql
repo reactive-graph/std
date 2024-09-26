@@ -1,6 +1,6 @@
 query findSystemEnvPath {
   instances {
-    entities(label: "/org/inexor/system/env/path") {
+    entities(label: "/io/reactive-graph/system/env/path") {
       id
       label
       type {

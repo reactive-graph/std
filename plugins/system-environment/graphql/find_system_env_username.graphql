@@ -1,6 +1,6 @@
 query findSystemEnvUsername {
   instances {
-    entities(label: "/org/inexor/system/env/username") {
+    entities(label: "/io/reactive-graph/system/env/username") {
       id
       label
       type {
