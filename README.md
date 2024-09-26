@@ -1,7 +1,5 @@
 <div align="center">
-<a href="https://inexor.org/">
-<img src="docs/images/rgf_logo_k2_v4_fg_sm.png" style="width: 50%; height: 50%; margin-left: 25%; margin-right: 25%;" />
-</a>
+  <a href="https://www,reactive-graph.io/"><img src="https://raw.githubusercontent.com/reactive-graph/design/main/public/logo/rendered/malachite/reactive-graph-400x400.png" alt="Reactive Graph"></a>
 </div>
 
 
