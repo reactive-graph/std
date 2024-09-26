@@ -14,10 +14,7 @@
 [<img src="https://img.shields.io/github/license/reactive-graph/plugins-core">](https://github.com/reactive-graph/plugins-core/blob/main/LICENSE)
 
 [![Build](https://github.com/reactive-graph/plugins-core/actions/workflows/rust.yml/badge.svg)](https://github.com/reactive-graph/plugins-core/actions/workflows/rust.yml)
-[![Formatting](https://github.com/reactive-graph/plugins-core/actions/workflows/fmt.yml/badge.svg)](https://github.com/reactive-graph/plugins-core/actions/workflows/fmt.yml)
-[![Clippy](https://github.com/reactive-graph/plugins-core/actions/workflows/lint.yml/badge.svg)](https://github.com/reactive-graph/plugins-core/actions/workflows/lint.yml)
 [<img src="https://img.shields.io/codecov/c/github/reactive-graph/plugins-core">](https://app.codecov.io/gh/reactive-graph/plugins-core)
-
 [<img src="https://img.shields.io/discord/698219248954376256?logo=discord">](https://discord.com/invite/acUW8k7)
 
 </div>
