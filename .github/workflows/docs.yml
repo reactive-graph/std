@@ -46,7 +46,7 @@ jobs:
         with:
           cmd: --cwd plugins/graphql-schema-visualization/web install
       - name: Run sccache-cache
-        uses: mozilla-actions/sccache-action@v0.0.3
+        uses: mozilla-actions/sccache-action@v0.0.6
       - name: Run cargo doc
         uses: actions-rs/cargo@v1
         with:
