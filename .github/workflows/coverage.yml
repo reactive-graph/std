@@ -5,19 +5,21 @@ on:
     branches: [ main ]
     paths:
       - "plugins/*/crates/**/*.rs"
-      - "plugins/**/crates/**/Cargo.toml"
+      - "plugins/*/crates/**/Cargo.toml"
       - "Cargo.toml"
       - ".github/workflows/coverage.yml"
   pull_request:
     branches: [ main ]
     paths:
       - "plugins/*/crates/**/*.rs"
-      - "plugins/**/crates/**/Cargo.toml"
+      - "plugins/*/crates/**/Cargo.toml"
       - "Cargo.toml"
       - ".github/workflows/coverage.yml"
 
 env:
   CARGO_TERM_COLOR: always
+  SCCACHE_GHA_ENABLED: "true"
+  RUSTC_WRAPPER: "sccache"
 
 jobs:
   codecov-tarpaulin:
@@ -25,21 +27,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: VCS Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Install latest nightly
-        uses: actions-rs/toolchain@v1
+        uses: dtolnay/rust-toolchain@master
         with:
-          toolchain: nightly
-          override: true
+          toolchain: nightly-2024-08-19
+          components: rustfmt, rust-src
+      - name: Install tarpaulin
+        uses: taiki-e/cache-cargo-install-action@v2
+        with:
+          tool: tarpaulin
+      - name: Cache dependencies
+        uses: Swatinem/rust-cache@v2
+      - name: Run sccache-cache
+        uses: mozilla-actions/sccache-action@v0.0.6
       - name: Run cargo-tarpaulin
-        uses: actions-rs/tarpaulin@v0.1
-        with:
-          version: '0.22.0'
-          args: --all-features
+        run: cargo +nightly tarpaulin --engine llvm --verbose --all-features --workspace --timeout 120 --out xml
       # Note: closed-source code needs to provide a token,
       # but open source code does not.
       - name: Upload to codecov.io
-        uses: codecov/codecov-action@v3.1.0
+        uses: codecov/codecov-action@v4.5.0
         with:
           verbose: true
           fail_ci_if_error: true
