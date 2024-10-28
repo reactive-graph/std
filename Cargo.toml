@@ -90,7 +90,7 @@ log = { version = "0.4", features = ["std", "serde"] }
 log4rs = { version = "1.2", features = ["console_appender", "file_appender", "toml_format"] }
 matchit = "0.8"
 mime_guess = "2.0"
-notify = { version = "6.1", features = ["serde", "crossbeam-channel"] }
+notify = { version = "7.0", features = ["serde", "crossbeam-channel"] }
 num-traits = "0.2"
 paste = "1.0"
 prisma = "0.1.1"
