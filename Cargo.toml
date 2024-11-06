@@ -111,7 +111,7 @@ shellexpand = "3.0"
 strum = { version = "0.26", features = ["derive"] }
 strum_macros = "0.26"
 tera = "1"
-thiserror = "1.0"
+thiserror = "2.0"
 tokio = { version = "1", features = ["macros", "time", "rt", "rt-multi-thread"] }
 toml = "0.8"
 unic-langid = "0.9"
