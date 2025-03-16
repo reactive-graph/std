@@ -11,6 +11,7 @@ readme = "../../../../README.md"
 [dependencies]
 git2 = { workspace = true }
 lazy_static = { workspace = true }
+log = { workspace = true }
 paste = { workspace = true }
 serde_json = { workspace = true }
 strum_macros = { workspace = true }

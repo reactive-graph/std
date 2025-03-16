@@ -30,21 +30,20 @@ impl BehaviourConnect<Uuid, ReactiveEntity> for SaveJsonBehaviourTransitions {
                 match File::open(&filename) {
                     Ok(file) => {
                         if let Some(value) = reactive_instance.get(PAYLOAD) {
-                            if let Ok(_) = serde_json::to_writer_pretty(file, &value) {
+                            if serde_json::to_writer_pretty(file, &value).is_ok() {
                                 trace!("Wrote payload to existing file {filename}");
                             }
                         }
                     }
-                    Err(_) => match File::create(&filename) {
-                        Ok(file) => {
+                    Err(_) => {
+                        if let Ok(file) = File::create(&filename) {
                             if let Some(value) = reactive_instance.get(PAYLOAD) {
-                                if let Ok(_) = serde_json::to_writer_pretty(file, &value) {
+                                if serde_json::to_writer_pretty(file, &value).is_ok() {
                                     trace!("Wrote payload to new file {filename}");
                                 }
                             }
                         }
-                        Err(_) => {}
-                    },
+                    }
                 }
             }
         });

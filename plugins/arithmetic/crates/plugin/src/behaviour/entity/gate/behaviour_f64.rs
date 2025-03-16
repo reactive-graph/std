@@ -40,25 +40,21 @@ impl BehaviourConnect<Uuid, ReactiveEntity> for ArithmeticGateF64BehaviourTransi
     fn connect(&self) -> Result<(), BehaviourConnectFailed> {
         let reactive_instance = self.reactive_instance.clone();
         let f = self.f;
-        self.property_observers.observe_with_handle(LHS.as_ref(), move |v| match v.as_f64() {
-            Some(lhs) => match reactive_instance.get(RHS).and_then(as_f64) {
-                Some(rhs) => {
+        self.property_observers.observe_with_handle(LHS.as_ref(), move |v| {
+            if let Some(lhs) = v.as_f64() {
+                if let Some(rhs) = reactive_instance.get(RHS).and_then(as_f64) {
                     reactive_instance.set(RESULT, json!(f(lhs, rhs)));
                 }
-                None => {}
-            },
-            None => {}
+            }
         });
         let reactive_instance = self.reactive_instance.clone();
         let f = self.f;
-        self.property_observers.observe_with_handle(RHS.as_ref(), move |v| match v.as_f64() {
-            Some(rhs) => match reactive_instance.get(LHS).and_then(as_f64) {
-                Some(lhs) => {
+        self.property_observers.observe_with_handle(RHS.as_ref(), move |v| {
+            if let Some(rhs) = v.as_f64() {
+                if let Some(lhs) = reactive_instance.get(LHS).and_then(as_f64) {
                     reactive_instance.set(RESULT, json!(f(lhs, rhs)));
                 }
-                None => {}
-            },
-            None => {}
+            }
         });
 
         Ok(())

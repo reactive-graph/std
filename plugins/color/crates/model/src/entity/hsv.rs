@@ -14,15 +14,9 @@ impl Brightness for Hsv {}
 
 pub trait TypedHsv: HueSaturationComponent + Brightness {
     fn hsv(&self) -> Option<prisma::Hsv<f64>> {
-        let Some(hue) = self.get_hue() else {
-            return None;
-        };
-        let Some(saturation) = self.get_saturation() else {
-            return None;
-        };
-        let Some(brightness) = self.get_brightness() else {
-            return None;
-        };
+        let hue = self.get_hue()?;
+        let saturation = self.get_saturation()?;
+        let brightness = self.get_brightness()?;
         Some(prisma::Hsv::new(Deg(hue), saturation, brightness))
     }
 

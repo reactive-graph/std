@@ -38,13 +38,11 @@ impl BehaviourConnect<Uuid, ReactiveEntity> for ArithmeticOperationU64BehaviourT
     fn connect(&self) -> Result<(), BehaviourConnectFailed> {
         let reactive_instance = self.property_observers.reactive_instance.clone();
         let f = self.f;
-        self.property_observers
-            .observe_with_handle(LHS.as_ref(), move |v: &Value| match as_u64(v.clone()) {
-                Some(v) => {
-                    reactive_instance.set(RESULT, json!(f(v)));
-                }
-                None => {}
-            });
+        self.property_observers.observe_with_handle(LHS.as_ref(), move |v: &Value| {
+            if let Some(v) = as_u64(v.clone()) {
+                reactive_instance.set(RESULT, json!(f(v)));
+            }
+        });
         Ok(())
     }
 }

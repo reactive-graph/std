@@ -62,7 +62,7 @@ impl BehaviourConnect<Uuid, ReactiveEntity> for JsonRpcBehaviourTransitions {
                 "jsonrpc": json_rpc_version,
                 "method": method,
                 "params": params,
-                "id": 1 as u32
+                "id": 1_u32
             });
 
             let request = ureq::post(url.as_str()).set("content-type", "application/json");

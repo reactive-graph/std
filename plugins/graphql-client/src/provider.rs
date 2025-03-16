@@ -31,7 +31,7 @@ pub struct GraphQlClientWebResourceProvider {}
 #[component_alias]
 impl WebResourceProvider for GraphQlClientWebResourceProvider {
     fn id(&self) -> Uuid {
-        ID.clone()
+        *ID
     }
 
     fn get_context_path(&self) -> String {

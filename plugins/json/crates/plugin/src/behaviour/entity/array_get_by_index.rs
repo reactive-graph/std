@@ -60,15 +60,10 @@ impl BehaviourTransitions<Uuid, ReactiveEntity> for ArrayGetByIndexBehaviourTran
 
 fn get_by_index(array: &Value, index: &Value) -> Option<Value> {
     match index.as_u64() {
-        Some(index) => {
-            match array.as_array() {
-                Some(array) => match array.get(index as usize) {
-                    Some(value) => Some(value.clone()), // PERF: late clone
-                    None => None,
-                },
-                None => None,
-            }
-        }
+        Some(index) => match array.as_array() {
+            Some(array) => array.get(index as usize).cloned(),
+            None => None,
+        },
         _ => None,
     }
 }

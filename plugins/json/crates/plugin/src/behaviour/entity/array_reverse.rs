@@ -34,8 +34,8 @@ impl BehaviourConnect<Uuid, ReactiveEntity> for ArrayReverseBehaviourTransitions
     }
 }
 
-fn reverse_array(array: &Vec<Value>) -> Value {
-    Value::Array(array.into_iter().rev().map(|v| v.clone()).collect())
+fn reverse_array(array: &[Value]) -> Value {
+    Value::Array(array.iter().rev().cloned().collect())
 }
 
 impl BehaviourShutdown<Uuid, ReactiveEntity> for ArrayReverseBehaviourTransitions {}

@@ -168,7 +168,7 @@ impl BinaryWebResourceProvider {
 #[component_alias]
 impl WebResourceProvider for BinaryWebResourceProvider {
     fn id(&self) -> Uuid {
-        ID.clone()
+        *ID
     }
 
     fn get_context_path(&self) -> String {
@@ -204,7 +204,7 @@ fn not_found() -> http::Result<Response<HttpBody>> {
 }
 
 fn filter_by_base64_data_url(s: String) -> Option<String> {
-    if let Some(prefix) = s.splitn(2, ',').next() {
+    if let Some(prefix) = s.split(',').next() {
         // prefix: data:image/png;base64
         if !prefix.starts_with("data:") || !prefix.ends_with(";base64") {
             return None;

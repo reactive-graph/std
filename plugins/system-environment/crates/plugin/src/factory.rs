@@ -49,7 +49,7 @@ impl SystemEnvironmentReactiveEntityFactory {
         let ty = ENTITY_TYPE_SYSTEM_ENV_VAR.deref();
         // let ty = EntityTypeId::new_from_type("asdf", "asdf");
         info!("{ty}");
-        let Some(entity_type) = entity_type_manager.get(&ty) else {
+        let Some(entity_type) = entity_type_manager.get(ty) else {
             return Err(SystemEnvironmentFactoryError::EntityTypeNotFound);
         };
         let entity_instance_manager = self.context.get_entity_instance_manager();

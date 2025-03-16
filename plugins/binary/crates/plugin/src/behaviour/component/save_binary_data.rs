@@ -56,7 +56,7 @@ impl BehaviourConnect<Uuid, ReactiveEntity> for SaveBinaryDataBehaviourTransitio
                     }
 
                     // Write byte array to file
-                    if let Ok(mut file) = OpenOptions::new().write(true).create(true).open(path) {
+                    if let Ok(mut file) = OpenOptions::new().write(true).create(true).truncate(true).open(path) {
                         let _success = file.write_all(bytes.unwrap().as_slice());
                     }
                 }

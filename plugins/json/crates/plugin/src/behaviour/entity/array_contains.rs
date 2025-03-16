@@ -60,8 +60,5 @@ impl BehaviourShutdown<Uuid, ReactiveEntity> for ArrayContainsBehaviourTransitio
 impl BehaviourTransitions<Uuid, ReactiveEntity> for ArrayContainsBehaviourTransitions {}
 
 fn array_contains(array: &Value, search: &Value) -> Option<Value> {
-    match array.as_array() {
-        Some(array) => Some(json!(array.contains(search))),
-        None => None,
-    }
+    array.as_array().map(|array| json!(array.contains(search)))
 }
