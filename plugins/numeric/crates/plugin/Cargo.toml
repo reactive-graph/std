@@ -48,6 +48,6 @@ reactive-graph-graph = { workspace = true, features = ["test"] }
 crate-type = ["cdylib"]
 
 [package.metadata.cargo-post.dependencies]
-toml = "0.7"
+toml = "0.8"
 serde = { version = "1.0", features = ["derive"] }
 glob = "0.3"
