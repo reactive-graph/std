@@ -5,8 +5,8 @@ use reactive_graph_behaviour_model_impl::entity_behaviour;
 use reactive_graph_graph::prelude::*;
 use reactive_graph_reactive_model_impl::ReactiveEntity;
 use reactive_graph_runtime_model::ActionProperties::TRIGGER;
-use serde_json::json;
 use serde_json::Value;
+use serde_json::json;
 use uuid::Uuid;
 
 use reactive_graph_model_result::ResultBooleanProperties::RESULT;
@@ -41,6 +41,6 @@ impl BehaviourShutdown<Uuid, ReactiveEntity> for RandomBoolBehaviourTransitions 
 impl BehaviourTransitions<Uuid, ReactiveEntity> for RandomBoolBehaviourTransitions {}
 
 fn random() -> Value {
-    let mut rng = rand::thread_rng();
-    json!(rng.gen::<bool>())
+    let mut rng = rand::rng();
+    json!(rng.random::<bool>())
 }
