@@ -63,6 +63,7 @@ license = "MIT"
 repository = "https://github.com/reactive-graph/plugins-core"
 homepage = "https://www.reactive-graph.io/"
 keywords = ["graph", "reactive", "control-flow", "inexor"]
+rust-version = "1.85.0"
 
 [workspace.dependencies]
 angular-units = "0.2.4"
