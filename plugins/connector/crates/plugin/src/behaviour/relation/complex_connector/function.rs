@@ -3,14 +3,14 @@ use std::sync::LazyLock;
 use std::thread;
 use std::time::Duration;
 
+use reactive_graph_behaviour_model_impl::relation::RelationBehaviourFactoryCreator;
 use reactive_graph_behaviour_model_impl::relation::function::RelationBehaviourFunctions;
 use reactive_graph_behaviour_model_impl::relation::function::RelationBehaviourFunctionsStorage;
-use reactive_graph_behaviour_model_impl::relation::RelationBehaviourFactoryCreator;
 use reactive_graph_graph::PropertyInstanceGetter;
 use reactive_graph_graph::PropertyInstanceSetter;
 use reactive_graph_reactive_model_impl::ReactiveRelation;
-use serde_json::json;
 use serde_json::Value;
+use serde_json::json;
 
 use reactive_graph_model_connector::BufferProperties::BUFFER;
 use reactive_graph_model_connector::BufferProperties::BUFFER_SIZE;

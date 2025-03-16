@@ -2,8 +2,8 @@ use std::fs::File;
 use std::io::Read;
 use std::path::Path;
 
-use base64::engine::general_purpose::STANDARD;
 use base64::Engine;
+use base64::engine::general_purpose::STANDARD;
 use mime_guess::from_path;
 use reactive_graph_behaviour_model_api::behaviour_validator;
 use reactive_graph_behaviour_model_api::prelude::*;
@@ -11,8 +11,8 @@ use reactive_graph_behaviour_model_impl::entity_behaviour;
 use reactive_graph_graph::prelude::*;
 use reactive_graph_reactive_model_impl::ReactiveEntity;
 use reactive_graph_runtime_model::ActionProperties::TRIGGER;
-use serde_json::json;
 use serde_json::Value;
+use serde_json::json;
 use uuid::Uuid;
 
 use reactive_graph_model_binary::BinaryDataProperties::DATA_URL;

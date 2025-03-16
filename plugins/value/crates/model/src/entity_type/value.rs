@@ -1,13 +1,13 @@
 use reactive_graph_graph::entity_ty;
 use reactive_graph_reactive_model_api::entity_model;
 
+use crate::NAMESPACE_VALUE;
 use crate::component::value::DataValue;
 use crate::component::value::DataValueArray;
 use crate::component::value::DataValueBoolean;
 use crate::component::value::DataValueNumber;
 use crate::component::value::DataValueObject;
 use crate::component::value::DataValueString;
-use crate::NAMESPACE_VALUE;
 
 entity_ty!(ENTITY_TYPE_VALUE_BOOLEAN, NAMESPACE_VALUE, ENTITY_TYPE_NAME_VALUE_BOOLEAN, "value_boolean");
 entity_ty!(ENTITY_TYPE_VALUE_NUMBER, NAMESPACE_VALUE, ENTITY_TYPE_NAME_VALUE_NUMBER, "value_number");

@@ -1,5 +1,5 @@
-use crate::RangeU64;
 use crate::NAMESPACE_RANDOM;
+use crate::RangeU64;
 use reactive_graph_behaviour_model_api::behaviour_ty;
 use reactive_graph_behaviour_model_api::entity_behaviour_ty;
 use reactive_graph_graph::entity_ty;

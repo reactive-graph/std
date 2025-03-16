@@ -1,9 +1,9 @@
 use crate::Brightness;
 use crate::HueSaturationComponent;
+use crate::NAMESPACE_COLOR;
 use crate::RgbComponent;
 use crate::TypedHsv;
 use crate::TypedRgbComponent;
-use crate::NAMESPACE_COLOR;
 use reactive_graph_behaviour_model_api::behaviour_ty;
 use reactive_graph_behaviour_model_api::entity_behaviour_ty;
 use reactive_graph_graph::entity_ty;

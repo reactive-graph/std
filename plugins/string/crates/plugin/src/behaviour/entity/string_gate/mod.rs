@@ -3,12 +3,12 @@ use reactive_graph_behaviour_model_api::prelude::*;
 use reactive_graph_behaviour_model_impl::entity_behaviour;
 use reactive_graph_graph::prelude::*;
 use reactive_graph_reactive_model_impl::ReactiveEntity;
-use serde_json::json;
 use serde_json::Value;
+use serde_json::json;
 use uuid::Uuid;
 
-pub use function::StringGateFunction;
 pub use function::STRING_GATES;
+pub use function::StringGateFunction;
 
 use reactive_graph_model_result::ResultBooleanProperties::RESULT;
 use reactive_graph_model_string::StringGateProperties::LHS;

@@ -1,5 +1,5 @@
-use crate::Weighted;
 use crate::NAMESPACE_TAXONOMY;
+use crate::Weighted;
 use reactive_graph_graph::relation_ty;
 use reactive_graph_reactive_model_api::relation_model;
 

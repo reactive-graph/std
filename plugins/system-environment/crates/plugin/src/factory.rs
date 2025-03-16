@@ -9,16 +9,16 @@ use reactive_graph_plugin_api::prelude::plugin::*;
 use reactive_graph_reactive_model_impl::ReactiveEntity;
 use reactive_graph_reactive_model_impl::ReactiveProperties;
 use reactive_graph_reactive_service_api::ReactiveEntityRegistrationError;
-use reactive_graph_runtime_model::LabeledProperties::LABEL;
 use reactive_graph_runtime_model::COMPONENT_LABELED;
+use reactive_graph_runtime_model::LabeledProperties::LABEL;
 use serde_json::json;
 use thiserror::Error;
 use uuid::Uuid;
 
-use reactive_graph_model_base::NamedProperties::NAME;
 use reactive_graph_model_base::COMPONENT_NAMED;
-use reactive_graph_model_value::ValueProperties::VALUE;
+use reactive_graph_model_base::NamedProperties::NAME;
 use reactive_graph_model_value::COMPONENT_VALUE;
+use reactive_graph_model_value::ValueProperties::VALUE;
 
 use crate::model_system_environment::ENTITY_TYPE_SYSTEM_ENV_VAR;
 use crate::model_system_environment::NAMESPACE_SYSTEM_ENVIRONMENT_ID;

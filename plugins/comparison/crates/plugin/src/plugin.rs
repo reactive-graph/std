@@ -1,6 +1,6 @@
+use reactive_graph_plugin_api::EntityBehaviourRegistry;
 use reactive_graph_plugin_api::prelude::plugin::*;
 use reactive_graph_plugin_api::prelude::providers::*;
-use reactive_graph_plugin_api::EntityBehaviourRegistry;
 
 use crate::behaviour::entity::gate::COMPARISON_GATES;
 

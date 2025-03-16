@@ -27,10 +27,12 @@ mod tests {
             .ty("value_object")
             .ty("value_string");
         let component_provider = ValueComponentsProvider {};
-        assert!(component_provider
-            .get_types()
-            .iter()
-            .all(|component| expected_components.contains(component.key())));
+        assert!(
+            component_provider
+                .get_types()
+                .iter()
+                .all(|component| expected_components.contains(component.key()))
+        );
     }
 
     #[test]
@@ -42,9 +44,11 @@ mod tests {
             .ty("value_object")
             .ty("value_string");
         let entity_type_provider = ValueEntityTypesProvider {};
-        assert!(entity_type_provider
-            .get_types()
-            .iter()
-            .all(|entity_type| expected_entity_types.contains(entity_type.key())));
+        assert!(
+            entity_type_provider
+                .get_types()
+                .iter()
+                .all(|entity_type| expected_entity_types.contains(entity_type.key()))
+        );
     }
 }

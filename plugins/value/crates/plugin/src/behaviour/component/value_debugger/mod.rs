@@ -1,5 +1,4 @@
 use log::debug;
-use reactive_graph_behaviour_model_api::behaviour_validator;
 use reactive_graph_behaviour_model_api::BehaviourConnect;
 use reactive_graph_behaviour_model_api::BehaviourConnectFailed;
 use reactive_graph_behaviour_model_api::BehaviourDisconnect;
@@ -8,6 +7,7 @@ use reactive_graph_behaviour_model_api::BehaviourInit;
 use reactive_graph_behaviour_model_api::BehaviourShutdown;
 use reactive_graph_behaviour_model_api::BehaviourTransitions;
 use reactive_graph_behaviour_model_api::PropertyObserverContainer;
+use reactive_graph_behaviour_model_api::behaviour_validator;
 use reactive_graph_behaviour_model_impl::entity_behaviour;
 use reactive_graph_graph::prelude::*;
 use reactive_graph_reactive_model_impl::ReactiveEntity;

@@ -1,9 +1,9 @@
 use crate::behaviour::component::config_file::ConfigFileFactory;
 use reactive_graph_model_config::BEHAVIOUR_CONFIG_FILE;
 use reactive_graph_model_config::COMPONENT_BEHAVIOUR_CONFIG_FILE;
+use reactive_graph_plugin_api::EntityComponentBehaviourRegistry;
 use reactive_graph_plugin_api::prelude::plugin::*;
 use reactive_graph_plugin_api::prelude::providers::*;
-use reactive_graph_plugin_api::EntityComponentBehaviourRegistry;
 
 export_plugin!({
     "dependencies": [

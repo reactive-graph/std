@@ -12,10 +12,10 @@ pub mod tests {
     use serde_json::json;
     use uuid::Uuid;
 
-    use reactive_graph_model_numeric::NumericOperationProperties::LHS;
     use reactive_graph_model_numeric::COMPONENT_NUMERIC_OPERATION;
-    use reactive_graph_model_result::ResultNumberF64Properties::RESULT;
+    use reactive_graph_model_numeric::NumericOperationProperties::LHS;
     use reactive_graph_model_result::COMPONENT_RESULT_NUMBER;
+    use reactive_graph_model_result::ResultNumberF64Properties::RESULT;
 
     pub fn numeric_operation(ty: &EntityTypeId) -> ReactiveEntity {
         let id = Uuid::new_v4();

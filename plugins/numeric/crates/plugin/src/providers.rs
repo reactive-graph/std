@@ -23,10 +23,12 @@ mod tests {
     fn components_should_exist() {
         let expected_components = ComponentTypeIds::with_namespace(NAMESPACE_NUMERIC).ty("numeric_gate").ty("numeric_operation");
         let component_provider = NumericComponentsProvider {};
-        assert!(component_provider
-            .get_types()
-            .iter()
-            .all(|component| expected_components.contains(component.key())));
+        assert!(
+            component_provider
+                .get_types()
+                .iter()
+                .all(|component| expected_components.contains(component.key()))
+        );
     }
 
     #[test]

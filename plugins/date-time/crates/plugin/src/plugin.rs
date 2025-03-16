@@ -1,6 +1,6 @@
+use reactive_graph_plugin_api::EntityBehaviourRegistry;
 use reactive_graph_plugin_api::prelude::plugin::*;
 use reactive_graph_plugin_api::prelude::providers::*;
-use reactive_graph_plugin_api::EntityBehaviourRegistry;
 
 use reactive_graph_model_date_time::BEHAVIOUR_UTC_NOW;
 use reactive_graph_model_date_time::BEHAVIOUR_UTC_TIMESTAMP;

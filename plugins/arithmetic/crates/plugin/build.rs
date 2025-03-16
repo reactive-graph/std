@@ -1,6 +1,7 @@
 extern crate rustc_version;
-use rustc_version::version_meta;
 use rustc_version::Channel;
+use rustc_version::version_meta;
+
 fn main() {
     println!("cargo:rerun-if-changed=types");
     // Set cfg flags depending on release channel

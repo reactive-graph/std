@@ -9,8 +9,8 @@ use reactive_graph_model_numeric::NAMESPACE_NUMERIC_F64;
 
 use crate::behaviour::entity::gate::behaviour_f64::NumericGateF64Factory;
 
-use serde_json::json;
 use serde_json::Value;
+use serde_json::json;
 
 pub type NumericGateFunction<T> = fn(T, T) -> Value;
 pub type NumericGateF64Function = NumericGateFunction<f64>;

@@ -25,10 +25,12 @@ mod tests {
             .ty("arithmetic_gate")
             .ty("arithmetic_operation");
         let component_provider = ArithmeticComponentsProvider {};
-        assert!(component_provider
-            .get_types()
-            .iter()
-            .all(|component| expected_components.contains(component.key())));
+        assert!(
+            component_provider
+                .get_types()
+                .iter()
+                .all(|component| expected_components.contains(component.key()))
+        );
     }
 
     #[test]

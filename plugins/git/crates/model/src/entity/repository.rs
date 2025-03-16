@@ -1,7 +1,7 @@
 use crate::ComponentRepository;
 use crate::GitRepository;
-use crate::TransferProgress;
 use crate::NAMESPACE_GIT;
+use crate::TransferProgress;
 use reactive_graph_graph::entity_ty;
 use reactive_graph_model_base::Describable;
 use reactive_graph_model_base::Named;

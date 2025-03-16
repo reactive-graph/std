@@ -4,8 +4,8 @@ use std::sync::LazyLock;
 use reactive_graph_behaviour_model_impl::entity::EntityBehaviourFactoryCreator;
 use reactive_graph_behaviour_model_impl::entity::EntityBehaviourFunctions;
 use reactive_graph_behaviour_model_impl::entity::EntityBehaviourFunctionsStorage;
-use serde_json::json;
 use serde_json::Value;
+use serde_json::json;
 
 use reactive_graph_model_comparison::NAMESPACE_COMPARISON;
 

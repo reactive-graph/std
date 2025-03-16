@@ -1,8 +1,8 @@
 use reactive_graph_model_string::BEHAVIOUR_TEMPLATING;
 use reactive_graph_model_string::ENTITY_BEHAVIOUR_TEMPLATING;
+use reactive_graph_plugin_api::EntityBehaviourRegistry;
 use reactive_graph_plugin_api::prelude::plugin::*;
 use reactive_graph_plugin_api::prelude::providers::*;
-use reactive_graph_plugin_api::EntityBehaviourRegistry;
 
 use crate::behaviour::entity::string_bool_operation::function::STRING_BOOL_OPERATIONS;
 use crate::behaviour::entity::string_comparison::function::STRING_COMPARISONS;
