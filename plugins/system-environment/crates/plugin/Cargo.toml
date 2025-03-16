@@ -26,7 +26,6 @@ thiserror = { workspace = true }
 uuid = { workspace = true, features = ["serde", "v4", "v5"] }
 
 reactive-graph-graph = { workspace = true }
-reactive-graph-lifecycle = { workspace = true }
 reactive-graph-plugin-api = { workspace = true }
 reactive-graph-reactive-model-impl = { workspace = true }
 reactive-graph-reactive-service-api = { workspace = true, features = ["derive"] }

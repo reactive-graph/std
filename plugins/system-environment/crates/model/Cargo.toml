@@ -17,9 +17,7 @@ reactive-graph-reactive-model-api = { workspace = true }
 reactive-graph-reactive-model-impl = { workspace = true }
 
 [dev-dependencies]
-default-test = { workspace = true }
 reactive-graph-graph = { workspace = true, features = ["test"] }
-reactive-graph-test-utils = { workspace = true }
 
 [lib]
 crate-type = ["lib"]
