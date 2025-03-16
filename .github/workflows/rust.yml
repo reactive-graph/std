@@ -26,7 +26,7 @@ jobs:
     strategy:
       matrix:
         os: [ ubuntu-latest, macos-latest, windows-latest ]
-        toolchain: [ stable, nightly-2024-08-19 ]
+        toolchain: [ stable, nightly-2025-03-14 ]
     runs-on: ${{ matrix.os }}
     steps:
       - name: VCS Checkout
