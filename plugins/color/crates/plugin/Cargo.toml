@@ -18,7 +18,6 @@ assets = [
 [dependencies]
 angular-units = { workspace = true }
 async-trait = { workspace = true }
-dashmap = { workspace = true }
 log = { workspace = true, features = ["std", "serde"] }
 log4rs = { workspace = true, features = ["console_appender", "file_appender", "toml_format"] }
 prisma = { workspace = true }
@@ -33,7 +32,6 @@ reactive-graph-graph = { workspace = true }
 reactive-graph-plugin-api = { workspace = true }
 reactive-graph-reactive-model-api = { workspace = true }
 reactive-graph-reactive-model-impl = { workspace = true }
-reactive-graph-reactive-service-api = { workspace = true, features = ["derive"] }
 reactive-graph-type-system-api = { workspace = true }
 
 reactive-graph-model-color = { version = "0.10.0", path = "../../crates/model" }

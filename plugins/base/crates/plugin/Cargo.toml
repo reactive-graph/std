@@ -17,19 +17,16 @@ assets = [
 
 [dependencies]
 async-trait = { workspace = true }
-dashmap = { workspace = true }
 log = { workspace = true, features = ["std", "serde"] }
 log4rs = { workspace = true, features = ["console_appender", "file_appender", "toml_format"] }
 rust-embed = { workspace = true, features = ["debug-embed", "compression"] }
 springtime-di = { workspace = true, default-features = false, features = ["threadsafe", "derive"] }
-uuid = { workspace = true, features = ["serde", "v4"] }
 
 reactive-graph-plugin-api = { workspace = true }
 reactive-graph-type-system-api = { workspace = true }
 reactive-graph-graph = { workspace = true }
 
 [dev-dependencies]
-reactive-graph-model-base = { version = "0.10.0", path = "../../crates/model" }
 
 [lib]
 # Plugins use crate-type cdylib

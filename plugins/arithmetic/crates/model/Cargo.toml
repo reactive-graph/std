@@ -25,9 +25,7 @@ reactive-graph-runtime-model = { workspace = true }
 reactive-graph-model-result = { version = "0.10.0", path = "../../../result/crates/model" }
 
 [dev-dependencies]
-default-test = { workspace = true }
 reactive-graph-graph = { workspace = true, features = ["test"] }
-reactive-graph-test-utils = { workspace = true }
 
 [lib]
 crate-type = ["lib"]

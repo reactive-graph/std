@@ -17,7 +17,6 @@ strum_macros = { workspace = true }
 reactive-graph-graph = { workspace = true }
 reactive-graph-reactive-model-api = { workspace = true }
 reactive-graph-reactive-model-impl = { workspace = true }
-reactive-graph-reactive-service-api = { workspace = true, features = ["derive"] }
 
 reactive-graph-model-value = { version = "0.10.0", path = "../../../value/crates/model" }
 

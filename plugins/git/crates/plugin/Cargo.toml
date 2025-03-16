@@ -17,9 +17,8 @@ assets = [
 
 [dependencies]
 async-trait = { workspace = true }
-dashmap = { workspace = true }
-git2 = { workspace = true }
-http = { workspace = true }
+#git2 = { workspace = true }
+#http = { workspace = true }
 log = { workspace = true, features = ["std", "serde"] }
 log4rs = { workspace = true, features = ["console_appender", "file_appender", "toml_format"] }
 rust-embed = { workspace = true, features = ["debug-embed", "compression"] }
@@ -34,19 +33,15 @@ reactive-graph-graph = { workspace = true }
 reactive-graph-plugin-api = { workspace = true }
 reactive-graph-reactive-model-api = { workspace = true }
 reactive-graph-reactive-model-impl = { workspace = true }
-reactive-graph-reactive-service-api = { workspace = true, features = ["derive"] }
 reactive-graph-runtime-model = { workspace = true }
 reactive-graph-type-system-api = { workspace = true }
 
-reactive-graph-model-base = { version = "0.10.0", path = "../../../base/crates/model" }
 reactive-graph-model-file = { version = "0.10.0", path = "../../../file/crates/model" }
 reactive-graph-model-git = { version = "0.10.0", path = "../../crates/model" }
 reactive-graph-model-http = { version = "0.10.0", path = "../../../http/crates/model" }
 
 [dev-dependencies]
-default-test = { workspace = true }
 reactive-graph-graph = { workspace = true, features = ["test"] }
-reactive-graph-test-utils = { workspace = true }
 
 [target.'cfg(target = "armv7-unknown-linux-gnueabihf")'.dependencies]
 openssl = { version = "0.10", features = ["vendored"] }

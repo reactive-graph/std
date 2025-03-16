@@ -17,7 +17,6 @@ assets = [
 
 [dependencies]
 async-trait = { workspace = true }
-dashmap = { workspace = true }
 log = { workspace = true, features = ["std", "serde"] }
 log4rs = { workspace = true, features = ["console_appender", "file_appender", "toml_format"] }
 rust-embed = { workspace = true, features = ["debug-embed", "compression"] }
@@ -29,9 +28,7 @@ reactive-graph-plugin-api = { workspace = true }
 reactive-graph-type-system-api = { workspace = true }
 
 [dev-dependencies]
-default-test = { workspace = true }
 reactive-graph-graph = { workspace = true, features = ["test"] }
-reactive-graph-test-utils = { workspace = true }
 
 [lib]
 # Plugins use crate-type cdylib

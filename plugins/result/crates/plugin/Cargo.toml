@@ -17,7 +17,6 @@ assets = [
 
 [dependencies]
 async-trait = { workspace = true }
-dashmap = { workspace = true }
 log = { workspace = true, features = ["std", "serde"] }
 log4rs = { workspace = true, features = ["console_appender", "file_appender", "toml_format"] }
 rust-embed = { workspace = true, features = ["debug-embed", "compression"] }

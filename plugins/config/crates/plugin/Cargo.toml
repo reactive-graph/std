@@ -17,7 +17,6 @@ assets = [
 
 [dependencies]
 async-trait = { workspace = true }
-dashmap = { workspace = true }
 log = { workspace = true, features = ["std", "serde"] }
 log4rs = { workspace = true, features = ["console_appender", "file_appender", "toml_format"] }
 rust-embed = { workspace = true, features = ["debug-embed", "compression"] }
@@ -35,7 +34,6 @@ reactive-graph-graph = { workspace = true }
 reactive-graph-plugin-api = { workspace = true }
 reactive-graph-reactive-model-api = { workspace = true }
 reactive-graph-reactive-model-impl = { workspace = true }
-reactive-graph-reactive-service-api = { workspace = true, features = ["derive"] }
 reactive-graph-runtime-model = { workspace = true }
 reactive-graph-type-system-api = { workspace = true }
 
