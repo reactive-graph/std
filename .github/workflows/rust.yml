@@ -57,7 +57,7 @@ jobs:
       - name: Cache dependencies
         uses: Swatinem/rust-cache@v2
       - name: Run sccache-cache
-        uses: mozilla-actions/sccache-action@v0.0.6
+        uses: mozilla-actions/sccache-action@v0.0.7
       - name: Run cargo clippy
         run: cargo clippy
   check_changelog:
@@ -97,7 +97,7 @@ jobs:
       - name: Cache dependencies
         uses: Swatinem/rust-cache@v2
       - name: Run sccache-cache
-        uses: mozilla-actions/sccache-action@v0.0.5
+        uses: mozilla-actions/sccache-action@v0.0.7
       - name: Build (Release Mode)
         run: cargo build --release --verbose
       - name: Test (Release Mode)
