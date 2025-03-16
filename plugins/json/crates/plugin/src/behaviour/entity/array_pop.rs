@@ -31,7 +31,7 @@ impl BehaviourConnect<Uuid, ReactiveEntity> for ArrayPopBehaviourTransitions {
     fn connect(&self) -> Result<(), BehaviourConnectFailed> {
         let reactive_instance = self.reactive_instance.clone();
         self.property_observers.observe_with_handle(ARRAY.as_ref(), move |array: &Value| {
-            let (result, value) = pop_array(&array);
+            let (result, value) = pop_array(array);
             reactive_instance.set(RESULT, result);
             if let Some(value) = value {
                 reactive_instance.set(VALUE, value);

@@ -61,15 +61,10 @@ impl BehaviourTransitions<Uuid, ReactiveEntity> for ObjectGetPropertyBehaviourTr
 
 fn get_property_by_name(object: &Value, property_name: &Value) -> Option<Value> {
     match property_name.as_str() {
-        Some(property_name) => {
-            match object.as_object() {
-                Some(object) => match object.get(property_name) {
-                    Some(value) => Some(value.clone()), // PERF: late clone
-                    None => None,
-                },
-                None => None,
-            }
-        }
+        Some(property_name) => match object.as_object() {
+            Some(object) => object.get(property_name).cloned(),
+            None => None,
+        },
         _ => None,
     }
 }

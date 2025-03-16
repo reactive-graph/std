@@ -18,15 +18,9 @@ component_model!(
 
 pub trait TypedRgbComponent: RgbComponent {
     fn rgb(&self) -> Option<Rgb<f64>> {
-        let Some(red) = self.get_red() else {
-            return None;
-        };
-        let Some(green) = self.get_green() else {
-            return None;
-        };
-        let Some(blue) = self.get_blue() else {
-            return None;
-        };
+        let red = self.get_red()?;
+        let green = self.get_green()?;
+        let blue = self.get_blue()?;
         Some(Rgb::new(red, green, blue))
     }
 

@@ -31,7 +31,7 @@ pub struct GraphQlSchemaVisualizationWebResourceProvider {}
 #[component_alias]
 impl WebResourceProvider for GraphQlSchemaVisualizationWebResourceProvider {
     fn id(&self) -> Uuid {
-        ID.clone()
+        *ID
     }
 
     fn get_context_path(&self) -> String {

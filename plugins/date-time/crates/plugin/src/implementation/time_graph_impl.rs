@@ -51,7 +51,7 @@ impl TimeGraphImpl {
         self.create_years().await;
     }
 
-    async fn create_years<'a>(&self) {
+    async fn create_years(&self) {
         let mut previous_year = None;
         let mut previous_year_last_month: Option<ReactiveEntity> = None;
         let mut previous_year_last_day: Option<ReactiveEntity> = None;
@@ -200,15 +200,9 @@ impl TimeGraphImpl {
         current_month: &ReactiveEntity,
         previous_month_last_day: Option<ReactiveEntity>,
     ) -> Option<ReactiveEntity> {
-        let Some(year) = current_year.as_i64(YEAR) else {
-            return None;
-        };
-        let Some(month_of_year) = current_month.as_u64(MONTH_OF_YEAR) else {
-            return None;
-        };
-        let Some(last_day_of_month) = last_day_of_month(year, month_of_year) else {
-            return None;
-        };
+        let year = current_year.as_i64(YEAR)?;
+        let month_of_year = current_month.as_u64(MONTH_OF_YEAR)?;
+        let last_day_of_month = last_day_of_month(year, month_of_year)?;
         let mut previous_day = previous_month_last_day;
         for day_of_month in 1..=last_day_of_month {
             let current_day = match self.create_day(year, month_of_year, day_of_month).await {

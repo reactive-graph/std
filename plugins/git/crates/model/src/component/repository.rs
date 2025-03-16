@@ -7,6 +7,7 @@ use git2::build::RepoBuilder;
 
 use crate::NAMESPACE_GIT;
 use crate::TransferProgress;
+use log::trace;
 use reactive_graph_behaviour_model_api::behaviour_ty;
 use reactive_graph_behaviour_model_api::component_behaviour_ty;
 use reactive_graph_graph::component_model;
@@ -113,7 +114,7 @@ pub trait GitRepository: ComponentRepository + TransferProgress + FilePath + Url
             return;
         }
         if repository.checkout_head(Some(git2::build::CheckoutBuilder::default().force())).is_err() {
-            return;
+            trace!("ff");
         }
     }
 
