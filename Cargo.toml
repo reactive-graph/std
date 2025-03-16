@@ -97,7 +97,7 @@ prisma = "0.1.1"
 quote = "1.0"
 query_interface = "0.3"
 rand = "0.9"
-rand_chacha = "0.3"
+rand_chacha = "0.9"
 random-string = "1.0"
 rust-embed = { version = "8.0", features = ["debug-embed", "compression"] }
 rustc_version = "0.4"
