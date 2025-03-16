@@ -2,9 +2,9 @@ use crate::api::numeric_constants_factory::NumericConstantsFactory;
 use crate::behaviour::entity::gate::function::NUMERIC_GATES_F64;
 use crate::behaviour::entity::operation::function::NUMERIC_OPERATIONS_F64;
 use crate::behaviour::entity::operation::function::NUMERIC_OPERATIONS_I64;
+use reactive_graph_plugin_api::EntityBehaviourRegistry;
 use reactive_graph_plugin_api::prelude::plugin::*;
 use reactive_graph_plugin_api::prelude::providers::*;
-use reactive_graph_plugin_api::EntityBehaviourRegistry;
 
 export_plugin!({
     "dependencies": [

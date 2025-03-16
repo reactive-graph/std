@@ -34,9 +34,9 @@ use reactive_graph_model_random::ENTITY_BEHAVIOUR_RANDOM_U64;
 use reactive_graph_model_random::ENTITY_BEHAVIOUR_RANDOM_U64_PSEUDO;
 use reactive_graph_model_random::ENTITY_BEHAVIOUR_RANDOM_U64_RANGE;
 use reactive_graph_model_random::ENTITY_BEHAVIOUR_RANDOM_UUID;
+use reactive_graph_plugin_api::EntityBehaviourRegistry;
 use reactive_graph_plugin_api::prelude::plugin::*;
 use reactive_graph_plugin_api::prelude::providers::*;
-use reactive_graph_plugin_api::EntityBehaviourRegistry;
 
 export_plugin!({
     "dependencies": [

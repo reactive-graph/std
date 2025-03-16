@@ -1,6 +1,6 @@
+use reactive_graph_plugin_api::EntityBehaviourRegistry;
 use reactive_graph_plugin_api::prelude::plugin::*;
 use reactive_graph_plugin_api::prelude::providers::*;
-use reactive_graph_plugin_api::EntityBehaviourRegistry;
 
 use reactive_graph_model_logical::BEHAVIOUR_IF_THEN_ELSE;
 use reactive_graph_model_logical::BEHAVIOUR_TOGGLE;

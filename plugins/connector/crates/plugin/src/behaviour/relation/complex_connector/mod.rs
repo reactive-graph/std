@@ -4,8 +4,8 @@ use reactive_graph_graph::prelude::*;
 use reactive_graph_reactive_model_impl::ReactiveRelation;
 use serde_json::Value;
 
-pub use function::ComplexConnectorFunction;
 pub use function::COMPLEX_CONNECTOR_BEHAVIOURS;
+pub use function::ComplexConnectorFunction;
 use reactive_graph_model_connector::ConnectorProperties::INBOUND_PROPERTY_NAME;
 use reactive_graph_model_connector::ConnectorProperties::OUTBOUND_PROPERTY_NAME;
 

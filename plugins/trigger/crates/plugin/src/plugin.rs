@@ -1,5 +1,5 @@
-use reactive_graph_plugin_api::prelude::plugin::*;
 use reactive_graph_plugin_api::ComponentProviderRegistry;
+use reactive_graph_plugin_api::prelude::plugin::*;
 
 export_plugin!({
   "dependencies": [

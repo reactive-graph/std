@@ -4,11 +4,11 @@ use std::sync::LazyLock;
 
 use log::debug;
 use log::trace;
+use reactive_graph_behaviour_model_impl::relation::RelationBehaviourFactoryCreator;
 use reactive_graph_behaviour_model_impl::relation::function::RelationBehaviourFunctions;
 use reactive_graph_behaviour_model_impl::relation::function::RelationBehaviourFunctionsStorage;
-use reactive_graph_behaviour_model_impl::relation::RelationBehaviourFactoryCreator;
-use serde_json::json;
 use serde_json::Value;
+use serde_json::json;
 
 use reactive_graph_model_connector::*;
 

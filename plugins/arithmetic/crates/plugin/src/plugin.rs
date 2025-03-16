@@ -7,9 +7,9 @@ use crate::behaviour::entity::operation::function::ARITHMETIC_OPERATIONS_I64;
 use crate::behaviour::entity::operation::function::ARITHMETIC_OPERATIONS_U64;
 use reactive_graph_model_arithmetic::BEHAVIOUR_COUNTER;
 use reactive_graph_model_arithmetic::ENTITY_BEHAVIOUR_COUNTER;
+use reactive_graph_plugin_api::EntityBehaviourRegistry;
 use reactive_graph_plugin_api::prelude::plugin::*;
 use reactive_graph_plugin_api::prelude::providers::*;
-use reactive_graph_plugin_api::EntityBehaviourRegistry;
 
 export_plugin!({
     "dependencies": [

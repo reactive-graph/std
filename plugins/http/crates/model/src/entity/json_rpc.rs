@@ -1,7 +1,7 @@
 use crate::ComponentJsonRpc;
+use crate::NAMESPACE_HTTP;
 use crate::ParsedUrl;
 use crate::Url;
-use crate::NAMESPACE_HTTP;
 use reactive_graph_graph::entity_ty;
 use reactive_graph_model_result::ResultObject;
 use reactive_graph_reactive_model_api::entity_model;

@@ -1,7 +1,7 @@
-use reactive_graph_plugin_api::prelude::plugin::*;
-use reactive_graph_plugin_api::prelude::providers::*;
 use reactive_graph_plugin_api::EntityBehaviourRegistry;
 use reactive_graph_plugin_api::EntityComponentBehaviourRegistry;
+use reactive_graph_plugin_api::prelude::plugin::*;
+use reactive_graph_plugin_api::prelude::providers::*;
 
 use crate::behaviour::component::load_json::LoadJsonFactory;
 use crate::behaviour::component::save_json::SaveJsonFactory;

@@ -3,8 +3,8 @@ use reactive_graph_behaviour_model_api::prelude::*;
 use reactive_graph_behaviour_model_impl::entity_behaviour;
 use reactive_graph_graph::prelude::*;
 use reactive_graph_reactive_model_impl::ReactiveEntity;
-use serde_json::json;
 use serde_json::Value;
+use serde_json::json;
 use uuid::Uuid;
 
 use reactive_graph_model_result::ResultNumberU64Properties::RESULT;
@@ -46,8 +46,8 @@ mod tests {
     use serde_json::json;
 
     use crate::behaviour::entity::counter::CounterFactory;
-    use reactive_graph_model_arithmetic::Counter1;
     use reactive_graph_model_arithmetic::BEHAVIOUR_COUNTER;
+    use reactive_graph_model_arithmetic::Counter1;
     use reactive_graph_model_arithmetic::ENTITY_TYPE_COUNTER;
     use reactive_graph_model_result::ResultNumberU64Properties::RESULT;
     use reactive_graph_reactive_model_api::ReactiveInstanceContainer;

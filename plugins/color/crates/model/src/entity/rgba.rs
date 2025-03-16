@@ -1,7 +1,7 @@
 use crate::Alpha;
+use crate::NAMESPACE_COLOR;
 use crate::RgbComponent;
 use crate::TypedRgbComponent;
-use crate::NAMESPACE_COLOR;
 use reactive_graph_graph::entity_ty;
 use reactive_graph_reactive_model_api::entity_model;
 

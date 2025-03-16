@@ -1,7 +1,7 @@
-use reactive_graph_plugin_api::prelude::plugin::*;
-use reactive_graph_plugin_api::prelude::providers::*;
 use reactive_graph_plugin_api::EntityComponentBehaviourRegistry;
 use reactive_graph_plugin_api::WebResourceManager;
+use reactive_graph_plugin_api::prelude::plugin::*;
+use reactive_graph_plugin_api::prelude::providers::*;
 
 use crate::behaviour::component::load_binary_data::LoadBinaryDataFactory;
 use crate::behaviour::component::save_binary_data::SaveBinaryDataFactory;

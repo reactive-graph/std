@@ -1,16 +1,16 @@
-use crate::model_value::GetValue;
-use crate::model_value::GetValueArray;
-use crate::model_value::GetValueBoolean;
-use crate::model_value::GetValueNumber;
-use crate::model_value::GetValueObject;
-use crate::model_value::GetValueString;
+use crate::NAMESPACE_STATE;
 use crate::SetState;
 use crate::SetStateArray;
 use crate::SetStateBoolean;
 use crate::SetStateNumber;
 use crate::SetStateObject;
 use crate::SetStateString;
-use crate::NAMESPACE_STATE;
+use crate::model_value::GetValue;
+use crate::model_value::GetValueArray;
+use crate::model_value::GetValueBoolean;
+use crate::model_value::GetValueNumber;
+use crate::model_value::GetValueObject;
+use crate::model_value::GetValueString;
 use reactive_graph_graph::entity_ty;
 use reactive_graph_reactive_model_api::entity_model;
 

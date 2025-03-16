@@ -1,10 +1,10 @@
 use crate::behaviour::component::PropagationCounterFactory;
 use reactive_graph_model_connector::BEHAVIOUR_PROPAGATION_COUNTER;
 use reactive_graph_model_connector::COMPONENT_BEHAVIOUR_PROPAGATION_COUNTER;
-use reactive_graph_plugin_api::prelude::plugin::*;
-use reactive_graph_plugin_api::prelude::providers::*;
 use reactive_graph_plugin_api::RelationBehaviourRegistry;
 use reactive_graph_plugin_api::RelationComponentBehaviourRegistry;
+use reactive_graph_plugin_api::prelude::plugin::*;
+use reactive_graph_plugin_api::prelude::providers::*;
 
 use crate::behaviour::relation::complex_connector::COMPLEX_CONNECTOR_BEHAVIOURS;
 use crate::behaviour::relation::connector::CONNECTOR_BEHAVIOURS;
