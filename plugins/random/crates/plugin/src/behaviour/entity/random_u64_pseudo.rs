@@ -1,14 +1,14 @@
 use rand::Rng;
-use rand_chacha::rand_core::SeedableRng;
 use rand_chacha::ChaCha8Rng;
+use rand_chacha::rand_core::SeedableRng;
 use reactive_graph_behaviour_model_api::behaviour_validator;
 use reactive_graph_behaviour_model_api::prelude::*;
 use reactive_graph_behaviour_model_impl::entity_behaviour;
 use reactive_graph_graph::prelude::*;
 use reactive_graph_reactive_model_impl::ReactiveEntity;
 use reactive_graph_runtime_model::ActionProperties::TRIGGER;
-use serde_json::json;
 use serde_json::Value;
+use serde_json::json;
 use uuid::Uuid;
 
 use reactive_graph_model_random::PseudoNumberGeneratorProperties::SEED;
@@ -47,5 +47,5 @@ impl BehaviourShutdown<Uuid, ReactiveEntity> for RandomU64PseudoBehaviourTransit
 impl BehaviourTransitions<Uuid, ReactiveEntity> for RandomU64PseudoBehaviourTransitions {}
 
 fn random(rng: &mut ChaCha8Rng) -> Value {
-    json!(rng.gen::<u64>())
+    json!(rng.random::<u64>())
 }
