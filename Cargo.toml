@@ -106,7 +106,7 @@ strum_macros = "0.27"
 tera = "1"
 thiserror = "2.0"
 toml = "0.8"
-ureq = { version = "2.4", features = ["json"] }
+ureq = { version = "3.0", features = ["json"] }
 url = "2.3"
 uuid = { version = "1.2", features = ["serde", "v4", "v5"] }
 voca_rs = "1"
