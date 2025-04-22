@@ -1,4 +1,5 @@
 name: Rust
+run-name: Build ${{ github.ref == 'refs/heads/main' && 'Nightly' || github.event_name == 'pull_request' && format('{0} {1}', 'Pull Request', github.event.pull_request.number) || format('{0} {1}', 'Branch', github.ref) }} by @${{ github.actor }}
 
 on:
   push:
@@ -7,6 +8,7 @@ on:
       - "plugins/**/crates/**/*.rs"
       - "plugins/**/crates/**/Cargo.toml"
       - "Cargo.toml"
+      - "Cargo.lock"
       - "CHANGELOG.md"
       - ".github/workflows/rust.yml"
   pull_request:
@@ -15,8 +17,13 @@ on:
       - "plugins/*/crates/**/*.rs"
       - "plugins/**/crates/**/Cargo.toml"
       - "Cargo.toml"
+      - "Cargo.lock"
       - "CHANGELOG.md"
       - ".github/workflows/rust.yml"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 env:
   CARGO_TERM_COLOR: always
@@ -27,7 +34,7 @@ env:
 jobs:
   formatting:
     name: Verify code formatting
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: VCS Checkout
         uses: actions/checkout@v4
@@ -38,9 +45,19 @@ jobs:
           components: rustfmt
       - name: Run cargo fmt
         run: cargo fmt --all -- --check
+  check_changelog:
+    name: Check Changelog
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: tarides/changelog-check-action@v3
+        with:
+          changelog: CHANGELOG.md
+    if: github.actor != 'dependabot[bot]'
   lint:
     name: Lint
-    runs-on: ubuntu-latest
+    needs: [ formatting, check_changelog ]
+    if: always() && (!contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled'))
+    runs-on: ubuntu-22.04
     strategy:
       matrix:
         toolchain: [ stable, nightly-2025-03-14 ]
@@ -69,19 +86,13 @@ jobs:
       - name: Cache dependencies
         uses: Swatinem/rust-cache@v2
       - name: Run sccache-cache
-        uses: mozilla-actions/sccache-action@v0.0.7
+        uses: mozilla-actions/sccache-action@v0.0.9
       - name: Run cargo clippy
         run: cargo clippy
-  check_changelog:
-    name: Check Changelog
-    runs-on: ubuntu-latest
-    steps:
-      - uses: tarides/changelog-check-action@v2
-        with:
-          changelog: CHANGELOG.md
   build:
     name: Release Build
-    needs: [ formatting, lint, check_changelog ]
+    needs: [ lint ]
+    if: always() && (!contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled'))
     strategy:
       matrix:
         os: [ ubuntu-22.04, ubuntu-22.04-arm, macos-latest, windows-latest ]
@@ -109,8 +120,35 @@ jobs:
       - name: Cache dependencies
         uses: Swatinem/rust-cache@v2
       - name: Run sccache-cache
-        uses: mozilla-actions/sccache-action@v0.0.7
+        uses: mozilla-actions/sccache-action@v0.0.9
       - name: Build (Release Mode)
         run: cargo build --release --verbose
+  test:
+    name: Tests
+    needs: [ lint ]
+    if: always() && (!contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled'))
+    strategy:
+      matrix:
+        toolchain: [ stable, nightly-2025-03-14 ]
+        target: [ x86_64-unknown-linux-gnu, x86_64-unknown-linux-musl ]
+    runs-on: ubuntu-22.04
+    steps:
+      - name: VCS Checkout
+        uses: actions/checkout@v4
+      - name: Install rust toolchain
+        uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: ${{ matrix.toolchain }}
+          target: ${{ matrix.target }}
+      - name: Install musl-tools
+        uses: awalsh128/cache-apt-pkgs-action@v1
+        with:
+          packages: musl-tools # provides musl-gcc
+          version: 1.0
+        if: matrix.target == 'x86_64-unknown-linux-musl'
+      - name: Cache dependencies
+        uses: Swatinem/rust-cache@v2
+      - name: Run sccache-cache
+        uses: mozilla-actions/sccache-action@v0.0.9
       - name: Test (Release Mode)
-        run: cargo test --release --verbose
+        run: cargo test --release --verbose --target ${{ matrix.target }}
