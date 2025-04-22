@@ -19,6 +19,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Infrastructure
 
+- CI: Update rust nightly toolchain to nightly-2025-03-14
+- CI: Added GitHub Actions runner for arm64 ubuntu-22.04-arm
+- CI: Generate release binaries and debian packages for arm64 using the arm64 runner
+- CI: Automatically label pull requests
+- CI: Automatically mark pull requests as stale
+- CI: Automatically assign assignee and reviewers
+
 ## [0.9.1-21] - 2023-05-09
 
 ### Added
