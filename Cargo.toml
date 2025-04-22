@@ -21,8 +21,8 @@ members = [
     "plugins/file/crates/plugin",
     "plugins/flow/crates/model",
     "plugins/flow/crates/plugin",
-    "plugins/git/crates/model",
-    "plugins/git/crates/plugin",
+    #    "plugins/git/crates/model",
+    #    "plugins/git/crates/plugin",
     "plugins/graphql-client",
     "plugins/graphql-schema-visualization",
     "plugins/http/crates/model",
@@ -75,7 +75,7 @@ crossbeam = "0.8"
 dashmap = { version = "6.0", features = ["serde"] }
 data-url = "0.3"
 default-test = "0.1"
-git2 = "0.20"
+#git2 = "0.20"
 http = "0.2"
 #humantime = "2.1"
 infer = "0.19"
