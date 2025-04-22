@@ -5,12 +5,14 @@ on:
     paths:
       - "plugins/**/Cargo.toml"
       - "Cargo.toml"
+      - "Cargo.lock"
       - ".github/workflows/audit.yml"
   pull_request:
     branches: [ main ]
     paths:
       - "plugins/**/Cargo.toml"
       - "Cargo.toml"
+      - "Cargo.lock"
       - ".github/workflows/audit.yml"
   schedule:
     - cron: "0 12 * * 0"
@@ -19,7 +21,7 @@ on:
 
 jobs:
   audit:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: VCS Checkout
         uses: actions/checkout@v4

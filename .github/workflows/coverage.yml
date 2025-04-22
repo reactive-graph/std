@@ -24,7 +24,7 @@ env:
 jobs:
   codecov-tarpaulin:
     name: Generate code coverage
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: VCS Checkout
         uses: actions/checkout@v4
@@ -40,13 +40,13 @@ jobs:
       - name: Cache dependencies
         uses: Swatinem/rust-cache@v2
       - name: Run sccache-cache
-        uses: mozilla-actions/sccache-action@v0.0.7
+        uses: mozilla-actions/sccache-action@v0.0.9
       - name: Run cargo-tarpaulin
         run: cargo +nightly tarpaulin --engine llvm --verbose --all-features --workspace --timeout 120 --out xml
       # Note: closed-source code needs to provide a token,
       # but open source code does not.
       - name: Upload to codecov.io
-        uses: codecov/codecov-action@v5.1.1
+        uses: codecov/codecov-action@v5.4.2
         with:
           verbose: true
           fail_ci_if_error: true
