@@ -6,7 +6,7 @@ With this plugin it's possible to integrate external services into your home aut
 
 ## Type System
 
-<img src="https://raw.githubusercontent.com/reactive-graph/plugins-core/main/docs/images/type_system.png">
+<img src="https://raw.githubusercontent.com/reactive-graph/std/main/docs/images/type_system.png">
 
 ## Entity Types
 
