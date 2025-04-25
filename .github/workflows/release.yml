@@ -10,7 +10,7 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
-  WORKSPACE_ROOT_MANIFEST_DIR: "/home/runner/work/plugins-core/plugins-core"
+  WORKSPACE_ROOT_MANIFEST_DIR: "/home/runner/work/std/std"
 
 jobs:
   create-release:
