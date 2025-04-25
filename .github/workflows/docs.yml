@@ -35,7 +35,7 @@ jobs:
           toolchain: nightly-2025-03-14
           components: rustfmt, rust-src
       - name: Setup Node.js 18
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 18
       - name: Install Yarn
