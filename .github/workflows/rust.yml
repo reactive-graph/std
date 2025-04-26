@@ -71,18 +71,6 @@ jobs:
           toolchain: ${{ matrix.toolchain }}
           target: ${{ matrix.target }}
           components: clippy
-      - name: Setup Node.js 18
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-      - name: Install Yarn
-        uses: borales/actions-yarn@v5
-        with:
-          cmd: --cwd plugins/graphql-client/web install
-      - name: Install Yarn
-        uses: borales/actions-yarn@v5
-        with:
-          cmd: --cwd plugins/graphql-schema-visualization/web install
       - name: Cache dependencies
         uses: Swatinem/rust-cache@v2
       - name: Run sccache-cache
@@ -105,18 +93,6 @@ jobs:
         uses: dtolnay/rust-toolchain@master
         with:
           toolchain: ${{ matrix.toolchain }}
-      - name: Setup Node.js 18
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-      - name: Install Yarn
-        uses: borales/actions-yarn@v5
-        with:
-          cmd: --cwd plugins/graphql-client/web install
-      - name: Install Yarn
-        uses: borales/actions-yarn@v5
-        with:
-          cmd: --cwd plugins/graphql-schema-visualization/web install
       - name: Cache dependencies
         uses: Swatinem/rust-cache@v2
       - name: Run sccache-cache
@@ -146,18 +122,6 @@ jobs:
           packages: musl-tools # provides musl-gcc
           version: 1.0
         if: matrix.target == 'x86_64-unknown-linux-musl'
-      - name: Setup Node.js 18
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-      - name: Install Yarn
-        uses: borales/actions-yarn@v5
-        with:
-          cmd: --cwd plugins/graphql-client/web install
-      - name: Install Yarn
-        uses: borales/actions-yarn@v5
-        with:
-          cmd: --cwd plugins/graphql-schema-visualization/web install
       - name: Cache dependencies
         uses: Swatinem/rust-cache@v2
       - name: Run sccache-cache

@@ -19,8 +19,6 @@ members = [
     "plugins/flow/crates/plugin",
     #    "plugins/git/crates/model",
     #    "plugins/git/crates/plugin",
-    "plugins/graphql-client",
-    "plugins/graphql-schema-visualization",
     "plugins/http/crates/model",
     "plugins/http/crates/plugin",
     "plugins/logical/crates/model",

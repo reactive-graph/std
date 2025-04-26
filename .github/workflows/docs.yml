@@ -34,18 +34,6 @@ jobs:
         with:
           toolchain: nightly-2025-03-14
           components: rustfmt, rust-src
-      - name: Setup Node.js 18
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-      - name: Install Yarn
-        uses: borales/actions-yarn@v5
-        with:
-          cmd: --cwd plugins/graphql-client/web install
-      - name: Install Yarn
-        uses: borales/actions-yarn@v5
-        with:
-          cmd: --cwd plugins/graphql-schema-visualization/web install
       - name: Cache dependencies
         uses: Swatinem/rust-cache@v2
       - name: Run sccache-cache
