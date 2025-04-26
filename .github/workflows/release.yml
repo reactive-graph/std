@@ -175,18 +175,6 @@ jobs:
         uses: taiki-e/setup-cross-toolchain-action@v1
         with:
           target: ${{ matrix.target }}
-      - name: Setup Node.js 18
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-      - name: Install Yarn
-        uses: borales/actions-yarn@v5
-        with:
-          cmd: --cwd plugins/graphql-client/web install
-      - name: Install Yarn
-        uses: borales/actions-yarn@v5
-        with:
-          cmd: --cwd plugins/graphql-schema-visualization/web install
       - name: Create Debian Package
         run: |
           # It's important to change into the plugin directory and building each package
@@ -230,10 +218,6 @@ jobs:
           cargo deb -p reactive-graph-std-trigger --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../value/crates/plugin
           cargo deb -p reactive-graph-std-value --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
-          cd ../../../graphql-client
-          cargo deb -p reactive-graph-tooling-graphql-client --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
-          cd ../graphql-schema-visualization
-          cargo deb -p reactive-graph-tooling-graphql-schema-visualization --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
         env:
           VERGEN_IDEMPOTENT: true
       - name: Upload debian package to release
