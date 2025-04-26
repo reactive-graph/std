@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Migrated to Rust Edition 2024
 - Renamed repository `reactive-graph/plugins-core` -> `reactive-graph/std`
+- Moved system library plugins to `reactive-graph/sys`
 
 ### Fixed
 

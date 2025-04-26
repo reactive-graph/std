@@ -56,15 +56,12 @@ In this repository you'll find the essential plugins which are necessary or usef
 
 <h2 align="center" style="text-align: center;">Moving plugins to a different repository</h2>
 
-| Repository | Name                                                         | Description                    |
-|------------|--------------------------------------------------------------|--------------------------------|
-| net        | [Git](./plugins/git/README.md)                               | Git VCS operations             |
-| net        | [HTTP](./plugins/http/README.md)                             | HTTP and JSONRPC               |
-| sys        | [System Environment](./plugins/system-environment/README.md) | Provides environment variables |
-| sys        | [File](./plugins/file/README.md)                             | File representation            |
-| sys        | [Binary](./plugins/binary/README.md)                         | Handles binary data            |
-| meta       | [Meta Data](./plugins/metadata/README.md)                    | Meta Data - Dublin Core, EXIF  |
-| meta       | [Taxonomy](./plugins/taxonomy/README.md)                     | Taxonomy - categories and tags |
+| Repository | Name                                      | Description                    |
+|------------|-------------------------------------------|--------------------------------|
+| net        | [Git](./plugins/git/README.md)            | Git VCS operations             |
+| net        | [HTTP](./plugins/http/README.md)          | HTTP and JSONRPC               |
+| meta       | [Meta Data](./plugins/metadata/README.md) | Meta Data - Dublin Core, EXIF  |
+| meta       | [Taxonomy](./plugins/taxonomy/README.md)  | Taxonomy - categories and tags |
 
 <h2 align="center" style="text-align: center;">Local Build + Local Deployment</h2>
 
