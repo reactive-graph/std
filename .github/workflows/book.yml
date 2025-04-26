@@ -1,0 +1,69 @@
+name: Book
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - "book/**"
+      - "plugins/*/README.md"
+      - "CHANGELOG.md"
+      - "CODE_OF_CONDUCT.md"
+      - "CONTRIBUTING.md"
+      - "LICENSE.md"
+      - "README.md"
+      - "SECURITY.md"
+      - ".github/workflows/book.yml"
+  pull_request:
+    branches: [ main ]
+    paths:
+      - "book/**"
+      - "CHANGELOG.md"
+      - "CODE_OF_CONDUCT.md"
+      - "CONTRIBUTING.md"
+      - "LICENSE.md"
+      - "README.md"
+      - "SECURITY.md"
+      - ".github/workflows/book.yml"
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  book:
+    name: Book
+    runs-on: ubuntu-22.04
+    steps:
+      - name: VCS Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Install rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+      - name: Setup mdBook
+        uses: peaceiris/actions-mdbook@v2
+        with:
+          mdbook-version: 'latest'
+      - name: Install preprocessor mdbook-admonish
+        uses: taiki-e/cache-cargo-install-action@v2
+        with:
+          tool: mdbook-admonish
+      - name: Install preprocessor mdbook-mermaid
+        uses: taiki-e/cache-cargo-install-action@v2
+        with:
+          tool: mdbook-mermaid
+
+      - name: Install preprocessor mdbook-preprocessor-graphql-playground
+        uses: taiki-e/cache-cargo-install-action@v2
+        with:
+          tool: mdbook-preprocessor-graphql-playground
+      - name: Build Book
+        working-directory: ./book
+        run: mdbook build
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        if: ${{ github.ref == 'refs/heads/main' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./book/book
+          destination_dir: book
+          cname: std.reactive-graph.io

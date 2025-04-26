@@ -1,0 +1,69 @@
+[book]
+authors = [
+    "Andreas Schaeffer"
+]
+language = "en"
+multilingual = false
+src = "src"
+title = "Reactive Graph - Standard Library"
+description = "The standard library of Reactive Graph"
+
+[preprocessor.mermaid]
+command = "mdbook-mermaid"
+
+[preprocessor.admonish]
+command = "mdbook-admonish"
+assets_version = "3.0.2" # do not edit: managed by `mdbook-admonish install`
+
+[preprocessor.graphql-playground]
+command = "mdbook-graphql-playground"
+renderer = ["html"]
+
+[output]
+
+[output.html]
+additional-js = [
+    "mermaid.min.js",
+    "mermaid-init.js",
+    "graphql-playground-react-middleware.js",
+    "graphql-playground.js"
+]
+additional-css = [
+    #    "./src/design/public/css/open-props.min.css",
+    #    "./src/design/public/css/open-props-buttons.min.css",
+    #    "./src/design/public/css/open-props-normalize.min.css",
+    #    "./src/design/public/fonts/fonts.css",
+    #    "./src/design/public/css/variables/palette.css",
+    #    "./src/design/public/css/variables/gradients.css",
+    #    "./src/design/public/css/variables/surface.css",
+    #    "./src/design/public/css/variables/patterns.css",
+    #    "./src/design/public/css/variables/text.css",
+    #    "./src/design/public/css/variables/brand.css",
+    #    "./src/design/public/css/atoms/blockquote.css",
+    #    "./src/design/public/css/atoms/hr.css",
+    #    "./src/design/public/css/atoms/lists.css",
+    #    "./src/design/public/css/atoms/subtitle.css",
+    #    "./src/design/public/css/atoms/surface.css",
+    #    "./src/design/public/css/atoms/tag.css",
+    #    "./src/design/public/css/atoms/title.css",
+    #    "./src/design/public/css/atoms/token.css",
+    #    "./src/design/public/css/molecules/alert.css",
+    #    "./src/design/public/css/molecules/article.css",
+    #    "./src/design/public/css/molecules/card.css",
+    #    "./src/design/public/css/molecules/emphasis-box.css",
+    #    "./src/design/public/css/molecules/intro.css",
+    #    "./src/design/public/css/molecules/list-box.css",
+    #    "./src/design/public/css/molecules/logo.css",
+    #    "./src/design/public/css/molecules/zebra-box.css",
+    #    "./src/design/public/css/organisms/organisms.css",
+    "././book.css",
+    "././mdbook-admonish.css",
+    "././graphql-playground.css",
+]
+theme = "theme"
+default-theme = "theme"
+preferred-dark-theme = "theme"
+git-repository-url = "https://github.com/reactive-graph/std"
+edit-url-template = "https://github.com/reactive-graph/std/edit/main/{path}"
+site-url = "https://std.reactive-graph.io/"
+cname = "std.reactive-graph.io"
