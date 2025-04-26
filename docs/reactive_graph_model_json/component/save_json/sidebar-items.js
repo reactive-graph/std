@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"constant":["BEHAVIOUR_NAME_SAVE_JSON","COMPONENT_NAME_SAVE_JSON"],"enum":["SaveJsonProperties"],"static":["COMPONENT_SAVE_JSON"],"struct":["BEHAVIOUR_SAVE_JSON","COMPONENT_BEHAVIOUR_SAVE_JSON"],"trait":["ComponentSaveJson"]};

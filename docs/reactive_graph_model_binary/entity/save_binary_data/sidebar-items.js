@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"constant":["ENTITY_TYPE_NAME_SAVE_BINARY_DATA"],"static":["ENTITY_TYPE_SAVE_BINARY_DATA"],"struct":["SaveBinaryData"]};

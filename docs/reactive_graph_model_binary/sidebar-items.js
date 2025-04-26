@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"constant":["NAMESPACE_BINARY"],"mod":["component","entity"]};

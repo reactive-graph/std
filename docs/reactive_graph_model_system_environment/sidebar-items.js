@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"constant":["NAMESPACE_SYSTEM_ENVIRONMENT"],"mod":["entity"],"static":["NAMESPACE_SYSTEM_ENVIRONMENT_ID"]};

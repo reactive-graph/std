@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"constant":["ENTITY_TYPE_NAME_LOAD_JSON"],"static":["ENTITY_TYPE_LOAD_JSON"],"struct":["LoadJson"]};

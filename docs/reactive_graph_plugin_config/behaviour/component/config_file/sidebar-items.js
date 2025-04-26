@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"struct":["ConfigFile","ConfigFileBehaviourTransitions","ConfigFileFactory","ConfigFileFsm","ConfigFileValidator"]};

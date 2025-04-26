@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"mod":["file","fs_notify"]};
