@@ -28,6 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - CI: Automatically mark pull requests as stale
 - CI: Automatically assign assignee and reviewers
 - CI: Upgraded multiple actions
+- CI: Synchronize labels from config file
 
 ## [0.9.1-21] - 2023-05-09
 
