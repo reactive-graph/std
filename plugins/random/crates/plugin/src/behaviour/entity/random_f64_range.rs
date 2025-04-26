@@ -11,9 +11,9 @@ use serde_json::Value;
 use serde_json::json;
 use uuid::Uuid;
 
-use reactive_graph_model_random::RangeF64Properties::HIGH;
-use reactive_graph_model_random::RangeF64Properties::LOW;
-use reactive_graph_model_result::ResultNumberF64Properties::RESULT;
+use reactive_graph_std_random_model::RangeF64Properties::HIGH;
+use reactive_graph_std_random_model::RangeF64Properties::LOW;
+use reactive_graph_std_result_model::ResultNumberF64Properties::RESULT;
 
 entity_behaviour!(
     RandomF64Range,

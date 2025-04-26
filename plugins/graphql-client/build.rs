@@ -10,7 +10,7 @@ fn main() -> Result<()> {
         Ok(workspace_root_manifest_dir) => {
             let cargo_pkg_name = env::var("CARGO_PKG_NAME")
                 .expect("Missing env var CARGO_PKG_NAME")
-                .strip_prefix("reactive-graph-plugin-")
+                .strip_prefix("reactive-graph-tooling-")
                 .expect("Failed to strip prefix")
                 .to_string();
             let yarn_location = Path::new(&workspace_root_manifest_dir)

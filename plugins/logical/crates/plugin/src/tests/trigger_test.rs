@@ -4,17 +4,17 @@ use crate::behaviour::entity::trigger::TriggerFactory;
 use crate::builder::ReactiveEntityInstanceBuilder;
 use crate::reactive::BehaviourFactory;
 use reactive_graph_graph::NamespacedTypeGetter;
-use reactive_graph_model_logical::Trigger;
-use reactive_graph_model_logical::TriggerProperties::PAYLOAD;
-use reactive_graph_model_logical::BEHAVIOUR_TRIGGER;
-use reactive_graph_model_logical::ENTITY_TYPE_NAME_TRIGGER;
-use reactive_graph_model_logical::ENTITY_TYPE_TRIGGER;
-use reactive_graph_model_logical::NAMESPACE_LOGICAL;
-use reactive_graph_model_result::ResultAny;
-use reactive_graph_model_result::ResultAnyProperties::RESULT;
 use reactive_graph_model_runtime::COMPONENT_ACTION;
 use reactive_graph_runtime_model::Action;
 use reactive_graph_runtime_model::ActionProperties::TRIGGER;
+use reactive_graph_std_logical_model::BEHAVIOUR_TRIGGER;
+use reactive_graph_std_logical_model::ENTITY_TYPE_NAME_TRIGGER;
+use reactive_graph_std_logical_model::ENTITY_TYPE_TRIGGER;
+use reactive_graph_std_logical_model::NAMESPACE_LOGICAL;
+use reactive_graph_std_logical_model::Trigger;
+use reactive_graph_std_logical_model::TriggerProperties::PAYLOAD;
+use reactive_graph_std_result_model::ResultAny;
+use reactive_graph_std_result_model::ResultAnyProperties::RESULT;
 
 #[test]
 fn trigger_test() {

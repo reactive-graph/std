@@ -1,16 +1,16 @@
-use crate::behaviour::entity::string_bool_operation::StringBoolOperationFactory;
 use crate::behaviour::entity::string_bool_operation::STRING_BOOL_OPERATIONS;
+use crate::behaviour::entity::string_bool_operation::StringBoolOperationFactory;
 use crate::builder::ReactiveEntityInstanceBuilder;
+use crate::model_string::COMPONENT_STRING_BOOL_OPERATION;
 use crate::model_string::StringBoolOperation;
 use crate::model_string::StringBoolOperationProperties::LHS;
-use crate::model_string::COMPONENT_STRING_BOOL_OPERATION;
 use crate::reactive::BehaviourFactory;
 use crate::reactive::BehaviourState;
 use reactive_graph_graph::BehaviourTypeId;
 use reactive_graph_graph::EntityTypeId;
-use reactive_graph_model_result::ResultBoolean;
-use reactive_graph_model_result::ResultBooleanProperties::RESULT;
-use reactive_graph_model_string::NAMESPACE_STRING;
+use reactive_graph_std_result_model::ResultBoolean;
+use reactive_graph_std_result_model::ResultBooleanProperties::RESULT;
+use reactive_graph_std_string_model::NAMESPACE_STRING;
 
 #[test]
 fn rx_is_lowercase_test() {

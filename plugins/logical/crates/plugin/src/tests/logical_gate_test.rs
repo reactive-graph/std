@@ -2,8 +2,8 @@ use std::sync::Arc;
 
 use serde_json::json;
 
-use crate::behaviour::entity::gate::LogicalGateFactory;
 use crate::behaviour::entity::gate::LOGICAL_GATES;
+use crate::behaviour::entity::gate::LogicalGateFactory;
 use crate::builder::ReactiveEntityInstanceBuilder;
 use crate::reactive::BehaviourFactory;
 use reactive_graph_graph::BehaviourTypeId;
@@ -12,12 +12,12 @@ use reactive_graph_graph::NamespacedTypeGetter;
 use reactive_graph_graph::PropertyInstanceGetter;
 use reactive_graph_graph::PropertyInstanceSetter;
 use reactive_graph_graph::ReactiveEntityInstance;
-use reactive_graph_model_logical::LogicalGate;
-use reactive_graph_model_logical::LogicalGateProperties;
-use reactive_graph_model_logical::COMPONENT_LOGICAL_GATE;
-use reactive_graph_model_logical::NAMESPACE_LOGICAL;
-use reactive_graph_model_result::ResultBoolean;
-use reactive_graph_model_result::ResultBooleanProperties;
+use reactive_graph_std_logical_model::COMPONENT_LOGICAL_GATE;
+use reactive_graph_std_logical_model::LogicalGate;
+use reactive_graph_std_logical_model::LogicalGateProperties;
+use reactive_graph_std_logical_model::NAMESPACE_LOGICAL;
+use reactive_graph_std_result_model::ResultBoolean;
+use reactive_graph_std_result_model::ResultBooleanProperties;
 
 const LHS: LogicalGateProperties = LogicalGateProperties::LHS;
 const RHS: LogicalGateProperties = LogicalGateProperties::RHS;

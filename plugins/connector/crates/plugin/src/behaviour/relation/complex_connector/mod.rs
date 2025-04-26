@@ -6,8 +6,8 @@ use serde_json::Value;
 
 pub use function::COMPLEX_CONNECTOR_BEHAVIOURS;
 pub use function::ComplexConnectorFunction;
-use reactive_graph_model_connector::ConnectorProperties::INBOUND_PROPERTY_NAME;
-use reactive_graph_model_connector::ConnectorProperties::OUTBOUND_PROPERTY_NAME;
+use reactive_graph_std_connector_model::ConnectorProperties::INBOUND_PROPERTY_NAME;
+use reactive_graph_std_connector_model::ConnectorProperties::OUTBOUND_PROPERTY_NAME;
 
 use crate::behaviour::relation::complex_connector::validator::ComplexConnectorValidator;
 

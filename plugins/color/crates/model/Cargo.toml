@@ -1,5 +1,5 @@
 [package]
-name = "reactive-graph-model-color"
+name = "reactive-graph-std-color-model"
 description = "Reactive Graph - Model - Color"
 version.workspace = true
 authors.workspace = true

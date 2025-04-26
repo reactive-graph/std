@@ -1,6 +1,6 @@
 [package]
-name = "reactive-graph-plugin-connector"
-description = "Reactive Graph - Plugin - Connector"
+name = "reactive-graph-std-connector"
+description = "Reactive Graph - STD - Connector"
 version.workspace = true
 authors.workspace = true
 edition.workspace = true
@@ -10,10 +10,10 @@ rust-version.workspace = true
 readme = "../../../../README.md"
 
 [package.metadata.deb]
-name = "libreactive-graph-plugin-connector"
-depends = "reactive-graph, libreactive-graph-plugin-base"
+name = "libreactive-graph-std-connector"
+depends = "reactive-graph, libreactive-graph-std-base"
 assets = [
-    ["target/release/libreactive_graph_plugin_connector.so", "usr/share/reactive-graph/default/plugins/installed/libreactive_graph_plugin_connector.so", "755"],
+    ["target/release/libreactive_graph_std_connector.so", "usr/share/reactive-graph/default/plugins/installed/libreactive_graph_std_connector.so", "755"],
 ]
 
 [dependencies]
@@ -33,7 +33,7 @@ reactive-graph-reactive-model-api = { workspace = true }
 reactive-graph-reactive-model-impl = { workspace = true }
 reactive-graph-type-system-api = { workspace = true }
 
-reactive-graph-model-connector = { version = "0.10.0", path = "../../crates/model" }
+reactive-graph-std-connector-model = { version = "0.10.0", path = "../../crates/model" }
 
 [dev-dependencies]
 reactive-graph-graph = { workspace = true, features = ["test"] }

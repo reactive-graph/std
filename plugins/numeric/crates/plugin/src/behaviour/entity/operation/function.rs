@@ -1,5 +1,5 @@
-use reactive_graph_model_numeric::NAMESPACE_NUMERIC_F64;
-use reactive_graph_model_numeric::NAMESPACE_NUMERIC_I64;
+use reactive_graph_std_numeric_model::NAMESPACE_NUMERIC_F64;
+use reactive_graph_std_numeric_model::NAMESPACE_NUMERIC_I64;
 
 use std::sync::Arc;
 use std::sync::LazyLock;

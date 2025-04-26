@@ -15,7 +15,7 @@ use reactive_graph_model_git::RepositoryProperties::FETCH;
 // use reactive_graph_model_git::RepositoryProperties::PUSH;
 use reactive_graph_model_git::RepositoryProperties::REMOTE_BRANCH;
 use reactive_graph_model_git::RepositoryProperties::REMOTE_NAME;
-use reactive_graph_model_http::UrlProperties::URL;
+use reactive_graph_net_http_model::UrlProperties::URL;
 use reactive_graph_runtime_model::ActionProperties::TRIGGER;
 
 entity_behaviour!(Repository, RepositoryFactory, RepositoryFsm, RepositoryBehaviourTransitions, RepositoryValidator);

@@ -7,8 +7,8 @@ use serde_json::Value;
 use serde_json::json;
 use uuid::Uuid;
 
-use reactive_graph_model_arithmetic::ArithmeticOperationProperties::LHS;
-use reactive_graph_model_arithmetic::ArithmeticOperationProperties::RESULT;
+use reactive_graph_std_arithmetic_model::ArithmeticOperationProperties::LHS;
+use reactive_graph_std_arithmetic_model::ArithmeticOperationProperties::RESULT;
 
 use crate::behaviour::as_f64;
 use crate::behaviour::entity::operation::function::ArithmeticOperationF64Function;
@@ -63,8 +63,8 @@ mod tests {
     use serde_json::json;
     use uuid::Uuid;
 
-    use reactive_graph_model_arithmetic::ArithmeticOperationProperties;
-    use reactive_graph_model_arithmetic::NAMESPACE_ARITHMETIC_F64;
+    use reactive_graph_std_arithmetic_model::ArithmeticOperationProperties;
+    use reactive_graph_std_arithmetic_model::NAMESPACE_ARITHMETIC_F64;
 
     use crate::behaviour::entity::operation::behaviour_f64::ArithmeticOperationF64;
     use crate::behaviour::entity::operation::function::*;
@@ -85,7 +85,7 @@ mod tests {
         let ty = EntityTypeId::new_from_type(NAMESPACE_ARITHMETIC_F64, type_name);
         let behaviour = create_arithmetic_operation_behaviour(ty, f);
         let reactive_instance = behaviour.get_reactive_instance();
-        let arithmetic_operation = reactive_graph_model_arithmetic::ArithmeticOperationF64::from(reactive_instance.clone());
+        let arithmetic_operation = reactive_graph_std_arithmetic_model::ArithmeticOperationF64::from(reactive_instance.clone());
         arithmetic_operation.lhs(v);
         arithmetic_operation.result().expect("Result is not of type f64")
     }

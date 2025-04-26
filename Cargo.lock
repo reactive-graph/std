@@ -305,12 +305,6 @@ checksum = "72b3254f16251a8381aa12e40e3c4d2f0199f8c6508fbecb9d91f575e0fbb8c6"
 
 [[package]]
 name = "bitflags"
-version = "1.3.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bef38d45163c2f1dde094a7dfd33ccf595c92905c8f8f4fdc18d06fb1037718a"
-
-[[package]]
-name = "bitflags"
 version = "2.9.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5c8214115b7bf84099f1309324e63141d4c5d7cc26862f97a0a857dbefe165bd"
@@ -372,17 +366,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8e3a13707ac958681c13b39b458c073d0d9bc8a22cb1b2f4c8e55eb72c13f362"
 dependencies = [
  "shlex",
-]
-
-[[package]]
-name = "cfb"
-version = "0.7.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d38f2da7a0a2c4ccf0065be06397cc26a81f4e528be095826eee9d4adbb8c60f"
-dependencies = [
- "byteorder",
- "fnv",
- "uuid",
 ]
 
 [[package]]
@@ -668,12 +651,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "data-url"
-version = "0.3.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5c297a1c74b71ae29df00c3e22dd9534821d60eb9af5a0192823fa2acea70c2a"
-
-[[package]]
 name = "default-test"
 version = "0.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -819,18 +796,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "37909eebbb50d72f9059c3b6d82c0463f2ff062c9e95845c43a6c9c0355411be"
 
 [[package]]
-name = "filetime"
-version = "0.2.25"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "35c0522e981e68cbfa8c3f978441a5f34b30b96e146b33cd3359176b50fe8586"
-dependencies = [
- "cfg-if",
- "libc",
- "libredox",
- "windows-sys 0.59.0",
-]
-
-[[package]]
 name = "flate2"
 version = "1.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -853,15 +818,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e13624c2627564efccf4934284bdd98cbaa14e79b0b5a141218e507b3a823456"
 dependencies = [
  "percent-encoding",
-]
-
-[[package]]
-name = "fsevent-sys"
-version = "4.1.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "76ee7a02da4d231650c7cea31349b889be2f45ddb3ef3032d2ec8185f6313fd2"
-dependencies = [
- "libc",
 ]
 
 [[package]]
@@ -971,7 +927,7 @@ version = "0.9.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0bf760ebf69878d9fd8f110c89703d90ce35095324d1f1edcb595c63945ee757"
 dependencies = [
- "bitflags 2.9.0",
+ "bitflags",
  "ignore",
  "walkdir",
 ]
@@ -1267,35 +1223,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "infer"
-version = "0.19.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a588916bfdfd92e71cacef98a63d9b1f0d74d6599980d11894290e7ddefffcf7"
-dependencies = [
- "cfb",
-]
-
-[[package]]
-name = "inotify"
-version = "0.11.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f37dccff2791ab604f9babef0ba14fbe0be30bd368dc541e2b08d07c8aa908f3"
-dependencies = [
- "bitflags 2.9.0",
- "inotify-sys",
- "libc",
-]
-
-[[package]]
-name = "inotify-sys"
-version = "0.1.5"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e05c02b5e89bff3b946cedeca278abc628fe811e604f027c45a8aa3cf793d0eb"
-dependencies = [
- "libc",
-]
-
-[[package]]
 name = "instant"
 version = "0.1.13"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1356,26 +1283,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "kqueue"
-version = "1.0.8"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7447f1ca1b7b563588a205fe93dea8df60fd981423a768bc1c0ded35ed147d0c"
-dependencies = [
- "kqueue-sys",
- "libc",
-]
-
-[[package]]
-name = "kqueue-sys"
-version = "1.0.4"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ed9625ffda8729b85e45cf04090035ac368927b8cebc34898e7c120f52e4838b"
-dependencies = [
- "bitflags 1.3.2",
- "libc",
-]
-
-[[package]]
 name = "kv-log-macro"
 version = "1.0.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1432,9 +1339,8 @@ version = "0.1.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c0ff37bd590ca25063e35af745c343cb7a0271906fb7b37e4813e8f79f00268d"
 dependencies = [
- "bitflags 2.9.0",
+ "bitflags",
  "libc",
- "redox_syscall",
 ]
 
 [[package]]
@@ -1516,12 +1422,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "matchit"
-version = "0.8.6"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2f926ade0c4e170215ae43342bf13b9310a437609c81f29f86c5df6657582ef9"
-
-[[package]]
 name = "memchr"
 version = "2.7.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1550,47 +1450,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3be647b768db090acb35d5ec5db2b0e1f1de11133ca123b9eacf5137868f892a"
 dependencies = [
  "adler2",
-]
-
-[[package]]
-name = "mio"
-version = "1.0.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2886843bf800fba2e3377cff24abf6379b4c4d5c6681eaf9ea5b0d15090450bd"
-dependencies = [
- "libc",
- "log",
- "wasi 0.11.0+wasi-snapshot-preview1",
- "windows-sys 0.52.0",
-]
-
-[[package]]
-name = "notify"
-version = "8.0.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2fee8403b3d66ac7b26aee6e40a897d85dc5ce26f44da36b8b73e987cc52e943"
-dependencies = [
- "bitflags 2.9.0",
- "crossbeam-channel",
- "filetime",
- "fsevent-sys",
- "inotify",
- "kqueue",
- "libc",
- "log",
- "mio",
- "notify-types",
- "walkdir",
- "windows-sys 0.59.0",
-]
-
-[[package]]
-name = "notify-types"
-version = "2.0.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5e0826a989adedc2a244799e823aece04662b66609d96af8dff7ac6df9a8925d"
-dependencies = [
- "serde",
 ]
 
 [[package]]
@@ -2084,133 +1943,31 @@ dependencies = [
 ]
 
 [[package]]
-name = "reactive-graph-model-arithmetic"
+name = "reactive-graph-net-http"
 version = "0.10.0"
 dependencies = [
- "lazy_static",
+ "async-trait",
+ "log",
+ "log4rs",
  "reactive-graph-behaviour-model-api",
+ "reactive-graph-behaviour-model-impl",
  "reactive-graph-graph",
- "reactive-graph-model-result",
+ "reactive-graph-net-http-model",
+ "reactive-graph-plugin-api",
  "reactive-graph-reactive-model-api",
  "reactive-graph-reactive-model-impl",
- "reactive-graph-reactive-service-api",
  "reactive-graph-runtime-model",
- "serde",
+ "reactive-graph-std-result-model",
+ "reactive-graph-type-system-api",
+ "rust-embed",
  "serde_json",
- "strum_macros",
+ "springtime-di",
+ "ureq",
  "uuid",
 ]
 
 [[package]]
-name = "reactive-graph-model-base"
-version = "0.10.0"
-dependencies = [
- "license",
- "paste",
- "reactive-graph-graph",
- "semver",
- "serde",
- "serde_json",
- "strum_macros",
-]
-
-[[package]]
-name = "reactive-graph-model-binary"
-version = "0.10.0"
-dependencies = [
- "data-url",
- "lazy_static",
- "paste",
- "reactive-graph-behaviour-model-api",
- "reactive-graph-graph",
- "reactive-graph-model-base",
- "reactive-graph-model-file",
- "reactive-graph-reactive-model-api",
- "reactive-graph-reactive-model-impl",
- "reactive-graph-runtime-model",
- "serde",
- "serde_json",
- "strum_macros",
-]
-
-[[package]]
-name = "reactive-graph-model-color"
-version = "0.10.0"
-dependencies = [
- "angular-units",
- "lazy_static",
- "paste",
- "prisma",
- "reactive-graph-behaviour-model-api",
- "reactive-graph-graph",
- "reactive-graph-reactive-model-api",
- "reactive-graph-reactive-model-impl",
- "serde",
- "serde_json",
- "strum_macros",
-]
-
-[[package]]
-name = "reactive-graph-model-comparison"
-version = "0.10.0"
-dependencies = [
- "reactive-graph-graph",
- "reactive-graph-model-result",
- "reactive-graph-reactive-model-api",
- "reactive-graph-reactive-model-impl",
- "serde",
- "serde_json",
- "strum_macros",
-]
-
-[[package]]
-name = "reactive-graph-model-config"
-version = "0.10.0"
-dependencies = [
- "lazy_static",
- "reactive-graph-behaviour-model-api",
- "reactive-graph-graph",
- "reactive-graph-model-file",
- "reactive-graph-model-result",
- "reactive-graph-reactive-model-api",
- "reactive-graph-reactive-model-impl",
- "reactive-graph-runtime-model",
- "serde",
- "serde_json",
-]
-
-[[package]]
-name = "reactive-graph-model-connector"
-version = "0.10.0"
-dependencies = [
- "lazy_static",
- "reactive-graph-behaviour-model-api",
- "reactive-graph-graph",
- "reactive-graph-reactive-model-api",
- "reactive-graph-reactive-model-impl",
- "serde",
- "serde_json",
- "strum_macros",
-]
-
-[[package]]
-name = "reactive-graph-model-date-time"
-version = "0.10.0"
-dependencies = [
- "lazy_static",
- "reactive-graph-behaviour-model-api",
- "reactive-graph-graph",
- "reactive-graph-model-result",
- "reactive-graph-reactive-model-api",
- "reactive-graph-reactive-model-impl",
- "reactive-graph-runtime-model",
- "serde",
- "serde_json",
- "strum_macros",
-]
-
-[[package]]
-name = "reactive-graph-model-file"
+name = "reactive-graph-net-http-model"
 version = "0.10.0"
 dependencies = [
  "lazy_static",
@@ -2220,200 +1977,10 @@ dependencies = [
  "reactive-graph-reactive-model-api",
  "reactive-graph-reactive-model-impl",
  "reactive-graph-runtime-model",
- "serde",
- "serde_json",
- "strum_macros",
-]
-
-[[package]]
-name = "reactive-graph-model-flow"
-version = "0.10.0"
-dependencies = [
- "paste",
- "reactive-graph-graph",
- "reactive-graph-model-base",
- "reactive-graph-reactive-model-api",
- "reactive-graph-reactive-model-impl",
- "serde",
- "serde_json",
- "strum_macros",
-]
-
-[[package]]
-name = "reactive-graph-model-http"
-version = "0.10.0"
-dependencies = [
- "lazy_static",
- "paste",
- "reactive-graph-behaviour-model-api",
- "reactive-graph-graph",
- "reactive-graph-model-result",
- "reactive-graph-reactive-model-api",
- "reactive-graph-reactive-model-impl",
- "reactive-graph-runtime-model",
+ "reactive-graph-std-result-model",
  "serde_json",
  "strum_macros",
  "url",
-]
-
-[[package]]
-name = "reactive-graph-model-json"
-version = "0.10.0"
-dependencies = [
- "lazy_static",
- "reactive-graph-behaviour-model-api",
- "reactive-graph-graph",
- "reactive-graph-model-base",
- "reactive-graph-model-file",
- "reactive-graph-model-result",
- "reactive-graph-reactive-model-api",
- "reactive-graph-reactive-model-impl",
- "reactive-graph-runtime-model",
- "serde_json",
- "strum_macros",
-]
-
-[[package]]
-name = "reactive-graph-model-logical"
-version = "0.10.0"
-dependencies = [
- "lazy_static",
- "reactive-graph-behaviour-model-api",
- "reactive-graph-graph",
- "reactive-graph-model-result",
- "reactive-graph-reactive-model-api",
- "reactive-graph-reactive-model-impl",
- "reactive-graph-runtime-model",
- "serde",
- "serde_json",
- "strum_macros",
-]
-
-[[package]]
-name = "reactive-graph-model-metadata"
-version = "0.10.0"
-dependencies = [
- "paste",
- "reactive-graph-graph",
- "serde_json",
- "strum_macros",
-]
-
-[[package]]
-name = "reactive-graph-model-numeric"
-version = "0.10.0"
-dependencies = [
- "reactive-graph-graph",
- "reactive-graph-model-result",
- "reactive-graph-reactive-model-api",
- "reactive-graph-reactive-model-impl",
- "serde",
- "serde_json",
- "strum_macros",
-]
-
-[[package]]
-name = "reactive-graph-model-random"
-version = "0.10.0"
-dependencies = [
- "lazy_static",
- "reactive-graph-behaviour-model-api",
- "reactive-graph-graph",
- "reactive-graph-model-result",
- "reactive-graph-reactive-model-api",
- "reactive-graph-reactive-model-impl",
- "reactive-graph-runtime-model",
- "serde_json",
- "strum_macros",
-]
-
-[[package]]
-name = "reactive-graph-model-result"
-version = "0.10.0"
-dependencies = [
- "reactive-graph-graph",
- "serde",
- "serde_json",
- "strum_macros",
-]
-
-[[package]]
-name = "reactive-graph-model-state"
-version = "0.10.0"
-dependencies = [
- "reactive-graph-graph",
- "reactive-graph-model-value",
- "reactive-graph-reactive-model-api",
- "reactive-graph-reactive-model-impl",
- "serde",
- "serde_json",
- "strum_macros",
-]
-
-[[package]]
-name = "reactive-graph-model-string"
-version = "0.10.0"
-dependencies = [
- "lazy_static",
- "reactive-graph-behaviour-model-api",
- "reactive-graph-graph",
- "reactive-graph-model-result",
- "reactive-graph-reactive-model-api",
- "reactive-graph-reactive-model-impl",
- "serde_json",
- "strum_macros",
-]
-
-[[package]]
-name = "reactive-graph-model-system-environment"
-version = "0.10.0"
-dependencies = [
- "reactive-graph-graph",
- "reactive-graph-reactive-model-api",
- "reactive-graph-reactive-model-impl",
- "serde_json",
- "uuid",
-]
-
-[[package]]
-name = "reactive-graph-model-taxonomy"
-version = "0.10.0"
-dependencies = [
- "paste",
- "reactive-graph-graph",
- "reactive-graph-model-base",
- "reactive-graph-reactive-model-api",
- "reactive-graph-reactive-model-impl",
- "serde_json",
- "strum_macros",
-]
-
-[[package]]
-name = "reactive-graph-model-trigger"
-version = "0.10.0"
-dependencies = [
- "reactive-graph-graph",
- "serde",
- "serde_json",
- "strum_macros",
-]
-
-[[package]]
-name = "reactive-graph-model-value"
-version = "0.10.0"
-dependencies = [
- "dashmap",
- "default-test",
- "paste",
- "reactive-graph-graph",
- "reactive-graph-reactive-model-api",
- "reactive-graph-reactive-model-impl",
- "reactive-graph-reactive-service-api",
- "reactive-graph-test-utils",
- "serde",
- "serde_json",
- "strum_macros",
- "uuid",
 ]
 
 [[package]]
@@ -2442,565 +2009,9 @@ dependencies = [
 ]
 
 [[package]]
-name = "reactive-graph-plugin-arithmetic"
-version = "0.10.0"
-dependencies = [
- "async-trait",
- "log",
- "log4rs",
- "num-traits",
- "reactive-graph-behaviour-model-api",
- "reactive-graph-behaviour-model-impl",
- "reactive-graph-graph",
- "reactive-graph-model-arithmetic",
- "reactive-graph-model-result",
- "reactive-graph-plugin-api",
- "reactive-graph-reactive-model-api",
- "reactive-graph-reactive-model-impl",
- "reactive-graph-runtime-model",
- "reactive-graph-type-system-api",
- "rust-embed",
- "rustc_version",
- "serde",
- "serde_json",
- "springtime-di",
- "uuid",
-]
-
-[[package]]
-name = "reactive-graph-plugin-base"
-version = "0.10.0"
-dependencies = [
- "async-trait",
- "log",
- "log4rs",
- "reactive-graph-graph",
- "reactive-graph-plugin-api",
- "reactive-graph-type-system-api",
- "rust-embed",
- "springtime-di",
-]
-
-[[package]]
-name = "reactive-graph-plugin-binary"
-version = "0.10.0"
-dependencies = [
- "async-trait",
- "base64",
- "http",
- "infer",
- "log",
- "log4rs",
- "matchit",
- "mime_guess",
- "reactive-graph-behaviour-model-api",
- "reactive-graph-behaviour-model-impl",
- "reactive-graph-graph",
- "reactive-graph-model-binary",
- "reactive-graph-model-file",
- "reactive-graph-plugin-api",
- "reactive-graph-reactive-model-api",
- "reactive-graph-reactive-model-impl",
- "reactive-graph-runtime-model",
- "reactive-graph-type-system-api",
- "rust-embed",
- "serde",
- "serde_json",
- "shellexpand",
- "springtime-di",
- "strum",
- "strum_macros",
- "uuid",
-]
-
-[[package]]
-name = "reactive-graph-plugin-color"
-version = "0.10.0"
-dependencies = [
- "angular-units",
- "async-trait",
- "log",
- "log4rs",
- "prisma",
- "reactive-graph-behaviour-model-api",
- "reactive-graph-behaviour-model-impl",
- "reactive-graph-graph",
- "reactive-graph-model-color",
- "reactive-graph-plugin-api",
- "reactive-graph-reactive-model-api",
- "reactive-graph-reactive-model-impl",
- "reactive-graph-type-system-api",
- "rust-embed",
- "serde_json",
- "springtime-di",
- "uuid",
-]
-
-[[package]]
-name = "reactive-graph-plugin-comparison"
-version = "0.10.0"
-dependencies = [
- "async-trait",
- "log",
- "log4rs",
- "reactive-graph-behaviour-model-api",
- "reactive-graph-behaviour-model-impl",
- "reactive-graph-graph",
- "reactive-graph-model-comparison",
- "reactive-graph-model-result",
- "reactive-graph-plugin-api",
- "reactive-graph-reactive-model-api",
- "reactive-graph-reactive-model-impl",
- "reactive-graph-type-system-api",
- "rust-embed",
- "serde",
- "serde_json",
- "springtime-di",
- "uuid",
-]
-
-[[package]]
-name = "reactive-graph-plugin-config"
-version = "0.10.0"
-dependencies = [
- "async-trait",
- "log",
- "log4rs",
- "reactive-graph-behaviour-model-api",
- "reactive-graph-behaviour-model-impl",
- "reactive-graph-graph",
- "reactive-graph-model-config",
- "reactive-graph-model-file",
- "reactive-graph-model-result",
- "reactive-graph-plugin-api",
- "reactive-graph-reactive-model-api",
- "reactive-graph-reactive-model-impl",
- "reactive-graph-runtime-model",
- "reactive-graph-type-system-api",
- "rust-embed",
- "serde",
- "serde_json",
- "shellexpand",
- "springtime-di",
- "toml",
- "uuid",
-]
-
-[[package]]
-name = "reactive-graph-plugin-connector"
-version = "0.10.0"
-dependencies = [
- "async-trait",
- "log",
- "log4rs",
- "reactive-graph-behaviour-model-api",
- "reactive-graph-behaviour-model-impl",
- "reactive-graph-graph",
- "reactive-graph-model-connector",
- "reactive-graph-plugin-api",
- "reactive-graph-reactive-model-api",
- "reactive-graph-reactive-model-impl",
- "reactive-graph-type-system-api",
- "rust-embed",
- "serde",
- "serde_json",
- "springtime-di",
-]
-
-[[package]]
-name = "reactive-graph-plugin-date-time"
-version = "0.10.0"
-dependencies = [
- "async-std",
- "async-trait",
- "chrono",
- "log",
- "log4rs",
- "reactive-graph-behaviour-model-api",
- "reactive-graph-behaviour-model-impl",
- "reactive-graph-graph",
- "reactive-graph-model-date-time",
- "reactive-graph-model-result",
- "reactive-graph-plugin-api",
- "reactive-graph-reactive-model-api",
- "reactive-graph-reactive-model-impl",
- "reactive-graph-runtime-model",
- "reactive-graph-type-system-api",
- "rust-embed",
- "serde",
- "serde_json",
- "springtime-di",
- "uuid",
-]
-
-[[package]]
 name = "reactive-graph-plugin-derive"
 version = "0.10.0"
 source = "git+https://github.com/reactive-graph/reactive-graph.git#372eca230210da8c3337ebe065bb837c949e965d"
-
-[[package]]
-name = "reactive-graph-plugin-file"
-version = "0.10.0"
-dependencies = [
- "async-std",
- "async-trait",
- "crossbeam",
- "log",
- "log4rs",
- "notify",
- "reactive-graph-behaviour-model-api",
- "reactive-graph-behaviour-model-impl",
- "reactive-graph-graph",
- "reactive-graph-model-file",
- "reactive-graph-plugin-api",
- "reactive-graph-reactive-model-api",
- "reactive-graph-reactive-model-impl",
- "reactive-graph-runtime-model",
- "reactive-graph-type-system-api",
- "rust-embed",
- "serde",
- "serde_json",
- "shellexpand",
- "springtime-di",
- "uuid",
-]
-
-[[package]]
-name = "reactive-graph-plugin-flow"
-version = "0.10.0"
-dependencies = [
- "async-trait",
- "log",
- "log4rs",
- "reactive-graph-graph",
- "reactive-graph-plugin-api",
- "reactive-graph-type-system-api",
- "rust-embed",
- "serde_json",
- "springtime-di",
-]
-
-[[package]]
-name = "reactive-graph-plugin-graphql-client"
-version = "0.10.0"
-dependencies = [
- "async-trait",
- "dashmap",
- "http",
- "log",
- "log4rs",
- "mime_guess",
- "reactive-graph-config-model",
- "reactive-graph-graph",
- "reactive-graph-plugin-api",
- "rust-embed",
- "serde",
- "serde_json",
- "springtime-di",
- "static-files",
- "uuid",
-]
-
-[[package]]
-name = "reactive-graph-plugin-graphql-schema-visualization"
-version = "0.10.0"
-dependencies = [
- "async-trait",
- "dashmap",
- "http",
- "log",
- "log4rs",
- "mime_guess",
- "reactive-graph-config-model",
- "reactive-graph-graph",
- "reactive-graph-plugin-api",
- "rust-embed",
- "serde",
- "serde_json",
- "springtime-di",
- "static-files",
- "uuid",
-]
-
-[[package]]
-name = "reactive-graph-plugin-http"
-version = "0.10.0"
-dependencies = [
- "async-trait",
- "log",
- "log4rs",
- "reactive-graph-behaviour-model-api",
- "reactive-graph-behaviour-model-impl",
- "reactive-graph-graph",
- "reactive-graph-model-http",
- "reactive-graph-model-result",
- "reactive-graph-plugin-api",
- "reactive-graph-reactive-model-api",
- "reactive-graph-reactive-model-impl",
- "reactive-graph-runtime-model",
- "reactive-graph-type-system-api",
- "rust-embed",
- "serde_json",
- "springtime-di",
- "ureq",
- "uuid",
-]
-
-[[package]]
-name = "reactive-graph-plugin-json"
-version = "0.10.0"
-dependencies = [
- "async-trait",
- "log",
- "log4rs",
- "reactive-graph-behaviour-model-api",
- "reactive-graph-behaviour-model-impl",
- "reactive-graph-graph",
- "reactive-graph-model-file",
- "reactive-graph-model-json",
- "reactive-graph-model-result",
- "reactive-graph-plugin-api",
- "reactive-graph-reactive-model-api",
- "reactive-graph-reactive-model-impl",
- "reactive-graph-runtime-model",
- "reactive-graph-type-system-api",
- "rust-embed",
- "serde_json",
- "shellexpand",
- "springtime-di",
- "uuid",
-]
-
-[[package]]
-name = "reactive-graph-plugin-logical"
-version = "0.10.0"
-dependencies = [
- "async-trait",
- "log",
- "log4rs",
- "reactive-graph-behaviour-model-api",
- "reactive-graph-behaviour-model-impl",
- "reactive-graph-graph",
- "reactive-graph-model-logical",
- "reactive-graph-model-result",
- "reactive-graph-plugin-api",
- "reactive-graph-reactive-model-api",
- "reactive-graph-reactive-model-impl",
- "reactive-graph-runtime-model",
- "reactive-graph-type-system-api",
- "rust-embed",
- "serde",
- "serde_json",
- "springtime-di",
- "uuid",
-]
-
-[[package]]
-name = "reactive-graph-plugin-metadata"
-version = "0.10.0"
-dependencies = [
- "async-trait",
- "log",
- "log4rs",
- "reactive-graph-graph",
- "reactive-graph-plugin-api",
- "reactive-graph-type-system-api",
- "rust-embed",
- "serde_json",
- "springtime-di",
-]
-
-[[package]]
-name = "reactive-graph-plugin-numeric"
-version = "0.10.0"
-dependencies = [
- "async-trait",
- "log",
- "log4rs",
- "num-traits",
- "reactive-graph-behaviour-model-api",
- "reactive-graph-behaviour-model-impl",
- "reactive-graph-graph",
- "reactive-graph-model-numeric",
- "reactive-graph-model-result",
- "reactive-graph-model-value",
- "reactive-graph-plugin-api",
- "reactive-graph-reactive-model-api",
- "reactive-graph-reactive-model-impl",
- "reactive-graph-type-system-api",
- "rust-embed",
- "serde",
- "serde_json",
- "springtime-di",
- "uuid",
-]
-
-[[package]]
-name = "reactive-graph-plugin-random"
-version = "0.10.0"
-dependencies = [
- "async-trait",
- "log",
- "log4rs",
- "rand 0.9.1",
- "rand_chacha 0.9.0",
- "random-string",
- "reactive-graph-behaviour-model-api",
- "reactive-graph-behaviour-model-impl",
- "reactive-graph-graph",
- "reactive-graph-model-random",
- "reactive-graph-model-result",
- "reactive-graph-plugin-api",
- "reactive-graph-reactive-model-api",
- "reactive-graph-reactive-model-impl",
- "reactive-graph-runtime-model",
- "reactive-graph-type-system-api",
- "rust-embed",
- "serde",
- "serde_json",
- "springtime-di",
- "uuid",
-]
-
-[[package]]
-name = "reactive-graph-plugin-result"
-version = "0.10.0"
-dependencies = [
- "async-trait",
- "log",
- "log4rs",
- "reactive-graph-graph",
- "reactive-graph-plugin-api",
- "reactive-graph-type-system-api",
- "rust-embed",
- "serde_json",
- "springtime-di",
-]
-
-[[package]]
-name = "reactive-graph-plugin-state"
-version = "0.10.0"
-dependencies = [
- "async-trait",
- "log",
- "log4rs",
- "reactive-graph-behaviour-model-api",
- "reactive-graph-behaviour-model-impl",
- "reactive-graph-graph",
- "reactive-graph-model-state",
- "reactive-graph-model-value",
- "reactive-graph-plugin-api",
- "reactive-graph-reactive-model-api",
- "reactive-graph-reactive-model-impl",
- "reactive-graph-type-system-api",
- "rust-embed",
- "serde",
- "serde_json",
- "springtime-di",
- "uuid",
-]
-
-[[package]]
-name = "reactive-graph-plugin-string"
-version = "0.10.0"
-dependencies = [
- "async-trait",
- "log",
- "log4rs",
- "reactive-graph-behaviour-model-api",
- "reactive-graph-behaviour-model-impl",
- "reactive-graph-graph",
- "reactive-graph-model-result",
- "reactive-graph-model-string",
- "reactive-graph-plugin-api",
- "reactive-graph-reactive-model-api",
- "reactive-graph-reactive-model-impl",
- "reactive-graph-type-system-api",
- "rust-embed",
- "serde_json",
- "springtime-di",
- "tera",
- "uuid",
- "voca_rs",
-]
-
-[[package]]
-name = "reactive-graph-plugin-system-environment"
-version = "0.10.0"
-dependencies = [
- "async-trait",
- "log",
- "log4rs",
- "reactive-graph-graph",
- "reactive-graph-model-base",
- "reactive-graph-model-system-environment",
- "reactive-graph-model-value",
- "reactive-graph-plugin-api",
- "reactive-graph-reactive-model-impl",
- "reactive-graph-reactive-service-api",
- "reactive-graph-runtime-model",
- "reactive-graph-type-system-api",
- "rust-embed",
- "serde_json",
- "springtime-di",
- "thiserror 2.0.12",
- "uuid",
-]
-
-[[package]]
-name = "reactive-graph-plugin-taxonomy"
-version = "0.10.0"
-dependencies = [
- "async-trait",
- "log",
- "log4rs",
- "reactive-graph-graph",
- "reactive-graph-plugin-api",
- "reactive-graph-type-system-api",
- "rust-embed",
- "serde_json",
- "springtime-di",
-]
-
-[[package]]
-name = "reactive-graph-plugin-trigger"
-version = "0.10.0"
-dependencies = [
- "async-trait",
- "log",
- "log4rs",
- "reactive-graph-graph",
- "reactive-graph-plugin-api",
- "reactive-graph-type-system-api",
- "rust-embed",
- "springtime-di",
-]
-
-[[package]]
-name = "reactive-graph-plugin-value"
-version = "0.10.0"
-dependencies = [
- "async-trait",
- "dashmap",
- "default-test",
- "log",
- "log4rs",
- "reactive-graph-behaviour-model-api",
- "reactive-graph-behaviour-model-impl",
- "reactive-graph-graph",
- "reactive-graph-model-value",
- "reactive-graph-plugin-api",
- "reactive-graph-reactive-model-api",
- "reactive-graph-reactive-model-impl",
- "reactive-graph-reactive-service-api",
- "reactive-graph-test-utils",
- "reactive-graph-type-system-api",
- "rust-embed",
- "serde",
- "serde_json",
- "springtime-di",
- "uuid",
-]
 
 [[package]]
 name = "reactive-graph-reactive-derive"
@@ -3096,6 +2107,679 @@ dependencies = [
 ]
 
 [[package]]
+name = "reactive-graph-std-arithmetic"
+version = "0.10.0"
+dependencies = [
+ "async-trait",
+ "log",
+ "log4rs",
+ "num-traits",
+ "reactive-graph-behaviour-model-api",
+ "reactive-graph-behaviour-model-impl",
+ "reactive-graph-graph",
+ "reactive-graph-plugin-api",
+ "reactive-graph-reactive-model-api",
+ "reactive-graph-reactive-model-impl",
+ "reactive-graph-runtime-model",
+ "reactive-graph-std-arithmetic-model",
+ "reactive-graph-std-result-model",
+ "reactive-graph-type-system-api",
+ "rust-embed",
+ "rustc_version",
+ "serde",
+ "serde_json",
+ "springtime-di",
+ "uuid",
+]
+
+[[package]]
+name = "reactive-graph-std-arithmetic-model"
+version = "0.10.0"
+dependencies = [
+ "lazy_static",
+ "reactive-graph-behaviour-model-api",
+ "reactive-graph-graph",
+ "reactive-graph-reactive-model-api",
+ "reactive-graph-reactive-model-impl",
+ "reactive-graph-reactive-service-api",
+ "reactive-graph-runtime-model",
+ "reactive-graph-std-result-model",
+ "serde",
+ "serde_json",
+ "strum_macros",
+ "uuid",
+]
+
+[[package]]
+name = "reactive-graph-std-array"
+version = "0.10.0"
+dependencies = [
+ "async-trait",
+ "log",
+ "log4rs",
+ "reactive-graph-behaviour-model-api",
+ "reactive-graph-behaviour-model-impl",
+ "reactive-graph-graph",
+ "reactive-graph-plugin-api",
+ "reactive-graph-reactive-model-api",
+ "reactive-graph-reactive-model-impl",
+ "reactive-graph-runtime-model",
+ "reactive-graph-std-array-model",
+ "reactive-graph-std-result-model",
+ "reactive-graph-type-system-api",
+ "rust-embed",
+ "serde_json",
+ "shellexpand",
+ "springtime-di",
+ "uuid",
+]
+
+[[package]]
+name = "reactive-graph-std-array-model"
+version = "0.10.0"
+dependencies = [
+ "lazy_static",
+ "reactive-graph-behaviour-model-api",
+ "reactive-graph-graph",
+ "reactive-graph-reactive-model-api",
+ "reactive-graph-reactive-model-impl",
+ "reactive-graph-runtime-model",
+ "reactive-graph-std-base-model",
+ "reactive-graph-std-result-model",
+ "serde_json",
+ "strum_macros",
+]
+
+[[package]]
+name = "reactive-graph-std-base"
+version = "0.10.0"
+dependencies = [
+ "async-trait",
+ "log",
+ "log4rs",
+ "reactive-graph-graph",
+ "reactive-graph-plugin-api",
+ "reactive-graph-type-system-api",
+ "rust-embed",
+ "springtime-di",
+]
+
+[[package]]
+name = "reactive-graph-std-base-model"
+version = "0.10.0"
+dependencies = [
+ "license",
+ "paste",
+ "reactive-graph-graph",
+ "semver",
+ "serde",
+ "serde_json",
+ "strum_macros",
+]
+
+[[package]]
+name = "reactive-graph-std-color"
+version = "0.10.0"
+dependencies = [
+ "angular-units",
+ "async-trait",
+ "log",
+ "log4rs",
+ "prisma",
+ "reactive-graph-behaviour-model-api",
+ "reactive-graph-behaviour-model-impl",
+ "reactive-graph-graph",
+ "reactive-graph-plugin-api",
+ "reactive-graph-reactive-model-api",
+ "reactive-graph-reactive-model-impl",
+ "reactive-graph-std-color-model",
+ "reactive-graph-type-system-api",
+ "rust-embed",
+ "serde_json",
+ "springtime-di",
+ "uuid",
+]
+
+[[package]]
+name = "reactive-graph-std-color-model"
+version = "0.10.0"
+dependencies = [
+ "angular-units",
+ "lazy_static",
+ "paste",
+ "prisma",
+ "reactive-graph-behaviour-model-api",
+ "reactive-graph-graph",
+ "reactive-graph-reactive-model-api",
+ "reactive-graph-reactive-model-impl",
+ "serde",
+ "serde_json",
+ "strum_macros",
+]
+
+[[package]]
+name = "reactive-graph-std-comparison"
+version = "0.10.0"
+dependencies = [
+ "async-trait",
+ "log",
+ "log4rs",
+ "reactive-graph-behaviour-model-api",
+ "reactive-graph-behaviour-model-impl",
+ "reactive-graph-graph",
+ "reactive-graph-plugin-api",
+ "reactive-graph-reactive-model-api",
+ "reactive-graph-reactive-model-impl",
+ "reactive-graph-std-comparison-model",
+ "reactive-graph-std-result-model",
+ "reactive-graph-type-system-api",
+ "rust-embed",
+ "serde",
+ "serde_json",
+ "springtime-di",
+ "uuid",
+]
+
+[[package]]
+name = "reactive-graph-std-comparison-model"
+version = "0.10.0"
+dependencies = [
+ "reactive-graph-graph",
+ "reactive-graph-reactive-model-api",
+ "reactive-graph-reactive-model-impl",
+ "reactive-graph-std-result-model",
+ "serde",
+ "serde_json",
+ "strum_macros",
+]
+
+[[package]]
+name = "reactive-graph-std-connector"
+version = "0.10.0"
+dependencies = [
+ "async-trait",
+ "log",
+ "log4rs",
+ "reactive-graph-behaviour-model-api",
+ "reactive-graph-behaviour-model-impl",
+ "reactive-graph-graph",
+ "reactive-graph-plugin-api",
+ "reactive-graph-reactive-model-api",
+ "reactive-graph-reactive-model-impl",
+ "reactive-graph-std-connector-model",
+ "reactive-graph-type-system-api",
+ "rust-embed",
+ "serde",
+ "serde_json",
+ "springtime-di",
+]
+
+[[package]]
+name = "reactive-graph-std-connector-model"
+version = "0.10.0"
+dependencies = [
+ "lazy_static",
+ "reactive-graph-behaviour-model-api",
+ "reactive-graph-graph",
+ "reactive-graph-reactive-model-api",
+ "reactive-graph-reactive-model-impl",
+ "serde",
+ "serde_json",
+ "strum_macros",
+]
+
+[[package]]
+name = "reactive-graph-std-date-time"
+version = "0.10.0"
+dependencies = [
+ "async-std",
+ "async-trait",
+ "chrono",
+ "log",
+ "log4rs",
+ "reactive-graph-behaviour-model-api",
+ "reactive-graph-behaviour-model-impl",
+ "reactive-graph-graph",
+ "reactive-graph-plugin-api",
+ "reactive-graph-reactive-model-api",
+ "reactive-graph-reactive-model-impl",
+ "reactive-graph-runtime-model",
+ "reactive-graph-std-date-time-model",
+ "reactive-graph-std-result-model",
+ "reactive-graph-type-system-api",
+ "rust-embed",
+ "serde",
+ "serde_json",
+ "springtime-di",
+ "uuid",
+]
+
+[[package]]
+name = "reactive-graph-std-date-time-model"
+version = "0.10.0"
+dependencies = [
+ "lazy_static",
+ "reactive-graph-behaviour-model-api",
+ "reactive-graph-graph",
+ "reactive-graph-reactive-model-api",
+ "reactive-graph-reactive-model-impl",
+ "reactive-graph-runtime-model",
+ "reactive-graph-std-result-model",
+ "serde",
+ "serde_json",
+ "strum_macros",
+]
+
+[[package]]
+name = "reactive-graph-std-flow"
+version = "0.10.0"
+dependencies = [
+ "async-trait",
+ "log",
+ "log4rs",
+ "reactive-graph-graph",
+ "reactive-graph-plugin-api",
+ "reactive-graph-type-system-api",
+ "rust-embed",
+ "serde_json",
+ "springtime-di",
+]
+
+[[package]]
+name = "reactive-graph-std-flow-model"
+version = "0.10.0"
+dependencies = [
+ "paste",
+ "reactive-graph-graph",
+ "reactive-graph-reactive-model-api",
+ "reactive-graph-reactive-model-impl",
+ "reactive-graph-std-base-model",
+ "serde",
+ "serde_json",
+ "strum_macros",
+]
+
+[[package]]
+name = "reactive-graph-std-logical"
+version = "0.10.0"
+dependencies = [
+ "async-trait",
+ "log",
+ "log4rs",
+ "reactive-graph-behaviour-model-api",
+ "reactive-graph-behaviour-model-impl",
+ "reactive-graph-graph",
+ "reactive-graph-plugin-api",
+ "reactive-graph-reactive-model-api",
+ "reactive-graph-reactive-model-impl",
+ "reactive-graph-runtime-model",
+ "reactive-graph-std-logical-model",
+ "reactive-graph-std-result-model",
+ "reactive-graph-type-system-api",
+ "rust-embed",
+ "serde",
+ "serde_json",
+ "springtime-di",
+ "uuid",
+]
+
+[[package]]
+name = "reactive-graph-std-logical-model"
+version = "0.10.0"
+dependencies = [
+ "lazy_static",
+ "reactive-graph-behaviour-model-api",
+ "reactive-graph-graph",
+ "reactive-graph-reactive-model-api",
+ "reactive-graph-reactive-model-impl",
+ "reactive-graph-runtime-model",
+ "reactive-graph-std-result-model",
+ "serde",
+ "serde_json",
+ "strum_macros",
+]
+
+[[package]]
+name = "reactive-graph-std-metadata"
+version = "0.10.0"
+dependencies = [
+ "async-trait",
+ "log",
+ "log4rs",
+ "reactive-graph-graph",
+ "reactive-graph-plugin-api",
+ "reactive-graph-type-system-api",
+ "rust-embed",
+ "serde_json",
+ "springtime-di",
+]
+
+[[package]]
+name = "reactive-graph-std-metadata-model"
+version = "0.10.0"
+dependencies = [
+ "paste",
+ "reactive-graph-graph",
+ "serde_json",
+ "strum_macros",
+]
+
+[[package]]
+name = "reactive-graph-std-numeric"
+version = "0.10.0"
+dependencies = [
+ "async-trait",
+ "log",
+ "log4rs",
+ "num-traits",
+ "reactive-graph-behaviour-model-api",
+ "reactive-graph-behaviour-model-impl",
+ "reactive-graph-graph",
+ "reactive-graph-plugin-api",
+ "reactive-graph-reactive-model-api",
+ "reactive-graph-reactive-model-impl",
+ "reactive-graph-std-numeric-model",
+ "reactive-graph-std-result-model",
+ "reactive-graph-std-value-model",
+ "reactive-graph-type-system-api",
+ "rust-embed",
+ "serde",
+ "serde_json",
+ "springtime-di",
+ "uuid",
+]
+
+[[package]]
+name = "reactive-graph-std-numeric-model"
+version = "0.10.0"
+dependencies = [
+ "reactive-graph-graph",
+ "reactive-graph-reactive-model-api",
+ "reactive-graph-reactive-model-impl",
+ "reactive-graph-std-result-model",
+ "serde",
+ "serde_json",
+ "strum_macros",
+]
+
+[[package]]
+name = "reactive-graph-std-object"
+version = "0.10.0"
+dependencies = [
+ "async-trait",
+ "log",
+ "log4rs",
+ "reactive-graph-behaviour-model-api",
+ "reactive-graph-behaviour-model-impl",
+ "reactive-graph-graph",
+ "reactive-graph-plugin-api",
+ "reactive-graph-reactive-model-api",
+ "reactive-graph-reactive-model-impl",
+ "reactive-graph-runtime-model",
+ "reactive-graph-std-object-model",
+ "reactive-graph-std-result-model",
+ "reactive-graph-type-system-api",
+ "rust-embed",
+ "serde_json",
+ "shellexpand",
+ "springtime-di",
+ "uuid",
+]
+
+[[package]]
+name = "reactive-graph-std-object-model"
+version = "0.10.0"
+dependencies = [
+ "lazy_static",
+ "reactive-graph-behaviour-model-api",
+ "reactive-graph-graph",
+ "reactive-graph-reactive-model-api",
+ "reactive-graph-reactive-model-impl",
+ "reactive-graph-runtime-model",
+ "reactive-graph-std-base-model",
+ "reactive-graph-std-result-model",
+ "serde_json",
+ "strum_macros",
+]
+
+[[package]]
+name = "reactive-graph-std-random"
+version = "0.10.0"
+dependencies = [
+ "async-trait",
+ "log",
+ "log4rs",
+ "rand 0.9.1",
+ "rand_chacha 0.9.0",
+ "random-string",
+ "reactive-graph-behaviour-model-api",
+ "reactive-graph-behaviour-model-impl",
+ "reactive-graph-graph",
+ "reactive-graph-plugin-api",
+ "reactive-graph-reactive-model-api",
+ "reactive-graph-reactive-model-impl",
+ "reactive-graph-runtime-model",
+ "reactive-graph-std-random-model",
+ "reactive-graph-std-result-model",
+ "reactive-graph-type-system-api",
+ "rust-embed",
+ "serde",
+ "serde_json",
+ "springtime-di",
+ "uuid",
+]
+
+[[package]]
+name = "reactive-graph-std-random-model"
+version = "0.10.0"
+dependencies = [
+ "lazy_static",
+ "reactive-graph-behaviour-model-api",
+ "reactive-graph-graph",
+ "reactive-graph-reactive-model-api",
+ "reactive-graph-reactive-model-impl",
+ "reactive-graph-runtime-model",
+ "reactive-graph-std-result-model",
+ "serde_json",
+ "strum_macros",
+]
+
+[[package]]
+name = "reactive-graph-std-result"
+version = "0.10.0"
+dependencies = [
+ "async-trait",
+ "log",
+ "log4rs",
+ "reactive-graph-graph",
+ "reactive-graph-plugin-api",
+ "reactive-graph-type-system-api",
+ "rust-embed",
+ "serde_json",
+ "springtime-di",
+]
+
+[[package]]
+name = "reactive-graph-std-result-model"
+version = "0.10.0"
+dependencies = [
+ "reactive-graph-graph",
+ "serde",
+ "serde_json",
+ "strum_macros",
+]
+
+[[package]]
+name = "reactive-graph-std-state"
+version = "0.10.0"
+dependencies = [
+ "async-trait",
+ "log",
+ "log4rs",
+ "reactive-graph-behaviour-model-api",
+ "reactive-graph-behaviour-model-impl",
+ "reactive-graph-graph",
+ "reactive-graph-plugin-api",
+ "reactive-graph-reactive-model-api",
+ "reactive-graph-reactive-model-impl",
+ "reactive-graph-std-state-model",
+ "reactive-graph-std-value-model",
+ "reactive-graph-type-system-api",
+ "rust-embed",
+ "serde",
+ "serde_json",
+ "springtime-di",
+ "uuid",
+]
+
+[[package]]
+name = "reactive-graph-std-state-model"
+version = "0.10.0"
+dependencies = [
+ "reactive-graph-graph",
+ "reactive-graph-reactive-model-api",
+ "reactive-graph-reactive-model-impl",
+ "reactive-graph-std-value-model",
+ "serde",
+ "serde_json",
+ "strum_macros",
+]
+
+[[package]]
+name = "reactive-graph-std-string"
+version = "0.10.0"
+dependencies = [
+ "async-trait",
+ "log",
+ "log4rs",
+ "reactive-graph-behaviour-model-api",
+ "reactive-graph-behaviour-model-impl",
+ "reactive-graph-graph",
+ "reactive-graph-plugin-api",
+ "reactive-graph-reactive-model-api",
+ "reactive-graph-reactive-model-impl",
+ "reactive-graph-std-result-model",
+ "reactive-graph-std-string-model",
+ "reactive-graph-type-system-api",
+ "rust-embed",
+ "serde_json",
+ "springtime-di",
+ "tera",
+ "uuid",
+ "voca_rs",
+]
+
+[[package]]
+name = "reactive-graph-std-string-model"
+version = "0.10.0"
+dependencies = [
+ "lazy_static",
+ "reactive-graph-behaviour-model-api",
+ "reactive-graph-graph",
+ "reactive-graph-reactive-model-api",
+ "reactive-graph-reactive-model-impl",
+ "reactive-graph-std-result-model",
+ "serde_json",
+ "strum_macros",
+]
+
+[[package]]
+name = "reactive-graph-std-taxonomy"
+version = "0.10.0"
+dependencies = [
+ "async-trait",
+ "log",
+ "log4rs",
+ "reactive-graph-graph",
+ "reactive-graph-plugin-api",
+ "reactive-graph-type-system-api",
+ "rust-embed",
+ "serde_json",
+ "springtime-di",
+]
+
+[[package]]
+name = "reactive-graph-std-taxonomy-model"
+version = "0.10.0"
+dependencies = [
+ "paste",
+ "reactive-graph-graph",
+ "reactive-graph-reactive-model-api",
+ "reactive-graph-reactive-model-impl",
+ "reactive-graph-std-base-model",
+ "serde_json",
+ "strum_macros",
+]
+
+[[package]]
+name = "reactive-graph-std-trigger"
+version = "0.10.0"
+dependencies = [
+ "async-trait",
+ "log",
+ "log4rs",
+ "reactive-graph-graph",
+ "reactive-graph-plugin-api",
+ "reactive-graph-type-system-api",
+ "rust-embed",
+ "springtime-di",
+]
+
+[[package]]
+name = "reactive-graph-std-trigger-model"
+version = "0.10.0"
+dependencies = [
+ "reactive-graph-graph",
+ "serde",
+ "serde_json",
+ "strum_macros",
+]
+
+[[package]]
+name = "reactive-graph-std-value"
+version = "0.10.0"
+dependencies = [
+ "async-trait",
+ "dashmap",
+ "default-test",
+ "log",
+ "log4rs",
+ "reactive-graph-behaviour-model-api",
+ "reactive-graph-behaviour-model-impl",
+ "reactive-graph-graph",
+ "reactive-graph-plugin-api",
+ "reactive-graph-reactive-model-api",
+ "reactive-graph-reactive-model-impl",
+ "reactive-graph-reactive-service-api",
+ "reactive-graph-std-value-model",
+ "reactive-graph-test-utils",
+ "reactive-graph-type-system-api",
+ "rust-embed",
+ "serde",
+ "serde_json",
+ "springtime-di",
+ "uuid",
+]
+
+[[package]]
+name = "reactive-graph-std-value-model"
+version = "0.10.0"
+dependencies = [
+ "dashmap",
+ "default-test",
+ "paste",
+ "reactive-graph-graph",
+ "reactive-graph-reactive-model-api",
+ "reactive-graph-reactive-model-impl",
+ "reactive-graph-reactive-service-api",
+ "reactive-graph-test-utils",
+ "serde",
+ "serde_json",
+ "strum_macros",
+ "uuid",
+]
+
+[[package]]
 name = "reactive-graph-test-utils"
 version = "0.10.0"
 source = "git+https://github.com/reactive-graph/reactive-graph.git#372eca230210da8c3337ebe065bb837c949e965d"
@@ -3105,6 +2789,48 @@ dependencies = [
  "log4rs",
  "random-string",
  "serde_json",
+]
+
+[[package]]
+name = "reactive-graph-tooling-graphql-client"
+version = "0.10.0"
+dependencies = [
+ "async-trait",
+ "dashmap",
+ "http",
+ "log",
+ "log4rs",
+ "mime_guess",
+ "reactive-graph-config-model",
+ "reactive-graph-graph",
+ "reactive-graph-plugin-api",
+ "rust-embed",
+ "serde",
+ "serde_json",
+ "springtime-di",
+ "static-files",
+ "uuid",
+]
+
+[[package]]
+name = "reactive-graph-tooling-graphql-schema-visualization"
+version = "0.10.0"
+dependencies = [
+ "async-trait",
+ "dashmap",
+ "http",
+ "log",
+ "log4rs",
+ "mime_guess",
+ "reactive-graph-config-model",
+ "reactive-graph-graph",
+ "reactive-graph-plugin-api",
+ "rust-embed",
+ "serde",
+ "serde_json",
+ "springtime-di",
+ "static-files",
+ "uuid",
 ]
 
 [[package]]
@@ -3144,7 +2870,7 @@ version = "0.5.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d2f103c6d277498fbceb16e84d317e2a400f160f46904d5f5410848c829511a3"
 dependencies = [
- "bitflags 2.9.0",
+ "bitflags",
 ]
 
 [[package]]
@@ -3292,7 +3018,7 @@ version = "0.38.44"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "fdb5bc1ae2baa591800df16c9ca78619bf65c0488b41b96ccec5d11220d8c154"
 dependencies = [
- "bitflags 2.9.0",
+ "bitflags",
  "errno",
  "libc",
  "linux-raw-sys",
@@ -4331,7 +4057,7 @@ version = "0.39.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6f42320e61fe2cfd34354ecb597f86f413484a798ba44a8ca1165c58d42da6c1"
 dependencies = [
- "bitflags 2.9.0",
+ "bitflags",
 ]
 
 [[package]]

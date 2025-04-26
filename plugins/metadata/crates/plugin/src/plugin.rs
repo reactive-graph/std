@@ -3,8 +3,8 @@ use reactive_graph_plugin_api::prelude::providers::*;
 
 export_plugin!({
     "dependencies": [
-        { "name": "reactive-graph-plugin-base", "version": ">=0.10.0, <0.11.0" },
-        { "name": "reactive-graph-plugin-taxonomy", "version": ">=0.10.0, <0.11.0" }
+        { "name": "reactive-graph-std-base", "version": ">=0.10.0, <0.11.0" },
+        { "name": "reactive-graph-std-taxonomy", "version": ">=0.10.0, <0.11.0" }
     ]
 });
 

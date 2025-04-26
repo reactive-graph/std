@@ -9,9 +9,9 @@ use uuid::Uuid;
 
 pub use function::StringComparisonFunction;
 
-use reactive_graph_model_result::ResultBooleanProperties::RESULT;
-use reactive_graph_model_string::StringComparisonProperties::LHS;
-use reactive_graph_model_string::StringComparisonProperties::RHS;
+use reactive_graph_std_result_model::ResultBooleanProperties::RESULT;
+use reactive_graph_std_string_model::StringComparisonProperties::LHS;
+use reactive_graph_std_string_model::StringComparisonProperties::RHS;
 
 pub mod function;
 

@@ -19,7 +19,7 @@ use reactive_graph_graph::NamespacedTypeGetter;
 use reactive_graph_graph::PropertyInstanceGetter;
 use reactive_graph_graph::PropertyInstanceSetter;
 use reactive_graph_graph::ReactiveEntityInstance;
-use reactive_graph_model_result::ResultNumberF64Properties;
+use reactive_graph_std_result_model::ResultNumberF64Properties;
 
 const LHS: NumericOperationProperties = NumericOperationProperties::LHS;
 const RESULT: ResultNumberF64Properties = ResultNumberF64Properties::RESULT;

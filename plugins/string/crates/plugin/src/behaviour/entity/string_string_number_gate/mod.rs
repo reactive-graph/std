@@ -10,9 +10,9 @@ use uuid::Uuid;
 pub use function::STRING_STRING_NUMBER_GATES;
 pub use function::StringStringNumberFunction;
 
-use reactive_graph_model_result::ResultNumberU64Properties::RESULT;
-use reactive_graph_model_string::StringStringNumberGateProperties::LHS;
-use reactive_graph_model_string::StringStringNumberGateProperties::RHS;
+use reactive_graph_std_result_model::ResultNumberU64Properties::RESULT;
+use reactive_graph_std_string_model::StringStringNumberGateProperties::LHS;
+use reactive_graph_std_string_model::StringStringNumberGateProperties::RHS;
 
 pub mod function;
 

@@ -2,15 +2,15 @@ use crate::behaviour::entity::random_u64_pseudo::RandomU64PseudoFactory;
 use crate::builder::ReactiveEntityInstanceBuilder;
 use crate::reactive::BehaviourFactory;
 use crate::reactive::BehaviourState;
-use reactive_graph_model_random::PseudoNumberGenerator;
-use reactive_graph_model_random::PseudoNumberGeneratorProperties::SEED;
-use reactive_graph_model_random::RandomU64Pseudo;
-use reactive_graph_model_random::BEHAVIOUR_RANDOM_U64_PSEUDO;
-use reactive_graph_model_random::ENTITY_TYPE_RANDOM_U64_PSEUDO;
-use reactive_graph_model_result::ResultNumberU64;
-use reactive_graph_model_result::ResultNumberU64Properties::RESULT;
 use reactive_graph_runtime_model::Action;
 use reactive_graph_runtime_model::ActionProperties::TRIGGER;
+use reactive_graph_std_random_model::BEHAVIOUR_RANDOM_U64_PSEUDO;
+use reactive_graph_std_random_model::ENTITY_TYPE_RANDOM_U64_PSEUDO;
+use reactive_graph_std_random_model::PseudoNumberGenerator;
+use reactive_graph_std_random_model::PseudoNumberGeneratorProperties::SEED;
+use reactive_graph_std_random_model::RandomU64Pseudo;
+use reactive_graph_std_result_model::ResultNumberU64;
+use reactive_graph_std_result_model::ResultNumberU64Properties::RESULT;
 
 #[test]
 fn random_u64_pseudo_test() {

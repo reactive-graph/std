@@ -7,8 +7,8 @@ use serde_json::Value;
 use serde_json::json;
 use uuid::Uuid;
 
-use reactive_graph_model_numeric::NumericOperationProperties::LHS;
-use reactive_graph_model_result::ResultNumberI64Properties::RESULT;
+use reactive_graph_std_numeric_model::NumericOperationProperties::LHS;
+use reactive_graph_std_result_model::ResultNumberI64Properties::RESULT;
 
 use crate::behaviour::as_i64;
 use crate::behaviour::entity::operation::function::NumericOperationI64Function;
@@ -55,7 +55,7 @@ impl BehaviourTransitions<Uuid, ReactiveEntity> for NumericOperationI64Behaviour
 mod tests {
     use std::sync::Arc;
 
-    use reactive_graph_model_numeric::NumericOperationI64;
+    use reactive_graph_std_numeric_model::NumericOperationI64;
 
     use crate::behaviour::entity::operation::behaviour_i64::NumericOperationI64Factory;
     use crate::behaviour::entity::operation::function::*;

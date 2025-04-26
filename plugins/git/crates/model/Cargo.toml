@@ -1,6 +1,6 @@
 [package]
-name = "reactive-graph-model-git"
-description = "Reactive Graph - Model - GIT"
+name = "reactive-graph-net-git-model"
+description = "Reactive Graph - NET - GIT - Model"
 version.workspace = true
 authors.workspace = true
 edition.workspace = true
@@ -23,9 +23,9 @@ reactive-graph-reactive-model-api = { workspace = true }
 reactive-graph-reactive-model-impl = { workspace = true }
 reactive-graph-runtime-model = { workspace = true }
 
-reactive-graph-model-base = { version = "0.10.0", path = "../../../base/crates/model" }
-reactive-graph-model-file = { version = "0.10.0", path = "../../../file/crates/model" }
-reactive-graph-model-http = { version = "0.10.0", path = "../../../http/crates/model" }
+reactive-graph-std-base-model = { version = "0.10.0", path = "../../../base/crates/model" }
+reactive-graph-sys-file-model = { version = "0.10.0", path = "../../../file/crates/model" }
+reactive-graph-net-http-model = { version = "0.10.0", path = "../../../http/crates/model" }
 
 [lib]
 crate-type = ["lib"]

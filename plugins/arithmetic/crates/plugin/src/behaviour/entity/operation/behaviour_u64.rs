@@ -7,8 +7,8 @@ use serde_json::Value;
 use serde_json::json;
 use uuid::Uuid;
 
-use reactive_graph_model_arithmetic::ArithmeticOperationProperties::LHS;
-use reactive_graph_model_arithmetic::ArithmeticOperationProperties::RESULT;
+use reactive_graph_std_arithmetic_model::ArithmeticOperationProperties::LHS;
+use reactive_graph_std_arithmetic_model::ArithmeticOperationProperties::RESULT;
 
 use crate::behaviour::as_u64;
 use crate::behaviour::entity::operation::function::ArithmeticOperationU64Function;

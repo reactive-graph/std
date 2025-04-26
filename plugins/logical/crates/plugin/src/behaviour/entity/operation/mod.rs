@@ -9,8 +9,8 @@ use uuid::Uuid;
 
 pub use function::LogicalOperationFunction;
 
-use reactive_graph_model_logical::LogicalOperationProperties::LHS;
-use reactive_graph_model_result::ResultBooleanProperties::RESULT;
+use reactive_graph_std_logical_model::LogicalOperationProperties::LHS;
+use reactive_graph_std_result_model::ResultBooleanProperties::RESULT;
 
 pub mod function;
 

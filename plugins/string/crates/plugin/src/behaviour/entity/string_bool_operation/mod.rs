@@ -9,8 +9,8 @@ use serde_json::json;
 use uuid::Uuid;
 
 use function::StringBoolFunction;
-use reactive_graph_model_result::ResultBooleanProperties::RESULT;
-use reactive_graph_model_string::StringBoolOperationProperties::LHS;
+use reactive_graph_std_result_model::ResultBooleanProperties::RESULT;
+use reactive_graph_std_string_model::StringBoolOperationProperties::LHS;
 
 pub mod function;
 

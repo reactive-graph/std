@@ -6,9 +6,9 @@ use reactive_graph_reactive_model_impl::ReactiveEntity;
 use serde_json::json;
 use uuid::Uuid;
 
-use reactive_graph_model_comparison::ComparisonGateProperties::LHS;
-use reactive_graph_model_comparison::ComparisonGateProperties::RHS;
-use reactive_graph_model_result::ResultBooleanProperties::RESULT;
+use reactive_graph_std_comparison_model::ComparisonGateProperties::LHS;
+use reactive_graph_std_comparison_model::ComparisonGateProperties::RHS;
+use reactive_graph_std_result_model::ResultBooleanProperties::RESULT;
 
 use crate::behaviour::entity::gate::function::ComparisonGateFunction;
 

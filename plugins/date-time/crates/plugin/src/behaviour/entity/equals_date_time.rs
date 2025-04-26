@@ -4,13 +4,13 @@ use reactive_graph_behaviour_model_api::prelude::*;
 use reactive_graph_behaviour_model_impl::entity_behaviour;
 use reactive_graph_graph::prelude::*;
 use reactive_graph_reactive_model_impl::ReactiveEntity;
-use serde_json::json;
 use serde_json::Value;
+use serde_json::json;
 use uuid::Uuid;
 
-use reactive_graph_model_date_time::DateComparisonProperties::LHS;
-use reactive_graph_model_date_time::DateComparisonProperties::RHS;
-use reactive_graph_model_result::ResultBooleanProperties::RESULT;
+use reactive_graph_std_date_time_model::DateComparisonProperties::LHS;
+use reactive_graph_std_date_time_model::DateComparisonProperties::RHS;
+use reactive_graph_std_result_model::ResultBooleanProperties::RESULT;
 
 entity_behaviour!(
     EqualsDateTime,

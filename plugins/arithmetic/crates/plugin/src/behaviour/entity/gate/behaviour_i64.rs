@@ -6,9 +6,9 @@ use reactive_graph_reactive_model_impl::ReactiveEntity;
 use serde_json::json;
 use uuid::Uuid;
 
-use reactive_graph_model_arithmetic::ArithmeticGateProperties::LHS;
-use reactive_graph_model_arithmetic::ArithmeticGateProperties::RESULT;
-use reactive_graph_model_arithmetic::ArithmeticGateProperties::RHS;
+use reactive_graph_std_arithmetic_model::ArithmeticGateProperties::LHS;
+use reactive_graph_std_arithmetic_model::ArithmeticGateProperties::RESULT;
+use reactive_graph_std_arithmetic_model::ArithmeticGateProperties::RHS;
 
 use crate::behaviour::as_i64;
 use crate::behaviour::entity::gate::function::ArithmeticGateI64Function;

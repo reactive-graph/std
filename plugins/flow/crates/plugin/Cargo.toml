@@ -1,6 +1,6 @@
 [package]
-name = "reactive-graph-plugin-flow"
-description = "Reactive Graph - Plugin - Flow"
+name = "reactive-graph-std-flow"
+description = "Reactive Graph - STD - Flow"
 version.workspace = true
 authors.workspace = true
 edition.workspace = true
@@ -10,10 +10,10 @@ rust-version.workspace = true
 readme = "../../../../README.md"
 
 [package.metadata.deb]
-name = "libreactive-graph-plugin-flow"
-depends = "reactive-graph, libreactive-graph-plugin-base"
+name = "libreactive-graph-std-flow"
+depends = "reactive-graph, libreactive-graph-std-base"
 assets = [
-    ["target/release/libreactive_graph_plugin_flow.so", "usr/share/reactive-graph/default/plugins/installed/libreactive_graph_plugin_flow.so", "755"],
+    ["target/release/libreactive_graph_std_flow.so", "usr/share/reactive-graph/default/plugins/installed/libreactive_graph_std_flow.so", "755"],
 ]
 
 [dependencies]

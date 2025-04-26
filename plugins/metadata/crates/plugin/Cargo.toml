@@ -1,6 +1,6 @@
 [package]
-name = "reactive-graph-plugin-metadata"
-description = "Reactive Graph - Plugin - Metadata"
+name = "reactive-graph-std-metadata"
+description = "Reactive Graph - STD - Metadata"
 version.workspace = true
 authors.workspace = true
 edition.workspace = true
@@ -10,10 +10,10 @@ rust-version.workspace = true
 readme = "../../../../README.md"
 
 [package.metadata.deb]
-name = "libreactive-graph-plugin-metadata"
-depends = "reactive-graph, libreactive-graph-plugin-taxonomy"
+name = "libreactive-graph-std-metadata"
+depends = "reactive-graph, libreactive-graph-std-taxonomy"
 assets = [
-    ["target/release/libreactive_graph_plugin_metadata.so", "usr/share/reactive-graph/default/plugins/installed/libreactive_graph_plugin_metadata.so", "755"],
+    ["target/release/libreactive_graph_std_metadata.so", "usr/share/reactive-graph/default/plugins/installed/libreactive_graph_std_metadata.so", "755"],
 ]
 
 [dependencies]

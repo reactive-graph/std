@@ -11,8 +11,8 @@ use serde_json::Value;
 use serde_json::json;
 use uuid::Uuid;
 
-use reactive_graph_model_random::PseudoNumberGeneratorProperties::SEED;
-use reactive_graph_model_result::ResultNumberI64Properties::RESULT;
+use reactive_graph_std_random_model::PseudoNumberGeneratorProperties::SEED;
+use reactive_graph_std_result_model::ResultNumberI64Properties::RESULT;
 
 entity_behaviour!(
     RandomI64Pseudo,

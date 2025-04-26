@@ -6,7 +6,7 @@ use reactive_graph_behaviour_model_impl::entity::EntityBehaviourFunctions;
 use reactive_graph_behaviour_model_impl::entity::EntityBehaviourFunctionsStorage;
 use voca_rs::count;
 
-use reactive_graph_model_string::NAMESPACE_STRING;
+use reactive_graph_std_string_model::NAMESPACE_STRING;
 
 use crate::behaviour::entity::string_string_number_gate::StringStringNumberGateFactory;
 

@@ -7,7 +7,7 @@ use reactive_graph_behaviour_model_impl::entity::EntityBehaviourFunctionsStorage
 use voca_rs::chop;
 
 use crate::behaviour::entity::string_gate::StringGateFactory;
-use reactive_graph_model_string::NAMESPACE_STRING;
+use reactive_graph_std_string_model::NAMESPACE_STRING;
 
 pub type StringGateFunction = fn(String, String) -> String;
 

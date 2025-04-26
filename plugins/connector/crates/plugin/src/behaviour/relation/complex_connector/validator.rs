@@ -2,9 +2,9 @@ use reactive_graph_behaviour_model_api::behaviour_validator;
 use reactive_graph_behaviour_model_api::prelude::*;
 use reactive_graph_behaviour_model_impl::RelationPropertyValidator;
 use reactive_graph_graph::prelude::*;
-use reactive_graph_model_connector::ConnectorProperties::INBOUND_PROPERTY_NAME;
-use reactive_graph_model_connector::ConnectorProperties::OUTBOUND_PROPERTY_NAME;
 use reactive_graph_reactive_model_impl::ReactiveRelation;
+use reactive_graph_std_connector_model::ConnectorProperties::INBOUND_PROPERTY_NAME;
+use reactive_graph_std_connector_model::ConnectorProperties::OUTBOUND_PROPERTY_NAME;
 
 behaviour_validator!(ComplexConnectorValidator, RelationInstanceId, ReactiveRelation);
 

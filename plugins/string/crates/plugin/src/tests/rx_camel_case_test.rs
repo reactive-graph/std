@@ -1,16 +1,16 @@
-use crate::behaviour::entity::string_operation::StringOperationFactory;
 use crate::behaviour::entity::string_operation::STRING_OPERATIONS;
+use crate::behaviour::entity::string_operation::StringOperationFactory;
 use crate::builder::ReactiveEntityInstanceBuilder;
+use crate::model_string::COMPONENT_STRING_OPERATION;
 use crate::model_string::StringOperation;
 use crate::model_string::StringOperationProperties::LHS;
-use crate::model_string::COMPONENT_STRING_OPERATION;
 use crate::reactive::BehaviourFactory;
 use crate::reactive::BehaviourState;
 use reactive_graph_graph::BehaviourTypeId;
 use reactive_graph_graph::EntityTypeId;
-use reactive_graph_model_result::ResultString;
-use reactive_graph_model_result::ResultStringProperties::RESULT;
-use reactive_graph_model_string::NAMESPACE_STRING;
+use reactive_graph_std_result_model::ResultString;
+use reactive_graph_std_result_model::ResultStringProperties::RESULT;
+use reactive_graph_std_string_model::NAMESPACE_STRING;
 
 #[test]
 fn rx_camel_case_test() {

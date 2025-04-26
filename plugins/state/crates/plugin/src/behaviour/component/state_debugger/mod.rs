@@ -9,7 +9,7 @@ use uuid::Uuid;
 pub use functions::*;
 use reactive_graph_graph::PropertyInstanceGetter;
 use reactive_graph_graph::PropertyInstanceSetter;
-use reactive_graph_model_state::StateProperties;
+use reactive_graph_std_state_model::StateProperties;
 
 pub mod functions;
 

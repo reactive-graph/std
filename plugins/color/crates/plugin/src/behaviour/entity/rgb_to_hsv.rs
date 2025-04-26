@@ -11,14 +11,14 @@ use angular_units::Deg;
 use prisma::FromColor;
 use prisma::Hsv;
 
-use reactive_graph_model_color::BrightnessProperties::BRIGHTNESS;
-use reactive_graph_model_color::HueSaturationProperties::HUE;
-use reactive_graph_model_color::HueSaturationProperties::SATURATION;
-use reactive_graph_model_color::Rgb;
-use reactive_graph_model_color::RgbProperties::BLUE;
-use reactive_graph_model_color::RgbProperties::GREEN;
-use reactive_graph_model_color::RgbProperties::RED;
-use reactive_graph_model_color::TypedRgbComponent;
+use reactive_graph_std_color_model::BrightnessProperties::BRIGHTNESS;
+use reactive_graph_std_color_model::HueSaturationProperties::HUE;
+use reactive_graph_std_color_model::HueSaturationProperties::SATURATION;
+use reactive_graph_std_color_model::Rgb;
+use reactive_graph_std_color_model::RgbProperties::BLUE;
+use reactive_graph_std_color_model::RgbProperties::GREEN;
+use reactive_graph_std_color_model::RgbProperties::RED;
+use reactive_graph_std_color_model::TypedRgbComponent;
 
 entity_behaviour!(RgbToHsv, RgbToHsvFactory, RgbToHsvFsm, RgbToHsvBehaviourTransitions, RgbToHsvValidator);
 

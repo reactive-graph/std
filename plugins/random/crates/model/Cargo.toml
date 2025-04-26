@@ -1,6 +1,6 @@
 [package]
-name = "reactive-graph-model-random"
-description = "Reactive Graph - Model - Random"
+name = "reactive-graph-std-random-model"
+description = "Reactive Graph - STD - Random - Model"
 version.workspace = true
 authors.workspace = true
 edition.workspace = true
@@ -20,7 +20,7 @@ reactive-graph-reactive-model-api = { workspace = true }
 reactive-graph-reactive-model-impl = { workspace = true }
 reactive-graph-runtime-model = { workspace = true }
 
-reactive-graph-model-result = { version = "0.10.0", path = "../../../result/crates/model" }
+reactive-graph-std-result-model = { version = "0.10.0", path = "../../../result/crates/model" }
 
 [lib]
 crate-type = ["lib"]

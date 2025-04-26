@@ -4,18 +4,18 @@ use crate::behaviour::entity::if_then_else::IfThenElseFactory;
 use crate::builder::ReactiveEntityInstanceBuilder;
 use crate::reactive::BehaviourFactory;
 use reactive_graph_graph::NamespacedTypeGetter;
-use reactive_graph_model_logical::Condition;
-use reactive_graph_model_logical::ConditionProperties::CONDITION;
-use reactive_graph_model_logical::IfThenElse;
-use reactive_graph_model_logical::IfThenElseProperties::ELSE_PAYLOAD;
-use reactive_graph_model_logical::IfThenElseProperties::THEN_PAYLOAD;
-use reactive_graph_model_logical::BEHAVIOUR_IF_THEN_ELSE;
-use reactive_graph_model_logical::COMPONENT_CONDITION;
-use reactive_graph_model_logical::ENTITY_TYPE_IF_THEN_ELSE;
-use reactive_graph_model_logical::ENTITY_TYPE_NAME_IF_THEN_ELSE;
-use reactive_graph_model_logical::NAMESPACE_LOGICAL;
-use reactive_graph_model_result::ResultAny;
-use reactive_graph_model_result::ResultAnyProperties::RESULT;
+use reactive_graph_std_logical_model::BEHAVIOUR_IF_THEN_ELSE;
+use reactive_graph_std_logical_model::COMPONENT_CONDITION;
+use reactive_graph_std_logical_model::Condition;
+use reactive_graph_std_logical_model::ConditionProperties::CONDITION;
+use reactive_graph_std_logical_model::ENTITY_TYPE_IF_THEN_ELSE;
+use reactive_graph_std_logical_model::ENTITY_TYPE_NAME_IF_THEN_ELSE;
+use reactive_graph_std_logical_model::IfThenElse;
+use reactive_graph_std_logical_model::IfThenElseProperties::ELSE_PAYLOAD;
+use reactive_graph_std_logical_model::IfThenElseProperties::THEN_PAYLOAD;
+use reactive_graph_std_logical_model::NAMESPACE_LOGICAL;
+use reactive_graph_std_result_model::ResultAny;
+use reactive_graph_std_result_model::ResultAnyProperties::RESULT;
 
 #[test]
 fn if_then_else_test() {

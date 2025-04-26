@@ -5,8 +5,8 @@ use reactive_graph_graph::prelude::*;
 use reactive_graph_reactive_model_impl::ReactiveRelation;
 use serde_json::json;
 
-use reactive_graph_model_connector::ConnectorProperties::OUTBOUND_PROPERTY_NAME;
-use reactive_graph_model_connector::PropagationCounterProperties::PROPAGATION_COUNT;
+use reactive_graph_std_connector_model::ConnectorProperties::OUTBOUND_PROPERTY_NAME;
+use reactive_graph_std_connector_model::PropagationCounterProperties::PROPAGATION_COUNT;
 
 relation_behaviour!(
     PropagationCounter,

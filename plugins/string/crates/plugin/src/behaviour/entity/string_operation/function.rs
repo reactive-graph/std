@@ -9,7 +9,7 @@ use voca_rs::escape;
 use voca_rs::manipulate;
 use voca_rs::strip;
 
-use reactive_graph_model_string::NAMESPACE_STRING;
+use reactive_graph_std_string_model::NAMESPACE_STRING;
 
 use crate::behaviour::entity::string_operation::StringOperationFactory;
 

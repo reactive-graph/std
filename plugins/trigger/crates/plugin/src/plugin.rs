@@ -4,7 +4,7 @@ use reactive_graph_plugin_api::prelude::plugin::*;
 export_plugin!({
   "dependencies": [
     {
-      "name": "reactive-graph-plugin-base",
+      "name": "reactive-graph-std-base",
       "version": ">=0.10.0, <0.11.0"
     }
   ]

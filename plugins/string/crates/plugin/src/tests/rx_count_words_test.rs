@@ -1,17 +1,17 @@
-use crate::behaviour::entity::string_string_number_gate::StringStringNumberGateFactory;
 use crate::behaviour::entity::string_string_number_gate::STRING_STRING_NUMBER_GATES;
+use crate::behaviour::entity::string_string_number_gate::StringStringNumberGateFactory;
 use crate::builder::ReactiveEntityInstanceBuilder;
+use crate::model_string::COMPONENT_STRING_STRING_NUMBER_GATE;
 use crate::model_string::StringStringNumberGate;
 use crate::model_string::StringStringNumberGateProperties::LHS;
 use crate::model_string::StringStringNumberGateProperties::RHS;
-use crate::model_string::COMPONENT_STRING_STRING_NUMBER_GATE;
 use crate::reactive::BehaviourFactory;
 use crate::reactive::BehaviourState;
 use reactive_graph_graph::BehaviourTypeId;
 use reactive_graph_graph::EntityTypeId;
-use reactive_graph_model_result::ResultNumberU64;
-use reactive_graph_model_result::ResultNumberU64Properties::RESULT;
-use reactive_graph_model_string::NAMESPACE_STRING;
+use reactive_graph_std_result_model::ResultNumberU64;
+use reactive_graph_std_result_model::ResultNumberU64Properties::RESULT;
+use reactive_graph_std_string_model::NAMESPACE_STRING;
 
 #[test]
 fn rx_count_words_test() {

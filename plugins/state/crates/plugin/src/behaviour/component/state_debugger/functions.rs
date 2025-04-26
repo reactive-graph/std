@@ -9,7 +9,7 @@ use reactive_graph_behaviour_model_impl::entity::EntityBehaviourFunctionsStorage
 use reactive_graph_reactive_model_impl::ReactiveEntity;
 use serde_json::Value;
 
-use reactive_graph_model_state::NAMESPACE_STATE;
+use reactive_graph_std_state_model::NAMESPACE_STATE;
 
 use crate::behaviour::component::state_debugger::StateDebuggerFactory;
 

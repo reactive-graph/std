@@ -1,6 +1,6 @@
 [package]
-name = "reactive-graph-plugin-arithmetic"
-description = "Reactive Graph - Plugin - Arithmetic"
+name = "reactive-graph-std-arithmetic"
+description = "Reactive Graph - STD - Arithmetic"
 version.workspace = true
 authors.workspace = true
 edition.workspace = true
@@ -10,10 +10,10 @@ rust-version.workspace = true
 readme = "../../../../README.md"
 
 [package.metadata.deb]
-name = "libreactive-graph-plugin-arithmetic"
-depends = "reactive-graph, libreactive-graph-plugin-base, libreactive-graph-plugin-trigger, libreactive-graph-plugin-result"
+name = "libreactive-graph-std-arithmetic"
+depends = "reactive-graph, libreactive-graph-std-base, libreactive-graph-std-trigger, libreactive-graph-std-result"
 assets = [
-    ["target/release/libreactive_graph_plugin_arithmetic.so", "usr/share/reactive-graph/default/plugins/installed/libreactive_graph_plugin_arithmetic.so", "755"],
+    ["target/release/libreactive_graph_std_arithmetic.so", "usr/share/reactive-graph/default/plugins/installed/libreactive_graph_std_arithmetic.so", "755"],
 ]
 
 [dependencies]
@@ -36,8 +36,8 @@ reactive-graph-behaviour-model-api = { workspace = true }
 reactive-graph-behaviour-model-impl = { workspace = true }
 reactive-graph-runtime-model = { workspace = true }
 
-reactive-graph-model-arithmetic = { version = "0.10.0", path = "../../crates/model" }
-reactive-graph-model-result = { version = "0.10.0", path = "../../../result/crates/model" }
+reactive-graph-std-arithmetic-model = { version = "0.10.0", path = "../../crates/model" }
+reactive-graph-std-result-model = { version = "0.10.0", path = "../../../result/crates/model" }
 
 [build-dependencies]
 rustc_version = { workspace = true }

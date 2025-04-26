@@ -1,6 +1,6 @@
 [package]
-name = "reactive-graph-model-metadata"
-description = "Reactive Graph - Model - Metadata"
+name = "reactive-graph-std-metadata-model"
+description = "Reactive Graph - STD - Metadata - Model"
 version.workspace = true
 authors.workspace = true
 edition.workspace = true

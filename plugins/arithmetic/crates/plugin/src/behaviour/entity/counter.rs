@@ -7,8 +7,8 @@ use serde_json::Value;
 use serde_json::json;
 use uuid::Uuid;
 
-use reactive_graph_model_result::ResultNumberU64Properties::RESULT;
 use reactive_graph_runtime_model::ActionProperties::TRIGGER;
+use reactive_graph_std_result_model::ResultNumberU64Properties::RESULT;
 
 entity_behaviour!(Counter, CounterFactory, CounterFsm, CounterBehaviourTransitions, CounterValidator);
 
@@ -46,13 +46,13 @@ mod tests {
     use serde_json::json;
 
     use crate::behaviour::entity::counter::CounterFactory;
-    use reactive_graph_model_arithmetic::BEHAVIOUR_COUNTER;
-    use reactive_graph_model_arithmetic::Counter1;
-    use reactive_graph_model_arithmetic::ENTITY_TYPE_COUNTER;
-    use reactive_graph_model_result::ResultNumberU64Properties::RESULT;
     use reactive_graph_reactive_model_api::ReactiveInstanceContainer;
     use reactive_graph_reactive_model_impl::ReactiveProperties;
     use reactive_graph_runtime_model::ActionProperties::TRIGGER;
+    use reactive_graph_std_arithmetic_model::BEHAVIOUR_COUNTER;
+    use reactive_graph_std_arithmetic_model::Counter1;
+    use reactive_graph_std_arithmetic_model::ENTITY_TYPE_COUNTER;
+    use reactive_graph_std_result_model::ResultNumberU64Properties::RESULT;
 
     // TODO: This test should be moved to the reactive model
     #[cfg(feature = "rustc_nightly")]

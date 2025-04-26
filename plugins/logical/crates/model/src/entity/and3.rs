@@ -2,8 +2,8 @@ use crate::NAMESPACE_LOGICAL;
 use reactive_graph_graph::entity_ty;
 use reactive_graph_graph::flow_ty;
 use reactive_graph_graph::properties;
-use reactive_graph_model_result::ResultBoolean;
 use reactive_graph_reactive_model_api::entity_model;
+use reactive_graph_std_result_model::ResultBoolean;
 
 properties!(And3Properties, (INPUT_1, "input1", false), (INPUT_2, "input2", false), (INPUT_3, "input3", false));
 

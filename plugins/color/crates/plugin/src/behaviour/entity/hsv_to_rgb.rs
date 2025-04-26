@@ -9,14 +9,14 @@ use uuid::Uuid;
 
 use prisma::FromColor;
 
-use reactive_graph_model_color::BrightnessProperties::BRIGHTNESS;
-use reactive_graph_model_color::Hsv;
-use reactive_graph_model_color::HueSaturationProperties::HUE;
-use reactive_graph_model_color::HueSaturationProperties::SATURATION;
-use reactive_graph_model_color::RgbProperties::BLUE;
-use reactive_graph_model_color::RgbProperties::GREEN;
-use reactive_graph_model_color::RgbProperties::RED;
-use reactive_graph_model_color::TypedHsv;
+use reactive_graph_std_color_model::BrightnessProperties::BRIGHTNESS;
+use reactive_graph_std_color_model::Hsv;
+use reactive_graph_std_color_model::HueSaturationProperties::HUE;
+use reactive_graph_std_color_model::HueSaturationProperties::SATURATION;
+use reactive_graph_std_color_model::RgbProperties::BLUE;
+use reactive_graph_std_color_model::RgbProperties::GREEN;
+use reactive_graph_std_color_model::RgbProperties::RED;
+use reactive_graph_std_color_model::TypedHsv;
 
 entity_behaviour!(HsvToRgb, HsvToRgbFactory, HsvToRgbFsm, HsvToRgbBehaviourTransitions, HsvToRgbValidator);
 

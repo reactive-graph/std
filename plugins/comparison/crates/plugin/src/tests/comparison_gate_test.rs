@@ -1,9 +1,9 @@
-use reactive_graph_model_comparison::ComparisonGate;
-use reactive_graph_model_result::ResultBoolean;
+use reactive_graph_std_comparison_model::ComparisonGate;
+use reactive_graph_std_result_model::ResultBoolean;
 use serde_json::json;
 
-use crate::behaviour::entity::gate::behaviour::ComparisonGateFactory;
 use crate::behaviour::entity::gate::COMPARISON_GATES;
+use crate::behaviour::entity::gate::behaviour::ComparisonGateFactory;
 use crate::builder::ReactiveEntityInstanceBuilder;
 use crate::reactive::BehaviourFactory;
 use crate::reactive::BehaviourState;
@@ -11,9 +11,9 @@ use reactive_graph_graph::BehaviourTypeId;
 use reactive_graph_graph::EntityTypeId;
 use reactive_graph_graph::PropertyInstanceGetter;
 use reactive_graph_graph::PropertyInstanceSetter;
-use reactive_graph_model_comparison::ComparisonGateProperties;
-use reactive_graph_model_comparison::NAMESPACE_COMPARISON;
-use reactive_graph_model_result::ResultBooleanProperties;
+use reactive_graph_std_comparison_model::ComparisonGateProperties;
+use reactive_graph_std_comparison_model::NAMESPACE_COMPARISON;
+use reactive_graph_std_result_model::ResultBooleanProperties;
 
 const LHS: ComparisonGateProperties = ComparisonGateProperties::LHS;
 const RHS: ComparisonGateProperties = ComparisonGateProperties::RHS;

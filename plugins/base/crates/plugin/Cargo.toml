@@ -1,6 +1,6 @@
 [package]
-name = "reactive-graph-plugin-base"
-description = "Reactive Graph - Plugin - Base"
+name = "reactive-graph-std-base"
+description = "Reactive Graph - STD - Base"
 version.workspace = true
 authors.workspace = true
 edition.workspace = true
@@ -10,10 +10,10 @@ rust-version.workspace = true
 readme = "../../../../README.md"
 
 [package.metadata.deb]
-name = "libreactive-graph-plugin-base"
+name = "libreactive-graph-std-base"
 depends = "reactive-graph"
 assets = [
-    ["target/release/libreactive_graph_plugin_base.so", "usr/share/reactive-graph/default/plugins/installed/libreactive_graph_plugin_base.so", "755"],
+    ["target/release/libreactive_graph_std_base.so", "usr/share/reactive-graph/default/plugins/installed/libreactive_graph_std_base.so", "755"],
 ]
 
 [dependencies]

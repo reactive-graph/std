@@ -1,6 +1,6 @@
 [package]
-name = "reactive-graph-model-value"
-description = "Reactive Graph - Model - Value"
+name = "reactive-graph-std-value-model"
+description = "Reactive Graph - STD - Value - Model"
 version.workspace = true
 authors.workspace = true
 edition.workspace = true

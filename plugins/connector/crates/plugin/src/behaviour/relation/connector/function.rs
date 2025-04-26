@@ -10,7 +10,7 @@ use reactive_graph_behaviour_model_impl::relation::function::RelationBehaviourFu
 use serde_json::Value;
 use serde_json::json;
 
-use reactive_graph_model_connector::*;
+use reactive_graph_std_connector_model::*;
 
 use crate::behaviour::relation::connector::ConnectorFactory;
 

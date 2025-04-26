@@ -12,7 +12,7 @@ pub struct ValueEntityTypesProvider {}
 mod tests {
     use reactive_graph_graph::prelude::*;
 
-    use reactive_graph_model_value::NAMESPACE_VALUE;
+    use reactive_graph_std_value_model::NAMESPACE_VALUE;
 
     use super::*;
 

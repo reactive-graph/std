@@ -1,9 +1,9 @@
 use crate::NAMESPACE_NUMERIC;
 use reactive_graph_graph::component_ty;
 use reactive_graph_graph::properties;
-use reactive_graph_model_result::ResultNumberF64;
-use reactive_graph_model_result::ResultNumberI64;
 use reactive_graph_reactive_model_api::entity_model;
+use reactive_graph_std_result_model::ResultNumberF64;
+use reactive_graph_std_result_model::ResultNumberI64;
 
 properties!(NumericGateProperties, (LHS, "lhs", 0.0), (RHS, "rhs", 0.0));
 

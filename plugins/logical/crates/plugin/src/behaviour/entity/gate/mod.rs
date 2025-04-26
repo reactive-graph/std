@@ -8,9 +8,9 @@ use uuid::Uuid;
 
 pub use function::LogicalGateFunction;
 
-use reactive_graph_model_logical::LogicalGateProperties::LHS;
-use reactive_graph_model_logical::LogicalGateProperties::RHS;
-use reactive_graph_model_result::ResultBooleanProperties::RESULT;
+use reactive_graph_std_logical_model::LogicalGateProperties::LHS;
+use reactive_graph_std_logical_model::LogicalGateProperties::RHS;
+use reactive_graph_std_result_model::ResultBooleanProperties::RESULT;
 
 pub mod function;
 

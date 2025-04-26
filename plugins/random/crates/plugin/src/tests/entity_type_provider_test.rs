@@ -1,15 +1,15 @@
 use crate::plugins::EntityTypeProvider;
 use crate::providers::RandomEntityTypeProviderImpl;
-use reactive_graph_model_random::ENTITY_TYPE_RANDOM_BOOL;
-use reactive_graph_model_random::ENTITY_TYPE_RANDOM_F64;
-use reactive_graph_model_random::ENTITY_TYPE_RANDOM_F64_PSEUDO;
-use reactive_graph_model_random::ENTITY_TYPE_RANDOM_F64_RANGE;
-use reactive_graph_model_random::ENTITY_TYPE_RANDOM_I64;
-use reactive_graph_model_random::ENTITY_TYPE_RANDOM_I64_RANGE;
-use reactive_graph_model_random::ENTITY_TYPE_RANDOM_STRING;
-use reactive_graph_model_random::ENTITY_TYPE_RANDOM_U64;
-use reactive_graph_model_random::ENTITY_TYPE_RANDOM_U64_RANGE;
-use reactive_graph_model_random::ENTITY_TYPE_RANDOM_UUID;
+use reactive_graph_std_random_model::ENTITY_TYPE_RANDOM_BOOL;
+use reactive_graph_std_random_model::ENTITY_TYPE_RANDOM_F64;
+use reactive_graph_std_random_model::ENTITY_TYPE_RANDOM_F64_PSEUDO;
+use reactive_graph_std_random_model::ENTITY_TYPE_RANDOM_F64_RANGE;
+use reactive_graph_std_random_model::ENTITY_TYPE_RANDOM_I64;
+use reactive_graph_std_random_model::ENTITY_TYPE_RANDOM_I64_RANGE;
+use reactive_graph_std_random_model::ENTITY_TYPE_RANDOM_STRING;
+use reactive_graph_std_random_model::ENTITY_TYPE_RANDOM_U64;
+use reactive_graph_std_random_model::ENTITY_TYPE_RANDOM_U64_RANGE;
+use reactive_graph_std_random_model::ENTITY_TYPE_RANDOM_UUID;
 
 #[test]
 fn entity_types_should_exist() {

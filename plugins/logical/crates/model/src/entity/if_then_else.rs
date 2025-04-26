@@ -4,8 +4,8 @@ use reactive_graph_behaviour_model_api::behaviour_ty;
 use reactive_graph_behaviour_model_api::entity_behaviour_ty;
 use reactive_graph_graph::entity_ty;
 use reactive_graph_graph::properties;
-use reactive_graph_model_result::ResultAny;
 use reactive_graph_reactive_model_api::entity_model;
+use reactive_graph_std_result_model::ResultAny;
 
 properties!(IfThenElseProperties, (THEN_PAYLOAD, "then_payload", 0), (ELSE_PAYLOAD, "else_payload", 0));
 

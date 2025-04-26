@@ -5,9 +5,9 @@ use reactive_graph_behaviour_model_impl::entity::EntityBehaviourFactoryCreator;
 use reactive_graph_behaviour_model_impl::entity::EntityBehaviourFunctions;
 use reactive_graph_behaviour_model_impl::entity::EntityBehaviourFunctionsStorage;
 
-use reactive_graph_model_arithmetic::NAMESPACE_ARITHMETIC_F64;
-use reactive_graph_model_arithmetic::NAMESPACE_ARITHMETIC_I64;
-use reactive_graph_model_arithmetic::NAMESPACE_ARITHMETIC_U64;
+use reactive_graph_std_arithmetic_model::NAMESPACE_ARITHMETIC_F64;
+use reactive_graph_std_arithmetic_model::NAMESPACE_ARITHMETIC_I64;
+use reactive_graph_std_arithmetic_model::NAMESPACE_ARITHMETIC_U64;
 
 use crate::behaviour::entity::gate::behaviour_f64::ArithmeticGateF64Factory;
 use crate::behaviour::entity::gate::behaviour_i64::ArithmeticGateI64Factory;

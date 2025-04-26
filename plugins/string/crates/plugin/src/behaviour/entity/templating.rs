@@ -10,9 +10,9 @@ use tera::Context;
 use tera::Tera;
 use uuid::Uuid;
 
-use reactive_graph_model_result::ResultStringProperties::RESULT;
-use reactive_graph_model_string::TemplatingProperties::CONTEXT;
-use reactive_graph_model_string::TemplatingProperties::TEMPLATE;
+use reactive_graph_std_result_model::ResultStringProperties::RESULT;
+use reactive_graph_std_string_model::TemplatingProperties::CONTEXT;
+use reactive_graph_std_string_model::TemplatingProperties::TEMPLATE;
 
 entity_behaviour!(Templating, TemplatingFactory, TemplatingFsm, TemplatingBehaviourTransitions, TemplatingValidator);
 

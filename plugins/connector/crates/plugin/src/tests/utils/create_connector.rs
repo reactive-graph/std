@@ -7,8 +7,8 @@ use reactive_graph_graph::ReactiveEntityInstance;
 use reactive_graph_graph::ReactiveRelationInstance;
 use reactive_graph_graph::RelationInstanceTypeId;
 use reactive_graph_graph::RelationTypeId;
-use reactive_graph_model_connector::ConnectorProperties::INBOUND_PROPERTY_NAME;
-use reactive_graph_model_connector::ConnectorProperties::OUTBOUND_PROPERTY_NAME;
+use reactive_graph_std_connector_model::ConnectorProperties::INBOUND_PROPERTY_NAME;
+use reactive_graph_std_connector_model::ConnectorProperties::OUTBOUND_PROPERTY_NAME;
 
 pub fn create_connector<S: Into<String>>(
     outbound: Arc<ReactiveEntityInstance>,

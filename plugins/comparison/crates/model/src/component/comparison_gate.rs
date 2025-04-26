@@ -2,7 +2,7 @@ use reactive_graph_graph::component_ty;
 use reactive_graph_graph::properties;
 use reactive_graph_reactive_model_api::entity_model;
 
-use reactive_graph_model_result::ResultBoolean;
+use reactive_graph_std_result_model::ResultBoolean;
 
 use crate::NAMESPACE_COMPARISON;
 
