@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- [Book: std.reactive.graph.io](https://std.reactive.graph.io/)
+
 ### Changed
 
 - Migrated to Rust Edition 2024
