@@ -1,4 +1,5 @@
 name: Release
+run-name: Release ${{ github.ref == 'refs/heads/main' && 'nightly' || github.ref_name }} by @${{ github.actor }}
 
 permissions:
   contents: write
@@ -6,14 +7,56 @@ permissions:
 on:
   push:
     tags:
+      - nightly
       - v[0-9]+.*
+  workflow_run:
+    workflows:
+      - Rust
+    branches:
+      - main
+    types:
+      - completed
+  # Run manually
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 env:
   CARGO_TERM_COLOR: always
   WORKSPACE_ROOT_MANIFEST_DIR: "/home/runner/work/std/std"
 
 jobs:
+  create-or-update-nightly-tag:
+    name: Create or Update Nightly Tag
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-22.04
+    steps:
+      - name: VCS Checkout
+        uses: actions/checkout@v4
+      - name: Import GPG key
+        uses: crazy-max/ghaction-import-gpg@v6
+        with:
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+          passphrase: ${{ secrets.GPG_PASSPHRASE }}
+          git_user_signingkey: true
+          git_commit_gpgsign: true
+      - name: Update Tag nightly
+        continue-on-error: true
+        run: |
+          git config user.name "Reactive Graph"
+          git config user.email "info@reactive-graph.io"
+          git show nightly || true
+          git log --oneline
+          git tag -d nightly || true
+          git tag --annotate --message "Nightly Release" --sign nightly || true
+          git push --force origin nightly
+          git show nightly || true
+          git log --oneline --decorate
   create-release:
+    name: Create Release
+    if: startsWith(github.event.ref, 'refs/tags/v')
     runs-on: ubuntu-22.04
     steps:
       - name: VCS Checkout
@@ -23,110 +66,222 @@ jobs:
         with:
           changelog: CHANGELOG.md
           token: ${{ secrets.GITHUB_TOKEN }}
-  #  upload-assets:
-  #    strategy:
-  #      matrix:
-  #        include:
-  #          # Tier 1
-  #          - target: x86_64-unknown-linux-gnu
-  #            os: ubuntu-22.04
-  #          # Tier 1
-  #          - target: aarch64-unknown-linux-gnu
-  #            os: ubuntu-22.04
-  #          # Tier 2
-  #          - target: armv7-unknown-linux-gnueabihf
-  #            os: ubuntu-22.04
-  #          # Tier 1
-  #          - target: x86_64-apple-darwin
-  #            os: macos-latest
-  #          # Tier 2
-  #          - target: aarch64-apple-darwin
-  #            os: macos-latest
-  #          # Universal macOS binary is supported as universal-apple-darwin.
-  #          - target: universal-apple-darwin
-  #            os: macos-latest
-  #          # Tier 1
-  #          - target: x86_64-pc-windows-msvc
-  #            os: windows-latest
-  #          # Tier 2
-  #          # - target: aarch64-pc-windows-msvc
-  #          #   os: windows-latest
-  #    runs-on: ${{ matrix.os }}
-  #    steps:
-  #      - name: VCS Checkout
-  #        uses: actions/checkout@v4
-  #      # Required by arm targets
-  #      - name: Install packages
-  #        uses: awalsh128/cache-apt-pkgs-action@latest
-  #        with:
-  #          packages: pkg-config openssl libssl-dev
-  #          version: 1.1
-  #        if: matrix.os == 'ubuntu-22.04'
-  #      - name: Setup Node.js 18
-  #        uses: actions/setup-node@v4
-  #        with:
-  #          node-version: 18
-  #      - name: Install Yarn
-  #        uses: borales/actions-yarn@v5
-  #        with:
-  #          cmd: --cwd plugins/graphql-client/web install
-  #      - name: Install Yarn
-  #        uses: borales/actions-yarn@v5
-  #        with:
-  #          cmd: --cwd plugins/graphql-schema-visualization/web install
-  #      - name: Upload Rust Binary
-  #        uses: taiki-e/upload-rust-binary-action@v1
-  #        with:
-  #          bin: libinexor_rgf_plugin_standalone
-  #          target: ${{ matrix.target }}
-  #          include: LICENSE.md,README.md,CHANGELOG.md,config,plugins
-  #          tar: unix
-  #          zip: windows
-  #          leading_dir: true
-  #          token: ${{ secrets.GITHUB_TOKEN }}
-  #        env:
-  #          VERGEN_IDEMPOTENT: true
-  # crates-io:
-  #   name: Publish on crates.io
-  #   runs-on: ubuntu-22.04
-  #   steps:
-  #     - name: VCS Checkout
-  #       uses: actions/checkout@v4
-  #     - name: Install latest nightly
-  #       uses: actions-rs/toolchain@v1
-  #       with:
-  #         profile: minimal
-  #         toolchain: nightly
-  #         override: true
-  #     - name: Setup Node.js 18
-  #       uses: actions/setup-node@v4
-  #       with:
-  #         node-version: 18
-  #     - name: Install Yarn
-  #       uses: borales/actions-yarn@v5
-  #       with:
-  #         cmd: --cwd plugins/graphql-client/web install
-  #     - name: Install Yarn
-  #       uses: borales/actions-yarn@v5
-  #       with:
-  #         cmd: --cwd plugins/graphql-schema-visualization/web install
-  #     - name: Install Cargo Workspaces
-  #       uses: actions-rs/install@v0.1
-  #       with:
-  #         crate: cargo-workspaces
-  #         version: latest
-  #         use-tool-cache: true
-  #     - name: Print environment variables
-  #       run: |
-  #         echo "WORKSPACE_ROOT_MANIFEST_DIR: $WORKSPACE_ROOT_MANIFEST_DIR"
-  #     - name: Publish on crates.io
-  #       uses: actions-rs/cargo@v1
-  #       with:
-  #         command: workspaces
-  #         args: publish --from-git --allow-dirty --no-verify
-  #       env:
-  #         CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
-  #         VERGEN_IDEMPOTENT: true
+  upload-assets:
+    name: Binary
+    needs: [ create-or-update-nightly-tag, create-release ]
+    if: always() && (!contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled'))
+    strategy:
+      fail-fast: false
+      matrix:
+        build_tool: [ "" ]
+        include:
+          # Tier 1
+          # ARM64 Linux (kernel 4.1, glibc 2.17+)
+          - target: aarch64-unknown-linux-gnu
+            os: ubuntu-22.04-arm
+          # ARM64 macOS (11.0+, Big Sur+)
+          - target: aarch64-apple-darwin
+            os: macos-latest
+          # 32-bit Linux (kernel 3.2+, glibc 2.17+) 1
+          - target: i686-unknown-linux-gnu
+            os: ubuntu-22.04
+          # 64-bit macOS (10.12+, Sierra+)
+          - target: x86_64-apple-darwin
+            os: macos-latest
+          # 64-bit MinGW (Windows 10+, Windows Server 2016+)
+          - target: x86_64-pc-windows-gnu
+            os: ubuntu-22.04
+          # 64-bit MSVC (Windows 10+, Windows Server 2016+)
+          - target: x86_64-pc-windows-msvc
+            os: windows-latest
+          # 64-bit Linux (kernel 3.2+, glibc 2.17+)
+          - target: x86_64-unknown-linux-gnu
+            os: ubuntu-22.04
+          # Universal macOS binary is supported as universal-apple-darwin.
+          - target: universal-apple-darwin
+            os: macos-latest
+          # Tier 2
+          # ARM64 Linux with musl 1.2.3
+          - target: aarch64-unknown-linux-musl
+            os: ubuntu-24.04-arm
+            build_tool: cargo
+          # Armv7-A Linux, hardfloat (kernel 3.2, glibc 2.17)
+          - target: armv7-unknown-linux-gnueabihf
+            os: ubuntu-24.04-arm
+          # Armv7-A Linux with musl 1.2.3, hardfloat
+          - target: armv7-unknown-linux-musleabihf
+            os: ubuntu-24.04-arm
+          # 64-bit Linux with musl 1.2.3
+          - target: x86_64-unknown-linux-musl
+            os: ubuntu-22.04
+          # PowerPC Linux (kernel 3.2, glibc 2.17)
+          - target: powerpc-unknown-linux-gnu
+            os: ubuntu-22.04
+          # PPC64 Linux (kernel 3.2, glibc 2.17)
+          - target: powerpc64-unknown-linux-gnu
+            os: ubuntu-22.04
+          # PPC64LE Linux (kernel 3.10, glibc 2.17)
+          - target: powerpc64le-unknown-linux-gnu
+            os: ubuntu-24.04
+          # RISC-V Linux (kernel 4.20, glibc 2.29)
+          - target: riscv64gc-unknown-linux-gnu
+            os: ubuntu-22.04
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: VCS Checkout
+        uses: actions/checkout@v4
+      - name: Install Compiler Tools for Target i686-unknown-linux-gnu
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: binutils-i686-linux-gnu gcc-i686-linux-gnu
+          version: 1.0
+        if: matrix.target == 'i686-unknown-linux-gnu'
+      - name: Install Compiler Tools for Target x86_64-pc-windows-gnu
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: binutils-mingw-w64-x86-64 gcc-mingw-w64-x86-64 nasm
+          version: 1.0
+        if: matrix.target == 'x86_64-pc-windows-gnu'
+      - name: Install Compiler Tools for Target armv7-unknown-linux-gnueabihf
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: binutils-arm-linux-gnueabihf gcc-arm-linux-gnueabihf
+          version: 1.0
+        if: |
+          matrix.target == 'armv7-unknown-linux-gnueabihf' ||
+          matrix.target == 'armv7-unknown-linux-musleabihf'
+      - name: Install Compiler Tools for Target powerpc-unknown-linux-gnu
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: binutils-powerpc-linux-gnu gcc-powerpc-linux-gnu
+          version: 1.0
+        if: matrix.target == 'powerpc-unknown-linux-gnu'
+      - name: Install Compiler Tools for Target powerpc64-unknown-linux-gnu
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: binutils-powerpc64-linux-gnu gcc-powerpc64-linux-gnu
+          version: 1.0
+        if: matrix.target == 'powerpc64-unknown-linux-gnu'
+      - name: Install Compiler Tools for Target powerpc64le-unknown-linux-gnu
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: binutils-powerpc64le-linux-gnu gcc-powerpc64le-linux-gnu
+          version: 1.0
+        if: matrix.target == 'powerpc64le-unknown-linux-gnu'
+      - name: Install Compiler Tools for Target riscv64gc-unknown-linux-gnu
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: binutils-riscv64-linux-gnu gcc-riscv64-linux-gnu
+          version: 1.0
+        if: matrix.target == 'riscv64gc-unknown-linux-gnu'
+      - name: Set AWS_LC_SYS_CFLAGS on powerpc-unknown-linux-gnu
+        run: echo 'AWS_LC_SYS_CFLAGS="-Wno-stringop-overflow"' >> "$GITHUB_ENV"
+        if: matrix.target == 'powerpc-unknown-linux-gnu'
+      # The flag below is set to avoid the following error with GCC 11.4.0 on the riscv64 platform:
+      # error: 'strncmp' of strings of length 1 and 9 and bound of 9 evaluates to nonzero [-Werror=string-compare]
+      - name: Set AWS_LC_SYS_CFLAGS on riscv64gc-unknown-linux-gnu
+        run: echo 'AWS_LC_SYS_CFLAGS="-Wno-string-compare"' >> "$GITHUB_ENV"
+        if: matrix.target == 'riscv64gc-unknown-linux-gnu'
+      - name: Set optimization level 2 for powerpc targets
+        run: echo 'CARGO_PROFILE_RELEASE_OPT_LEVEL=2' >> "$GITHUB_ENV"
+        if: |
+          matrix.target == 'powerpc-unknown-linux-gnu' ||
+          matrix.target == 'powerpc64-unknown-linux-gnu' ||
+          matrix.target == 'powerpc64le-unknown-linux-gnu'
+      - name: Install rust toolchain
+        uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: stable
+      - name: Install bindgen-cli
+        uses: taiki-e/cache-cargo-install-action@v2
+        with:
+          tool: bindgen-cli
+        if: |
+          matrix.target == 'i686-unknown-linux-gnu' ||
+          matrix.target == 'x86_64-pc-windows-gnu' ||
+          matrix.target == 'armv7-unknown-linux-gnueabihf' ||
+          matrix.target == 'armv7-unknown-linux-musleabihf' ||
+          matrix.target == 'powerpc-unknown-linux-gnu' ||
+          matrix.target == 'powerpc64-unknown-linux-gnu' ||
+          matrix.target == 'powerpc64le-unknown-linux-gnu' ||
+          matrix.target == 'riscv64gc-unknown-linux-gnu'
+      - name: Install cross-compilation tools
+        uses: taiki-e/setup-cross-toolchain-action@v1
+        with:
+          target: ${{ matrix.target }}
+        if: |
+          matrix.target == 'i686-unknown-linux-gnu' ||
+          matrix.target == 'x86_64-pc-windows-gnu' ||
+          matrix.target == 'armv7-unknown-linux-gnueabihf' ||
+          matrix.target == 'armv7-unknown-linux-musleabihf' ||
+          matrix.target == 'powerpc-unknown-linux-gnu' ||
+          matrix.target == 'powerpc64-unknown-linux-gnu' ||
+          matrix.target == 'powerpc64le-unknown-linux-gnu' ||
+          matrix.target == 'riscv64gc-unknown-linux-gnu'
+      - name: Upload Regular Release Binary
+        uses: taiki-e/upload-rust-binary-action@v1
+        with:
+          bin: |
+            libreactive_graph_std_arithmetic,
+            libreactive_graph_std_array,
+            libreactive_graph_std_base,
+            libreactive_graph_std_color,
+            libreactive_graph_std_comparison,
+            libreactive_graph_std_connector,
+            libreactive_graph_std_date_time,
+            libreactive_graph_std_flow,
+            libreactive_graph_std_logical,
+            libreactive_graph_std_metadata,
+            libreactive_graph_std_numeric,
+            libreactive_graph_std_object,
+            libreactive_graph_std_random,
+            libreactive_graph_std_result,
+            libreactive_graph_std_state,
+            libreactive_graph_std_string,
+            libreactive_graph_std_taxonomy,
+            libreactive_graph_std_trigger,
+            libreactive_graph_std_value
+          target: ${{ matrix.target }}
+          archive: 'reactive-graph-std-$tag-$target'
+          include: LICENSE.md,README.md,CHANGELOG.md,CODE_OF_CONDUCT.md,CONTRIBUTING.md,SECURITY.md
+          tar: unix
+          zip: windows
+          leading_dir: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+        if: startsWith(github.event.ref, 'refs/tags/v')
+      - name: Upload Nightly Binary
+        uses: taiki-e/upload-rust-binary-action@v1
+        with:
+          bin: |
+            libreactive_graph_std_arithmetic,
+            libreactive_graph_std_array,
+            libreactive_graph_std_base,
+            libreactive_graph_std_color,
+            libreactive_graph_std_comparison,
+            libreactive_graph_std_connector,
+            libreactive_graph_std_date_time,
+            libreactive_graph_std_flow,
+            libreactive_graph_std_logical,
+            libreactive_graph_std_metadata,
+            libreactive_graph_std_numeric,
+            libreactive_graph_std_object,
+            libreactive_graph_std_random,
+            libreactive_graph_std_result,
+            libreactive_graph_std_state,
+            libreactive_graph_std_string,
+            libreactive_graph_std_taxonomy,
+            libreactive_graph_std_trigger,
+            libreactive_graph_std_value
+          target: ${{ matrix.target }}
+          build-tool: ${{ matrix.build_tool }}
+          archive: 'reactive-graph-std-nightly-$target'
+          include: LICENSE.md,README.md,CHANGELOG.md,CODE_OF_CONDUCT.md,CONTRIBUTING.md,SECURITY.md
+          tar: unix
+          zip: windows
+          leading_dir: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+          ref: refs/tags/nightly
+        if: github.ref == 'refs/heads/main'
   debian-package:
     name: Publish debian package
     strategy:
