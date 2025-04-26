@@ -7,8 +7,8 @@ use serde_json::Value;
 use serde_json::json;
 use uuid::Uuid;
 
-use reactive_graph_model_result::ResultNumberU64Properties::RESULT;
 use reactive_graph_runtime_model::ActionProperties::TRIGGER;
+use reactive_graph_std_result_model::ResultNumberU64Properties::RESULT;
 
 entity_behaviour!(UtcNow, UtcNowFactory, UtcNowFsm, UtcNowBehaviourTransitions, UtcNowValidator);
 

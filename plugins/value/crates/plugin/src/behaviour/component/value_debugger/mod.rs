@@ -15,7 +15,7 @@ use serde_json::Value;
 use uuid::Uuid;
 
 pub use functions::*;
-use reactive_graph_model_value::ValueProperties;
+use reactive_graph_std_value_model::ValueProperties;
 
 pub mod functions;
 

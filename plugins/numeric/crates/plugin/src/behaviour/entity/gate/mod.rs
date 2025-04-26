@@ -11,11 +11,11 @@ pub mod tests {
     use serde_json::json;
     use uuid::Uuid;
 
-    use reactive_graph_model_numeric::COMPONENT_NUMERIC_GATE;
-    use reactive_graph_model_numeric::NumericGateProperties::LHS;
-    use reactive_graph_model_numeric::NumericGateProperties::RHS;
-    use reactive_graph_model_result::COMPONENT_RESULT_NUMBER;
-    use reactive_graph_model_result::ResultNumberF64Properties::RESULT;
+    use reactive_graph_std_numeric_model::COMPONENT_NUMERIC_GATE;
+    use reactive_graph_std_numeric_model::NumericGateProperties::LHS;
+    use reactive_graph_std_numeric_model::NumericGateProperties::RHS;
+    use reactive_graph_std_result_model::COMPONENT_RESULT_NUMBER;
+    use reactive_graph_std_result_model::ResultNumberF64Properties::RESULT;
 
     pub fn numeric_gate(ty: &EntityTypeId) -> ReactiveEntity {
         let id = Uuid::new_v4();

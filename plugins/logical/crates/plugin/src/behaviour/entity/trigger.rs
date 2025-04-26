@@ -6,9 +6,9 @@ use reactive_graph_reactive_model_impl::ReactiveEntity;
 use serde_json::Value;
 use uuid::Uuid;
 
-use reactive_graph_model_logical::TriggerProperties::PAYLOAD;
-use reactive_graph_model_result::ResultAnyProperties::RESULT;
 use reactive_graph_runtime_model::ActionProperties::TRIGGER;
+use reactive_graph_std_logical_model::TriggerProperties::PAYLOAD;
+use reactive_graph_std_result_model::ResultAnyProperties::RESULT;
 
 entity_behaviour!(Trigger, TriggerFactory, TriggerFsm, TriggerBehaviourTransitions, TriggerValidator);
 

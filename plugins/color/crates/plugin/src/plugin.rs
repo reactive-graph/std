@@ -4,14 +4,14 @@ use reactive_graph_plugin_api::prelude::providers::*;
 
 use crate::behaviour::entity::hsv_to_rgb::HsvToRgbFactory;
 use crate::behaviour::entity::rgb_to_hsv::RgbToHsvFactory;
-use reactive_graph_model_color::BEHAVIOUR_HSV_TO_RGB;
-use reactive_graph_model_color::BEHAVIOUR_RGB_TO_HSV;
-use reactive_graph_model_color::ENTITY_BEHAVIOUR_HSV_TO_RGB;
-use reactive_graph_model_color::ENTITY_BEHAVIOUR_RGB_TO_HSV;
+use reactive_graph_std_color_model::BEHAVIOUR_HSV_TO_RGB;
+use reactive_graph_std_color_model::BEHAVIOUR_RGB_TO_HSV;
+use reactive_graph_std_color_model::ENTITY_BEHAVIOUR_HSV_TO_RGB;
+use reactive_graph_std_color_model::ENTITY_BEHAVIOUR_RGB_TO_HSV;
 
 export_plugin!({
     "dependencies": [
-        { "name": "reactive-graph-plugin-base", "version": ">=0.10.0, <0.11.0" }
+        { "name": "reactive-graph-std-base", "version": ">=0.10.0, <0.11.0" }
     ]
 });
 

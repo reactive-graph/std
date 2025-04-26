@@ -1,6 +1,6 @@
 [package]
-name = "reactive-graph-plugin-trigger"
-description = "Reactive Graph - Plugin - Trigger"
+name = "reactive-graph-std-trigger"
+description = "Reactive Graph - STD - Trigger"
 version.workspace = true
 authors.workspace = true
 edition.workspace = true
@@ -10,10 +10,10 @@ rust-version.workspace = true
 readme = "../../../../README.md"
 
 [package.metadata.deb]
-name = "libreactive-graph-plugin-trigger"
-depends = "reactive-graph, libreactive-graph-plugin-base"
+name = "libreactive-graph-std-trigger"
+depends = "reactive-graph, libreactive-graph-std-base"
 assets = [
-    ["target/release/libreactive_graph_plugin_trigger.so", "usr/share/reactive-graph/default/plugins/installed/libreactive_graph_plugin_trigger.so", "755"],
+    ["target/release/libreactive_graph_std_trigger.so", "usr/share/reactive-graph/default/plugins/installed/libreactive_graph_std_trigger.so", "755"],
 ]
 
 [dependencies]

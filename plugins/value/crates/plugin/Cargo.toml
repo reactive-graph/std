@@ -1,6 +1,6 @@
 [package]
-name = "reactive-graph-plugin-value"
-description = "Reactive Graph - Plugin - Value"
+name = "reactive-graph-std-value"
+description = "Reactive Graph - STD - Value"
 version.workspace = true
 authors.workspace = true
 edition.workspace = true
@@ -10,10 +10,10 @@ rust-version.workspace = true
 readme = "../../../../README.md"
 
 [package.metadata.deb]
-name = "libreactive-graph-plugin-value"
-depends = "reactive-graph, libreactive-graph-plugin-base"
+name = "libreactive-graph-std-value"
+depends = "reactive-graph, libreactive-graph-std-base"
 assets = [
-    ["target/release/libreactive_graph_plugin_value.so", "usr/share/reactive-graph/default/plugins/installed/libreactive_graph_plugin_value.so", "755"],
+    ["target/release/libreactive_graph_std_value.so", "usr/share/reactive-graph/default/plugins/installed/libreactive_graph_std_value.so", "755"],
 ]
 
 [dependencies]
@@ -36,7 +36,7 @@ reactive-graph-reactive-model-impl = { workspace = true }
 reactive-graph-reactive-service-api = { workspace = true }
 reactive-graph-type-system-api = { workspace = true }
 
-reactive-graph-model-value = { version = "0.10.0", path = "../../crates/model" }
+reactive-graph-std-value-model = { version = "0.10.0", path = "../../crates/model" }
 
 [dev-dependencies]
 default-test = { workspace = true }

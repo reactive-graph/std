@@ -4,16 +4,16 @@ use crate::behaviour::entity::toggle::ToggleFactory;
 use crate::builder::ReactiveEntityInstanceBuilder;
 use crate::reactive::BehaviourFactory;
 use reactive_graph_graph::NamespacedTypeGetter;
-use reactive_graph_model_logical::Toggle;
-use reactive_graph_model_logical::BEHAVIOUR_TOGGLE;
-use reactive_graph_model_logical::ENTITY_TYPE_NAME_TOGGLE;
-use reactive_graph_model_logical::ENTITY_TYPE_TOGGLE;
-use reactive_graph_model_logical::NAMESPACE_LOGICAL;
-use reactive_graph_model_result::ResultBoolean;
-use reactive_graph_model_result::ResultBooleanProperties::RESULT;
 use reactive_graph_model_runtime::COMPONENT_ACTION;
 use reactive_graph_runtime_model::Action;
 use reactive_graph_runtime_model::ActionProperties::TRIGGER;
+use reactive_graph_std_logical_model::BEHAVIOUR_TOGGLE;
+use reactive_graph_std_logical_model::ENTITY_TYPE_NAME_TOGGLE;
+use reactive_graph_std_logical_model::ENTITY_TYPE_TOGGLE;
+use reactive_graph_std_logical_model::NAMESPACE_LOGICAL;
+use reactive_graph_std_logical_model::Toggle;
+use reactive_graph_std_result_model::ResultBoolean;
+use reactive_graph_std_result_model::ResultBooleanProperties::RESULT;
 
 #[test]
 fn toggle_test() {

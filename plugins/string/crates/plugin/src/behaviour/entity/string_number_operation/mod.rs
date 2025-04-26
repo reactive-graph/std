@@ -10,8 +10,8 @@ use uuid::Uuid;
 pub use function::STRING_NUMBER_OPERATIONS;
 pub use function::StringNumberFunction;
 
-use reactive_graph_model_result::ResultNumberU64Properties::RESULT;
-use reactive_graph_model_string::StringNumberOperationProperties::LHS;
+use reactive_graph_std_result_model::ResultNumberU64Properties::RESULT;
+use reactive_graph_std_string_model::StringNumberOperationProperties::LHS;
 
 pub mod function;
 

@@ -9,13 +9,13 @@ use uuid::Uuid;
 
 use log::error;
 
-use reactive_graph_model_http::JsonRpcProperties::ERROR;
-use reactive_graph_model_http::JsonRpcProperties::JSON_RPC_VERSION;
-use reactive_graph_model_http::JsonRpcProperties::METHOD;
-use reactive_graph_model_http::JsonRpcProperties::PARAMS;
-use reactive_graph_model_http::UrlProperties::URL;
-use reactive_graph_model_result::ResultObjectProperties::RESULT;
+use reactive_graph_net_http_model::JsonRpcProperties::ERROR;
+use reactive_graph_net_http_model::JsonRpcProperties::JSON_RPC_VERSION;
+use reactive_graph_net_http_model::JsonRpcProperties::METHOD;
+use reactive_graph_net_http_model::JsonRpcProperties::PARAMS;
+use reactive_graph_net_http_model::UrlProperties::URL;
 use reactive_graph_runtime_model::ActionProperties::TRIGGER;
+use reactive_graph_std_result_model::ResultObjectProperties::RESULT;
 
 entity_behaviour!(JsonRpc, JsonRpcFactory, JsonRpcFsm, JsonRpcBehaviourTransitions, JsonRpcValidator);
 

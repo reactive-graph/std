@@ -1,5 +1,5 @@
 [package]
-name = "reactive-graph-model-connector"
+name = "reactive-graph-std-connector-model"
 description = "Reactive Graph - Model - Connector"
 version.workspace = true
 authors.workspace = true

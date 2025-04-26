@@ -1,0 +1,114 @@
+{
+  "namespace": "array",
+  "type_name": "push",
+  "description": "Array Push",
+  "components": [
+    {
+      "namespace": "base",
+      "name": "named"
+    },
+    {
+      "namespace": "result",
+      "type_name": "result_array"
+    }
+  ],
+  "properties": [
+    {
+      "name": "array",
+      "data_type": "array",
+      "socket_type": "input"
+    },
+    {
+      "name": "value",
+      "data_type": "any",
+      "socket_type": "input"
+    }
+  ],
+  "extensions": [
+    {
+      "namespace": "flow_editor",
+      "type_name": "palette",
+      "extension": {
+        "content": "Array Push",
+        "styles": {
+          "font-size": "12px",
+          "font-family": "Fira Code",
+          "padding": "5px"
+        }
+      }
+    },
+    {
+      "namespace": "flow_editor",
+      "type_name": "shape",
+      "extension": {
+        "width": 200,
+        "socket": {
+          "width": 60,
+          "height": 30,
+          "offset": 5
+        },
+        "offset": {
+          "top": "socket.height",
+          "bottom": "socket.height"
+        },
+        "elements": {
+          "title": {
+            "show": true,
+            "type": "text",
+            "content": "element.description",
+            "position": {
+              "left": 0,
+              "top": 0,
+              "width": "shape.width",
+              "height": "socket.height"
+            },
+            "styles": {
+              "font-size": "12px",
+              "fill": "black"
+            }
+          },
+          "symbol": {
+            "show": true,
+            "type": "text",
+            "content": "Array Push",
+            "position": {
+              "left": 0,
+              "top": 0,
+              "width": "shape.width",
+              "height": "shape.height"
+            },
+            "styles": {
+              "font-family": "Fira Code",
+              "font-size": "40px",
+              "fill": "fuchsia"
+            }
+          },
+          "id": {
+            "show": true,
+            "type": "text",
+            "content": "shape.id",
+            "position": {
+              "left": 0,
+              "top": "shape.height-socket.height",
+              "width": "shape.width",
+              "height": "socket.height"
+            },
+            "styles": {
+              "font-size": "9px",
+              "fill": "black"
+            }
+          }
+        }
+      }
+    },
+    {
+      "namespace": "metadata",
+      "type_name": "dublin-core",
+      "extension": {
+        "title": "Array Push",
+        "subject": "Array Push",
+        "creator": "Hanack"
+      }
+    }
+  ]
+}

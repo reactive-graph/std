@@ -6,9 +6,9 @@ use reactive_graph_reactive_model_impl::ReactiveEntity;
 use serde_json::json;
 use uuid::Uuid;
 
-use reactive_graph_model_arithmetic::ArithmeticGateProperties::LHS;
-use reactive_graph_model_arithmetic::ArithmeticGateProperties::RESULT;
-use reactive_graph_model_arithmetic::ArithmeticGateProperties::RHS;
+use reactive_graph_std_arithmetic_model::ArithmeticGateProperties::LHS;
+use reactive_graph_std_arithmetic_model::ArithmeticGateProperties::RESULT;
+use reactive_graph_std_arithmetic_model::ArithmeticGateProperties::RHS;
 
 use crate::behaviour::as_f64;
 use crate::behaviour::entity::gate::function::ArithmeticGateF64Function;
@@ -75,8 +75,8 @@ mod tests {
     use serde_json::json;
     use uuid::Uuid;
 
-    use reactive_graph_model_arithmetic::ArithmeticGateProperties;
-    use reactive_graph_model_arithmetic::NAMESPACE_ARITHMETIC_F64;
+    use reactive_graph_std_arithmetic_model::ArithmeticGateProperties;
+    use reactive_graph_std_arithmetic_model::NAMESPACE_ARITHMETIC_F64;
 
     use crate::behaviour::entity::gate::behaviour_f64::ArithmeticGateF64;
     use crate::behaviour::entity::gate::function::*;
@@ -110,7 +110,7 @@ mod tests {
         let ty = EntityTypeId::new_from_type(NAMESPACE_ARITHMETIC_F64, type_name);
         let behaviour = create_arithmetic_gate_f64_behaviour(ty, f).unwrap();
         let reactive_instance = behaviour.get_reactive_instance();
-        let arithmetic_gate = reactive_graph_model_arithmetic::ArithmeticGateF64::from(reactive_instance.clone());
+        let arithmetic_gate = reactive_graph_std_arithmetic_model::ArithmeticGateF64::from(reactive_instance.clone());
         arithmetic_gate.lhs(lhs);
         arithmetic_gate.rhs(rhs);
         arithmetic_gate.result().expect("Result is not of type f64")

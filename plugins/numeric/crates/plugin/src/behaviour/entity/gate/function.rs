@@ -5,7 +5,7 @@ use reactive_graph_behaviour_model_impl::entity::EntityBehaviourFactoryCreator;
 use reactive_graph_behaviour_model_impl::entity::EntityBehaviourFunctions;
 use reactive_graph_behaviour_model_impl::entity::EntityBehaviourFunctionsStorage;
 
-use reactive_graph_model_numeric::NAMESPACE_NUMERIC_F64;
+use reactive_graph_std_numeric_model::NAMESPACE_NUMERIC_F64;
 
 use crate::behaviour::entity::gate::behaviour_f64::NumericGateF64Factory;
 

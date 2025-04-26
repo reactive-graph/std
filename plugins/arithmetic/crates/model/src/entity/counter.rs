@@ -5,7 +5,7 @@ use reactive_graph_reactive_model_api::entity_model;
 use reactive_graph_reactive_service_api::reactive_entity;
 use reactive_graph_runtime_model::Action;
 
-use reactive_graph_model_result::ResultNumberU64;
+use reactive_graph_std_result_model::ResultNumberU64;
 
 use crate::NAMESPACE_ARITHMETIC_U64;
 

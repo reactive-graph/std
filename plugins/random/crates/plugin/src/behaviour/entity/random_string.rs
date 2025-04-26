@@ -8,8 +8,8 @@ use serde_json::Value;
 use serde_json::json;
 use uuid::Uuid;
 
-use reactive_graph_model_random::RandomStringProperties::LENGTH;
-use reactive_graph_model_result::ResultStringProperties::RESULT;
+use reactive_graph_std_random_model::RandomStringProperties::LENGTH;
+use reactive_graph_std_result_model::ResultStringProperties::RESULT;
 
 pub const CHARSET: &str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 

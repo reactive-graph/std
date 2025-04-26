@@ -1,7 +1,7 @@
 use serde_json::json;
 
-use crate::behaviour::relation::connector::ConnectorFactory;
 use crate::behaviour::relation::connector::CONNECTOR_BEHAVIOURS;
+use crate::behaviour::relation::connector::ConnectorFactory;
 use crate::reactive::BehaviourFactory;
 use crate::reactive::BehaviourState;
 use crate::tests::utils::create_connector;
@@ -12,7 +12,7 @@ use reactive_graph_graph::PropertyInstanceGetter;
 use reactive_graph_graph::PropertyInstanceSetter;
 use reactive_graph_graph::ReactivePropertyContainer;
 use reactive_graph_graph::RelationTypeId;
-use reactive_graph_model_connector::NAMESPACE_CONNECTOR;
+use reactive_graph_std_connector_model::NAMESPACE_CONNECTOR;
 
 pub static TYPE_NAME_DEFAULT_CONNECTOR: &str = "default_connector";
 

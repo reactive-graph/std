@@ -1,8 +1,8 @@
 use reactive_graph_graph::entity_ty;
 use reactive_graph_reactive_model_api::entity_model;
 
-use reactive_graph_model_base::Describable;
-use reactive_graph_model_base::Named;
+use reactive_graph_std_base_model::Describable;
+use reactive_graph_std_base_model::Named;
 
 use crate::NAMESPACE_FLOW;
 

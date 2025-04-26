@@ -7,8 +7,8 @@ use serde_json::Value;
 use serde_json::json;
 use uuid::Uuid;
 
-use reactive_graph_model_numeric::NumericOperationProperties::LHS;
-use reactive_graph_model_result::ResultNumberF64Properties::RESULT;
+use reactive_graph_std_numeric_model::NumericOperationProperties::LHS;
+use reactive_graph_std_result_model::ResultNumberF64Properties::RESULT;
 
 use crate::behaviour::as_f64;
 use crate::behaviour::entity::operation::function::NumericOperationF64Function;
@@ -62,7 +62,7 @@ mod tests {
     use reactive_graph_reactive_model_impl::ReactiveEntity;
     use uuid::Uuid;
 
-    use reactive_graph_model_numeric::NumericOperationF64;
+    use reactive_graph_std_numeric_model::NumericOperationF64;
 
     use crate::behaviour::entity::operation::behaviour_f64::NumericOperationF64Factory;
     use crate::behaviour::entity::operation::function::*;

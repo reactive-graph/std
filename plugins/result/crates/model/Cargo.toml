@@ -1,6 +1,6 @@
 [package]
-name = "reactive-graph-model-result"
-description = "Reactive Graph - Model - Result"
+name = "reactive-graph-std-result-model"
+description = "Reactive Graph - STD - Result - Model"
 version.workspace = true
 authors.workspace = true
 edition.workspace = true

@@ -5,7 +5,7 @@ use reactive_graph_graph::properties;
 use reactive_graph_reactive_model_api::entity_model;
 use serde_json::json;
 
-use reactive_graph_model_result::ResultString;
+use reactive_graph_std_result_model::ResultString;
 
 use crate::NAMESPACE_STRING;
 

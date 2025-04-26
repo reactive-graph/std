@@ -1,6 +1,6 @@
 [package]
-name = "reactive-graph-plugin-date-time"
-description = "Reactive Graph - Plugin - Date Time"
+name = "reactive-graph-std-date-time"
+description = "Reactive Graph - STD - Date Time"
 version.workspace = true
 authors.workspace = true
 edition.workspace = true
@@ -10,10 +10,10 @@ rust-version.workspace = true
 readme = "../../../../README.md"
 
 [package.metadata.deb]
-name = "libreactive-graph-plugin-date-time"
-depends = "reactive-graph, libreactive-graph-plugin-result, libreactive-graph-plugin-trigger"
+name = "libreactive-graph-std-date-time"
+depends = "reactive-graph, libreactive-graph-std-result, libreactive-graph-std-trigger"
 assets = [
-    ["target/release/libreactive_graph_plugin_date_time.so", "usr/share/reactive-graph/default/plugins/installed/libreactive_graph_plugin_date_time.so", "755"],
+    ["target/release/libreactive_graph_std_date_time.so", "usr/share/reactive-graph/default/plugins/installed/libreactive_graph_std_date_time.so", "755"],
 ]
 
 [dependencies]
@@ -37,8 +37,8 @@ reactive-graph-reactive-model-impl = { workspace = true }
 reactive-graph-runtime-model = { workspace = true }
 reactive-graph-type-system-api = { workspace = true }
 
-reactive-graph-model-date-time = { version = "0.10.0", path = "../../crates/model" }
-reactive-graph-model-result = { version = "0.10.0", path = "../../../result/crates/model" }
+reactive-graph-std-date-time-model = { version = "0.10.0", path = "../../crates/model" }
+reactive-graph-std-result-model = { version = "0.10.0", path = "../../../result/crates/model" }
 
 [dev-dependencies]
 reactive-graph-graph = { workspace = true, features = ["test"] }

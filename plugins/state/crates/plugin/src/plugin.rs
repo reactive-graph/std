@@ -9,8 +9,8 @@ use crate::behaviour::component::state_debugger::STATE_DEBUGGER_BEHAVIOURS;
 
 export_plugin!({
     "dependencies": [
-        { "name": "reactive-graph-plugin-base", "version": ">=0.10.0, <0.11.0" },
-        { "name": "reactive-graph-plugin-value", "version": ">=0.10.0, <0.11.0" }
+        { "name": "reactive-graph-std-base", "version": ">=0.10.0, <0.11.0" },
+        { "name": "reactive-graph-std-value", "version": ">=0.10.0, <0.11.0" }
     ]
 });
 

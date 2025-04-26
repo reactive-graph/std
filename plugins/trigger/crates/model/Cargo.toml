@@ -1,6 +1,6 @@
 [package]
-name = "reactive-graph-model-trigger"
-description = "Reactive Graph - Model - Trigger"
+name = "reactive-graph-std-trigger-model"
+description = "Reactive Graph - STD - Trigger - Model"
 version.workspace = true
 authors.workspace = true
 edition.workspace = true

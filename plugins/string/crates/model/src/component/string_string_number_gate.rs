@@ -1,8 +1,8 @@
 use crate::NAMESPACE_STRING;
 use reactive_graph_graph::component_ty;
 use reactive_graph_graph::properties;
-use reactive_graph_model_result::ResultNumberU64;
 use reactive_graph_reactive_model_api::entity_model;
+use reactive_graph_std_result_model::ResultNumberU64;
 
 properties!(StringStringNumberGateProperties, (LHS, "lhs", ""), (RHS, "rhs", ""));
 

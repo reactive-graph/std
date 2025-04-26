@@ -1,6 +1,6 @@
 [package]
-name = "reactive-graph-plugin-graphql-client"
-description = "Reactive Graph - Plugin - GraphQL Client"
+name = "reactive-graph-tooling-graphql-client"
+description = "Reactive Graph - Tooling - GraphQL Client"
 version.workspace = true
 authors.workspace = true
 edition.workspace = true
@@ -12,10 +12,10 @@ readme = "../../README.md"
 exclude = ["web/node_modules"]
 
 [package.metadata.deb]
-name = "libreactive-graph-plugin-graphql-client"
+name = "libreactive-graph-tooling-graphql-client"
 depends = "reactive-graph"
 assets = [
-    ["target/release/libreactive_graph_plugin_graphql_client.so", "usr/share/reactive-graph/default/plugins/installed/libreactive_graph_plugin_graphql_client.so", "755"],
+    ["target/release/libreactive_graph_tooling_graphql_client.so", "usr/share/reactive-graph/default/plugins/installed/libreactive_graph_tooling_graphql_client.so", "755"],
 ]
 
 [dependencies]

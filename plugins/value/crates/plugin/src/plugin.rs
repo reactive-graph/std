@@ -6,7 +6,7 @@ use crate::behaviour::component::value_debugger::VALUE_DEBUGGER_BEHAVIOURS;
 
 export_plugin!({
     "dependencies": [
-        { "name": "reactive-graph-plugin-base", "version": ">=0.10.0, <0.11.0" }
+        { "name": "reactive-graph-std-base", "version": ">=0.10.0, <0.11.0" }
     ]
 });
 

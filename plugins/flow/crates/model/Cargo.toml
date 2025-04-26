@@ -1,5 +1,5 @@
 [package]
-name = "reactive-graph-model-flow"
+name = "reactive-graph-std-flow-model"
 description = "Reactive Graph - Model - Flow"
 version.workspace = true
 authors.workspace = true
@@ -19,7 +19,7 @@ reactive-graph-graph = { workspace = true }
 reactive-graph-reactive-model-api = { workspace = true }
 reactive-graph-reactive-model-impl = { workspace = true }
 
-reactive-graph-model-base = { version = "0.10.0", path = "../../../base/crates/model" }
+reactive-graph-std-base-model = { version = "0.10.0", path = "../../../base/crates/model" }
 
 [lib]
 crate-type = ["lib"]

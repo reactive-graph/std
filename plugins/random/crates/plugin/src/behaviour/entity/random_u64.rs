@@ -9,7 +9,7 @@ use serde_json::Value;
 use serde_json::json;
 use uuid::Uuid;
 
-use reactive_graph_model_result::ResultNumberU64Properties::RESULT;
+use reactive_graph_std_result_model::ResultNumberU64Properties::RESULT;
 
 entity_behaviour!(RandomU64, RandomU64Factory, RandomU64Fsm, RandomU64BehaviourTransitions, RandomU64Validator);
 

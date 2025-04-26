@@ -1,4 +1,4 @@
-# Plugin `reactive-graph-plugin-value`
+# Plugin `reactive-graph-std-value`
 
 ### About this plugin
 

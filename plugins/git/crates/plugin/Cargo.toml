@@ -1,6 +1,6 @@
 [package]
-name = "reactive-graph-plugin-git"
-description = "Reactive Graph - Plugin - GIT"
+name = "reactive-graph-net-git"
+description = "Reactive Graph - NET - GIT"
 version.workspace = true
 authors.workspace = true
 edition.workspace = true
@@ -10,10 +10,10 @@ rust-version.workspace = true
 readme = "../../../../README.md"
 
 [package.metadata.deb]
-name = "libreactive-graph-plugin-git"
-depends = "reactive-graph, libreactive-graph-plugin-base, libreactive-graph-plugin-file, libreactive-graph-plugin-http, libreactive-graph-plugin-trigger"
+name = "libreactive-graph-net-git"
+depends = "reactive-graph, libreactive-graph-std-base, libreactive-graph-std-trigger, libreactive-graph-sys-file, libreactive-graph-net-http"
 assets = [
-    ["target/release/libreactive_graph_plugin_git.so", "usr/share/reactive-graph/default/plugins/installed/libreactive_graph_plugin_git.so", "755"],
+    ["target/release/libreactive_graph_net_git.so", "usr/share/reactive-graph/default/plugins/installed/libreactive_graph_net_git.so", "755"],
 ]
 
 [dependencies]
@@ -37,9 +37,9 @@ reactive-graph-reactive-model-impl = { workspace = true }
 reactive-graph-runtime-model = { workspace = true }
 reactive-graph-type-system-api = { workspace = true }
 
-reactive-graph-model-file = { version = "0.10.0", path = "../../../file/crates/model" }
-reactive-graph-model-git = { version = "0.10.0", path = "../../crates/model" }
-reactive-graph-model-http = { version = "0.10.0", path = "../../../http/crates/model" }
+reactive-graph-sys-file-model = { version = "0.10.0", path = "../../../file/crates/model" }
+reactive-graph-net-git-model = { version = "0.10.0", path = "../../crates/model" }
+reactive-graph-net-http-model = { version = "0.10.0", path = "../../../http/crates/model" }
 
 [dev-dependencies]
 reactive-graph-graph = { workspace = true, features = ["test"] }

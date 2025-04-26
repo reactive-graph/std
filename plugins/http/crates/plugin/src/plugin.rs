@@ -4,16 +4,16 @@ use reactive_graph_plugin_api::prelude::providers::*;
 
 use crate::behaviour::component::http::HttpFactory;
 use crate::behaviour::component::json_rpc::JsonRpcFactory;
-use reactive_graph_model_http::BEHAVIOUR_HTTP;
-use reactive_graph_model_http::BEHAVIOUR_JSON_RPC;
-use reactive_graph_model_http::COMPONENT_BEHAVIOUR_HTTP;
-use reactive_graph_model_http::COMPONENT_BEHAVIOUR_JSON_RPC;
+use reactive_graph_net_http_model::BEHAVIOUR_HTTP;
+use reactive_graph_net_http_model::BEHAVIOUR_JSON_RPC;
+use reactive_graph_net_http_model::COMPONENT_BEHAVIOUR_HTTP;
+use reactive_graph_net_http_model::COMPONENT_BEHAVIOUR_JSON_RPC;
 
 export_plugin!({
     "dependencies": [
-        { "name": "reactive-graph-plugin-base", "version": ">=0.10.0, <0.11.0" },
-        { "name": "reactive-graph-plugin-result", "version": ">=0.10.0, <0.11.0" },
-        { "name": "reactive-graph-plugin-trigger", "version": ">=0.10.0, <0.11.0" }
+        { "name": "reactive-graph-std-base", "version": ">=0.10.0, <0.11.0" },
+        { "name": "reactive-graph-std-result", "version": ">=0.10.0, <0.11.0" },
+        { "name": "reactive-graph-std-trigger", "version": ">=0.10.0, <0.11.0" }
     ]
 });
 
@@ -75,10 +75,10 @@ impl Plugin for HttpPluginImpl {
 // use crate::behaviour::component::http::HttpFactory;
 // use crate::behaviour::component::json_rpc::JsonRpcFactory;
 // use crate::di::*;
-// use reactive_graph_model_http::BEHAVIOUR_HTTP;
-// use reactive_graph_model_http::BEHAVIOUR_JSON_RPC;
-// use reactive_graph_model_http::COMPONENT_BEHAVIOUR_HTTP;
-// use reactive_graph_model_http::COMPONENT_BEHAVIOUR_JSON_RPC;
+// use reactive_graph_net_http_model::BEHAVIOUR_HTTP;
+// use reactive_graph_net_http_model::BEHAVIOUR_JSON_RPC;
+// use reactive_graph_net_http_model::COMPONENT_BEHAVIOUR_HTTP;
+// use reactive_graph_net_http_model::COMPONENT_BEHAVIOUR_JSON_RPC;
 // use crate::plugins::component_provider;
 // use crate::plugins::entity_type_provider;
 // use crate::plugins::plugin_context::PluginContext;

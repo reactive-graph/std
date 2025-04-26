@@ -10,9 +10,9 @@ use uuid::Uuid;
 pub use function::STRING_GATES;
 pub use function::StringGateFunction;
 
-use reactive_graph_model_result::ResultBooleanProperties::RESULT;
-use reactive_graph_model_string::StringGateProperties::LHS;
-use reactive_graph_model_string::StringGateProperties::RHS;
+use reactive_graph_std_result_model::ResultBooleanProperties::RESULT;
+use reactive_graph_std_string_model::StringGateProperties::LHS;
+use reactive_graph_std_string_model::StringGateProperties::RHS;
 
 pub mod function;
 

@@ -2,14 +2,14 @@ use crate::behaviour::entity::random_string::RandomStringFactory;
 use crate::builder::ReactiveEntityInstanceBuilder;
 use crate::reactive::BehaviourFactory;
 use crate::reactive::BehaviourState;
-use reactive_graph_model_random::RandomString;
-use reactive_graph_model_random::RandomStringProperties::LENGTH;
-use reactive_graph_model_random::BEHAVIOUR_RANDOM_STRING;
-use reactive_graph_model_random::ENTITY_TYPE_RANDOM_STRING;
-use reactive_graph_model_result::ResultString;
-use reactive_graph_model_result::ResultStringProperties::RESULT;
 use reactive_graph_runtime_model::Action;
 use reactive_graph_runtime_model::ActionProperties::TRIGGER;
+use reactive_graph_std_random_model::BEHAVIOUR_RANDOM_STRING;
+use reactive_graph_std_random_model::ENTITY_TYPE_RANDOM_STRING;
+use reactive_graph_std_random_model::RandomString;
+use reactive_graph_std_random_model::RandomStringProperties::LENGTH;
+use reactive_graph_std_result_model::ResultString;
+use reactive_graph_std_result_model::ResultStringProperties::RESULT;
 
 #[test]
 fn random_string_test() {

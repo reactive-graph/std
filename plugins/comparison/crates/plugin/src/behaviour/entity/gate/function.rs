@@ -7,7 +7,7 @@ use reactive_graph_behaviour_model_impl::entity::EntityBehaviourFunctionsStorage
 use serde_json::Value;
 use serde_json::json;
 
-use reactive_graph_model_comparison::NAMESPACE_COMPARISON;
+use reactive_graph_std_comparison_model::NAMESPACE_COMPARISON;
 
 use crate::behaviour::entity::gate::behaviour::ComparisonGateFactory;
 

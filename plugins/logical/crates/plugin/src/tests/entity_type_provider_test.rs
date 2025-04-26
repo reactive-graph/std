@@ -1,7 +1,7 @@
 use crate::plugins::EntityTypeProvider;
 use crate::providers::LogicalEntityTypeProviderImpl;
 use reactive_graph_graph::EntityTypeId;
-use reactive_graph_model_logical::NAMESPACE_LOGICAL;
+use reactive_graph_std_logical_model::NAMESPACE_LOGICAL;
 
 #[test]
 fn entity_types_should_exist() {

@@ -1,6 +1,6 @@
-use reactive_graph_plugin_api::EntityComponentBehaviourRegistry;
 use reactive_graph_plugin_api::prelude::plugin::*;
 use reactive_graph_plugin_api::prelude::providers::*;
+use reactive_graph_plugin_api::EntityComponentBehaviourRegistry;
 
 use crate::behaviour::component::repository::RepositoryFactory;
 use reactive_graph_model_git::BEHAVIOUR_REPOSITORY;
@@ -8,10 +8,10 @@ use reactive_graph_model_git::COMPONENT_BEHAVIOUR_REPOSITORY;
 
 export_plugin!({
     "dependencies": [
-        { "name": "reactive-graph-plugin-base", "version": ">=0.10.0, <0.11.0" },
-        { "name": "reactive-graph-plugin-file", "version": ">=0.10.0, <0.11.0" },
-        { "name": "reactive-graph-plugin-http", "version": ">=0.10.0, <0.11.0" },
-        { "name": "reactive-graph-plugin-trigger", "version": ">=0.10.0, <0.11.0" }
+        { "name": "reactive-graph-std-base", "version": ">=0.10.0, <0.11.0" },
+        { "name": "reactive-graph-std-trigger", "version": ">=0.10.0, <0.11.0" },
+        { "name": "reactive-graph-sys-file", "version": ">=0.10.0, <0.11.0" },
+        { "name": "reactive-graph-net-http", "version": ">=0.10.0, <0.11.0" },
     ]
 });
 

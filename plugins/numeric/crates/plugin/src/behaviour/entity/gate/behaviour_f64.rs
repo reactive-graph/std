@@ -5,9 +5,9 @@ use reactive_graph_graph::prelude::*;
 use reactive_graph_reactive_model_impl::ReactiveEntity;
 use uuid::Uuid;
 
-use reactive_graph_model_numeric::NumericGateProperties::LHS;
-use reactive_graph_model_numeric::NumericGateProperties::RHS;
-use reactive_graph_model_result::ResultNumberF64Properties::RESULT;
+use reactive_graph_std_numeric_model::NumericGateProperties::LHS;
+use reactive_graph_std_numeric_model::NumericGateProperties::RHS;
+use reactive_graph_std_result_model::ResultNumberF64Properties::RESULT;
 
 use crate::behaviour::as_f64;
 use crate::behaviour::entity::gate::function::NumericGateF64Function;
@@ -70,8 +70,8 @@ impl BehaviourTransitions<Uuid, ReactiveEntity> for NumericGateF64BehaviourTrans
 //     use crate::behaviour::entity::gate::function::*;
 //     use reactive_graph_graph::prelude::*;
 //     use reactive_graph_reactive_model_impl::ReactiveEntity;
-//     use reactive_graph_model_numeric::NumericGateF64;
-//     use reactive_graph_model_numeric::NumericGateProperties;
+//     use reactive_graph_std_numeric_model::NumericGateF64;
+//     use reactive_graph_std_numeric_model::NumericGateProperties;
 //     use reactive_graph_reactive_api::prelude::*;
 //     use crate::behaviour::entity::gate::tests::numeric_gate;
 //

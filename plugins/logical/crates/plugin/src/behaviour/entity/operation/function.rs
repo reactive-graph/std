@@ -6,7 +6,7 @@ use reactive_graph_behaviour_model_impl::entity::EntityBehaviourFunctions;
 use reactive_graph_behaviour_model_impl::entity::EntityBehaviourFunctionsStorage;
 
 use crate::behaviour::entity::operation::LogicalOperationFactory;
-use reactive_graph_model_logical::NAMESPACE_LOGICAL;
+use reactive_graph_std_logical_model::NAMESPACE_LOGICAL;
 
 pub type LogicalOperationFunction = fn(bool) -> bool;
 

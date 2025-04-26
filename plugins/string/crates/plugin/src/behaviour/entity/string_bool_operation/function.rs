@@ -6,7 +6,7 @@ use std::sync::LazyLock;
 use voca_rs::query;
 
 use crate::behaviour::entity::string_bool_operation::StringBoolOperationFactory;
-use reactive_graph_model_string::NAMESPACE_STRING;
+use reactive_graph_std_string_model::NAMESPACE_STRING;
 
 pub type StringBoolFunction = fn(String) -> bool;
 

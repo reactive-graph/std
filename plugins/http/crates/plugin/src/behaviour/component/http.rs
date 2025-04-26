@@ -9,14 +9,14 @@ use uuid::Uuid;
 
 use log::error;
 
-use reactive_graph_model_http::RequestProperties::METHOD;
-use reactive_graph_model_http::RequestProperties::PAYLOAD;
-use reactive_graph_model_http::RequestProperties::REQUEST_HEADERS;
-use reactive_graph_model_http::ResponseProperties::RESPONSE_HEADERS;
-use reactive_graph_model_http::ResponseProperties::STATUS;
-use reactive_graph_model_http::UrlProperties::URL;
-use reactive_graph_model_result::ResultObjectProperties::RESULT;
+use reactive_graph_net_http_model::RequestProperties::METHOD;
+use reactive_graph_net_http_model::RequestProperties::PAYLOAD;
+use reactive_graph_net_http_model::RequestProperties::REQUEST_HEADERS;
+use reactive_graph_net_http_model::ResponseProperties::RESPONSE_HEADERS;
+use reactive_graph_net_http_model::ResponseProperties::STATUS;
+use reactive_graph_net_http_model::UrlProperties::URL;
 use reactive_graph_runtime_model::ActionProperties::TRIGGER;
+use reactive_graph_std_result_model::ResultObjectProperties::RESULT;
 
 entity_behaviour!(Http, HttpFactory, HttpFsm, HttpBehaviourTransitions, HttpValidator);
 

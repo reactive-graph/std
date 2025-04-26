@@ -1,4 +1,4 @@
-# Plugin `reactive-graph-plugin-state`
+# Plugin `reactive-graph-std-state`
 
 ### About this plugin
 

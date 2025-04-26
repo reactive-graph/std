@@ -1,6 +1,6 @@
 [package]
-name = "reactive-graph-model-state"
-description = "Reactive Graph - Model - State"
+name = "reactive-graph-std-state-model"
+description = "Reactive Graph - STD - State - Model"
 version.workspace = true
 authors.workspace = true
 edition.workspace = true
@@ -18,7 +18,7 @@ reactive-graph-graph = { workspace = true }
 reactive-graph-reactive-model-api = { workspace = true }
 reactive-graph-reactive-model-impl = { workspace = true }
 
-reactive-graph-model-value = { version = "0.10.0", path = "../../../value/crates/model" }
+reactive-graph-std-value-model = { version = "0.10.0", path = "../../../value/crates/model" }
 
 [lib]
 crate-type = ["lib"]

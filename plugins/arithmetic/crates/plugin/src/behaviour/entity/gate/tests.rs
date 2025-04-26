@@ -5,10 +5,10 @@ use reactive_graph_reactive_model_impl::ReactiveProperties;
 use serde_json::json;
 use uuid::Uuid;
 
-use reactive_graph_model_arithmetic::ArithmeticGateF64;
-use reactive_graph_model_arithmetic::ArithmeticGateProperties;
-use reactive_graph_model_arithmetic::COMPONENT_ARITHMETIC_GATE;
-use reactive_graph_model_arithmetic::NAMESPACE_ARITHMETIC_F64;
+use reactive_graph_std_arithmetic_model::ArithmeticGateF64;
+use reactive_graph_std_arithmetic_model::ArithmeticGateProperties;
+use reactive_graph_std_arithmetic_model::COMPONENT_ARITHMETIC_GATE;
+use reactive_graph_std_arithmetic_model::NAMESPACE_ARITHMETIC_F64;
 
 use crate::behaviour::entity::gate::behaviour_f64::ArithmeticGateF64Factory;
 use crate::behaviour::entity::gate::function::ARITHMETIC_GATES_F64;

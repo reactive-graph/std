@@ -1,5 +1,5 @@
 {
-  "name": "reactive-graph-plugin-graphql-client",
+  "name": "reactive-graph-tooling-graphql-client",
   "license": "MIT",
   "scripts": {
     "build": "webpack",

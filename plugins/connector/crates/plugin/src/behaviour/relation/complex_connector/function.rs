@@ -12,9 +12,9 @@ use reactive_graph_reactive_model_impl::ReactiveRelation;
 use serde_json::Value;
 use serde_json::json;
 
-use reactive_graph_model_connector::BufferProperties::BUFFER;
-use reactive_graph_model_connector::BufferProperties::BUFFER_SIZE;
-use reactive_graph_model_connector::NAMESPACE_CONNECTOR;
+use reactive_graph_std_connector_model::BufferProperties::BUFFER;
+use reactive_graph_std_connector_model::BufferProperties::BUFFER_SIZE;
+use reactive_graph_std_connector_model::NAMESPACE_CONNECTOR;
 
 use crate::behaviour::relation::complex_connector::ComplexConnectorFactory;
 

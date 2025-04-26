@@ -1,6 +1,6 @@
 [package]
-name = "reactive-graph-plugin-state"
-description = "Reactive Graph - Plugin - State"
+name = "reactive-graph-std-state"
+description = "Reactive Graph - STD - State"
 version.workspace = true
 authors.workspace = true
 edition.workspace = true
@@ -10,10 +10,10 @@ rust-version.workspace = true
 readme = "../../../../README.md"
 
 [package.metadata.deb]
-name = "libreactive-graph-plugin-state"
-depends = "reactive-graph, libreactive-graph-plugin-base, libreactive-graph-plugin-value"
+name = "libreactive-graph-std-state"
+depends = "reactive-graph, libreactive-graph-std-base, libreactive-graph-std-value"
 assets = [
-    ["target/release/libreactive_graph_plugin_state.so", "usr/share/reactive-graph/default/plugins/installed/libreactive_graph_plugin_state.so", "755"],
+    ["target/release/libreactive_graph_std_state.so", "usr/share/reactive-graph/default/plugins/installed/libreactive_graph_std_state.so", "755"],
 ]
 
 [dependencies]
@@ -35,8 +35,8 @@ reactive-graph-reactive-model-impl = { workspace = true }
 reactive-graph-type-system-api = { workspace = true }
 
 
-reactive-graph-model-value = { version = "0.10.0", path = "../../../value/crates/model" }
-reactive-graph-model-state = { version = "0.10.0", path = "../../crates/model" }
+reactive-graph-std-value-model = { version = "0.10.0", path = "../../../value/crates/model" }
+reactive-graph-std-state-model = { version = "0.10.0", path = "../../crates/model" }
 
 [lib]
 # Plugins use crate-type cdylib

@@ -41,7 +41,6 @@ In this repository you'll find the essential plugins which are necessary or usef
 | [Base](./plugins/base/README.md)             | Provides basic components and entity types |
 | [Color](./plugins/color/README.md)           | Colors and colorspace transformations      |
 | [Comparison](./plugins/comparison/README.md) | Provides comparison gates                  |
-| [Config](./plugins/config/README.md)         | Load configuration files                   |
 | [Connector](./plugins/connector/README.md)   | Provides property connectors               |
 | [Date Time](./plugins/date-time/README.md)   | Date and Time, Durations and calculation   |
 | [JSON](./plugins/json/README.md)             | Handles JSON arrays and objects            |
@@ -77,7 +76,7 @@ target_dirs = [
 
 ```shell
 cargo build
-cargo post build --package=reactive-graph-plugin-date-time
+cargo post build --package=reactive-graph-std-date-time
 ```
 
 #### Install all plugins of this repository at once

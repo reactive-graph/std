@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "reactive-graph-plugin-graphql-schema-visualization",
+  "name": "reactive-graph-tooling-graphql-schema-visualization",
   "description": "Bundles GraphQL Voyager as Reactive Graph Plugin",
   "license": "MIT",
   "scripts": {

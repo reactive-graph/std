@@ -2,10 +2,10 @@ use reactive_graph_plugin_api::EntityBehaviourRegistry;
 use reactive_graph_plugin_api::prelude::plugin::*;
 use reactive_graph_plugin_api::prelude::providers::*;
 
-use reactive_graph_model_date_time::BEHAVIOUR_UTC_NOW;
-use reactive_graph_model_date_time::BEHAVIOUR_UTC_TIMESTAMP;
-use reactive_graph_model_date_time::ENTITY_BEHAVIOUR_UTC_NOW;
-use reactive_graph_model_date_time::ENTITY_BEHAVIOUR_UTC_TIMESTAMP;
+use reactive_graph_std_date_time_model::BEHAVIOUR_UTC_NOW;
+use reactive_graph_std_date_time_model::BEHAVIOUR_UTC_TIMESTAMP;
+use reactive_graph_std_date_time_model::ENTITY_BEHAVIOUR_UTC_NOW;
+use reactive_graph_std_date_time_model::ENTITY_BEHAVIOUR_UTC_TIMESTAMP;
 
 use crate::api::TimeGraph;
 use crate::behaviour::UtcNowFactory;
@@ -13,9 +13,9 @@ use crate::behaviour::UtcTimestampFactory;
 
 export_plugin!({
     "dependencies": [
-        { "name": "reactive-graph-plugin-base", "version": ">=0.10.0, <0.11.0" },
-        { "name": "reactive-graph-plugin-result", "version": ">=0.10.0, <0.11.0" },
-        { "name": "reactive-graph-plugin-trigger", "version": ">=0.10.0, <0.11.0" }
+        { "name": "reactive-graph-std-base", "version": ">=0.10.0, <0.11.0" },
+        { "name": "reactive-graph-std-result", "version": ">=0.10.0, <0.11.0" },
+        { "name": "reactive-graph-std-trigger", "version": ">=0.10.0, <0.11.0" }
     ]
 });
 

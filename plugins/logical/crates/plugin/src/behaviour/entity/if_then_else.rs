@@ -6,10 +6,10 @@ use reactive_graph_reactive_model_impl::ReactiveEntity;
 use serde_json::Value;
 use uuid::Uuid;
 
-use reactive_graph_model_logical::ConditionProperties::CONDITION;
-use reactive_graph_model_logical::IfThenElseProperties::ELSE_PAYLOAD;
-use reactive_graph_model_logical::IfThenElseProperties::THEN_PAYLOAD;
-use reactive_graph_model_result::ResultAnyProperties::RESULT;
+use reactive_graph_std_logical_model::ConditionProperties::CONDITION;
+use reactive_graph_std_logical_model::IfThenElseProperties::ELSE_PAYLOAD;
+use reactive_graph_std_logical_model::IfThenElseProperties::THEN_PAYLOAD;
+use reactive_graph_std_result_model::ResultAnyProperties::RESULT;
 
 entity_behaviour!(IfThenElse, IfThenElseFactory, IfThenElseFsm, IfThenElseBehaviourTransitions, IfThenElseValidator);
 

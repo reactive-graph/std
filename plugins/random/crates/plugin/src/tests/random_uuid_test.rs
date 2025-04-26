@@ -2,13 +2,13 @@ use crate::behaviour::entity::random_uuid::RandomUuidFactory;
 use crate::builder::ReactiveEntityInstanceBuilder;
 use crate::reactive::BehaviourFactory;
 use crate::reactive::BehaviourState;
-use reactive_graph_model_random::RandomUuid;
-use reactive_graph_model_random::BEHAVIOUR_RANDOM_UUID;
-use reactive_graph_model_random::ENTITY_TYPE_RANDOM_UUID;
-use reactive_graph_model_result::ResultString;
-use reactive_graph_model_result::ResultStringProperties::RESULT;
 use reactive_graph_runtime_model::Action;
 use reactive_graph_runtime_model::ActionProperties::TRIGGER;
+use reactive_graph_std_random_model::BEHAVIOUR_RANDOM_UUID;
+use reactive_graph_std_random_model::ENTITY_TYPE_RANDOM_UUID;
+use reactive_graph_std_random_model::RandomUuid;
+use reactive_graph_std_result_model::ResultString;
+use reactive_graph_std_result_model::ResultStringProperties::RESULT;
 
 #[test]
 fn random_uuid_test() {

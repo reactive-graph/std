@@ -11,7 +11,7 @@ use reactive_graph_reactive_model_impl::ReactiveEntity;
 use serde_json::Value;
 use uuid::Uuid;
 
-use reactive_graph_model_state::NAMESPACE_STATE;
+use reactive_graph_std_state_model::NAMESPACE_STATE;
 
 use crate::model_state::StateProperties;
 use crate::model_value::*;

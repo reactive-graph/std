@@ -1,7 +1,0 @@
-mutation {
-  instances {
-    entities {
-      delete(id: "aed6c9b0-e495-4423-baeb-5597b66416f4")
-    }
-  }
-}

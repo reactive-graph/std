@@ -1,5 +1,5 @@
 [package]
-name = "reactive-graph-model-base"
+name = "reactive-graph-std-base-model"
 description = "Reactive Graph - Model - Base"
 version.workspace = true
 authors.workspace = true

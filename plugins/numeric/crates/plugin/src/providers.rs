@@ -12,10 +12,10 @@ pub struct NumericEntityTypesProvider {}
 mod tests {
     use reactive_graph_graph::prelude::*;
 
-    use reactive_graph_model_numeric::NAMESPACE_NUMERIC;
-    use reactive_graph_model_numeric::NAMESPACE_NUMERIC_F64;
-    use reactive_graph_model_numeric::NAMESPACE_NUMERIC_I64;
-    use reactive_graph_model_numeric::NAMESPACE_NUMERIC_U64;
+    use reactive_graph_std_numeric_model::NAMESPACE_NUMERIC;
+    use reactive_graph_std_numeric_model::NAMESPACE_NUMERIC_F64;
+    use reactive_graph_std_numeric_model::NAMESPACE_NUMERIC_I64;
+    use reactive_graph_std_numeric_model::NAMESPACE_NUMERIC_U64;
 
     use super::*;
 

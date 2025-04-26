@@ -12,10 +12,10 @@ pub struct ArithmeticEntityTypesProvider {}
 mod tests {
     use reactive_graph_graph::prelude::*;
 
-    use reactive_graph_model_arithmetic::NAMESPACE_ARITHMETIC;
-    use reactive_graph_model_arithmetic::NAMESPACE_ARITHMETIC_F64;
-    use reactive_graph_model_arithmetic::NAMESPACE_ARITHMETIC_I64;
-    use reactive_graph_model_arithmetic::NAMESPACE_ARITHMETIC_U64;
+    use reactive_graph_std_arithmetic_model::NAMESPACE_ARITHMETIC;
+    use reactive_graph_std_arithmetic_model::NAMESPACE_ARITHMETIC_F64;
+    use reactive_graph_std_arithmetic_model::NAMESPACE_ARITHMETIC_I64;
+    use reactive_graph_std_arithmetic_model::NAMESPACE_ARITHMETIC_U64;
 
     use super::*;
 

@@ -1,15 +1,15 @@
 use crate::behaviour::entity::templating::TemplatingFactory;
 use crate::builder::ReactiveEntityInstanceBuilder;
-use crate::model_string::Templating;
-use crate::model_string::TemplatingProperties::CONTEXT;
-use crate::model_string::TemplatingProperties::TEMPLATE;
 use crate::model_string::BEHAVIOUR_TEMPLATING;
 use crate::model_string::COMPONENT_STRING_GATE;
 use crate::model_string::ENTITY_TYPE_TEMPLATING;
+use crate::model_string::Templating;
+use crate::model_string::TemplatingProperties::CONTEXT;
+use crate::model_string::TemplatingProperties::TEMPLATE;
 use crate::reactive::BehaviourFactory;
 use crate::reactive::BehaviourState;
-use reactive_graph_model_result::ResultString;
-use reactive_graph_model_result::ResultStringProperties::RESULT;
+use reactive_graph_std_result_model::ResultString;
+use reactive_graph_std_result_model::ResultStringProperties::RESULT;
 use serde_json::json;
 
 #[test]
