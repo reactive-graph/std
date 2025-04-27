@@ -33,6 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - CI: Automatically assign assignee and reviewers
 - CI: Upgraded multiple actions
 - CI: Synchronize labels from config file
+- CI: Automatically merge successful dependabot PR's
 
 ## [0.9.1-21] - 2023-05-09
 
