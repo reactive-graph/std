@@ -19,7 +19,4 @@ tarpaulin-report.html
 # Exclude IDE project files
 .idea
 
-# Exclude generated frontend bundles
-plugins/**/web/dist/bundle
-
 book/
