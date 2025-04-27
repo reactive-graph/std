@@ -17,10 +17,6 @@ members = [
     "plugins/date-time/crates/plugin",
     "plugins/flow/crates/model",
     "plugins/flow/crates/plugin",
-    #    "plugins/git/crates/model",
-    #    "plugins/git/crates/plugin",
-    "plugins/http/crates/model",
-    "plugins/http/crates/plugin",
     "plugins/logical/crates/model",
     "plugins/logical/crates/plugin",
     "plugins/metadata/crates/model",
@@ -61,24 +57,13 @@ rust-version = "1.85.0"
 angular-units = "0.2.4"
 async-std = "1.12"
 async-trait = "0.1"
-base64 = "0.22"
 chrono = "0.4"
-crossbeam = "0.8"
 dashmap = { version = "6.0", features = ["serde"] }
-data-url = "0.3"
 default-test = "0.1"
-#git2 = "0.20"
-http = "0.2"
-#humantime = "2.1"
-infer = "0.19"
-json5 = "0.4"
 lazy_static = "1.4"
 license = "3.0"
 log = { version = "0.4", features = ["std", "serde"] }
 log4rs = { version = "1.2", features = ["console_appender", "file_appender", "toml_format"] }
-matchit = "0.8"
-mime_guess = "2.0"
-notify = { version = "8.0", features = ["serde", "crossbeam-channel"] }
 num-traits = "0.2"
 paste = "1.0"
 prisma = "0.1.1"
@@ -96,10 +81,7 @@ shellexpand = "3.0"
 strum = { version = "0.27", features = ["derive"] }
 strum_macros = "0.27"
 tera = "1"
-thiserror = "2.0"
 toml = "0.8"
-ureq = { version = "2.4", features = ["json"] }
-url = "2.3"
 uuid = { version = "1.2", features = ["serde", "v4", "v5"] }
 voca_rs = "1"
 

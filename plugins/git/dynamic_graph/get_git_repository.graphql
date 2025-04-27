@@ -1,9 +1,0 @@
-query {
-  git {
-    repository {
-      id
-      url
-      filename
-    }
-  }
-}
