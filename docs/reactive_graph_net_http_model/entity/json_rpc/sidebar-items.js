@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"constant":["ENTITY_TYPE_NAME_JSON_RPC"],"static":["ENTITY_TYPE_JSON_RPC"],"struct":["JsonRpc"]};

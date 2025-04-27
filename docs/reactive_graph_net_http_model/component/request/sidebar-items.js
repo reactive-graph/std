@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"constant":["COMPONENT_NAME_REQUEST"],"enum":["RequestProperties"],"static":["COMPONENT_REQUEST"],"trait":["Request"]};
