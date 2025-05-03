@@ -22,3 +22,6 @@ reactive-graph-std-base-model = { version = "0.10.0", path = "../../../base/crat
 
 [lib]
 crate-type = ["lib"]
+
+[lints]
+workspace = true

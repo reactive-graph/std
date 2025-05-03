@@ -30,3 +30,6 @@ reactive-graph-graph = { workspace = true, features = ["test"] }
 
 [lib]
 crate-type = ["lib"]
+
+[lints]
+workspace = true

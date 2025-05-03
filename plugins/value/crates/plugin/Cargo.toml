@@ -41,13 +41,16 @@ reactive-graph-std-value-model = { version = "0.10.0", path = "../../crates/mode
 [dev-dependencies]
 default-test = { workspace = true }
 reactive-graph-graph = { workspace = true, features = ["test"] }
-reactive-graph-test-utils = { workspace = true }
+reactive-graph-utils-test = { workspace = true }
 
 [lib]
 # Plugins use crate-type cdylib
 # https://doc.rust-lang.org/reference/linkage.html
 # https://users.rust-lang.org/t/what-is-the-difference-between-dylib-and-cdylib/28847/3
 crate-type = ["cdylib"]
+
+[lints]
+workspace = true
 
 [package.metadata.cargo-post.dependencies]
 reactive-graph-utils-deployment = { version = "0.10.0", git = "https://github.com/reactive-graph/reactive-graph.git" }

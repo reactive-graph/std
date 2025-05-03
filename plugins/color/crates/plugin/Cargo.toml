@@ -43,5 +43,8 @@ reactive-graph-std-color-model = { version = "0.10.0", path = "../../crates/mode
 # https://users.rust-lang.org/t/what-is-the-difference-between-dylib-and-cdylib/28847/3
 crate-type = ["cdylib"]
 
+[lints]
+workspace = true
+
 [package.metadata.cargo-post.dependencies]
 reactive-graph-utils-deployment = { version = "0.10.0", git = "https://github.com/reactive-graph/reactive-graph.git" }
