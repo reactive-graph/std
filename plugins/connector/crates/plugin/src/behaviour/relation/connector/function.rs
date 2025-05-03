@@ -18,7 +18,7 @@ pub type ConnectorFunction = fn(&Value) -> Value;
 
 /// This connector logs the value before propagation (log level debug)
 pub const FN_DEBUG_CONNECTOR: ConnectorFunction = |v| {
-    debug!("connector propagates value {}", v.to_string());
+    debug!("connector propagates value {}", v);
     v.clone()
 };
 
@@ -60,7 +60,7 @@ pub const FN_TO_STRING_CONNECTOR: ConnectorFunction = |v| json!(v.to_string());
 
 /// This connector logs the value before propagation (log level trace)
 pub const FN_TRACE_CONNECTOR: ConnectorFunction = |v| {
-    trace!("connector propagates value {}", v.to_string());
+    trace!("connector propagates value {}", v);
     v.clone()
 };
 
