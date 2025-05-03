@@ -57,8 +57,6 @@ In this repository you'll find the essential plugins which are necessary or usef
 
 | Repository | Name                                      | Description                    |
 |------------|-------------------------------------------|--------------------------------|
-| net        | [Git](./plugins/git/README.md)            | Git VCS operations             |
-| net        | [HTTP](./plugins/http/README.md)          | HTTP and JSONRPC               |
 | meta       | [Meta Data](./plugins/metadata/README.md) | Meta Data - Dublin Core, EXIF  |
 | meta       | [Taxonomy](./plugins/taxonomy/README.md)  | Taxonomy - categories and tags |
 
