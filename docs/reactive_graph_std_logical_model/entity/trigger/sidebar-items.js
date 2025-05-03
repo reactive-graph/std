@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"constant":["BEHAVIOUR_NAME_TRIGGER","ENTITY_TYPE_NAME_TRIGGER"],"enum":["TriggerProperties"],"static":["ENTITY_TYPE_TRIGGER"],"struct":["BEHAVIOUR_TRIGGER","ENTITY_BEHAVIOUR_TRIGGER","Trigger"]};
+window.SIDEBAR_ITEMS = {"constant":["BEHAVIOUR_NAME_TRIGGER","ENTITY_TYPE_NAME_TRIGGER"],"enum":["TriggerProperties"],"static":["BEHAVIOUR_TRIGGER","ENTITY_BEHAVIOUR_TRIGGER","ENTITY_TYPE_TRIGGER"],"struct":["Trigger"]};
