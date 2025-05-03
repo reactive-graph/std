@@ -23,3 +23,6 @@ reactive-graph-std-result-model = { version = "0.10.0", path = "../../../result/
 
 [lib]
 crate-type = ["lib"]
+
+[lints]
+workspace = true

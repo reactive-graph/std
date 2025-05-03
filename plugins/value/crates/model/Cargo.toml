@@ -25,10 +25,13 @@ reactive-graph-reactive-service-api = { workspace = true, features = ["derive"] 
 [dev-dependencies]
 default-test = { workspace = true }
 reactive-graph-graph = { workspace = true, features = ["test"] }
-reactive-graph-test-utils = { workspace = true }
+reactive-graph-utils-test = { workspace = true }
 
 [features]
 test = []
 
 [lib]
 crate-type = ["lib"]
+
+[lints]
+workspace = true

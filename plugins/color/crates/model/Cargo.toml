@@ -25,3 +25,6 @@ reactive-graph-reactive-model-impl = { workspace = true }
 
 [lib]
 crate-type = ["lib"]
+
+[lints]
+workspace = true

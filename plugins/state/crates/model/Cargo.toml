@@ -22,3 +22,6 @@ reactive-graph-std-value-model = { version = "0.10.0", path = "../../../value/cr
 
 [lib]
 crate-type = ["lib"]
+
+[lints]
+workspace = true
