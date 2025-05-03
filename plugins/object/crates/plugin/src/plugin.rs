@@ -18,7 +18,6 @@ use reactive_graph_std_object_model::ENTITY_BEHAVIOUR_OBJECT_SET_PROPERTY;
 export_plugin!({
     "dependencies": [
         { "name": "reactive-graph-std-base", "version": ">=0.10.0, <0.11.0" },
-        { "name": "reactive-graph-sys-file", "version": ">=0.10.0, <0.11.0" },
         { "name": "reactive-graph-std-result", "version": ">=0.10.0, <0.11.0" },
         { "name": "reactive-graph-std-trigger", "version": ">=0.10.0, <0.11.0" }
     ]
