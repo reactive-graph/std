@@ -171,14 +171,15 @@ dependencies = [
 
 [[package]]
 name = "async-executor"
-version = "1.13.1"
+version = "1.13.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "30ca9a001c1e8ba5149f91a74362376cc6bc5b919d92d988668657bd570bdcec"
+checksum = "bb812ffb58524bdd10860d7d974e2f01cc0950c2438a74ee5ec2e2280c6c4ffa"
 dependencies = [
  "async-task",
  "concurrent-queue",
  "fastrand 2.3.0",
  "futures-lite",
+ "pin-project-lite",
  "slab",
 ]
 
@@ -355,9 +356,9 @@ checksum = "d71b6127be86fdcfddb610f7182ac57211d4b18a3e9c82eb2d17662f2227ad6a"
 
 [[package]]
 name = "cc"
-version = "1.2.20"
+version = "1.2.21"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "04da6a0d40b948dfc4fa8f5bbf402b0fc1a64a28dbf7d12ffd683550f2c1b63a"
+checksum = "8691782945451c1c383942c4874dbe63814f61cb57ef773cda2972682b7bb3c0"
 dependencies = [
  "shlex",
 ]
@@ -663,9 +664,9 @@ checksum = "3c877555693c14d2f84191cfd3ad8582790fc52b5e2274b40b59cf5f5cea25c7"
 
 [[package]]
 name = "deunicode"
-version = "1.6.1"
+version = "1.6.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "dc55fe0d1f6c107595572ec8b107c0999bb1a2e0b75e37429a4fb0d6474a0e7d"
+checksum = "abd57806937c9cc163efc8ea3910e00a62e2aeb0b8119f1793a978088f8f6b04"
 
 [[package]]
 name = "digest"
@@ -904,9 +905,9 @@ dependencies = [
 
 [[package]]
 name = "hashbrown"
-version = "0.15.2"
+version = "0.15.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bf151400ff0baff5465007dd2f3e717f3fe502074ca563069ce3a6629d07b289"
+checksum = "84b26c544d002229e640969970a2e74021aadf6e2f96372b9c58eff97de08eb3"
 
 [[package]]
 name = "heck"
@@ -1028,7 +1029,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "cea70ddb795996207ad57735b50c5982d8844f38ba9ee5f1aedcfb708a2aa11e"
 dependencies = [
  "equivalent",
- "hashbrown 0.15.2",
+ "hashbrown 0.15.3",
 ]
 
 [[package]]
@@ -1866,7 +1867,6 @@ dependencies = [
 name = "reactive-graph-std-arithmetic-model"
 version = "0.10.0"
 dependencies = [
- "lazy_static",
  "reactive-graph-behaviour-model-api",
  "reactive-graph-graph",
  "reactive-graph-reactive-model-api",
@@ -1908,7 +1908,6 @@ dependencies = [
 name = "reactive-graph-std-array-model"
 version = "0.10.0"
 dependencies = [
- "lazy_static",
  "reactive-graph-behaviour-model-api",
  "reactive-graph-graph",
  "reactive-graph-reactive-model-api",
@@ -1975,7 +1974,6 @@ name = "reactive-graph-std-color-model"
 version = "0.10.0"
 dependencies = [
  "angular-units",
- "lazy_static",
  "paste",
  "prisma",
  "reactive-graph-behaviour-model-api",
@@ -2048,7 +2046,6 @@ dependencies = [
 name = "reactive-graph-std-connector-model"
 version = "0.10.0"
 dependencies = [
- "lazy_static",
  "reactive-graph-behaviour-model-api",
  "reactive-graph-graph",
  "reactive-graph-reactive-model-api",
@@ -2088,7 +2085,6 @@ dependencies = [
 name = "reactive-graph-std-date-time-model"
 version = "0.10.0"
 dependencies = [
- "lazy_static",
  "reactive-graph-behaviour-model-api",
  "reactive-graph-graph",
  "reactive-graph-reactive-model-api",
@@ -2157,7 +2153,6 @@ dependencies = [
 name = "reactive-graph-std-logical-model"
 version = "0.10.0"
 dependencies = [
- "lazy_static",
  "reactive-graph-behaviour-model-api",
  "reactive-graph-graph",
  "reactive-graph-reactive-model-api",
@@ -2260,7 +2255,6 @@ dependencies = [
 name = "reactive-graph-std-object-model"
 version = "0.10.0"
 dependencies = [
- "lazy_static",
  "reactive-graph-behaviour-model-api",
  "reactive-graph-graph",
  "reactive-graph-reactive-model-api",
@@ -2303,7 +2297,6 @@ dependencies = [
 name = "reactive-graph-std-random-model"
 version = "0.10.0"
 dependencies = [
- "lazy_static",
  "reactive-graph-behaviour-model-api",
  "reactive-graph-graph",
  "reactive-graph-reactive-model-api",
@@ -2403,7 +2396,6 @@ dependencies = [
 name = "reactive-graph-std-string-model"
 version = "0.10.0"
 dependencies = [
- "lazy_static",
  "reactive-graph-behaviour-model-api",
  "reactive-graph-graph",
  "reactive-graph-reactive-model-api",
@@ -2839,9 +2831,9 @@ checksum = "bbfa15b3dddfee50a0fff136974b3e1bde555604ba463834a7eb7deb6417705d"
 
 [[package]]
 name = "sha2"
-version = "0.10.8"
+version = "0.10.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "793db75ad2bcafc3ffa7c68b215fee268f537982cd901d132f89c6343f3a3dc8"
+checksum = "a7507d819769d01a365ab707794a4084392c824f54a7a6a7862f8c3d0892b283"
 dependencies = [
  "cfg-if",
  "cpufeatures",
@@ -3578,9 +3570,9 @@ checksum = "589f6da84c646204747d1270a2a5661ea66ed1cced2631d546fdfb155959f9ec"
 
 [[package]]
 name = "winnow"
-version = "0.7.7"
+version = "0.7.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6cb8234a863ea0e8cd7284fcdd4f145233eb00fee02bbdd9861aec44e6477bc5"
+checksum = "d9fb597c990f03753e08d3c29efbfcf2019a003b4bf4ba19225c158e1549f0f3"
 dependencies = [
  "memchr",
 ]

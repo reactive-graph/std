@@ -60,7 +60,6 @@ async-trait = "0.1"
 chrono = "0.4"
 dashmap = { version = "6.0", features = ["serde"] }
 default-test = "0.1"
-lazy_static = "1.4"
 license = "3.0"
 log = { version = "0.4", features = ["std", "serde"] }
 log4rs = { version = "1.2", features = ["console_appender", "file_appender", "toml_format"] }
