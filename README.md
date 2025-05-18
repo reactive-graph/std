@@ -18,8 +18,8 @@ This repository contains the standard library for the <a href="https://github.co
 
 <div align="center" style="text-align: center">
 
-[<img src="https://img.shields.io/badge/book-master-yellow">](https://docs.reactive-graph.io/book/)
-[<img src="https://img.shields.io/badge/api-master-yellow">](https://docs.reactive-graph.io/docs/)
+[<img src="https://img.shields.io/badge/book-master-yellow">](https://std.reactive-graph.io/book/)
+[<img src="https://img.shields.io/badge/api-master-yellow">](https://std.reactive-graph.io/docs/)
 
 [<img src="https://img.shields.io/badge/Language-Rust-brightgreen">](https://www.rust-lang.org/)
 [<img src="https://img.shields.io/badge/Platforms-Linux%20%26%20Windows-brightgreen">]()
