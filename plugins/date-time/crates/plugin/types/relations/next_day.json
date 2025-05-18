@@ -1,4 +1,5 @@
 {
+  "$id": "https://schema.reactive-graph.io/schema/json/relation-type.schema.json",
   "namespace": "date_time",
   "type_name": "next_day",
   "description": "The next day.",

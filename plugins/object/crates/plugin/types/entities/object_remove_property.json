@@ -1,11 +1,12 @@
 {
+  "$id": "https://schema.reactive-graph.io/schema/json/entity-type.schema.json",
   "namespace": "object",
   "type_name": "remove_property",
   "description": "Object Remove Property",
   "components": [
     {
       "namespace": "base",
-      "name": "named"
+      "type_name": "named"
     },
     {
       "namespace": "result",

@@ -1,4 +1,5 @@
 {
+  "$id": "https://schema.reactive-graph.io/schema/json/component.schema.json",
   "namespace": "base",
   "type_name": "ordered",
   "description": "The relations between two entities are ordered using a ordinal number associated with sibling relations",

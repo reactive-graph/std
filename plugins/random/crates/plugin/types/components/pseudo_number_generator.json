@@ -1,4 +1,5 @@
 {
+  "$id": "https://schema.reactive-graph.io/schema/json/component.schema.json",
   "namespace": "random",
   "type_name": "pseudo_number_generator",
   "description": "Pseudo Number Generator",
@@ -14,7 +15,7 @@
     {
       "namespace": "metadata",
       "type_name": "dublin-core",
-      "extension":{
+      "extension": {
         "title": "Pseudo Number Generator",
         "subject": "Pseudo Number Generator",
         "creator": "Hanack"

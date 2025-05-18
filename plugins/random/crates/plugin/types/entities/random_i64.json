@@ -1,4 +1,5 @@
 {
+  "$id": "https://schema.reactive-graph.io/schema/json/entity-type.schema.json",
   "namespace": "random",
   "type_name": "random_i64",
   "description": "Random Signed Integer Number",
@@ -18,7 +19,7 @@
     {
       "namespace": "metadata",
       "type_name": "dublin-core",
-      "extension":{
+      "extension": {
         "title": "Random Signed Integer Number",
         "subject": "Random Signed Integer Number",
         "creator": "Hanack"

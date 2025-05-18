@@ -1,4 +1,5 @@
 {
+  "$id": "https://schema.reactive-graph.io/schema/json/entiity-type.schema.json",
   "namespace": "string",
   "type_name": "is_alpha_digit",
   "description": "Checks whether the input string contains contains only alpha and digit characters",

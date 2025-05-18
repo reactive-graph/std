@@ -1,4 +1,5 @@
 {
+  "$id": "https://schema.reactive-graph.io/schema/json/relation-type.schema.json",
   "namespace": "taxonomy",
   "type_name": "has_subcategory",
   "description": "The outbound category has the inbound entity as sub category",

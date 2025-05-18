@@ -1,4 +1,5 @@
 {
+  "$id": "https://schema.reactive-graph.io/schema/json/entity-type.schema.json",
   "namespace": "logical",
   "type_name": "trigger",
   "description": "If triggered the payload will be copied to the output",
@@ -21,7 +22,7 @@
       "type_name": "palette",
       "extension": {
         "content": "Trigger",
-        "styles":  {
+        "styles": {
           "font-size": "20px",
           "font-family": "Fira Code",
           "padding": "5px"
@@ -95,7 +96,7 @@
     {
       "namespace": "metadata",
       "type_name": "dublin-core",
-      "extension":{
+      "extension": {
         "title": "Trigger",
         "subject": "If triggered the payload will be copied to the output",
         "creator": "Hanack"

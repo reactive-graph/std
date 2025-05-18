@@ -1,4 +1,5 @@
 {
+  "$id": "https://schema.reactive-graph.io/schema/json/component.schema.json",
   "namespace": "value",
   "type_name": "value_debugger_trace",
   "properties": [

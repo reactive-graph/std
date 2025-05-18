@@ -1,4 +1,5 @@
 {
+  "$id": "https://schema.reactive-graph.io/schema/json/flow-type.schema.json",
   "namespace": "logical",
   "type_name": "and3",
   "description": "AND with 3 boolean inputs",

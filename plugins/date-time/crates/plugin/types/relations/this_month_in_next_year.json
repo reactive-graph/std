@@ -1,4 +1,5 @@
 {
+  "$id": "https://schema.reactive-graph.io/schema/json/relation-type.schema.json",
   "namespace": "date_time",
   "type_name": "this_month_in_next_year",
   "description": "This month in the next year.",

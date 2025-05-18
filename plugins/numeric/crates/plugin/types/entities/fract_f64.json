@@ -1,4 +1,5 @@
 {
+  "$id": "https://schema.reactive-graph.io/schema/json/entity-type.schema.json",
   "namespace": "numeric_f64",
   "type_name": "fract",
   "description": "Returns the fractional part of a number",

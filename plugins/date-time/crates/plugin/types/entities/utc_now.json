@@ -1,4 +1,5 @@
 {
+  "$id": "https://schema.reactive-graph.io/schema/json/entity-type.schema.json",
   "namespace": "date_time",
   "type_name": "utc_now",
   "description": "Returns the current date as ISO8601",

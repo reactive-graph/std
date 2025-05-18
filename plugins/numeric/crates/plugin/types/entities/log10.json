@@ -1,4 +1,5 @@
 {
+  "$id": "https://schema.reactive-graph.io/schema/json/entity-type.schema.json",
   "namespace": "numeric_f64",
   "type_name": "log10",
   "description": "Returns the base 10 logarithm of the number",
