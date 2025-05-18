@@ -1,4 +1,5 @@
 {
+  "$id": "https://schema.reactive-graph.io/schema/json/entity-type.schema.json",
   "namespace": "random",
   "type_name": "random_f64",
   "description": "Random Floating Point Number",
@@ -18,7 +19,7 @@
     {
       "namespace": "metadata",
       "type_name": "dublin-core",
-      "extension":{
+      "extension": {
         "title": "Random Floating Point Number",
         "subject": "Random Floating Point Number",
         "creator": "Hanack"

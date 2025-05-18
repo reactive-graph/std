@@ -1,4 +1,5 @@
 {
+  "$id": "https://schema.reactive-graph.io/schema/json/entiity-type.schema.json",
   "namespace": "string",
   "type_name": "count_unique_words",
   "description": "Counting occurrences of unique words in the input string. This function respects unicode",

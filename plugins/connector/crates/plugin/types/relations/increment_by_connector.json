@@ -1,4 +1,5 @@
 {
+  "$id": "https://schema.reactive-graph.io/schema/json/relation-type.schema.json",
   "namespace": "connector",
   "type_name": "increment_by_connector",
   "description": "Connects a outbound property with another property. The value of the outbound property will be added to the value of the inbound property.",

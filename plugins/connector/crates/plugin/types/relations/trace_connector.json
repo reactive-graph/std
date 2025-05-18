@@ -1,4 +1,5 @@
 {
+  "$id": "https://schema.reactive-graph.io/schema/json/relation-type.schema.json",
   "namespace": "connector",
   "type_name": "trace_connector",
   "description": "Connects a property with a other property and logs changes to the trace logger",

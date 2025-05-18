@@ -1,4 +1,5 @@
 {
+  "$id": "https://schema.reactive-graph.io/schema/json/entiity-type.schema.json",
   "namespace": "string",
   "type_name": "is_shouty_kebab_case",
   "description": "Checks whether the input string is SHOUTY-KEBAB-CASED",

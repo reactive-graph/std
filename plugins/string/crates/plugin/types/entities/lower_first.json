@@ -1,4 +1,9 @@
 {
+  "$id": "https://schema.reactive-graph.io/schema/json/entiity-type.schema.json",
+  "$id": "https://schema.reactive-graph.io/schema/json/entiity-type.schema.json",
+  "$id": "https://schema.reactive-graph.io/schema/json/entiity-type.schema.json",
+  "$id": "https://schema.reactive-graph.io/schema/json/entiity-type.schema.json",
+  "$id": "https://schema.reactive-graph.io/schema/json/entiity-type.schema.json",
   "namespace": "string",
   "type_name": "lower_first",
   "description": "Converts the first character of the input to lower case",

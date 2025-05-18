@@ -1,11 +1,12 @@
 {
+  "$id": "https://schema.reactive-graph.io/schema/json/component.schema.json",
   "namespace": "array",
   "type_name": "reverse",
   "description": "Array Reverse",
   "components": [
     {
       "namespace": "base",
-      "name": "named"
+      "type_name": "named"
     },
     {
       "namespace": "result",

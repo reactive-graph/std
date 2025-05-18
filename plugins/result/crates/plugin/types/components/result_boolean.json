@@ -1,4 +1,5 @@
 {
+  "$id": "https://schema.reactive-graph.io/schema/json/component.schema.json",
   "namespace": "result",
   "type_name": "result_boolean",
   "description": "The entity returns a boolean",

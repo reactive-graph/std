@@ -1,4 +1,5 @@
 {
+  "$id": "https://schema.reactive-graph.io/schema/json/entity-type.schema.json",
   "namespace": "arithmetic_f64",
   "type_name": "decrement",
   "description": "Decrements a number",
@@ -90,7 +91,7 @@
     {
       "namespace": "metadata",
       "type_name": "dublin-core",
-      "extension":{
+      "extension": {
         "title": "Decrement number",
         "subject": "Decrement number",
         "creator": "Hanack"

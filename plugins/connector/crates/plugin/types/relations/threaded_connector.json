@@ -1,4 +1,5 @@
 {
+  "$id": "https://schema.reactive-graph.io/schema/json/relation-type.schema.json",
   "namespace": "connector",
   "type_name": "threaded_connector",
   "description": "Connects a property with a other property. The propagation will run in a new thread",

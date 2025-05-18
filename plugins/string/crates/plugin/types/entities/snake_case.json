@@ -1,4 +1,5 @@
 {
+  "$id": "https://schema.reactive-graph.io/schema/json/entiity-type.schema.json",
   "namespace": "string",
   "type_name": "snake_case",
   "description": "Converts the subject to snake case",

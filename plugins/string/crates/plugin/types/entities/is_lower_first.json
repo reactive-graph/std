@@ -1,4 +1,5 @@
 {
+  "$id": "https://schema.reactive-graph.io/schema/json/entiity-type.schema.json",
   "namespace": "string",
   "type_name": "is_lower_first",
   "description": "Checks whether the input string has the first character in lower case",

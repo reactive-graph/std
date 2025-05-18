@@ -1,4 +1,5 @@
 {
+  "$id": "https://schema.reactive-graph.io/schema/json/component.schema.json",
   "namespace": "flow",
   "type_name": "flow_3d",
   "description": "The position (x,y,z) of the entity or relation on a three dimensional flow (in-game visual scripting).",

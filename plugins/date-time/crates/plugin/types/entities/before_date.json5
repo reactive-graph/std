@@ -1,4 +1,5 @@
 {
+  "$id": "https://schema.reactive-graph.io/schema/json/entity-type.schema.json",
   "namespace": "date_time",
   "type_name": "before_date",
   "description": "Returns true if the first date is before the other date",

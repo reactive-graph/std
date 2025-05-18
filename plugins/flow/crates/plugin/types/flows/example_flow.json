@@ -1,4 +1,5 @@
 {
+  "$id": "https://schema.reactive-graph.io/schema/json/flow-type.schema.json",
   "namespace": "flow",
   "type_name": "example",
   "description": "Example Flow Type",

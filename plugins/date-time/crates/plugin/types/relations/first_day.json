@@ -1,5 +1,6 @@
 {
-  "namespace": "date_time",
+  "$id": "https://schema.reactive-graph.io/schema/json/relation-type.schema.json",
+v  "namespace": "date_time",
   "type_name": "first_day",
   "description": "The first day of the month",
   "outbound": {

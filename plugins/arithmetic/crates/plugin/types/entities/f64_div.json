@@ -1,4 +1,5 @@
 {
+  "$id": "https://schema.reactive-graph.io/schema/json/entity-type.schema.json",
   "namespace": "arithmetic_f64",
   "type_name": "div",
   "description": "Divides two floating point numbers",

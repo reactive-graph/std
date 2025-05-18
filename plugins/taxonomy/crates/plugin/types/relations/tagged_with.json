@@ -1,4 +1,5 @@
 {
+  "$id": "https://schema.reactive-graph.io/schema/json/relation-type.schema.json",
   "namespace": "taxonomy",
   "type_name": "tagged_with",
   "description": "The outbound entity is tagged with the inbound tag",

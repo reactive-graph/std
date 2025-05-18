@@ -1,4 +1,5 @@
 {
+  "$id": "https://schema.reactive-graph.io/schema/json/entity-type.schema.json",
   "namespace": "color",
   "type_name": "hsv_to_rgb",
   "description": "Converts the color in HSV color space to RGB color space",
