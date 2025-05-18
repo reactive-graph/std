@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Moved tooling library plugins to `reactive-graph/tooling`
 - Moved network library plugins to `reactive-graph/net`
 - Configure lints on workspace level
+- Add JSON schema identifier to all types
 
 ### Fixed
 
