@@ -9,7 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- [Book: std.reactive.graph.io](https://std.reactive.graph.io/)
+- Documentation: [Book: std.reactive.graph.io](https://std.reactive.graph.io/)
+- Type System: Add JSON schema identifier to all types
 
 ### Changed
 
@@ -19,7 +20,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Moved tooling library plugins to `reactive-graph/tooling`
 - Moved network library plugins to `reactive-graph/net`
 - Configure lints on workspace level
-- Add JSON schema identifier to all types
 
 ### Fixed
 
@@ -36,6 +36,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - CI: Upgraded multiple actions
 - CI: Synchronize labels from config file
 - CI: Automatically merge successful dependabot PR's
+- CI: Added CODEOWNERS
 
 ## [0.9.1-21] - 2023-05-09
 
