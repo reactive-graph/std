@@ -17,14 +17,18 @@ updates:
   - package-ecosystem: "cargo"
     directory: "/"
     schedule:
-      interval: "daily"
+      # phased updates:
+      # - friday: std
+      # - saturday: all others
+      interval: "weekly"
+      day: "friday"
       time: "18:00"
       timezone: "Europe/Berlin"
     labels:
       - "p:dependencies"
-    open-pull-requests-limit: 10
-    reviewers:
-      - "reactive-graph/code-contributors"
+    # Allow only 1 PR because it would open a lot of PRs for each imported module
+    # in the reactive-graph workspace if reactive-graph has new commits
+    open-pull-requests-limit: 1
     groups:
       rust-dependencies:
         update-types:
