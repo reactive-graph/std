@@ -1,0 +1,14 @@
+[package]
+name = "dummy"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+license.workspace = true
+publish = false
+
+[[bin]]
+name = "dummy"
+path = "src/dummy.rs"
+
+[lints]
+workspace = true

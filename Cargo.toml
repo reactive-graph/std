@@ -39,7 +39,8 @@ members = [
     "plugins/trigger/crates/plugin",
     "plugins/value/crates/model",
     "plugins/value/crates/plugin",
-    "deployment"
+    "deployment",
+    "dummy"
 ]
 resolver = "3"
 

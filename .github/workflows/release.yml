@@ -79,53 +79,85 @@ jobs:
           # ARM64 Linux (kernel 4.1, glibc 2.17+)
           - target: aarch64-unknown-linux-gnu
             os: ubuntu-22.04-arm
+            prefix: lib
+            extension: .so
           # ARM64 macOS (11.0+, Big Sur+)
           - target: aarch64-apple-darwin
             os: macos-latest
+            prefix: lib
+            extension: .dylib
           # 32-bit Linux (kernel 3.2+, glibc 2.17+) 1
           - target: i686-unknown-linux-gnu
             os: ubuntu-22.04
+            prefix: lib
+            extension: .so
           # 64-bit macOS (10.12+, Sierra+)
           - target: x86_64-apple-darwin
             os: macos-latest
+            prefix: lib
+            extension: .dylib
           # 64-bit MinGW (Windows 10+, Windows Server 2016+)
           - target: x86_64-pc-windows-gnu
             os: ubuntu-22.04
+            prefix: ""
+            extension: .dll
           # 64-bit MSVC (Windows 10+, Windows Server 2016+)
           - target: x86_64-pc-windows-msvc
             os: windows-latest
+            prefix: ""
+            extension: .dll
           # 64-bit Linux (kernel 3.2+, glibc 2.17+)
           - target: x86_64-unknown-linux-gnu
             os: ubuntu-22.04
+            prefix: lib
+            extension: .so
           # Universal macOS binary is supported as universal-apple-darwin.
           - target: universal-apple-darwin
             os: macos-latest
+            prefix: lib
+            extension: .dylib
           # Tier 2
           # ARM64 Linux with musl 1.2.3
           - target: aarch64-unknown-linux-musl
             os: ubuntu-24.04-arm
             build_tool: cargo
+            prefix: lib
+            extension: .so
           # Armv7-A Linux, hardfloat (kernel 3.2, glibc 2.17)
           - target: armv7-unknown-linux-gnueabihf
             os: ubuntu-24.04-arm
+            prefix: lib
+            extension: .so
           # Armv7-A Linux with musl 1.2.3, hardfloat
           - target: armv7-unknown-linux-musleabihf
             os: ubuntu-24.04-arm
+            prefix: lib
+            extension: .so
           # 64-bit Linux with musl 1.2.3
           - target: x86_64-unknown-linux-musl
             os: ubuntu-22.04
+            prefix: lib
+            extension: .so
           # PowerPC Linux (kernel 3.2, glibc 2.17)
           - target: powerpc-unknown-linux-gnu
             os: ubuntu-22.04
+            prefix: lib
+            extension: .so
           # PPC64 Linux (kernel 3.2, glibc 2.17)
           - target: powerpc64-unknown-linux-gnu
             os: ubuntu-22.04
+            prefix: lib
+            extension: .so
           # PPC64LE Linux (kernel 3.10, glibc 2.17)
           - target: powerpc64le-unknown-linux-gnu
             os: ubuntu-24.04
+            prefix: lib
+            extension: .so
           # RISC-V Linux (kernel 4.20, glibc 2.29)
           - target: riscv64gc-unknown-linux-gnu
             os: ubuntu-22.04
+            prefix: lib
+            extension: .so
     runs-on: ${{ matrix.os }}
     steps:
       - name: VCS Checkout
@@ -221,29 +253,35 @@ jobs:
       - name: Upload Regular Release Binary
         uses: taiki-e/upload-rust-binary-action@v1
         with:
-          bin: |
-            libreactive_graph_std_arithmetic,
-            libreactive_graph_std_array,
-            libreactive_graph_std_base,
-            libreactive_graph_std_color,
-            libreactive_graph_std_comparison,
-            libreactive_graph_std_connector,
-            libreactive_graph_std_date_time,
-            libreactive_graph_std_flow,
-            libreactive_graph_std_logical,
-            libreactive_graph_std_metadata,
-            libreactive_graph_std_numeric,
-            libreactive_graph_std_object,
-            libreactive_graph_std_random,
-            libreactive_graph_std_result,
-            libreactive_graph_std_state,
-            libreactive_graph_std_string,
-            libreactive_graph_std_taxonomy,
-            libreactive_graph_std_trigger,
-            libreactive_graph_std_value
+          bin: dummy
           target: ${{ matrix.target }}
           archive: 'reactive-graph-std-$tag-$target'
-          include: LICENSE.md,README.md,CHANGELOG.md,CODE_OF_CONDUCT.md,CONTRIBUTING.md,SECURITY.md
+          include: |
+            LICENSE.md,
+            README.md,
+            CHANGELOG.md,
+            CODE_OF_CONDUCT.md,
+            CONTRIBUTING.md,
+            SECURITY.md,
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_arithmetic${{ matrix.extension }},
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_array${{ matrix.extension }},
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_base${{ matrix.extension }},
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_color${{ matrix.extension }},
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_comparison${{ matrix.extension }},
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_connector${{ matrix.extension }},
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_date_time${{ matrix.extension }},
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_flow${{ matrix.extension }},
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_logical${{ matrix.extension }},
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_metadata${{ matrix.extension }},
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_numeric${{ matrix.extension }},
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_object${{ matrix.extension }},
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_random${{ matrix.extension }},
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_result${{ matrix.extension }},
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_state${{ matrix.extension }},
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_string${{ matrix.extension }},
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_taxonomy${{ matrix.extension }},
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_trigger${{ matrix.extension }},
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_value${{ matrix.extension }}
           tar: unix
           zip: windows
           leading_dir: true
@@ -252,30 +290,36 @@ jobs:
       - name: Upload Nightly Binary
         uses: taiki-e/upload-rust-binary-action@v1
         with:
-          bin: |
-            libreactive_graph_std_arithmetic,
-            libreactive_graph_std_array,
-            libreactive_graph_std_base,
-            libreactive_graph_std_color,
-            libreactive_graph_std_comparison,
-            libreactive_graph_std_connector,
-            libreactive_graph_std_date_time,
-            libreactive_graph_std_flow,
-            libreactive_graph_std_logical,
-            libreactive_graph_std_metadata,
-            libreactive_graph_std_numeric,
-            libreactive_graph_std_object,
-            libreactive_graph_std_random,
-            libreactive_graph_std_result,
-            libreactive_graph_std_state,
-            libreactive_graph_std_string,
-            libreactive_graph_std_taxonomy,
-            libreactive_graph_std_trigger,
-            libreactive_graph_std_value
+          bin: dummy
           target: ${{ matrix.target }}
           build-tool: ${{ matrix.build_tool }}
           archive: 'reactive-graph-std-nightly-$target'
-          include: LICENSE.md,README.md,CHANGELOG.md,CODE_OF_CONDUCT.md,CONTRIBUTING.md,SECURITY.md
+          include: |
+            LICENSE.md,
+            README.md,
+            CHANGELOG.md,
+            CODE_OF_CONDUCT.md,
+            CONTRIBUTING.md,
+            SECURITY.md,
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_arithmetic${{ matrix.extension }},
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_array${{ matrix.extension }},
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_base${{ matrix.extension }},
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_color${{ matrix.extension }},
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_comparison${{ matrix.extension }},
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_connector${{ matrix.extension }},
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_date_time${{ matrix.extension }},
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_flow${{ matrix.extension }},
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_logical${{ matrix.extension }},
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_metadata${{ matrix.extension }},
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_numeric${{ matrix.extension }},
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_object${{ matrix.extension }},
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_random${{ matrix.extension }},
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_result${{ matrix.extension }},
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_state${{ matrix.extension }},
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_string${{ matrix.extension }},
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_taxonomy${{ matrix.extension }},
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_trigger${{ matrix.extension }},
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_value${{ matrix.extension }}
           tar: unix
           zip: windows
           leading_dir: true
