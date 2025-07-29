@@ -20,7 +20,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - CI: Use ubuntu-22.04 instead of ubuntu-20.04 for building debian packages
 - CI: Publish dynamic link libraries as compressed archive
 - CI: Publish debian packages
-- CI: Create nightly builds
 
 ### Infrastructure
 
