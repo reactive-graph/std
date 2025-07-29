@@ -256,32 +256,7 @@ jobs:
           bin: dummy
           target: ${{ matrix.target }}
           archive: 'reactive-graph-std-$tag-$target'
-          include: |
-            LICENSE.md,
-            README.md,
-            CHANGELOG.md,
-            CODE_OF_CONDUCT.md,
-            CONTRIBUTING.md,
-            SECURITY.md,
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_arithmetic${{ matrix.extension }},
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_array${{ matrix.extension }},
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_base${{ matrix.extension }},
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_color${{ matrix.extension }},
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_comparison${{ matrix.extension }},
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_connector${{ matrix.extension }},
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_date_time${{ matrix.extension }},
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_flow${{ matrix.extension }},
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_logical${{ matrix.extension }},
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_metadata${{ matrix.extension }},
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_numeric${{ matrix.extension }},
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_object${{ matrix.extension }},
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_random${{ matrix.extension }},
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_result${{ matrix.extension }},
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_state${{ matrix.extension }},
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_string${{ matrix.extension }},
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_taxonomy${{ matrix.extension }},
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_trigger${{ matrix.extension }},
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_value${{ matrix.extension }}
+          include: LICENSE.md,README.md,CHANGELOG.md,CODE_OF_CONDUCT.md,CONTRIBUTING.md,SECURITY.md,target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_arithmetic${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_array${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_base${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_color${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_comparison${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_connector${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_date_time${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_flow${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_logical${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_metadata${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_numeric${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_object${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_random${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_result${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_state${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_string${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_taxonomy${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_trigger${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_value${{ matrix.extension }}
           tar: unix
           zip: windows
           leading_dir: true
@@ -294,32 +269,7 @@ jobs:
           target: ${{ matrix.target }}
           build-tool: ${{ matrix.build_tool }}
           archive: 'reactive-graph-std-nightly-$target'
-          include: |
-            LICENSE.md,
-            README.md,
-            CHANGELOG.md,
-            CODE_OF_CONDUCT.md,
-            CONTRIBUTING.md,
-            SECURITY.md,
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_arithmetic${{ matrix.extension }},
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_array${{ matrix.extension }},
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_base${{ matrix.extension }},
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_color${{ matrix.extension }},
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_comparison${{ matrix.extension }},
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_connector${{ matrix.extension }},
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_date_time${{ matrix.extension }},
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_flow${{ matrix.extension }},
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_logical${{ matrix.extension }},
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_metadata${{ matrix.extension }},
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_numeric${{ matrix.extension }},
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_object${{ matrix.extension }},
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_random${{ matrix.extension }},
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_result${{ matrix.extension }},
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_state${{ matrix.extension }},
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_string${{ matrix.extension }},
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_taxonomy${{ matrix.extension }},
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_trigger${{ matrix.extension }},
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_value${{ matrix.extension }}
+          include: LICENSE.md,README.md,CHANGELOG.md,CODE_OF_CONDUCT.md,CONTRIBUTING.md,SECURITY.md,target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_arithmetic${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_array${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_base${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_color${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_comparison${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_connector${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_date_time${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_flow${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_logical${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_metadata${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_numeric${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_object${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_random${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_result${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_state${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_string${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_taxonomy${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_trigger${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_value${{ matrix.extension }}
           tar: unix
           zip: windows
           leading_dir: true
