@@ -26,6 +26,7 @@ concurrency:
 env:
   CARGO_TERM_COLOR: always
   WORKSPACE_ROOT_MANIFEST_DIR: "/home/runner/work/std/std"
+  AWS_LC_SYS_PREBUILT_NASM: 1
 
 jobs:
   create-or-update-nightly-tag:
@@ -73,7 +74,6 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        build_tool: [ "" ]
         include:
           # Tier 1
           # ARM64 Linux (kernel 4.1, glibc 2.17+)
@@ -267,7 +267,6 @@ jobs:
         with:
           bin: dummy
           target: ${{ matrix.target }}
-          build-tool: ${{ matrix.build_tool }}
           archive: 'reactive-graph-std-nightly-$target'
           include: LICENSE.md,README.md,CHANGELOG.md,CODE_OF_CONDUCT.md,CONTRIBUTING.md,SECURITY.md,target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_arithmetic${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_array${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_base${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_color${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_comparison${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_connector${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_date_time${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_flow${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_logical${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_metadata${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_numeric${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_object${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_random${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_result${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_state${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_string${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_taxonomy${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_trigger${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_value${{ matrix.extension }}
           tar: unix
@@ -277,16 +276,23 @@ jobs:
           ref: refs/tags/nightly
         if: github.ref == 'refs/heads/main'
   debian-package:
-    name: Publish debian package
+    name: Debian package
+    needs: [ create-or-update-nightly-tag, create-release ]
+    if: always() && (!contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled'))
     strategy:
+      fail-fast: false
       matrix:
         include:
           - target: x86_64-unknown-linux-gnu
+            # libc 2.35
             os: ubuntu-22.04
           - target: aarch64-unknown-linux-gnu
-            os: ubuntu-22.04
+            # libc 2.35
+            os: ubuntu-22.04-arm
           - target: armv7-unknown-linux-gnueabihf
-            os: ubuntu-22.04
+            # libc 2.35
+            os: ubuntu-22.04-arm
+          # TODO: add more
     runs-on: ${{ matrix.os }}
     steps:
       - name: VCS Checkout
@@ -296,35 +302,36 @@ jobs:
         uses: devops-actions/action-get-tag@v1.0.3
         with:
           strip_v: true
+          default: nightly
+      - name: Get current date
+        id: date
+        run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
       - name: Install aarch64 packages
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
           packages: binutils-aarch64-linux-gnu gcc-aarch64-linux-gnu
           version: 1.0
         if: matrix.target == 'aarch64-unknown-linux-gnu'
-      - name: Install armv7 packages
+      - name: Install Compiler Tools for Target armv7-unknown-linux-gnueabihf
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
-          packages: binutils-arm-none-eabi gcc-arm-linux-gnueabihf
+          packages: binutils-arm-linux-gnueabihf gcc-arm-linux-gnueabihf
           version: 1.0
         if: matrix.target == 'armv7-unknown-linux-gnueabihf'
-      - name: Install latest nightly
-        uses: actions-rs/toolchain@v1
+      - name: Install rust toolchain
+        uses: dtolnay/rust-toolchain@master
         with:
-          profile: minimal
-          toolchain: nightly
-          override: true
+          toolchain: stable
       - name: Install Cargo Deb
-        uses: actions-rs/install@v0.1
+        uses: taiki-e/cache-cargo-install-action@v2
         with:
-          crate: cargo-deb
-          version: latest
-          use-tool-cache: true
+          tool: cargo-deb
       - name: Install cross-compilation tools
         uses: taiki-e/setup-cross-toolchain-action@v1
         with:
           target: ${{ matrix.target }}
-      - name: Create Debian Package
+      - name: Create Regular Debian Package
+        if: startsWith(github.event.ref, 'refs/tags/v')
         run: |
           # It's important to change into the plugin directory and building each package
           cd ./plugins/arithmetic/crates/plugin
@@ -369,10 +376,66 @@ jobs:
           cargo deb -p reactive-graph-std-value --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
         env:
           VERGEN_IDEMPOTENT: true
-      - name: Upload debian package to release
+      - name: Create Nightly Debian Package
+        if: github.ref == 'refs/heads/main'
+        run: |
+          # It's important to change into the plugin directory and building each package
+          cd ./plugins/arithmetic/crates/plugin
+          cargo deb -p reactive-graph-std-arithmetic --target=${{ matrix.target }} --deb-revision nightly
+          cd ../../../base/crates/plugin
+          cargo deb -p reactive-graph-std-base --target=${{ matrix.target }} --deb-revision nightly
+          cd ../../../color/crates/plugin
+          cargo deb -p reactive-graph-std-color --target=${{ matrix.target }} --deb-revision nightly
+          cd ../../../comparison/crates/plugin
+          cargo deb -p reactive-graph-std-comparison --target=${{ matrix.target }} --deb-revision nightly
+          cd ../../../connector/crates/plugin
+          cargo deb -p reactive-graph-std-connector --target=${{ matrix.target }} --deb-revision nightly
+          cd ../../../date-time/crates/plugin
+          cargo deb -p reactive-graph-std-date-time --target=${{ matrix.target }} --deb-revision nightly
+          cd ../../../flow/crates/plugin
+          cargo deb -p reactive-graph-std-flow --target=${{ matrix.target }} --deb-revision nightly
+          cd ../../../git/crates/plugin
+          cargo deb -p reactive-graph-net-git --target=${{ matrix.target }} --deb-revision nightly
+          cd ../../../http/crates/plugin
+          cargo deb -p reactive-graph-net-http --target=${{ matrix.target }} --deb-revision nightly
+          # cd ../../../i18n/crates/plugin
+          # cargo deb -p reactive-graph-std-i18n --target=${{ matrix.target }} --deb-revision nightly
+          cd ../../../logical/crates/plugin
+          cargo deb -p reactive-graph-std-logical --target=${{ matrix.target }} --deb-revision nightly
+          cd ../../../metadata/crates/plugin
+          cargo deb -p reactive-graph-std-metadata --target=${{ matrix.target }} --deb-revision nightly
+          cd ../../../numeric/crates/plugin
+          cargo deb -p reactive-graph-std-numeric --target=${{ matrix.target }} --deb-revision nightly
+          cd ../../../random/crates/plugin
+          cargo deb -p reactive-graph-std-random --target=${{ matrix.target }} --deb-revision nightly
+          cd ../../../result/crates/plugin
+          cargo deb -p reactive-graph-std-result --target=${{ matrix.target }} --deb-revision nightly
+          cd ../../../state/crates/plugin
+          cargo deb -p reactive-graph-std-state --target=${{ matrix.target }} --deb-revision nightly
+          cd ../../../string/crates/plugin
+          cargo deb -p reactive-graph-std-string --target=${{ matrix.target }} --deb-revision nightly
+          cd ../../../taxonomy/crates/plugin
+          cargo deb -p reactive-graph-std-taxonomy --target=${{ matrix.target }} --deb-revision nightly
+          cd ../../../trigger/crates/plugin
+          cargo deb -p reactive-graph-std-trigger --target=${{ matrix.target }} --deb-revision nightly
+          cd ../../../value/crates/plugin
+          cargo deb -p reactive-graph-std-value --target=${{ matrix.target }} --deb-revision nightly
+        env:
+          VERGEN_IDEMPOTENT: true
+      - name: Upload Regular Debian Package
         uses: svenstaro/upload-release-action@v2
+        if: startsWith(github.event.ref, 'refs/tags/v')
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: target/${{ matrix.target }}/debian/libreactive-graph-std-*_*_*.deb
           file_glob: true
           tag: ${{ github.ref }}
+      - name: Upload Nightly Debian Package
+        uses: svenstaro/upload-release-action@v2
+        if: github.ref == 'refs/heads/main'
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: target/${{ matrix.target }}/debian/libreactive-graph-std-*_*_*.deb
+          file_glob: true
+          tag: 'nightly'
+          overwrite: true
