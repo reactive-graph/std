@@ -11,12 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- CI: Use ubuntu-22.04 instead of ubuntu-20.04 for building debian packages
-- CI: Attempt to package dynamic link libraries into an archive artifact and publish on GitHub Releases
+- Build: Bump MSRV 1.85 -> 1.87
 
 ### Fixed
 
 ### Distribution
+
+- CI: Use ubuntu-22.04 instead of ubuntu-20.04 for building debian packages
+- CI: Attempt to package dynamic link libraries into an archive artifact and publish on GitHub Releases
 
 ### Infrastructure
 
