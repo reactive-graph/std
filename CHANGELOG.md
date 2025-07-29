@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- CI: Use ubuntu-22.04 instead of ubuntu-20.04 for building debian packages
+
 ### Fixed
 
 ### Distribution
