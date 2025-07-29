@@ -250,30 +250,59 @@ jobs:
           matrix.target == 'powerpc64-unknown-linux-gnu' ||
           matrix.target == 'powerpc64le-unknown-linux-gnu' ||
           matrix.target == 'riscv64gc-unknown-linux-gnu'
-      - name: Upload Regular Release Binary
-        uses: taiki-e/upload-rust-binary-action@v1
+      - name: Build Plugin Dynamic Link Libraries
+        run: cargo build --release --target ${{ matrix.target }}
+      - name: Upload Regular Release Plugin Dynamic Link Libraries
+        uses: actions/upload-artifact@v4
         with:
-          bin: dummy
-          target: ${{ matrix.target }}
-          archive: 'reactive-graph-std-$tag-$target'
-          include: LICENSE.md,README.md,CHANGELOG.md,CODE_OF_CONDUCT.md,CONTRIBUTING.md,SECURITY.md,target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_arithmetic${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_array${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_base${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_color${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_comparison${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_connector${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_date_time${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_flow${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_logical${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_metadata${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_numeric${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_object${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_random${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_result${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_state${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_string${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_taxonomy${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_trigger${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_value${{ matrix.extension }}
-          tar: unix
-          zip: windows
-          leading_dir: true
-          token: ${{ secrets.GITHUB_TOKEN }}
+          name: 'reactive-graph-std_$tag_$target'
+          path: |
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_arithmetic${{ matrix.extension }}
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_array${{ matrix.extension }}
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_base${{ matrix.extension }}
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_color${{ matrix.extension }}
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_comparison${{ matrix.extension }}
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_connector${{ matrix.extension }}
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_date_time${{ matrix.extension }}
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_flow${{ matrix.extension }}
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_logical${{ matrix.extension }}
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_metadata${{ matrix.extension }}
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_numeric${{ matrix.extension }}
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_object${{ matrix.extension }}
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_random${{ matrix.extension }}
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_result${{ matrix.extension }}
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_state${{ matrix.extension }}
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_string${{ matrix.extension }}
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_taxonomy${{ matrix.extension }}
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_trigger${{ matrix.extension }}
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_value${{ matrix.extension }}
+          overwrite: true
         if: startsWith(github.event.ref, 'refs/tags/v')
-      - name: Upload Nightly Binary
-        uses: taiki-e/upload-rust-binary-action@v1
+      - name: Upload Nightly Plugin Dynamic Link Libraries
+        uses: actions/upload-artifact@v4
         with:
-          bin: dummy
-          target: ${{ matrix.target }}
-          archive: 'reactive-graph-std-nightly-$target'
-          include: LICENSE.md,README.md,CHANGELOG.md,CODE_OF_CONDUCT.md,CONTRIBUTING.md,SECURITY.md,target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_arithmetic${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_array${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_base${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_color${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_comparison${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_connector${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_date_time${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_flow${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_logical${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_metadata${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_numeric${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_object${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_random${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_result${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_state${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_string${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_taxonomy${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_trigger${{ matrix.extension }},target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_value${{ matrix.extension }}
-          tar: unix
-          zip: windows
-          leading_dir: true
-          token: ${{ secrets.GITHUB_TOKEN }}
-          ref: refs/tags/nightly
+          name: 'reactive-graph-std_nightly_$target'
+          path: |
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_arithmetic${{ matrix.extension }}
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_array${{ matrix.extension }}
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_base${{ matrix.extension }}
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_color${{ matrix.extension }}
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_comparison${{ matrix.extension }}
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_connector${{ matrix.extension }}
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_date_time${{ matrix.extension }}
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_flow${{ matrix.extension }}
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_logical${{ matrix.extension }}
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_metadata${{ matrix.extension }}
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_numeric${{ matrix.extension }}
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_object${{ matrix.extension }}
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_random${{ matrix.extension }}
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_result${{ matrix.extension }}
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_state${{ matrix.extension }}
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_string${{ matrix.extension }}
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_taxonomy${{ matrix.extension }}
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_trigger${{ matrix.extension }}
+            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_value${{ matrix.extension }}
+          overwrite: true
         if: github.ref == 'refs/heads/main'
   debian-package:
     name: Debian package
@@ -348,10 +377,6 @@ jobs:
           cargo deb -p reactive-graph-std-date-time --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../flow/crates/plugin
           cargo deb -p reactive-graph-std-flow --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
-          cd ../../../git/crates/plugin
-          cargo deb -p reactive-graph-net-git --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
-          cd ../../../http/crates/plugin
-          cargo deb -p reactive-graph-net-http --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           # cd ../../../i18n/crates/plugin
           # cargo deb -p reactive-graph-std-i18n --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
           cd ../../../logical/crates/plugin
@@ -394,10 +419,6 @@ jobs:
           cargo deb -p reactive-graph-std-date-time --target=${{ matrix.target }} --deb-revision nightly
           cd ../../../flow/crates/plugin
           cargo deb -p reactive-graph-std-flow --target=${{ matrix.target }} --deb-revision nightly
-          cd ../../../git/crates/plugin
-          cargo deb -p reactive-graph-net-git --target=${{ matrix.target }} --deb-revision nightly
-          cd ../../../http/crates/plugin
-          cargo deb -p reactive-graph-net-http --target=${{ matrix.target }} --deb-revision nightly
           # cd ../../../i18n/crates/plugin
           # cargo deb -p reactive-graph-std-i18n --target=${{ matrix.target }} --deb-revision nightly
           cd ../../../logical/crates/plugin
