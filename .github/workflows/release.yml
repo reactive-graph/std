@@ -226,6 +226,7 @@ jobs:
         uses: dtolnay/rust-toolchain@master
         with:
           toolchain: stable
+          target: ${{ matrix.target }}
       - name: Install bindgen-cli
         uses: taiki-e/cache-cargo-install-action@v2
         with:
