@@ -119,7 +119,7 @@ jobs:
           # Tier 2
           # Armv7-A Linux, hardfloat (kernel 3.2, glibc 2.17)
           - target: armv7-unknown-linux-gnueabihf
-            os: ubuntu-24.04-arm
+            os: ubuntu-22.04-arm
             prefix: lib
             extension: .so
           # PowerPC Linux (kernel 3.2, glibc 2.17)
@@ -134,7 +134,7 @@ jobs:
             extension: .so
           # PPC64LE Linux (kernel 3.10, glibc 2.17)
           - target: powerpc64le-unknown-linux-gnu
-            os: ubuntu-24.04
+            os: ubuntu-22.04
             prefix: lib
             extension: .so
           # RISC-V Linux (kernel 4.20, glibc 2.29)
