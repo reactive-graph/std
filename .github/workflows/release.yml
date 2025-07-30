@@ -146,6 +146,12 @@ jobs:
     steps:
       - name: VCS Checkout
         uses: actions/checkout@v4
+      - name: Get version number from git tag
+        id: tag
+        uses: devops-actions/action-get-tag@v1.0.3
+        with:
+          strip_v: true
+          default: nightly
       - name: Install Compiler Tools for Target i686-unknown-linux-gnu
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
@@ -236,7 +242,7 @@ jobs:
       - name: Upload Regular Release Plugin Dynamic Link Libraries
         uses: actions/upload-artifact@v4
         with:
-          name: 'reactive-graph-std_$tag_$target'
+          name: 'reactive-graph-std_${{steps.tag.outputs.tag}}_${{ matrix.target }}'
           path: |
             target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_arithmetic${{ matrix.extension }}
             target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_array${{ matrix.extension }}
@@ -262,7 +268,7 @@ jobs:
       - name: Upload Nightly Plugin Dynamic Link Libraries
         uses: actions/upload-artifact@v4
         with:
-          name: 'reactive-graph-std_nightly_$target'
+          name: 'reactive-graph-std_nightly_${{ matrix.target }}'
           path: |
             target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_arithmetic${{ matrix.extension }}
             target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_array${{ matrix.extension }}
