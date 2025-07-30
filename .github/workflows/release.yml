@@ -251,60 +251,20 @@ jobs:
           matrix.target == 'powerpc64-unknown-linux-gnu' ||
           matrix.target == 'powerpc64le-unknown-linux-gnu' ||
           matrix.target == 'riscv64gc-unknown-linux-gnu'
-      - name: Build Plugin Dynamic Link Libraries
+      - name: Build Dynamic Link Libraries
         run: cargo build --release --target ${{ matrix.target }}
-      - name: Upload Regular Release Plugin Dynamic Link Libraries
-        uses: actions/upload-artifact@v4
+      - name: Create Release Archive
+        id: create_release_archive
+        uses: ksm2/archive-action@v1
         with:
           name: 'reactive-graph-std_${{steps.tag.outputs.tag}}_${{ matrix.target }}'
-          path: |
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_arithmetic${{ matrix.extension }}
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_array${{ matrix.extension }}
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_base${{ matrix.extension }}
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_color${{ matrix.extension }}
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_comparison${{ matrix.extension }}
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_connector${{ matrix.extension }}
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_date_time${{ matrix.extension }}
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_flow${{ matrix.extension }}
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_logical${{ matrix.extension }}
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_metadata${{ matrix.extension }}
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_numeric${{ matrix.extension }}
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_object${{ matrix.extension }}
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_random${{ matrix.extension }}
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_result${{ matrix.extension }}
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_state${{ matrix.extension }}
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_string${{ matrix.extension }}
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_taxonomy${{ matrix.extension }}
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_trigger${{ matrix.extension }}
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_value${{ matrix.extension }}
-          overwrite: true
-        if: startsWith(github.event.ref, 'refs/tags/v')
-      - name: Upload Nightly Plugin Dynamic Link Libraries
-        uses: actions/upload-artifact@v4
+          format: ${{ matrix.archive_format }}
+          root-directory: 'target/${{ matrix.target }}/release/'
+          include: '${{ matrix.prefix }}reactive_graph_std_*${{ matrix.extension }}'
+      - name: Upload Release Archive to GitHub Releases
+        uses: softprops/action-gh-release@v2
         with:
-          name: 'reactive-graph-std_nightly_${{ matrix.target }}'
-          path: |
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_arithmetic${{ matrix.extension }}
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_array${{ matrix.extension }}
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_base${{ matrix.extension }}
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_color${{ matrix.extension }}
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_comparison${{ matrix.extension }}
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_connector${{ matrix.extension }}
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_date_time${{ matrix.extension }}
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_flow${{ matrix.extension }}
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_logical${{ matrix.extension }}
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_metadata${{ matrix.extension }}
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_numeric${{ matrix.extension }}
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_object${{ matrix.extension }}
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_random${{ matrix.extension }}
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_result${{ matrix.extension }}
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_state${{ matrix.extension }}
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_string${{ matrix.extension }}
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_taxonomy${{ matrix.extension }}
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_trigger${{ matrix.extension }}
-            target/${{ matrix.target }}/release/${{ matrix.prefix }}reactive_graph_std_value${{ matrix.extension }}
-          overwrite: true
-        if: github.ref == 'refs/heads/main'
+          files: ${{ steps.create_release_archive.outputs.path }}
   debian-package:
     name: Debian package
     needs: [ create-or-update-nightly-tag, create-release ]
