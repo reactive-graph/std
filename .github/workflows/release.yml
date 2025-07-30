@@ -117,25 +117,9 @@ jobs:
             prefix: lib
             extension: .dylib
           # Tier 2
-          # ARM64 Linux with musl 1.2.3
-          - target: aarch64-unknown-linux-musl
-            os: ubuntu-24.04-arm
-            build_tool: cargo
-            prefix: lib
-            extension: .so
           # Armv7-A Linux, hardfloat (kernel 3.2, glibc 2.17)
           - target: armv7-unknown-linux-gnueabihf
             os: ubuntu-24.04-arm
-            prefix: lib
-            extension: .so
-          # Armv7-A Linux with musl 1.2.3, hardfloat
-          - target: armv7-unknown-linux-musleabihf
-            os: ubuntu-24.04-arm
-            prefix: lib
-            extension: .so
-          # 64-bit Linux with musl 1.2.3
-          - target: x86_64-unknown-linux-musl
-            os: ubuntu-22.04
             prefix: lib
             extension: .so
           # PowerPC Linux (kernel 3.2, glibc 2.17)
@@ -180,8 +164,7 @@ jobs:
           packages: binutils-arm-linux-gnueabihf gcc-arm-linux-gnueabihf
           version: 1.0
         if: |
-          matrix.target == 'armv7-unknown-linux-gnueabihf' ||
-          matrix.target == 'armv7-unknown-linux-musleabihf'
+          matrix.target == 'armv7-unknown-linux-gnueabihf'
       - name: Install Compiler Tools for Target powerpc-unknown-linux-gnu
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
@@ -232,7 +215,6 @@ jobs:
           matrix.target == 'i686-unknown-linux-gnu' ||
           matrix.target == 'x86_64-pc-windows-gnu' ||
           matrix.target == 'armv7-unknown-linux-gnueabihf' ||
-          matrix.target == 'armv7-unknown-linux-musleabihf' ||
           matrix.target == 'powerpc-unknown-linux-gnu' ||
           matrix.target == 'powerpc64-unknown-linux-gnu' ||
           matrix.target == 'powerpc64le-unknown-linux-gnu' ||
@@ -245,7 +227,6 @@ jobs:
           matrix.target == 'i686-unknown-linux-gnu' ||
           matrix.target == 'x86_64-pc-windows-gnu' ||
           matrix.target == 'armv7-unknown-linux-gnueabihf' ||
-          matrix.target == 'armv7-unknown-linux-musleabihf' ||
           matrix.target == 'powerpc-unknown-linux-gnu' ||
           matrix.target == 'powerpc64-unknown-linux-gnu' ||
           matrix.target == 'powerpc64le-unknown-linux-gnu' ||
