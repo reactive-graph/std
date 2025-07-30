@@ -11,17 +11,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Build: Bump MSRV 1.85 -> 1.87
-
 ### Fixed
+
+### Distribution
+
+### Infrastructure
+
+## [0.10.0-alpha-3] - 2025-07-30
+
+### Changed
+
+- Build: Bump MSRV 1.85 -> 1.87
 
 ### Distribution
 
 - CI: Use ubuntu-22.04 instead of ubuntu-20.04 for building debian packages
 - CI: Publish dynamic link libraries as compressed archive
 - CI: Publish debian packages
-
-### Infrastructure
 
 ## [0.10.0-alpha-1] - 2025-07-26
 
