@@ -254,17 +254,24 @@ jobs:
       - name: Build Dynamic Link Libraries
         run: cargo build --release --target ${{ matrix.target }}
       - name: Create Release Archive
-        id: create_release_archive
+        id: archive
         uses: ksm2/archive-action@v1
         with:
           name: 'reactive-graph-std_${{steps.tag.outputs.tag}}_${{ matrix.target }}'
           format: ${{ matrix.archive_format }}
           root-directory: 'target/${{ matrix.target }}/release/'
           include: '${{ matrix.prefix }}reactive_graph_std_*${{ matrix.extension }}'
-      - name: Upload Release Archive to GitHub Releases
+      - name: Upload Regular Release Archive to GitHub Releases
         uses: softprops/action-gh-release@v2
         with:
-          files: ${{ steps.create_release_archive.outputs.path }}
+          files: ${{ steps.archive.outputs.path }}
+        if: startsWith(github.event.ref, 'refs/tags/v')
+      - name: Upload Nightly Release Archive to GitHub Releases
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ steps.archive.outputs.path }}
+          tag_name: nightly
+        if: github.ref == 'refs/heads/main'
   debian-package:
     name: Debian package
     needs: [ create-or-update-nightly-tag, create-release ]
