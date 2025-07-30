@@ -81,67 +81,80 @@ jobs:
             os: ubuntu-22.04-arm
             prefix: lib
             extension: .so
+            archive_format: .tar.gz
           # ARM64 macOS (11.0+, Big Sur+)
           - target: aarch64-apple-darwin
             os: macos-latest
             prefix: lib
             extension: .dylib
+            archive_format: .tar.gz
           # 32-bit Linux (kernel 3.2+, glibc 2.17+) 1
           - target: i686-unknown-linux-gnu
             os: ubuntu-22.04
             prefix: lib
             extension: .so
+            archive_format: .tar.gz
           # 64-bit macOS (10.12+, Sierra+)
           - target: x86_64-apple-darwin
             os: macos-latest
             prefix: lib
             extension: .dylib
+            archive_format: .tar.gz
           # 64-bit MinGW (Windows 10+, Windows Server 2016+)
           - target: x86_64-pc-windows-gnu
             os: ubuntu-22.04
             prefix: ""
             extension: .dll
+            archive_format: .zip
           # 64-bit MSVC (Windows 10+, Windows Server 2016+)
           - target: x86_64-pc-windows-msvc
             os: windows-latest
             prefix: ""
             extension: .dll
+            archive_format: .zip
           # 64-bit Linux (kernel 3.2+, glibc 2.17+)
           - target: x86_64-unknown-linux-gnu
             os: ubuntu-22.04
             prefix: lib
             extension: .so
+            archive_format: .tar.gz
           # Universal macOS binary is supported as universal-apple-darwin.
           - target: universal-apple-darwin
             os: macos-latest
             prefix: lib
             extension: .dylib
+            archive_format: .tar.gz
           # Tier 2
           # Armv7-A Linux, hardfloat (kernel 3.2, glibc 2.17)
           - target: armv7-unknown-linux-gnueabihf
             os: ubuntu-22.04-arm
             prefix: lib
             extension: .so
+            archive_format: .tar.gz
           # PowerPC Linux (kernel 3.2, glibc 2.17)
           - target: powerpc-unknown-linux-gnu
             os: ubuntu-22.04
             prefix: lib
             extension: .so
+            archive_format: .tar.gz
           # PPC64 Linux (kernel 3.2, glibc 2.17)
           - target: powerpc64-unknown-linux-gnu
             os: ubuntu-22.04
             prefix: lib
             extension: .so
+            archive_format: .tar.gz
           # PPC64LE Linux (kernel 3.10, glibc 2.17)
           - target: powerpc64le-unknown-linux-gnu
             os: ubuntu-22.04
             prefix: lib
             extension: .so
+            archive_format: .tar.gz
           # RISC-V Linux (kernel 4.20, glibc 2.29)
           - target: riscv64gc-unknown-linux-gnu
             os: ubuntu-22.04
             prefix: lib
             extension: .so
+            archive_format: .tar.gz
     runs-on: ${{ matrix.os }}
     steps:
       - name: VCS Checkout
