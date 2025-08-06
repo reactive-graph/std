@@ -27,6 +27,8 @@ env:
   CARGO_TERM_COLOR: always
   WORKSPACE_ROOT_MANIFEST_DIR: "/home/runner/work/std/std"
   AWS_LC_SYS_PREBUILT_NASM: 1
+  PLUGIN_REPOSITORY: "std"
+  PLUGINS: "arithmetic base color comparison connector date-time flow logical metadata numeric random result state string taxonomy trigger value"
 
 jobs:
   create-or-update-nightly-tag:
@@ -257,10 +259,10 @@ jobs:
         id: archive
         uses: ksm2/archive-action@v1
         with:
-          name: 'reactive-graph-std_${{steps.tag.outputs.tag}}_${{ matrix.target }}'
+          name: 'reactive-graph-${{env.PLUGIN_REPOSITORY}}_${{steps.tag.outputs.tag}}_${{ matrix.target }}'
           format: ${{ matrix.archive_format }}
           root-directory: 'target/${{ matrix.target }}/release/'
-          include: '${{ matrix.prefix }}reactive_graph_std_*${{ matrix.extension }}'
+          include: '${{ matrix.prefix }}reactive_graph_${{env.PLUGIN_REPOSITORY}}_*${{ matrix.extension }}'
       - name: Upload Regular Release Archive to GitHub Releases
         uses: softprops/action-gh-release@v2
         with:
@@ -388,85 +390,21 @@ jobs:
       - name: Create Regular Debian Package
         if: startsWith(github.event.ref, 'refs/tags/v')
         run: |
-          # It's important to change into the plugin directory and building each package
-          cd ./plugins/arithmetic/crates/plugin
-          cargo deb -p reactive-graph-std-arithmetic --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
-          cd ../../../base/crates/plugin
-          cargo deb -p reactive-graph-std-base --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
-          cd ../../../color/crates/plugin
-          cargo deb -p reactive-graph-std-color --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
-          cd ../../../comparison/crates/plugin
-          cargo deb -p reactive-graph-std-comparison --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
-          cd ../../../connector/crates/plugin
-          cargo deb -p reactive-graph-std-connector --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
-          cd ../../../date-time/crates/plugin
-          cargo deb -p reactive-graph-std-date-time --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
-          cd ../../../flow/crates/plugin
-          cargo deb -p reactive-graph-std-flow --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
-          # cd ../../../i18n/crates/plugin
-          # cargo deb -p reactive-graph-std-i18n --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
-          cd ../../../logical/crates/plugin
-          cargo deb -p reactive-graph-std-logical --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
-          cd ../../../metadata/crates/plugin
-          cargo deb -p reactive-graph-std-metadata --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
-          cd ../../../numeric/crates/plugin
-          cargo deb -p reactive-graph-std-numeric --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
-          cd ../../../random/crates/plugin
-          cargo deb -p reactive-graph-std-random --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
-          cd ../../../result/crates/plugin
-          cargo deb -p reactive-graph-std-result --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
-          cd ../../../state/crates/plugin
-          cargo deb -p reactive-graph-std-state --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
-          cd ../../../string/crates/plugin
-          cargo deb -p reactive-graph-std-string --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
-          cd ../../../taxonomy/crates/plugin
-          cargo deb -p reactive-graph-std-taxonomy --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
-          cd ../../../trigger/crates/plugin
-          cargo deb -p reactive-graph-std-trigger --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
-          cd ../../../value/crates/plugin
-          cargo deb -p reactive-graph-std-value --target=${{ matrix.target }} --deb-version ${{steps.tag.outputs.tag}}
+          for PLUGIN in ${{env.PLUGINS}}; do
+            # It's important to change into the plugin directory and building each package
+            cd ${{WORKSPACE_ROOT_MANIFEST_DIR}}/plugins/$PLUGIN/crates/plugin
+            cargo deb -p reactive-graph-${{env.PLUGIN_REPOSITORY}}-$PLUGIN --target=${{ matrix.target }} --deb-revision ${{steps.tag.outputs.tag}}
+          done
         env:
           VERGEN_IDEMPOTENT: true
       - name: Create Nightly Debian Package
         if: github.ref == 'refs/heads/main'
         run: |
-          # It's important to change into the plugin directory and building each package
-          cd ./plugins/arithmetic/crates/plugin
-          cargo deb -p reactive-graph-std-arithmetic --target=${{ matrix.target }} --deb-revision nightly
-          cd ../../../base/crates/plugin
-          cargo deb -p reactive-graph-std-base --target=${{ matrix.target }} --deb-revision nightly
-          cd ../../../color/crates/plugin
-          cargo deb -p reactive-graph-std-color --target=${{ matrix.target }} --deb-revision nightly
-          cd ../../../comparison/crates/plugin
-          cargo deb -p reactive-graph-std-comparison --target=${{ matrix.target }} --deb-revision nightly
-          cd ../../../connector/crates/plugin
-          cargo deb -p reactive-graph-std-connector --target=${{ matrix.target }} --deb-revision nightly
-          cd ../../../date-time/crates/plugin
-          cargo deb -p reactive-graph-std-date-time --target=${{ matrix.target }} --deb-revision nightly
-          cd ../../../flow/crates/plugin
-          cargo deb -p reactive-graph-std-flow --target=${{ matrix.target }} --deb-revision nightly
-          # cd ../../../i18n/crates/plugin
-          # cargo deb -p reactive-graph-std-i18n --target=${{ matrix.target }} --deb-revision nightly
-          cd ../../../logical/crates/plugin
-          cargo deb -p reactive-graph-std-logical --target=${{ matrix.target }} --deb-revision nightly
-          cd ../../../metadata/crates/plugin
-          cargo deb -p reactive-graph-std-metadata --target=${{ matrix.target }} --deb-revision nightly
-          cd ../../../numeric/crates/plugin
-          cargo deb -p reactive-graph-std-numeric --target=${{ matrix.target }} --deb-revision nightly
-          cd ../../../random/crates/plugin
-          cargo deb -p reactive-graph-std-random --target=${{ matrix.target }} --deb-revision nightly
-          cd ../../../result/crates/plugin
-          cargo deb -p reactive-graph-std-result --target=${{ matrix.target }} --deb-revision nightly
-          cd ../../../state/crates/plugin
-          cargo deb -p reactive-graph-std-state --target=${{ matrix.target }} --deb-revision nightly
-          cd ../../../string/crates/plugin
-          cargo deb -p reactive-graph-std-string --target=${{ matrix.target }} --deb-revision nightly
-          cd ../../../taxonomy/crates/plugin
-          cargo deb -p reactive-graph-std-taxonomy --target=${{ matrix.target }} --deb-revision nightly
-          cd ../../../trigger/crates/plugin
-          cargo deb -p reactive-graph-std-trigger --target=${{ matrix.target }} --deb-revision nightly
-          cd ../../../value/crates/plugin
-          cargo deb -p reactive-graph-std-value --target=${{ matrix.target }} --deb-revision nightly
+          for PLUGIN in ${{env.PLUGINS}}; do
+            # It's important to change into the plugin directory and building each package
+            cd ${{WORKSPACE_ROOT_MANIFEST_DIR}}/plugins/$PLUGIN/crates/plugin
+            cargo deb -p reactive-graph-${{env.PLUGIN_REPOSITORY}}-$PLUGIN --target=${{ matrix.target }} --deb-revision nightly
+          done
         env:
           VERGEN_IDEMPOTENT: true
       - name: Upload Regular Debian Package
@@ -474,7 +412,7 @@ jobs:
         if: startsWith(github.event.ref, 'refs/tags/v')
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: target/${{ matrix.target }}/debian/libreactive-graph-std-*_*_*.deb
+          file: target/${{ matrix.target }}/debian/libreactive-graph-${{env.PLUGIN_REPOSITORY}}-*_*_*.deb
           file_glob: true
           tag: ${{ github.ref }}
       - name: Upload Nightly Debian Package
@@ -482,7 +420,7 @@ jobs:
         if: github.ref == 'refs/heads/main'
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: target/${{ matrix.target }}/debian/libreactive-graph-std-*_*_*.deb
+          file: target/${{ matrix.target }}/debian/libreactive-graph-${{env.PLUGIN_REPOSITORY}}-*_*_*.deb
           file_glob: true
           tag: 'nightly'
           overwrite: true
