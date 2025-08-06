@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["object_get_property","object_keys","object_remove_property","object_set_property"]};
+window.SIDEBAR_ITEMS = {"mod":["get_property","keys","remove_property","set_property"]};
