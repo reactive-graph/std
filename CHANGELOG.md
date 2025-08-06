@@ -33,7 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Documentation: [Book: std.reactive.graph.io](https://std.reactive.graph.io/)
+- Documentation: [Book: std.reactive-graph.io](https://std.reactive-graph.io/)
 - Type System: Add JSON schema identifier to all types
 
 ### Changed
