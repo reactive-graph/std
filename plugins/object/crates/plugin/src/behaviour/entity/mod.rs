@@ -1,4 +1,4 @@
-pub mod object_get_property;
-pub mod object_keys;
-pub mod object_remove_property;
-pub mod object_set_property;
+pub mod get_property;
+pub mod keys;
+pub mod remove_property;
+pub mod set_property;

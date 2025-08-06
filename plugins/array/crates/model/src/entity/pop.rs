@@ -12,8 +12,8 @@ use reactive_graph_behaviour_model_api::entity_behaviour_ty;
 
 properties!(ArrayPopProperties, (ARRAY, "array", json!([])), (VALUE, "value", Value::Null));
 
-entity_ty!(ENTITY_TYPE_ARRAY_POP, NAMESPACE_ARRAY, ENTITY_TYPE_NAME_ARRAY_POP, "array_pop");
-behaviour_ty!(BEHAVIOUR_ARRAY_POP, NAMESPACE_ARRAY, BEHAVIOUR_NAME_ARRAY_POP, "array_pop");
+entity_ty!(ENTITY_TYPE_ARRAY_POP, NAMESPACE_ARRAY, ENTITY_TYPE_NAME_ARRAY_POP, "pop");
+behaviour_ty!(BEHAVIOUR_ARRAY_POP, NAMESPACE_ARRAY, BEHAVIOUR_NAME_ARRAY_POP, "pop");
 entity_behaviour_ty!(ENTITY_BEHAVIOUR_ARRAY_POP, ENTITY_TYPE_ARRAY_POP, BEHAVIOUR_ARRAY_POP);
 
 entity_model!(
