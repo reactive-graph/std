@@ -12,8 +12,8 @@ use reactive_graph_behaviour_model_api::entity_behaviour_ty;
 
 properties!(ArrayPushProperties, (ARRAY, "array", json!([])), (VALUE, "value", Value::Null));
 
-entity_ty!(ENTITY_TYPE_ARRAY_PUSH, NAMESPACE_ARRAY, ENTITY_TYPE_NAME_ARRAY_PUSH, "array_push");
-behaviour_ty!(BEHAVIOUR_ARRAY_PUSH, NAMESPACE_ARRAY, BEHAVIOUR_NAME_ARRAY_PUSH, "array_push");
+entity_ty!(ENTITY_TYPE_ARRAY_PUSH, NAMESPACE_ARRAY, ENTITY_TYPE_NAME_ARRAY_PUSH, "push");
+behaviour_ty!(BEHAVIOUR_ARRAY_PUSH, NAMESPACE_ARRAY, BEHAVIOUR_NAME_ARRAY_PUSH, "push");
 entity_behaviour_ty!(ENTITY_BEHAVIOUR_ARRAY_PUSH, ENTITY_TYPE_ARRAY_PUSH, BEHAVIOUR_ARRAY_PUSH);
 
 entity_model!(

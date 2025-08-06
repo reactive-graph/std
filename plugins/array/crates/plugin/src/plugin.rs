@@ -2,12 +2,12 @@ use reactive_graph_plugin_api::EntityBehaviourRegistry;
 use reactive_graph_plugin_api::prelude::plugin::*;
 use reactive_graph_plugin_api::prelude::providers::*;
 
-use crate::behaviour::entity::array_contains::ArrayContainsFactory;
-use crate::behaviour::entity::array_get_by_index::ArrayGetByIndexFactory;
-use crate::behaviour::entity::array_length::ArrayLengthFactory;
-use crate::behaviour::entity::array_pop::ArrayPopFactory;
-use crate::behaviour::entity::array_push::ArrayPushFactory;
-use crate::behaviour::entity::array_reverse::ArrayReverseFactory;
+use crate::behaviour::entity::contains::ArrayContainsFactory;
+use crate::behaviour::entity::get_by_index::ArrayGetByIndexFactory;
+use crate::behaviour::entity::length::ArrayLengthFactory;
+use crate::behaviour::entity::pop::ArrayPopFactory;
+use crate::behaviour::entity::push::ArrayPushFactory;
+use crate::behaviour::entity::reverse::ArrayReverseFactory;
 use reactive_graph_std_array_model::BEHAVIOUR_ARRAY_CONTAINS;
 use reactive_graph_std_array_model::BEHAVIOUR_ARRAY_GET_BY_INDEX;
 use reactive_graph_std_array_model::BEHAVIOUR_ARRAY_LENGTH;

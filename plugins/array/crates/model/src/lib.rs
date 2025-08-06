@@ -1,9 +1,9 @@
-pub use entity::array_contains::*;
-pub use entity::array_get_by_index::*;
-pub use entity::array_length::*;
-pub use entity::array_pop::*;
-pub use entity::array_push::*;
-pub use entity::array_reverse::*;
+pub use entity::contains::*;
+pub use entity::get_by_index::*;
+pub use entity::length::*;
+pub use entity::pop::*;
+pub use entity::push::*;
+pub use entity::reverse::*;
 
 pub mod entity;
 

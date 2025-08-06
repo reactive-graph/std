@@ -11,8 +11,8 @@ use reactive_graph_behaviour_model_api::entity_behaviour_ty;
 
 properties!(ArrayReverseProperties, (ARRAY, "array", json!([])));
 
-entity_ty!(ENTITY_TYPE_ARRAY_REVERSE, NAMESPACE_ARRAY, ENTITY_TYPE_NAME_ARRAY_REVERSE, "array_reverse");
-behaviour_ty!(BEHAVIOUR_ARRAY_REVERSE, NAMESPACE_ARRAY, BEHAVIOUR_NAME_ARRAY_REVERSE, "array_reverse");
+entity_ty!(ENTITY_TYPE_ARRAY_REVERSE, NAMESPACE_ARRAY, ENTITY_TYPE_NAME_ARRAY_REVERSE, "reverse");
+behaviour_ty!(BEHAVIOUR_ARRAY_REVERSE, NAMESPACE_ARRAY, BEHAVIOUR_NAME_ARRAY_REVERSE, "reverse");
 entity_behaviour_ty!(ENTITY_BEHAVIOUR_ARRAY_REVERSE, ENTITY_TYPE_ARRAY_REVERSE, BEHAVIOUR_ARRAY_REVERSE);
 
 entity_model!(

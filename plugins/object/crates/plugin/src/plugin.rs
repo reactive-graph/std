@@ -2,10 +2,10 @@ use reactive_graph_plugin_api::EntityBehaviourRegistry;
 use reactive_graph_plugin_api::prelude::plugin::*;
 use reactive_graph_plugin_api::prelude::providers::*;
 
-use crate::behaviour::entity::object_get_property::ObjectGetPropertyFactory;
-use crate::behaviour::entity::object_keys::ObjectKeysFactory;
-use crate::behaviour::entity::object_remove_property::ObjectRemovePropertyFactory;
-use crate::behaviour::entity::object_set_property::ObjectSetPropertyFactory;
+use crate::behaviour::entity::get_property::ObjectGetPropertyFactory;
+use crate::behaviour::entity::keys::ObjectKeysFactory;
+use crate::behaviour::entity::remove_property::ObjectRemovePropertyFactory;
+use crate::behaviour::entity::set_property::ObjectSetPropertyFactory;
 use reactive_graph_std_object_model::BEHAVIOUR_OBJECT_GET_PROPERTY;
 use reactive_graph_std_object_model::BEHAVIOUR_OBJECT_KEYS;
 use reactive_graph_std_object_model::BEHAVIOUR_OBJECT_REMOVE_PROPERTY;

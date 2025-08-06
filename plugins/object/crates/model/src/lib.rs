@@ -1,7 +1,7 @@
-pub use entity::object_get_property::*;
-pub use entity::object_keys::*;
-pub use entity::object_remove_property::*;
-pub use entity::object_set_property::*;
+pub use entity::get_property::*;
+pub use entity::keys::*;
+pub use entity::remove_property::*;
+pub use entity::set_property::*;
 
 pub mod entity;
 
