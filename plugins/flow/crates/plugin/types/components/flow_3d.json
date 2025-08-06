@@ -42,9 +42,5 @@
     }
   ],
   "extensions": [
-    {
-      "name": "component_category",
-      "extension": "flow"
-    }
   ]
 }
