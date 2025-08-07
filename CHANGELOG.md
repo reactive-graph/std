@@ -11,7 +11,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+### Fixed
+
+### Distribution
+
+### Infrastructure
+
+## [0.10.0-alpha-4] - 2025-08-07
+
+### Added
+
+### Changed
+
 - Renamed / removed prefixes array_ and object_
+- Upgrade log4rs to 1.4.0
 
 ### Fixed
 
