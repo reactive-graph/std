@@ -25,7 +25,6 @@ concurrency:
 
 env:
   CARGO_TERM_COLOR: always
-  WORKSPACE_ROOT_MANIFEST_DIR: "/home/runner/work/std/std"
   AWS_LC_SYS_PREBUILT_NASM: 1
   PLUGIN_REPOSITORY: "std"
   PLUGINS: "arithmetic base color comparison connector date-time flow logical metadata numeric random result state string taxonomy trigger value"
@@ -228,7 +227,14 @@ jobs:
         uses: dtolnay/rust-toolchain@master
         with:
           toolchain: stable
-          target: ${{ matrix.target == 'universal-apple-darwin' && 'aarch64-apple-darwin,x86_64-apple-darwin' || matrix.target }}
+          target: ${{ matrix.target }}
+        if: matrix.target != 'universal-apple-darwin'
+      - name: Install rust toolchain
+        uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: stable
+          targets: "x86_64-apple-darwin, aarch64-apple-darwin"
+        if: matrix.target == 'universal-apple-darwin'
       - name: Install bindgen-cli
         uses: taiki-e/cache-cargo-install-action@v2
         with:
@@ -255,6 +261,21 @@ jobs:
           matrix.target == 'riscv64gc-unknown-linux-gnu'
       - name: Build Dynamic Link Libraries
         run: cargo build --release --target ${{ matrix.target }}
+        if: matrix.target != 'universal-apple-darwin'
+      - name: Build Dynamic Link Libraries (universal-apple-darwin)
+        run: |
+          cargo build --release --target x86_64-apple-darwin
+          cargo build --release --target aarch64-apple-darwin
+          mkdir -p target/universal-apple-darwin/release
+          for PLUGIN in ${{env.PLUGINS}}; do
+            lipo \
+              -create \
+                target/x86_64-apple-darwin/release/${{matrix.prefix}}reactive_graph_${{env.PLUGIN_REPOSITORY}}_${PLUGIN//-/_}${{matrix.extension}} \
+                target/aarch64-apple-darwin/release/${{matrix.prefix}}reactive_graph_${{env.PLUGIN_REPOSITORY}}_${PLUGIN//-/_}${{matrix.extension}} \
+              -output \
+                target/universal-apple-darwin/release/${{matrix.prefix}}reactive_graph_${{env.PLUGIN_REPOSITORY}}_${PLUGIN//-/_}${{matrix.extension}}
+          done
+        if: matrix.target == 'universal-apple-darwin'
       - name: Create Release Archive
         id: archive
         uses: ksm2/archive-action@v1
@@ -392,7 +413,7 @@ jobs:
         run: |
           for PLUGIN in ${{env.PLUGINS}}; do
             # It's important to change into the plugin directory and building each package
-            cd ${{env.WORKSPACE_ROOT_MANIFEST_DIR}}/plugins/$PLUGIN/crates/plugin
+            cd "${{ github.workspace }}/plugins/$PLUGIN"
             cargo deb -p reactive-graph-${{env.PLUGIN_REPOSITORY}}-$PLUGIN --target=${{ matrix.target }} --deb-revision ${{steps.tag.outputs.tag}}
           done
         env:
@@ -402,7 +423,7 @@ jobs:
         run: |
           for PLUGIN in ${{env.PLUGINS}}; do
             # It's important to change into the plugin directory and building each package
-            cd ${{env.WORKSPACE_ROOT_MANIFEST_DIR}}/plugins/$PLUGIN/crates/plugin
+            cd "${{ github.workspace }}/plugins/$PLUGIN"
             cargo deb -p reactive-graph-${{env.PLUGIN_REPOSITORY}}-$PLUGIN --target=${{ matrix.target }} --deb-revision nightly
           done
         env:
