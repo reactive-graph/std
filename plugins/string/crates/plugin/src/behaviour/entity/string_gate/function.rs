@@ -13,7 +13,7 @@ pub type StringGateFunction = fn(String, String) -> String;
 
 pub const FN_CHOP_AFTER: StringGateFunction = |lhs, rhs| chop::after(lhs.as_str(), rhs.as_str());
 pub const FN_CHOP_AFTER_LAST: StringGateFunction = |lhs, rhs| chop::after_last(lhs.as_str(), rhs.as_str());
-pub const FN_CONCAT: StringGateFunction = |lhs, rhs| format!("{}{}", lhs, rhs);
+pub const FN_CONCAT: StringGateFunction = |lhs, rhs| format!("{lhs}{rhs}");
 pub const FN_BEFORE: StringGateFunction = |lhs, rhs| chop::before(lhs.as_str(), rhs.as_str());
 pub const FN_BEFORE_LAST: StringGateFunction = |lhs, rhs| chop::before_last(lhs.as_str(), rhs.as_str());
 pub const FN_REMOVE_PREFIX: StringGateFunction = |lhs, rhs| chop::removeprefix(lhs.as_str(), rhs.as_str());

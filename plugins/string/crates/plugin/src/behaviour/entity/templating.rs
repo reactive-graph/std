@@ -57,7 +57,7 @@ fn render(template: &Value, context: &Value) -> Value {
                 match tera.render_str(template, &tera_context) {
                     Ok(rendered) => json!(rendered),
                     Err(e) => {
-                        error!("Rendering Error: {}", e);
+                        error!("Rendering Error: {e}");
                         json!({
                             "error": "Rendering Error",
                             "message": format!("{}", e),
@@ -68,7 +68,7 @@ fn render(template: &Value, context: &Value) -> Value {
                 }
             }
             Err(e) => {
-                error!("Rendering Error: {}", e);
+                error!("Rendering Error: {e}");
                 json!({
                     "error": "Context Error",
                     "message": format!("{}", e),

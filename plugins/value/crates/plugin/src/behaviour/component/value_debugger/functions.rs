@@ -14,12 +14,12 @@ use crate::behaviour::component::value_debugger::ValueDebuggerFactory;
 
 pub type ValueDebuggerFunction = fn(Value);
 
-const FN_LOG_DEBUG: ValueDebuggerFunction = |v| {
-    debug!("{}", v);
+const FN_LOG_DEBUG: ValueDebuggerFunction = |value| {
+    debug!("{value}");
 };
 
-const FN_LOG_TRACE: ValueDebuggerFunction = |v| {
-    trace!("{}", v);
+const FN_LOG_TRACE: ValueDebuggerFunction = |value| {
+    trace!("{value}");
 };
 
 /// Factory

@@ -72,7 +72,7 @@ impl TimeGraphImpl {
     }
 
     async fn create_year(&self, year: i64) -> Option<ReactiveEntity> {
-        trace!("Create year {}", year);
+        trace!("Create year {year}");
         let id = Uuid::new_v4();
         let properties = PropertyInstances::new().property(YEAR, json!(year)).property(LEAP, json!(is_leap_year(year)));
         let reactive_entity = ReactiveEntity::builder()
@@ -160,7 +160,7 @@ impl TimeGraphImpl {
         let Some(month_of_year) = month.as_u64(MONTH_OF_YEAR) else {
             return;
         };
-        let instance_id = format!("{:04}__{:02}", year, month_of_year);
+        let instance_id = format!("{year:04}__{month_of_year:02}");
         let ty = RelationInstanceTypeId::new_unique_for_instance_id(RELATION_TYPE_MONTH_OF_YEAR.clone(), instance_id);
         let reactive_relation = ReactiveRelation::builder_with_entities(current_year.clone(), &ty, month.clone()).build();
         let _ = self.relation_instance_manager.register(reactive_relation);
@@ -238,7 +238,7 @@ impl TimeGraphImpl {
     }
 
     async fn create_day(&self, year: i64, month: u64, day: u64) -> Option<ReactiveEntity> {
-        let iso8601 = format!("{:04}-{:02}-{:02}", year, month, day);
+        let iso8601 = format!("{year:04}-{month:02}-{day:02}");
         let id = Uuid::new_v4();
         let properties = PropertyInstances::new().property(DAY_OF_MONTH, json!(day)).property(ISO8601, json!(iso8601));
         let reactive_entity = ReactiveEntity::builder()
@@ -256,7 +256,7 @@ impl TimeGraphImpl {
         let Some(day_of_month) = current_day.as_u64(DAY_OF_MONTH) else {
             return;
         };
-        let instance_id = format!("{:04}__{:02}", month_and_year, day_of_month);
+        let instance_id = format!("{month_and_year:04}__{day_of_month:02}");
         let ty = RelationInstanceTypeId::new_unique_for_instance_id(RELATION_TYPE_DAY_OF_MONTH.clone(), instance_id);
         let reactive_relation = ReactiveRelation::builder_with_entities(current_month.clone(), &ty, current_day.clone()).build();
         let _ = self.relation_instance_manager.register(reactive_relation);
@@ -269,7 +269,7 @@ impl TimeGraphImpl {
         let Some(day_of_month) = first_day.as_u64(DAY_OF_MONTH) else {
             return;
         };
-        let instance_id = format!("{:04}__{:02}", month_and_year, day_of_month);
+        let instance_id = format!("{month_and_year:04}__{day_of_month:02}");
         let ty = RelationInstanceTypeId::new_unique_for_instance_id(RELATION_TYPE_FIRST_DAY.clone(), instance_id);
         let reactive_relation = ReactiveRelation::builder_with_entities(current_month.clone(), &ty, first_day.clone()).build();
         let _ = self.relation_instance_manager.register(reactive_relation);
@@ -282,7 +282,7 @@ impl TimeGraphImpl {
         let Some(day_of_month) = last_day.as_u64(DAY_OF_MONTH) else {
             return;
         };
-        let instance_id = format!("{:04}__{:02}", month_and_year, day_of_month);
+        let instance_id = format!("{month_and_year:04}__{day_of_month:02}");
         let ty = RelationInstanceTypeId::new_unique_for_instance_id(RELATION_TYPE_LAST_DAY.clone(), instance_id);
         let reactive_relation = ReactiveRelation::builder_with_entities(current_month.clone(), &ty, last_day.clone()).build();
         let _ = self.relation_instance_manager.register(reactive_relation);
@@ -307,7 +307,7 @@ impl TimeGraph for TimeGraphImpl {
         let start = Instant::now();
         self.create_time_graph().await;
         let duration = start.elapsed();
-        info!("Successfully generated time graph in {:?}", duration);
+        info!("Successfully generated time graph in {duration:?}");
     }
 
     async fn shutdown(&self) {}
