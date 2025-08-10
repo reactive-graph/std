@@ -1,48 +1,23 @@
 [workspace]
 
+resolver = "3"
+
 members = [
-    "plugins/arithmetic/crates/model",
-    "plugins/arithmetic/crates/plugin",
-    "plugins/array/crates/model",
-    "plugins/array/crates/plugin",
-    "plugins/base/crates/model",
-    "plugins/base/crates/plugin",
-    "plugins/color/crates/model",
-    "plugins/color/crates/plugin",
-    "plugins/comparison/crates/model",
-    "plugins/comparison/crates/plugin",
-    "plugins/connector/crates/model",
-    "plugins/connector/crates/plugin",
-    "plugins/date-time/crates/model",
-    "plugins/date-time/crates/plugin",
-    "plugins/flow/crates/model",
-    "plugins/flow/crates/plugin",
-    "plugins/logical/crates/model",
-    "plugins/logical/crates/plugin",
-    "plugins/metadata/crates/model",
-    "plugins/metadata/crates/plugin",
-    "plugins/numeric/crates/model",
-    "plugins/numeric/crates/plugin",
-    "plugins/object/crates/model",
-    "plugins/object/crates/plugin",
-    "plugins/random/crates/model",
-    "plugins/random/crates/plugin",
-    "plugins/result/crates/model",
-    "plugins/result/crates/plugin",
-    "plugins/state/crates/model",
-    "plugins/state/crates/plugin",
-    "plugins/string/crates/model",
-    "plugins/string/crates/plugin",
-    "plugins/taxonomy/crates/model",
-    "plugins/taxonomy/crates/plugin",
-    "plugins/trigger/crates/model",
-    "plugins/trigger/crates/plugin",
-    "plugins/value/crates/model",
-    "plugins/value/crates/plugin",
+    "plugins/*/crates/model",
+    "plugins/*/crates/plugin",
     "deployment",
     "dummy"
 ]
-resolver = "3"
+
+exclude = [
+    "plugins/i18n/crates/model",
+    "plugins/i18n/crates/plugin"
+]
+
+default-members = [
+    "plugins/*/crates/model",
+    "plugins/*/crates/plugin"
+]
 
 [workspace.package]
 version = "0.10.0"
