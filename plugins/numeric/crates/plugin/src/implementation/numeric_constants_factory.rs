@@ -56,7 +56,7 @@ impl NumericConstantsFactory for NumericConstantsFactoryImpl {
                     debug!("Created numeric constant {} {} as entity instance {}", name, value, reactive_entity.id);
                 }
                 Err(_) => {
-                    error!("Failed to create entity instance for constant {} {}!", name, value);
+                    error!("Failed to create entity instance for constant {name} {value}!");
                 }
             }
         }
