@@ -52,7 +52,6 @@ additional-css = [
     #    "./src/design/public/css/molecules/zebra-box.css",
     #    "./src/design/public/css/organisms/organisms.css",
     "././book.css",
-    "././mdbook-admonish.css",
     "././graphql-playground.css",
 ]
 theme = "theme"
