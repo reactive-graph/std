@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Infrastructure
 
 - Build: Reorganize workspace members using glob wildcards and specify default members and exclusions
+- CI: Update github actions
 
 ## [0.10.0-alpha-4] - 2025-08-07
 
