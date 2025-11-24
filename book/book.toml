@@ -10,10 +10,6 @@ description = "The standard library of Reactive Graph"
 [preprocessor.mermaid]
 command = "mdbook-mermaid"
 
-[preprocessor.admonish]
-command = "mdbook-admonish"
-assets_version = "3.0.2" # do not edit: managed by `mdbook-admonish install`
-
 [preprocessor.graphql-playground]
 command = "mdbook-graphql-playground"
 renderer = ["html"]
