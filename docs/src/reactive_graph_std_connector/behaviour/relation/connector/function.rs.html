@@ -17,9 +17,9 @@
 <a href=#17 id=17 data-nosnippet>17</a><span class="kw">pub type </span>ConnectorFunction = <span class="kw">fn</span>(<span class="kw-2">&amp;</span>Value) -&gt; Value;
 <a href=#18 id=18 data-nosnippet>18</a>
 <a href=#19 id=19 data-nosnippet>19</a><span class="doccomment">/// This connector logs the value before propagation (log level debug)
-<a href=#20 id=20 data-nosnippet>20</a></span><span class="kw">pub const </span>FN_DEBUG_CONNECTOR: ConnectorFunction = |v| {
-<a href=#21 id=21 data-nosnippet>21</a>    <span class="macro">debug!</span>(<span class="string">"connector propagates value {}"</span>, v);
-<a href=#22 id=22 data-nosnippet>22</a>    v.clone()
+<a href=#20 id=20 data-nosnippet>20</a></span><span class="kw">pub const </span>FN_DEBUG_CONNECTOR: ConnectorFunction = |value| {
+<a href=#21 id=21 data-nosnippet>21</a>    <span class="macro">debug!</span>(<span class="string">"connector propagates value {value}"</span>);
+<a href=#22 id=22 data-nosnippet>22</a>    value.clone()
 <a href=#23 id=23 data-nosnippet>23</a>};
 <a href=#24 id=24 data-nosnippet>24</a>
 <a href=#25 id=25 data-nosnippet>25</a><span class="doccomment">/// This is the default connector type, which simply does nothing than propagate the value
@@ -56,12 +56,12 @@
 <a href=#56 id=56 data-nosnippet>56</a>};
 <a href=#57 id=57 data-nosnippet>57</a>
 <a href=#58 id=58 data-nosnippet>58</a><span class="doccomment">/// This connector converts the value of any type to string before propagation
-<a href=#59 id=59 data-nosnippet>59</a></span><span class="kw">pub const </span>FN_TO_STRING_CONNECTOR: ConnectorFunction = |v| <span class="macro">json!</span>(v.to_string());
+<a href=#59 id=59 data-nosnippet>59</a></span><span class="kw">pub const </span>FN_TO_STRING_CONNECTOR: ConnectorFunction = |value| <span class="macro">json!</span>(value.to_string());
 <a href=#60 id=60 data-nosnippet>60</a>
 <a href=#61 id=61 data-nosnippet>61</a><span class="doccomment">/// This connector logs the value before propagation (log level trace)
-<a href=#62 id=62 data-nosnippet>62</a></span><span class="kw">pub const </span>FN_TRACE_CONNECTOR: ConnectorFunction = |v| {
-<a href=#63 id=63 data-nosnippet>63</a>    <span class="macro">trace!</span>(<span class="string">"connector propagates value {}"</span>, v);
-<a href=#64 id=64 data-nosnippet>64</a>    v.clone()
+<a href=#62 id=62 data-nosnippet>62</a></span><span class="kw">pub const </span>FN_TRACE_CONNECTOR: ConnectorFunction = |value| {
+<a href=#63 id=63 data-nosnippet>63</a>    <span class="macro">trace!</span>(<span class="string">"connector propagates value {value}"</span>);
+<a href=#64 id=64 data-nosnippet>64</a>    value.clone()
 <a href=#65 id=65 data-nosnippet>65</a>};
 <a href=#66 id=66 data-nosnippet>66</a>
 <a href=#67 id=67 data-nosnippet>67</a><span class="kw">const </span>FACTORY_CREATOR: RelationBehaviourFactoryCreator&lt;ConnectorFunction&gt; = |ty, f| Arc::new(ConnectorFactory::new(ty.clone(), f));
