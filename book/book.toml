@@ -3,7 +3,6 @@ authors = [
     "Andreas Schaeffer"
 ]
 language = "en"
-multilingual = false
 src = "src"
 title = "Reactive Graph - Standard Library"
 description = "The standard library of Reactive Graph"
